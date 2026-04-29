@@ -14,6 +14,9 @@ import { AdvisoryInsights } from "@/components/AdvisoryInsights";
 import { RegulatoryTimeline } from "@/components/RegulatoryTimeline";
 import { ImpactMatrix } from "@/components/ImpactMatrix";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
+import { ExecutiveBriefing } from "@/components/ExecutiveBriefing";
+import { JurisdictionCompare } from "@/components/JurisdictionCompare";
+import { SourceLibrary } from "@/components/SourceLibrary";
 import { jurisdictions, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
@@ -98,12 +101,18 @@ export default function Home() {
 
         <AdvisoryInsights regulations={filtered} />
 
+        <ExecutiveBriefing regulations={filtered} onSelect={setSelectedRegulation} />
+
         <section className="grid gap-5 xl:grid-cols-[1.05fr_.95fr]">
           <RegulatoryTimeline regulations={filtered} onSelect={setSelectedRegulation} />
           <DataQualityPanel regulations={filtered} onSelect={setSelectedRegulation} />
         </section>
 
         <ImpactMatrix regulations={filtered} />
+
+        <JurisdictionCompare jurisdictions={jurisdictions} regulations={filtered} onSelect={setSelectedRegulation} />
+
+        <SourceLibrary regulations={filtered} onSelect={setSelectedRegulation} />
 
         <RegulationTable regulations={filtered} onSelect={setSelectedRegulation} />
       </div>

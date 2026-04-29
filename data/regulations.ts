@@ -816,7 +816,7 @@ export const regulations: Regulation[] = [
     businessImpacts: ["financial disclosure obligation", "supply chain obligation", "data collection obligation"],
     affectedFunctions: ["Strategy", "Finance", "Procurement", "Sustainability"],
     sourceUrls: [],
-    latestUpdate: "Seed note: Source missing. This placeholder exists to show no-data and watch-list handling in the MVP.",
+    latestUpdate: "Seed note: Source missing. Included to demonstrate no-data and watch-list handling in the MVP.",
     lastReviewed: REVIEWED,
     nextReviewDate: "2026-05-31",
     confidence: "date_uncertain",

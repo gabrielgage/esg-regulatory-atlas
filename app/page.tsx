@@ -10,6 +10,7 @@ import { RegulationTable } from "@/components/RegulationTable";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { QuickViews } from "@/components/QuickViews";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
+import { AdvisoryInsights } from "@/components/AdvisoryInsights";
 import { jurisdictions, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
@@ -45,7 +46,7 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <main className="min-h-screen pb-12">
       <Header />
       <div className="mx-auto max-w-7xl space-y-5 px-4 py-5 md:px-6">
         <section className="overflow-hidden rounded-2xl bg-navy text-white shadow-xl">
@@ -86,6 +87,8 @@ export default function Home() {
           <SummaryCard label="Confidence" value={`${filtered.filter((regulation) => regulation.confidenceLevel === "high").length} high`} detail="verified seed records" />
           <SummaryCard label="Data quality" value={`${filtered.filter((regulation) => regulation.dataQualityStatus === "needs_review").length} review`} detail="needs production research" />
         </section>
+
+        <AdvisoryInsights regulations={filtered} />
 
         <section className="grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
           <WorldMap jurisdictions={jurisdictions} regulations={filtered} selectedId={selectedJurisdiction?.id} onSelect={setSelectedJurisdiction} />

@@ -7,7 +7,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
   if (!regulation) return null;
 
   return (
-    <aside className="fixed inset-y-0 right-0 z-50 w-full max-w-2xl overflow-y-auto border-l bg-white p-6 shadow-2xl">
+    <aside className="fixed inset-y-0 right-0 z-50 w-full max-w-2xl overflow-y-auto overscroll-contain border-l bg-white p-6 shadow-2xl">
       <button
         onClick={onClose}
         className="absolute right-5 top-5 rounded-full border border-slate-200 p-2 text-slate-500 hover:bg-slate-50"
@@ -80,7 +80,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
                   rel="noreferrer"
                 >
                   <ExternalLink className="mt-0.5 h-4 w-4 shrink-0" />
-                  <span>{source.label}</span>
+                  <span className="break-words">{source.label}</span>
                 </a>
               ))}
             </div>

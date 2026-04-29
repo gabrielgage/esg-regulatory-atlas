@@ -1,13 +1,114 @@
-import { topics, sectors } from "@/data/seed";
+import { RotateCcw, Search } from "lucide-react";
+import { advisoryOpportunities, sectors, statusLabel, topics, valueChainImpacts } from "@/data/seed";
+import { yearsFrom } from "@/lib/filters";
+import { FilterState, Regulation } from "@/types/regulation";
 
-interface Props { query: string; setQuery: (v:string)=>void; topic: string; setTopic:(v:string)=>void; sector:string; setSector:(v:string)=>void; status:string; setStatus:(v:string)=>void; }
-export function Filters({ query, setQuery, topic, setTopic, sector, setSector, status, setStatus }: Props) {
+interface Props {
+  filters: FilterState;
+  regulations: Regulation[];
+  onChange: (filters: FilterState) => void;
+  onReset: () => void;
+}
+
+export function Filters({ filters, regulations, onChange, onReset }: Props) {
+  const update = (key: keyof FilterState, value: string) => onChange({ ...filters, [key]: value });
+  const years = yearsFrom(regulations);
+
   return (
-    <section className="grid gap-3 rounded-3xl border bg-white p-4 shadow-sm md:grid-cols-4">
-      <input className="rounded-2xl border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-teal/30" placeholder="Search regulations, topics, sectors" value={query} onChange={e=>setQuery(e.target.value)} />
-      <select className="rounded-2xl border px-4 py-3 text-sm" value={topic} onChange={e=>setTopic(e.target.value)}><option value="">All topics</option>{topics.map(t=><option key={t}>{t}</option>)}</select>
-      <select className="rounded-2xl border px-4 py-3 text-sm" value={sector} onChange={e=>setSector(e.target.value)}><option value="">All sectors</option>{sectors.map(s=><option key={s}>{s}</option>)}</select>
-      <select className="rounded-2xl border px-4 py-3 text-sm" value={status} onChange={e=>setStatus(e.target.value)}><option value="">All status</option><option value="consultation">Consultation</option><option value="adopted">Adopted</option><option value="in_force">In force</option><option value="first_reporting">First reporting</option><option value="transition">Transition</option><option value="paused">Paused</option></select>
+    <section className="rounded-2xl border bg-white p-4 shadow-sm">
+      <div className="grid gap-3 lg:grid-cols-[1.4fr_repeat(4,1fr)_auto]">
+        <label className="relative">
+          <span className="sr-only">Search regulations</span>
+          <Search className="pointer-events-none absolute left-3 top-3.5 h-4 w-4 text-slate-400" />
+          <input
+            className="h-11 w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 text-sm outline-none focus:border-teal"
+            placeholder="Search title, jurisdiction, summary or advisory need"
+            value={filters.query}
+            onChange={(event) => update("query", event.target.value)}
+          />
+        </label>
+        <Select label="Topic" value={filters.topic} onChange={(value) => update("topic", value)} options={topics} />
+        <Select label="Sector" value={filters.sector} onChange={(value) => update("sector", value)} options={sectors} />
+        <Select
+          label="Status"
+          value={filters.status}
+          onChange={(value) => update("status", value)}
+          options={Object.entries(statusLabel).map(([value, label]) => ({ value, label }))}
+        />
+        <Select
+          label="Reporting year"
+          value={filters.reportingYear}
+          onChange={(value) => update("reportingYear", value)}
+          options={years.map(String)}
+        />
+        <button
+          onClick={onReset}
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+          type="button"
+        >
+          <RotateCcw className="h-4 w-4" />
+          Reset
+        </button>
+      </div>
+      <div className="mt-3 grid gap-3 md:grid-cols-4">
+        <Select
+          label="Jurisdiction type"
+          value={filters.jurisdictionType}
+          onChange={(value) => update("jurisdictionType", value)}
+          options={[
+            { value: "supranational", label: "Supranational" },
+            { value: "national", label: "National" },
+            { value: "local", label: "Local" },
+            { value: "international", label: "International" }
+          ]}
+        />
+        <Select label="Value chain impact" value={filters.valueChain} onChange={(value) => update("valueChain", value)} options={valueChainImpacts} />
+        <Select
+          label="Confidence"
+          value={filters.confidence}
+          onChange={(value) => update("confidence", value)}
+          options={[
+            { value: "high", label: "High" },
+            { value: "medium", label: "Medium" },
+            { value: "needs_review", label: "Needs review" },
+            { value: "date_uncertain", label: "Date uncertain" }
+          ]}
+        />
+        <Select label="Advisory opportunities" value={filters.advisory} onChange={(value) => update("advisory", value)} options={advisoryOpportunities} />
+      </div>
     </section>
+  );
+}
+
+function Select({
+  label,
+  value,
+  onChange,
+  options
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: Array<string | { value: string; label: string }>;
+}) {
+  return (
+    <label>
+      <span className="sr-only">{label}</span>
+      <select
+        className="h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none focus:border-teal"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+      >
+        <option value="">All {label.toLowerCase()}</option>
+        {options.map((option) => {
+          const item = typeof option === "string" ? { value: option, label: option } : option;
+          return (
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
+          );
+        })}
+      </select>
+    </label>
   );
 }

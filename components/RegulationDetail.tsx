@@ -19,7 +19,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
       <div className="pr-12">
         <div className="flex flex-wrap gap-2">
           <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
-          <Badge className="border-slate-200 bg-slate-50 text-slate-600">{regulation.adoptionLevel.replace("_", " ")}</Badge>
+          <Badge className="border-slate-200 bg-slate-50 text-slate-600">{regulation.adoptionLevel.replaceAll("_", " ")}</Badge>
           {regulation.highImpact && <Badge className="border-red-200 bg-red-50 text-red-700">High impact</Badge>}
         </div>
         <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink">{regulation.shortName}</h2>

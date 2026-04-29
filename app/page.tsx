@@ -11,6 +11,9 @@ import { RegulationDetail } from "@/components/RegulationDetail";
 import { QuickViews } from "@/components/QuickViews";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { AdvisoryInsights } from "@/components/AdvisoryInsights";
+import { RegulatoryTimeline } from "@/components/RegulatoryTimeline";
+import { ImpactMatrix } from "@/components/ImpactMatrix";
+import { DataQualityPanel } from "@/components/DataQualityPanel";
 import { jurisdictions, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
@@ -88,12 +91,19 @@ export default function Home() {
           <SummaryCard label="Data quality" value={`${filtered.filter((regulation) => regulation.dataQualityStatus === "needs_review").length} review`} detail="needs production research" />
         </section>
 
-        <AdvisoryInsights regulations={filtered} />
-
         <section className="grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
           <WorldMap jurisdictions={jurisdictions} regulations={filtered} selectedId={selectedJurisdiction?.id} onSelect={setSelectedJurisdiction} />
           <CountryPanel jurisdiction={selectedJurisdiction} regulations={filtered} onRegulation={setSelectedRegulation} />
         </section>
+
+        <AdvisoryInsights regulations={filtered} />
+
+        <section className="grid gap-5 xl:grid-cols-[1.05fr_.95fr]">
+          <RegulatoryTimeline regulations={filtered} onSelect={setSelectedRegulation} />
+          <DataQualityPanel regulations={filtered} onSelect={setSelectedRegulation} />
+        </section>
+
+        <ImpactMatrix regulations={filtered} />
 
         <RegulationTable regulations={filtered} onSelect={setSelectedRegulation} />
       </div>

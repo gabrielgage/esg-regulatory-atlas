@@ -43,7 +43,15 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
           </thead>
           <tbody className="divide-y">
             {regulations.map((regulation) => (
-              <tr key={regulation.id} onClick={() => onSelect(regulation)} className="cursor-pointer hover:bg-slate-50">
+              <tr
+                key={regulation.id}
+                onClick={() => onSelect(regulation)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") onSelect(regulation);
+                }}
+                tabIndex={0}
+                className="cursor-pointer hover:bg-slate-50 focus:bg-teal/5"
+              >
                 <td className="px-5 py-4">
                   <div className="font-semibold text-ink">{regulation.shortName}</div>
                   <div className="mt-1 max-w-xl text-slate-500">{regulation.title}</div>
@@ -76,7 +84,17 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
                   <Badge className={qualityClass(regulation.dataQualityStatus)}>{regulation.dataQualityStatus.replaceAll("_", " ")}</Badge>
                 </td>
                 <td className="px-5 py-4">
-                  <ArrowUpRight className="h-4 w-4 text-slate-400" />
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      onSelect(regulation);
+                    }}
+                    className="rounded-full border border-slate-200 p-2 text-slate-500 hover:border-teal/40 hover:bg-teal/5 hover:text-teal"
+                    aria-label={`Open ${regulation.shortName}`}
+                  >
+                    <ArrowUpRight className="h-4 w-4" />
+                  </button>
                 </td>
               </tr>
             ))}

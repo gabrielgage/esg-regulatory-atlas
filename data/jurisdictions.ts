@@ -6,6 +6,7 @@ export const jurisdictions: Jurisdiction[] = [
     name: "European Union",
     region: "Europe",
     type: "supranational",
+    coordinates: [12.5, 50.2],
     regulatoryIntensity: "high",
     executiveSummary: "High intensity ESG regulatory environment spanning corporate reporting, sustainable finance, supply chain due diligence, product sustainability, deforestation and carbon border measures."
   },

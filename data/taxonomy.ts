@@ -8,6 +8,7 @@ export const topics = [
   "Biodiversity and nature",
   "Human rights",
   "Product and circular economy",
+  "Green claims and consumer protection",
   "Carbon pricing",
   "Nitrogen and permitting",
   "Assurance"
@@ -27,6 +28,11 @@ export const sectors = [
   "Transport",
   "Food and beverage",
   "Packaging",
+  "Retail",
+  "Consumer goods",
+  "Automotive",
+  "Technology",
+  "Textiles",
   "Private equity",
   "Listed companies"
 ];
@@ -38,6 +44,7 @@ export const valueChainImpacts = [
   "Investment portfolio",
   "Financed emissions",
   "Products and materials",
+  "Customer claims and labels",
   "Land use and nature",
   "Board and executive oversight"
 ];
@@ -55,7 +62,10 @@ export const advisoryOpportunities = [
   "Climate transition plan",
   "Board training",
   "Assurance preparation",
-  "ESG software implementation"
+  "ESG software implementation",
+  "Digital product passport readiness",
+  "Product compliance data model",
+  "Green claims substantiation"
 ];
 
 export const businessImpactTypes: BusinessImpact[] = [

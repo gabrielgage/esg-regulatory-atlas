@@ -37,6 +37,18 @@ const labelOffsets: Record<string, { x: number; y: number }> = {
   cn: { x: 44, y: 0 }
 };
 
+const mapLayers = [
+  "Global overview",
+  "Corporate reporting",
+  "Sustainable finance",
+  "Climate disclosure",
+  "Supply chain due diligence",
+  "Product and trade",
+  "Biodiversity and nature",
+  "Private equity impact",
+  "ISSB adoption"
+];
+
 export function WorldMap({
   jurisdictions,
   regulations,
@@ -53,6 +65,7 @@ export function WorldMap({
     [jurisdictions]
   );
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [activeLayer, setActiveLayer] = useState(mapLayers[0]);
   const featured = mapped.find((jurisdiction) => jurisdiction.id === hoveredId) || mapped.find((jurisdiction) => jurisdiction.id === selectedId);
   const featuredRecords = featured ? recordsFor(featured, regulations) : [];
 
@@ -65,7 +78,7 @@ export function WorldMap({
             <h2 className="font-semibold text-ink">Interactive regulatory map</h2>
           </div>
           <p className="mt-1 text-sm text-slate-500">
-            Country-border basemap with tracked jurisdictions layered by regulatory intensity.
+            Country fill reflects regulatory intensity; the selected layer badge indicates the analytical lens.
           </p>
         </div>
         <div className="flex flex-wrap gap-3 text-xs text-slate-500">
@@ -74,6 +87,22 @@ export function WorldMap({
           <Legend color={colors.emerging} label="Emerging" />
           <Legend color={colors.none} label="No filtered data" />
         </div>
+      </div>
+
+      <div className="mb-3 flex gap-2 overflow-x-auto pb-1">
+        {mapLayers.map((layer) => (
+          <button
+            key={layer}
+            type="button"
+            onClick={() => setActiveLayer(layer)}
+            className={cn(
+              "shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold transition",
+              activeLayer === layer ? "border-violet/30 bg-violet/10 text-violet" : "border-slate-200 bg-white text-slate-600 hover:border-teal/30 hover:bg-teal/5"
+            )}
+          >
+            {layer}
+          </button>
+        ))}
       </div>
 
       <div data-testid="regulatory-map" className="relative aspect-[2/1] min-h-[320px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
@@ -96,6 +125,9 @@ export function WorldMap({
         <div className="absolute inset-0 bg-white/10" />
         <div className="pointer-events-none absolute bottom-2 right-2 z-20 rounded-md bg-white/85 px-2 py-1 text-[10px] font-medium text-slate-500 shadow-sm">
           Map data: OpenStreetMap, CARTO
+        </div>
+        <div className="pointer-events-none absolute right-2 top-2 z-20 rounded-md border border-violet/20 bg-white/90 px-2 py-1 text-[10px] font-semibold text-violet shadow-sm">
+          Layer: {activeLayer}
         </div>
 
         {featured && (

@@ -13,7 +13,8 @@ export type BusinessImpact =
   | "assurance obligation"
   | "transition plan obligation"
   | "data collection obligation"
-  | "board oversight obligation";
+  | "board oversight obligation"
+  | "taxonomy disclosure obligation";
 
 export interface SourceLink {
   label: string;
@@ -66,18 +67,40 @@ export interface Regulation {
   dataQualityStatus: DataQualityStatus;
   changeLogSummary?: string;
   advisoryOpportunities: string[];
+  legalInstrumentType?: "law" | "directive" | "regulation" | "standard" | "guidance" | "consultation" | "voluntary-framework";
+  companyTypes?: string[];
+  requiredActions?: string[];
+  evidenceRequired?: string[];
+  typicalClientQuestions?: string[];
+  immediateReadinessActions?: string[];
+  dataNeeded?: string[];
+  likelyPainPoints?: string[];
+  relevantAdvisoryServices?: string[];
+  softwareEnablementOpportunity?: string;
+  caveats?: string[];
+  firstReportDueDate?: string;
+  phaseInNotes?: string;
+  consultationDeadline?: string;
+  implementationEffort?: "low" | "medium" | "high" | "very high";
+  readinessComplexity?: "low" | "medium" | "high" | "very high";
   highImpact?: boolean;
 }
 
 export interface FilterState {
   query: string;
+  jurisdiction: string;
+  region: string;
   topic: string;
   sector: string;
+  companyType: string;
   jurisdictionType: string;
   status: string;
   reportingYear: string;
   valueChain: string;
+  businessFunction: string;
+  obligation: string;
   confidence: string;
+  dataQuality: string;
   advisory: string;
 }
 

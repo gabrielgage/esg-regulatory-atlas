@@ -27,9 +27,11 @@ export function CountryPanel({
   );
   const sectors = uniq(regs.flatMap((regulation) => regulation.sectors)).slice(0, 8);
   const impacts = uniq(regs.flatMap((regulation) => regulation.valueChain)).slice(0, 8);
+  const drivers = uniq(regs.flatMap((regulation) => regulation.topics)).slice(0, 6);
   const years = uniq(regs.map((regulation) => String(regulation.firstReportingYear || "")).filter(Boolean));
   const latest = regs.slice(0, 3);
   const sourceCount = regs.reduce((count, regulation) => count + regulation.sourceUrls.length, 0);
+  const confidenceSummary = `${regs.filter((regulation) => regulation.confidenceLevel === "high").length} high / ${regs.filter((regulation) => regulation.confidenceLevel === "medium").length} medium`;
   const intensity = jurisdiction.regulatoryIntensity;
 
   return (
@@ -50,7 +52,16 @@ export function CountryPanel({
         <Metric label="Sources" value={String(sourceCount)} />
         <Metric label="Type" value={jurisdiction.type} />
         <Metric label="First years" value={years.length ? years.join(", ") : "n/a"} />
+        <Metric label="Confidence" value={confidenceSummary} />
       </div>
+
+      <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-900">
+        Applicability depends on entity facts, thresholds, sector rules and local implementation. Use this profile for planning, not as a legal conclusion.
+      </div>
+
+      <PanelSection title="Primary regulatory drivers">
+        <BadgeList values={drivers} tone="teal" empty="No driver data for current filters." />
+      </PanelSection>
 
       <PanelSection title="Affected sectors">
         <BadgeList values={sectors} tone="slate" empty="No sector data for current filters." />

@@ -1,14 +1,21 @@
 import { FilterState, Regulation } from "@/types/regulation";
+import { jurisdictions } from "@/data/jurisdictions";
 
 export const initialFilters: FilterState = {
   query: "",
+  jurisdiction: "",
+  region: "",
   topic: "",
   sector: "",
+  companyType: "",
   jurisdictionType: "",
   status: "",
   reportingYear: "",
   valueChain: "",
+  businessFunction: "",
+  obligation: "",
   confidence: "",
+  dataQuality: "",
   advisory: ""
 };
 
@@ -24,24 +31,39 @@ export function filterRegulations(regulations: Regulation[], filters: FilterStat
       regulation.applicability,
       regulation.issuingBody,
       regulation.latestUpdate,
+      regulation.changeLogSummary || "",
       ...regulation.topics,
       ...regulation.sectors,
       ...regulation.valueChain,
       ...regulation.businessImpacts,
+      ...regulation.affectedFunctions,
+      ...(regulation.companyTypes || []),
+      ...(regulation.requiredActions || []),
+      ...(regulation.evidenceRequired || []),
+      ...(regulation.typicalClientQuestions || []),
       ...regulation.advisoryOpportunities
     ].join(" ").toLowerCase();
 
     const reportingYear = filters.reportingYear ? Number(filters.reportingYear) : null;
+    const regionIds = filters.region
+      ? jurisdictions.filter((jurisdiction) => jurisdiction.region === filters.region).map((jurisdiction) => jurisdiction.id)
+      : [];
 
     return (
       (!query || haystack.includes(query)) &&
+      (!filters.jurisdiction || regulation.jurisdictionIds.includes(filters.jurisdiction) || regulation.jurisdiction === filters.jurisdiction) &&
+      (!filters.region || regulation.jurisdictionIds.some((jurisdictionId) => regionIds.includes(jurisdictionId))) &&
       (!filters.topic || regulation.topics.includes(filters.topic)) &&
       (!filters.sector || regulation.sectors.includes(filters.sector)) &&
+      (!filters.companyType || inferredCompanyTypes(regulation).includes(filters.companyType)) &&
       (!filters.jurisdictionType || regulation.jurisdictionType === filters.jurisdictionType) &&
       (!filters.status || regulation.status === filters.status) &&
       (!reportingYear || regulation.firstReportingYear === reportingYear) &&
       (!filters.valueChain || regulation.valueChain.includes(filters.valueChain)) &&
+      (!filters.businessFunction || regulation.affectedFunctions.includes(filters.businessFunction)) &&
+      (!filters.obligation || regulation.businessImpacts.includes(filters.obligation as Regulation["businessImpacts"][number])) &&
       (!filters.confidence || regulation.confidenceLevel === filters.confidence) &&
+      (!filters.dataQuality || regulation.dataQualityStatus === filters.dataQuality) &&
       (!filters.advisory || regulation.advisoryOpportunities.includes(filters.advisory))
     );
   });
@@ -51,4 +73,19 @@ export function yearsFrom(regulations: Regulation[]) {
   return Array.from(
     new Set(regulations.map((regulation) => regulation.firstReportingYear).filter(Boolean) as number[])
   ).sort((a, b) => a - b);
+}
+
+export function inferredCompanyTypes(regulation: Regulation) {
+  const values = new Set(regulation.companyTypes || []);
+  if (regulation.sectors.includes("Financial services")) values.add("Financial institution");
+  if (regulation.sectors.includes("Asset management")) values.add("Asset manager");
+  if (regulation.sectors.includes("Banking")) values.add("Bank");
+  if (regulation.sectors.includes("Insurance")) values.add("Insurer");
+  if (regulation.sectors.includes("Private equity")) values.add("Private equity fund");
+  if (regulation.sectors.includes("Listed companies")) values.add("Listed company");
+  if (regulation.jurisdictionType !== "international") values.add("Corporate");
+  if (regulation.valueChain.some((value) => value.includes("Upstream") || value.includes("supplier"))) values.add("Supplier");
+  if (regulation.valueChain.some((value) => value.includes("Product") || value.includes("Trade"))) values.add("Exporter");
+  if (regulation.valueChain.some((value) => value.includes("Investment") || value.includes("portfolio"))) values.add("Portfolio company");
+  return Array.from(values);
 }

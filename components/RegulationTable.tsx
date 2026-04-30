@@ -10,7 +10,7 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
         <ShieldAlert className="mx-auto h-8 w-8 text-amber-500" />
         <h2 className="mt-3 text-lg font-semibold text-ink">No regulations match these filters</h2>
         <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-500">
-          Reset filters or switch to a broader saved view. Empty states are handled deliberately so a jurisdiction with no matching records does not crash the page.
+          No regulations match the current filters. Try clearing filters or selecting a broader quick view.
         </p>
       </div>
     );

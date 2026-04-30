@@ -1,37 +1,125 @@
 # ESG Regulatory Atlas
 
-Interactive sustainability and ESG regulatory tracker MVP.
+Interactive sustainability regulatory intelligence by jurisdiction, sector, value chain and reporting year.
 
-## What is included
+ESG Regulatory Atlas is a static Next.js MVP for exploring ESG, climate, sustainable finance, supply chain due diligence, biodiversity, product sustainability and corporate reporting rules. It is designed for sustainability leaders, ESG consultants, legal and compliance teams, finance and controllership teams, investors, banks, insurers, procurement teams and board/risk committees.
 
-- Next.js, React, TypeScript and Tailwind app
-- Dependency-free interactive global map interface
-- Searchable regulation database
-- Jurisdiction profile side panel
-- Regulation detail panel
-- Filters by topic, sector, jurisdiction type, status, reporting year, value chain, confidence and advisory opportunity
-- Saved quick views for common regulatory intelligence workflows
-- Illustrative seed data for EU, UK, US, California, Singapore, Japan, Australia, Brazil, India, China, Canada, Switzerland, Turkey, Mexico and global frameworks
-- Data quality fields including source URLs, source type, review dates, confidence level, quality status and change log notes
+## MVP scope
 
-## Run locally
+- Next.js, React, TypeScript and Tailwind v3
+- Stable Tailwind/PostCSS v3 setup for Vercel deployment
+- Interactive world map with no paid map API and no Mapbox token
+- Jurisdiction profile panel
+- Regulation detail drawer with sources, caveats, business impact and advisory opportunities
+- Client applicability wizard with indicative categories
+- Search and filters across jurisdiction, region, topic, sector, company type, value chain, function, obligation, status, year, confidence, data quality and advisory opportunity
+- Saved quick views for consulting and compliance workflows
+- Timeline, source library, coverage matrix, impact matrix and comparison views
+- Copyable client planning summary
+- Static TypeScript seed data only
+- No authentication, database, Supabase, Stripe, scraping, cron jobs, AI summaries, email alerts or required environment variables
+
+## Important disclaimer
+
+This tool provides structured regulatory intelligence for orientation and planning purposes. It does not constitute legal advice, tax advice, investment advice or assurance advice. Applicability depends on entity-specific facts, jurisdictional transposition, sector rules, thresholds and legal interpretation. Users should validate requirements with qualified counsel or regulatory advisors before relying on the information for compliance decisions.
+
+All records are illustrative seed data unless independently verified through a production research workflow.
+
+## Local setup
 
 ```bash
 npm install
 npm run dev
+npm run lint
 npm run build
 ```
 
 Open `http://localhost:3000`.
 
-## Deploy to Vercel
+## Deployment
 
-1. Push this folder to a GitHub repository.
-2. Go to Vercel and create a new project.
-3. Import the GitHub repository.
-4. Keep the default Next.js settings.
-5. Click Deploy.
+Deploy on Vercel with the default Next.js settings. The MVP does not require environment variables.
 
-## Important disclaimer
+If a deployed URL shows `401 Unauthorized`, check Vercel Project Settings -> Deployment Protection. For client demos, production should usually be public while preview deployments can remain protected.
 
-The seed data is illustrative and not legal advice. Before using this as a client facing or commercial product, verify every record against primary regulatory sources and establish an owner, review frequency and change log.
+Do not add app-level authentication to solve a Vercel dashboard protection setting.
+
+## Tailwind/PostCSS strategy
+
+This project intentionally uses the stable Tailwind v3 path:
+
+- `tailwindcss ^3.4.17`
+- `postcss ^8.5.10`
+- `autoprefixer ^10.4.20`
+- `postcss.config.mjs` uses `tailwindcss` and `autoprefixer`
+- `app/globals.css` starts with `@tailwind base`, `@tailwind components`, `@tailwind utilities`
+
+The original deployment failure was caused by an inconsistent Tailwind/PostCSS setup where Tailwind was being loaded as a PostCSS plugin in a way incompatible with the installed Tailwind version. The MVP keeps one consistent v3 configuration.
+
+## Data structure
+
+Seed data is stored in:
+
+- `data/jurisdictions.ts`
+- `data/regulations.ts`
+- `data/coverageAdditions.ts`
+- `data/taxonomy.ts`
+
+Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`.
+
+## Adding a regulation
+
+Add a typed record to `data/regulations.ts` or `data/coverageAdditions.ts`.
+
+At minimum include:
+
+- `id`, `title`, `shortName`
+- jurisdiction fields and `jurisdictionIds`
+- issuing body, status and adoption level
+- topics, sectors, value chain coverage and affected functions
+- summary, applicability, key requirements and business impact
+- business impact tags
+- advisory opportunities
+- source URLs
+- latest update, last reviewed, confidence and data quality status
+- caveats if the record has uncertainty
+
+Use careful language such as "may apply", "potentially relevant" and "indicative" rather than definitive legal conclusions.
+
+## Adding a jurisdiction
+
+Add a record to `data/jurisdictions.ts` with:
+
+- `id`, `name`, region and type
+- map coordinates where available
+- regulatory intensity
+- executive summary
+
+Then reference the jurisdiction `id` from regulation records.
+
+## Known limitations
+
+- Seed data is illustrative and not legal advice.
+- Source verification needs a production research workflow with named owners and review cadence.
+- The regulatory overlay uses centroid labels, not production GIS polygons.
+- External CARTO/OpenStreetMap basemap tiles are used for visual country borders.
+- No authentication yet.
+- No database yet.
+- No automated regulatory update monitoring yet.
+- No email alerts yet.
+- No payment integration yet.
+- No legal opinion or definitive applicability determination.
+
+## Phase 2 roadmap
+
+Do not implement these in the MVP without an explicit follow-up decision:
+
+- Supabase or another database
+- Admin editing interface
+- Authentication and client workspaces
+- Regulatory monitoring workflow
+- Source review and legal review workflow
+- Email alerts
+- AI-generated summaries
+- PDF export
+- Stripe paid plans

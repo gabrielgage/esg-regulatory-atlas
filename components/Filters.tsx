@@ -1,7 +1,18 @@
 import { RotateCcw, Search } from "lucide-react";
-import { advisoryOpportunities, sectors, statusLabel, topics, valueChainImpacts } from "@/data/seed";
+import {
+  advisoryOpportunities,
+  businessFunctions,
+  businessImpactTypes,
+  companyTypes,
+  sectors,
+  statusLabel,
+  topics,
+  valueChainImpacts
+} from "@/data/seed";
+import { jurisdictions } from "@/data/jurisdictions";
 import { yearsFrom } from "@/lib/filters";
 import { FilterState, Regulation } from "@/types/regulation";
+import { uniq } from "@/lib/utils";
 
 interface Props {
   filters: FilterState;
@@ -13,6 +24,7 @@ interface Props {
 export function Filters({ filters, regulations, onChange, onReset }: Props) {
   const update = (key: keyof FilterState, value: string) => onChange({ ...filters, [key]: value });
   const years = yearsFrom(regulations);
+  const regions = uniq(jurisdictions.map((jurisdiction) => jurisdiction.region));
 
   return (
     <section className="rounded-2xl border bg-white p-4 shadow-sm">
@@ -27,6 +39,12 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
             onChange={(event) => update("query", event.target.value)}
           />
         </label>
+        <Select
+          label="Jurisdiction"
+          value={filters.jurisdiction}
+          onChange={(value) => update("jurisdiction", value)}
+          options={jurisdictions.filter((jurisdiction) => jurisdiction.type !== "international").map((jurisdiction) => ({ value: jurisdiction.id, label: jurisdiction.name }))}
+        />
         <Select label="Topic" value={filters.topic} onChange={(value) => update("topic", value)} options={topics} />
         <Select label="Sector" value={filters.sector} onChange={(value) => update("sector", value)} options={sectors} />
         <Select
@@ -51,6 +69,8 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
         </button>
       </div>
       <div className="mt-3 grid gap-3 md:grid-cols-4">
+        <Select label="Region" value={filters.region} onChange={(value) => update("region", value)} options={regions} />
+        <Select label="Company type" value={filters.companyType} onChange={(value) => update("companyType", value)} options={companyTypes} />
         <Select
           label="Jurisdiction type"
           value={filters.jurisdictionType}
@@ -63,6 +83,10 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
           ]}
         />
         <Select label="Value chain impact" value={filters.valueChain} onChange={(value) => update("valueChain", value)} options={valueChainImpacts} />
+      </div>
+      <div className="mt-3 grid gap-3 md:grid-cols-4">
+        <Select label="Business function" value={filters.businessFunction} onChange={(value) => update("businessFunction", value)} options={businessFunctions} />
+        <Select label="Obligation type" value={filters.obligation} onChange={(value) => update("obligation", value)} options={businessImpactTypes} />
         <Select
           label="Confidence"
           value={filters.confidence}
@@ -74,6 +98,20 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
             { value: "date_uncertain", label: "Date uncertain" }
           ]}
         />
+        <Select
+          label="Data quality"
+          value={filters.dataQuality}
+          onChange={(value) => update("dataQuality", value)}
+          options={[
+            { value: "verified_seed", label: "Verified seed" },
+            { value: "recently_updated", label: "Recently updated" },
+            { value: "needs_review", label: "Needs review" },
+            { value: "date_uncertain", label: "Date uncertain" },
+            { value: "source_missing", label: "Source missing" }
+          ]}
+        />
+      </div>
+      <div className="mt-3 grid gap-3 md:grid-cols-2">
         <Select label="Advisory opportunities" value={filters.advisory} onChange={(value) => update("advisory", value)} options={advisoryOpportunities} />
       </div>
     </section>

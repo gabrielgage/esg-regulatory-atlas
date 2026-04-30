@@ -6,7 +6,9 @@ export const regulations = [...coreRegulations, ...coverageAdditions];
 
 export {
   advisoryOpportunities,
+  businessFunctions,
   businessImpactTypes,
+  companyTypes,
   quickViews,
   sectors,
   statusLabel,

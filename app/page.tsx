@@ -19,6 +19,8 @@ import { JurisdictionCompare } from "@/components/JurisdictionCompare";
 import { SourceLibrary } from "@/components/SourceLibrary";
 import { RuleLayerStack } from "@/components/RuleLayerStack";
 import { CoverageMatrix } from "@/components/CoverageMatrix";
+import { ApplicabilityWizard } from "@/components/ApplicabilityWizard";
+import { ExportSummaryButton } from "@/components/ExportSummaryButton";
 import { jurisdictions, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
@@ -65,8 +67,8 @@ export default function Home() {
                 ESG regulatory intelligence map for global compliance teams.
               </h1>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-                Explore sustainability reporting, climate disclosure, sustainable finance, supply chain due diligence,
-                biodiversity, product sustainability and value chain obligations in one deployable MVP.
+                Interactive sustainability regulatory intelligence by jurisdiction, sector, value chain and reporting year.
+                Start by selecting a jurisdiction, saved view or client profile.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <Badge className="border-teal/30 bg-teal/20 text-mint">No paid APIs</Badge>
@@ -89,12 +91,16 @@ export default function Home() {
 
         <Filters filters={filters} regulations={regulations} onChange={updateFilters} onReset={resetFilters} />
 
+        <ApplicabilityWizard regulations={filtered} onSelect={setSelectedRegulation} />
+
         <section className="grid gap-4 md:grid-cols-4">
           <SummaryCard label="Current view" value={String(filtered.length)} detail="matching records" />
           <SummaryCard label="First reporting years" value={reportingYears.length ? reportingYears.join(", ") : "n/a"} detail="in filtered set" />
           <SummaryCard label="Confidence" value={`${filtered.filter((regulation) => regulation.confidenceLevel === "high").length} high`} detail="verified seed records" />
           <SummaryCard label="Data quality" value={`${filtered.filter((regulation) => regulation.dataQualityStatus === "needs_review").length} review`} detail="needs production research" />
         </section>
+
+        <ExportSummaryButton jurisdiction={selectedJurisdiction} regulations={filtered} />
 
         <section className="grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
           <WorldMap jurisdictions={jurisdictions} regulations={filtered} selectedId={selectedJurisdiction?.id} onSelect={setSelectedJurisdiction} />
@@ -121,9 +127,24 @@ export default function Home() {
         <SourceLibrary regulations={filtered} onSelect={setSelectedRegulation} />
 
         <RegulationTable regulations={filtered} onSelect={setSelectedRegulation} />
+
+        <FooterDisclaimer />
       </div>
       <RegulationDetail regulation={selectedRegulation} onClose={() => setSelectedRegulation(null)} />
     </main>
+  );
+}
+
+function FooterDisclaimer() {
+  return (
+    <footer className="rounded-2xl border bg-white p-5 text-xs leading-6 text-slate-500 shadow-sm">
+      <strong className="text-ink">Legal and data disclaimer: </strong>
+      This site provides structured ESG and sustainability regulatory intelligence for orientation and planning purposes only.
+      It is not legal, tax, investment or assurance advice. Applicability depends on entity-specific facts, jurisdictional
+      implementation, sector rules and legal interpretation. Users should validate requirements with qualified counsel or
+      regulatory advisors before relying on the information for compliance decisions. Seed records should be verified against
+      linked primary sources before client delivery.
+    </footer>
   );
 }
 

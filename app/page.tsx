@@ -1,132 +1,109 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
-import { Activity, CalendarClock, Database, Gauge, Layers3 } from "lucide-react";
+import { ArrowRight, Database, Gauge, HelpCircle } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Filters } from "@/components/Filters";
 import { WorldMap } from "@/components/WorldMap";
 import { CountryPanel } from "@/components/CountryPanel";
 import { RegulationTable } from "@/components/RegulationTable";
 import { RegulationDetail } from "@/components/RegulationDetail";
-import { QuickViews } from "@/components/QuickViews";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
-import { AdvisoryInsights } from "@/components/AdvisoryInsights";
-import { RegulatoryTimeline } from "@/components/RegulatoryTimeline";
-import { ImpactMatrix } from "@/components/ImpactMatrix";
-import { DataQualityPanel } from "@/components/DataQualityPanel";
-import { ExecutiveBriefing } from "@/components/ExecutiveBriefing";
-import { JurisdictionCompare } from "@/components/JurisdictionCompare";
-import { SourceLibrary } from "@/components/SourceLibrary";
-import { RuleLayerStack } from "@/components/RuleLayerStack";
-import { CoverageMatrix } from "@/components/CoverageMatrix";
-import { ApplicabilityWizard } from "@/components/ApplicabilityWizard";
-import { ExportSummaryButton } from "@/components/ExportSummaryButton";
-import { jurisdictions, regulations } from "@/data/seed";
+import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { ViewSelector } from "@/components/ViewSelector";
+import { jurisdictions, quickViews, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 import { Badge } from "@/components/Badge";
-import { uniq } from "@/lib/utils";
 
 export default function Home() {
   const [filters, setFilters] = useState(initialFilters);
-  const [activeQuickView, setActiveQuickView] = useState("");
+  const [activeView, setActiveView] = useState("overview");
   const [selectedJurisdiction, setSelectedJurisdiction] = useState<Jurisdiction | null>(
     jurisdictions.find((jurisdiction) => jurisdiction.id === "eu") || null
   );
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
 
   const filtered = useMemo(() => filterRegulations(regulations, filters), [filters]);
-  const sourceCount = regulations.reduce((count, regulation) => count + regulation.sourceUrls.length, 0);
+  const activeViewLabel = activeView === "overview" ? "Global overview" : quickViews.find((view) => view.id === activeView)?.label || "Custom view";
+  const sourceCount = filtered.reduce((count, regulation) => count + regulation.sourceUrls.length, 0);
   const highImpact = filtered.filter((regulation) => regulation.highImpact).length;
-  const reportingYears = uniq(filtered.map((regulation) => String(regulation.firstReportingYear || "")).filter(Boolean));
 
-  function applyQuickView(id: string, quickFilters: Partial<typeof filters>) {
-    setActiveQuickView(id);
+  function applyView(id: string, quickFilters: Partial<typeof filters>) {
+    setActiveView(id);
     setFilters({ ...initialFilters, ...quickFilters });
   }
 
   function updateFilters(nextFilters: typeof filters) {
-    setActiveQuickView("");
+    setActiveView("custom");
     setFilters(nextFilters);
   }
 
   function resetFilters() {
-    setActiveQuickView("");
+    setActiveView("overview");
     setFilters(initialFilters);
   }
 
   return (
     <main className="min-h-screen pb-12">
       <Header />
-      <div className="mx-auto max-w-7xl space-y-5 px-4 py-5 md:px-6">
-        <section className="overflow-hidden rounded-2xl bg-navy text-white shadow-xl">
-          <div className="grid gap-6 p-6 md:grid-cols-[1.15fr_.85fr] md:p-8">
+      <div className="mx-auto max-w-7xl space-y-4 px-4 py-5 md:px-6">
+        <section className="rounded-2xl bg-navy p-6 text-white shadow-xl md:p-8">
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
             <div>
               <Badge className="border-white/20 bg-white/10 text-white">Illustrative MVP seed data</Badge>
               <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl">
-                ESG regulatory intelligence map for global compliance teams.
+                ESG Regulatory Atlas
               </h1>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
                 Interactive sustainability regulatory intelligence by jurisdiction, sector, value chain and reporting year.
-                Start by selecting a jurisdiction, saved view or client profile.
               </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                <Badge className="border-teal/30 bg-teal/20 text-mint">No paid APIs</Badge>
-                <Badge className="border-white/20 bg-white/10 text-white">Static TypeScript seed data</Badge>
-                <Badge className="border-white/20 bg-white/10 text-white">Vercel-ready Next.js app</Badge>
-              </div>
             </div>
-            <div className="grid content-end gap-3 sm:grid-cols-2">
-              <HeroMetric icon={Database} label="Tracked records" value={String(regulations.length)} />
-              <HeroMetric icon={Gauge} label="Jurisdictions" value={String(jurisdictions.length)} />
-              <HeroMetric icon={Layers3} label="Source links" value={String(sourceCount)} />
-              <HeroMetric icon={Activity} label="High impact in view" value={String(highImpact)} />
+            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              <HeroMetric icon={Database} label="Current view" value={`${filtered.length} records`} />
+              <HeroMetric icon={Gauge} label="High impact" value={`${highImpact} records`} />
+              <HeroMetric icon={Database} label="Sources" value={`${sourceCount} links`} />
             </div>
           </div>
         </section>
 
         <DisclaimerBanner />
 
-        <QuickViews activeId={activeQuickView} onApply={applyQuickView} />
+        <ViewSelector activeId={activeView} onApply={applyView} />
 
         <Filters filters={filters} regulations={regulations} onChange={updateFilters} onReset={resetFilters} />
 
-        <ApplicabilityWizard regulations={filtered} onSelect={setSelectedRegulation} />
-
-        <section className="grid gap-4 md:grid-cols-4">
-          <SummaryCard label="Current view" value={String(filtered.length)} detail="matching records" />
-          <SummaryCard label="First reporting years" value={reportingYears.length ? reportingYears.join(", ") : "n/a"} detail="in filtered set" />
-          <SummaryCard label="Confidence" value={`${filtered.filter((regulation) => regulation.confidenceLevel === "high").length} high`} detail="verified seed records" />
-          <SummaryCard label="Data quality" value={`${filtered.filter((regulation) => regulation.dataQualityStatus === "needs_review").length} review`} detail="needs production research" />
+        <section className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(360px,.65fr)]">
+          <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-hidden">
+            <WorldMap
+              jurisdictions={jurisdictions}
+              regulations={filtered}
+              selectedId={selectedJurisdiction?.id}
+              viewLabel={activeViewLabel}
+              onSelect={setSelectedJurisdiction}
+            />
+          </div>
+          <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto lg:pr-1">
+            <CountryPanel jurisdiction={selectedJurisdiction} regulations={filtered} onRegulation={setSelectedRegulation} />
+          </div>
         </section>
 
-        <ExportSummaryButton jurisdiction={selectedJurisdiction} regulations={filtered} />
-
-        <section className="grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
-          <WorldMap jurisdictions={jurisdictions} regulations={filtered} selectedId={selectedJurisdiction?.id} onSelect={setSelectedJurisdiction} />
-          <CountryPanel jurisdiction={selectedJurisdiction} regulations={filtered} onRegulation={setSelectedRegulation} />
+        <section className="grid gap-5 lg:grid-cols-[.75fr_1.25fr]">
+          <AssessmentPrompt />
+          <div>
+            <div className="mb-3 flex items-center justify-between gap-3 px-1">
+              <div>
+                <h2 className="font-semibold text-ink">Regulation table preview</h2>
+                <p className="mt-1 text-sm text-slate-500">Open the full Regulations workspace for deep review and filtering.</p>
+              </div>
+              <Link href="/regulations" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">
+                View all <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <RegulationTable regulations={filtered.slice(0, 6)} onSelect={setSelectedRegulation} />
+          </div>
         </section>
-
-        <RuleLayerStack jurisdiction={selectedJurisdiction} regulations={filtered} onSelect={setSelectedRegulation} />
-
-        <CoverageMatrix jurisdictions={jurisdictions} regulations={filtered} selectedId={selectedJurisdiction?.id} onSelect={setSelectedJurisdiction} />
-
-        <AdvisoryInsights regulations={filtered} />
-
-        <ExecutiveBriefing regulations={filtered} onSelect={setSelectedRegulation} />
-
-        <section className="grid gap-5 xl:grid-cols-[1.05fr_.95fr]">
-          <RegulatoryTimeline regulations={filtered} onSelect={setSelectedRegulation} />
-          <DataQualityPanel regulations={filtered} onSelect={setSelectedRegulation} />
-        </section>
-
-        <ImpactMatrix regulations={filtered} />
-
-        <JurisdictionCompare jurisdictions={jurisdictions} regulations={filtered} onSelect={setSelectedRegulation} />
-
-        <SourceLibrary regulations={filtered} onSelect={setSelectedRegulation} />
-
-        <RegulationTable regulations={filtered} onSelect={setSelectedRegulation} />
 
         <FooterDisclaimer />
       </div>
@@ -135,16 +112,24 @@ export default function Home() {
   );
 }
 
-function FooterDisclaimer() {
+function AssessmentPrompt() {
   return (
-    <footer className="rounded-2xl border bg-white p-5 text-xs leading-6 text-slate-500 shadow-sm">
-      <strong className="text-ink">Legal and data disclaimer: </strong>
-      This site provides structured ESG and sustainability regulatory intelligence for orientation and planning purposes only.
-      It is not legal, tax, investment or assurance advice. Applicability depends on entity-specific facts, jurisdictional
-      implementation, sector rules and legal interpretation. Users should validate requirements with qualified counsel or
-      regulatory advisors before relying on the information for compliance decisions. Seed records should be verified against
-      linked primary sources before client delivery.
-    </footer>
+    <section className="rounded-2xl border bg-white p-5 shadow-sm">
+      <div className="flex items-start gap-3">
+        <div className="rounded-xl bg-teal/10 p-2 text-teal">
+          <HelpCircle className="h-5 w-5" />
+        </div>
+        <div>
+          <h2 className="font-semibold text-ink">Not sure what applies?</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-500">
+            Answer a few questions to generate an indicative shortlist by jurisdiction, company type, sector and value-chain exposure.
+          </p>
+          <Link href="/assessment" className="mt-4 inline-flex items-center gap-2 rounded-xl bg-navy px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+            Start assessment <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -163,20 +148,7 @@ function HeroMetric({
         <div className="text-sm text-slate-300">{label}</div>
         <Icon className="h-4 w-4 text-mint" />
       </div>
-      <div className="mt-2 text-2xl font-bold">{value}</div>
-    </div>
-  );
-}
-
-function SummaryCard({ label, value, detail }: { label: string; value: string; detail: string }) {
-  return (
-    <div className="rounded-2xl border bg-white p-4 shadow-sm">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
-        <CalendarClock className="h-3.5 w-3.5" />
-        {label}
-      </div>
-      <div className="mt-2 truncate text-xl font-bold text-ink">{value}</div>
-      <div className="mt-1 text-sm text-slate-500">{detail}</div>
+      <div className="mt-2 text-xl font-bold">{value}</div>
     </div>
   );
 }

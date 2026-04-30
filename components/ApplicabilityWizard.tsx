@@ -225,8 +225,8 @@ function Toggle({ label, checked, onChange }: { label: string; checked: boolean;
 }
 
 function categoryClass(category: string) {
-  if (category === "Likely directly applicable") return "border-teal/20 bg-teal/10 text-teal";
-  if (category === "Potentially indirectly applicable") return "border-violet/20 bg-violet/10 text-violet";
-  if (category === "Client, investor or customer driven") return "border-blue-200 bg-blue-50 text-blue-700";
+  if (category === "Potentially directly relevant") return "border-teal/20 bg-teal/10 text-teal";
+  if (category === "Potentially indirectly relevant") return "border-violet/20 bg-violet/10 text-violet";
+  if (category === "Relevant through investors or customers") return "border-blue-200 bg-blue-50 text-blue-700";
   return "border-slate-200 bg-slate-50 text-slate-600";
 }

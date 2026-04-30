@@ -3,9 +3,9 @@ import { Regulation } from "@/types/regulation";
 import { inferredCompanyTypes } from "./filters";
 
 export type ApplicabilityCategory =
-  | "Likely directly applicable"
-  | "Potentially indirectly applicable"
-  | "Client, investor or customer driven"
+  | "Potentially directly relevant"
+  | "Potentially indirectly relevant"
+  | "Relevant through investors or customers"
   | "Monitor only";
 
 export interface ApplicabilityAnswers {
@@ -146,9 +146,9 @@ function scoreRegulation(regulation: Regulation, answers: ApplicabilityAnswers):
 }
 
 function categoryFor(score: number, directJurisdiction: boolean): ApplicabilityCategory {
-  if (score >= 7 && directJurisdiction) return "Likely directly applicable";
-  if (score >= 5) return "Potentially indirectly applicable";
-  if (score >= 3) return "Client, investor or customer driven";
+  if (score >= 7 && directJurisdiction) return "Potentially directly relevant";
+  if (score >= 5) return "Potentially indirectly relevant";
+  if (score >= 3) return "Relevant through investors or customers";
   return "Monitor only";
 }
 

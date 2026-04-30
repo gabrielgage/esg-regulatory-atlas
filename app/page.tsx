@@ -17,6 +17,8 @@ import { DataQualityPanel } from "@/components/DataQualityPanel";
 import { ExecutiveBriefing } from "@/components/ExecutiveBriefing";
 import { JurisdictionCompare } from "@/components/JurisdictionCompare";
 import { SourceLibrary } from "@/components/SourceLibrary";
+import { RuleLayerStack } from "@/components/RuleLayerStack";
+import { CoverageMatrix } from "@/components/CoverageMatrix";
 import { jurisdictions, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
@@ -98,6 +100,10 @@ export default function Home() {
           <WorldMap jurisdictions={jurisdictions} regulations={filtered} selectedId={selectedJurisdiction?.id} onSelect={setSelectedJurisdiction} />
           <CountryPanel jurisdiction={selectedJurisdiction} regulations={filtered} onRegulation={setSelectedRegulation} />
         </section>
+
+        <RuleLayerStack jurisdiction={selectedJurisdiction} regulations={filtered} onSelect={setSelectedRegulation} />
+
+        <CoverageMatrix jurisdictions={jurisdictions} regulations={filtered} selectedId={selectedJurisdiction?.id} onSelect={setSelectedJurisdiction} />
 
         <AdvisoryInsights regulations={filtered} />
 

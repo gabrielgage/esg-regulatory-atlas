@@ -8,55 +8,33 @@ import { cn, scoreJurisdiction } from "@/lib/utils";
 const colors: Record<string, string> = {
   high: "#0f766e",
   medium: "#57c3b7",
-  emerging: "#b8eee5",
+  emerging: "#67e8d1",
   none: "#94a3b8"
 };
 
-const continents = [
-  {
-    name: "North America",
-    d: "M91 161 C118 118 174 106 219 129 C246 143 257 171 240 195 C222 220 185 209 165 229 C140 252 112 244 98 219 C87 199 78 181 91 161 Z"
-  },
-  {
-    name: "South America",
-    d: "M210 279 C243 292 258 330 251 371 C246 405 226 436 205 474 C180 438 177 392 188 355 C197 326 189 300 210 279 Z"
-  },
-  {
-    name: "Europe",
-    d: "M392 155 C425 127 477 130 500 158 C518 180 493 203 456 200 C421 197 380 187 392 155 Z"
-  },
-  {
-    name: "Africa",
-    d: "M430 227 C469 203 523 220 543 264 C566 315 537 376 495 430 C458 391 421 343 414 292 C410 263 411 241 430 227 Z"
-  },
-  {
-    name: "Asia",
-    d: "M520 156 C576 114 666 120 739 156 C797 184 807 232 765 265 C727 295 671 269 636 290 C598 313 539 293 515 247 C495 210 493 176 520 156 Z"
-  },
-  {
-    name: "Australia",
-    d: "M704 376 C746 357 800 371 816 406 C790 436 741 438 702 418 C684 407 686 386 704 376 Z"
-  }
-];
+const tileColumns = [0, 1, 2, 3];
+const tileRows = [1, 2];
+const tileSize = 256;
+const worldWidth = tileSize * 4;
+const mapHeight = tileSize * tileRows.length;
+const tileYStart = tileRows[0] * tileSize;
 
-type LatLngBounds = [[number, number], [number, number]];
-
-const jurisdictionBounds: Record<string, { bounds: LatLngBounds; shortLabel?: string; minWidth?: number; minHeight?: number }> = {
-  eu: { bounds: [[35, -10], [60, 32]], shortLabel: "EU", minWidth: 56, minHeight: 34 },
-  nl: { bounds: [[50.7, 3.3], [53.6, 7.2]], shortLabel: "NL", minWidth: 28, minHeight: 20 },
-  uk: { bounds: [[49.5, -8], [59, 2]], shortLabel: "UK", minWidth: 34, minHeight: 30 },
-  us: { bounds: [[25, -125], [49.5, -66]], shortLabel: "US" },
-  "ca-us": { bounds: [[32, -124.5], [42.2, -114]], shortLabel: "CA", minWidth: 28, minHeight: 22 },
-  sg: { bounds: [[1.0, 103.5], [1.6, 104.1]], shortLabel: "SG", minWidth: 26, minHeight: 18 },
-  jp: { bounds: [[30, 129], [46, 146]], shortLabel: "JP", minWidth: 34, minHeight: 38 },
-  au: { bounds: [[-44, 112], [-10, 154]], shortLabel: "AU" },
-  br: { bounds: [[-34, -74], [5, -34]], shortLabel: "BR" },
-  in: { bounds: [[8, 68], [35, 97]], shortLabel: "IN" },
-  cn: { bounds: [[18, 73], [54, 135]], shortLabel: "CN" },
-  ca: { bounds: [[42, -141], [70, -52]], shortLabel: "CA" },
-  ch: { bounds: [[45.8, 5.9], [47.9, 10.5]], shortLabel: "CH", minWidth: 28, minHeight: 18 },
-  tr: { bounds: [[36, 26], [42.3, 45]], shortLabel: "TR", minWidth: 36, minHeight: 20 },
-  mx: { bounds: [[14, -118], [32, -86]], shortLabel: "MX" }
+const labelOffsets: Record<string, { x: number; y: number }> = {
+  eu: { x: -52, y: -58 },
+  nl: { x: 68, y: -54 },
+  uk: { x: -72, y: -36 },
+  ch: { x: 58, y: -18 },
+  tr: { x: 70, y: 28 },
+  "ca-us": { x: -54, y: 34 },
+  us: { x: 0, y: 36 },
+  ca: { x: 0, y: -36 },
+  mx: { x: 44, y: 26 },
+  br: { x: 0, y: 38 },
+  sg: { x: -64, y: 24 },
+  jp: { x: 42, y: -24 },
+  au: { x: 0, y: -30 },
+  in: { x: -36, y: 32 },
+  cn: { x: 44, y: 0 }
 };
 
 export function WorldMap({
@@ -71,7 +49,7 @@ export function WorldMap({
   onSelect: (j: Jurisdiction) => void;
 }) {
   const mapped = useMemo(
-    () => jurisdictions.filter((jurisdiction) => jurisdiction.type !== "international" && jurisdictionBounds[jurisdiction.id]),
+    () => jurisdictions.filter((jurisdiction) => jurisdiction.coordinates && jurisdiction.type !== "international"),
     [jurisdictions]
   );
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -87,7 +65,7 @@ export function WorldMap({
             <h2 className="font-semibold text-ink">Interactive regulatory map</h2>
           </div>
           <p className="mt-1 text-sm text-slate-500">
-            Tracked jurisdictions are shown as shaded map regions, using simplified country bounds for a stable no-token MVP.
+            Country-border basemap with tracked jurisdictions layered by regulatory intensity.
           </p>
         </div>
         <div className="flex flex-wrap gap-3 text-xs text-slate-500">
@@ -98,9 +76,30 @@ export function WorldMap({
         </div>
       </div>
 
-      <div className="relative aspect-[900/520] min-h-[320px] overflow-hidden rounded-xl border border-slate-100 bg-[#e9f2f4] p-2">
+      <div data-testid="regulatory-map" className="relative aspect-[2/1] min-h-[320px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+        <div className="absolute inset-0 grid grid-cols-4 grid-rows-2">
+          {tileRows.flatMap((row) =>
+            tileColumns.map((column) => (
+              <img
+                key={`${column}-${row}`}
+                alt=""
+                aria-hidden="true"
+                draggable={false}
+                loading="eager"
+                referrerPolicy="no-referrer"
+                className="h-full w-full select-none object-cover contrast-[1.04] saturate-[0.9]"
+                src={`https://a.basemaps.cartocdn.com/light_all/2/${column}/${row}.png`}
+              />
+            ))
+          )}
+        </div>
+        <div className="absolute inset-0 bg-white/10" />
+        <div className="pointer-events-none absolute bottom-2 right-2 z-20 rounded-md bg-white/85 px-2 py-1 text-[10px] font-medium text-slate-500 shadow-sm">
+          Map data: OpenStreetMap, CARTO
+        </div>
+
         {featured && (
-          <div className="pointer-events-none absolute left-4 top-4 z-10 w-[min(280px,calc(100%-2rem))] rounded-xl border border-slate-200 bg-white/95 p-3 shadow-lg backdrop-blur">
+          <div className="pointer-events-none absolute left-4 top-4 z-20 w-[min(300px,calc(100%-2rem))] rounded-xl border border-slate-200 bg-white/95 p-3 shadow-lg backdrop-blur">
             <div className="flex items-center justify-between gap-3">
               <div className="font-semibold text-ink">{featured.name}</div>
               <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">{featuredRecords.length}</span>
@@ -113,23 +112,20 @@ export function WorldMap({
           </div>
         )}
 
-        <svg className="block h-full w-full" viewBox="0 0 900 520" role="img" aria-label="World regulatory intensity map">
-          <rect width="900" height="520" rx="18" fill="#e9f2f4" />
-          <Grid />
-          <path d="M40 112 C160 40 294 56 392 108 C514 172 639 129 830 82" fill="none" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="6 9" opacity="0.9" />
-          <path d="M70 424 C244 480 409 452 553 398 C686 349 792 356 850 398" fill="none" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="6 9" opacity="0.9" />
-
-          {continents.map((continent) => (
-            <path key={continent.name} d={continent.d} fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" opacity="0.98" />
-          ))}
-
+        <svg className="absolute inset-0 h-full w-full" viewBox={`0 0 ${worldWidth} ${mapHeight}`} role="img" aria-label="World regulatory coverage map">
+          <rect width={worldWidth} height={mapHeight} fill="transparent" />
           {mapped.map((jurisdiction) => {
-            const config = jurisdictionBounds[jurisdiction.id];
-            const region = regionFromBounds(config.bounds, config.minWidth, config.minHeight);
             const regs = recordsFor(jurisdiction, regulations);
             const intensity = scoreJurisdiction(regs);
             const active = selectedId === jurisdiction.id;
             const hovered = hoveredId === jurisdiction.id;
+            const [longitude, latitude] = jurisdiction.coordinates!;
+            const position = project(longitude, latitude);
+            const label = shortLabel(jurisdiction.name);
+            const offset = labelOffsets[jurisdiction.id] || { x: 0, y: -28 };
+            const width = Math.max(44, label.length * 9 + 30);
+            const x = clamp(position.x + offset.x - width / 2, 8, worldWidth - width - 8);
+            const y = clamp(position.y + offset.y - 17, 14, mapHeight - 42);
 
             return (
               <g
@@ -147,22 +143,51 @@ export function WorldMap({
                 }}
                 className="cursor-pointer outline-none"
               >
-                <path
-                  d={region.path}
+                <line
+                  x1={position.x}
+                  y1={position.y}
+                  x2={x + width / 2}
+                  y2={y + 17}
+                  stroke={active || hovered ? "#312e81" : "#64748b"}
+                  strokeWidth={active || hovered ? 2 : 1.25}
+                  strokeDasharray="4 4"
+                  opacity="0.75"
+                />
+                <circle
+                  cx={position.x}
+                  cy={position.y}
+                  r={active || hovered ? 5 : 3.5}
                   fill={active ? "#6d5dfc" : colors[intensity]}
-                  fillOpacity={intensity === "none" ? 0.48 : 0.78}
-                  stroke={active || hovered ? "#312e81" : "#ffffff"}
-                  strokeWidth={active || hovered ? 3 : 2}
-                  className="transition"
+                  stroke="#ffffff"
+                  strokeWidth="2"
+                />
+                <rect
+                  x={x}
+                  y={y}
+                  width={width}
+                  height="34"
+                  rx="8"
+                  fill={active ? "#6d5dfc" : "#ffffff"}
+                  stroke={active || hovered ? "#312e81" : colors[intensity]}
+                  strokeWidth={active || hovered ? 2 : 1.5}
+                  opacity="0.97"
                 />
                 <text
-                  x={region.cx}
-                  y={region.cy + 4}
-                  textAnchor="middle"
+                  x={x + 12}
+                  y={y + 21}
                   className="pointer-events-none select-none text-[12px] font-bold"
-                  fill={active ? "#ffffff" : intensity === "emerging" ? "#0f172a" : "#ffffff"}
+                  fill={active ? "#ffffff" : "#0f172a"}
                 >
-                  {config.shortLabel || shortLabel(jurisdiction.name)}
+                  {label}
+                </text>
+                <text
+                  x={x + width - 12}
+                  y={y + 21}
+                  textAnchor="end"
+                  className="pointer-events-none select-none text-[11px] font-semibold"
+                  fill={active ? "#e0f2fe" : "#64748b"}
+                >
+                  {regs.length}
                 </text>
                 <title>{`${jurisdiction.name}: ${regs.length} tracked records`}</title>
               </g>
@@ -208,67 +233,19 @@ function recordsFor(jurisdiction: Jurisdiction, regulations: Regulation[]) {
   );
 }
 
-function Grid() {
-  const longitudes = [-120, -60, 0, 60, 120];
-  const latitudes = [-45, 0, 45];
-  return (
-    <g opacity="0.45">
-      {longitudes.map((longitude) => {
-        const point = project(longitude, 0);
-        return <path key={longitude} d={`M ${point.x} 35 L ${point.x} 485`} stroke="#cbd5e1" strokeWidth="1" strokeDasharray="4 8" />;
-      })}
-      {latitudes.map((latitude) => {
-        const point = project(0, latitude);
-        return <path key={latitude} d={`M 35 ${point.y} L 865 ${point.y}`} stroke="#cbd5e1" strokeWidth="1" strokeDasharray="4 8" />;
-      })}
-    </g>
-  );
-}
-
-function regionFromBounds(bounds: LatLngBounds, minWidth = 0, minHeight = 0) {
-  const [[south, west], [north, east]] = bounds;
-  const nw = project(west, north);
-  const se = project(east, south);
-  let x = Math.min(nw.x, se.x);
-  let y = Math.min(nw.y, se.y);
-  let width = Math.abs(se.x - nw.x);
-  let height = Math.abs(se.y - nw.y);
-
-  if (width < minWidth) {
-    x -= (minWidth - width) / 2;
-    width = minWidth;
-  }
-  if (height < minHeight) {
-    y -= (minHeight - height) / 2;
-    height = minHeight;
-  }
-
-  const radius = Math.min(18, Math.max(8, Math.min(width, height) / 3));
-  const path = [
-    `M ${x + radius} ${y}`,
-    `L ${x + width - radius} ${y + Math.max(0, height * 0.04)}`,
-    `Q ${x + width} ${y} ${x + width} ${y + radius}`,
-    `L ${x + width - Math.max(0, width * 0.04)} ${y + height - radius}`,
-    `Q ${x + width} ${y + height} ${x + width - radius} ${y + height}`,
-    `L ${x + radius} ${y + height - Math.max(0, height * 0.05)}`,
-    `Q ${x} ${y + height} ${x} ${y + height - radius}`,
-    `L ${x + Math.max(0, width * 0.03)} ${y + radius}`,
-    `Q ${x} ${y} ${x + radius} ${y}`,
-    "Z"
-  ].join(" ");
-
-  return {
-    path,
-    cx: x + width / 2,
-    cy: y + height / 2
-  };
-}
-
 function project(longitude: number, latitude: number) {
+  const sinLatitude = Math.sin((latitude * Math.PI) / 180);
+  const x = ((longitude + 180) / 360) * worldWidth;
+  const worldY = (0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (4 * Math.PI)) * worldWidth;
+
   return {
-    x: ((longitude + 180) / 360) * 900,
-    y: ((90 - latitude) / 180) * 520
+    x,
+    y: worldY - tileYStart
   };
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
 }
 
 function shortLabel(name: string) {
@@ -278,6 +255,15 @@ function shortLabel(name: string) {
   if (name === "Switzerland") return "CH";
   if (name === "California") return "CA";
   if (name === "European Union") return "EU";
+  if (name === "Singapore") return "SG";
+  if (name === "Australia") return "AU";
+  if (name === "Brazil") return "BR";
+  if (name === "Canada") return "Canada";
+  if (name === "China") return "China";
+  if (name === "India") return "India";
+  if (name === "Japan") return "Japan";
+  if (name === "Mexico") return "Mexico";
+  if (name === "Turkey") return "Turkey";
   return name;
 }
 

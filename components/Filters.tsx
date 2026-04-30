@@ -1,4 +1,4 @@
-import { RotateCcw, Search } from "lucide-react";
+import { SlidersHorizontal, RotateCcw, Search } from "lucide-react";
 import {
   advisoryOpportunities,
   businessFunctions,
@@ -27,8 +27,8 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
   const regions = uniq(jurisdictions.map((jurisdiction) => jurisdiction.region));
 
   return (
-    <section className="rounded-2xl border bg-white p-4 shadow-sm">
-      <div className="grid gap-3 lg:grid-cols-[1.4fr_repeat(4,1fr)_auto]">
+    <section className="rounded-2xl border bg-white p-3 shadow-sm">
+      <div className="grid gap-3 xl:grid-cols-[1.5fr_repeat(5,minmax(0,1fr))_auto]">
         <label className="relative">
           <span className="sr-only">Search regulations</span>
           <Search className="pointer-events-none absolute left-3 top-3.5 h-4 w-4 text-slate-400" />
@@ -47,12 +47,7 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
         />
         <Select label="Topic" value={filters.topic} onChange={(value) => update("topic", value)} options={topics} />
         <Select label="Sector" value={filters.sector} onChange={(value) => update("sector", value)} options={sectors} />
-        <Select
-          label="Status"
-          value={filters.status}
-          onChange={(value) => update("status", value)}
-          options={Object.entries(statusLabel).map(([value, label]) => ({ value, label }))}
-        />
+        <Select label="Company type" value={filters.companyType} onChange={(value) => update("companyType", value)} options={companyTypes} />
         <Select
           label="Reporting year"
           value={filters.reportingYear}
@@ -68,52 +63,59 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
           Reset
         </button>
       </div>
-      <div className="mt-3 grid gap-3 md:grid-cols-4">
-        <Select label="Region" value={filters.region} onChange={(value) => update("region", value)} options={regions} />
-        <Select label="Company type" value={filters.companyType} onChange={(value) => update("companyType", value)} options={companyTypes} />
-        <Select
-          label="Jurisdiction type"
-          value={filters.jurisdictionType}
-          onChange={(value) => update("jurisdictionType", value)}
-          options={[
-            { value: "supranational", label: "Supranational" },
-            { value: "national", label: "National" },
-            { value: "local", label: "Local" },
-            { value: "international", label: "International" }
-          ]}
-        />
-        <Select label="Value chain impact" value={filters.valueChain} onChange={(value) => update("valueChain", value)} options={valueChainImpacts} />
-      </div>
-      <div className="mt-3 grid gap-3 md:grid-cols-4">
-        <Select label="Business function" value={filters.businessFunction} onChange={(value) => update("businessFunction", value)} options={businessFunctions} />
-        <Select label="Obligation type" value={filters.obligation} onChange={(value) => update("obligation", value)} options={businessImpactTypes} />
-        <Select
-          label="Confidence"
-          value={filters.confidence}
-          onChange={(value) => update("confidence", value)}
-          options={[
-            { value: "high", label: "High" },
-            { value: "medium", label: "Medium" },
-            { value: "needs_review", label: "Needs review" },
-            { value: "date_uncertain", label: "Date uncertain" }
-          ]}
-        />
-        <Select
-          label="Data quality"
-          value={filters.dataQuality}
-          onChange={(value) => update("dataQuality", value)}
-          options={[
-            { value: "verified_seed", label: "Verified seed" },
-            { value: "recently_updated", label: "Recently updated" },
-            { value: "needs_review", label: "Needs review" },
-            { value: "date_uncertain", label: "Date uncertain" },
-            { value: "source_missing", label: "Source missing" }
-          ]}
-        />
-      </div>
-      <div className="mt-3 grid gap-3 md:grid-cols-2">
-        <Select label="Advisory opportunities" value={filters.advisory} onChange={(value) => update("advisory", value)} options={advisoryOpportunities} />
-      </div>
+      <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50/70">
+        <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 text-sm font-semibold text-slate-600">
+          <SlidersHorizontal className="h-4 w-4 text-teal" />
+          Advanced filters
+        </summary>
+        <div className="grid gap-3 border-t border-slate-100 p-3 md:grid-cols-3 xl:grid-cols-5">
+          <Select label="Region" value={filters.region} onChange={(value) => update("region", value)} options={regions} />
+          <Select
+            label="Jurisdiction type"
+            value={filters.jurisdictionType}
+            onChange={(value) => update("jurisdictionType", value)}
+            options={[
+              { value: "supranational", label: "Supranational" },
+              { value: "national", label: "National" },
+              { value: "local", label: "Local" },
+              { value: "international", label: "International" }
+            ]}
+          />
+          <Select
+            label="Regulation status"
+            value={filters.status}
+            onChange={(value) => update("status", value)}
+            options={Object.entries(statusLabel).map(([value, label]) => ({ value, label }))}
+          />
+          <Select label="Value chain impact" value={filters.valueChain} onChange={(value) => update("valueChain", value)} options={valueChainImpacts} />
+          <Select label="Business function" value={filters.businessFunction} onChange={(value) => update("businessFunction", value)} options={businessFunctions} />
+          <Select label="Obligation type" value={filters.obligation} onChange={(value) => update("obligation", value)} options={businessImpactTypes} />
+          <Select
+            label="Confidence"
+            value={filters.confidence}
+            onChange={(value) => update("confidence", value)}
+            options={[
+              { value: "high", label: "High" },
+              { value: "medium", label: "Medium" },
+              { value: "needs_review", label: "Needs review" },
+              { value: "date_uncertain", label: "Date uncertain" }
+            ]}
+          />
+          <Select
+            label="Data quality"
+            value={filters.dataQuality}
+            onChange={(value) => update("dataQuality", value)}
+            options={[
+              { value: "verified_seed", label: "Verified seed" },
+              { value: "recently_updated", label: "Recently updated" },
+              { value: "needs_review", label: "Needs review" },
+              { value: "date_uncertain", label: "Date uncertain" },
+              { value: "source_missing", label: "Source missing" }
+            ]}
+          />
+          <Select label="Advisory opportunity" value={filters.advisory} onChange={(value) => update("advisory", value)} options={advisoryOpportunities} />
+        </div>
+      </details>
     </section>
   );
 }

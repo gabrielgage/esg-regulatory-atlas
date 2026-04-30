@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Globe2, Layers2 } from "lucide-react";
+import { Globe2 } from "lucide-react";
 import { Jurisdiction, Regulation } from "@/types/regulation";
-import { cn, scoreJurisdiction } from "@/lib/utils";
+import { scoreJurisdiction } from "@/lib/utils";
 
 const colors: Record<string, string> = {
   high: "#0f766e",
@@ -37,27 +37,17 @@ const labelOffsets: Record<string, { x: number; y: number }> = {
   cn: { x: 44, y: 0 }
 };
 
-const mapLayers = [
-  "Global overview",
-  "Corporate reporting",
-  "Sustainable finance",
-  "Climate disclosure",
-  "Supply chain due diligence",
-  "Product and trade",
-  "Biodiversity and nature",
-  "Private equity impact",
-  "ISSB adoption"
-];
-
 export function WorldMap({
   jurisdictions,
   regulations,
   selectedId,
+  viewLabel = "Global overview",
   onSelect
 }: {
   jurisdictions: Jurisdiction[];
   regulations: Regulation[];
   selectedId?: string;
+  viewLabel?: string;
   onSelect: (j: Jurisdiction) => void;
 }) {
   const mapped = useMemo(
@@ -65,12 +55,11 @@ export function WorldMap({
     [jurisdictions]
   );
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const [activeLayer, setActiveLayer] = useState(mapLayers[0]);
   const featured = mapped.find((jurisdiction) => jurisdiction.id === hoveredId) || mapped.find((jurisdiction) => jurisdiction.id === selectedId);
   const featuredRecords = featured ? recordsFor(featured, regulations) : [];
 
   return (
-    <section className="rounded-2xl border bg-white p-4 shadow-sm">
+    <section className="flex h-full min-h-[520px] flex-col rounded-2xl border bg-white p-4 shadow-sm">
       <div className="mb-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
           <div className="flex items-center gap-2">
@@ -78,7 +67,7 @@ export function WorldMap({
             <h2 className="font-semibold text-ink">Interactive regulatory map</h2>
           </div>
           <p className="mt-1 text-sm text-slate-500">
-            Country fill reflects regulatory intensity; the selected layer badge indicates the analytical lens.
+            Country fill reflects regulatory intensity. The active view filters the records powering the map.
           </p>
         </div>
         <div className="flex flex-wrap gap-3 text-xs text-slate-500">
@@ -89,23 +78,7 @@ export function WorldMap({
         </div>
       </div>
 
-      <div className="mb-3 flex gap-2 overflow-x-auto pb-1">
-        {mapLayers.map((layer) => (
-          <button
-            key={layer}
-            type="button"
-            onClick={() => setActiveLayer(layer)}
-            className={cn(
-              "shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold transition",
-              activeLayer === layer ? "border-violet/30 bg-violet/10 text-violet" : "border-slate-200 bg-white text-slate-600 hover:border-teal/30 hover:bg-teal/5"
-            )}
-          >
-            {layer}
-          </button>
-        ))}
-      </div>
-
-      <div data-testid="regulatory-map" className="relative aspect-[2/1] min-h-[320px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
+      <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
         <div className="absolute inset-0 grid grid-cols-4 grid-rows-2">
           {tileRows.flatMap((row) =>
             tileColumns.map((column) => (
@@ -127,7 +100,7 @@ export function WorldMap({
           Map data: OpenStreetMap, CARTO
         </div>
         <div className="pointer-events-none absolute right-2 top-2 z-20 rounded-md border border-violet/20 bg-white/90 px-2 py-1 text-[10px] font-semibold text-violet shadow-sm">
-          Layer: {activeLayer}
+          View: {viewLabel}
         </div>
 
         {featured && (
@@ -226,32 +199,6 @@ export function WorldMap({
             );
           })}
         </svg>
-      </div>
-
-      <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
-        {mapped.map((jurisdiction) => {
-          const regs = recordsFor(jurisdiction, regulations);
-          const intensity = scoreJurisdiction(regs);
-          return (
-            <button
-              key={jurisdiction.id}
-              type="button"
-              onClick={() => onSelect(jurisdiction)}
-              onMouseEnter={() => setHoveredId(jurisdiction.id)}
-              onMouseLeave={() => setHoveredId(null)}
-              className={cn(
-                "flex items-center justify-between rounded-xl border px-3 py-2 text-left text-sm transition hover:border-teal/40 hover:bg-teal/5",
-                selectedId === jurisdiction.id ? "border-teal bg-teal/10" : "border-slate-200 bg-white"
-              )}
-            >
-              <span className="flex min-w-0 items-center gap-2">
-                <Layers2 className="h-4 w-4 shrink-0" style={{ color: selectedId === jurisdiction.id ? "#6d5dfc" : colors[intensity] }} />
-                <span className="truncate font-semibold text-ink">{jurisdiction.name}</span>
-              </span>
-              <span className="ml-2 rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">{regs.length}</span>
-            </button>
-          );
-        })}
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Compass, ShieldCheck } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Compass, ShieldCheck, UserRound } from "lucide-react";
 import { companyTypes, sectors } from "@/data/seed";
 import { jurisdictions } from "@/data/jurisdictions";
 import {
@@ -12,12 +12,107 @@ import {
 } from "@/lib/applicability";
 import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
+import { CopyMarkdownButton } from "./CopyMarkdownButton";
+
+type PersonaId = "cso" | "supplier" | "legal" | "advisor";
+
+const personaDoorways: Array<{
+  id: PersonaId;
+  label: string;
+  description: string;
+  answers: ApplicabilityAnswers;
+}> = [
+  {
+    id: "cso",
+    label: "CSO",
+    description: "Large EU-facing corporate with reporting, assurance and governance exposure.",
+    answers: {
+      ...defaultApplicabilityAnswers,
+      headquarters: "eu",
+      operatingJurisdictions: ["eu", "uk", "us"],
+      companyType: "Large private company",
+      listed: false,
+      companySize: "very-large",
+      sectors: ["All sectors"],
+      euMarketExposure: true
+    }
+  },
+  {
+    id: "supplier",
+    label: "SME supplier lead",
+    description: "Supplier or exporter profile with customer-driven data and due diligence requests.",
+    answers: {
+      ...defaultApplicabilityAnswers,
+      headquarters: "nl",
+      operatingJurisdictions: ["eu", "nl"],
+      companyType: "Supplier",
+      companySize: "small",
+      sectors: ["Manufacturing"],
+      euMarketExposure: true,
+      regulatedImports: true
+    }
+  },
+  {
+    id: "legal",
+    label: "In-house legal",
+    description: "Listed or large multinational profile focused on thresholds, caveats and deadlines.",
+    answers: {
+      ...defaultApplicabilityAnswers,
+      headquarters: "us",
+      operatingJurisdictions: ["us", "ca-us", "eu", "uk"],
+      companyType: "Listed company",
+      listed: true,
+      companySize: "large",
+      sectors: ["All sectors"],
+      euMarketExposure: true
+    }
+  },
+  {
+    id: "advisor",
+    label: "External advisor",
+    description: "Broad advisory discovery view across jurisdictions, sectors and workstreams.",
+    answers: {
+      ...defaultApplicabilityAnswers,
+      headquarters: "uk",
+      operatingJurisdictions: ["eu", "uk", "sg", "au"],
+      companyType: "Corporate",
+      companySize: "large",
+      sectors: ["Financial services", "Manufacturing"],
+      financialInstitution: true,
+      euMarketExposure: true,
+      portfolioExposure: true
+    }
+  }
+];
 
 export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Regulation[]; onSelect: (regulation: Regulation) => void }) {
   const [answers, setAnswers] = useState<ApplicabilityAnswers>(defaultApplicabilityAnswers);
+  const [activePersona, setActivePersona] = useState<PersonaId | null>(null);
   const results = useMemo(() => evaluateApplicability(regulations, answers), [answers, regulations]);
+  const summary = useMemo(() => buildAssessmentSummary(results, answers), [answers, results]);
   const trackedJurisdictions = jurisdictions.filter((jurisdiction) => jurisdiction.type !== "international");
   const sectorChoices = sectors.filter((sector) => sector !== "Listed companies");
+
+  useEffect(() => {
+    const persona = new URLSearchParams(window.location.search).get("persona") as PersonaId | null;
+    const config = persona ? personaDoorways.find((doorway) => doorway.id === persona) : undefined;
+    if (config) {
+      setActivePersona(config.id);
+      setAnswers(config.answers);
+    }
+  }, []);
+
+  function applyPersona(persona: PersonaId, writeUrl = true) {
+    const config = personaDoorways.find((doorway) => doorway.id === persona);
+    if (!config) return;
+    setActivePersona(persona);
+    setAnswers(config.answers);
+    if (writeUrl) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("persona", persona);
+      window.history.replaceState({}, "", url);
+    }
+  }
 
   return (
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
@@ -31,7 +126,33 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
             Answer a few planning questions to generate an indicative regulatory shortlist. Results are orientation only and should be validated against thresholds, local implementation and legal advice.
           </p>
         </div>
-        <Badge className="border-amber-200 bg-amber-50 text-amber-800">Indicative, not legal advice</Badge>
+        <div className="flex flex-wrap gap-2">
+          {activePersona && <Badge className="border-teal/20 bg-teal/10 text-teal">Persona: {personaDoorways.find((doorway) => doorway.id === activePersona)?.label}</Badge>}
+          <Badge className="border-amber-200 bg-amber-50 text-amber-800">Indicative, not legal advice</Badge>
+          <CopyMarkdownButton text={summary} label="Copy shortlist" />
+        </div>
+      </div>
+
+      <div className="mb-4 grid gap-3 md:grid-cols-4">
+        {personaDoorways.map((persona) => (
+          <button
+            key={persona.id}
+            type="button"
+            aria-pressed={activePersona === persona.id}
+            onClick={() => applyPersona(persona.id)}
+            className={
+              activePersona === persona.id
+                ? "rounded-xl border border-teal bg-teal/10 p-4 text-left shadow-sm"
+                : "rounded-xl border border-slate-200 bg-slate-50 p-4 text-left hover:border-teal/40 hover:bg-white"
+            }
+          >
+            <div className="flex items-center gap-2 font-semibold text-ink">
+              <UserRound className="h-4 w-4 text-teal" />
+              {persona.label}
+            </div>
+            <p className="mt-2 text-xs leading-5 text-slate-500">{persona.description}</p>
+          </button>
+        ))}
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
@@ -141,7 +262,7 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
             )}
           </div>
           <p className="mt-3 text-xs leading-5 text-slate-500">
-            Profile: {jurisdictionLabel(answers.headquarters)} headquarters · {answers.companySize} · {answers.companyType}
+            Profile: {jurisdictionLabel(answers.headquarters)} headquarters - {answers.companySize} - {answers.companyType}
           </p>
         </div>
       </div>
@@ -203,6 +324,7 @@ function MultiSelect({
             <button
               key={option.value}
               type="button"
+              aria-pressed={selected}
               onClick={() => toggle(option.value)}
               className={selected ? "rounded-full bg-teal px-3 py-1 text-xs font-semibold text-white" : "rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600"}
             >
@@ -229,4 +351,22 @@ function categoryClass(category: string) {
   if (category === "Potentially indirectly relevant") return "border-violet/20 bg-violet/10 text-violet";
   if (category === "Relevant through investors or customers") return "border-blue-200 bg-blue-50 text-blue-700";
   return "border-slate-200 bg-slate-50 text-slate-600";
+}
+
+function buildAssessmentSummary(results: ReturnType<typeof evaluateApplicability>, answers: ApplicabilityAnswers) {
+  return [
+    "# Etica ESG · Regulatory Atlas indicative shortlist",
+    "",
+    `Headquarters: ${jurisdictionLabel(answers.headquarters)}`,
+    `Company type: ${answers.companyType}`,
+    `Company size: ${answers.companySize}`,
+    `Listed: ${answers.listed ? "yes" : "no"}`,
+    `Sectors: ${answers.sectors.join(", ")}`,
+    "",
+    "## Recommended records",
+    ...results.slice(0, 12).map((result) => `- ${result.regulation.shortName} (${result.category}): ${result.reasons[0]} First action: ${result.firstActions[0] || "Review primary sources."}`),
+    "",
+    "## Caveat",
+    "This shortlist is indicative only. It does not constitute legal, tax, investment or assurance advice and does not determine entity-specific applicability."
+  ].join("\n");
 }

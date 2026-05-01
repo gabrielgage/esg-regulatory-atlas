@@ -12,7 +12,7 @@ export const statusClass: Record<Status, string> = {
   first_reporting: "bg-teal text-white border-teal",
   transition: "bg-violet/10 text-violet border-violet/20",
   paused: "bg-slate-200 text-slate-700 border-slate-300",
-  voluntary: "bg-blue-50 text-blue-700 border-blue-200"
+  voluntary: "bg-slate-100 text-slate-700 border-slate-200"
 };
 
 export function scoreJurisdiction(regs: Regulation[]) {

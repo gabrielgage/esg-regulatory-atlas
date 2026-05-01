@@ -3,8 +3,9 @@
 import { useMemo, useState } from "react";
 import { ArrowLeftRight, ArrowUpRight, Scale } from "lucide-react";
 import { Badge } from "./Badge";
+import { StatusBadge } from "./StatusBadge";
 import { Jurisdiction, Regulation } from "@/types/regulation";
-import { statusClass, statusLabel, uniq } from "@/lib/utils";
+import { uniq } from "@/lib/utils";
 
 export function JurisdictionCompare({
   jurisdictions,
@@ -123,7 +124,7 @@ function JurisdictionColumn({
               <ArrowUpRight className="h-4 w-4 text-slate-400" />
             </div>
             <div className="mt-2">
-              <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
+              <StatusBadge status={regulation.status} />
             </div>
           </button>
         ))}

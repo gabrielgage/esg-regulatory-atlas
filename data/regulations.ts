@@ -1,6 +1,6 @@
 import { Regulation, SourceLink } from "@/types/regulation";
 
-const REVIEWED = "2026-04-29";
+const REVIEWED = "2026-05-02";
 const NEXT_REVIEW = "2026-07-31";
 
 const src = (label: string, url: string, type: SourceLink["type"] = "primary"): SourceLink => ({
@@ -15,7 +15,8 @@ export const regulations: Regulation[] = [
     title: "Corporate Sustainability Reporting Directive",
     shortName: "CSRD",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Union",
     status: "first_reporting",
@@ -28,20 +29,35 @@ export const regulations: Regulation[] = [
     effectiveDate: "2024-01-01",
     firstReportingYear: 2025,
     summary: "Requires in-scope companies to report sustainability information under ESRS, including double materiality, governance, strategy, impacts, risks, opportunities, metrics and targets.",
-    applicability: "Large EU undertakings, listed SMEs through later phase-in, and certain non-EU parent companies subject to scope and timing thresholds.",
+    applicability: "Large EU public-interest entities in the first wave, later large-undertaking and listed-SME cohorts subject to stop-the-clock and Omnibus implementation, and certain non-EU parent groups subject to EU turnover and local presence triggers.",
+    applicabilityScope: {
+      thresholds: [
+        "Baseline EU large-undertaking definition references at least two of: EUR 25 million balance sheet total, EUR 50 million net turnover, and 250 employees.",
+        "Directive (EU) 2026/470 creates transitional relief for some FY2025-FY2026 cohorts and references EUR 450 million net turnover and 1,000-employee thresholds for those transition periods.",
+        "Non-EU group reporting remains subject to EU turnover, EU subsidiary or branch triggers, and ongoing Omnibus implementation review."
+      ],
+      entityTypes: ["Large EU public-interest entities", "Large undertakings and groups", "Listed SMEs under later phase-in", "Certain non-EU parent groups"],
+      sectorsInScope: ["All sectors", "Financial services", "Manufacturing", "Real estate", "Private equity"]
+    },
     keyRequirements: ["Double materiality assessment", "ESRS disclosures", "Digital tagging readiness", "Limited assurance pathway"],
     businessImpact: "Creates board-level reporting, data, controls and assurance readiness obligations across sustainability, finance, legal, risk and operations.",
     businessImpacts: ["reporting obligation", "governance obligation", "assurance obligation", "data collection obligation", "board oversight obligation"],
     affectedFunctions: ["Sustainability", "Finance", "Legal", "Risk", "Internal audit", "Operations"],
-    sourceUrls: [src("Directive (EU) 2022/2464", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2464")],
-    latestUpdate: "Seed note: EU simplification activity may affect future scope and timing. Production research should verify current legislative status before use.",
+    sourceUrls: [
+      src("Directive (EU) 2022/2464", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2464"),
+      src("Directive (EU) 2026/470 Omnibus amendments", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026L0470")
+    ],
+    latestUpdate: "May 2026 seed update: added current large-undertaking thresholds and Omnibus transition caveat based on official EUR-Lex sources.",
     lastReviewed: REVIEWED,
     nextReviewDate: NEXT_REVIEW,
-    confidence: "medium",
-    confidenceLevel: "medium",
-    dataQualityStatus: "needs_review",
-    changeLogSummary: "Seeded with core CSRD scope and reporting obligations.",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
+    changeLogSummary: "Updated scope thresholds, phase-in caveat and source set after v3 review.",
     advisoryOpportunities: ["Double materiality assessment", "Gap assessment", "Reporting readiness", "Internal controls", "Assurance preparation", "ESG software implementation"],
+    firstReportDueDate: "2025-12-31",
+    phaseInNotes: "Wave 1 companies report from FY2024 in 2025. Later large-undertaking and listed-SME waves are affected by stop-the-clock and Omnibus amendments, so users should verify national implementation before relying on a date.",
+    penalties: "CSRD enforcement is implemented through Member State law. Directive (EU) 2022/2464 requires effective, proportionate and dissuasive sanctions and assurance-related investigation and sanction systems; fine amounts and enforcement mechanics vary by national transposition.",
     highImpact: true
   },
   {
@@ -49,7 +65,8 @@ export const regulations: Regulation[] = [
     title: "European Sustainability Reporting Standards",
     shortName: "ESRS",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Commission and EFRAG",
     status: "in_force",
@@ -62,19 +79,29 @@ export const regulations: Regulation[] = [
     effectiveDate: "2024-01-01",
     firstReportingYear: 2025,
     summary: "Detailed disclosure standards used for CSRD reporting, covering cross-cutting, environmental, social and governance topics.",
-    applicability: "Companies in scope of CSRD report against ESRS subject to materiality and applicable phase-in provisions.",
+    applicability: "Companies in scope of CSRD report against ESRS Set 1 subject to double materiality, disclosure requirements and available phase-in provisions.",
+    applicabilityScope: {
+      thresholds: [
+        "ESRS does not create a separate company-size threshold; it applies through CSRD scope and timing.",
+        "Sector-agnostic Set 1 is in force. Sector-specific and certain non-EU standards should be monitored against EU simplification work."
+      ],
+      entityTypes: ["CSRD in-scope undertakings", "CSRD in-scope groups"],
+      sectorsInScope: ["All sectors"]
+    },
     keyRequirements: ["Material impacts, risks and opportunities", "Policies, actions, metrics and targets", "Climate transition plan disclosures", "Value chain information"],
     businessImpact: "Requires a structured sustainability reporting architecture and evidence base for audit-ready disclosures.",
     businessImpacts: ["reporting obligation", "governance obligation", "transition plan obligation", "data collection obligation", "assurance obligation"],
     affectedFunctions: ["Sustainability", "Finance", "HR", "Procurement", "Legal", "Operations"],
     sourceUrls: [src("ESRS delegated regulation", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R2772")],
-    latestUpdate: "Seed note: ESRS implementation guidance and simplification proposals should be monitored.",
+    latestUpdate: "May 2026 seed update: clarified that ESRS applicability follows CSRD scope rather than a standalone threshold.",
     lastReviewed: REVIEWED,
     nextReviewDate: NEXT_REVIEW,
-    confidence: "medium",
-    confidenceLevel: "medium",
-    dataQualityStatus: "needs_review",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
     advisoryOpportunities: ["Double materiality assessment", "ESRS gap assessment", "ESG data model design", "Assurance preparation"],
+    phaseInNotes: "ESRS Set 1 applies to CSRD reporting. Sector-specific and non-EU reporting standards remain a monitoring item under EU simplification activity.",
+    penalties: "ESRS does not have a standalone penalty regime. Enforcement follows CSRD national transposition, statutory reporting obligations and assurance requirements in the relevant Member State.",
     highImpact: true
   },
   {
@@ -82,7 +109,8 @@ export const regulations: Regulation[] = [
     title: "EU Taxonomy Regulation",
     shortName: "EU Taxonomy",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Union",
     status: "in_force",
@@ -95,19 +123,29 @@ export const regulations: Regulation[] = [
     effectiveDate: "2020-07-12",
     firstReportingYear: 2022,
     summary: "Classification system for environmentally sustainable economic activities, requiring eligibility and alignment disclosures for in-scope companies and financial market participants.",
-    applicability: "Companies subject to sustainability reporting and financial market participants offering products in the EU.",
+    applicability: "Undertakings subject to Article 19a or 29a sustainability reporting obligations and financial market participants offering products in the EU.",
+    applicabilityScope: {
+      thresholds: [
+        "Article 8 applies to undertakings required to publish sustainability information under Articles 19a or 29a of Directive 2013/34/EU.",
+        "Non-financial undertakings disclose taxonomy-eligible and taxonomy-aligned turnover, CapEx and OpEx KPIs, subject to delegated disclosure rules and simplification changes.",
+        "Financial undertakings and asset managers follow sector-specific KPI templates under the Article 8 Delegated Act."
+      ],
+      entityTypes: ["CSRD in-scope undertakings", "Financial market participants", "Asset managers", "Banks", "Insurers"],
+      sectorsInScope: ["Financial services", "Real estate", "Energy", "Manufacturing", "Transport", "Private equity"]
+    },
     keyRequirements: ["Eligibility screening", "Alignment testing", "Do no significant harm review", "Minimum safeguards assessment"],
     businessImpact: "Requires revenue, CapEx and OpEx mapping and creates investment, lending and portfolio classification implications.",
     businessImpacts: ["reporting obligation", "financial disclosure obligation", "product compliance obligation", "data collection obligation"],
     affectedFunctions: ["Finance", "Sustainability", "Investor relations", "Strategy", "Asset management"],
     sourceUrls: [src("Regulation (EU) 2020/852", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32020R0852")],
-    latestUpdate: "Seed note: Delegated acts and reporting practice continue to evolve.",
+    latestUpdate: "May 2026 seed update: added Article 8 scope language and KPI anchors.",
     lastReviewed: REVIEWED,
     nextReviewDate: NEXT_REVIEW,
-    confidence: "medium",
-    confidenceLevel: "medium",
-    dataQualityStatus: "needs_review",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
     advisoryOpportunities: ["Taxonomy eligibility and alignment assessment", "ESG data model design", "Reporting readiness", "Internal controls"],
+    penalties: "The Taxonomy Regulation is enforced through applicable corporate reporting, financial product disclosure and national supervisory frameworks. Penalty exposure depends on the relevant disclosure regime and Member State or regulator.",
     highImpact: true
   },
   {
@@ -115,7 +153,8 @@ export const regulations: Regulation[] = [
     title: "Sustainable Finance Disclosure Regulation",
     shortName: "SFDR",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Union",
     status: "in_force",
@@ -128,19 +167,29 @@ export const regulations: Regulation[] = [
     effectiveDate: "2021-03-10",
     firstReportingYear: 2021,
     summary: "Requires sustainability-related entity and product disclosures by financial market participants and financial advisers.",
-    applicability: "EU financial market participants and advisers, including funds and investment products classified under Articles 6, 8 or 9.",
+    applicability: "EU financial market participants and financial advisers, including asset managers, AIFMs, UCITS management companies, insurers with IBIPs, IORPs and certain credit institutions providing portfolio management.",
+    applicabilityScope: {
+      thresholds: [
+        "SFDR is role-based rather than size-threshold based: financial market participants and financial advisers are in scope when they meet the defined regulated activity categories.",
+        "Financial products require Article 6, Article 8 or Article 9 positioning and related pre-contractual, website and periodic disclosures where relevant.",
+        "Principal adverse impact reporting depends on entity size, approach and applicable SFDR provisions."
+      ],
+      entityTypes: ["Financial market participants", "Financial advisers", "Asset managers", "AIFMs", "UCITS management companies", "Insurers", "IORPs"],
+      sectorsInScope: ["Asset management", "Banking", "Insurance", "Financial services", "Private equity"]
+    },
     keyRequirements: ["Entity-level sustainability risk disclosures", "Product classification", "Principal adverse impact data", "Website, pre-contractual and periodic disclosures"],
     businessImpact: "Creates fund classification, adverse impact, naming, governance and investor disclosure requirements.",
     businessImpacts: ["financial disclosure obligation", "product compliance obligation", "data collection obligation", "governance obligation"],
     affectedFunctions: ["Asset management", "Legal", "Compliance", "Investor relations", "Product"],
     sourceUrls: [src("Regulation (EU) 2019/2088", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32019R2088")],
-    latestUpdate: "Seed note: SFDR review remains an important watch item for product classification and naming expectations.",
+    latestUpdate: "May 2026 seed update: added role-based scope language and product disclosure anchors.",
     lastReviewed: REVIEWED,
     nextReviewDate: NEXT_REVIEW,
-    confidence: "medium",
-    confidenceLevel: "medium",
-    dataQualityStatus: "needs_review",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
     advisoryOpportunities: ["SFDR fund classification support", "ESG data model design", "Internal controls", "Gap assessment"],
+    penalties: "SFDR supervision and sanctions are handled by national competent authorities under applicable financial-services frameworks. Product classification, website disclosure, pre-contractual disclosure and periodic disclosure failures can create supervisory and conduct risk.",
     highImpact: true
   },
   {
@@ -148,7 +197,8 @@ export const regulations: Regulation[] = [
     title: "Corporate Sustainability Due Diligence Directive",
     shortName: "CSDDD",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Union",
     status: "adopted",
@@ -159,21 +209,38 @@ export const regulations: Regulation[] = [
     valueChain: ["Own operations", "Upstream suppliers", "Downstream customers", "Board and executive oversight"],
     valueChainImpact: ["Own operations", "Upstream suppliers", "Downstream customers"],
     effectiveDate: "2024-07-25",
-    firstReportingYear: 2027,
+    firstReportingYear: 2028,
     summary: "Introduces due diligence duties for actual and potential adverse human rights and environmental impacts across operations and chains of activities.",
-    applicability: "Large EU and non-EU companies subject to employee, turnover and phased implementation thresholds.",
+    applicability: "Very large EU and non-EU companies and ultimate parent groups subject to the current consolidated CSDDD scope thresholds, franchise and licensing triggers, and phased Member State implementation.",
+    applicabilityScope: {
+      thresholds: [
+        "Current consolidated Article 2 threshold for EU companies: more than 5,000 employees and more than EUR 1.5 billion net worldwide turnover.",
+        "Ultimate parent companies are in scope where the group reaches the relevant thresholds.",
+        "Franchise or licensing models can be in scope where EU royalties exceed EUR 75 million and worldwide turnover exceeds EUR 275 million.",
+        "Non-EU company thresholds depend on EU turnover and current consolidated CSDDD scope rules."
+      ],
+      entityTypes: ["Very large EU companies", "Ultimate parent companies", "Large non-EU companies with EU turnover", "Franchise or licensing groups"],
+      sectorsInScope: ["All sectors", "Manufacturing", "Food and beverage", "Packaging", "Financial services", "Private equity"]
+    },
     keyRequirements: ["Due diligence policy", "Risk identification and mitigation", "Complaints mechanism", "Monitoring", "Climate transition plan"],
     businessImpact: "Requires supplier risk mapping, governance, mitigation, public communication and climate transition planning.",
     businessImpacts: ["due diligence obligation", "supply chain obligation", "transition plan obligation", "governance obligation", "board oversight obligation"],
     affectedFunctions: ["Legal", "Procurement", "Sustainability", "Risk", "Operations", "Board"],
-    sourceUrls: [src("Directive (EU) 2024/1760", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401760")],
-    latestUpdate: "Seed note: Implementation timing should be checked against EU simplification and national transposition developments.",
+    sourceUrls: [
+      src("Directive (EU) 2024/1760", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401760"),
+      src("Current consolidated CSDDD text", "https://eur-lex.europa.eu/eli/dir/2024/1760/2026-03-18/eng"),
+      src("Directive (EU) 2026/470 Omnibus amendments", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026L0470")
+    ],
+    latestUpdate: "May 2026 seed update: updated scope thresholds and penalty language against the current consolidated CSDDD text.",
     lastReviewed: REVIEWED,
     nextReviewDate: NEXT_REVIEW,
-    confidence: "medium",
-    confidenceLevel: "medium",
-    dataQualityStatus: "needs_review",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
     advisoryOpportunities: ["Supplier due diligence", "Gap assessment", "Climate transition plan", "Board training"],
+    firstReportDueDate: "2029-12-31",
+    phaseInNotes: "Member State implementation and first application are phased. Current consolidated text and Omnibus-related changes should be checked for the company cohort before client use.",
+    penalties: "Current consolidated CSDDD penalty provisions require Member States to set effective, proportionate and dissuasive penalties. The amended Article 27 references maximum pecuniary penalties set at 3% of net worldwide turnover or consolidated worldwide turnover for parent-company cases.",
     highImpact: true
   },
   {
@@ -181,10 +248,11 @@ export const regulations: Regulation[] = [
     title: "Carbon Border Adjustment Mechanism",
     shortName: "CBAM",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Union",
-    status: "transition",
+    status: "in_force",
     adoptionLevel: "phased",
     topics: ["Carbon pricing", "Product and circular economy", "Climate"],
     topic: "Product and circular economy",
@@ -192,21 +260,36 @@ export const regulations: Regulation[] = [
     valueChain: ["Upstream suppliers", "Products and materials", "Downstream customers"],
     valueChainImpact: ["Upstream suppliers", "Products and materials"],
     effectiveDate: "2023-10-01",
-    firstReportingYear: 2024,
+    firstReportingYear: 2026,
     summary: "Requires importers of covered carbon-intensive goods to report embedded emissions during the transitional phase and prepare for financial obligations.",
-    applicability: "Importers of covered goods such as cement, iron and steel, aluminium, fertilisers, electricity and hydrogen into the EU.",
+    applicability: "EU importers or indirect customs representatives importing covered goods, currently cement, iron and steel, aluminium, fertilisers, electricity and hydrogen, subject to authorisation and mass-threshold rules.",
+    applicabilityScope: {
+      thresholds: [
+        "The definitive CBAM regime started on 1 January 2026.",
+        "Commission 2026 guidance references a 50-tonne monitoring threshold for covered CBAM goods, while electricity and hydrogen remain separately sensitive categories.",
+        "Importers should apply for authorised CBAM declarant status before importing covered goods."
+      ],
+      entityTypes: ["Importer", "Exporter", "Manufacturer", "Customs representative"],
+      sectorsInScope: ["Manufacturing", "Energy", "Transport", "Packaging"]
+    },
     keyRequirements: ["Embedded emissions data", "Supplier engagement", "Quarterly transitional reports", "Certificate readiness"],
     businessImpact: "Creates supplier data, customs, procurement and product carbon cost exposure for covered imports.",
     businessImpacts: ["product compliance obligation", "supply chain obligation", "data collection obligation", "financial disclosure obligation"],
     affectedFunctions: ["Procurement", "Supply chain", "Tax", "Trade compliance", "Sustainability"],
-    sourceUrls: [src("Regulation (EU) 2023/956", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0956")],
-    latestUpdate: "Seed note: Transitional reporting quality and definitive phase preparation should be monitored.",
+    sourceUrls: [
+      src("Regulation (EU) 2023/956", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R0956"),
+      src("European Commission CBAM page", "https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism_en", "regulator")
+    ],
+    latestUpdate: "May 2026 seed update: changed status to in force and added definitive-period threshold and authorisation language.",
     lastReviewed: REVIEWED,
     nextReviewDate: NEXT_REVIEW,
-    confidence: "medium",
-    confidenceLevel: "medium",
-    dataQualityStatus: "needs_review",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
     advisoryOpportunities: ["Scope 1, 2 and 3 emissions inventory", "Supplier due diligence", "ESG data model design", "Internal controls"],
+    firstReportDueDate: "2027-09-30",
+    phaseInNotes: "The transitional phase ran from 2023 to 2025. The definitive regime began on 1 January 2026, with CBAM certificate surrender and declaration obligations under the current consolidated regulation.",
+    penalties: "Article 26 ties non-surrender penalties to the EU ETS excess-emissions penalty for each missing CBAM certificate; unauthorised or non-compliant introduction of goods can trigger penalties of three to five times that amount, depending on the facts.",
     highImpact: true
   },
   {
@@ -214,7 +297,8 @@ export const regulations: Regulation[] = [
     title: "EU Deforestation Regulation",
     shortName: "EUDR",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Union",
     status: "transition",
@@ -225,21 +309,36 @@ export const regulations: Regulation[] = [
     valueChain: ["Upstream suppliers", "Products and materials", "Land use and nature"],
     valueChainImpact: ["Upstream suppliers", "Land use and nature", "Products and materials"],
     effectiveDate: "2023-06-29",
-    firstReportingYear: 2025,
+    firstReportingYear: 2026,
     summary: "Requires operators and traders to conduct due diligence on relevant commodities and products associated with deforestation risk.",
-    applicability: "Companies placing or exporting covered commodities and products, including cattle, cocoa, coffee, palm oil, rubber, soy and wood.",
+    applicability: "Operators and traders placing, making available or exporting covered commodities and products, including cattle, cocoa, coffee, oil palm, rubber, soy and wood, subject to role and size-based timing.",
+    applicabilityScope: {
+      thresholds: [
+        "Large and medium operators: entry into application on 30 December 2026.",
+        "Micro and small operators: entry into application on 30 June 2027.",
+        "Micro and small operators already covered by the EU Timber Regulation: 30 December 2026."
+      ],
+      entityTypes: ["Operator", "Trader", "Importer", "Exporter", "Supplier"],
+      sectorsInScope: ["Agriculture", "Food and beverage", "Manufacturing", "Packaging"]
+    },
     keyRequirements: ["Geolocation data", "Deforestation-free assessment", "Legality assessment", "Due diligence statements"],
     businessImpact: "Requires traceability, supplier controls, documentation and evidence management across affected commodity chains.",
     businessImpacts: ["due diligence obligation", "product compliance obligation", "supply chain obligation", "data collection obligation"],
     affectedFunctions: ["Procurement", "Supply chain", "Legal", "Sustainability", "Quality"],
-    sourceUrls: [src("Regulation (EU) 2023/1115", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R1115")],
-    latestUpdate: "Seed note: Application dates and guidance should be verified before operational use.",
+    sourceUrls: [
+      src("Regulation (EU) 2023/1115", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R1115"),
+      src("European Commission EUDR implementation page", "https://environment.ec.europa.eu/topics/forests/deforestation/regulation-deforestation-free-products_en", "regulator")
+    ],
+    latestUpdate: "May 2026 seed update: updated application dates after the 2025 simplification amendment.",
     lastReviewed: REVIEWED,
     nextReviewDate: NEXT_REVIEW,
-    confidence: "date_uncertain",
-    confidenceLevel: "date_uncertain",
-    dataQualityStatus: "date_uncertain",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
     advisoryOpportunities: ["Supplier due diligence", "Gap assessment", "ESG data model design", "Internal controls"],
+    firstReportDueDate: "2026-12-30",
+    phaseInNotes: "Application is phased by operator size, with current Commission guidance listing 30 December 2026 for large and medium operators and 30 June 2027 for micro and small operators.",
+    penalties: "EUDR penalties are set by Member States and must be effective, proportionate and dissuasive. EUR-Lex summaries describe fines of at least 4% of annual EU turnover, plus possible confiscation, exclusion from procurement or funding, and temporary market restrictions.",
     highImpact: true
   },
   {

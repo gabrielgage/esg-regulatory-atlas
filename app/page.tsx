@@ -12,6 +12,7 @@ import { RegulationDetail } from "@/components/RegulationDetail";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { ViewSelector } from "@/components/ViewSelector";
+import { DATASET_META } from "@/data/_meta";
 import { jurisdictions, quickViews, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
@@ -45,14 +46,14 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen pb-12">
+    <main id="main-content" className="min-h-screen pb-12">
       <Header />
       <div className="mx-auto max-w-7xl space-y-4 px-4 py-5 md:px-6">
         <section className="rounded-2xl bg-navy p-6 text-white shadow-xl md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
             <div>
               <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl">
-                ESG Regulatory Atlas
+                Etica ESG · Regulatory Atlas
               </h1>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
                 Interactive sustainability regulatory intelligence by jurisdiction, sector, value chain and reporting year.
@@ -67,6 +68,18 @@ export default function Home() {
         </section>
 
         <DisclaimerBanner />
+
+        <section className="flex flex-col gap-3 rounded-2xl border border-teal/20 bg-teal/5 p-4 shadow-sm md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="text-sm font-semibold text-teal">What's new</p>
+            <p className="mt-1 text-sm leading-6 text-slate-600">
+              {DATASET_META.edition}: EU source-quality pass, threshold and penalty placeholder cleanup, direct map counts and new compare, changelog and jurisdiction brief routes.
+            </p>
+          </div>
+          <Link href="/changelog" className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-semibold text-teal shadow-sm hover:bg-slate-50">
+            View changelog <ArrowRight className="h-4 w-4" />
+          </Link>
+        </section>
 
         <ViewSelector activeId={activeView} onApply={applyView} />
 

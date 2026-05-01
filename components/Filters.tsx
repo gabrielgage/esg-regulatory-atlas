@@ -1,4 +1,5 @@
 import { SlidersHorizontal, RotateCcw, Search } from "lucide-react";
+import type { ReactNode } from "react";
 import {
   advisoryOpportunities,
   businessFunctions,
@@ -68,55 +69,72 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
           <SlidersHorizontal className="h-4 w-4 text-teal" />
           Advanced filters
         </summary>
-        <div className="grid gap-3 border-t border-slate-100 p-3 md:grid-cols-3 xl:grid-cols-5">
-          <Select label="Region" value={filters.region} onChange={(value) => update("region", value)} options={regions} />
-          <Select
-            label="Jurisdiction type"
-            value={filters.jurisdictionType}
-            onChange={(value) => update("jurisdictionType", value)}
-            options={[
-              { value: "supranational", label: "Supranational" },
-              { value: "national", label: "National" },
-              { value: "subnational", label: "Subnational" },
-              { value: "international", label: "International" }
-            ]}
-          />
-          <Select
-            label="Regulation status"
-            value={filters.status}
-            onChange={(value) => update("status", value)}
-            options={Object.entries(statusLabel).map(([value, label]) => ({ value, label }))}
-          />
-          <Select label="Value chain impact" value={filters.valueChain} onChange={(value) => update("valueChain", value)} options={valueChainImpacts} />
-          <Select label="Business function" value={filters.businessFunction} onChange={(value) => update("businessFunction", value)} options={businessFunctions} />
-          <Select label="Obligation type" value={filters.obligation} onChange={(value) => update("obligation", value)} options={businessImpactTypes} />
-          <Select
-            label="Confidence"
-            value={filters.confidence}
-            onChange={(value) => update("confidence", value)}
-            options={[
-              { value: "high", label: "High" },
-              { value: "medium", label: "Medium" },
-              { value: "needs_review", label: "Needs review" },
-              { value: "date_uncertain", label: "Date uncertain" }
-            ]}
-          />
-          <Select
-            label="Data quality"
-            value={filters.dataQuality}
-            onChange={(value) => update("dataQuality", value)}
-            options={[
-              { value: "verified_seed", label: "Verified source set" },
-              { value: "recently_updated", label: "Recently updated" },
-              { value: "needs_review", label: "Needs review" },
-              { value: "date_uncertain", label: "Date uncertain" },
-              { value: "source_missing", label: "Source missing" }
-            ]}
-          />
-          <Select label="Advisory opportunity" value={filters.advisory} onChange={(value) => update("advisory", value)} options={advisoryOpportunities} />
+        <div className="space-y-3 border-t border-slate-100 p-3">
+          <AdvancedGroup title="Geography">
+            <Select label="Region" value={filters.region} onChange={(value) => update("region", value)} options={regions} />
+            <Select
+              label="Jurisdiction type"
+              value={filters.jurisdictionType}
+              onChange={(value) => update("jurisdictionType", value)}
+              options={[
+                { value: "supranational", label: "Supranational" },
+                { value: "national", label: "National" },
+                { value: "subnational", label: "Subnational" },
+                { value: "international", label: "International" }
+              ]}
+            />
+            <Select label="Value chain impact" value={filters.valueChain} onChange={(value) => update("valueChain", value)} options={valueChainImpacts} />
+          </AdvancedGroup>
+          <AdvancedGroup title="Regulatory shape">
+            <Select
+              label="Regulation status"
+              value={filters.status}
+              onChange={(value) => update("status", value)}
+              options={Object.entries(statusLabel).map(([value, label]) => ({ value, label }))}
+            />
+            <Select
+              label="Confidence"
+              value={filters.confidence}
+              onChange={(value) => update("confidence", value)}
+              options={[
+                { value: "high", label: "High" },
+                { value: "medium", label: "Medium" },
+                { value: "needs_review", label: "Needs review" },
+                { value: "date_uncertain", label: "Date uncertain" }
+              ]}
+            />
+            <Select
+              label="Data quality"
+              value={filters.dataQuality}
+              onChange={(value) => update("dataQuality", value)}
+              options={[
+                { value: "verified_seed", label: "Verified source set" },
+                { value: "recently_updated", label: "Recently updated" },
+                { value: "needs_review", label: "Needs review" },
+                { value: "date_uncertain", label: "Date uncertain" },
+                { value: "source_missing", label: "Source missing" }
+              ]}
+            />
+          </AdvancedGroup>
+          <AdvancedGroup title="Business framing">
+            <Select label="Business function" value={filters.businessFunction} onChange={(value) => update("businessFunction", value)} options={businessFunctions} />
+            <Select label="Obligation type" value={filters.obligation} onChange={(value) => update("obligation", value)} options={businessImpactTypes} />
+            <Select label="Advisory opportunity" value={filters.advisory} onChange={(value) => update("advisory", value)} options={advisoryOpportunities} />
+          </AdvancedGroup>
         </div>
       </details>
     </section>
+  );
+}
+
+function AdvancedGroup({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <details className="rounded-xl border border-slate-200 bg-white" open={title === "Geography"}>
+      <summary className="cursor-pointer list-none px-3 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+        {title}
+      </summary>
+      <div className="grid gap-3 border-t border-slate-100 p-3 md:grid-cols-3">{children}</div>
+    </details>
   );
 }
 

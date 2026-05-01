@@ -4,10 +4,12 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Badge } from "@/components/Badge";
+import { StatusBadge } from "@/components/StatusBadge";
+import { CitationWidget } from "@/components/CitationWidget";
 import { regulations } from "@/data/seed";
 import { SourceLink } from "@/types/regulation";
 import { profileFor } from "@/lib/applicability";
-import { formatDate, statusClass, statusLabel } from "@/lib/utils";
+import { formatDate } from "@/lib/utils";
 
 const sourceTypeLabel: Record<SourceLink["type"], string> = {
   primary: "Primary source",
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const regulation = regulations.find((item) => item.id === slug);
   return {
-    title: regulation ? `${regulation.shortName} | ESG Regulatory Atlas` : "Regulation | ESG Regulatory Atlas"
+    title: regulation ? `${regulation.shortName} | Etica ESG` : "Regulation | Etica ESG"
   };
 }
 
@@ -37,7 +39,7 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
   const scope = regulation.applicabilityScope;
 
   return (
-    <main className="min-h-screen pb-12">
+    <main id="main-content" className="min-h-screen pb-12">
       <Header />
       <div className="mx-auto max-w-5xl space-y-5 px-4 py-5 md:px-6">
         <Link href="/regulations" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-teal">
@@ -47,13 +49,14 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
 
         <section className="rounded-2xl border bg-white p-6 shadow-sm">
           <div className="flex flex-wrap gap-2">
-            <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
+            <StatusBadge status={regulation.status} />
             <Badge className="border-slate-200 bg-slate-50 text-slate-600">{regulation.jurisdiction}</Badge>
             <Badge className="border-slate-200 bg-slate-50 text-slate-600">{qualityLabel(regulation.dataQualityStatus)}</Badge>
             {regulation.highImpact && <Badge className="border-red-200 bg-red-50 text-red-700">High impact</Badge>}
           </div>
           <h1 className="mt-5 text-4xl font-bold tracking-tight text-ink">{regulation.shortName}</h1>
           <p className="mt-2 text-lg text-slate-600">{regulation.title}</p>
+          <p className="mt-3 text-sm font-semibold text-slate-500">Last reviewed by Gabriel Gage on {formatDate(regulation.lastReviewed)}</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             <Metric label="Issuing body" value={regulation.issuingBody} />
             <Metric label="Last reviewed" value={formatDate(regulation.lastReviewed)} />
@@ -66,10 +69,12 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           <p className="mt-3 text-slate-600">{regulation.businessImpact}</p>
         </Section>
 
+        <CitationWidget regulation={regulation} />
+
         <Section title="Scope of application">
           <p>{regulation.applicability}</p>
           <div className="mt-4 grid gap-3 md:grid-cols-3">
-            <ListBlock title="Thresholds" values={scope?.thresholds || ["Threshold review required against primary source and local implementation."]} />
+            {scope?.thresholds?.length ? <ListBlock title="Thresholds" values={scope.thresholds} /> : null}
             <ListBlock title="Entity types" values={scope?.entityTypes || profile.companyTypes} />
             <ListBlock title="Sectors in scope" values={scope?.sectorsInScope || regulation.sectors} />
           </div>
@@ -94,15 +99,22 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           </div>
         </Section>
 
-        <Section title="Penalties">
-          <p>{regulation.penalties || "Penalty and enforcement detail should be confirmed against the primary legal text and regulator guidance before client or compliance use."}</p>
-        </Section>
+        {regulation.penalties && (
+          <Section title="Penalties and enforcement">
+            <p>{regulation.penalties}</p>
+          </Section>
+        )}
 
         <Section title="Advisory opportunities">
           <BadgeList values={regulation.advisoryOpportunities} />
         </Section>
 
-        <Section title="Sources">
+        <Section title="Primary sources and data quality">
+          <div className="mb-4 grid gap-3 sm:grid-cols-3">
+            <Metric label="Confidence" value={regulation.confidenceLevel.replaceAll("_", " ")} />
+            <Metric label="Quality status" value={qualityLabel(regulation.dataQualityStatus)} />
+            <Metric label="Source links" value={String(regulation.sourceUrls.length)} />
+          </div>
           <div className="space-y-3">
             {regulation.sourceUrls.length ? (
               regulation.sourceUrls.map((source) => (

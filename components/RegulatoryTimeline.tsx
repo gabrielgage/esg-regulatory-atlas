@@ -1,7 +1,8 @@
 import { CalendarRange, Clock3 } from "lucide-react";
 import { Badge } from "./Badge";
+import { StatusBadge } from "./StatusBadge";
 import { Regulation } from "@/types/regulation";
-import { formatDate, statusClass, statusLabel } from "@/lib/utils";
+import { formatDate } from "@/lib/utils";
 
 export function RegulatoryTimeline({
   regulations,
@@ -55,7 +56,7 @@ export function RegulatoryTimeline({
                 </div>
               </div>
               <div className="flex items-start gap-2 md:justify-end">
-                <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
+                <StatusBadge status={regulation.status} />
               </div>
             </button>
           ))

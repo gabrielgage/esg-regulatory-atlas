@@ -21,7 +21,7 @@ export default function MethodologyPage() {
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
 
   return (
-    <main className="min-h-screen pb-12">
+    <main id="main-content" className="min-h-screen pb-12">
       <Header />
       <div className="mx-auto max-w-7xl space-y-5 px-4 py-5 md:px-6">
         <PageIntro
@@ -39,7 +39,7 @@ export default function MethodologyPage() {
             </div>
             <div className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
               <p>
-                ESG Regulatory Atlas is an independent radar of sustainability and ESG regulation. It is structured around three layers:
+                Etica ESG · Regulatory Atlas is an independent radar of sustainability and ESG regulation. It is structured around three layers:
                 international baseline frameworks, local jurisdictional rules, and sectoral or regional regulations that affect cross-border
                 operations, finance, products and value chains.
               </p>

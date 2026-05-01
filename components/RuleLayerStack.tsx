@@ -1,7 +1,8 @@
 import { ArrowUpRight, Building2, Globe2, Network, ShieldAlert } from "lucide-react";
 import { Badge } from "./Badge";
+import { StatusBadge } from "./StatusBadge";
 import { Jurisdiction, Regulation } from "@/types/regulation";
-import { formatDate, statusClass, statusLabel, uniq } from "@/lib/utils";
+import { formatDate, uniq } from "@/lib/utils";
 import { internationalRecords, localRecords, recordsForJurisdiction, sectoralRecords } from "@/lib/layers";
 
 export function RuleLayerStack({
@@ -117,7 +118,7 @@ function LayerColumn({
             </div>
             <p className="mt-1 line-clamp-2 text-sm leading-5 text-slate-500">{regulation.applicability}</p>
             <div className="mt-2 flex flex-wrap gap-1">
-              <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
+              <StatusBadge status={regulation.status} />
               <Badge className="border-slate-200 bg-white text-slate-600">
                 First reporting {regulation.firstReportingYear || formatDate(regulation.effectiveDate)}
               </Badge>

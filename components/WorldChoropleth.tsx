@@ -120,14 +120,15 @@ export function WorldChoropleth({
   );
   const euJurisdiction = jurisdictions.find((jurisdiction) => jurisdiction.code === "EUU");
   const trackedByIso3 = new Map(trackedCountries.map((jurisdiction) => [jurisdiction.iso3 || jurisdiction.code, jurisdiction]));
-  const countsById = new Map(jurisdictions.map((jurisdiction) => [jurisdiction.id, recordsFor(jurisdiction, regulations).length]));
-  const euCount = euJurisdiction ? recordsFor(euJurisdiction, regulations).length : 0;
+  const countsById = new Map(jurisdictions.map((jurisdiction) => [jurisdiction.id, directRecordsFor(jurisdiction, regulations).length]));
+  const euCount = euJurisdiction ? directRecordsFor(euJurisdiction, regulations).length : 0;
   const selectedJurisdiction = jurisdictions.find((jurisdiction) => jurisdiction.id === selectedId);
   const hoveredCountry = hoveredIso ? countryInfo(hoveredIso, features, trackedByIso3, euJurisdiction, countsById, euCount) : null;
   const hoveredSubnational = hoveredJurisdictionId ? jurisdictions.find((jurisdiction) => jurisdiction.id === hoveredJurisdictionId) : null;
   const featured = hoveredSubnational || hoveredCountry?.jurisdiction || selectedJurisdiction;
-  const featuredCount = featured ? recordsFor(featured, regulations).length : 0;
-  const featuredFirstYear = featured ? firstReportingYear(recordsFor(featured, regulations)) : null;
+  const featuredRecords = featured ? directRecordsFor(featured, regulations) : [];
+  const featuredCount = featuredRecords.length;
+  const featuredFirstYear = firstReportingYear(featuredRecords);
 
   return (
     <section className="flex h-full min-h-[520px] flex-col rounded-2xl border bg-white p-4 shadow-sm">
@@ -155,7 +156,7 @@ export function WorldChoropleth({
         </div>
 
         {featured && (
-          <div className="pointer-events-none absolute left-4 top-4 z-20 w-[min(320px,calc(100%-2rem))] rounded-xl border border-slate-200 bg-white/95 p-3 shadow-lg backdrop-blur">
+          <div className="pointer-events-none absolute left-4 top-4 z-20 hidden w-[min(320px,calc(100%-2rem))] rounded-xl border border-slate-200 bg-white/95 p-3 shadow-lg backdrop-blur lg:block">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <div className="font-semibold text-ink">{featured.name}</div>
@@ -173,13 +174,55 @@ export function WorldChoropleth({
           </div>
         )}
 
-        {!features.length && (
-          <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold text-slate-500">
-            Loading local world map...
-          </div>
-        )}
+        {!features.length && <MapSkeleton />}
 
-        <svg className="absolute inset-0 h-full w-full" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="World regulatory coverage choropleth map">
+        <div className="absolute inset-x-0 bottom-0 top-10 overflow-y-auto p-3 lg:hidden">
+          <div className="space-y-2">
+            {jurisdictions
+              .filter((jurisdiction) => jurisdiction.type !== "international")
+              .map((jurisdiction) => {
+                const count = countsById.get(jurisdiction.id) || 0;
+                return (
+                  <button
+                    key={jurisdiction.id}
+                    type="button"
+                    onClick={() => onSelect(jurisdiction)}
+                    onMouseEnter={() => setHoveredJurisdictionId(jurisdiction.id)}
+                    onMouseLeave={() => setHoveredJurisdictionId(null)}
+                    className={cn(
+                      "flex w-full items-start justify-between gap-3 rounded-xl border px-3 py-3 text-left transition hover:border-teal/40 hover:bg-teal/5",
+                      selectedId === jurisdiction.id ? "border-teal bg-teal/10" : "border-slate-200 bg-white"
+                    )}
+                  >
+                    <span className="min-w-0">
+                      <span className="block font-semibold text-ink">{jurisdiction.name}</span>
+                      <span className="mt-1 block text-xs leading-5 text-slate-500">{jurisdiction.executiveSummary}</span>
+                    </span>
+                    <span className="shrink-0 rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">
+                      {jurisdiction.code} - {count}
+                    </span>
+                  </button>
+                );
+              })}
+          </div>
+        </div>
+
+        <noscript>
+          <div className="absolute inset-0 overflow-y-auto bg-white p-4 text-sm text-slate-600">
+            <p className="font-semibold text-ink">Tracked jurisdictions</p>
+            <ul className="mt-3 grid gap-2">
+              {jurisdictions
+                .filter((jurisdiction) => jurisdiction.type !== "international")
+                .map((jurisdiction) => (
+                  <li key={jurisdiction.id}>
+                    {jurisdiction.name} ({jurisdiction.code})
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </noscript>
+
+        <svg className="absolute inset-0 hidden h-full w-full lg:block" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="World regulatory coverage choropleth map">
           <rect width={width} height={height} fill="#f8fafc" />
           <g>
             {features.map((feature) => {
@@ -297,17 +340,13 @@ function countryInfo(
   const euFallback = euJurisdiction && euMembers.has(iso3) ? euJurisdiction : undefined;
   const jurisdiction = direct || euFallback;
   const directCount = direct ? countsById.get(direct.id) || 0 : 0;
-  const count = direct ? Math.max(directCount, euFallback ? euCount : 0) : euFallback ? euCount : 0;
+  const count = direct ? directCount : euFallback ? euCount : 0;
   const featureName = features.find((feature) => feature.properties.iso3 === iso3)?.properties.name || iso3;
   return { jurisdiction, count, featureName };
 }
 
-function recordsFor(jurisdiction: Jurisdiction, regulations: Regulation[]) {
-  return regulations.filter(
-    (regulation) =>
-      regulation.jurisdictionIds.includes(jurisdiction.id) ||
-      Boolean(jurisdiction.parent && regulation.jurisdictionIds.includes(jurisdiction.parent))
-  );
+function directRecordsFor(jurisdiction: Jurisdiction, regulations: Regulation[]) {
+  return regulations.filter((regulation) => regulation.jurisdictionIds.includes(jurisdiction.id));
 }
 
 function firstReportingYear(regulations: Regulation[]) {
@@ -403,5 +442,19 @@ function Legend({ color, label }: { color: string; label: string }) {
       <i className="h-3 w-3 rounded-sm border border-white/70" style={{ background: color }} />
       {label}
     </span>
+  );
+}
+
+function MapSkeleton() {
+  return (
+    <svg className="absolute inset-0 hidden h-full w-full lg:block" viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
+      <rect width={width} height={height} fill="#f8fafc" />
+      <path d="M80 180 C145 110 260 125 302 190 C265 238 160 250 90 220 Z" fill="#e2e8f0" />
+      <path d="M270 310 C320 270 410 285 430 350 C390 420 290 395 250 345 Z" fill="#e2e8f0" />
+      <path d="M455 145 C525 105 630 125 655 205 C610 245 500 250 440 210 Z" fill="#e2e8f0" />
+      <path d="M520 250 C575 225 640 260 632 335 C590 385 515 350 500 300 Z" fill="#e2e8f0" />
+      <path d="M660 165 C760 95 910 135 940 235 C850 295 725 275 650 225 Z" fill="#e2e8f0" />
+      <path d="M760 345 C830 315 925 345 940 430 C865 470 780 430 740 380 Z" fill="#e2e8f0" />
+    </svg>
   );
 }

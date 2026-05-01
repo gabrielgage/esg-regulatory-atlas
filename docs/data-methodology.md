@@ -1,0 +1,202 @@
+# Data Methodology
+
+## Purpose
+
+The data layer provides structured seed regulatory intelligence for orientation and planning. It is not a complete legal database and should not be presented as definitive regulatory coverage.
+
+The methodology is designed to make uncertainty visible, keep the product legally cautious, and make future data review easier.
+
+## Data Storage
+
+The MVP stores data in static TypeScript files:
+
+- `data/regulations.ts`
+- `data/coverageAdditions.ts`
+- `data/jurisdictions.ts`
+- `data/sectors.ts`
+- `data/taxonomy.ts`
+- `data/_meta.ts`
+
+Shared domain types live in:
+
+- `types/regulation.ts`
+
+Filtering and applicability logic lives in:
+
+- `lib/filters.ts`
+- `lib/applicability.ts`
+
+Do not hardcode regulatory records inside UI components.
+
+## Source Hierarchy
+
+Use the strongest available source for each claim.
+
+Preferred hierarchy:
+
+1. Primary law or regulation
+2. Regulator guidance
+3. Official consultation
+4. Standard setter material
+5. Government announcement
+6. Recognised professional body
+7. Secondary commentary
+8. Internal analysis
+
+Primary source links should be visually prioritized where possible.
+
+## Required Record Metadata
+
+Each regulation record should include:
+
+- Stable ID
+- Title
+- Short name
+- Jurisdiction and jurisdiction IDs
+- Transposed or inherited jurisdiction IDs where relevant
+- Jurisdiction type
+- Legal instrument type
+- Issuing body
+- Status
+- Adoption level where relevant
+- Topics
+- Sectors
+- Company types
+- Value chain coverage
+- Business functions
+- Applicability summary
+- Key requirements
+- Business impact
+- Required actions
+- Evidence required
+- Advisory opportunities
+- Source URLs
+- Latest update or change log summary
+- Last reviewed date
+- Next review date where feasible
+- Confidence level
+- Data quality status
+- Caveats
+
+## Jurisdiction Counting Method
+
+Use `jurisdictionIds` for direct record ownership. These IDs drive direct map counts and primary jurisdiction filters.
+
+Use `transposedJurisdictionIds` for cases where a parent-level or supranational rule is relevant to a national profile but should not inflate that national jurisdiction's direct record count.
+
+Example:
+
+- CSRD is an EU-level record with `jurisdictionIds: ["eu"]`.
+- It can include `transposedJurisdictionIds: ["nl"]` so Netherlands can show EU exposure context.
+- The Netherlands map count should not exceed the EU count because every EU rule was also counted as Dutch law.
+
+## Confidence Levels
+
+Use confidence to describe the reliability and completeness of the record, not the importance of the regulation.
+
+### High
+
+Use when primary sources are available, dates are clear, and the summary has been reviewed against the cited source.
+
+### Medium
+
+Use when the record has credible sources but may need review for jurisdiction-specific implementation, thresholds, phase-in detail, or recent updates.
+
+### Low
+
+Use when the record is based on limited information, secondary sources, evolving proposals, or uncertain implementation timelines.
+
+## Data Quality Status
+
+Use consistent status labels.
+
+### Verified
+
+The record has primary or official source support and has been reviewed recently.
+
+### Needs Review
+
+The record may be directionally useful but needs source, date, applicability, or wording review.
+
+### Source Missing
+
+The record lacks a sufficient primary or official source.
+
+### Date Uncertain
+
+The record includes effective dates, reporting years, consultation deadlines, or phase-in timing that needs confirmation.
+
+### Seed Data
+
+The record is included for MVP demonstration and should not be treated as production-verified.
+
+## Review Cadence
+
+Recommended review cadence:
+
+- High-impact in-force regulation: every 90 days
+- Proposed or consultation-stage regulation: every 30 to 60 days
+- Voluntary frameworks and standards: every 180 days
+- Records marked needs review, source missing, or date uncertain: prioritize before client use
+
+## Adding A Regulation
+
+When adding a regulation:
+
+1. Confirm the regulation belongs in the MVP scope.
+2. Add or reuse taxonomy labels from `data/taxonomy.ts`.
+3. Add source URLs with source type.
+4. Write cautious summaries and applicability language.
+5. Add business impacts, affected functions, required actions, and evidence required.
+6. Add advisory opportunities if relevant.
+7. Add confidence and data quality status.
+8. Add caveats for threshold uncertainty, implementation uncertainty, or source limitations.
+9. Verify filters and detail views still render.
+
+## Updating A Regulation
+
+When updating a regulation:
+
+1. Preserve the stable ID unless a controlled migration is planned.
+2. Update source metadata and last reviewed date.
+3. Update change log summary.
+4. Reconsider confidence and data quality status.
+5. Check whether taxonomy labels still match the record.
+6. Confirm no UI filter breaks due to a new label.
+7. If the update changes visible coverage, update `data/_meta.ts`, `/changelog` copy and the handoff document where appropriate.
+
+## Applicability Method
+
+The assessment wizard is an orientation tool. It should classify records into cautious categories based on static rules, such as jurisdiction exposure, company type, sector, financial institution status, EU market exposure, supplier exposure, or portfolio exposure.
+
+Approved output categories:
+
+- Potentially directly relevant
+- Potentially indirectly relevant
+- Relevant through investors or customers
+- Monitor only
+
+The wizard must explain why a record appears and should direct users to sources and qualified advisors for confirmation.
+
+## Production Research Workflow Recommendation
+
+Before using this product for client-facing regulated decisions, create a production research workflow with:
+
+- Named data owners
+- Source review checklist
+- Legal review checklist
+- Date and threshold verification
+- Version history
+- Change approval
+- Jurisdiction review cadence
+- Clear escalation path for uncertain records
+
+## Context Maintenance
+
+When data methodology changes, update:
+
+- `types/regulation.ts`
+- `docs/data-methodology.md`
+- `docs/regulatory-taxonomy.md` if labels change
+- `docs/legal-safeguards.md` if wording or applicability categories change
+- `ESG_Regulatory_Atlas_Claude_Handoff.md` if the change affects current implementation state

@@ -14,7 +14,7 @@ export default function AssessmentPage() {
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
 
   return (
-    <main className="min-h-screen pb-12">
+    <main id="main-content" className="min-h-screen pb-12">
       <Header />
       <div className="mx-auto max-w-7xl space-y-5 px-4 py-5 md:px-6">
         <PageIntro

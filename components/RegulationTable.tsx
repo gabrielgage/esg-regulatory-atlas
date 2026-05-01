@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { ArrowUpRight, Database, ShieldAlert } from "lucide-react";
 import { Badge } from "./Badge";
+import { StatusBadge } from "./StatusBadge";
 import { Regulation } from "@/types/regulation";
-import { cn, statusClass, statusLabel } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 export function RegulationTable({ regulations, onSelect }: { regulations: Regulation[]; onSelect: (r: Regulation) => void }) {
   if (!regulations.length) {
@@ -70,7 +71,7 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
                   <div className="mt-1 text-xs capitalize text-slate-500">{regulation.jurisdictionType}</div>
                 </td>
                 <td className="px-5 py-4">
-                  <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
+                  <StatusBadge status={regulation.status} />
                 </td>
                 <td className="px-5 py-4">
                   <div className="flex max-w-xs flex-wrap gap-1">

@@ -1,8 +1,13 @@
 export const DATASET_META = {
-  lastReviewed: "2026-04-30",
+  publisher: "Etica ESG",
+  publisherUrl: "https://eticaesg.com",
+  editor: "Gabriel Gage",
+  lastReviewed: "2026-05-02",
   nextReview: "2026-07-31",
-  edition: "0.4 - April 2026",
-  byline: "Compiled by Gabriel Gage. ESG, Sustainability and Global Legal Perspectives.",
-  contactEmail: "gabegage@gmail.com",
+  edition: "0.5 - May 2026",
+  editionSlug: "0.5",
+  byline: "Edited by Gabriel Gage for Etica ESG. Independent ESG regulatory intelligence.",
+  contactEmail: "gabriel@eticaesg.com",
+  linkedinUrl: "https://www.linkedin.com/in/gabrielgage/",
   changelogUrl: "/changelog"
 } as const;

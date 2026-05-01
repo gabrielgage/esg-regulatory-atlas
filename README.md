@@ -1,20 +1,32 @@
-# ESG Regulatory Atlas
+# Etica ESG · Regulatory Atlas
 
 Interactive sustainability regulatory intelligence by jurisdiction, sector, value chain and reporting year.
 
-ESG Regulatory Atlas is a static Next.js MVP for exploring ESG, climate, sustainable finance, supply chain due diligence, biodiversity, product sustainability and corporate reporting rules. It is designed for sustainability leaders, ESG consultants, legal and compliance teams, finance and controllership teams, investors, banks, insurers, procurement teams and board/risk committees.
+Etica ESG · Regulatory Atlas is a static Next.js MVP for exploring ESG, climate, sustainable finance, supply chain due diligence, biodiversity, product sustainability and corporate reporting rules. It is designed for sustainability leaders, ESG consultants, legal and compliance teams, finance and controllership teams, investors, banks, insurers, procurement teams and board/risk committees.
+
+Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## MVP scope
 
 - Next.js, React, TypeScript and Tailwind v3
 - Stable Tailwind/PostCSS v3 setup for Vercel deployment
+- Production build uses the stable Next.js webpack build path for this MVP
 - Static Natural Earth choropleth map with no paid map API and no Mapbox token
 - Jurisdiction profile panel
 - Regulation detail drawer and `/regulations/[slug]` pages with sources, caveats, business impact and advisory opportunities
+- Public changelog at `/changelog`
+- Jurisdiction and regulation comparison workspace at `/compare`
+- Printable/copyable jurisdiction briefs at `/jurisdiction/[code]/brief`
 - Client applicability wizard with indicative categories
+- Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor use cases
 - Search and filters across jurisdiction, region, topic, sector, company type, value chain, function, obligation, status, year, confidence, data quality and advisory opportunity
 - Saved quick views for consulting and compliance workflows
 - Timeline, methodology/source library, coverage matrix, impact matrix and comparison views
+- Dedicated Data Quality page for source coverage and review risk
+- Citation widget on regulation detail pages with APA-style, legal research note and BibTeX copy blocks
+- Edition snapshot route at `/edition/0.5/regulations/[slug]`
+- Branded 404 page and ISSB redirect aliases
+- Light/dark mode toggle with local preference persistence
 - Copyable client planning summary
 - Static TypeScript seed data only
 - No authentication, database, Supabase, Stripe, scraping, cron jobs, AI summaries, email alerts or required environment variables
@@ -61,6 +73,7 @@ The original deployment failure was caused by an inconsistent Tailwind/PostCSS s
 Seed data is stored in:
 
 - `data/_meta.ts`
+- `data/changelog.ts`
 - `data/sectors.ts`
 - `data/jurisdictions.ts`
 - `data/regulations.ts`
@@ -68,6 +81,48 @@ Seed data is stored in:
 - `data/taxonomy.ts`
 
 Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`.
+
+## Project guidance
+
+Use these files to brief future coding agents, reviewers and collaborators:
+
+- `AGENTS.md`: repo-specific operating instructions for Codex, Claude and future agents
+- `ESG_Regulatory_Atlas_Claude_Handoff.md`: implementation handoff and current technical context
+- `docs/product-brief.md`: product purpose, users, workflow and success criteria
+- `docs/roadmap.md`: phase boundaries and recommended next improvements
+- `docs/data-methodology.md`: seed data structure, source hierarchy and review workflow
+- `docs/legal-safeguards.md`: approved legal wording, disclaimers and caution rules
+- `docs/regulatory-taxonomy.md`: canonical topics, sectors, value chain labels and statuses
+- `docs/development-workflow.md`: working process, validation steps and documentation update rules
+
+## Current edition
+
+The current seed dataset edition is `0.5 - May 2026`.
+
+This edition focuses on the Etica rebrand and credibility improvements from the v4 review:
+
+- rebranded global identity to Etica ESG with temporary SVG logo, favicon and social image
+- updated dataset metadata with Etica publisher, editor, contact email and LinkedIn fields
+- added dark/light mode toggle in the global header
+- simplified the primary navigation to Map, Regulations, Assessment, Timeline, Briefing and Data Quality
+- restored `/data-quality` as a real governance page rather than a redirect
+- added branded not-found route and redirect aliases for common ISSB URLs
+- added citation copy blocks and edition snapshot routes for regulation pages
+- expanded `/compare` so it supports both jurisdiction pairs and regulation record IDs
+- added persona doorway presets and safer assessment wording
+- grouped advanced filters into geography, regulatory shape and business framing
+- replaced generic threshold placeholders on marquee EU records with source-linked scope notes
+- removed generic penalty placeholders from regulation detail pages
+- updated EU records for CSRD, ESRS, EU Taxonomy, SFDR, CSDDD, CBAM, EUDR, ESPR, Batteries and Forced Labour
+- changed the map aggregation so national counts are not inflated by parent EU records
+- added public changelog, comparison, jurisdiction brief and sector heatmap surfaces
+- added favicon and mobile map fallback list
+
+## Agent workflow rule
+
+When making meaningful updates, keep the context files current. Future Codex or Claude runs should not need to rediscover product state, build strategy, data methodology, legal wording or shipped routes from scratch.
+
+The shortest rule is: if a change affects how the product works, how it is validated, how data is structured, or how legal risk is managed, update the relevant documentation in the same pass.
 
 ## Adding a regulation
 

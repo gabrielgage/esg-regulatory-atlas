@@ -1,7 +1,8 @@
 import { ExternalLink, X } from "lucide-react";
 import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
-import { formatDate, statusClass, statusLabel } from "@/lib/utils";
+import { StatusBadge } from "./StatusBadge";
+import { formatDate } from "@/lib/utils";
 import { profileFor } from "@/lib/applicability";
 
 export function RegulationDetail({ regulation, onClose }: { regulation: Regulation | null; onClose: () => void }) {
@@ -20,12 +21,13 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
 
       <div className="pr-12">
         <div className="flex flex-wrap gap-2">
-          <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
+          <StatusBadge status={regulation.status} />
           <Badge className="border-slate-200 bg-slate-50 text-slate-600">{regulation.adoptionLevel.replaceAll("_", " ")}</Badge>
           {regulation.highImpact && <Badge className="border-red-200 bg-red-50 text-red-700">High impact</Badge>}
         </div>
         <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink">{regulation.shortName}</h2>
         <p className="mt-1 text-slate-500">{regulation.title}</p>
+        <p className="mt-2 text-sm font-semibold text-slate-500">Last reviewed by Gabriel Gage on {formatDate(regulation.lastReviewed)}</p>
         <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900">
           This record is seed regulatory intelligence and may be incomplete. It does not determine legal applicability; confirm entity-specific scope, dates and obligations with primary sources and qualified advisors.
         </p>
@@ -34,6 +36,17 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
       <div className="mt-6 grid gap-4">
         <Card title="Executive summary">{regulation.summary}</Card>
         <Card title="Applicability">{regulation.applicability}</Card>
+        {regulation.applicabilityScope?.thresholds?.length ? (
+          <Card title="Scope thresholds">
+            <ul className="space-y-2">
+              {regulation.applicabilityScope.thresholds.map((threshold) => (
+                <li key={threshold} className="rounded-lg bg-white px-3 py-2">
+                  {threshold}
+                </li>
+              ))}
+            </ul>
+          </Card>
+        ) : null}
         <Card title="Company profile fit">
           <BadgeList values={profile.companyTypes} tone="slate" />
         </Card>
@@ -82,6 +95,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
         <Card title="Advisory opportunities">
           <BadgeList values={regulation.advisoryOpportunities} tone="violet" />
         </Card>
+        {regulation.penalties ? <Card title="Penalties and enforcement">{regulation.penalties}</Card> : null}
         <Card title="Typical client questions">
           <ul className="space-y-2">
             {profile.typicalClientQuestions.map((question) => (

@@ -2,8 +2,9 @@
 
 import { AlertTriangle, ArrowUpRight, BriefcaseBusiness, ClipboardCheck, Gauge } from "lucide-react";
 import { Badge } from "./Badge";
+import { StatusBadge } from "./StatusBadge";
 import { Regulation } from "@/types/regulation";
-import { statusClass, statusLabel, uniq } from "@/lib/utils";
+import { uniq } from "@/lib/utils";
 
 export function ExecutiveBriefing({
   regulations,
@@ -59,7 +60,7 @@ export function ExecutiveBriefing({
                 </div>
                 <p className="mt-2 line-clamp-2 text-sm leading-5 text-slate-500">{regulation.businessImpact}</p>
                 <div className="mt-3 flex flex-wrap gap-1">
-                  <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
+                  <StatusBadge status={regulation.status} />
                   {regulation.businessImpacts.slice(0, 2).map((impact) => (
                     <Badge key={impact} className="border-slate-200 bg-slate-50 text-slate-600">
                       {impact}

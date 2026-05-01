@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import { ArrowUpRight, CalendarDays, Globe2, Layers3, LinkIcon, Network } from "lucide-react";
+import { ArrowUpRight, CalendarDays, FileText, GitCompare, Globe2, Layers3, LinkIcon, Network } from "lucide-react";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
-import { cn, formatDate, statusClass, statusLabel, uniq } from "@/lib/utils";
+import { StatusBadge } from "./StatusBadge";
+import { cn, formatDate, uniq } from "@/lib/utils";
 import { internationalRecords, localRecords, recordsForJurisdiction, sectoralRecords } from "@/lib/layers";
 
 const tabs = ["Overview", "Regulations", "Timeline", "Value chain", "Sources"] as const;
@@ -29,6 +31,8 @@ export function CountryPanel({
   }
 
   const regs = recordsForJurisdiction(jurisdiction, regulations);
+  const directRegs = regulations.filter((regulation) => regulation.jurisdictionIds.includes(jurisdiction.id));
+  const inheritedRegs = jurisdiction.parent ? regulations.filter((regulation) => regulation.jurisdictionIds.includes(jurisdiction.parent || "")) : [];
   const sectors = uniq(regs.flatMap((regulation) => regulation.sectors)).slice(0, 8);
   const impacts = uniq(regs.flatMap((regulation) => regulation.valueChain)).slice(0, 8);
   const drivers = uniq(regs.flatMap((regulation) => regulation.topics)).slice(0, 6);
@@ -51,10 +55,29 @@ export function CountryPanel({
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-3">
-        <Metric label="Records" value={String(regs.length)} />
+        <Metric label="Direct records" value={String(directRegs.length)} />
+        <Metric label="Linked records" value={String(regs.length)} />
+        <Metric label="EU/inherited" value={String(inheritedRegs.length)} />
         <Metric label="Sources" value={String(sourceCount)} />
         <Metric label="First years" value={years.length ? years.slice(0, 3).join(", ") : "n/a"} />
         <Metric label="Confidence" value={confidenceSummary} />
+      </div>
+
+      <div className="mt-4 grid gap-2 sm:grid-cols-2">
+        <Link
+          href={`/jurisdiction/${jurisdiction.code.toLowerCase()}/brief`}
+          className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+        >
+          <FileText className="h-4 w-4" />
+          Open country brief
+        </Link>
+        <Link
+          href={`/compare?a=${jurisdiction.code}&b=${jurisdiction.code === "GBR" ? "EUU" : "GBR"}`}
+          className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+        >
+          <GitCompare className="h-4 w-4" />
+          Compare with...
+        </Link>
       </div>
 
       <div className="mt-4 flex gap-1 overflow-x-auto rounded-full border bg-slate-50 p-1">
@@ -115,7 +138,7 @@ export function CountryPanel({
                         First reporting {regulation.firstReportingYear || formatDate(regulation.effectiveDate)}
                       </div>
                     </div>
-                    <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
+                    <StatusBadge status={regulation.status} />
                   </button>
                 ))}
             </div>
@@ -219,7 +242,7 @@ function RegulationButton({ regulation, onRegulation }: { regulation: Regulation
     >
       <div className="flex items-center justify-between gap-3">
         <span className="font-semibold text-ink">{regulation.shortName}</span>
-        <Badge className={statusClass[regulation.status]}>{statusLabel[regulation.status]}</Badge>
+        <StatusBadge status={regulation.status} />
       </div>
       <p className="mt-2 line-clamp-2 text-sm leading-5 text-slate-500">{regulation.summary}</p>
     </button>

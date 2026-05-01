@@ -42,6 +42,7 @@ export interface Regulation {
   shortName: string;
   jurisdiction: string;
   jurisdictionIds: string[];
+  transposedJurisdictionIds?: string[];
   jurisdictionType: JurisdictionType;
   issuingBody: string;
   status: Status;

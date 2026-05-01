@@ -1,6 +1,6 @@
 import { Regulation, SourceLink } from "@/types/regulation";
 
-const REVIEWED = "2026-04-29";
+const REVIEWED = "2026-05-02";
 
 const src = (label: string, url: string, type: SourceLink["type"] = "primary"): SourceLink => ({
   label,
@@ -14,7 +14,8 @@ export const coverageAdditions: Regulation[] = [
     title: "Ecodesign for Sustainable Products Regulation and Digital Product Passport",
     shortName: "EU ESPR / DPP",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Commission",
     status: "in_force",
@@ -27,19 +28,30 @@ export const coverageAdditions: Regulation[] = [
     effectiveDate: "2024-07-18",
     firstReportingYear: 2026,
     summary: "Framework regulation for setting ecodesign requirements across broad product categories, including durability, reparability, resource efficiency, recycled content and Digital Product Passport data.",
-    applicability: "Economic operators placing covered physical products on the EU market, subject to product-group rules and delegated acts.",
+    applicability: "Economic operators placing covered physical products on the EU market, subject to product-group delegated acts, digital product passport requirements and product-specific implementation timelines.",
+    applicabilityScope: {
+      thresholds: [
+        "ESPR is a framework regulation for almost all physical goods, with exemptions such as food, feed and medicinal products.",
+        "Binding obligations depend on product-group delegated acts and horizontal rules adopted under the framework.",
+        "The first ESPR and Energy Labelling Working Plan was adopted in April 2025 and prioritises product groups for future rules."
+      ],
+      entityTypes: ["Manufacturer", "Importer", "Distributor", "Retailer", "Online marketplace", "Product operator"],
+      sectorsInScope: ["Manufacturing", "Retail", "Consumer goods", "Technology", "Textiles", "Automotive"]
+    },
     keyRequirements: ["Ecodesign performance requirements", "Product information requirements", "Digital Product Passport readiness", "Unsold goods transparency for selected sectors"],
     businessImpact: "Moves sustainability compliance into product design, master data, supplier traceability, lifecycle information and customer-facing product data.",
     businessImpacts: ["product compliance obligation", "data collection obligation", "supply chain obligation", "governance obligation"],
     affectedFunctions: ["Product", "Supply chain", "Procurement", "IT", "Legal", "Sustainability"],
     sourceUrls: [src("European Commission ESPR overview", "https://commission.europa.eu/energy-climate-change-environment/standards-tools-and-labels/products-labelling-rules-and-requirements/ecodesign-sustainable-products-regulation_en", "regulator")],
-    latestUpdate: "Seed note: ESPR is in force, but many product-specific obligations depend on future delegated acts and product-group work plans.",
+    latestUpdate: "May 2026 seed update: added ESPR scope, DPP and working-plan implementation context.",
     lastReviewed: REVIEWED,
     nextReviewDate: "2026-06-30",
-    confidence: "medium",
-    confidenceLevel: "medium",
-    dataQualityStatus: "needs_review",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
     advisoryOpportunities: ["Digital product passport readiness", "Product compliance data model", "Supplier due diligence", "ESG data model design"],
+    phaseInNotes: "The ESPR entered into force on 18 July 2024. Product-specific requirements will phase in through delegated acts and implementation measures following working-plan priorities.",
+    penalties: "ESPR penalties are set through Member State enforcement for product-specific and framework obligations. Exposure may include market surveillance action, product restrictions and national penalties once delegated requirements apply.",
     highImpact: true
   },
   {
@@ -47,7 +59,8 @@ export const coverageAdditions: Regulation[] = [
     title: "Packaging and Packaging Waste Regulation",
     shortName: "EU PPWR",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Union",
     status: "transition",
@@ -80,7 +93,8 @@ export const coverageAdditions: Regulation[] = [
     title: "EU Batteries Regulation",
     shortName: "EU Batteries Regulation",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Union",
     status: "in_force",
@@ -93,7 +107,16 @@ export const coverageAdditions: Regulation[] = [
     effectiveDate: "2023-08-17",
     firstReportingYear: 2026,
     summary: "Lifecycle regulation for batteries covering sustainability, safety, labelling, recycled content, carbon footprint, battery passport and raw material due diligence requirements.",
-    applicability: "Economic operators placing batteries on the EU market, with obligations varying by battery category and company role.",
+    applicability: "Economic operators placing batteries on the EU market, with obligations varying by battery category, role, company size and phased application date.",
+    applicabilityScope: {
+      thresholds: [
+        "Applies across battery categories placed on the EU market, including portable, industrial, electric vehicle, LMT and SLI batteries.",
+        "Carbon footprint, recycled content, labelling, battery passport and due diligence obligations phase in by battery type and date.",
+        "Battery due diligence obligations were postponed to 18 August 2027 under the 2025 stop-the-clock measure."
+      ],
+      entityTypes: ["Manufacturer", "Importer", "Distributor", "Producer", "Exporter"],
+      sectorsInScope: ["Automotive", "Technology", "Manufacturing", "Energy", "Retail"]
+    },
     keyRequirements: ["Battery carbon footprint data", "Recycled content and labelling", "Battery passport and QR code readiness", "Raw material due diligence"],
     businessImpact: "Combines product compliance, responsible sourcing, carbon data and circularity requirements for battery value chains.",
     businessImpacts: ["product compliance obligation", "due diligence obligation", "supply chain obligation", "data collection obligation"],
@@ -102,13 +125,15 @@ export const coverageAdditions: Regulation[] = [
       src("European Commission batteries news", "https://environment.ec.europa.eu/news/new-law-more-sustainable-circular-and-safe-batteries-enters-force-2023-08-17_en", "regulator"),
       src("Council adoption press release", "https://www.consilium.europa.eu/en/press/press-releases/2023/07/10/council-adopts-new-regulation-on-batteries-and-waste-batteries/", "secondary")
     ],
-    latestUpdate: "Seed note: Due diligence application timing has been subject to EU simplification activity and should be checked before client advice.",
+    latestUpdate: "May 2026 seed update: added battery due-diligence stop-the-clock timing and category-based scope.",
     lastReviewed: REVIEWED,
     nextReviewDate: "2026-06-30",
-    confidence: "medium",
-    confidenceLevel: "medium",
-    dataQualityStatus: "needs_review",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
     advisoryOpportunities: ["Supplier due diligence", "Digital product passport readiness", "Scope 1, 2 and 3 emissions inventory", "Product compliance data model"],
+    phaseInNotes: "Several product, labelling, carbon footprint and passport obligations phase in separately. Battery due diligence obligations are postponed to 18 August 2027.",
+    penalties: "Member States set penalties for Batteries Regulation infringements. Enforcement can affect market access, product compliance, due diligence verification and reporting obligations.",
     highImpact: true
   },
   {
@@ -116,7 +141,8 @@ export const coverageAdditions: Regulation[] = [
     title: "EU environmental claims and greenwashing rules",
     shortName: "EU Green Claims",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Commission",
     status: "consultation",
@@ -184,7 +210,8 @@ export const coverageAdditions: Regulation[] = [
     title: "EU Forced Labour Regulation",
     shortName: "EU Forced Labour Regulation",
     jurisdiction: "European Union",
-    jurisdictionIds: ["eu", "nl"],
+    jurisdictionIds: ["eu"],
+    transposedJurisdictionIds: ["nl"],
     jurisdictionType: "supranational",
     issuingBody: "European Union",
     status: "adopted",
@@ -197,19 +224,31 @@ export const coverageAdditions: Regulation[] = [
     effectiveDate: "2024-12-12",
     firstReportingYear: 2027,
     summary: "Creates an EU market prohibition framework for products made with forced labour, covering products made in the EU, imported into the EU or exported from the EU.",
-    applicability: "Potentially relevant to companies placing goods on, exporting from or importing into the EU market where forced-labour risk may exist in the value chain.",
+    applicability: "Economic operators placing products on the EU market, importing products into the EU or exporting products from the EU where forced-labour risk may exist in the value chain.",
+    applicabilityScope: {
+      thresholds: [
+        "Applies to products made with forced labour regardless of sector or geographic origin.",
+        "Rules start to apply on 14 December 2027.",
+        "EU countries must designate competent authorities by 14 December 2025; the Commission must publish supporting database and guidelines by 14 June 2026."
+      ],
+      entityTypes: ["Manufacturer", "Importer", "Exporter", "Retailer", "Supplier", "Economic operator"],
+      sectorsInScope: ["All sectors", "Manufacturing", "Retail", "Technology", "Textiles", "Agriculture"]
+    },
     keyRequirements: ["Forced-labour risk assessment", "Supplier traceability", "Investigation response readiness", "Product detention and remediation planning"],
     businessImpact: "Moves human-rights due diligence into product, customs, sourcing and supplier evidence workflows.",
     businessImpacts: ["due diligence obligation", "product compliance obligation", "supply chain obligation", "data collection obligation"],
     affectedFunctions: ["Procurement", "Supply chain", "Legal", "Compliance", "Product", "Sustainability"],
-    sourceUrls: [src("European Commission forced labour agreement", "https://single-market-economy.ec.europa.eu/news/commission-welcomes-political-agreement-ban-products-made-forced-labour-union-market-2024-03-05_en", "regulator")],
-    latestUpdate: "Seed note: Treat as a phased product and supply chain risk item; verify application timing and guidance before client use.",
+    sourceUrls: [src("European Commission Forced Labour Regulation page", "https://single-market-economy.ec.europa.eu/single-market/goods/forced-labour-regulation_en", "regulator")],
+    latestUpdate: "May 2026 seed update: added 14 December 2027 application date and supporting-tool milestones.",
     lastReviewed: REVIEWED,
     nextReviewDate: "2026-06-30",
-    confidence: "medium",
-    confidenceLevel: "medium",
-    dataQualityStatus: "needs_review",
+    confidence: "high",
+    confidenceLevel: "high",
+    dataQualityStatus: "verified_seed",
     advisoryOpportunities: ["Supplier due diligence", "Evidence and control framework", "Regulatory roadmap", "Gap assessment"],
+    firstReportDueDate: "2027-12-14",
+    phaseInNotes: "The regulation starts to apply on 14 December 2027. EU-level database and guidelines are expected before application and should be monitored for operational detail.",
+    penalties: "Authorities may investigate, prohibit market placement, require withdrawal and order disposal of products made with forced labour. Member States set penalties for non-compliance under the regulation's enforcement framework.",
     highImpact: true
   },
   {

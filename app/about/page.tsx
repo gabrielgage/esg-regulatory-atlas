@@ -11,13 +11,13 @@ import { formatDate } from "@/lib/utils";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen pb-12">
+    <main id="main-content" className="min-h-screen pb-12">
       <Header />
       <div className="mx-auto max-w-5xl space-y-5 px-4 py-5 md:px-6">
         <PageIntro
           eyebrow="About"
-          title="About ESG Regulatory Atlas"
-          body="An independent, source-led radar for sustainability and ESG regulatory planning."
+          title="About Etica ESG"
+          body="Etica ESG publishes a source-led Regulatory Atlas for sustainability and ESG regulatory planning."
         />
         <DisclaimerBanner />
 
@@ -31,7 +31,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-5 space-y-4 text-sm leading-7 text-slate-600">
             <p>
-              ESG Regulatory Atlas is an independent, free-to-use radar of sustainability and ESG regulation. It is structured around three layers:
+              Etica ESG · Regulatory Atlas is an independent, free-to-use radar of sustainability and ESG regulation. It is structured around three layers:
               international baseline frameworks such as ISSB, GRI and TCFD, local jurisdictional rules, and sectoral or regional regulations that
               affect cross-border value chains, products, finance and corporate reporting.
             </p>
@@ -41,7 +41,7 @@ export default function AboutPage() {
               {formatDate(DATASET_META.nextReview)}.
             </p>
             <p>
-              {DATASET_META.byline} The product is designed for orientation, planning and briefing. It does not provide legal, tax, investment or
+              Published by {DATASET_META.publisher} and edited by {DATASET_META.editor}. The product is designed for orientation, planning and briefing. It does not provide legal, tax, investment or
               assurance advice.
             </p>
           </div>
@@ -56,8 +56,39 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <section className="rounded-2xl border bg-white p-6 shadow-sm">
+          <h2 className="text-lg font-semibold text-ink">Key trends emerging</h2>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            <Trend
+              title="ISSB convergence is accelerating"
+              body="Singapore, Japan, Australia, Brazil, Canada and Turkey show how national disclosure regimes are using ISSB-aligned standards as a baseline while preserving local timing and assurance rules."
+            />
+            <Trend
+              title="EU simplification is now a core watch item"
+              body="CSRD and CSDDD scope, timing and reporting burdens are being reshaped through stop-the-clock and Omnibus measures, making dated source review essential."
+            />
+            <Trend
+              title="Product and trade rules are becoming operational"
+              body="CBAM, EUDR, ESPR, Batteries and Forced Labour move ESG from reporting teams into procurement, customs, product data and supplier evidence workflows."
+            />
+            <Trend
+              title="State and market pressure fill federal gaps"
+              body="Where federal climate disclosure is paused or uncertain, California, investor expectations, customer requests and international regimes still create practical readiness needs."
+            />
+          </div>
+        </section>
+
         <FooterDisclaimer />
       </div>
     </main>
+  );
+}
+
+function Trend({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+      <h3 className="font-semibold text-ink">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-slate-600">{body}</p>
+    </div>
   );
 }

@@ -73,7 +73,7 @@ function buildSummary(jurisdiction: Jurisdiction | null, regulations: Regulation
   ).slice(0, 6);
 
   return [
-    "ESG Regulatory Atlas - indicative client planning summary",
+    "Etica ESG · Regulatory Atlas - indicative client planning summary",
     "",
     `Selected jurisdiction: ${jurisdiction?.name || "Global / current filtered view"}`,
     `Tracked records in scope: ${scoped.length}`,

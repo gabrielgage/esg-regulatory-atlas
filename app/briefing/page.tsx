@@ -9,19 +9,20 @@ import { AdvisoryInsights } from "@/components/AdvisoryInsights";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
 import { ExecutiveBriefing } from "@/components/ExecutiveBriefing";
 import { ExportSummaryButton } from "@/components/ExportSummaryButton";
+import { SectorHeatmap } from "@/components/SectorHeatmap";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { regulations } from "@/data/seed";
 import { Regulation } from "@/types/regulation";
 import { cn } from "@/lib/utils";
 
-const tabs = ["Priority regulations", "Advisory workstreams", "Data governance risks", "Client summary"] as const;
+const tabs = ["Priority regulations", "Sector heatmap", "Advisory workstreams", "Data governance risks", "Client summary"] as const;
 
 export default function BriefingPage() {
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("Priority regulations");
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
 
   return (
-    <main className="min-h-screen pb-12">
+    <main id="main-content" className="min-h-screen pb-12">
       <Header />
       <div className="mx-auto max-w-7xl space-y-5 px-4 py-5 md:px-6">
         <PageIntro
@@ -48,6 +49,7 @@ export default function BriefingPage() {
           </div>
         </section>
         {activeTab === "Priority regulations" && <ExecutiveBriefing regulations={regulations} onSelect={setSelectedRegulation} />}
+        {activeTab === "Sector heatmap" && <SectorHeatmap />}
         {activeTab === "Advisory workstreams" && <AdvisoryInsights regulations={regulations} />}
         {activeTab === "Data governance risks" && <DataQualityPanel regulations={regulations} onSelect={setSelectedRegulation} />}
         {activeTab === "Client summary" && <ExportSummaryButton jurisdiction={null} regulations={regulations} />}

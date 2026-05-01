@@ -1,5 +1,5 @@
 export type Status = "consultation" | "adopted" | "in_force" | "first_reporting" | "transition" | "paused" | "voluntary";
-export type JurisdictionType = "local" | "national" | "regional" | "supranational" | "international";
+export type JurisdictionType = "subnational" | "local" | "national" | "regional" | "supranational" | "international";
 export type Confidence = "high" | "medium" | "needs_review" | "date_uncertain";
 export type DataQualityStatus = "verified_seed" | "needs_review" | "recently_updated" | "date_uncertain" | "source_missing";
 export type AdoptionLevel = "mandatory" | "voluntary" | "phased" | "market_standard" | "consultation";
@@ -24,6 +24,7 @@ export interface SourceLink {
 
 export interface Jurisdiction {
   id: string;
+  code: string;
   name: string;
   iso2?: string;
   iso3?: string;
@@ -54,6 +55,11 @@ export interface Regulation {
   firstReportingYear?: number;
   summary: string;
   applicability: string;
+  applicabilityScope?: {
+    thresholds?: string[];
+    entityTypes?: string[];
+    sectorsInScope?: string[];
+  };
   keyRequirements: string[];
   businessImpact: string;
   businessImpacts: BusinessImpact[];
@@ -83,6 +89,7 @@ export interface Regulation {
   consultationDeadline?: string;
   implementationEffort?: "low" | "medium" | "high" | "very high";
   readinessComplexity?: "low" | "medium" | "high" | "very high";
+  penalties?: string;
   highImpact?: boolean;
 }
 

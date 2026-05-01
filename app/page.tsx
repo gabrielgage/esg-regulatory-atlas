@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { ArrowRight, Database, Gauge, HelpCircle } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Filters } from "@/components/Filters";
-import { WorldMap } from "@/components/WorldMap";
+import { WorldChoropleth as WorldMap } from "@/components/WorldChoropleth";
 import { CountryPanel } from "@/components/CountryPanel";
 import { RegulationTable } from "@/components/RegulationTable";
 import { RegulationDetail } from "@/components/RegulationDetail";
@@ -15,7 +15,6 @@ import { ViewSelector } from "@/components/ViewSelector";
 import { jurisdictions, quickViews, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
-import { Badge } from "@/components/Badge";
 
 export default function Home() {
   const [filters, setFilters] = useState(initialFilters);
@@ -52,7 +51,6 @@ export default function Home() {
         <section className="rounded-2xl bg-navy p-6 text-white shadow-xl md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
             <div>
-              <Badge className="border-white/20 bg-white/10 text-white">Illustrative MVP seed data</Badge>
               <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl">
                 ESG Regulatory Atlas
               </h1>

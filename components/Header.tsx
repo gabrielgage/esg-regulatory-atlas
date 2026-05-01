@@ -11,7 +11,8 @@ const navItems = [
   { href: "/assessment", label: "Assessment" },
   { href: "/timeline", label: "Timeline" },
   { href: "/briefing", label: "Briefing" },
-  { href: "/data-quality", label: "Data Quality" }
+  { href: "/methodology", label: "Methodology" },
+  { href: "/about", label: "About" }
 ];
 
 export function Header() {

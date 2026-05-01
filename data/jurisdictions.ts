@@ -3,6 +3,7 @@ import { Jurisdiction } from "@/types/regulation";
 export const jurisdictions: Jurisdiction[] = [
   {
     id: "eu",
+    code: "EUU",
     name: "European Union",
     region: "Europe",
     type: "supranational",
@@ -12,6 +13,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "nl",
+    code: "NLD",
     name: "Netherlands",
     iso2: "NL",
     iso3: "NLD",
@@ -24,6 +26,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "uk",
+    code: "GBR",
     name: "United Kingdom",
     iso2: "GB",
     iso3: "GBR",
@@ -35,6 +38,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "us",
+    code: "USA",
     name: "United States",
     iso2: "US",
     iso3: "USA",
@@ -46,10 +50,12 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "ca-us",
+    code: "USA-CA",
     name: "California",
     iso2: "US-CA",
+    iso3: "USA",
     region: "North America",
-    type: "local",
+    type: "subnational",
     parent: "us",
     coordinates: [-119.4, 36.8],
     regulatoryIntensity: "high",
@@ -57,6 +63,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "sg",
+    code: "SGP",
     name: "Singapore",
     iso2: "SG",
     iso3: "SGP",
@@ -68,6 +75,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "jp",
+    code: "JPN",
     name: "Japan",
     iso2: "JP",
     iso3: "JPN",
@@ -79,6 +87,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "au",
+    code: "AUS",
     name: "Australia",
     iso2: "AU",
     iso3: "AUS",
@@ -90,6 +99,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "br",
+    code: "BRA",
     name: "Brazil",
     iso2: "BR",
     iso3: "BRA",
@@ -101,6 +111,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "in",
+    code: "IND",
     name: "India",
     iso2: "IN",
     iso3: "IND",
@@ -112,6 +123,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "cn",
+    code: "CHN",
     name: "China",
     iso2: "CN",
     iso3: "CHN",
@@ -123,6 +135,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "ca",
+    code: "CAN",
     name: "Canada",
     iso2: "CA",
     iso3: "CAN",
@@ -134,6 +147,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "ch",
+    code: "CHE",
     name: "Switzerland",
     iso2: "CH",
     iso3: "CHE",
@@ -145,6 +159,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "tr",
+    code: "TUR",
     name: "Turkey",
     iso2: "TR",
     iso3: "TUR",
@@ -156,6 +171,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "mx",
+    code: "MEX",
     name: "Mexico",
     iso2: "MX",
     iso3: "MEX",
@@ -167,6 +183,7 @@ export const jurisdictions: Jurisdiction[] = [
   },
   {
     id: "int",
+    code: "INT",
     name: "International",
     region: "Global",
     type: "international",
@@ -174,3 +191,5 @@ export const jurisdictions: Jurisdiction[] = [
     executiveSummary: "Global standards and frameworks such as ISSB, GRI, TCFD and TNFD shape investor expectations and are increasingly referenced by national regulators."
   }
 ];
+
+export const JURISDICTIONS = jurisdictions;

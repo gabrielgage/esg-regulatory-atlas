@@ -85,6 +85,6 @@ function buildSummary(jurisdiction: Jurisdiction | null, regulations: Regulation
     ...actions.map((action) => `- ${action}`),
     "",
     "Source and legal caution:",
-    "This summary is generated from illustrative seed regulatory intelligence. It is not legal, tax, investment or assurance advice. Applicability depends on entity-specific facts, thresholds, jurisdictional implementation, sector rules and legal interpretation. Review primary sources and validate with qualified counsel or regulatory advisors before relying on it for compliance decisions."
+    "This summary is generated from indicative regulatory intelligence. It is not legal, tax, investment or assurance advice. Applicability depends on entity-specific facts, thresholds, jurisdictional implementation, sector rules and legal interpretation. Review primary sources and validate with qualified counsel or regulatory advisors before relying on it for compliance decisions."
   ].join("\n");
 }

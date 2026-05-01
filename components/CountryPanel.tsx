@@ -148,7 +148,7 @@ export function CountryPanel({
                   </span>
                 </a>
               ))}
-              {!sourceCount && <p className="rounded-xl bg-slate-50 p-4 text-sm text-slate-500">Source missing for this seed jurisdiction.</p>}
+              {!sourceCount && <p className="rounded-xl bg-slate-50 p-4 text-sm text-slate-500">No source links are available for this jurisdiction yet.</p>}
             </div>
           </PanelSection>
         )}

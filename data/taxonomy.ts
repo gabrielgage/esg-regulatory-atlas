@@ -1,4 +1,5 @@
 import { BusinessImpact, QuickView, Status } from "@/types/regulation";
+export { sectors } from "./sectors";
 
 export const topics = [
   "Climate",
@@ -21,30 +22,6 @@ export const topics = [
   "Waste and pollution",
   "Governance",
   "Assurance"
-];
-
-export const sectors = [
-  "All sectors",
-  "Financial services",
-  "Asset management",
-  "Banking",
-  "Insurance",
-  "Agriculture",
-  "Real estate",
-  "Construction",
-  "Manufacturing",
-  "Energy",
-  "Transport",
-  "Food and beverage",
-  "Packaging",
-  "Retail",
-  "Consumer goods",
-  "Automotive",
-  "Technology",
-  "Public sector",
-  "Textiles",
-  "Private equity",
-  "Listed companies"
 ];
 
 export const companyTypes = [
@@ -84,7 +61,6 @@ export const valueChainImpacts = [
   "Downstream customers",
   "Investment portfolio",
   "Financed emissions",
-  "Investments and portfolio companies",
   "Trade and imports",
   "Products and services",
   "Products and materials",

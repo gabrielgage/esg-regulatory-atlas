@@ -36,7 +36,7 @@ export default function TimelinePage() {
           eyebrow="Timeline"
           title="Regulatory milestones and reporting years"
           body="Track effective dates, first reporting years and phased milestones across jurisdictions and topics."
-          meta="Dates are seed intelligence fields and should be source-verified before compliance planning."
+          meta="Validate date-sensitive planning against linked primary sources before reliance."
         />
         <DisclaimerBanner />
         <section className="grid gap-3 rounded-2xl border bg-white p-3 shadow-sm md:grid-cols-3">

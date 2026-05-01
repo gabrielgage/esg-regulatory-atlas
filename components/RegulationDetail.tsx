@@ -94,7 +94,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
         <Card title="Data quality">
           <div className="grid gap-3 sm:grid-cols-3">
             <Metric label="Confidence" value={regulation.confidenceLevel.replace("_", " ")} />
-            <Metric label="Quality status" value={regulation.dataQualityStatus.replaceAll("_", " ")} />
+            <Metric label="Quality status" value={qualityLabel(regulation.dataQualityStatus)} />
             <Metric label="Sources" value={String(regulation.sourceUrls.length)} />
           </div>
           {regulation.changeLogSummary && <p className="mt-3 text-sm text-slate-600">{regulation.changeLogSummary}</p>}
@@ -126,12 +126,17 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
               ))}
             </div>
           ) : (
-            <p className="text-sm text-slate-500">No source URL is available for this seed record yet.</p>
+            <p className="text-sm text-slate-500">No source URL is available for this record yet.</p>
           )}
         </Card>
       </div>
     </aside>
   );
+}
+
+function qualityLabel(status: Regulation["dataQualityStatus"]) {
+  if (status === "verified_seed") return "Verified source set";
+  return status.replaceAll("_", " ");
 }
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {

@@ -56,7 +56,7 @@ export function filterRegulations(regulations: Regulation[], filters: FilterStat
       (!filters.topic || regulation.topics.includes(filters.topic)) &&
       (!filters.sector || regulation.sectors.includes(filters.sector)) &&
       (!filters.companyType || inferredCompanyTypes(regulation).includes(filters.companyType)) &&
-      (!filters.jurisdictionType || regulation.jurisdictionType === filters.jurisdictionType) &&
+      (!filters.jurisdictionType || jurisdictionTypeMatches(regulation.jurisdictionType, filters.jurisdictionType)) &&
       (!filters.status || regulation.status === filters.status) &&
       (!reportingYear || regulation.firstReportingYear === reportingYear) &&
       (!filters.valueChain || regulation.valueChain.includes(filters.valueChain)) &&
@@ -71,8 +71,13 @@ export function filterRegulations(regulations: Regulation[], filters: FilterStat
 
 export function yearsFrom(regulations: Regulation[]) {
   return Array.from(
-    new Set(regulations.map((regulation) => regulation.firstReportingYear).filter(Boolean) as number[])
+    new Set(regulations.map((regulation) => regulation.firstReportingYear).filter((year) => year && year >= 2021) as number[])
   ).sort((a, b) => a - b);
+}
+
+function jurisdictionTypeMatches(recordType: string, filterType: string) {
+  if (filterType === "subnational") return recordType === "subnational" || recordType === "local";
+  return recordType === filterType;
 }
 
 export function inferredCompanyTypes(regulation: Regulation) {

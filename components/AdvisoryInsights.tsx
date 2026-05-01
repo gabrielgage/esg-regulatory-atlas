@@ -19,7 +19,7 @@ export function AdvisoryInsights({ regulations }: { regulations: Regulation[] })
             <h2 className="font-semibold text-ink">Consultant review layer</h2>
           </div>
           <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500">
-            MVP prioritisation view for sustainability, legal, finance and advisory teams. It flags where the dataset creates immediate client workstreams rather than treating every regulation as equal.
+            Prioritisation view for sustainability, legal, finance and advisory teams. It flags where the dataset creates immediate client workstreams rather than treating every regulation as equal.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">

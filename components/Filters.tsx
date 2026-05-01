@@ -77,7 +77,7 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
             options={[
               { value: "supranational", label: "Supranational" },
               { value: "national", label: "National" },
-              { value: "local", label: "Local" },
+              { value: "subnational", label: "Subnational" },
               { value: "international", label: "International" }
             ]}
           />
@@ -106,7 +106,7 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
             value={filters.dataQuality}
             onChange={(value) => update("dataQuality", value)}
             options={[
-              { value: "verified_seed", label: "Verified seed" },
+              { value: "verified_seed", label: "Verified source set" },
               { value: "recently_updated", label: "Recently updated" },
               { value: "needs_review", label: "Needs review" },
               { value: "date_uncertain", label: "Date uncertain" },

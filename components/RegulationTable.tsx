@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight, Database, ShieldAlert } from "lucide-react";
 import { Badge } from "./Badge";
 import { Regulation } from "@/types/regulation";
@@ -24,9 +25,9 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
             <Database className="h-5 w-5 text-teal" />
             <h2 className="font-semibold text-ink">Regulation database</h2>
           </div>
-          <p className="mt-1 text-sm text-slate-500">{regulations.length} illustrative records in the current view</p>
+          <p className="mt-1 text-sm text-slate-500">{regulations.length} records in the current view</p>
         </div>
-        <Badge className="border-amber-200 bg-amber-50 text-amber-800">Seed data, not legal advice</Badge>
+        <Badge className="border-teal/20 bg-teal/10 text-teal">Source-linked intelligence</Badge>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
@@ -37,6 +38,7 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
               <th className="px-5 py-3">Status</th>
               <th className="px-5 py-3">Impact</th>
               <th className="px-5 py-3">First reporting</th>
+              <th className="px-5 py-3">Confidence</th>
               <th className="px-5 py-3">Data quality</th>
               <th className="px-5 py-3">Open</th>
             </tr>
@@ -81,20 +83,22 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
                 </td>
                 <td className="px-5 py-4">{regulation.firstReportingYear || "n/a"}</td>
                 <td className="px-5 py-4">
-                  <Badge className={qualityClass(regulation.dataQualityStatus)}>{regulation.dataQualityStatus.replaceAll("_", " ")}</Badge>
+                  <Badge className={confidenceClass(regulation.confidenceLevel)}>{regulation.confidenceLevel.replaceAll("_", " ")}</Badge>
                 </td>
                 <td className="px-5 py-4">
-                  <button
-                    type="button"
+                  <Badge className={qualityClass(regulation.dataQualityStatus)}>{qualityLabel(regulation.dataQualityStatus)}</Badge>
+                </td>
+                <td className="px-5 py-4">
+                  <Link
+                    href={`/regulations/${regulation.id}`}
                     onClick={(event) => {
                       event.stopPropagation();
-                      onSelect(regulation);
                     }}
                     className="rounded-full border border-slate-200 p-2 text-slate-500 hover:border-teal/40 hover:bg-teal/5 hover:text-teal"
                     aria-label={`Open ${regulation.shortName}`}
                   >
                     <ArrowUpRight className="h-4 w-4" />
-                  </button>
+                  </Link>
                 </td>
               </tr>
             ))}
@@ -102,6 +106,20 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
         </table>
       </div>
     </section>
+  );
+}
+
+function qualityLabel(status: Regulation["dataQualityStatus"]) {
+  if (status === "verified_seed") return "Verified source set";
+  return status.replaceAll("_", " ");
+}
+
+function confidenceClass(confidence: Regulation["confidenceLevel"]) {
+  return cn(
+    confidence === "high" && "border-teal/20 bg-teal/10 text-teal",
+    confidence === "medium" && "border-blue-200 bg-blue-50 text-blue-700",
+    confidence === "needs_review" && "border-amber-200 bg-amber-50 text-amber-800",
+    confidence === "date_uncertain" && "border-violet/20 bg-violet/10 text-violet"
   );
 }
 

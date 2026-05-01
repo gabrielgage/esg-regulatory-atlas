@@ -24,7 +24,7 @@ export default function RegulationsPage() {
         <PageIntro
           eyebrow="Regulations"
           title="Search the ESG regulatory database"
-          body="Review illustrative seed records by jurisdiction, sector, company type, obligation, reporting year, source quality and advisory opportunity."
+          body="Review records by jurisdiction, sector, company type, obligation, reporting year, source quality and advisory opportunity."
         />
         <DisclaimerBanner />
         <Filters filters={filters} regulations={regulations} onChange={setFilters} onReset={() => setFilters(initialFilters)} />

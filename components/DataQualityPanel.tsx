@@ -4,7 +4,7 @@ import { Regulation } from "@/types/regulation";
 import { formatDate } from "@/lib/utils";
 
 const qualityLabels: Record<Regulation["dataQualityStatus"], string> = {
-  verified_seed: "Verified seed",
+  verified_seed: "Verified source set",
   needs_review: "Needs review",
   recently_updated: "Recently updated",
   date_uncertain: "Date uncertain",
@@ -37,13 +37,13 @@ export function DataQualityPanel({
         <div>
           <div className="flex items-center gap-2">
             <ClipboardList className="h-5 w-5 text-teal" />
-            <h2 className="font-semibold text-ink">Research control panel</h2>
+            <h2 className="font-semibold text-ink">Review queue</h2>
           </div>
           <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-500">
-            Shows whether the current view is research-ready, source-backed or still a watch-list item. This is the guardrail that keeps the MVP from sounding like legal advice.
+            Shows whether the current view is source-backed, recently reviewed or queued for deeper production research.
           </p>
         </div>
-        <Badge className="border-amber-200 bg-amber-50 text-amber-800">Illustrative data controls</Badge>
+        <Badge className="border-slate-200 bg-slate-50 text-slate-600">Methodology control</Badge>
       </div>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-3">

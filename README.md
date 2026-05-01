@@ -8,13 +8,13 @@ ESG Regulatory Atlas is a static Next.js MVP for exploring ESG, climate, sustain
 
 - Next.js, React, TypeScript and Tailwind v3
 - Stable Tailwind/PostCSS v3 setup for Vercel deployment
-- Interactive world map with no paid map API and no Mapbox token
+- Static Natural Earth choropleth map with no paid map API and no Mapbox token
 - Jurisdiction profile panel
-- Regulation detail drawer with sources, caveats, business impact and advisory opportunities
+- Regulation detail drawer and `/regulations/[slug]` pages with sources, caveats, business impact and advisory opportunities
 - Client applicability wizard with indicative categories
 - Search and filters across jurisdiction, region, topic, sector, company type, value chain, function, obligation, status, year, confidence, data quality and advisory opportunity
 - Saved quick views for consulting and compliance workflows
-- Timeline, source library, coverage matrix, impact matrix and comparison views
+- Timeline, methodology/source library, coverage matrix, impact matrix and comparison views
 - Copyable client planning summary
 - Static TypeScript seed data only
 - No authentication, database, Supabase, Stripe, scraping, cron jobs, AI summaries, email alerts or required environment variables
@@ -60,6 +60,8 @@ The original deployment failure was caused by an inconsistent Tailwind/PostCSS s
 
 Seed data is stored in:
 
+- `data/_meta.ts`
+- `data/sectors.ts`
 - `data/jurisdictions.ts`
 - `data/regulations.ts`
 - `data/coverageAdditions.ts`
@@ -91,6 +93,7 @@ Use careful language such as "may apply", "potentially relevant" and "indicative
 Add a record to `data/jurisdictions.ts` with:
 
 - `id`, `name`, region and type
+- canonical `code` for UI display, such as `USA`, `CAN`, `EUU` or `USA-CA`
 - map coordinates where available
 - regulatory intensity
 - executive summary
@@ -101,8 +104,7 @@ Then reference the jurisdiction `id` from regulation records.
 
 - Seed data is illustrative and not legal advice.
 - Source verification needs a production research workflow with named owners and review cadence.
-- The regulatory overlay uses centroid labels, not production GIS polygons.
-- External CARTO/OpenStreetMap basemap tiles are used for visual country borders.
+- The world map uses simplified Natural Earth polygons suitable for MVP choropleth display, not production GIS analysis.
 - No authentication yet.
 - No database yet.
 - No automated regulatory update monitoring yet.

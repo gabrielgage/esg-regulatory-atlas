@@ -59,7 +59,7 @@ export function profileFor(regulation: Regulation) {
     evidenceRequired: regulation.evidenceRequired || defaultEvidence(regulation),
     typicalClientQuestions: regulation.typicalClientQuestions || defaultQuestions(regulation),
     caveats: regulation.caveats || [
-      "This record is seed regulatory intelligence and may be incomplete.",
+      "This record is indicative regulatory intelligence and may be incomplete.",
       "Applicability depends on entity-specific facts, thresholds, jurisdictional implementation, sector rules and legal interpretation.",
       "Review linked primary sources and confirm requirements with qualified counsel or regulatory advisors before compliance use."
     ]
@@ -92,7 +92,7 @@ function scoreRegulation(regulation: Regulation, answers: ApplicabilityAnswers):
 
   if (sectorMatch) {
     score += 2;
-    reasons.push("The selected sector appears in the regulation's seed sector coverage.");
+    reasons.push("The selected sector appears in the regulation's sector coverage.");
     triggeredBy.push("sector match");
   }
 

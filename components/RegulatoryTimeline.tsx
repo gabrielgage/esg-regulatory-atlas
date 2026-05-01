@@ -68,7 +68,7 @@ export function RegulatoryTimeline({
 
       <div className="mt-4 flex items-center gap-2 text-xs text-slate-500">
         <Clock3 className="h-3.5 w-3.5" />
-        Dates are seed intelligence fields and require source verification before client use.
+        Date-sensitive planning should be checked against primary sources before reliance.
       </div>
     </section>
   );

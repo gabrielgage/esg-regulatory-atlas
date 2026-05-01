@@ -17,7 +17,7 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
   const [answers, setAnswers] = useState<ApplicabilityAnswers>(defaultApplicabilityAnswers);
   const results = useMemo(() => evaluateApplicability(regulations, answers), [answers, regulations]);
   const trackedJurisdictions = jurisdictions.filter((jurisdiction) => jurisdiction.type !== "international");
-  const sectorChoices = sectors.filter((sector) => sector !== "Listed companies").slice(0, 18);
+  const sectorChoices = sectors.filter((sector) => sector !== "Listed companies");
 
   return (
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
@@ -141,7 +141,7 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
             )}
           </div>
           <p className="mt-3 text-xs leading-5 text-slate-500">
-            Profile: {jurisdictionLabel(answers.headquarters)} headquarter, {answers.companySize} size, {answers.companyType.toLowerCase()}.
+            Profile: {jurisdictionLabel(answers.headquarters)} headquarters · {answers.companySize} · {answers.companyType}
           </p>
         </div>
       </div>

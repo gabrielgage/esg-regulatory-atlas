@@ -16,6 +16,22 @@ The preferred loop is:
 6. Update context files when the change affects future work.
 7. Summarize exactly what changed, why it changed, and what still needs review.
 
+## Bug And Failed Check Workflow
+
+Any time a bug, failed GitHub check, failed Vercel deployment, visible UI defect or data issue appears, follow this workflow:
+
+1. Capture the exact symptom, including the route, screenshot, check name, job name or log message.
+2. Determine what failed: app code, deployment, test, Lighthouse, data, configuration or platform setting.
+3. Inspect the source evidence before changing code.
+4. Fix the smallest layer responsible for the issue.
+5. Validate with the closest available local or remote check.
+6. Document the incident in `docs/issue-resolution-log.md`.
+7. Update this workflow, `AGENTS.md`, README or handoff docs if the learning changes how future work should be done.
+
+Do not treat a successful Vercel deployment plus failing GitHub checks as a deployment failure. In that case, inspect the failing GitHub Actions logs first.
+
+Do not weaken checks just to make a PR green. If a check is brittle or configured at the wrong strictness for the MVP, fix the check configuration and explain why in the issue log.
+
 ## Context Files To Read First
 
 For product or UX work:
@@ -37,6 +53,7 @@ For agent or process work:
 
 - `AGENTS.md`
 - `docs/development-workflow.md`
+- `docs/issue-resolution-log.md`
 - `ESG_Regulatory_Atlas_Claude_Handoff.md`
 
 ## Validation Commands
@@ -82,6 +99,17 @@ Examples:
 - Delivered roadmap item: update `docs/roadmap.md`.
 - New validation limitation or build strategy: update `README.md`, `AGENTS.md`, and this file.
 - New automation or review workflow: update `README.md`, `.github/pull_request_template.md` where relevant, and this file.
+- Bug, failed deployment or failed check: update `docs/issue-resolution-log.md`, then update adjacent docs if the learning affects future workflow.
+
+## CI Lessons Learned
+
+The current browser and Lighthouse checks are intended to protect launch-critical behavior without making the MVP impossible to iterate.
+
+Known lesson from PR #11:
+
+- Browser smoke tests should assert stable UI contracts with scoped locators. For regulation detail pages, assert the short-name heading and scoped supporting title text rather than assuming the full regulation title is the H1.
+- Citation widgets repeat regulation titles inside copy blocks. Avoid broad text locators where repeated content is expected.
+- Lighthouse category thresholds are warning-level launch signals. Do not use the full `lighthouse:recommended` assertion preset as a hard gate unless the team intentionally accepts every default audit as blocking.
 
 ## Coding Principles
 

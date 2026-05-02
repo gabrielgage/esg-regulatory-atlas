@@ -8,6 +8,7 @@
 - [ ] `npm run lint`
 - [ ] `npm run build`
 - [ ] `npm run test:e2e` when browser dependencies are available
+- [ ] If this PR fixes a bug or failed check, `docs/issue-resolution-log.md` includes the symptom, root cause, resolution and prevention rule
 
 ## Vercel Preview Review
 
@@ -24,3 +25,10 @@
 - [ ] No paid map/API dependency or Mapbox token
 - [ ] No scraping, cron jobs, email alerts or AI summaries
 - [ ] Regulatory content remains clearly labelled as seed/intelligence, not legal advice
+
+## Bug / Incident Notes
+
+- Symptom:
+- Root cause:
+- Fix:
+- Prevention/documentation updated:

@@ -13,8 +13,11 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Production build uses the stable Next.js webpack build path for this MVP
 - Static Natural Earth choropleth map with no paid map API and no Mapbox token
 - Improved country-outline contrast and local graticule cues so countries are visible without adding a map dependency
+- Expanded APAC, South Africa and European national due-diligence jurisdiction coverage
 - Jurisdiction profile panel
 - Regulation detail drawer and `/regulations/[slug]` pages with sources, caveats, business impact and advisory opportunities
+- Condensed parent-record data model with record type, legal force, client relevance, child items, aliases, source system and monetization-readiness fields
+- Filters and badges for regulations, standards, frameworks, guidance, market expectations and voluntary frameworks
 - Public changelog at `/changelog`
 - Jurisdiction and regulation comparison workspace at `/compare`
 - Printable/copyable jurisdiction briefs at `/jurisdiction/[code]/brief`
@@ -35,6 +38,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Excel-ready regulation tracker workbook generated from the website seed data for source review and coverage planning
 - Readiness-priority scoring for planning conversations
 - Copyable client planning summary
+- Static market briefing CTA and `/premium-roadmap` route for future market packs, sector packs and portfolio scans without payments or gating
 - Static TypeScript seed data only
 - No authentication, database, Supabase, Stripe, scraping, cron jobs, AI summaries, email alerts or required environment variables
 
@@ -89,6 +93,7 @@ Seed data is stored in:
 - `data/coverageAdditions.ts`
 - `data/marketCoverage.ts`
 - `data/phase1cCoverage.ts`
+- `data/masterUpdateAdditions.ts`
 - `data/taxonomy.ts`
 
 Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
@@ -110,14 +115,16 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.3 - May 2026`.
+The current seed dataset edition is `0.5.4 - May 2026`.
 
-The latest local update focuses on Phase 1C workflow hardening, broader interface translation and deeper market coverage:
+The latest local update focuses on the master update pack and the fastest credible MVP path from static map to decision-support Atlas:
 
-- defaults first-time visitors to light mode while preserving an explicit saved dark-mode preference
-- improves dark-mode contrast for colored badges, warning banners, inputs, rings and hover states
-- clarifies how to read the map by separating direct seed record volume from legal applicability
-- adds a PM/ESG specialist improvement backlog with 36 prioritized updates across launch quality, regulatory depth and later platform operations
+- adds condensed parent-record metadata so users can distinguish regulations, directives, laws, standards, frameworks, guidance, taxonomies, exchange rules and market expectations
+- expands EU financial-services coverage with banking, insurance, MiFID/IDD, AIFMD/UCITS, benchmarks, EuGBS, ESG ratings and ESAP records
+- expands APAC/ISSB market coverage with Hong Kong, South Korea, Taiwan, New Zealand, Malaysia, Indonesia, Thailand and Philippines, plus South Africa and a Europe national due-diligence cluster
+- adds voluntary and investor/customer-driven frameworks including CDP, SBTi, PCAF, PRI, ICMA, GRESB, IFC/Equator/World Bank safeguards and ISO environmental/GHG standards
+- adds static market-pack and premium-roadmap CTAs without Stripe, auth, database, paid APIs or gated functionality
+- documents condensation rules so major frameworks are enriched with child items and aliases instead of duplicated as dozens of top-level records
 - added GitHub Actions CI for typecheck/build validation
 - added Playwright smoke tests for launch-critical routes and interface checks
 - added Lighthouse CI for preview performance/accessibility/best-practice guardrails

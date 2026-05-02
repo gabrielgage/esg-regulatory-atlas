@@ -11,6 +11,30 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.4 - May 2026",
+    date: "2026-05-02",
+    label: "Master content and commercial-readiness update",
+    summary:
+      "Added condensed parent-record metadata, expanded EU financial-services and APAC/ISSB coverage, added voluntary framework records, surfaced legal-force/client-relevance badges and introduced static market-pack and premium-roadmap CTAs.",
+    added: [
+      "Record type, legal force, client relevance, display tier and child-item metadata",
+      "EU financial-services package records",
+      "APAC ISSB market records and new jurisdiction tiles",
+      "Voluntary framework records",
+      "Static market briefing CTA and premium roadmap route"
+    ],
+    updated: ["Regulation filters", "Regulation table", "Regulation detail drawer", "Per-regulation pages", "Data-quality governance section", "Project documentation"],
+    records: [
+      "eu-banking-prudential-esg-risk",
+      "eu-mifid-idd-sustainability-preferences",
+      "eu-green-bond-standard",
+      "malaysia-nsrf",
+      "cdp-disclosure-framework",
+      "pcaf-financed-emissions"
+    ],
+    caveat: "New records are condensed seed intelligence. Many are intentionally marked needs review until a production source review workflow validates dates, thresholds and jurisdiction-specific implementation."
+  },
+  {
     edition: "0.5.3 - May 2026",
     date: "2026-05-02",
     label: "Theme, map clarity and PM backlog update",

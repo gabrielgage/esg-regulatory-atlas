@@ -9,6 +9,7 @@ import { AdvisoryInsights } from "@/components/AdvisoryInsights";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
 import { ExecutiveBriefing } from "@/components/ExecutiveBriefing";
 import { ExportSummaryButton } from "@/components/ExportSummaryButton";
+import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
 import { SectorHeatmap } from "@/components/SectorHeatmap";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { regulations } from "@/data/seed";
@@ -31,6 +32,7 @@ export default function BriefingPage() {
           body="Combine priority regulations, advisory workstreams, data governance risks and a copyable client planning summary in one focused briefing view."
         />
         <DisclaimerBanner />
+        <MarketBriefingCTA />
         <section className="rounded-2xl border bg-white p-3 shadow-sm">
           <div className="flex gap-1 overflow-x-auto rounded-full bg-slate-50 p-1">
             {tabs.map((tab) => (

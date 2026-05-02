@@ -1,6 +1,7 @@
 import { ExternalLink, X } from "lucide-react";
 import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
+import { RecordMetaBadges } from "./RecordMetaBadges";
 import { StatusBadge } from "./StatusBadge";
 import { readinessBand, readinessClass, readinessReasons, readinessScore } from "@/lib/scoring";
 import { formatDate } from "@/lib/utils";
@@ -26,6 +27,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
           <Badge className="border-slate-200 bg-slate-50 text-slate-600">{regulation.adoptionLevel.replaceAll("_", " ")}</Badge>
           {regulation.highImpact && <Badge className="border-red-200 bg-red-50 text-red-700">High impact</Badge>}
         </div>
+        <RecordMetaBadges regulation={regulation} />
         <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink">{regulation.shortName}</h2>
         <p className="mt-1 text-slate-500">{regulation.title}</p>
         <p className="mt-2 text-sm font-semibold text-slate-500">Last reviewed by Gabriel Gage on {formatDate(regulation.lastReviewed)}</p>
@@ -36,6 +38,41 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
 
       <div className="mt-6 grid gap-4">
         <Card title="Executive summary">{regulation.summary}</Card>
+        <Card title="Atlas record governance">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Metric label="Record type" value={labelOrMissing(regulation.recordType)} />
+            <Metric label="Legal force" value={labelOrMissing(regulation.legalForce)} />
+            <Metric label="Client relevance" value={labelOrMissing(regulation.clientRelevanceCategory)} />
+            <Metric label="Display tier" value={labelOrMissing(regulation.displayTier)} />
+            <Metric label="Granularity" value={labelOrMissing(regulation.atlasGranularity)} />
+            <Metric label="Source system" value={labelOrMissing(regulation.sourceSystem)} />
+          </div>
+          <p className="mt-3 text-sm text-slate-600">
+            Parent records keep the Atlas usable: delegated acts, questionnaires and subrequirements are shown as child items or aliases rather than scattered across the map.
+          </p>
+        </Card>
+        {(regulation.aliases?.length || regulation.childItems?.length) ? (
+          <Card title="Aliases and child details">
+            {regulation.aliases?.length ? (
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400">Search aliases</h4>
+                <BadgeList values={regulation.aliases} tone="slate" />
+              </div>
+            ) : null}
+            {regulation.childItems?.length ? (
+              <div className="mt-4 space-y-2">
+                {regulation.childItems.map((item) => (
+                  <div key={`${item.label}-${item.date || item.type}`} className="rounded-xl bg-white px-3 py-2">
+                    <div className="font-semibold text-ink">{item.label}</div>
+                    <div className="mt-1 text-xs uppercase tracking-wide text-slate-400">{item.type.replaceAll("-", " ")}</div>
+                    {item.note ? <p className="mt-1 text-sm text-slate-600">{item.note}</p> : null}
+                    {item.date ? <p className="mt-1 text-xs text-slate-500">Indicative timing: {item.date}</p> : null}
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </Card>
+        ) : null}
         <Card title="Applicability">{regulation.applicability}</Card>
         {regulation.applicabilityScope?.thresholds?.length ? (
           <Card title="Scope thresholds">
@@ -165,6 +202,10 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
 function qualityLabel(status: Regulation["dataQualityStatus"]) {
   if (status === "verified_seed") return "Verified source set";
   return status.replaceAll("_", " ");
+}
+
+function labelOrMissing(value: string | undefined) {
+  return value ? value.replaceAll("-", " ") : "Not classified";
 }
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {

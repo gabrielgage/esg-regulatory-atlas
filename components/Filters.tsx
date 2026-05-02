@@ -6,7 +6,13 @@ import {
   advisoryOpportunities,
   businessFunctions,
   businessImpactTypes,
+  clientRelevanceCategories,
+  clientRelevanceLabel,
   companyTypes,
+  legalForceLabel,
+  legalForces,
+  recordTypeLabel,
+  recordTypes,
   sectors,
   statusLabel,
   topics,
@@ -91,6 +97,18 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
           </AdvancedGroup>
           <AdvancedGroup title={t("filters.regulatoryShape")}>
             <Select
+              label="Record type"
+              value={filters.recordType}
+              onChange={(value) => update("recordType", value)}
+              options={recordTypes.map((value) => ({ value, label: recordTypeLabel[value] }))}
+            />
+            <Select
+              label="Legal force"
+              value={filters.legalForce}
+              onChange={(value) => update("legalForce", value)}
+              options={legalForces.map((value) => ({ value, label: legalForceLabel[value] }))}
+            />
+            <Select
               label={t("filters.regulationStatus")}
               value={filters.status}
               onChange={(value) => update("status", value)}
@@ -123,6 +141,12 @@ export function Filters({ filters, regulations, onChange, onReset }: Props) {
           <AdvancedGroup title={t("filters.businessFraming")}>
             <Select label={t("filters.businessFunction")} value={filters.businessFunction} onChange={(value) => update("businessFunction", value)} options={businessFunctions} />
             <Select label={t("filters.obligationType")} value={filters.obligation} onChange={(value) => update("obligation", value)} options={businessImpactTypes} />
+            <Select
+              label="Client relevance"
+              value={filters.clientRelevance}
+              onChange={(value) => update("clientRelevance", value)}
+              options={clientRelevanceCategories.map((value) => ({ value, label: clientRelevanceLabel[value] }))}
+            />
             <Select label={t("filters.advisoryOpportunity")} value={filters.advisory} onChange={(value) => update("advisory", value)} options={advisoryOpportunities} />
           </AdvancedGroup>
         </div>

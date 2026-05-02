@@ -37,6 +37,7 @@ Common user questions:
 - Which functions need to be involved?
 - What evidence, controls, and data may be required?
 - Which sources should be reviewed before making a compliance decision?
+- Is this item a mandatory law, a standard, supervisory expectation, market expectation, voluntary framework or monitor item?
 
 ## Core Workflow
 
@@ -60,6 +61,8 @@ The MVP includes:
 - Interactive map using local assets
 - Jurisdiction profiles
 - Searchable and filterable regulations
+- Record type, legal force and client relevance filters and badges
+- Condensed parent-record model with child items, aliases and milestones
 - Regulation detail pages or drawers
 - Assessment wizard with legally cautious output categories
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor users
@@ -76,6 +79,8 @@ The MVP includes:
 - Shareable filtered views for Map and Regulations
 - CSV/JSON exports of filtered regulation records
 - Readiness-priority planning score
+- Expanded EU financial-services, APAC/ISSB, South Africa and voluntary framework coverage
+- Static market briefing CTA and premium roadmap page for future market packs, sector packs and portfolio scans without gating or payments
 - Source quality indicators
 - Advisory opportunity and business impact views
 - Visible legal and data-quality disclaimers
@@ -115,6 +120,10 @@ The map is the main workspace. Heavy tools such as assessment, timeline, data me
 ### Design For Consultant Workflows
 
 The product should help an advisor quickly explain the landscape, identify likely workstreams, and frame next steps such as gap assessment, data readiness, controls, supplier diligence, or reporting preparation.
+
+### Keep Records Condensed
+
+The Atlas should not become a catalogue of thousands of subrules. Major regimes and frameworks should usually be top-level parent records. Delegated acts, questionnaires, sector modules, standards subchapters and implementation milestones should appear as child items, aliases or source notes unless they create a distinct client decision.
 
 ## Visual Direction
 
@@ -161,6 +170,7 @@ The MVP is successful when:
 - Methodology: `/methodology`
 - Changelog: `/changelog`
 - About: `/about`
+- Premium roadmap: `/premium-roadmap`
 
 ## Continuous Improvement Expectation
 

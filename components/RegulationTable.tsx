@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Database, ShieldAlert } from "lucide-react";
 import { Badge } from "./Badge";
+import { RecordMetaBadges } from "./RecordMetaBadges";
 import { StatusBadge } from "./StatusBadge";
 import { useLanguage } from "./LanguageProvider";
 import { Regulation } from "@/types/regulation";
@@ -65,6 +66,7 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
                 <td className="px-5 py-4">
                   <div className="font-semibold text-ink">{regulation.shortName}</div>
                   <div className="mt-1 max-w-xl text-slate-500">{regulation.title}</div>
+                  <RecordMetaBadges regulation={regulation} compact />
                   <div className="mt-2 flex flex-wrap gap-1">
                     {regulation.topics.slice(0, 3).map((topic) => (
                       <Badge key={topic} className="border-slate-200 bg-slate-50 text-slate-600">

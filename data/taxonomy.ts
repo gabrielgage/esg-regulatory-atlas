@@ -1,4 +1,4 @@
-import { BusinessImpact, QuickView, Status } from "@/types/regulation";
+import { AtlasRecordType, BusinessImpact, ClientRelevanceCategory, LegalForce, QuickView, Status } from "@/types/regulation";
 export { sectors } from "./sectors";
 
 export const topics = [
@@ -18,6 +18,12 @@ export const topics = [
   "Green claims and consumer protection",
   "Carbon pricing",
   "Nitrogen and permitting",
+  "Prudential risk",
+  "Climate risk supervision",
+  "Market infrastructure",
+  "Voluntary frameworks",
+  "Responsible investment",
+  "Project finance safeguards",
   "Water",
   "Waste and pollution",
   "Governance",
@@ -34,6 +40,8 @@ export const companyTypes = [
   "Private equity fund",
   "Bank",
   "Insurer",
+  "Benchmark administrator",
+  "ESG rating provider",
   "Non EU parent",
   "Supplier",
   "Exporter",
@@ -49,6 +57,7 @@ export const businessFunctions = [
   "Risk",
   "Internal audit",
   "Investor relations",
+  "Product governance",
   "Operations",
   "Product",
   "Supply chain",
@@ -89,7 +98,14 @@ export const advisoryOpportunities = [
   "Evidence and control framework",
   "Digital product passport readiness",
   "Product compliance data model",
-  "Green claims substantiation"
+  "Green claims substantiation",
+  "Financial product governance review",
+  "Prudential ESG risk integration",
+  "Portfolio climate risk assessment",
+  "Investor reporting and stewardship support",
+  "Market briefing",
+  "Portfolio regulation scan",
+  "Sector pack"
 ];
 
 export const businessImpactTypes: BusinessImpact[] = [
@@ -114,6 +130,74 @@ export const statusLabel: Record<Status, string> = {
   transition: "Transition",
   paused: "Paused",
   voluntary: "Voluntary"
+};
+
+export const recordTypes: AtlasRecordType[] = [
+  "regulation",
+  "directive",
+  "law",
+  "standard",
+  "framework",
+  "guidance",
+  "taxonomy",
+  "exchange-rule",
+  "supervisory-expectation",
+  "voluntary-questionnaire",
+  "commitment",
+  "roadmap",
+  "source-note"
+];
+
+export const recordTypeLabel: Record<AtlasRecordType, string> = {
+  regulation: "Regulation",
+  directive: "Directive",
+  law: "Law",
+  standard: "Standard",
+  framework: "Framework",
+  guidance: "Guidance",
+  taxonomy: "Taxonomy",
+  "exchange-rule": "Exchange rule",
+  "supervisory-expectation": "Supervisory expectation",
+  "voluntary-questionnaire": "Voluntary questionnaire",
+  commitment: "Commitment",
+  roadmap: "Roadmap",
+  "source-note": "Source note"
+};
+
+export const legalForces: LegalForce[] = [
+  "mandatory",
+  "voluntary",
+  "comply-or-explain",
+  "supervisory-expectation",
+  "market-expectation",
+  "roadmap",
+  "monitor"
+];
+
+export const legalForceLabel: Record<LegalForce, string> = {
+  mandatory: "Mandatory",
+  voluntary: "Voluntary",
+  "comply-or-explain": "Comply or explain",
+  "supervisory-expectation": "Supervisory expectation",
+  "market-expectation": "Market expectation",
+  roadmap: "Roadmap",
+  monitor: "Monitor"
+};
+
+export const clientRelevanceCategories: ClientRelevanceCategory[] = [
+  "potentially-direct",
+  "potentially-indirect",
+  "investor-or-customer-driven",
+  "voluntary-best-practice",
+  "monitor-only"
+];
+
+export const clientRelevanceLabel: Record<ClientRelevanceCategory, string> = {
+  "potentially-direct": "Potentially direct",
+  "potentially-indirect": "Potentially indirect",
+  "investor-or-customer-driven": "Investor/customer driven",
+  "voluntary-best-practice": "Voluntary best practice",
+  "monitor-only": "Monitor only"
 };
 
 export const quickViews: QuickView[] = [
@@ -172,6 +256,12 @@ export const quickViews: QuickView[] = [
     filters: { query: "ISSB" }
   },
   {
+    id: "apac-issb",
+    label: "APAC ISSB markets",
+    description: "Hong Kong, Korea, Taiwan, ASEAN and Oceania reporting roadmaps",
+    filters: { region: "Asia Pacific", query: "ISSB" }
+  },
+  {
     id: "netherlands",
     label: "Netherlands regulatory view",
     description: "EU reporting plus Dutch nitrogen and permitting exposure",
@@ -180,8 +270,14 @@ export const quickViews: QuickView[] = [
   {
     id: "financial-services",
     label: "Financial services view",
-    description: "Banks, insurers, asset managers and investor disclosures",
+    description: "Banks, insurers, asset managers, prudential risk and investor disclosures",
     filters: { sector: "Financial services" }
+  },
+  {
+    id: "voluntary-frameworks",
+    label: "Voluntary frameworks",
+    description: "CDP, SBTi, PCAF, PRI, ICMA, GRESB and ISO market expectations",
+    filters: { legalForce: "voluntary" }
   },
   {
     id: "supplier-exporter",

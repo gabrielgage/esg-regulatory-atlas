@@ -14,6 +14,7 @@ The MVP stores data in static TypeScript files:
 - `data/coverageAdditions.ts`
 - `data/marketCoverage.ts`
 - `data/phase1cCoverage.ts`
+- `data/masterUpdateAdditions.ts`
 - `data/jurisdictions.ts`
 - `data/sectors.ts`
 - `data/taxonomy.ts`
@@ -34,6 +35,10 @@ Filtering and applicability logic lives in:
 Do not hardcode regulatory records inside UI components.
 
 Use `data/marketCoverage.ts` and `data/phase1cCoverage.ts` for additive market-depth records that broaden the MVP's jurisdiction coverage. These records should usually be marked `needs_review`, `date_uncertain`, or `verified_seed` depending on source maturity, and should not imply complete local legal coverage.
+
+Use `data/masterUpdateAdditions.ts` for the master-pack expansion layer. This file contains condensed EU financial-services parent records, APAC/ISSB market expansion records, voluntary and investor/customer-driven framework records, and enrichment metadata for existing parent records such as CSRD, ESRS, SFDR, EU Taxonomy, CSDDD, EUDR, EU Batteries and ISSB.
+
+Do not duplicate an existing top-level record when a child item, alias or milestone is enough.
 
 The external regulation tracker workbook should mirror the website seed data and add review workflow fields such as owner, review priority, source status, website inclusion, next review date and notes. Treat the workbook as a planning and QA control file, not as a separate legal source of truth.
 
@@ -65,6 +70,17 @@ Each regulation record should include:
 - Transposed or inherited jurisdiction IDs where relevant
 - Jurisdiction type
 - Legal instrument type
+- Atlas record type
+- Legal force
+- Display tier
+- Atlas granularity
+- Parent record ID where relevant
+- Aliases
+- Child items
+- Source system
+- Client relevance category
+- Market maturity score
+- Monetization tier
 - Issuing body
 - Status
 - Adoption level where relevant
@@ -98,6 +114,34 @@ Example:
 - CSRD is an EU-level record with `jurisdictionIds: ["eu"]`.
 - It can include `transposedJurisdictionIds: ["nl"]` so Netherlands can show EU exposure context.
 - The Netherlands map count should not exceed the EU count because every EU rule was also counted as Dutch law.
+
+## Condensed Parent-Record Rule
+
+The Atlas is a decision-support product, not a raw standards catalogue. Major laws, regimes and frameworks should normally be one parent record.
+
+Use child items, aliases, milestones and source notes for subrules, delegated acts, sector modules, questionnaires and indicators.
+
+Examples:
+
+- Keep one `ESRS` record. ESRS 1, ESRS 2, E1-E5, S1-S4 and G1 are child metadata.
+- Keep one `ISSB IFRS S1/S2` record. SASB sector guidance is alias or child metadata.
+- Keep one `SFDR` record. RTS, PAI indicators and Article 6/8/9 concepts are child metadata.
+- Keep one `EU Taxonomy` record. Delegated acts, DNSH and sector criteria are child metadata.
+- Keep one `CDP` record. Climate, water, forests, plastics and SME questionnaires are child modules.
+- Keep one `PCAF` record. Asset-class methods are child details.
+- Keep one `EU Banking ESG Risk` record. EBA, ECB, Pillar 3 and scenario-analysis items are child details.
+
+Create separate top-level records only when a regime creates a distinct user decision, market lens, source owner or implementation workflow.
+
+## Client Relevance Categories
+
+Use client relevance categories to avoid implying legal certainty:
+
+- `potentially-direct`: may create a direct obligation where thresholds, role or listing status are met.
+- `potentially-indirect`: may matter through value-chain, procurement, product, permitting or market exposure.
+- `investor-or-customer-driven`: likely relevant through investors, lenders, customers, procurement, ratings or capital-market expectations.
+- `voluntary-best-practice`: voluntary framework that may support governance, reporting, evidence or transition planning.
+- `monitor-only`: important to watch, but not currently a priority without specific facts or market exposure.
 
 ## Confidence Levels
 

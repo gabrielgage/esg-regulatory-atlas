@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, LockKeyhole } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Badge } from "@/components/Badge";
+import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
 import { DATASET_META } from "@/data/_meta";
 import { regulations } from "@/data/seed";
@@ -64,6 +65,7 @@ export default async function EditionRegulationPage({ params }: { params: Promis
             <Badge className="border-slate-200 bg-slate-50 text-slate-600">{regulation.jurisdiction}</Badge>
             <Badge className="border-teal/20 bg-teal/10 text-teal">{DATASET_META.edition}</Badge>
           </div>
+          <RecordMetaBadges regulation={regulation} />
           <h1 className="mt-5 text-4xl font-bold tracking-tight text-ink">{regulation.shortName}</h1>
           <p className="mt-2 text-lg text-slate-600">{regulation.title}</p>
           <p className="mt-3 text-sm font-semibold text-slate-500">

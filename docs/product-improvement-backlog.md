@@ -27,6 +27,7 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Add clearer explanatory copy for what country fill, border, selected layer and record count mean so users do not confuse regulatory intensity with legal applicability.
 
 3. **Coverage confidence view**
+   Status: partially delivered in `0.5.4 - May 2026`.
    Add a map/table mode that distinguishes "record volume" from "source confidence" and "needs review" so users can see where the Atlas is strong versus provisional.
 
 4. **Jurisdiction quick-start cards**
@@ -45,9 +46,11 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Track which UI strings are translated versus intentionally left as English source-linked regulatory content. Add a process note so future records are not accidentally machine-presented as legal translations.
 
 9. **Minimum market coverage checklist**
+   Status: partially delivered in `0.5.4 - May 2026`.
    Define a minimum credible coverage target per jurisdiction: corporate reporting, climate disclosure, sustainable finance, supply chain/human rights, product/trade and data-quality status.
 
 10. **Data quality review queue refinement**
+    Status: partially delivered in `0.5.4 - May 2026`.
     Rank review queue items by high-impact status, upcoming date, missing primary source, source age and likely client demand.
 
 11. **Workbook sync routine**
@@ -76,15 +79,18 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Build richer `/jurisdiction/[code]` pages with local regulatory drivers, source confidence, first reporting years, priority sectors and watch items.
 
 18. **Cross-framework mapping**
+    Status: partially delivered in `0.5.4 - May 2026`.
     Map connections among CSRD/ESRS, ISSB, GRI, TNFD, TCFD, GHG Protocol, SFDR and taxonomy requirements so users can spot overlapping data needs.
 
 19. **Private equity portfolio view**
+    Status: partially delivered in `0.5.4 - May 2026` through PCAF, PRI and portfolio-oriented quick views; deeper assessment logic remains open.
     Add a portfolio-focused assessment flow that classifies regulations by fund manager obligations, portfolio company obligations, financed emissions and investor-requested data.
 
 20. **Supplier and exporter view**
     Add a value-chain flow for suppliers/exporters exposed to EU, UK, US, deforestation, forced labour, CBAM, batteries, product and green claims rules.
 
 21. **Implementation effort scoring**
+    Status: partially delivered before `0.5.4`; master metadata now adds record type, legal force and relevance categories for future scoring improvements.
     Add a non-legal readiness score for effort level, likely functions involved, data maturity needed, assurance/control burden and typical advisory workstreams.
 
 22. **Source freshness dashboard**

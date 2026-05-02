@@ -86,6 +86,42 @@ export const jurisdictions: Jurisdiction[] = [
     executiveSummary: "ISSB-aligned domestic sustainability disclosure standards are progressing through the Sustainability Standards Board of Japan, with relevance for listed companies and global investors."
   },
   {
+    id: "hk",
+    code: "HKG",
+    name: "Hong Kong",
+    iso2: "HK",
+    iso3: "HKG",
+    region: "Asia Pacific",
+    type: "national",
+    coordinates: [114.2, 22.3],
+    regulatoryIntensity: "medium",
+    executiveSummary: "Capital-market sustainability reporting requirements are evolving through HKEX, with climate-related disclosure requirements aligned to ISSB concepts for listed issuers."
+  },
+  {
+    id: "kr",
+    code: "KOR",
+    name: "South Korea",
+    iso2: "KR",
+    iso3: "KOR",
+    region: "Asia Pacific",
+    type: "national",
+    coordinates: [127.8, 36.5],
+    regulatoryIntensity: "emerging",
+    executiveSummary: "ISSB-aligned sustainability disclosure standards and roadmap activity are relevant to listed issuers, exporters and investors monitoring Korean capital-market requirements."
+  },
+  {
+    id: "tw",
+    code: "TWN",
+    name: "Taiwan",
+    iso2: "TW",
+    iso3: "TWN",
+    region: "Asia Pacific",
+    type: "national",
+    coordinates: [121.0, 23.7],
+    regulatoryIntensity: "emerging",
+    executiveSummary: "Taiwan is phasing IFRS sustainability disclosure standards into listed-company reporting, creating a practical watch point for APAC manufacturing and supply-chain clients."
+  },
+  {
     id: "au",
     code: "AUS",
     name: "Australia",
@@ -96,6 +132,66 @@ export const jurisdictions: Jurisdiction[] = [
     coordinates: [133.8, -25.3],
     regulatoryIntensity: "medium",
     executiveSummary: "Mandatory climate-related financial reporting is moving through staged implementation for large entities and financial institutions under Corporations Act sustainability reporting rules."
+  },
+  {
+    id: "nz",
+    code: "NZL",
+    name: "New Zealand",
+    iso2: "NZ",
+    iso3: "NZL",
+    region: "Asia Pacific",
+    type: "national",
+    coordinates: [174.9, -40.9],
+    regulatoryIntensity: "medium",
+    executiveSummary: "Mandatory climate-related disclosure through Aotearoa New Zealand Climate Standards creates a mature reference market for financial institutions and large listed issuers."
+  },
+  {
+    id: "my",
+    code: "MYS",
+    name: "Malaysia",
+    iso2: "MY",
+    iso3: "MYS",
+    region: "Asia Pacific",
+    type: "national",
+    coordinates: [102.0, 4.2],
+    regulatoryIntensity: "emerging",
+    executiveSummary: "Malaysia's National Sustainability Reporting Framework creates a phased ISSB-aligned path for listed issuers and large non-listed companies."
+  },
+  {
+    id: "id",
+    code: "IDN",
+    name: "Indonesia",
+    iso2: "ID",
+    iso3: "IDN",
+    region: "Asia Pacific",
+    type: "national",
+    coordinates: [113.9, -0.8],
+    regulatoryIntensity: "emerging",
+    executiveSummary: "Indonesia is a sustainable-finance and reporting watch market, with OJK sustainable finance rules and ISSB-alignment developments relevant to financial institutions and listed companies."
+  },
+  {
+    id: "th",
+    code: "THA",
+    name: "Thailand",
+    iso2: "TH",
+    iso3: "THA",
+    region: "Asia Pacific",
+    type: "national",
+    coordinates: [100.9, 15.9],
+    regulatoryIntensity: "emerging",
+    executiveSummary: "Thailand is developing ISSB-aligned disclosure and sustainable finance architecture, including taxonomy work relevant to banks, issuers and investors."
+  },
+  {
+    id: "ph",
+    code: "PHL",
+    name: "Philippines",
+    iso2: "PH",
+    iso3: "PHL",
+    region: "Asia Pacific",
+    type: "national",
+    coordinates: [121.8, 12.9],
+    regulatoryIntensity: "watch",
+    executiveSummary: "Philippines sustainability disclosure developments are a monitor item for ISSB-aligned reporting, listed issuers and APAC portfolio coverage."
   },
   {
     id: "br",
@@ -158,6 +254,44 @@ export const jurisdictions: Jurisdiction[] = [
     executiveSummary: "Climate disclosure requirements for large public-interest companies are anchored in Swiss corporate reporting obligations and international climate disclosure frameworks."
   },
   {
+    id: "fr",
+    code: "FRA",
+    name: "France",
+    iso2: "FR",
+    iso3: "FRA",
+    region: "Europe",
+    type: "national",
+    parent: "eu",
+    coordinates: [2.2, 46.2],
+    regulatoryIntensity: "high",
+    executiveSummary: "France combines EU sustainability reporting exposure with national human-rights and environmental due-diligence expectations through the Duty of Vigilance framework."
+  },
+  {
+    id: "de",
+    code: "DEU",
+    name: "Germany",
+    iso2: "DE",
+    iso3: "DEU",
+    region: "Europe",
+    type: "national",
+    parent: "eu",
+    coordinates: [10.4, 51.2],
+    regulatoryIntensity: "high",
+    executiveSummary: "Germany combines EU reporting obligations with national supply-chain due diligence through LkSG, creating major supplier, procurement and human-rights governance exposure."
+  },
+  {
+    id: "no",
+    code: "NOR",
+    name: "Norway",
+    iso2: "NO",
+    iso3: "NOR",
+    region: "Europe",
+    type: "national",
+    coordinates: [8.5, 60.5],
+    regulatoryIntensity: "medium",
+    executiveSummary: "Norway is a supply-chain transparency and human-rights due-diligence market through the Transparency Act, with strong relevance for consumer-facing and supplier-heavy companies."
+  },
+  {
     id: "tr",
     code: "TUR",
     name: "Turkey",
@@ -180,6 +314,18 @@ export const jurisdictions: Jurisdiction[] = [
     coordinates: [-102.6, 23.6],
     regulatoryIntensity: "watch",
     executiveSummary: "Mexico is a watch jurisdiction for ESG reporting, sustainable finance and supply chain impacts, especially for companies linked to North American and EU value chains."
+  },
+  {
+    id: "za",
+    code: "ZAF",
+    name: "South Africa",
+    iso2: "ZA",
+    iso3: "ZAF",
+    region: "Africa",
+    type: "national",
+    coordinates: [24.0, -30.6],
+    regulatoryIntensity: "emerging",
+    executiveSummary: "South Africa is a regional anchor for sustainability disclosure guidance and sustainable finance taxonomy work, especially for listed issuers, financial institutions and real-asset investors."
   },
   {
     id: "int",

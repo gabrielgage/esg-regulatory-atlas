@@ -25,7 +25,8 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
   await expect(page.getByRole("table")).toBeVisible();
   await page.getByRole("link", { name: /Open CSRD/i }).click();
   await expect(page).toHaveURL(/\/regulations\/csrd$/);
-  await expect(page.getByRole("heading", { name: /Corporate Sustainability Reporting Directive/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /^CSRD$/i })).toBeVisible();
+  await expect(page.getByText(/Corporate Sustainability Reporting Directive/i)).toBeVisible();
 });
 
 test("key launch routes render", async ({ page }) => {

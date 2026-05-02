@@ -11,6 +11,17 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.3 - May 2026",
+    date: "2026-05-02",
+    label: "Theme, map clarity and PM backlog update",
+    summary:
+      "Defaulted first-time visitors to light mode, improved dark-mode contrast, clarified the map legend and added a PM/ESG specialist backlog for the next three improvement waves.",
+    added: ["Three-wave product improvement backlog", "Map interpretation guidance", "Dark-mode issue log entry"],
+    updated: ["Theme initialization", "Dark-mode contrast tokens", "Map legend copy", "Project documentation"],
+    records: [],
+    caveat: "This update changes product experience and documentation; regulatory records remain illustrative seed intelligence."
+  },
+  {
     edition: "0.5.2 - May 2026",
     date: "2026-05-02",
     label: "Workflow, translation and coverage control update",

@@ -41,6 +41,8 @@ Current capability areas:
 - Workbook-backed regulation tracker for coverage and review planning
 - Sector heatmap in the briefing workspace
 - Copyable assessment shortlist
+- First-visit light mode default with a saved explicit dark-mode preference
+- PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
 
 ## Recently Delivered Phase 1A Items
@@ -170,6 +172,8 @@ Stripe is explicitly out of scope until the project owner requests commercializa
 3. Improve exportability: CSV/JSON export and richer copyable briefs.
 4. Improve usability: map legend, mobile layout, comparison fields and filters.
 5. Improve maintainability: reusable data helpers, consistent taxonomy and living documentation.
+
+For the current 36-item PM/ESG specialist backlog, use `docs/product-improvement-backlog.md` as the working prioritization source. Wave 1 keeps the product static and focuses on launch quality, map clarity, persona presets, evidence summaries, source confidence and briefing quality.
 
 ## Non-Goals For The MVP
 

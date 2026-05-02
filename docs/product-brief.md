@@ -71,6 +71,7 @@ The MVP includes:
 - Briefing sector heatmap
 - Citation copy blocks and edition snapshot routes
 - Light/dark mode toggle
+- First-time visitors default to light mode; dark mode is an explicit saved preference
 - Language toggle for English, Spanish, Dutch, French, German and Portuguese interface chrome
 - Shareable filtered views for Map and Regulations
 - CSV/JSON exports of filtered regulation records
@@ -164,3 +165,5 @@ The MVP is successful when:
 ## Continuous Improvement Expectation
 
 Each meaningful iteration should reduce future friction. When the product changes, update the relevant context files so the next engineer or agent understands the current state, constraints, validation path and rationale.
+
+The active PM/ESG specialist improvement backlog lives in `docs/product-improvement-backlog.md`. It should guide near-term prioritization without expanding the MVP into authentication, database, paid API, monitoring or commercial features prematurely.

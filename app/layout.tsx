@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     (function () {
       try {
         var saved = window.localStorage.getItem("etica-theme");
-        var theme = saved === "light" || saved === "dark" ? saved : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        var theme = saved === "light" || saved === "dark" ? saved : "light";
         document.documentElement.classList.toggle("dark", theme === "dark");
         document.documentElement.dataset.theme = theme;
       } catch (error) {}

@@ -10,8 +10,8 @@
 
 .dark {
   color-scheme: dark;
-  --background: #071827;
-  --foreground: #e5eef8;
+  --background: #061524;
+  --foreground: #edf6ff;
 }
 
 * {
@@ -68,38 +68,77 @@ select:focus-visible {
 }
 
 .dark .bg-white {
-  background-color: #0b2236 !important;
+  background-color: #0b2134 !important;
 }
 
 .dark .bg-paper,
 .dark .bg-slate-50,
 .dark .bg-slate-50\/70,
-.dark .bg-slate-100 {
-  background-color: #102b42 !important;
+.dark .bg-slate-100,
+.dark .bg-slate-200 {
+  background-color: #10283e !important;
 }
 
 .dark .bg-navy {
-  background-color: #04111f !important;
+  background-color: #04101d !important;
 }
 
 .dark .border,
 .dark .border-slate-100,
 .dark .border-slate-200,
 .dark .border-slate-300 {
-  border-color: #1f3f5a !important;
+  border-color: #244660 !important;
+}
+
+.dark .ring-slate-100,
+.dark .ring-slate-200,
+.dark .ring-slate-300 {
+  --tw-ring-color: #244660 !important;
 }
 
 .dark .text-ink,
 .dark .text-slate-700,
 .dark .text-slate-800,
 .dark .text-slate-900 {
-  color: #e5eef8 !important;
+  color: #f0f7ff !important;
 }
 
 .dark .text-slate-400,
 .dark .text-slate-500,
 .dark .text-slate-600 {
-  color: #a8bacb !important;
+  color: #b5c7d8 !important;
+}
+
+.dark .text-teal {
+  color: #7dd3c7 !important;
+}
+
+.dark .text-mint {
+  color: #99f6e4 !important;
+}
+
+.dark .text-violet {
+  color: #c4b5fd !important;
+}
+
+.dark .text-blue-600,
+.dark .text-blue-700,
+.dark .text-blue-800 {
+  color: #bfdbfe !important;
+}
+
+.dark .text-amber-600,
+.dark .text-amber-700,
+.dark .text-amber-800,
+.dark .text-amber-900,
+.dark .text-amber-950 {
+  color: #fde68a !important;
+}
+
+.dark .text-red-600,
+.dark .text-red-700,
+.dark .text-red-800 {
+  color: #fecaca !important;
 }
 
 .dark .shadow-sm,
@@ -112,12 +151,18 @@ select:focus-visible {
 .dark select,
 .dark textarea {
   background-color: #071827 !important;
-  color: #e5eef8 !important;
-  border-color: #1f3f5a !important;
+  color: #edf6ff !important;
+  border-color: #244660 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #8fa7bc !important;
 }
 
 .dark option {
   color: #0f172a;
+  background-color: #ffffff;
 }
 
 .dark tr:hover,
@@ -128,15 +173,48 @@ select:focus-visible {
 }
 
 .dark .bg-amber-50 {
-  background-color: rgba(245, 158, 11, 0.14) !important;
+  background-color: rgba(245, 158, 11, 0.16) !important;
 }
 
 .dark .bg-red-50 {
-  background-color: rgba(239, 68, 68, 0.14) !important;
+  background-color: rgba(239, 68, 68, 0.16) !important;
 }
 
 .dark .bg-blue-50 {
-  background-color: rgba(59, 130, 246, 0.14) !important;
+  background-color: rgba(59, 130, 246, 0.16) !important;
+}
+
+.dark .bg-teal\/5,
+.dark .bg-teal\/10,
+.dark .bg-mint\/30 {
+  background-color: rgba(20, 184, 166, 0.14) !important;
+}
+
+.dark .bg-violet\/10 {
+  background-color: rgba(139, 92, 246, 0.18) !important;
+}
+
+.dark .border-teal,
+.dark .border-teal\/20,
+.dark .border-teal\/30,
+.dark .border-teal\/40 {
+  border-color: rgba(125, 211, 199, 0.45) !important;
+}
+
+.dark .border-amber-200 {
+  border-color: rgba(251, 191, 36, 0.42) !important;
+}
+
+.dark .border-red-200 {
+  border-color: rgba(248, 113, 113, 0.42) !important;
+}
+
+.dark .border-blue-200 {
+  border-color: rgba(147, 197, 253, 0.42) !important;
+}
+
+.dark .border-violet\/20 {
+  border-color: rgba(196, 181, 253, 0.42) !important;
 }
 
 @media print {

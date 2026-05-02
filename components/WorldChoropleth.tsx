@@ -152,6 +152,14 @@ export function WorldChoropleth({
           <Legend color={colors.none} label={t("map.noData")} />
         </div>
       </div>
+      <div className="mb-3 grid gap-2 text-xs leading-5 text-slate-600 lg:grid-cols-2">
+        <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
+          <span className="font-semibold text-ink">{t("map.legend.directTitle")}</span> {t("map.legend.directBody")}
+        </div>
+        <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
+          <span className="font-semibold text-ink">{t("map.legend.viewTitle")}</span> {t("map.legend.viewBody")}
+        </div>
+      </div>
 
       <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-300 bg-[#edf3f8]">
         <div className="pointer-events-none absolute right-2 top-2 z-20 rounded-md border border-violet/20 bg-white/90 px-2 py-1 text-[10px] font-semibold text-violet shadow-sm">
@@ -168,6 +176,7 @@ export function WorldChoropleth({
               <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">{featuredCount} {t("map.records")}</span>
             </div>
             <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">{featured.executiveSummary}</p>
+            <p className="mt-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400">{t("map.directSeedRecords")}</p>
             <div className="mt-2 flex flex-wrap gap-1">
               <span className="rounded-full bg-teal/10 px-2 py-1 text-xs font-semibold text-teal">
                 {t("map.firstReporting")} {featuredFirstYear || t("map.varies")}

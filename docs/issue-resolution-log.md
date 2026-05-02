@@ -60,3 +60,41 @@ Two separate quality-check issues were present:
 - `README.md`
 - `ESG_Regulatory_Atlas_Claude_Handoff.md`
 - `.github/pull_request_template.md`
+
+## 2026-05-02 - First Visit Opened In System Dark Mode And Some Dark Text Lacked Contrast
+
+Status: resolved.
+
+### Symptom
+
+The site could open in dark mode for first-time visitors when their operating system preferred dark mode. Some colored labels and warning/disclaimer text used light-mode text colors on dark-mode surfaces, making the interface feel less premium and harder to read.
+
+### Root Cause
+
+The theme initialization script and `ThemeToggle` helper used `prefers-color-scheme` when no `etica-theme` preference existed. That made dark mode the default for some first-time users. The dark-mode CSS also handled neutral slate text but did not consistently retune amber, red, blue, violet and teal text utilities, colored badge backgrounds, rings, form placeholders and related border colors.
+
+### Resolution
+
+- Updated `app/layout.tsx` and `components/ThemeToggle.tsx` so first-time visitors default to light mode.
+- Preserved explicit user choice by continuing to respect saved `etica-theme` values after a user toggles the theme.
+- Strengthened `app/globals.css` dark-mode rules for colored text, badge backgrounds, borders, rings, inputs, placeholders and hover states.
+- Added `docs/product-improvement-backlog.md` so visual/accessibility quality remains a Wave 1 priority.
+
+### Prevention Rule
+
+- Theme defaults should be product-led, not inferred from system preference, unless the product owner asks for system theme detection.
+- Dark-mode changes need a route-level visual pass on the map, regulations table, assessment, timeline, briefing, data quality, detail drawer and disclaimer surfaces.
+- When adding a new badge/status color, include a dark-mode contrast check before shipping.
+
+### Files Changed
+
+- `app/layout.tsx`
+- `app/globals.css`
+- `components/ThemeToggle.tsx`
+- `docs/issue-resolution-log.md`
+- `docs/product-improvement-backlog.md`
+- `README.md`
+- `AGENTS.md`
+- `docs/development-workflow.md`
+- `docs/product-brief.md`
+- `docs/roadmap.md`

@@ -74,6 +74,7 @@ When changing the app, also consider whether to update:
 - `docs/regulatory-taxonomy.md` when topics, sectors, statuses, value-chain labels or company-type labels change
 - `docs/development-workflow.md` when a process, validation command, handoff step or agent workflow becomes clearer
 - `docs/issue-resolution-log.md` when a bug, failed check, failed deployment, visible product defect or platform issue is investigated and resolved
+- `docs/product-improvement-backlog.md` when PM/ESG roadmap priorities, waves or product-review findings change
 
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
@@ -135,6 +136,7 @@ Current brand context:
 - LinkedIn: `https://www.linkedin.com/in/gabrielgage/`
 - Temporary logo assets are in `public/etica-esg-logo.svg`, `public/favicon.svg`, and `public/og-image.svg`
 - The global theme toggle lives in `components/ThemeToggle.tsx`; it persists `etica-theme` in local storage and uses Tailwind `darkMode: "class"`
+- First-time visitors should default to light mode. Respect a saved user choice after the user explicitly toggles the theme.
 - The language toggle lives in `components/LanguageToggle.tsx` and `components/LanguageProvider.tsx`; supported interface languages are English, Spanish, Dutch, French, German and Portuguese.
 - Translations live in `lib/i18n.ts`. Product chrome, filters, table controls and map guidance should use translation keys. Do not imply that the regulatory records themselves are legally translated; the current implementation translates product guidance and leaves source-linked regulatory record content in English.
 

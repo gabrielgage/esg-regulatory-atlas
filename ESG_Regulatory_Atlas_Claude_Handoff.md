@@ -6,6 +6,11 @@ The app is now in a static Phase 1C workflow, translation and coverage-control p
 
 ## Phase 1C Changes Delivered
 
+- Defaulted first-time visitors to light mode while preserving explicit saved dark-mode preferences.
+- Improved dark-mode contrast for colored badges, warning/disclaimer text, form controls, rings, borders and hover states.
+- Added `docs/product-improvement-backlog.md` with 36 PM/ESG specialist improvements prioritized across three waves.
+- Added map interpretation guidance that separates direct seed record volume from legal applicability.
+- Updated dataset metadata and changelog to `0.5.3 - May 2026`.
 - Added GitHub Actions CI for typecheck and production build validation.
 - Added Playwright smoke tests for the map workspace, language toggle, regulation detail route and launch-critical pages.
 - Added Lighthouse CI for key public routes with warning-level launch thresholds.
@@ -122,6 +127,7 @@ The deep review identified three credibility risks: the map claimed country fill
 ## Technical Notes
 
 - No Stripe, Supabase, authentication, paid APIs, Mapbox, environment variables, database, scraping, cron jobs or runtime AI calls were added.
+- Theme behavior now defaults first-time visitors to light mode. The saved `etica-theme` preference is still respected after a user explicitly toggles light or dark mode.
 - The new map fetches `/world-110m/index.json` and same-origin Natural Earth geometry from the app's own `public/` directory.
 - The country fill bucket is driven by direct record count in the active view: `0`, `1-2`, `3-6`, and `7+`.
 - EU-level records highlight EU member-state polygons and keep a separate `EUU` overlay label for the supranational jurisdiction.
@@ -137,6 +143,7 @@ The deep review identified three credibility risks: the map claimed country fill
 - `git diff --check` passed.
 - Out-of-scope dependency/code scan found no Stripe, Supabase, Mapbox, payment, webhook or environment-variable usage.
 - PR #11 CI incident is documented in `docs/issue-resolution-log.md`; future bug fixes should update that log.
+- Dark-mode default and contrast issue is documented in `docs/issue-resolution-log.md`; future visual defects should be treated as bugs with root-cause notes.
 - Local dev-server startup may be blocked by sandbox port-binding restrictions. Treat that as an environment limitation if TypeScript and production build pass.
 
 ## Known Tradeoffs
@@ -151,6 +158,11 @@ The deep review identified three credibility risks: the map claimed country fill
 
 Next useful improvements:
 
+- use `docs/product-improvement-backlog.md` as the active 36-item PM/ESG specialist backlog
+- clearer map legend and layer explanation
+- coverage confidence view separating record volume from source confidence and review risk
+- persona-specific quick filters and sector starting points
+- stronger evidence-needed summaries in briefing and regulation detail surfaces
 - horizontal timeline/swimlane with quarter precision
 - CSV or JSON export of the static regulation database
 - richer comparison fields for thresholds, assurance, taxonomy and transition plans

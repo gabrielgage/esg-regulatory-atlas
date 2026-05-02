@@ -106,13 +106,18 @@ Use these files to brief future coding agents, reviewers and collaborators:
 - `docs/regulatory-taxonomy.md`: canonical topics, sectors, value chain labels and statuses
 - `docs/development-workflow.md`: working process, validation steps and documentation update rules
 - `docs/issue-resolution-log.md`: resolved bugs, failed checks, root causes, fixes and prevention rules
+- `docs/product-improvement-backlog.md`: prioritized PM/ESG specialist improvement backlog across three waves
 
 ## Current edition
 
-The current seed dataset edition is `0.5.2 - May 2026`.
+The current seed dataset edition is `0.5.3 - May 2026`.
 
 The latest local update focuses on Phase 1C workflow hardening, broader interface translation and deeper market coverage:
 
+- defaults first-time visitors to light mode while preserving an explicit saved dark-mode preference
+- improves dark-mode contrast for colored badges, warning banners, inputs, rings and hover states
+- clarifies how to read the map by separating direct seed record volume from legal applicability
+- adds a PM/ESG specialist improvement backlog with 36 prioritized updates across launch quality, regulatory depth and later platform operations
 - added GitHub Actions CI for typecheck/build validation
 - added Playwright smoke tests for launch-critical routes and interface checks
 - added Lighthouse CI for preview performance/accessibility/best-practice guardrails

@@ -68,6 +68,14 @@ Any copied or exported summary should include:
 
 > This summary is indicative and based on static seed data. It does not constitute legal advice or a definitive applicability determination.
 
+Filtered CSV/JSON exports should be treated as data extracts from illustrative seed records, not as validated legal inventories.
+
+## Language Toggle Safeguard
+
+The language toggle translates product chrome, disclaimer guidance and navigation. It does not create legally reviewed translations of regulatory records.
+
+Do not describe the product as providing official legal translations. If deeper localization is added later, it should include source-language review, translation review and jurisdiction-specific legal review.
+
 ## Source Uncertainty
 
 When source certainty is incomplete:
@@ -94,6 +102,7 @@ The UI should reinforce caution through:
 - Caveats in detail pages
 - Clear distinction between seed data and verified data
 - Copy/export disclaimers
+- Language caveat where useful, especially when users may assume translated legal content
 - Citation blocks that identify edition and publisher
 - Edition snapshot routes that make version context explicit
 - Public update log and dataset edition metadata

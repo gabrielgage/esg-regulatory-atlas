@@ -9,6 +9,7 @@ import { CitationWidget } from "@/components/CitationWidget";
 import { regulations } from "@/data/seed";
 import { SourceLink } from "@/types/regulation";
 import { profileFor } from "@/lib/applicability";
+import { readinessBand, readinessClass, readinessReasons, readinessScore } from "@/lib/scoring";
 import { formatDate } from "@/lib/utils";
 
 const sourceTypeLabel: Record<SourceLink["type"], string> = {
@@ -59,6 +60,7 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           <p className="mt-3 text-sm font-semibold text-slate-500">Last reviewed by Gabriel Gage on {formatDate(regulation.lastReviewed)}</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             <Metric label="Issuing body" value={regulation.issuingBody} />
+            <Metric label="Readiness priority" value={`${readinessBand(regulation)} (${readinessScore(regulation)}/100)`} />
             <Metric label="Last reviewed" value={formatDate(regulation.lastReviewed)} />
             <Metric label="Next review" value={formatDate(regulation.nextReviewDate)} />
           </div>
@@ -97,6 +99,22 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
             <ListBlock title="Evidence required" values={profile.evidenceRequired} />
             <ListBlock title="Affected functions" values={regulation.affectedFunctions} />
           </div>
+        </Section>
+
+        <Section title="Readiness planning signal">
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <Badge className={readinessClass(readinessBand(regulation))}>
+              {readinessBand(regulation)} priority · {readinessScore(regulation)}/100
+            </Badge>
+            {readinessReasons(regulation).map((reason) => (
+              <Badge key={reason} className="border-slate-200 bg-slate-50 text-slate-600">
+                {reason}
+              </Badge>
+            ))}
+          </div>
+          <p>
+            This score is a planning aid based on timing, obligation breadth, source quality and impact indicators. It does not determine legal applicability.
+          </p>
         </Section>
 
         {regulation.penalties && (

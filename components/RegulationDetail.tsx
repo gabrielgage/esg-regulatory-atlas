@@ -2,6 +2,7 @@ import { ExternalLink, X } from "lucide-react";
 import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
 import { StatusBadge } from "./StatusBadge";
+import { readinessBand, readinessClass, readinessReasons, readinessScore } from "@/lib/scoring";
 import { formatDate } from "@/lib/utils";
 import { profileFor } from "@/lib/applicability";
 
@@ -60,6 +61,19 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
           </ul>
         </Card>
         <Card title="Business impact">{regulation.businessImpact}</Card>
+        <Card title="Readiness priority">
+          <div className="grid gap-3 sm:grid-cols-[.65fr_1.35fr]">
+            <Metric label="Indicative score" value={`${readinessScore(regulation)} / 100`} />
+            <div className="rounded-xl bg-white p-4">
+              <div className="text-xs uppercase tracking-wide text-slate-400">Priority band</div>
+              <Badge className={`mt-2 ${readinessClass(readinessBand(regulation))}`}>{readinessBand(regulation)}</Badge>
+              <p className="mt-3 text-sm text-slate-600">
+                Based on timing, obligation breadth, status, source quality and high-impact classification. This is a planning signal, not a legal determination.
+              </p>
+            </div>
+          </div>
+          <BadgeList values={readinessReasons(regulation)} tone="slate" />
+        </Card>
         <Card title="Required actions">
           <ul className="space-y-2">
             {profile.requiredActions.map((action) => (

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { ClipboardCheck, ClipboardCopy } from "lucide-react";
+import { companyTypes, jurisdictions, sectors } from "@/data/seed";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 import { uniq } from "@/lib/utils";
 
@@ -13,7 +14,30 @@ export function ExportSummaryButton({
   regulations: Regulation[];
 }) {
   const [copied, setCopied] = useState(false);
-  const summary = useMemo(() => buildSummary(jurisdiction, regulations), [jurisdiction, regulations]);
+  const [selectedJurisdictionId, setSelectedJurisdictionId] = useState(jurisdiction?.id || "");
+  const [selectedSector, setSelectedSector] = useState("");
+  const [selectedCompanyType, setSelectedCompanyType] = useState("");
+  const selectedJurisdiction = useMemo(
+    () => jurisdiction || jurisdictions.find((item) => item.id === selectedJurisdictionId) || null,
+    [jurisdiction, selectedJurisdictionId]
+  );
+  const scoped = useMemo(
+    () =>
+      regulations.filter((regulation) => {
+        const jurisdictionMatch =
+          !selectedJurisdiction ||
+          regulation.jurisdictionIds.includes(selectedJurisdiction.id) ||
+          Boolean(selectedJurisdiction.parent && regulation.jurisdictionIds.includes(selectedJurisdiction.parent));
+        const sectorMatch = !selectedSector || regulation.sectors.includes(selectedSector) || regulation.sectors.includes("All sectors");
+        const companyTypeMatch = !selectedCompanyType || regulation.companyTypes?.includes(selectedCompanyType) || selectedCompanyType === "Corporate";
+        return jurisdictionMatch && sectorMatch && companyTypeMatch;
+      }),
+    [regulations, selectedCompanyType, selectedJurisdiction, selectedSector]
+  );
+  const summary = useMemo(
+    () => buildSummary(selectedJurisdiction, scoped, selectedSector, selectedCompanyType),
+    [selectedCompanyType, selectedJurisdiction, scoped, selectedSector]
+  );
 
   async function copySummary() {
     if (navigator.clipboard) {
@@ -39,6 +63,58 @@ export function ExportSummaryButton({
           {copied ? "Copied" : "Copy summary"}
         </button>
       </div>
+      <div className="mt-4 grid gap-3 md:grid-cols-3">
+        {!jurisdiction && (
+          <label>
+            <span className="sr-only">Jurisdiction</span>
+            <select
+              className="h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700"
+              value={selectedJurisdictionId}
+              onChange={(event) => setSelectedJurisdictionId(event.target.value)}
+            >
+              <option value="">Global / current dataset</option>
+              {jurisdictions
+                .filter((item) => item.type !== "international")
+                .map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
+            </select>
+          </label>
+        )}
+        <label>
+          <span className="sr-only">Sector</span>
+          <select
+            className="h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700"
+            value={selectedSector}
+            onChange={(event) => setSelectedSector(event.target.value)}
+          >
+            <option value="">All sectors</option>
+            {sectors.map((sector) => (
+              <option key={sector} value={sector}>
+                {sector}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span className="sr-only">Company type</span>
+          <select
+            className="h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700"
+            value={selectedCompanyType}
+            onChange={(event) => setSelectedCompanyType(event.target.value)}
+          >
+            <option value="">All company types</option>
+            {companyTypes.map((companyType) => (
+              <option key={companyType} value={companyType}>
+                {companyType}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <p className="mt-3 text-xs font-semibold text-slate-500">{scoped.length} records included in this planning summary.</p>
       <details className="mt-3">
         <summary className="cursor-pointer text-sm font-semibold text-teal">Preview summary text</summary>
         <textarea
@@ -51,14 +127,7 @@ export function ExportSummaryButton({
   );
 }
 
-function buildSummary(jurisdiction: Jurisdiction | null, regulations: Regulation[]) {
-  const scoped = jurisdiction
-    ? regulations.filter(
-        (regulation) =>
-          regulation.jurisdictionIds.includes(jurisdiction.id) ||
-          Boolean(jurisdiction.parent && regulation.jurisdictionIds.includes(jurisdiction.parent))
-      )
-    : regulations;
+function buildSummary(jurisdiction: Jurisdiction | null, scoped: Regulation[], sector: string, companyType: string) {
   const highPriority = scoped.filter((regulation) => regulation.highImpact).slice(0, 6);
   const relevant = (highPriority.length ? highPriority : scoped).slice(0, 6);
   const dates = uniq(relevant.map((regulation) => String(regulation.firstReportingYear || "")).filter(Boolean));
@@ -76,6 +145,8 @@ function buildSummary(jurisdiction: Jurisdiction | null, regulations: Regulation
     "Etica ESG · Regulatory Atlas - indicative client planning summary",
     "",
     `Selected jurisdiction: ${jurisdiction?.name || "Global / current filtered view"}`,
+    `Selected sector: ${sector || "All sectors"}`,
+    `Selected company type: ${companyType || "All company types"}`,
     `Tracked records in scope: ${scoped.length}`,
     `Most relevant records: ${relevant.map((regulation) => regulation.shortName).join(", ") || "n/a"}`,
     `Indicative reporting years: ${dates.join(", ") || "n/a"}`,

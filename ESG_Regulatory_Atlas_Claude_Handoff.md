@@ -2,7 +2,24 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1A credibility and utility pass on top of the earlier information-architecture and Phase 0 map credibility work. The goal is to keep the MVP deployable and legally cautious while closing visible trust gaps from the v3/v4 reviews: placeholder thresholds, placeholder penalties, missing public changelog, missing comparison route, missing jurisdiction briefs, unclear map aggregation, insufficient process documentation and unclear publisher identity.
+The app is now in a static Phase 1B market coverage and usability pass on top of the Phase 1A Etica credibility update. The goal remains deployability and legal caution, but the emphasis has moved to broader per-market regulation coverage, clearer map legibility, multilingual interface chrome, share/export utility and planning-grade scoring.
+
+## Phase 1B Changes Delivered
+
+- Added `data/marketCoverage.ts` and imported it through `data/seed.ts` so under-covered markets no longer rely on one or two records.
+- Added market-depth records for Mexico, Netherlands, California, United States, China, Singapore, Japan, Australia, Brazil, Switzerland and Turkey.
+- Kept new market records legally cautious with source links, review dates, confidence levels and data-quality flags rather than presenting complete legal coverage.
+- Added `lib/i18n.ts`, `components/LanguageProvider.tsx` and `components/LanguageToggle.tsx` for English, Spanish, Dutch, French, German and Portuguese product chrome.
+- Translated navigation, legal disclaimer text, hero guidance, key homepage labels and share/export labels while leaving legal/regulatory record content in source-linked seed English.
+- Improved `components/WorldChoropleth.tsx` with stronger country borders, higher non-selected opacity, clearer legend borders and subtle graticule cues.
+- Added `lib/urlFilters.ts` and shareable query-string persistence for Map and Regulations filters.
+- Added `components/ShareViewButton.tsx` and `components/RegulationExportButtons.tsx`.
+- Added `lib/scoring.ts` and surfaced readiness-priority scoring in the regulation table, regulation drawer and per-regulation detail pages.
+- Expanded `/compare` with readiness, thresholds, first report due date, affected functions, advisory opportunities and enforcement rows for regulation comparisons.
+- Updated `components/RegulatoryTimeline.tsx` to group more milestones by year rather than showing a short flat list.
+- Improved `components/DataQualityPanel.tsx` with high-impact review checks, upcoming review counts and a larger prioritized research queue.
+- Improved `components/ExportSummaryButton.tsx` with jurisdiction, sector and company-type controls for more useful client planning summaries.
+- Added a `0.5.1 - May 2026` changelog entry for market coverage and usability changes.
 
 ## Etica ESG Rebrand / v4 Unblock Changes Delivered
 

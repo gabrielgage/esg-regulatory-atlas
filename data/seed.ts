@@ -1,8 +1,9 @@
 export { jurisdictions } from "./jurisdictions";
 import { coverageAdditions } from "./coverageAdditions";
+import { marketCoverage } from "./marketCoverage";
 import { regulations as coreRegulations } from "./regulations";
 
-export const regulations = [...coreRegulations, ...coverageAdditions];
+export const regulations = [...coreRegulations, ...coverageAdditions, ...marketCoverage];
 
 export {
   advisoryOpportunities,

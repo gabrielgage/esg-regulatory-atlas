@@ -1,22 +1,38 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { Filters } from "@/components/Filters";
 import { ComparePicker } from "@/components/ComparePicker";
+import { RegulationExportButtons } from "@/components/RegulationExportButtons";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { RegulationTable } from "@/components/RegulationTable";
+import { ShareViewButton } from "@/components/ShareViewButton";
 import { regulations } from "@/data/seed";
 import { filterRegulations, initialFilters } from "@/lib/filters";
+import { filtersFromSearchParams, filtersToSearchParams } from "@/lib/urlFilters";
 import { Regulation } from "@/types/regulation";
 
 export default function RegulationsPage() {
   const [filters, setFilters] = useState(initialFilters);
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
+  const [urlReady, setUrlReady] = useState(false);
   const filtered = useMemo(() => filterRegulations(regulations, filters), [filters]);
+
+  useEffect(() => {
+    setFilters(filtersFromSearchParams(new URLSearchParams(window.location.search)));
+    setUrlReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!urlReady) return;
+    const params = filtersToSearchParams(filters);
+    const query = params.toString();
+    window.history.replaceState(null, "", query ? `?${query}` : window.location.pathname);
+  }, [filters, urlReady]);
 
   return (
     <main id="main-content" className="min-h-screen pb-12">
@@ -28,7 +44,13 @@ export default function RegulationsPage() {
           body="Review records by jurisdiction, sector, company type, obligation, reporting year, source quality and advisory opportunity."
         />
         <DisclaimerBanner />
-        <ComparePicker regulations={filtered} />
+        <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+          <ComparePicker regulations={filtered} />
+          <div className="flex flex-wrap justify-start gap-2 lg:justify-end">
+            <ShareViewButton />
+            <RegulationExportButtons regulations={filtered} />
+          </div>
+        </div>
         <Filters filters={filters} regulations={regulations} onChange={setFilters} onReset={() => setFilters(initialFilters)} />
         <RegulationTable regulations={filtered} onSelect={setSelectedRegulation} />
         <FooterDisclaimer />

@@ -14,7 +14,8 @@ const colors = {
   emerging: "#b8f2e6",
   none: "#e2e8f0",
   active: "#6d5dfc",
-  border: "#ffffff"
+  border: "#8fa4b8",
+  background: "#edf3f8"
 };
 
 const euMembers = new Set([
@@ -150,7 +151,7 @@ export function WorldChoropleth({
         </div>
       </div>
 
-      <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-200 bg-[#f8fafc]">
+      <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-300 bg-[#edf3f8]">
         <div className="pointer-events-none absolute right-2 top-2 z-20 rounded-md border border-violet/20 bg-white/90 px-2 py-1 text-[10px] font-semibold text-violet shadow-sm">
           View: {viewLabel}
         </div>
@@ -223,7 +224,17 @@ export function WorldChoropleth({
         </noscript>
 
         <svg className="absolute inset-0 hidden h-full w-full lg:block" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="World regulatory coverage choropleth map">
-          <rect width={width} height={height} fill="#f8fafc" />
+          <rect width={width} height={height} fill={colors.background} />
+          <g opacity="0.32">
+            {[-120, -60, 0, 60, 120].map((longitude) => {
+              const x = project(longitude, 0).x;
+              return <line key={`lon-${longitude}`} x1={x} y1={18} x2={x} y2={height - 18} stroke="#b8c7d6" strokeWidth="0.7" strokeDasharray="4 8" />;
+            })}
+            {[-45, 0, 45].map((latitude) => {
+              const y = project(0, latitude).y;
+              return <line key={`lat-${latitude}`} x1={18} y1={y} x2={width - 18} y2={y} stroke="#b8c7d6" strokeWidth="0.7" strokeDasharray="4 8" />;
+            })}
+          </g>
           <g>
             {features.map((feature) => {
               const info = countryInfo(feature.properties.iso3, features, trackedByIso3, euJurisdiction, countsById, euCount);
@@ -241,8 +252,8 @@ export function WorldChoropleth({
                   d={geometryToPath(feature.geometry)}
                   fill={fill}
                   stroke={active || hovered ? "#312e81" : euOverlay ? "#0f766e" : colors.border}
-                  strokeWidth={active || hovered ? 1.8 : euOverlay ? 1.1 : 0.55}
-                  opacity={selectable || euOverlay ? 0.96 : 0.7}
+                  strokeWidth={active || hovered ? 2.1 : euOverlay ? 1.25 : 0.9}
+                  opacity={selectable || euOverlay ? 0.98 : 0.86}
                   role={selectable ? "button" : undefined}
                   tabIndex={selectable ? 0 : undefined}
                   aria-label={selectable ? `${info.jurisdiction?.name}: ${info.count} records` : feature.properties.name}
@@ -439,7 +450,7 @@ function MapLabel({
 function Legend({ color, label }: { color: string; label: string }) {
   return (
     <span className="flex items-center gap-1">
-      <i className="h-3 w-3 rounded-sm border border-white/70" style={{ background: color }} />
+      <i className="h-3 w-3 rounded-sm border border-slate-400/70" style={{ background: color }} />
       {label}
     </span>
   );
@@ -448,7 +459,7 @@ function Legend({ color, label }: { color: string; label: string }) {
 function MapSkeleton() {
   return (
     <svg className="absolute inset-0 hidden h-full w-full lg:block" viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
-      <rect width={width} height={height} fill="#f8fafc" />
+      <rect width={width} height={height} fill={colors.background} />
       <path d="M80 180 C145 110 260 125 302 190 C265 238 160 250 90 220 Z" fill="#e2e8f0" />
       <path d="M270 310 C320 270 410 285 430 350 C390 420 290 395 250 345 Z" fill="#e2e8f0" />
       <path d="M455 145 C525 105 630 125 655 205 C610 245 500 250 440 210 Z" fill="#e2e8f0" />

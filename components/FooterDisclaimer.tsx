@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { DATASET_META } from "@/data/_meta";
 import { formatDate } from "@/lib/utils";
+import { useLanguage } from "./LanguageProvider";
 
 export function FooterDisclaimer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="rounded-2xl border bg-white p-5 text-xs leading-6 text-slate-500 shadow-sm">
       <p className="font-semibold text-ink">
@@ -25,11 +30,8 @@ export function FooterDisclaimer() {
         </a>
       </p>
       <p className="mt-3">
-        <strong className="text-ink">Legal and data disclaimer: </strong>
-        This site provides structured ESG and sustainability regulatory intelligence for orientation and planning purposes only.
-        It is not legal, tax, investment or assurance advice. Applicability depends on entity-specific facts, jurisdictional
-        implementation, sector rules and legal interpretation. Users should validate requirements with qualified counsel or
-        regulatory advisors before relying on the information for compliance decisions.
+        <strong className="text-ink">{t("disclaimer.fullLabel")} </strong>
+        {t("disclaimer.full")}
       </p>
     </footer>
   );

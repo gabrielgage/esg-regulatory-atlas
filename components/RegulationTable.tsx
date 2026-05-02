@@ -3,6 +3,7 @@ import { ArrowUpRight, Database, ShieldAlert } from "lucide-react";
 import { Badge } from "./Badge";
 import { StatusBadge } from "./StatusBadge";
 import { Regulation } from "@/types/regulation";
+import { readinessBand, readinessClass, readinessScore } from "@/lib/scoring";
 import { cn } from "@/lib/utils";
 
 export function RegulationTable({ regulations, onSelect }: { regulations: Regulation[]; onSelect: (r: Regulation) => void }) {
@@ -38,6 +39,7 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
               <th className="px-5 py-3">Jurisdiction</th>
               <th className="px-5 py-3">Status</th>
               <th className="px-5 py-3">Impact</th>
+              <th className="px-5 py-3">Readiness</th>
               <th className="px-5 py-3">First reporting</th>
               <th className="px-5 py-3">Confidence</th>
               <th className="px-5 py-3">Data quality</th>
@@ -81,6 +83,11 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
                       </Badge>
                     ))}
                   </div>
+                </td>
+                <td className="px-5 py-4">
+                  <Badge className={readinessClass(readinessBand(regulation))}>
+                    {readinessBand(regulation)} · {readinessScore(regulation)}
+                  </Badge>
                 </td>
                 <td className="px-5 py-4">{regulation.firstReportingYear || "n/a"}</td>
                 <td className="px-5 py-4">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import { DATASET_META } from "@/data/_meta";
 import "./globals.css";
 
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
     default: "Etica ESG · Regulatory Atlas",
     template: "%s | Etica ESG"
   },
-  description: "Etica ESG · Independent ESG regulatory radar across 15 jurisdictions, 36+ regulations, with primary-source citations and a published review cadence.",
+  description: "Etica ESG · Independent ESG regulatory radar across 15 jurisdictions, 50+ regulations, with source citations and a published review cadence.",
   icons: {
     icon: "/favicon.svg"
   },
@@ -46,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="skip-link" href="#main-content">
           Skip to main content
         </a>
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

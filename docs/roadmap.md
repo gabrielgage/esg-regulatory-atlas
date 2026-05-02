@@ -33,6 +33,10 @@ Current capability areas:
 - Citation copy blocks and edition snapshot routes
 - Persona doorway presets in the assessment wizard
 - Light/dark mode toggle
+- Multilingual interface chrome for English, Spanish, Dutch, French, German and Portuguese
+- Shareable filtered Map and Regulations URLs
+- Filtered CSV and JSON regulation exports
+- Readiness-priority scoring on records
 - Sector heatmap in the briefing workspace
 - Copyable assessment shortlist
 - Static seed data
@@ -56,6 +60,19 @@ Current capability areas:
 - Direct vs inherited jurisdiction record-count distinction
 - Agent and documentation workflow files
 
+## Recently Delivered Phase 1B Items
+
+- Added market-depth seed records through `data/marketCoverage.ts`, especially for Mexico, Netherlands, California, United States, China, Singapore, Japan, Australia, Brazil, Switzerland and Turkey.
+- Improved map legibility with stronger country outlines and local graticule cues while keeping the dependency-free local Natural Earth approach.
+- Added language toggle support for English, Spanish, Dutch, French, German and Portuguese product chrome.
+- Added shareable filtered URLs to the Map and Regulations workspaces.
+- Added filtered CSV and JSON exports for the static regulation database.
+- Added readiness-priority scoring and reasons for planning conversations.
+- Grouped timeline milestones by year and expanded the visible milestone set.
+- Expanded comparison mode with thresholds, first report due date, readiness, affected functions, advisory opportunities and enforcement rows.
+- Improved the data-quality page with high-impact review checks and a larger prioritized research queue.
+- Added configurable client planning summaries by jurisdiction, sector and company type.
+
 ## Phase 1: Credibility And Utility
 
 Phase 1 should deepen the static product without changing the deployment model.
@@ -63,14 +80,14 @@ Phase 1 should deepen the static product without changing the deployment model.
 Recommended improvements:
 
 - More precise timeline view with quarter-level milestone grouping
-- Source review queue for records needing review
+- Deeper source review queue workflow with assigned owners and review states
 - Changelog detail grouped by regulation and jurisdiction
 - More consistent source metadata across all records
 - Better assessment scoring with visible reasons
 - Stronger regulation detail pages with threshold summaries and caveats
 - Improved map legend and layer explanations
 - Better mobile and tablet refinements
-- CSV or JSON export of the static regulation database
+- Excel and PDF-ready export formats after the CSV/JSON pattern is validated
 - Maturity axis alongside status, such as mandatory in place or mandatory in progress
 - Deeper threshold, penalty and phase-in content for non-marquee records
 

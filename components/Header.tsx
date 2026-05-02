@@ -4,19 +4,23 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { TranslationKey } from "@/lib/i18n";
+import { LanguageToggle } from "./LanguageToggle";
+import { useLanguage } from "./LanguageProvider";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
-  { href: "/", label: "Map" },
-  { href: "/regulations", label: "Regulations" },
-  { href: "/assessment", label: "Assessment" },
-  { href: "/timeline", label: "Timeline" },
-  { href: "/briefing", label: "Briefing" },
-  { href: "/data-quality", label: "Data Quality" }
-];
+  { href: "/", labelKey: "nav.map" },
+  { href: "/regulations", labelKey: "nav.regulations" },
+  { href: "/assessment", labelKey: "nav.assessment" },
+  { href: "/timeline", labelKey: "nav.timeline" },
+  { href: "/briefing", labelKey: "nav.briefing" },
+  { href: "/data-quality", labelKey: "nav.dataQuality" }
+] satisfies Array<{ href: string; labelKey: TranslationKey }>;
 
 export function Header() {
   const pathname = usePathname();
+  const { t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-40 border-b bg-white/90 backdrop-blur dark:bg-navy/92">
@@ -42,15 +46,16 @@ export function Header() {
                   active && "bg-white text-ink shadow-sm"
                 )}
               >
-                {item.label}
+                {t(item.labelKey)}
               </Link>
             );
           })}
         </nav>
         <div className="flex items-center gap-2">
           <div className="hidden items-center gap-2 rounded-full border bg-slate-50 px-4 py-2 text-sm text-slate-600 md:flex">
-            <ShieldCheck size={16} /> Intelligence tool, not legal advice
+            <ShieldCheck size={16} /> {t("header.legalPill")}
           </div>
+          <LanguageToggle />
           <ThemeToggle />
         </div>
       </div>

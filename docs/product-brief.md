@@ -71,6 +71,10 @@ The MVP includes:
 - Briefing sector heatmap
 - Citation copy blocks and edition snapshot routes
 - Light/dark mode toggle
+- Language toggle for English, Spanish, Dutch, French, German and Portuguese interface chrome
+- Shareable filtered views for Map and Regulations
+- CSV/JSON exports of filtered regulation records
+- Readiness-priority planning score
 - Source quality indicators
 - Advisory opportunity and business impact views
 - Visible legal and data-quality disclaimers
@@ -133,6 +137,7 @@ The MVP is successful when:
 - It deploys reliably on Vercel.
 - Users can understand the product purpose within a few seconds.
 - The map is visually credible and interactive.
+- Country outlines are visible enough for users to recognize the map as a true world map, not abstract shapes.
 - Users can select a jurisdiction and understand key regulatory drivers.
 - Users can filter regulations without breaking the interface.
 - Regulation records expose sources, caveats, confidence, and data quality.

@@ -11,6 +11,17 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.1 - May 2026",
+    date: "2026-05-02",
+    label: "Market coverage and usability update",
+    summary:
+      "Expanded under-covered markets, improved country-outline legibility, added multilingual product chrome, shareable filtered views, CSV/JSON exports and readiness-priority scoring.",
+    added: ["Market coverage records", "Language toggle", "Shareable filter URLs", "CSV and JSON exports", "Readiness planning score"],
+    updated: ["World map contrast", "Regulation table", "Timeline grouping", "Comparison dimensions", "Data-quality review queue"],
+    records: ["mexico-sustainable-taxonomy", "mexico-rene", "netherlands-energy-saving-obligation", "china-stock-exchange-sustainability-guidelines", "singapore-sgx-sustainability-reporting"],
+    caveat: "New market records are seed intelligence and should be validated against local primary sources before client reliance."
+  },
+  {
     edition: "0.5 - May 2026",
     date: "2026-05-02",
     label: "Etica credibility update",

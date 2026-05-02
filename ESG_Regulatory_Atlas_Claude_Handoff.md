@@ -2,7 +2,22 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1H premium-output and Marquee content-governance pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces and Phase 1G premium-pack/manual-conversion follow-up. The goal remains deployability and legal caution, with added emphasis on making premium pack previews easier to share and making launch-critical source-review needs visible without adding payments, authentication, databases, analytics, production alerts or automation.
+The app is now in a static Phase 1I visible-map and market-coverage-depth pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up and Phase 1H premium-output/content-governance pass. The goal remains deployability and legal caution, with added emphasis on making the map visibly inspectable and making direct market coverage depth transparent without adding payments, authentication, databases, analytics, production alerts or automation.
+
+## Phase 1I Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.9 - May 2026`.
+- Made the local Natural Earth SVG country-outline map visible from tablet widths upward instead of hiding it until the large desktop breakpoint.
+- Strengthened country borders, ocean/land contrast, selected-state styling and EU overlay cues.
+- Added a clear geometry failure fallback while preserving jurisdiction navigation.
+- Added `data/coverageTargets.ts` with deep-anchor, core-commercial and watch-expansion direct-record targets.
+- Added `components/CoverageDepthPanel.tsx` and surfaced it on `/data-quality`.
+- Added `data/marketDepthAdditions.ts` with source-linked seed records for under-covered markets.
+- Added Playwright checks for visible country paths, tablet map size, jurisdiction selection, geometry fallback and coverage target completeness.
+
+## Phase 1I Product Rationale
+
+The map is the product's first trust surface. If users cannot see country outlines, the Atlas feels less credible even when the data is strong. The coverage-depth panel also makes weak markets visible instead of hiding them behind aggregate counts. This round improves client confidence while keeping the data legally cautious: new records are still seed intelligence and require source review before compliance reliance.
 
 ## Phase 1H Changes Delivered
 
@@ -245,6 +260,16 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1I validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1I validation: `git diff --check` passed.
+- Phase 1I validation: static coverage target check passed for 27 coverage targets using `node -r sucrase/register`; all tracked target markets meet the direct-record target configured in `data/coverageTargets.ts`.
+- Phase 1I validation: static map geometry check passed; local Natural Earth data currently exposes 37 country features and 37 tracked labels from `public/world-110m`.
+- Phase 1I validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1I validation: local Playwright execution could not run because this sandbox has no `npm` executable and the current local `node_modules` does not include `@playwright/test`. The Playwright map tests were added and should run in GitHub Actions after dependency installation.
+- Phase 1I validation: local `next dev` startup was blocked by sandbox port-binding permissions (`listen EPERM 0.0.0.0:3000`), so browser smoke testing should run in CI, Vercel preview or a normal local terminal.
+- Phase 1I out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM plus the existing Playwright `process.env.CI` check; no implementation code or dependencies were added for those items.
+- Phase 1I legal-risk wording scan found only banned phrases inside "do not use" guidance plus intentional coverage caveats that tracked coverage is not complete global coverage.
+- Phase 1I Notion update: Launch Command Center includes the visible-map and coverage-depth note; Launch Tasks LAUNCH-034 through LAUNCH-037 were created; ADR-020 was added to Decisions Log; QA & Review Findings now records the map breakpoint defect.
 - Phase 1H validation: `tsc --noEmit` passed locally using the bundled Node runtime.
 - Phase 1H validation: `git diff --check` passed.
 - Phase 1H validation: `next build --webpack` was blocked in the Codex desktop sandbox by a macOS code-signature failure while loading `@next/swc-darwin-arm64`. This happened before app compilation and is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative Next.js build signal.

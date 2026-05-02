@@ -32,8 +32,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Improve dark-mode text contrast, default first visit to light mode, verify status badges, warning banners, inputs and source links across core routes.
 
 2. **Map legend and layer explanation upgrade**
-   Status: partially delivered in `0.5.3 - May 2026`.
-   Add clearer explanatory copy for what country fill, border, selected layer and record count mean so users do not confuse regulatory intensity with legal applicability.
+   Status: materially delivered through `0.5.3 - May 2026` and `0.5.9 - May 2026`.
+   The map now uses local country outlines from tablet widths upward, stronger border contrast, selected/EU overlay cues and fallback behavior. Continue improving interpretation copy as layers become more sophisticated.
 
 3. **Coverage confidence view**
    Status: partially delivered in `0.5.4 - May 2026`.
@@ -56,8 +56,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Track which UI strings are translated versus intentionally left as English source-linked regulatory content. Add a process note so future records are not accidentally machine-presented as legal translations.
 
 9. **Minimum market coverage checklist**
-   Status: partially delivered in `0.5.4 - May 2026`.
-   Define a minimum credible coverage target per jurisdiction: corporate reporting, climate disclosure, sustainable finance, supply chain/human rights, product/trade and data-quality status.
+   Status: materially delivered in `0.5.9 - May 2026`.
+   `data/coverageTargets.ts` defines deep-anchor, core-commercial and watch-expansion direct-record targets. `/data-quality` now shows current depth, target depth, gaps and review risk per jurisdiction.
 
 10. **Data quality review queue refinement**
     Status: partially delivered in `0.5.5 - May 2026`.

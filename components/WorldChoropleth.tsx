@@ -11,12 +11,14 @@ const height = 520;
 
 const colors = {
   high: "#0f766e",
-  medium: "#57c3b7",
-  emerging: "#b8f2e6",
-  none: "#e2e8f0",
+  medium: "#3fb8ad",
+  emerging: "#a7f3d0",
+  none: "#d7e0ea",
   active: "#6d5dfc",
-  border: "#8fa4b8",
-  background: "#edf3f8"
+  border: "#42566d",
+  euBorder: "#0f766e",
+  background: "#e6eef6",
+  graticule: "#9fb1c2"
 };
 
 const euMembers = new Set([
@@ -87,6 +89,7 @@ export function WorldChoropleth({
   onSelect: (j: Jurisdiction) => void;
 }) {
   const [features, setFeatures] = useState<CountryFeature[]>([]);
+  const [mapStatus, setMapStatus] = useState<"loading" | "ready" | "failed">("loading");
   const [hoveredIso, setHoveredIso] = useState<string | null>(null);
   const [hoveredJurisdictionId, setHoveredJurisdictionId] = useState<string | null>(null);
   const { t } = useLanguage();
@@ -99,10 +102,16 @@ export function WorldChoropleth({
         const chunks = await Promise.all(
           index.chunks.map((chunk) => fetch(`/world-110m/${chunk}`).then((response) => response.json() as Promise<CountryFeature[]>))
         );
-        if (!cancelled) setFeatures(chunks.flat().filter((feature) => feature.properties.iso3 !== "ATA"));
+        if (!cancelled) {
+          setFeatures(chunks.flat().filter((feature) => feature.properties.iso3 !== "ATA"));
+          setMapStatus("ready");
+        }
       })
       .catch(() => {
-        if (!cancelled) setFeatures([]);
+        if (!cancelled) {
+          setFeatures([]);
+          setMapStatus("failed");
+        }
       });
 
     return () => {
@@ -161,7 +170,7 @@ export function WorldChoropleth({
         </div>
       </div>
 
-      <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-300 bg-[#edf3f8]">
+      <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-400 bg-[#e6eef6] shadow-inner">
         <div className="pointer-events-none absolute right-2 top-2 z-20 rounded-md border border-violet/20 bg-white/90 px-2 py-1 text-[10px] font-semibold text-violet shadow-sm">
           {t("map.view")}: {viewLabel}
         </div>
@@ -186,9 +195,10 @@ export function WorldChoropleth({
           </div>
         )}
 
-        {!features.length && <MapSkeleton />}
+        {mapStatus === "loading" && <MapSkeleton />}
+        {mapStatus === "failed" && <MapFallback />}
 
-        <div className="absolute inset-x-0 bottom-0 top-10 overflow-y-auto p-3 lg:hidden">
+        <div className="absolute inset-x-0 bottom-0 top-10 overflow-y-auto p-3 md:hidden">
           <div className="space-y-2">
             {jurisdictions
               .filter((jurisdiction) => jurisdiction.type !== "international")
@@ -234,16 +244,16 @@ export function WorldChoropleth({
           </div>
         </noscript>
 
-        <svg className="absolute inset-0 hidden h-full w-full lg:block" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="World regulatory coverage choropleth map" preserveAspectRatio="xMidYMid meet">
+        <svg className="absolute inset-0 hidden h-full w-full md:block" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="World regulatory coverage choropleth map" preserveAspectRatio="xMidYMid meet" data-testid="country-outline-map">
           <rect width={width} height={height} fill={colors.background} />
           <g opacity="0.32">
             {[-120, -60, 0, 60, 120].map((longitude) => {
               const x = project(longitude, 0).x;
-              return <line key={`lon-${longitude}`} x1={x} y1={18} x2={x} y2={height - 18} stroke="#b8c7d6" strokeWidth="0.7" strokeDasharray="4 8" />;
+              return <line key={`lon-${longitude}`} x1={x} y1={18} x2={x} y2={height - 18} stroke={colors.graticule} strokeWidth="0.8" strokeDasharray="4 8" />;
             })}
             {[-45, 0, 45].map((latitude) => {
               const y = project(0, latitude).y;
-              return <line key={`lat-${latitude}`} x1={18} y1={y} x2={width - 18} y2={y} stroke="#b8c7d6" strokeWidth="0.7" strokeDasharray="4 8" />;
+              return <line key={`lat-${latitude}`} x1={18} y1={y} x2={width - 18} y2={y} stroke={colors.graticule} strokeWidth="0.8" strokeDasharray="4 8" />;
             })}
           </g>
           <g>
@@ -261,12 +271,14 @@ export function WorldChoropleth({
                 <path
                   key={feature.properties.iso3}
                   d={geometryToPath(feature.geometry)}
+                  data-testid="country-path"
+                  data-iso3={feature.properties.iso3}
                   fill={fill}
-                  stroke={active || hovered ? "#312e81" : euOverlay ? "#0f766e" : colors.border}
-                  strokeWidth={active || hovered ? 2.1 : euOverlay ? 1.25 : 0.9}
+                  stroke={active || hovered ? "#312e81" : euOverlay ? colors.euBorder : colors.border}
+                  strokeWidth={active || hovered ? 2.6 : euOverlay ? 1.65 : 1.15}
                   vectorEffect="non-scaling-stroke"
                   strokeLinejoin="round"
-                  opacity={selectable || euOverlay ? 0.98 : 0.86}
+                  opacity={selectable || euOverlay ? 0.99 : 0.9}
                   role={selectable ? "button" : undefined}
                   tabIndex={selectable ? 0 : undefined}
                   aria-label={selectable ? `${info.jurisdiction?.name}: ${info.count} records` : feature.properties.name}
@@ -292,9 +304,9 @@ export function WorldChoropleth({
                 key={`outline-${feature.properties.iso3}`}
                 d={geometryToPath(feature.geometry)}
                 fill="none"
-                stroke="#334155"
-                strokeOpacity="0.42"
-                strokeWidth="0.7"
+                stroke="#1f2937"
+                strokeOpacity="0.55"
+                strokeWidth="0.85"
                 vectorEffect="non-scaling-stroke"
                 strokeLinejoin="round"
               />
@@ -486,7 +498,7 @@ function Legend({ color, label }: { color: string; label: string }) {
 
 function MapSkeleton() {
   return (
-    <svg className="absolute inset-0 hidden h-full w-full lg:block" viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
+    <svg className="absolute inset-0 hidden h-full w-full md:block" viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
       <rect width={width} height={height} fill={colors.background} />
       <path d="M80 180 C145 110 260 125 302 190 C265 238 160 250 90 220 Z" fill="#e2e8f0" />
       <path d="M270 310 C320 270 410 285 430 350 C390 420 290 395 250 345 Z" fill="#e2e8f0" />
@@ -495,5 +507,18 @@ function MapSkeleton() {
       <path d="M660 165 C760 95 910 135 940 235 C850 295 725 275 650 225 Z" fill="#e2e8f0" />
       <path d="M760 345 C830 315 925 345 940 430 C865 470 780 430 740 380 Z" fill="#e2e8f0" />
     </svg>
+  );
+}
+
+function MapFallback() {
+  return (
+    <div className="absolute inset-0 z-10 hidden items-center justify-center bg-[#e6eef6] p-6 md:flex">
+      <div className="max-w-md rounded-2xl border border-amber-200 bg-white/95 p-5 text-center shadow-lg">
+        <p className="font-semibold text-ink">Map geometry could not load</p>
+        <p className="mt-2 text-sm leading-6 text-slate-500">
+          The Atlas is still usable through the jurisdiction list below. The local Natural Earth map file should be checked if this appears in production.
+        </p>
+      </div>
+    </div>
   );
 }

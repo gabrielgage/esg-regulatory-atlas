@@ -12,8 +12,9 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Stable Tailwind/PostCSS v3 setup for Vercel deployment
 - Production build uses the stable Next.js webpack build path for this MVP
 - Static Natural Earth choropleth map with no paid map API and no Mapbox token
-- Improved country-outline contrast and local graticule cues so countries are visible without adding a map dependency
+- Tablet-and-desktop country-outline map with stronger contrast, local graticule cues and a clear geometry fallback
 - Expanded APAC, South Africa and European national due-diligence jurisdiction coverage
+- Coverage-depth targets for core commercial and watch-expansion markets
 - Jurisdiction profile panel
 - Regulation detail drawer and `/regulations/[slug]` pages with sources, caveats, business impact and advisory opportunities
 - Condensed parent-record data model with record type, legal force, client relevance, child items, aliases, source system and monetization-readiness fields
@@ -96,8 +97,10 @@ Seed data is stored in:
 - `data/regulations.ts`
 - `data/coverageAdditions.ts`
 - `data/marketCoverage.ts`
+- `data/marketDepthAdditions.ts`
 - `data/phase1cCoverage.ts`
 - `data/masterUpdateAdditions.ts`
+- `data/coverageTargets.ts`
 - `data/commercialOffers.ts`
 - `data/alertDigests.ts`
 - `data/premiumPacks.ts`
@@ -128,9 +131,19 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.8 - May 2026`.
+The current seed dataset edition is `0.5.9 - May 2026`.
 
-The latest local update improves premium output usefulness and content governance:
+The latest local update improves map visibility and market coverage depth:
+
+- makes the local Natural Earth SVG country map visible from tablet widths upward
+- strengthens country borders, ocean/land contrast, selected states and EU overlay cues
+- adds a clear fallback if local map geometry cannot load
+- adds `data/coverageTargets.ts` and a Market Coverage Depth panel to `/data-quality`
+- adds `data/marketDepthAdditions.ts` with direct seed records for under-covered markets
+- meets minimum direct-record targets for deep-anchor, core-commercial and watch-expansion markets
+- adds Playwright checks for visible country paths, tablet map sizing, jurisdiction selection and fallback behavior
+
+The prior `0.5.8 - May 2026` update improved premium output usefulness and content governance:
 
 - adds copy/print controls to `/premium-packs/[id]` so sample packs can be shared as client-ready Markdown briefs
 - adds `data/contentReview.ts` for Marquee 10 and Marquee 25 launch review governance

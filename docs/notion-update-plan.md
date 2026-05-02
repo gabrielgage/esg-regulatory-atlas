@@ -71,6 +71,13 @@ ADR-019:
 - Consequence: Add Marquee 10/25 review queue with launch blockers and review questions while preserving caveats.
 - Status: Active.
 
+ADR-020:
+
+- Decision: Treat market coverage targets as product QA controls, not legal completeness claims.
+- Why: Direct-record targets help the Atlas avoid thin market profiles, but they cannot prove comprehensive local legal coverage.
+- Consequence: Add coverage-depth targets, visible gaps and direct-record QA while preserving seed-data caveats.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -97,6 +104,7 @@ Track:
 - Manual conversion tracking log template
 - Copyable premium pack brief template
 - Marquee content review queue for premium/advisory launch records
+- Market coverage-depth launch note
 
 ## QA And Review Findings
 
@@ -111,3 +119,22 @@ Log issues discovered during implementation, especially:
 - export caveat failures
 - copied summary disclaimer failures
 - mobile CTA/layout issues
+- map country outlines hidden or visually too faint
+- market coverage depth below the current launch target
+
+## 2026-05-02 Codex Update - Visible Map And Market Coverage Depth
+
+Launch Command Center note:
+
+> Phase 1I improved the first trust surface of the Atlas: the local Natural Earth country-outline map now appears from tablet widths upward with stronger borders, selected-state cues and a geometry fallback. Data Quality now includes market coverage-depth targets so core commercial markets and watch-expansion markets show direct-record depth, gaps and review risk.
+
+Launch Tasks:
+
+- LAUNCH-034 - Make country-outline map visibly inspectable on tablet and desktop
+- LAUNCH-035 - Add market coverage-depth target model and Data Quality panel
+- LAUNCH-036 - Expand direct market-depth seed records for under-covered jurisdictions
+- LAUNCH-037 - Add map rendering and coverage target QA checks
+
+QA finding:
+
+- Map visual defect resolved: SVG country paths were hidden below the large desktop breakpoint and borders were too subtle. Future map QA must assert visible country paths, not just the map container.

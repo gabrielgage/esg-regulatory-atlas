@@ -1,11 +1,12 @@
 export { jurisdictions } from "./jurisdictions";
 import { coverageAdditions } from "./coverageAdditions";
 import { marketCoverage } from "./marketCoverage";
+import { marketDepthAdditions } from "./marketDepthAdditions";
 import { masterRecordEnhancements, masterUpdateAdditions } from "./masterUpdateAdditions";
 import { phase1cCoverage } from "./phase1cCoverage";
 import { regulations as coreRegulations } from "./regulations";
 
-const baseRegulations = [...coreRegulations, ...coverageAdditions, ...marketCoverage, ...phase1cCoverage, ...masterUpdateAdditions];
+const baseRegulations = [...coreRegulations, ...coverageAdditions, ...marketCoverage, ...phase1cCoverage, ...masterUpdateAdditions, ...marketDepthAdditions];
 
 export const regulations = baseRegulations.map((regulation) => {
   const enhancement = masterRecordEnhancements[regulation.id];

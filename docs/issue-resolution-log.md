@@ -17,6 +17,71 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-02 - Country Outline Map Was Hidden On Tablet/Narrow Desktop Layouts
+
+Status: resolved.
+
+### Symptom
+
+The homepage map could appear as a non-map list or visually blank/unclear in browser widths below the large desktop breakpoint. The user could not see a meaningful country outline map.
+
+### Root Cause
+
+`components/WorldChoropleth.tsx` rendered the local Natural Earth SVG country map only at the `lg` breakpoint. Below that breakpoint, the component showed an absolute-positioned jurisdiction list instead of the actual SVG map. The country borders and ocean/land contrast were also too subtle, so even when the map rendered it did not feel visually unmistakable.
+
+### Resolution
+
+- Made the SVG country-outline map visible from tablet widths upward.
+- Strengthened ocean/land contrast, country borders, selected-state styling and EU overlay strokes.
+- Added `data-testid` markers for country paths so smoke tests can confirm the map is not blank.
+- Added a clear fallback state if local map geometry cannot load while preserving jurisdiction navigation.
+- Added Playwright checks for visible country paths, tablet sizing, jurisdiction selection and geometry failure fallback.
+
+### Prevention Rule
+
+Map changes must verify the visual SVG, not only the surrounding map container. Smoke tests should assert visible country paths and a non-collapsed SVG at tablet/desktop sizes.
+
+### Files Changed
+
+- `components/WorldChoropleth.tsx`
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`
+
+## 2026-05-02 - Local Sandbox Could Not Run Playwright Map Smoke Tests
+
+Status: documented environment limitation.
+
+### Symptom
+
+During the Phase 1I visible-map validation pass, the new Playwright map checks could not be executed locally. The shell also could not run `npm run lint` because no `npm` executable is available in this Codex sandbox.
+
+### Root Cause
+
+The bundled desktop runtime exposes a `node` executable but not an `npm` executable. The current local `node_modules` tree also does not include `@playwright/test`, so direct Playwright CLI execution failed before any browser test code ran. Separately, starting `next dev` was blocked by sandbox port-binding permissions, which is already documented below.
+
+### Resolution
+
+Validated the closest checks available in this sandbox:
+
+- standalone TypeScript check with `node node_modules/typescript/bin/tsc --noEmit`
+- whitespace check with `git diff --check`
+- static coverage-target check using `node -r sucrase/register`
+- static local-map-geometry check against `public/world-110m`
+- guardrail and legal wording scans
+
+The Playwright test files remain in the repo and should run in GitHub Actions or a normal developer terminal after `npm install`.
+
+### Prevention Rule
+
+When this sandbox lacks `npm` or Playwright packages, document the limitation and validate static logic directly where possible. Do not remove or weaken browser smoke tests; rely on CI/Vercel preview for dependency-installed browser validation.
+
+### Files Changed
+
+- `tests/smoke.spec.ts`
+- `tests/coverage-targets.spec.ts`
+- `ESG_Regulatory_Atlas_Claude_Handoff.md`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-02 - Codex Sandbox Could Not Load Next SWC Native Binary
 
 Status: documented environment limitation.

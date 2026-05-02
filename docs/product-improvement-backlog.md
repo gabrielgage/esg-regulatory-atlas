@@ -10,6 +10,15 @@ The backlog is intentionally split into three waves:
 
 Non-negotiable boundaries still apply: no Stripe, Supabase, authentication, paid APIs, Mapbox, scraping, cron jobs, email alerts, production AI summaries or required environment variables unless the project owner explicitly changes phase.
 
+## May 2026 Commercialization Themes
+
+The deep research assessment adds a commercialization overlay to the backlog:
+
+- Free Atlas remains the public trust surface.
+- Premium Intelligence is validated through static alerts, watchlists and market-pack previews.
+- Advisory Atlas is the near-term revenue path through exposure scans, custom watchlists, portfolio/supplier maps and client-ready briefings.
+- Enterprise/API remains future-state until source governance, demand and infrastructure needs are validated.
+
 ## Review Summary
 
 The MVP already has the right core shape: a map-centered workspace, source-linked regulation records, jurisdiction panels, assessment, timeline, briefing, data-quality surfaces, exports, comparison, language toggle and launch checks. The next improvement step is not adding more visual sections to the homepage. The highest-value work is making the existing surfaces more decision-oriented, more accessible, more source-governed and more useful for specific personas such as CSOs, legal teams, procurement leads, finance controllers and ESG advisors.
@@ -37,6 +46,7 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Add quick filters for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and external advisor personas.
 
 6. **Evidence-needed summaries**
+   Status: partially delivered in `0.5.5 - May 2026`.
    Surface the most common evidence requirements per selected regulation or jurisdiction, such as emissions inventory, supplier attestations, board minutes, controls evidence and financial statement links.
 
 7. **Sector-specific starting points**
@@ -50,13 +60,14 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Define a minimum credible coverage target per jurisdiction: corporate reporting, climate disclosure, sustainable finance, supply chain/human rights, product/trade and data-quality status.
 
 10. **Data quality review queue refinement**
-    Status: partially delivered in `0.5.4 - May 2026`.
+    Status: partially delivered in `0.5.5 - May 2026`.
     Rank review queue items by high-impact status, upcoming date, missing primary source, source age and likely client demand.
 
 11. **Workbook sync routine**
     Document and automate, where possible, a repeatable static export of website seed data to the regulation tracker workbook so website and review inventory stay aligned.
 
 12. **Client briefing copy polish**
+    Status: partially delivered in `0.5.5 - May 2026`.
     Make copied summaries more useful for client conversations by including persona, selected sector, jurisdiction, caveat, priority regulations, evidence needs and first 30-day actions.
 
 ## Wave 2: Regulatory Depth And Advisory Workflow
@@ -64,6 +75,7 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
 Target: next 1 to 3 months. Still avoid production databases unless the owner changes scope.
 
 13. **Quarter-level regulatory timeline**
+    Status: partially delivered in `0.5.5 - May 2026`.
     Convert the timeline into a quarter-based swimlane for effective dates, reporting years, consultation deadlines, first reports and phase-in notes.
 
 14. **Threshold matrix**
@@ -76,7 +88,33 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add a separate maturity classification, such as voluntary framework, consultation, adopted not yet in force, partially in force, in force, delayed or under review.
 
 17. **Jurisdiction market pages**
+    Status: partially delivered in `0.5.5 - May 2026` through richer printable/copyable jurisdiction briefs; standalone market pages remain open.
     Build richer `/jurisdiction/[code]` pages with local regulatory drivers, source confidence, first reporting years, priority sectors and watch items.
+
+37. **Commercial offer architecture**
+    Status: partially delivered in `0.5.6 - May 2026`.
+    Revenue relevance: Lead-gen, premium alerts, market packs and advisory.
+    Add `/plans`, commercial comparison, reusable CTAs and static commercial data so visitors understand Free Atlas, Premium Intelligence, Advisory Atlas and Enterprise/API Future.
+
+38. **Premium alerts preview**
+    Status: partially delivered in `0.5.6 - May 2026`.
+    Revenue relevance: Premium alerts.
+    Add static weekly/monthly digest samples, watchlist options, source-quality legend and request-access CTA without email backend.
+
+39. **Advisory service surface**
+    Status: partially delivered in `0.5.6 - May 2026`.
+    Revenue relevance: Advisory.
+    Add `/advisory` with exposure scans, custom watchlists, portfolio/supplier maps, board/client briefings and market-pack support.
+
+40. **Premium market-pack previews**
+    Status: partially delivered in `0.5.6 - May 2026`.
+    Revenue relevance: Market packs.
+    Add concrete premium pack concepts and table-of-contents previews for EU, ISSB, supply chain, financial services and portfolio/private equity use cases.
+
+41. **Feature request intake and scoring**
+    Status: partially delivered in `0.5.6 - May 2026`.
+    Revenue relevance: Notion Ops / product prioritization.
+    Convert deep research, competitor benchmarking, QA findings and monetization hypotheses into tracked feature requests with scoring and MVP-fit controls.
 
 18. **Cross-framework mapping**
     Status: partially delivered in `0.5.4 - May 2026`.
@@ -146,11 +184,11 @@ Target: later phase only, after explicit approval and product validation.
 
 The next implementation sequence should be:
 
-1. Finish theme/accessibility QA and ensure first visit defaults to light mode.
-2. Strengthen the map legend and layer explanation.
-3. Add coverage confidence and review-risk visibility to map/table surfaces.
-4. Improve persona and sector presets so users can start from their business context.
-5. Tighten client briefing copy with evidence needs and first actions.
+1. Source-review Marquee 10 and Marquee 25 records used in premium examples.
+2. Add missing-facts prompts to assessment results.
+3. Prepare LinkedIn, email and direct outreach launch assets from `data/launchAssets.ts`.
+4. Run launch QA across `/`, `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/regulations/[slug]`, `/assessment`, `/data-quality` and `/briefing`.
+5. Validate demand manually before adding paid or automated infrastructure.
 
 ## Documentation Rule
 

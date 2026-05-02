@@ -15,8 +15,11 @@ const navItems = [
   { href: "/assessment", labelKey: "nav.assessment" },
   { href: "/timeline", labelKey: "nav.timeline" },
   { href: "/briefing", labelKey: "nav.briefing" },
-  { href: "/data-quality", labelKey: "nav.dataQuality" }
-] satisfies Array<{ href: string; labelKey: TranslationKey }>;
+  { href: "/data-quality", labelKey: "nav.dataQuality" },
+  { href: "/plans", label: "Plans" },
+  { href: "/alerts", label: "Alerts" },
+  { href: "/advisory", label: "Advisory" }
+] satisfies Array<{ href: string; labelKey?: TranslationKey; label?: string }>;
 
 export function Header() {
   const pathname = usePathname();
@@ -46,7 +49,7 @@ export function Header() {
                   active && "bg-white text-ink shadow-sm"
                 )}
               >
-                {t(item.labelKey)}
+                {item.labelKey ? t(item.labelKey) : item.label}
               </Link>
             );
           })}

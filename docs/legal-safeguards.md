@@ -56,6 +56,8 @@ The assessment wizard should use these categories:
 
 Do not use "Likely directly applicable" unless threshold logic, source verification, and legal review support the statement. For the MVP, safer wording is preferred.
 
+Assessment outputs may show review priority, evidence to collect, functions involved and source-to-verify guidance. These are planning prompts only. They must not be worded as compliance instructions, legal conclusions or final applicability decisions.
+
 ## Regulation Detail Caveat
 
 Each regulation detail surface should include a caveat similar to:
@@ -75,6 +77,42 @@ Filtered CSV/JSON exports should be treated as data extracts from illustrative s
 The language toggle translates product chrome, filters, table controls, map guidance, disclaimer guidance and navigation. It does not create legally reviewed translations of regulatory record content.
 
 Do not describe the product as providing official legal translations. If deeper localization is added later, it should include source-language review, translation review and jurisdiction-specific legal review.
+
+## Commercial Page Safeguards
+
+Commercial pages such as `/plans`, `/alerts`, `/advisory` and `/premium-roadmap` must make the current product state clear:
+
+- Free Atlas is public regulatory intelligence for orientation and planning.
+- Premium Intelligence is a static preview until production alert, billing and account infrastructure are explicitly approved.
+- Advisory Atlas is manual advisory support and does not replace qualified legal, tax, investment or assurance advice.
+- Enterprise/API is future-state only.
+
+Do not imply that paid subscriptions, automated alerts, email monitoring, accounts, workspaces, API access, billing or gated content are live unless those systems are actually implemented and approved.
+
+## Alert Preview Safeguards
+
+Alert previews must use wording such as:
+
+- "sample digest"
+- "static preview"
+- "request access"
+- "design-partner preview"
+- "manual editorial workflow"
+- "production monitoring is not live"
+
+Avoid saying "we monitor all changes," "real-time alerts," "guaranteed updates," or "complete regulatory monitoring" unless a governed monitoring operation exists.
+
+## Advisory Safeguards
+
+Advisory pages and CTAs may describe exposure scans, watchlists, source review, portfolio/supplier maps and briefings. They must remain careful:
+
+- use "potentially relevant," "indicative," "source-linked," "planning," and "validate with qualified counsel"
+- avoid "we determine what applies" or "we guarantee compliance"
+- include caveats in copied summaries, briefs and request flows
+
+## Premium Pack Safeguards
+
+Premium pack previews may show sample tables of contents, outputs and regimes. They must not imply that gated production content exists. Each pack should state that source, date, threshold and jurisdiction-specific applicability should be reviewed before client reliance.
 
 ## Source Uncertainty
 
@@ -106,6 +144,7 @@ The UI should reinforce caution through:
 - Citation blocks that identify edition and publisher
 - Edition snapshot routes that make version context explicit
 - Public update log and dataset edition metadata
+- Commercial preview caveats that separate free, premium-preview, advisory and future enterprise functionality
 
 ## Review Checklist For New Features
 
@@ -128,6 +167,8 @@ These outputs may help plan review or advisory work, but they should not say or 
 - a company is definitively in or out of scope
 - a date is a final compliance deadline for a specific entity
 - the output is a legal opinion
+
+Client summaries and jurisdiction briefs may include first 30-day actions and evidence packages when phrased as readiness planning steps. Avoid imperative legal language such as "you must file" or "you are required to comply"; use "confirm", "review", "prepare", "assign" and "validate" instead.
 
 ## Context Maintenance
 

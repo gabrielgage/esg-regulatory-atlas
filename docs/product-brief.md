@@ -12,6 +12,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 The MVP is designed to help teams move from regulatory fragmentation to an initial, source-linked view of what may matter, why it may matter, and what business actions may be needed.
 
+The May 2026 commercial frame is:
+
+- Free Atlas: public trust surface and acquisition layer.
+- Premium Intelligence: static previews for alerts, watchlists and market packs before billing or accounts.
+- Advisory Atlas: near-term manual monetization path through exposure scans, custom watchlists, portfolio/supplier maps and briefings.
+- Enterprise/API Future: later design-partner concept only.
+
 ## Primary Users
 
 - Sustainability leaders
@@ -65,12 +72,16 @@ The MVP includes:
 - Condensed parent-record model with child items, aliases and milestones
 - Regulation detail pages or drawers
 - Assessment wizard with legally cautious output categories
+- Assessment results with visible trigger reasons, review priority, evidence to prepare, functions involved and source-to-verify guidance
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor users
 - Timeline and methodology surfaces
+- Quarter-level milestone timeline for consultation, effective, reporting, due-date and source-review planning
 - Data Quality surface for source coverage and review-risk governance
+- Data-quality review queue with visible scoring reasons for research prioritization
 - Public changelog
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs
+- Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - Briefing sector heatmap
 - Citation copy blocks and edition snapshot routes
 - Light/dark mode toggle
@@ -81,6 +92,11 @@ The MVP includes:
 - Readiness-priority planning score
 - Expanded EU financial-services, APAC/ISSB, South Africa and voluntary framework coverage
 - Static market briefing CTA and premium roadmap page for future market packs, sector packs and portfolio scans without gating or payments
+- `/plans` commercial architecture page
+- `/alerts` static premium digest and watchlist preview
+- `/advisory` manual service page for exposure scans, watchlists, portfolio/supplier maps and briefing packs
+- Premium market-pack previews and sample table-of-contents sections
+- Reusable commercial CTA surfaces
 - Source quality indicators
 - Advisory opportunity and business impact views
 - Visible legal and data-quality disclaimers
@@ -152,6 +168,9 @@ The MVP is successful when:
 - Users can filter regulations without breaking the interface.
 - Regulation records expose sources, caveats, confidence, and data quality.
 - The assessment wizard produces cautious, useful orientation.
+- Timelines, briefings and jurisdiction briefs show what to do next without implying legal advice.
+- Users can understand what is free, what is premium-preview, what can be requested as advisory support and what is future enterprise/API scope.
+- Premium previews do not imply production monitoring, billing, accounts or gated data.
 - The product avoids legal overclaiming.
 - Future agents can safely extend the system using the documentation in this folder.
 
@@ -167,6 +186,9 @@ The MVP is successful when:
 - Data Quality: `/data-quality`
 - Comparison: `/compare`, `/compare?jurisdictions=EUU,GBR`, `/compare?ids=csrd,issb-s1-s2`
 - Jurisdiction brief: `/jurisdiction/[code]/brief`
+- Plans: `/plans`
+- Alerts preview: `/alerts`
+- Advisory: `/advisory`
 - Methodology: `/methodology`
 - Changelog: `/changelog`
 - About: `/about`

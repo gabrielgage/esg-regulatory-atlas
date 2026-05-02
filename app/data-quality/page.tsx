@@ -41,6 +41,20 @@ export default function DataQualityPage() {
             <GovernanceCard title="Granularity rule" body="Top-level records are parent regimes; subrules stay as child items, aliases, milestones or source notes." />
           </div>
         </section>
+        <section className="rounded-2xl border bg-white p-5 text-sm leading-6 text-slate-700 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-teal">Coverage trust model</p>
+          <h2 className="mt-2 text-xl font-semibold text-ink">Tracked coverage is not complete global coverage</h2>
+          <p className="mt-2">
+            The Atlas separates current tracked records from watchlist topics, source-reviewed records, seed intelligence and records needing review. This distinction is essential for premium previews and advisory outputs because users need to know whether a record is ready for orientation, source review or deeper legal analysis.
+          </p>
+          <div className="mt-4 grid gap-3 md:grid-cols-5">
+            <GovernanceCard title="Tracked" body="Included in the public seed dataset with source, confidence and review metadata." />
+            <GovernanceCard title="Watchlist" body="Relevant topic or market lens that may need future monitoring or source review." />
+            <GovernanceCard title="Source-reviewed" body="Record has primary, regulator or standard-setter source support and recent review." />
+            <GovernanceCard title="Seed" body="Illustrative regulatory intelligence for orientation; not production-verified legal content." />
+            <GovernanceCard title="Needs review" body="Source, date, threshold or wording should be validated before client reliance." />
+          </div>
+        </section>
         <SourceLibrary regulations={regulations} onSelect={setSelectedRegulation} />
         <CoverageMatrix
           jurisdictions={jurisdictions}

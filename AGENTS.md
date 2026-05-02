@@ -59,6 +59,8 @@ The project build script intentionally uses the stable webpack build path: `next
 
 If the default Turbopack build or a local dev server is blocked by sandbox port-binding restrictions, document the exact failure and still run TypeScript validation plus `npm run build`.
 
+Do not run standalone `tsc --noEmit` in parallel with `next build`; Next regenerates `.next/types` during build and parallel checks can create false missing-file errors.
+
 ## Continuous Context Rule
 
 Every meaningful product, data, architecture, workflow, or validation change should leave the repo easier for the next agent or reviewer to understand.
@@ -127,6 +129,9 @@ Current important routes:
 - `/changelog`: public update log
 - `/about`: product, author and trend context
 - `/premium-roadmap`: static future commercial roadmap with no gating, Stripe, auth or database
+- `/plans`: static Free Atlas / Premium Intelligence / Advisory Atlas / Enterprise Future comparison
+- `/alerts`: static premium alert and watchlist preview with no email backend
+- `/advisory`: static advisory service surface for manual scans and briefings
 
 Current brand context:
 
@@ -274,6 +279,10 @@ Already delivered in Phase 1B: market coverage additions, language toggle, share
 Already delivered in Phase 1C: GitHub Actions CI, Playwright smoke tests, Lighthouse CI, PR preview checklist, broader interface translation coverage, 80+ seed records through `data/phase1cCoverage.ts`, stronger map outlines and a workbook-backed regulation tracker workflow.
 
 Already delivered in Phase 1D: master data model metadata, record type/legal force/client relevance filters and badges, condensed EU financial-services records, APAC/ISSB market expansion, voluntary framework records, source-of-truth governance language, static market briefing CTA and `/premium-roadmap`.
+
+Already delivered in Phase 1E: assessment explanations with review priority, evidence needs, functions involved and source-to-verify guidance; quarter-level timeline milestones across consultation, effective, reporting, due-date and source-review events; data-quality review scoring reasons; richer jurisdiction briefs with 30-day readiness starters, watch items and evidence packages; improved client summary copy.
+
+Already delivered in Phase 1F: `/plans`, `/alerts`, `/advisory`, commercial offer data, alert digest previews, premium market-pack previews, launch asset seeds, reusable commercial CTA, stronger premium roadmap and source-trust copy. These are static validation surfaces only; no billing, auth, database, email backend, scraping, cron or paid APIs were added.
 
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 

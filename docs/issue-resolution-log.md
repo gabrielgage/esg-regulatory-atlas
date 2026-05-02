@@ -17,6 +17,57 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-02 - Codex Sandbox Could Build But Could Not Start Local Server
+
+Status: documented environment limitation.
+
+### Symptom
+
+During the Phase 1F commercial-validation sprint, production build and standalone TypeScript validation passed, but local route smoke testing through `next start` could not begin because the sandbox returned `listen EPERM` when binding to `127.0.0.1:3000`.
+
+### Root Cause
+
+The Codex desktop sandbox for this thread allows file edits and build execution, but does not permit this shell session to bind a local web server port. This is a local execution permission issue, not a Next.js compile, TypeScript, Tailwind, route-generation or Vercel deployment issue.
+
+### Resolution
+
+Validation used the closest checks that do not require opening a local port:
+
+- production `next build --webpack`
+- standalone `tsc --noEmit`
+- `git diff --check`
+- guardrail text/dependency scan
+
+Browser smoke and Lighthouse checks should run in GitHub Actions, Vercel preview checks or a local developer terminal with normal port permissions.
+
+### Prevention Rule
+
+Do not treat sandbox `listen EPERM` as an application defect when production build and TypeScript validation pass. Document the limitation, keep the app checks strict, and rely on CI/Vercel/browser QA for port-dependent smoke tests.
+
+## 2026-05-02 - Parallel TypeScript Check Saw Missing `.next/types` During Build
+
+Status: resolved.
+
+### Symptom
+
+A local TypeScript check reported missing generated files under `.next/types/app/...` immediately after a production build command was started in parallel.
+
+### Root Cause
+
+The TypeScript check and Next.js production build were run at the same time. Next.js regenerates `.next/types` during the build, so the standalone TypeScript process briefly saw generated files that had been removed and not yet recreated. This was a validation sequencing issue, not an application TypeScript failure.
+
+### Resolution
+
+The production build was allowed to finish, then `tsc --noEmit` was rerun after `.next/types` had been regenerated. The rerun passed.
+
+### Prevention Rule
+
+Do not run standalone `tsc --noEmit` in parallel with `next build` when the project includes `.next/types/**/*.ts` in `tsconfig.json`. Run the production build first, then run TypeScript or lint checks sequentially if a separate check is needed.
+
+### Files Changed
+
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-02 - PR #11 Browser Smoke And Lighthouse Checks Failed After Vercel Deployed
 
 Status: resolved.

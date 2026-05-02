@@ -2,6 +2,7 @@
 
 import { AlertTriangle, ArrowUpRight, BriefcaseBusiness, ClipboardCheck, Gauge } from "lucide-react";
 import { Badge } from "./Badge";
+import { RecordMetaBadges } from "./RecordMetaBadges";
 import { StatusBadge } from "./StatusBadge";
 import { Regulation } from "@/types/regulation";
 import { uniq } from "@/lib/utils";
@@ -20,6 +21,8 @@ export function ExecutiveBriefing({
   const urgent = priority.filter(({ score }) => score >= 6).length;
   const workstreams = uniq(regulations.flatMap((regulation) => regulation.businessImpacts)).slice(0, 6);
   const advisory = uniq(regulations.flatMap((regulation) => regulation.advisoryOpportunities)).slice(0, 6);
+  const evidence = uniq(regulations.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 6);
+  const firstActions = uniq(regulations.flatMap((regulation) => regulation.requiredActions || [])).slice(0, 6);
 
   return (
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
@@ -59,6 +62,17 @@ export function ExecutiveBriefing({
                   <ArrowUpRight className="h-4 w-4 text-slate-400" />
                 </div>
                 <p className="mt-2 line-clamp-2 text-sm leading-5 text-slate-500">{regulation.businessImpact}</p>
+                <RecordMetaBadges regulation={regulation} compact />
+                <div className="mt-3 grid gap-2 rounded-lg bg-slate-50 p-3 text-xs leading-5 text-slate-600 md:grid-cols-2">
+                  <div>
+                    <span className="font-semibold text-ink">First move: </span>
+                    {regulation.requiredActions?.[0] || "Confirm thresholds and accountable owner."}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-ink">Evidence: </span>
+                    {regulation.evidenceRequired?.[0] || "Applicability assessment and source review log."}
+                  </div>
+                </div>
                 <div className="mt-3 flex flex-wrap gap-1">
                   <StatusBadge status={regulation.status} />
                   {regulation.businessImpacts.slice(0, 2).map((impact) => (
@@ -85,7 +99,12 @@ export function ExecutiveBriefing({
           <BriefingCard
             icon={ClipboardCheck}
             title="First operating move"
-            body={workstreams.length ? `Stand up accountable owners for ${workstreams.slice(0, 3).join(", ")}.` : "Broaden filters to identify accountable workstreams."}
+            body={firstActions.length ? firstActions.slice(0, 2).join(" ") : workstreams.length ? `Stand up accountable owners for ${workstreams.slice(0, 3).join(", ")}.` : "Broaden filters to identify accountable workstreams."}
+          />
+          <BriefingCard
+            icon={ClipboardCheck}
+            title="Evidence package"
+            body={evidence.length ? evidence.slice(0, 4).join(", ") : "Start with an applicability assessment, source review log and management sign-off record."}
           />
           <BriefingCard
             icon={BriefcaseBusiness}
@@ -101,6 +120,8 @@ export function ExecutiveBriefing({
 function priorityScore(regulation: Regulation) {
   let score = 0;
   if (regulation.highImpact) score += 3;
+  if (regulation.legalForce === "mandatory") score += 2;
+  if (regulation.clientRelevanceCategory === "potentially-direct") score += 1;
   if (["in_force", "first_reporting"].includes(regulation.status)) score += 2;
   if (regulation.status === "transition") score += 1;
   if (regulation.firstReportingYear && regulation.firstReportingYear <= 2027) score += 2;

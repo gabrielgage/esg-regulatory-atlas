@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { ClipboardCheck, ClipboardCopy } from "lucide-react";
 import { companyTypes, jurisdictions, sectors } from "@/data/seed";
+import { clientRelevanceLabel, legalForceLabel, statusLabel } from "@/data/taxonomy";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 import { uniq } from "@/lib/utils";
 
@@ -132,6 +133,10 @@ function buildSummary(jurisdiction: Jurisdiction | null, scoped: Regulation[], s
   const relevant = (highPriority.length ? highPriority : scoped).slice(0, 6);
   const dates = uniq(relevant.map((regulation) => String(regulation.firstReportingYear || "")).filter(Boolean));
   const impacts = uniq(relevant.flatMap((regulation) => regulation.businessImpacts)).slice(0, 8);
+  const functions = uniq(relevant.flatMap((regulation) => regulation.affectedFunctions)).slice(0, 8);
+  const evidence = uniq(relevant.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 8);
+  const sourceBacked = relevant.filter((regulation) => regulation.sourceUrls.length > 0).length;
+  const reviewFlags = relevant.filter((regulation) => regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high").length;
   const actions = uniq(
     relevant.flatMap((regulation) => {
       if (regulation.requiredActions?.length) return regulation.requiredActions;
@@ -151,9 +156,22 @@ function buildSummary(jurisdiction: Jurisdiction | null, scoped: Regulation[], s
     `Most relevant records: ${relevant.map((regulation) => regulation.shortName).join(", ") || "n/a"}`,
     `Indicative reporting years: ${dates.join(", ") || "n/a"}`,
     `Main business impacts: ${impacts.join(", ") || "n/a"}`,
+    `Functions likely involved: ${functions.join(", ") || "n/a"}`,
+    `Source-backed priority records: ${sourceBacked}/${relevant.length || 0}`,
+    `Records needing source/confidence review before reliance: ${reviewFlags}`,
+    "",
+    "Priority records:",
+    ...relevant.map((regulation) => {
+      const legalForce = regulation.legalForce ? legalForceLabel[regulation.legalForce] : "Not classified";
+      const clientRelevance = regulation.clientRelevanceCategory ? clientRelevanceLabel[regulation.clientRelevanceCategory] : "Indicative";
+      return `- ${regulation.shortName}: ${statusLabel[regulation.status]}; ${legalForce}; ${clientRelevance}. ${regulation.summary}`;
+    }),
     "",
     "Immediate planning actions:",
     ...actions.map((action) => `- ${action}`),
+    "",
+    "Evidence to start collecting:",
+    ...(evidence.length ? evidence.map((item) => `- ${item}`) : ["- Applicability assessment", "- Source review log", "- Accountable owner and management sign-off record"]),
     "",
     "Source and legal caution:",
     "This summary is generated from indicative regulatory intelligence. It is not legal, tax, investment or assurance advice. Applicability depends on entity-specific facts, thresholds, jurisdictional implementation, sector rules and legal interpretation. Review primary sources and validate with qualified counsel or regulatory advisors before relying on it for compliance decisions."

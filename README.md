@@ -21,6 +21,9 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Public changelog at `/changelog`
 - Jurisdiction and regulation comparison workspace at `/compare`
 - Printable/copyable jurisdiction briefs at `/jurisdiction/[code]/brief`
+- Static `/plans` page explaining Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
+- Static `/alerts` page with weekly and monthly digest previews and watchlist concepts
+- Static `/advisory` page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
 - Client applicability wizard with indicative categories
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor use cases
 - Search and filters across jurisdiction, region, topic, sector, company type, value chain, function, obligation, status, year, confidence, data quality and advisory opportunity
@@ -39,6 +42,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Readiness-priority scoring for planning conversations
 - Copyable client planning summary
 - Static market briefing CTA and `/premium-roadmap` route for future market packs, sector packs and portfolio scans without payments or gating
+- Static commercial offer, alert digest, premium pack and launch asset data files for May 2026 monetization validation
 - Static TypeScript seed data only
 - No authentication, database, Supabase, Stripe, scraping, cron jobs, AI summaries, email alerts or required environment variables
 
@@ -94,6 +98,10 @@ Seed data is stored in:
 - `data/marketCoverage.ts`
 - `data/phase1cCoverage.ts`
 - `data/masterUpdateAdditions.ts`
+- `data/commercialOffers.ts`
+- `data/alertDigests.ts`
+- `data/premiumPacks.ts`
+- `data/launchAssets.ts`
 - `data/taxonomy.ts`
 
 Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
@@ -112,12 +120,35 @@ Use these files to brief future coding agents, reviewers and collaborators:
 - `docs/development-workflow.md`: working process, validation steps and documentation update rules
 - `docs/issue-resolution-log.md`: resolved bugs, failed checks, root causes, fixes and prevention rules
 - `docs/product-improvement-backlog.md`: prioritized PM/ESG specialist improvement backlog across three waves
+- `docs/feature-request-tracking.md`: feature request schema, scoring rubric and deep-research intake process
+- `docs/notion-update-plan.md`: Notion-ready launch sprint updates, ADRs and task plan
 
 ## Current edition
 
-The current seed dataset edition is `0.5.4 - May 2026`.
+The current seed dataset edition is `0.5.6 - May 2026`.
 
-The latest local update focuses on the master update pack and the fastest credible MVP path from static map to decision-support Atlas:
+The latest local update focuses on commercial validation surfaces and premium-preview architecture:
+
+- adds `/plans` to explain Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
+- adds `/alerts` with static weekly/monthly digest previews, watchlist concepts, source-quality legend and request-access CTA
+- adds `/advisory` with manual regulatory exposure scans, custom watchlists, portfolio/supplier maps, briefing packs and market-pack support
+- upgrades `/premium-roadmap` with concrete premium market-pack previews, alert roadmap, advisory-supported pack delivery and future enterprise/API caveats
+- adds `data/commercialOffers.ts`, `data/alertDigests.ts`, `data/premiumPacks.ts` and `data/launchAssets.ts`
+- adds reusable `CommercialCTA` and CTA paths from home, briefing, regulation detail, assessment and commercial pages
+- strengthens regulation detail pages and drawers with decision cards, suggested owners, evidence and advisory next step
+- adds coverage trust/source hierarchy copy to Data Quality and Methodology
+- adds feature-request tracking and Notion update plan docs for the May 2026 commercialization sprint
+
+The prior `0.5.5 - May 2026` update focused on decision-support polish for launch readiness:
+
+- upgrades the assessment wizard with visible review priority, evidence-needed, functions-involved, source-to-verify and source-quality explanations
+- expands the timeline into quarter-level milestones across consultation deadlines, effective dates, first reporting years, first report due dates and Atlas source-review dates
+- improves the data-quality dashboard with review-queue scoring reasons such as missing priority sources, high impact, date uncertainty, upcoming review and lower confidence
+- enriches jurisdiction briefs with 30-day readiness starters, watch items, evidence packages, source-backed priority-record counts and a market briefing CTA
+- improves copied client summaries with priority-record legal force, client relevance, source coverage, evidence needs and first planning actions
+- adds evidence summaries to jurisdiction panels and briefing cards so the product supports scoping conversations, not only search
+
+The prior `0.5.4 - May 2026` update focused on the master update pack and the fastest credible MVP path from static map to decision-support Atlas:
 
 - adds condensed parent-record metadata so users can distinguish regulations, directives, laws, standards, frameworks, guidance, taxonomies, exchange rules and market expectations
 - expands EU financial-services coverage with banking, insurance, MiFID/IDD, AIFMD/UCITS, benchmarks, EuGBS, ESG ratings and ESAP records

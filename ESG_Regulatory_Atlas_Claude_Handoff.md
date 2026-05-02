@@ -2,7 +2,57 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1D master content and monetization-readiness pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass and Phase 1C workflow/translation/coverage-control pass. The goal remains deployability and legal caution, with added emphasis on condensed parent records, EU financial-services coverage, APAC/ISSB market expansion, voluntary framework coverage and lead-generation workflows that do not add payments, authentication or databases.
+The app is now in a static Phase 1F commercial-validation and premium-preview pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion and Phase 1E decision-support polish. The goal remains deployability and legal caution, with added emphasis on making the public Free Atlas commercially directed through static Premium Intelligence previews and Advisory Atlas inquiry paths without adding payments, authentication, databases, production alerts or automation.
+
+## Phase 1F Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.6 - May 2026`.
+- Added static commercial data files:
+  - `data/commercialOffers.ts`
+  - `data/alertDigests.ts`
+  - `data/premiumPacks.ts`
+  - `data/launchAssets.ts`
+- Added `/plans` for Free Atlas, Premium Intelligence, Advisory Atlas and Enterprise/API Future positioning.
+- Added `/alerts` with static weekly/monthly alert previews, watchlist concepts, source-quality legend and request-access CTA.
+- Added `/advisory` with manual advisory service packages: exposure scan, custom watchlist, portfolio/supplier map, board/client briefing and market-pack support.
+- Rebuilt `/premium-roadmap` around concrete premium pack previews, alert roadmap, advisory-supported pack delivery and future enterprise/API guardrails.
+- Added `components/CommercialCTA.tsx` and surfaced commercial CTAs on homepage, assessment, regulation details, briefing/premium surfaces and existing market briefing CTAs.
+- Added homepage commercial strip for Free Atlas, Alerts Preview and Advisory Scans.
+- Updated header navigation to include Plans, Alerts and Advisory.
+- Upgraded regulation detail pages and drawers with decision cards for what the record is, who may be affected, evidence likely needed and suggested internal owners.
+- Added source-trust and coverage-tier explainers to Data Quality and Methodology.
+- Added `docs/feature-request-tracking.md` and `docs/notion-update-plan.md`.
+- Updated README, roadmap, product brief, product backlog, data methodology, legal safeguards, development workflow and agent context.
+
+## Phase 1F Product Rationale
+
+The product needed to become commercially legible before adding any SaaS infrastructure. The chosen strategy keeps the Free Atlas public as the trust surface, validates Premium Intelligence through static alert and market-pack previews, and makes Advisory Atlas the fastest monetization path through manual exposure scans and briefings. This avoids the wrong early build: payments, accounts, production email alerts, scraping and databases before demand and governance are validated.
+
+## Phase 1E Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.5 - May 2026`.
+- Improved `lib/applicability.ts` so assessment scoring considers legal force, core display tier, high-impact classification, client relevance tags, supplier exposure and investor/customer-driven records.
+- Extended assessment results with review priority, evidence needed, functions involved, source to verify and source-quality notes.
+- Upgraded `/assessment` result cards and copied shortlists so each recommendation explains why it appears, what triggered it, what evidence to start with and which source to verify.
+- Converted `/timeline` into a quarter-level milestone view covering consultation deadlines, effective dates, first reporting years, first report due dates and Atlas review dates.
+- Updated timeline year filtering so it matches any milestone year, not only `firstReportingYear`.
+- Upgraded `/data-quality` with priority-source metrics, confidence checks and review-queue scoring reasons.
+- Improved `/briefing` priority cards and copied client summaries with first moves, evidence packages, functions, source coverage, legal force and client relevance.
+- Enriched `/jurisdiction/[code]/brief` with source-backed counts, status/metadata badges, 30-day readiness starters, watch items, evidence packages, functions and Etica market briefing CTA.
+- Added evidence summaries and review-flag counts to the map-side jurisdiction panel.
+
+## Phase 1E Product Rationale
+
+The previous product had strong coverage breadth and a more credible data model, but a client still needed help translating records into a practical first conversation. Phase 1E focuses on the moments where users ask:
+
+- Why is this regulation on my shortlist?
+- What facts or evidence do I need next?
+- Which source should I verify before relying on it?
+- What is time-sensitive?
+- Which records need research review before client use?
+- What should a 30-day readiness starter look like for a jurisdiction?
+
+The chosen implementation keeps the MVP static and Vercel-safe while making the assessment, timeline, data-quality and briefing surfaces act more like a regulatory advisory workspace.
 
 ## Phase 1D Changes Delivered
 
@@ -167,6 +217,17 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1F validation: `next build --webpack` passed locally using the bundled Node runtime and generated 259 static pages, including `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/assessment`, `/timeline`, `/briefing`, `/data-quality`, expanded `/regulations/[slug]` pages and edition snapshot pages.
+- Phase 1F validation: `tsc --noEmit` passed locally using the bundled Node runtime after the production build completed.
+- Phase 1F validation: `git diff --check` passed.
+- Phase 1F out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron and environment variables plus the existing Playwright `process.env.CI` check; no implementation code or dependencies were added for those items.
+- Phase 1F local route smoke testing with `next start` was blocked by sandbox port-binding permissions (`listen EPERM 127.0.0.1:3000`). This is documented in `docs/issue-resolution-log.md`; browser smoke and Lighthouse should run in GitHub Actions, Vercel preview or a local terminal with normal port permissions.
+- Phase 1F Notion update: Launch Command Center now includes the May Commercialization Sprint note; Launch Tasks LAUNCH-001 through LAUNCH-025 were created; ADR-014 through ADR-017 were added to Decisions Log; Launch Assets were seeded; QA & Review Findings records the sandbox port-binding limitation.
+- Phase 1E validation: `tsc --noEmit` passed locally using the bundled Node runtime.
+- Phase 1E validation: `next build --webpack` passed locally and generated 256 static pages, including `/assessment`, `/timeline`, `/briefing`, `/data-quality`, `/jurisdiction/[code]/brief`, expanded `/regulations/[slug]` pages and edition snapshot pages.
+- Phase 1E validation: `git diff --check` passed.
+- Phase 1E out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron and environment variables plus the existing Playwright `process.env.CI` check; no implementation code or dependencies were added for those items.
+- Phase 1E local route smoke testing with `next start` was blocked by sandbox port-binding permissions (`listen EPERM 0.0.0.0:3001`). This is an environment limitation; production build validation passed.
 - Phase 1D validation: `tsc --noEmit` passed locally using the bundled Node runtime.
 - Phase 1D validation: `next build --webpack` passed locally and generated 256 static pages, including `/premium-roadmap`, expanded `/regulations/[slug]` pages and expanded `/jurisdiction/[code]/brief` pages.
 - Phase 1D validation: `git diff --check` passed.

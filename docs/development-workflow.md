@@ -87,6 +87,8 @@ GitHub should now run four high-ROI launch checks:
 
 The local Codex sandbox may not have `npm` or Playwright browser binaries available. In that case, run TypeScript and production build with the bundled Node runtime, then rely on GitHub Actions/Vercel for browser and Lighthouse validation after pushing.
 
+Run `next build` and standalone `tsc --noEmit` sequentially, not in parallel. Next.js regenerates `.next/types` during production builds; a simultaneous TypeScript process can briefly see missing generated route files and report false `TS6053` errors.
+
 ## Documentation Update Rule
 
 After meaningful changes, update the smallest set of context files needed to keep the repo understandable.
@@ -102,6 +104,19 @@ Examples:
 - New automation or review workflow: update `README.md`, `.github/pull_request_template.md` where relevant, and this file.
 - Bug, failed deployment or failed check: update `docs/issue-resolution-log.md`, then update adjacent docs if the learning affects future workflow.
 
+## Commercial Surface Checklist
+
+When changing `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, commercial CTAs or launch assets, confirm:
+
+- The page is static and deployable without required environment variables.
+- No Stripe, checkout, billing SDK, subscription, authentication, database, production email backend, scraping, cron job or paid API was added.
+- CTAs use mailto or static links only.
+- Copy distinguishes Free Atlas, Premium Intelligence preview, Advisory Atlas and Enterprise/API future.
+- Alert previews do not imply production monitoring is live.
+- Advisory copy avoids definitive legal applicability language.
+- Commercial data files are treated as product/go-to-market data, not legal source authority.
+- README, product brief, roadmap, legal safeguards and handoff docs are updated.
+
 ## CI Lessons Learned
 
 The current browser and Lighthouse checks are intended to protect launch-critical behavior without making the MVP impossible to iterate.
@@ -111,6 +126,7 @@ Known lesson from PR #11:
 - Browser smoke tests should assert stable UI contracts with scoped locators. For regulation detail pages, assert the short-name heading and scoped supporting title text rather than assuming the full regulation title is the H1.
 - Citation widgets repeat regulation titles inside copy blocks. Avoid broad text locators where repeated content is expected.
 - Lighthouse category thresholds are warning-level launch signals. Do not use the full `lighthouse:recommended` assertion preset as a hard gate unless the team intentionally accepts every default audit as blocking.
+- Do not run standalone TypeScript checks in parallel with `next build` while `.next/types/**/*.ts` is included in `tsconfig.json`; run build first, then rerun TypeScript if needed.
 
 ## Coding Principles
 

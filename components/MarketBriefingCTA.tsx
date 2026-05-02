@@ -22,13 +22,22 @@ export function MarketBriefingCTA({ compact = false, jurisdictionName }: { compa
             Static MVP CTA only: request a market scan, portfolio regulation screen, sector pack or regulatory readiness review. No payments, accounts or gated database are implemented.
           </p>
         </div>
-        <a
-          href={`mailto:${DATASET_META.contactEmail}?subject=${subject}&body=${body}`}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-        >
-          Request briefing
-          <ArrowUpRight className="h-4 w-4" />
-        </a>
+        <div className="flex flex-wrap gap-2">
+          <Link
+            href="/advisory"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            Advisory options
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
+          <a
+            href={`mailto:${DATASET_META.contactEmail}?subject=${subject}&body=${body}`}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Request briefing
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
       </div>
       {!compact ? (
         <div className="mt-5 grid gap-3 md:grid-cols-4">
@@ -39,7 +48,7 @@ export function MarketBriefingCTA({ compact = false, jurisdictionName }: { compa
         </div>
       ) : null}
       <p className="mt-4 text-xs leading-5 text-slate-500">
-        Future premium features are documented in the <Link href="/premium-roadmap" className="font-semibold text-teal underline">premium roadmap</Link>; this MVP remains free, static and legally cautious.
+        Future premium features are documented in the <Link href="/premium-roadmap" className="font-semibold text-teal underline">premium roadmap</Link>; compare commercial options on <Link href="/plans" className="font-semibold text-teal underline">Plans</Link> or preview <Link href="/alerts" className="font-semibold text-teal underline">Alerts</Link>. This MVP remains free, static and legally cautious.
       </p>
     </section>
   );

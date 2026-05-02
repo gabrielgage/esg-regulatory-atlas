@@ -17,6 +17,33 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-02 - Codex Sandbox Could Build But Could Not Start Local Server
+
+Status: documented environment limitation.
+
+### Symptom
+
+During the Phase 1F commercial-validation sprint, production build and standalone TypeScript validation passed, but local route smoke testing through `next start` could not begin because the sandbox returned `listen EPERM` when binding to `127.0.0.1:3000`.
+
+### Root Cause
+
+The Codex desktop sandbox for this thread allows file edits and build execution, but does not permit this shell session to bind a local web server port. This is a local execution permission issue, not a Next.js compile, TypeScript, Tailwind, route-generation or Vercel deployment issue.
+
+### Resolution
+
+Validation used the closest checks that do not require opening a local port:
+
+- production `next build --webpack`
+- standalone `tsc --noEmit`
+- `git diff --check`
+- guardrail text/dependency scan
+
+Browser smoke and Lighthouse checks should run in GitHub Actions, Vercel preview checks or a local developer terminal with normal port permissions.
+
+### Prevention Rule
+
+Do not treat sandbox `listen EPERM` as an application defect when production build and TypeScript validation pass. Document the limitation, keep the app checks strict, and rely on CI/Vercel/browser QA for port-dependent smoke tests.
+
 ## 2026-05-02 - Parallel TypeScript Check Saw Missing `.next/types` During Build
 
 Status: resolved.

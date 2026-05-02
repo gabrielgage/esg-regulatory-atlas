@@ -104,6 +104,27 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="grid gap-3 md:grid-cols-3">
+          <CommercialTile
+            title="Free Atlas"
+            body="Use the public map, database, assessment, timeline and source-quality views for ESG regulatory orientation."
+            href="/plans"
+            label="Compare options"
+          />
+          <CommercialTile
+            title="Alerts preview"
+            body="Preview weekly and monthly regulatory intelligence formats before production email alerts exist."
+            href="/alerts"
+            label="View alerts"
+          />
+          <CommercialTile
+            title="Advisory scans"
+            body="Request a manual exposure scan, custom watchlist, portfolio map or client-ready briefing."
+            href="/advisory"
+            label="Explore advisory"
+          />
+        </section>
+
         <ViewSelector activeId={activeView} onApply={applyView} />
 
         <Filters filters={filters} regulations={regulations} onChange={updateFilters} onReset={resetFilters} />
@@ -166,6 +187,19 @@ function AssessmentPrompt() {
         </div>
       </div>
     </section>
+  );
+}
+
+function CommercialTile({ title, body, href, label }: { title: string; body: string; href: string; label: string }) {
+  return (
+    <Link href={href} className="rounded-2xl border bg-white p-5 shadow-sm transition hover:border-teal/30 hover:bg-teal/5">
+      <h2 className="font-semibold text-ink">{title}</h2>
+      <p className="mt-2 text-sm leading-6 text-slate-500">{body}</p>
+      <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-teal">
+        {label}
+        <ArrowRight className="h-4 w-4" />
+      </span>
+    </Link>
   );
 }
 

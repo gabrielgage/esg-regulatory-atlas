@@ -11,6 +11,24 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.6 - May 2026",
+    date: "2026-05-02",
+    label: "Commercial validation and premium-preview sprint",
+    summary:
+      "Added static commercialization surfaces for Free Atlas, Premium Intelligence previews and Advisory Atlas, plus alert previews, market-pack previews, advisory service pages, commercial CTAs and stronger source-trust framing.",
+    added: [
+      "/plans free/premium/advisory comparison",
+      "/alerts static weekly and monthly digest previews",
+      "/advisory manual service packages",
+      "Commercial offer, alert digest, premium pack and launch asset data files",
+      "Reusable commercial CTA component",
+      "Regulation detail decision cards and advisory next-step CTA"
+    ],
+    updated: ["Premium roadmap", "Homepage launch strip", "Header navigation", "Data Quality", "Methodology", "Regulation detail pages", "Documentation and feature-request tracking"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr", "csddd", "eudr", "cbam", "california-sb253-sb261"],
+    caveat: "Commercial pages are static validation surfaces only. No billing, authentication, production alerts, database, scraping, cron jobs or legal advice functionality was added."
+  },
+  {
     edition: "0.5.5 - May 2026",
     date: "2026-05-02",
     label: "Decision-support and launch-readiness polish",

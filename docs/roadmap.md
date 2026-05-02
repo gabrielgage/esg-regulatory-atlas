@@ -47,6 +47,10 @@ Current capability areas:
 - APAC/ISSB coverage expansion including Hong Kong, South Korea, Taiwan, New Zealand, Malaysia, Indonesia, Thailand and Philippines
 - Voluntary framework coverage for CDP, SBTi, PCAF, PRI, ICMA, GRESB, IFC/Equator/World Bank safeguards and ISO environmental/GHG standards
 - Static market briefing CTA and premium roadmap page without payments, authentication or gated data
+- `/plans` commercial architecture page for Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
+- `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
+- `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
+- Concrete premium market-pack previews in `/premium-roadmap`
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
 - Quarter-level milestone timeline covering consultation, effective-date, reporting-year, report-due and Atlas review events
 - Review-queue scoring in the data-quality dashboard with visible reasons for source and confidence follow-up
@@ -120,6 +124,43 @@ Current capability areas:
 - Enriched `/jurisdiction/[code]/brief` with source-backed counts, status/metadata badges, 30-day readiness starters, watch items, functions, evidence and market briefing CTA.
 - Added evidence summaries and review-flag counts to the map-side jurisdiction panel.
 
+## Recently Delivered Phase 1F Items
+
+- Updated dataset metadata and changelog to `0.5.6 - May 2026`.
+- Added `data/commercialOffers.ts`, `data/alertDigests.ts`, `data/premiumPacks.ts` and `data/launchAssets.ts`.
+- Added `/plans` to explain Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future without Stripe, auth, billing, gating or database dependencies.
+- Added `/alerts` as a static premium-alert preview surface with weekly and monthly digest samples, watchlist concepts and source-quality legend.
+- Added `/advisory` as the near-term manual monetization surface for regulatory exposure scans, custom watchlists, portfolio/supplier regulatory maps, board/client briefings and market-pack support.
+- Rebuilt `/premium-roadmap` around concrete market-pack previews, alert-roadmap concepts, advisory-supported pack delivery and future enterprise/API guardrails.
+- Added `CommercialCTA` and surfaced commercial pathways from the homepage, assessment, regulation detail, briefing and premium pages.
+- Upgraded regulation detail pages and drawers with decision cards for what the record is, who may be affected, evidence likely needed and suggested owners.
+- Added source-trust and coverage-tier explainers to Data Quality and Methodology.
+- Added `docs/feature-request-tracking.md` and `docs/notion-update-plan.md` for launch sprint task tracking and deep-research intake.
+
+## May 2026 Commercialization Validation Sprint
+
+Goal: launch a credible public MVP by May 23, 2026 and validate monetization by May 31, 2026 without adding paid infrastructure.
+
+Week 1, May 2-8:
+
+- Ship `/plans`, `/advisory`, stronger `/premium-roadmap`, source-trust copy and feature-request tracking.
+- Confirm the product explains Free Atlas, Premium Intelligence previews and Advisory Atlas clearly.
+
+Week 2, May 9-15:
+
+- Validate `/alerts`, premium market-pack previews and source freshness messaging.
+- Prepare sample premium outputs and launch assets.
+
+Week 3, May 16-23:
+
+- Harden regulation detail, assessment, core routes, legal wording, source visibility and launch QA.
+
+Week 4, May 24-31:
+
+- Run monetization experiments for alerts waitlist, market-pack requests and advisory scan calls.
+
+Commercial guardrail: billing, authentication, database, production email alerts, scraping, cron jobs and AI legal summaries remain later-phase items until explicitly approved.
+
 ## Phase 1: Credibility And Utility
 
 Phase 1 should deepen the static product without changing the deployment model.
@@ -133,6 +174,8 @@ Recommended improvements:
 - Better assessment scoring with visible reasons: partially delivered in Phase 1E.
 - Stronger regulation detail pages with threshold summaries and caveats
 - Improved map legend and layer explanations
+- Static premium alert and market-pack previews: partially delivered in Phase 1F.
+- Advisory-led monetization surfaces: partially delivered in Phase 1F.
 - Better mobile and tablet refinements
 - Excel and PDF-ready export formats after the CSV/JSON pattern is validated
 - Maturity axis alongside status, such as mandatory in place or mandatory in progress

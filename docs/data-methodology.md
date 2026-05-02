@@ -15,6 +15,10 @@ The MVP stores data in static TypeScript files:
 - `data/marketCoverage.ts`
 - `data/phase1cCoverage.ts`
 - `data/masterUpdateAdditions.ts`
+- `data/commercialOffers.ts`
+- `data/alertDigests.ts`
+- `data/premiumPacks.ts`
+- `data/launchAssets.ts`
 - `data/jurisdictions.ts`
 - `data/sectors.ts`
 - `data/taxonomy.ts`
@@ -42,6 +46,8 @@ Do not duplicate an existing top-level record when a child item, alias or milest
 
 The external regulation tracker workbook should mirror the website seed data and add review workflow fields such as owner, review priority, source status, website inclusion, next review date and notes. Treat the workbook as a planning and QA control file, not as a separate legal source of truth.
 
+Commercial data files support static offer, alert, premium pack and launch asset previews. They are product and go-to-market data, not legal source-of-truth files.
+
 ## Source Hierarchy
 
 Use the strongest available source for each claim.
@@ -58,6 +64,8 @@ Preferred hierarchy:
 8. Internal analysis
 
 Primary source links should be visually prioritized where possible.
+
+Internal research, Seneca/Drive materials, competitor claims and founder hypotheses can inform product positioning, UX, feature requests and monetization tests. They must not be cited as legal authority for regulatory status, thresholds, penalties, applicability or deadlines.
 
 ## Required Record Metadata
 
@@ -193,6 +201,19 @@ Recommended review cadence:
 - Records marked needs review, source missing, or date uncertain: prioritize before client use
 
 The Data Quality page now surfaces a prioritized review queue that considers data-quality status, missing sources, missing primary/regulator/standard-setter sources, high-impact flags, upcoming review dates, confidence flags, changing statuses and core mandatory records. Each review queue item should show visible reason chips so researchers know why the record needs attention.
+
+## Premium And Alert Preview Governance
+
+Premium alert previews and market-pack previews should use the same source hierarchy and caveats as the Free Atlas.
+
+Before using a record in a premium example:
+
+1. Confirm the record has a source URL or mark it clearly as needing review.
+2. Prefer primary, regulator or standard-setter sources.
+3. Check last-reviewed and next-review dates.
+4. Do not imply automated monitoring is live.
+5. Include a caveat that alerts and packs are static previews or advisory-supported outputs unless a later phase explicitly implements production operations.
+6. Treat source-missing, date-uncertain and needs-review records as review priorities before client reliance.
 
 ## Adding A Regulation
 

@@ -12,8 +12,10 @@ import {
 } from "@/lib/applicability";
 import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
+import { CommercialCTA } from "./CommercialCTA";
 import { CopyMarkdownButton } from "./CopyMarkdownButton";
 import { RecordMetaBadges } from "./RecordMetaBadges";
+import { DATASET_META } from "@/data/_meta";
 
 type PersonaId = "cso" | "supplier" | "legal" | "advisor";
 
@@ -292,6 +294,21 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
             Profile: {jurisdictionLabel(answers.headquarters)} headquarters - {answers.companySize} - {answers.companyType}
           </p>
         </div>
+      </div>
+
+      <div className="mt-5">
+        <CommercialCTA
+          compact
+          eyebrow="Advisory scan"
+          title="Turn this shortlist into a source-linked exposure scan"
+          body="Use the assessment result as a starting point for a manual review of missing facts, evidence needs, owners, sources and first 30-day actions."
+          href={`mailto:${DATASET_META.contactEmail}?subject=${encodeURIComponent("Etica ESG assessment review request")}&body=${encodeURIComponent(
+            "Hi Gabriel,\n\nI would like to turn my indicative assessment shortlist into an advisory-supported exposure scan.\n\nContext:\n"
+          )}`}
+          label="Request scan"
+          secondaryHref="/advisory"
+          secondaryLabel="Advisory options"
+        />
       </div>
     </section>
   );

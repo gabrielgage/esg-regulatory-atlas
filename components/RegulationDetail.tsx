@@ -1,8 +1,10 @@
 import { ExternalLink, X } from "lucide-react";
 import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
+import { CommercialCTA } from "./CommercialCTA";
 import { RecordMetaBadges } from "./RecordMetaBadges";
 import { StatusBadge } from "./StatusBadge";
+import { DATASET_META } from "@/data/_meta";
 import { readinessBand, readinessClass, readinessReasons, readinessScore } from "@/lib/scoring";
 import { formatDate } from "@/lib/utils";
 import { profileFor } from "@/lib/applicability";
@@ -38,6 +40,12 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
 
       <div className="mt-6 grid gap-4">
         <Card title="Executive summary">{regulation.summary}</Card>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <DecisionCard title="What this is" body={`${labelOrMissing(regulation.recordType)} - ${labelOrMissing(regulation.legalForce)} - ${regulation.status.replaceAll("_", " ")}`} />
+          <DecisionCard title="Who may be affected" body={profile.companyTypes.slice(0, 5).join(", ") || "Confirm entity profile and thresholds."} />
+          <DecisionCard title="Evidence likely needed" body={profile.evidenceRequired.slice(0, 3).join(", ") || "Applicability assessment and source review log."} />
+          <DecisionCard title="Suggested owners" body={regulation.affectedFunctions.slice(0, 4).join(", ") || "Assign accountable owner before reliance."} />
+        </div>
         <Card title="Atlas record governance">
           <div className="grid gap-3 sm:grid-cols-2">
             <Metric label="Record type" value={labelOrMissing(regulation.recordType)} />
@@ -146,6 +154,18 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
         <Card title="Advisory opportunities">
           <BadgeList values={regulation.advisoryOpportunities} tone="violet" />
         </Card>
+        <CommercialCTA
+          compact
+          eyebrow="Advisory next step"
+          title="Request context-specific review"
+          body="Use this record as the starting point for a cautious exposure scan, market briefing or source review."
+          href={`mailto:${DATASET_META.contactEmail}?subject=${encodeURIComponent(`Etica ESG advisory review - ${regulation.shortName}`)}&body=${encodeURIComponent(
+            `Hi Gabriel,\n\nI would like an advisory review of ${regulation.shortName}.\n\nContext:\n`
+          )}`}
+          label="Request review"
+          secondaryHref="/advisory"
+          secondaryLabel="Advisory options"
+        />
         {regulation.penalties ? <Card title="Penalties and enforcement">{regulation.penalties}</Card> : null}
         <Card title="Typical client questions">
           <ul className="space-y-2">
@@ -214,6 +234,15 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
       <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">{title}</h3>
       <div className="text-sm leading-6 text-slate-700">{children}</div>
     </section>
+  );
+}
+
+function DecisionCard({ title, body }: { title: string; body: string }) {
+  return (
+    <article className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+      <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">{title}</h3>
+      <p className="mt-2 text-sm font-semibold leading-6 text-ink">{body}</p>
+    </article>
   );
 }
 

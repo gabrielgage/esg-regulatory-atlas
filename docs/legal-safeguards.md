@@ -78,6 +78,42 @@ The language toggle translates product chrome, filters, table controls, map guid
 
 Do not describe the product as providing official legal translations. If deeper localization is added later, it should include source-language review, translation review and jurisdiction-specific legal review.
 
+## Commercial Page Safeguards
+
+Commercial pages such as `/plans`, `/alerts`, `/advisory` and `/premium-roadmap` must make the current product state clear:
+
+- Free Atlas is public regulatory intelligence for orientation and planning.
+- Premium Intelligence is a static preview until production alert, billing and account infrastructure are explicitly approved.
+- Advisory Atlas is manual advisory support and does not replace qualified legal, tax, investment or assurance advice.
+- Enterprise/API is future-state only.
+
+Do not imply that paid subscriptions, automated alerts, email monitoring, accounts, workspaces, API access, billing or gated content are live unless those systems are actually implemented and approved.
+
+## Alert Preview Safeguards
+
+Alert previews must use wording such as:
+
+- "sample digest"
+- "static preview"
+- "request access"
+- "design-partner preview"
+- "manual editorial workflow"
+- "production monitoring is not live"
+
+Avoid saying "we monitor all changes," "real-time alerts," "guaranteed updates," or "complete regulatory monitoring" unless a governed monitoring operation exists.
+
+## Advisory Safeguards
+
+Advisory pages and CTAs may describe exposure scans, watchlists, source review, portfolio/supplier maps and briefings. They must remain careful:
+
+- use "potentially relevant," "indicative," "source-linked," "planning," and "validate with qualified counsel"
+- avoid "we determine what applies" or "we guarantee compliance"
+- include caveats in copied summaries, briefs and request flows
+
+## Premium Pack Safeguards
+
+Premium pack previews may show sample tables of contents, outputs and regimes. They must not imply that gated production content exists. Each pack should state that source, date, threshold and jurisdiction-specific applicability should be reviewed before client reliance.
+
 ## Source Uncertainty
 
 When source certainty is incomplete:
@@ -108,6 +144,7 @@ The UI should reinforce caution through:
 - Citation blocks that identify edition and publisher
 - Edition snapshot routes that make version context explicit
 - Public update log and dataset edition metadata
+- Commercial preview caveats that separate free, premium-preview, advisory and future enterprise functionality
 
 ## Review Checklist For New Features
 

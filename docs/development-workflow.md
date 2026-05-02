@@ -104,6 +104,19 @@ Examples:
 - New automation or review workflow: update `README.md`, `.github/pull_request_template.md` where relevant, and this file.
 - Bug, failed deployment or failed check: update `docs/issue-resolution-log.md`, then update adjacent docs if the learning affects future workflow.
 
+## Commercial Surface Checklist
+
+When changing `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, commercial CTAs or launch assets, confirm:
+
+- The page is static and deployable without required environment variables.
+- No Stripe, checkout, billing SDK, subscription, authentication, database, production email backend, scraping, cron job or paid API was added.
+- CTAs use mailto or static links only.
+- Copy distinguishes Free Atlas, Premium Intelligence preview, Advisory Atlas and Enterprise/API future.
+- Alert previews do not imply production monitoring is live.
+- Advisory copy avoids definitive legal applicability language.
+- Commercial data files are treated as product/go-to-market data, not legal source authority.
+- README, product brief, roadmap, legal safeguards and handoff docs are updated.
+
 ## CI Lessons Learned
 
 The current browser and Lighthouse checks are intended to protect launch-critical behavior without making the MVP impossible to iterate.

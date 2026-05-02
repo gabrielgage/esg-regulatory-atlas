@@ -4,9 +4,11 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Badge } from "@/components/Badge";
+import { CommercialCTA } from "@/components/CommercialCTA";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
 import { CitationWidget } from "@/components/CitationWidget";
+import { DATASET_META } from "@/data/_meta";
 import { regulations } from "@/data/seed";
 import { SourceLink } from "@/types/regulation";
 import { profileFor } from "@/lib/applicability";
@@ -39,6 +41,9 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
 
   const profile = profileFor(regulation);
   const scope = regulation.applicabilityScope;
+  const related = regulations
+    .filter((item) => item.id !== regulation.id && item.topics.some((topic) => regulation.topics.includes(topic)))
+    .slice(0, 5);
 
   return (
     <main id="main-content" className="min-h-screen pb-12">
@@ -72,6 +77,13 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           <p>{regulation.summary}</p>
           <p className="mt-3 text-slate-600">{regulation.businessImpact}</p>
         </Section>
+
+        <section className="grid gap-4 md:grid-cols-2">
+          <DecisionCard title="What this is" body={`${labelOrMissing(regulation.recordType)} · ${labelOrMissing(regulation.legalForce)} · ${regulation.status.replaceAll("_", " ")}`} />
+          <DecisionCard title="Who may be affected" body={profile.companyTypes.slice(0, 5).join(", ") || "Confirm entity profile and thresholds."} />
+          <DecisionCard title="Evidence likely needed" body={profile.evidenceRequired.slice(0, 3).join(", ") || "Applicability assessment and source review log."} />
+          <DecisionCard title="Suggested internal owners" body={regulation.affectedFunctions.slice(0, 4).join(", ") || "Assign accountable owner before reliance."} />
+        </section>
 
         <CitationWidget regulation={regulation} />
 
@@ -161,6 +173,32 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           <BadgeList values={regulation.advisoryOpportunities} />
         </Section>
 
+        {related.length ? (
+          <Section title="Related regimes to review">
+            <div className="grid gap-3 md:grid-cols-2">
+              {related.map((item) => (
+                <Link key={item.id} href={`/regulations/${item.id}`} className="rounded-xl border border-slate-200 bg-slate-50 p-4 hover:bg-teal/5">
+                  <div className="font-semibold text-ink">{item.shortName}</div>
+                  <p className="mt-1 line-clamp-2 text-sm text-slate-600">{item.summary}</p>
+                </Link>
+              ))}
+            </div>
+          </Section>
+        ) : null}
+
+        <CommercialCTA
+          compact
+          eyebrow="Advisory next step"
+          title="Need this translated into an exposure scan?"
+          body="Request a cautious source-linked review of this regime in context of a jurisdiction, sector, company type, supplier base or portfolio."
+          href={`mailto:${DATASET_META.contactEmail}?subject=${encodeURIComponent(`Etica ESG advisory review - ${regulation.shortName}`)}&body=${encodeURIComponent(
+            `Hi Gabriel,\n\nI would like an advisory review of ${regulation.shortName} in context.\n\nJurisdiction/company profile:\n`
+          )}`}
+          label="Request review"
+          secondaryHref="/advisory"
+          secondaryLabel="Advisory options"
+        />
+
         <Section title="Primary sources and data quality">
           <div className="mb-4 grid gap-3 sm:grid-cols-3">
             <Metric label="Confidence" value={regulation.confidenceLevel.replaceAll("_", " ")} />
@@ -206,6 +244,15 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <h2 className="mb-4 text-lg font-semibold text-ink">{title}</h2>
       {children}
     </section>
+  );
+}
+
+function DecisionCard({ title, body }: { title: string; body: string }) {
+  return (
+    <article className="rounded-2xl border bg-white p-5 shadow-sm">
+      <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400">{title}</h2>
+      <p className="mt-3 text-sm font-semibold leading-6 text-ink">{body}</p>
+    </article>
   );
 }
 

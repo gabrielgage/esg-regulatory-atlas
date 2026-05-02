@@ -68,6 +68,19 @@ export default function MethodologyPage() {
           </div>
         </section>
 
+        <section className="rounded-2xl border bg-white p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-teal">Source hierarchy</p>
+          <h2 className="mt-2 text-xl font-semibold text-ink">Primary sources first, internal research never as legal authority</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-600">
+            Official law, regulation, regulator guidance and recognized standard-setter material should anchor legal-status claims. Internal research, competitor benchmarking and founder hypotheses can inform product strategy, UI choices and feature prioritization, but they should not be treated as legal authority.
+          </p>
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            <MethodCard title="Tier 1-2" body="Official legal text, regulator guidance, consultations, technical standards and stock-exchange rules." />
+            <MethodCard title="Tier 3-4" body="ISSB, GRI, OECD, ILO, UN and reputable law firm, consulting, professional or academic analysis." />
+            <MethodCard title="Tier 5-6" body="Vendor, competitor, internal or inferred material. Useful for product insight, not legal-status claims." />
+          </div>
+        </section>
+
         <SourceLibrary regulations={regulations} onSelect={setSelectedRegulation} />
         <CoverageMatrix
           jurisdictions={jurisdictions}
@@ -88,6 +101,15 @@ function Metric({ label, value }: { label: string; value: string }) {
     <div className="rounded-xl bg-slate-50 p-4">
       <div className="text-xs uppercase tracking-wide text-slate-400">{label}</div>
       <div className="mt-1 font-semibold text-ink">{value}</div>
+    </div>
+  );
+}
+
+function MethodCard({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+      <h3 className="text-sm font-semibold text-ink">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-slate-600">{body}</p>
     </div>
   );
 }

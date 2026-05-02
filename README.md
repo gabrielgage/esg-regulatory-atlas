@@ -105,6 +105,7 @@ Use these files to brief future coding agents, reviewers and collaborators:
 - `docs/legal-safeguards.md`: approved legal wording, disclaimers and caution rules
 - `docs/regulatory-taxonomy.md`: canonical topics, sectors, value chain labels and statuses
 - `docs/development-workflow.md`: working process, validation steps and documentation update rules
+- `docs/issue-resolution-log.md`: resolved bugs, failed checks, root causes, fixes and prevention rules
 
 ## Current edition
 
@@ -156,6 +157,8 @@ The base `0.5 - May 2026` edition focuses on the Etica rebrand and credibility i
 When making meaningful updates, keep the context files current. Future Codex or Claude runs should not need to rediscover product state, build strategy, data methodology, legal wording or shipped routes from scratch.
 
 The shortest rule is: if a change affects how the product works, how it is validated, how data is structured, or how legal risk is managed, update the relevant documentation in the same pass.
+
+When fixing a bug, failed deployment, failed GitHub check, visible product defect or platform issue, identify the root cause, deploy the smallest durable fix, validate it, and add a note to `docs/issue-resolution-log.md`.
 
 ## Adding a regulation
 

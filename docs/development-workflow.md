@@ -118,6 +118,13 @@ When changing `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/premium-pa
 - Manual conversion tracking stays no-dependency unless analytics, CRM, database or email infrastructure is explicitly approved.
 - README, product brief, roadmap, legal safeguards and handoff docs are updated.
 
+When changing content review queues or Marquee launch governance:
+
+- Treat the queue as editorial/source-governance support, not legal verification.
+- Confirm launch-blocker labels do not imply complete legal coverage.
+- Check that premium-use labels map to static previews or advisory workflows only.
+- Update `docs/data-methodology.md`, `docs/legal-safeguards.md`, `docs/roadmap.md` and the handoff.
+
 ## CI Lessons Learned
 
 The current browser and Lighthouse checks are intended to protect launch-critical behavior without making the MVP impossible to iterate.

@@ -63,5 +63,25 @@ export const launchAssets: LaunchAsset[] = [
     audience: ["ESG leaders", "Legal teams", "Advisors"],
     copy:
       "I am validating a weekly/monthly ESG regulatory alert preview before building any automated email or paid account infrastructure. Which watchlists would be most useful: CSRD/ESRS, ISSB adoption, supply-chain due diligence, product sustainability, sustainable finance or California/US climate disclosure?"
+  },
+  {
+    id: "premium-pack-brief-template",
+    title: "Copyable premium pack brief template",
+    channel: "sales-one-pager",
+    status: "ready-for-review",
+    audience: ["Prospective advisory clients", "ESG consultants", "Legal and compliance teams"],
+    copy:
+      "Each premium pack page can now be copied as a caveated Markdown brief showing scope, sample table of contents, outputs, included regimes, advisory extension and source-review caution.",
+    caveat: "Premium pack briefs are static validation assets and should not be presented as legal advice or complete regulatory coverage."
+  },
+  {
+    id: "marquee-review-queue-note",
+    title: "Marquee review queue launch note",
+    channel: "sales-one-pager",
+    status: "ready-for-review",
+    audience: ["Internal review", "Advisory delivery", "Content QA"],
+    copy:
+      "Use the Data Quality Marquee review queue to prioritise source, status and threshold review for regimes that appear in premium packs or advisory examples.",
+    caveat: "The queue is an editorial governance tool, not a legal verification statement."
   }
 ];

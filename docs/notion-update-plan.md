@@ -64,6 +64,13 @@ ADR-018:
 - Consequence: Use `data/conversionTracking.ts`, copied-summary subject lines and a manual review cadence until demand justifies instrumentation.
 - Status: Active.
 
+ADR-019:
+
+- Decision: Treat Marquee review queue as source governance, not legal verification.
+- Why: High-value records need visible review prioritisation before premium/advisory use, but the static MVP cannot certify legal completeness.
+- Consequence: Add Marquee 10/25 review queue with launch blockers and review questions while preserving caveats.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -88,6 +95,8 @@ Track:
 - Direct outreach email for premium alert preview
 - Premium pack sample pages for EU, ISSB, supply chain, financial services and portfolio/private equity use cases
 - Manual conversion tracking log template
+- Copyable premium pack brief template
+- Marquee content review queue for premium/advisory launch records
 
 ## QA And Review Findings
 

@@ -6,6 +6,8 @@ import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
 import { CommercialCTA } from "@/components/CommercialCTA";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { PrintButton } from "@/components/PrintButton";
 import { DATASET_META } from "@/data/_meta";
 import { premiumPacks } from "@/data/premiumPacks";
 import { regulations } from "@/data/seed";
@@ -29,15 +31,22 @@ export default async function PremiumPackPage({ params }: { params: Promise<{ id
   if (!pack) notFound();
 
   const matchedRegulations = findPackRegulations(pack.includedRegimes);
+  const markdown = buildPackMarkdown(pack, matchedRegulations);
 
   return (
     <main id="main-content" className="min-h-screen pb-12">
       <Header />
       <div className="mx-auto max-w-6xl space-y-5 px-4 py-5 md:px-6">
-        <Link href="/premium-roadmap" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-teal">
-          <ArrowLeft className="h-4 w-4" />
-          Back to premium roadmap
-        </Link>
+        <div className="flex flex-col gap-3 print:hidden md:flex-row md:items-center md:justify-between">
+          <Link href="/premium-roadmap" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-teal">
+            <ArrowLeft className="h-4 w-4" />
+            Back to premium roadmap
+          </Link>
+          <div className="flex flex-wrap gap-2">
+            <PrintButton label="Print pack" />
+            <CopyMarkdownButton text={markdown} label="Copy pack brief" />
+          </div>
+        </div>
 
         <PageIntro
           eyebrow="Premium pack preview"
@@ -188,4 +197,53 @@ function matchesRegime(regulation: Regulation, regime: string) {
 
 function normalize(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function buildPackMarkdown(pack: (typeof premiumPacks)[number], matchedRegulations: Regulation[]) {
+  const regimeLines = pack.includedRegimes.map((regime) => {
+    const regulation = matchedRegulations.find((item) => matchesRegime(item, regime));
+    if (!regulation) return `- ${regime}: pack-scope item to validate during source review.`;
+    return `- ${regulation.shortName}: ${regulation.summary}`;
+  });
+
+  return [
+    `# ${pack.name}`,
+    "",
+    `Publisher: ${DATASET_META.publisher}`,
+    `Editor: ${DATASET_META.editor}`,
+    `Contact: ${DATASET_META.contactEmail}`,
+    `Edition: ${DATASET_META.edition}`,
+    "",
+    "## Current product state",
+    "This is a static premium pack preview for demand validation and advisory scoping. It is not a gated product, automated alert, paid subscription or legal opinion.",
+    "",
+    "## Target users",
+    ...pack.targetUsers.map((item) => `- ${item}`),
+    "",
+    "## Jurisdiction scope",
+    ...pack.jurisdictions.map((item) => `- ${item}`),
+    "",
+    "## Topic scope",
+    ...pack.topics.map((item) => `- ${item}`),
+    "",
+    "## Sample table of contents",
+    ...pack.sampleTableOfContents.map((item, index) => `${index + 1}. ${item}`),
+    "",
+    "## Expected outputs",
+    ...pack.outputs.map((item) => `- ${item}`),
+    "",
+    "## Regimes included in sample scope",
+    ...regimeLines,
+    "",
+    "## Advisory extension",
+    pack.advisoryExtension,
+    "",
+    "## Optional next step",
+    `Request this pack from ${DATASET_META.publisher}: ${DATASET_META.contactEmail}`,
+    `Suggested request subject: Etica ESG premium pack request - ${pack.name}`,
+    "",
+    "## Caveat",
+    pack.disclaimer,
+    "This pack preview provides structured regulatory intelligence for orientation and planning only. It is not legal, tax, investment or assurance advice. Review primary sources and validate applicability with qualified counsel or regulatory advisors before relying on it for compliance decisions."
+  ].join("\n");
 }

@@ -17,6 +17,38 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-02 - Codex Sandbox Could Not Load Next SWC Native Binary
+
+Status: documented environment limitation.
+
+### Symptom
+
+During the Phase 1H premium-output and Marquee review queue update, `next build --webpack` failed before app compilation with a `Failed to load SWC binary for darwin/arm64` error. The diagnostic showed a macOS code-signature mismatch for `@next/swc-darwin-arm64/next-swc.darwin-arm64.node`.
+
+### Root Cause
+
+The Codex desktop runtime attempted to load Next.js's native SWC binary from `node_modules`, but macOS rejected the native module because the mapped binary and process had different Team IDs. This happened before TypeScript, Tailwind, route generation or application code was evaluated.
+
+### Resolution
+
+Validated the closest checks that do not depend on loading the native SWC module:
+
+- standalone `tsc --noEmit`
+- `git diff --check`
+- out-of-scope dependency and guardrail scan
+- legal-risk wording scan
+
+The issue is expected to be resolved by running the build in GitHub Actions, Vercel, or a local developer terminal with a normally installed Node/npm runtime. If CI or Vercel reports a separate application build failure, investigate that log independently.
+
+### Prevention Rule
+
+Do not treat a local Codex SWC native binary code-signature failure as a product deployment defect when standalone TypeScript and source checks pass. Document the limitation in the handoff, keep strict code checks, and rely on CI/Vercel for the final Next.js native compilation signal.
+
+### Files Changed
+
+- `docs/issue-resolution-log.md`
+- `ESG_Regulatory_Atlas_Claude_Handoff.md`
+
 ## 2026-05-02 - Codex Sandbox Could Build But Could Not Start Local Server
 
 Status: documented environment limitation.

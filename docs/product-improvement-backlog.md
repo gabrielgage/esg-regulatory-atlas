@@ -116,6 +116,16 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Revenue relevance: Lead-gen, premium alerts, market packs and advisory.
     Track commercial interest through visible CTA routes, mailto subjects and manual review notes before adding analytics, CRM sync, email automation or billing infrastructure.
 
+43. **Marquee launch review queue**
+    Status: partially delivered in `0.5.8 - May 2026`.
+    Revenue relevance: Trust, premium packs and advisory.
+    Maintain a high-value content-review queue for Marquee 10 and Marquee 25 regimes with launch-blocker flags, review questions, premium-use mapping and visible source/status/threshold review needs.
+
+44. **Copyable premium pack briefs**
+    Status: partially delivered in `0.5.8 - May 2026`.
+    Revenue relevance: Market packs and advisory.
+    Make each premium pack sample page copyable and printable so it can be used in advisory conversations and direct outreach without adding PDF generation or document automation.
+
 41. **Feature request intake and scoring**
     Status: partially delivered in `0.5.6 - May 2026`.
     Revenue relevance: Notion Ops / product prioritization.

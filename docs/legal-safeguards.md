@@ -91,6 +91,8 @@ Do not imply that paid subscriptions, automated alerts, email monitoring, accoun
 
 Manual conversion tracking must remain transparent and lightweight during the static MVP. Do not add analytics SDKs, cookies, CRM sync, account tracking, billing events or hidden user profiling without explicit approval.
 
+Content review queues must be described as editorial/source-governance tools. Do not imply that a record is legally complete, verified for client reliance or definitively applicable because it appears in a Marquee review list.
+
 ## Alert Preview Safeguards
 
 Alert previews must use wording such as:

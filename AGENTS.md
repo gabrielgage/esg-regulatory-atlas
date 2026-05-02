@@ -287,6 +287,8 @@ Already delivered in Phase 1F: `/plans`, `/alerts`, `/advisory`, commercial offe
 
 Already delivered in Phase 1G: `/premium-packs/[id]` sample pages, manual conversion tracking data/docs, manual validation signals on `/plans`, and advisory next-step text in copied client/jurisdiction summaries. These are still static validation surfaces only; no analytics SDK, cookies, CRM sync, billing events, database, accounts or automated email were added.
 
+Already delivered in Phase 1H: copyable/printable premium pack briefs and a Marquee launch review queue on `/data-quality` backed by `data/contentReview.ts`. Treat the review queue as editorial/source-governance support only, not legal verification.
+
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 
 Phase 3 may introduce commercial packaging and paid plans, including Stripe, but Stripe remains out of scope until explicitly requested.

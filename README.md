@@ -103,6 +103,7 @@ Seed data is stored in:
 - `data/premiumPacks.ts`
 - `data/launchAssets.ts`
 - `data/conversionTracking.ts`
+- `data/contentReview.ts`
 - `data/taxonomy.ts`
 
 Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
@@ -127,9 +128,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.7 - May 2026`.
+The current seed dataset edition is `0.5.8 - May 2026`.
 
-The latest local update makes premium validation more concrete without adding product infrastructure:
+The latest local update improves premium output usefulness and content governance:
+
+- adds copy/print controls to `/premium-packs/[id]` so sample packs can be shared as client-ready Markdown briefs
+- adds `data/contentReview.ts` for Marquee 10 and Marquee 25 launch review governance
+- adds a Marquee launch review queue to `/data-quality`
+- shows review status, launch blockers, premium-use mapping and key review questions for high-value regimes
+- keeps the queue as content governance only, not legal verification or definitive applicability
+
+The prior `0.5.7 - May 2026` update made premium validation more concrete without adding product infrastructure:
 
 - adds `/premium-packs/[id]` static sample pages for each premium market pack
 - links premium roadmap pack cards to inspectable sample pack pages

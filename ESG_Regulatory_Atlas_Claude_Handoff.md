@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1G premium-pack and manual-conversion follow-up pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish and Phase 1F commercial-validation surfaces. The goal remains deployability and legal caution, with added emphasis on making premium pack demand easier to validate without adding payments, authentication, databases, analytics, production alerts or automation.
+The app is now in a static Phase 1H premium-output and Marquee content-governance pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces and Phase 1G premium-pack/manual-conversion follow-up. The goal remains deployability and legal caution, with added emphasis on making premium pack previews easier to share and making launch-critical source-review needs visible without adding payments, authentication, databases, analytics, production alerts or automation.
+
+## Phase 1H Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.8 - May 2026`.
+- Added copy and print controls to `/premium-packs/[id]` so each pack can be shared as a caveated Markdown brief.
+- Added `data/contentReview.ts` with Marquee 10 and Marquee 25 content-review items.
+- Added `components/MarqueeReviewQueue.tsx` and surfaced it on `/data-quality`.
+- Added launch-blocker flags, review statuses, premium-use mapping and source/status/threshold review questions for high-value regimes.
+- Updated README, roadmap, product brief, product backlog, data methodology, legal safeguards, development workflow and agent context.
+
+## Phase 1H Product Rationale
+
+The commercial pages are only useful if a buyer or advisor can turn them into a conversation. Copyable premium pack briefs support direct outreach and advisory scoping without PDF generation. The Marquee review queue makes the content governance work visible, especially for records used in premium-pack examples, while avoiding any claim that the seed data is legally complete or verified for reliance.
 
 ## Phase 1G Changes Delivered
 
@@ -232,6 +245,12 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1H validation: `tsc --noEmit` passed locally using the bundled Node runtime.
+- Phase 1H validation: `git diff --check` passed.
+- Phase 1H validation: `next build --webpack` was blocked in the Codex desktop sandbox by a macOS code-signature failure while loading `@next/swc-darwin-arm64`. This happened before app compilation and is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative Next.js build signal.
+- Phase 1H out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM plus the existing Playwright `process.env.CI` check; no implementation code or dependencies were added for those items.
+- Phase 1H legal-risk wording scan found only banned phrases inside "do not use" guidance plus the intentional Data Quality caveat that tracked coverage is not complete global coverage.
+- Phase 1H Notion update: Launch Command Center now includes the premium output and Marquee review governance note; Launch Tasks LAUNCH-030 through LAUNCH-033 were created; ADR-019 was added to Decisions Log; Launch Assets were seeded for the premium pack brief template and Marquee review queue note.
 - Phase 1G validation: `next build --webpack` passed locally using the bundled Node runtime and generated 264 static pages, including the five `/premium-packs/[id]` sample pages.
 - Phase 1G validation: `tsc --noEmit` passed locally using the bundled Node runtime after the production build completed.
 - Phase 1G validation: `git diff --check` passed.

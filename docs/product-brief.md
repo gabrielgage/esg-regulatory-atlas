@@ -97,7 +97,9 @@ The MVP includes:
 - `/advisory` manual service page for exposure scans, watchlists, portfolio/supplier maps and briefing packs
 - Premium market-pack previews and sample table-of-contents sections
 - `/premium-packs/[id]` static sample pages for individual premium pack scopes
+- Premium pack pages with copyable and printable Markdown briefs
 - Manual conversion tracking model for CTA and mailto-subject validation without analytics infrastructure
+- Marquee launch review queue for high-value regimes used in premium packs and advisory examples
 - Reusable commercial CTA surfaces
 - Source quality indicators
 - Advisory opportunity and business impact views

@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.7 - May 2026",
+    date: "2026-05-02",
+    label: "Premium pack and manual conversion follow-up",
+    summary:
+      "Added individual premium-pack preview pages, linked market packs from the premium roadmap, added advisory next steps to copied summaries and documented a no-dependency manual conversion tracking plan.",
+    added: [
+      "/premium-packs/[id] static premium pack detail pages",
+      "Manual conversion tracking data model",
+      "Manual conversion tracking documentation",
+      "Advisory next-step language in copied jurisdiction and client summaries"
+    ],
+    updated: ["Premium roadmap", "Plans page", "Jurisdiction briefs", "Client planning summary export", "Project documentation"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr", "csddd", "eudr", "cbam"],
+    caveat: "Premium pack pages are static sample scopes for validation only. No billing, gated content, analytics SDK, CRM sync, production alerts or legal advice functionality was added."
+  },
+  {
     edition: "0.5.6 - May 2026",
     date: "2026-05-02",
     label: "Commercial validation and premium-preview sprint",

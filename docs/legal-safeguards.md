@@ -80,7 +80,7 @@ Do not describe the product as providing official legal translations. If deeper 
 
 ## Commercial Page Safeguards
 
-Commercial pages such as `/plans`, `/alerts`, `/advisory` and `/premium-roadmap` must make the current product state clear:
+Commercial pages such as `/plans`, `/alerts`, `/advisory`, `/premium-roadmap` and `/premium-packs/[id]` must make the current product state clear:
 
 - Free Atlas is public regulatory intelligence for orientation and planning.
 - Premium Intelligence is a static preview until production alert, billing and account infrastructure are explicitly approved.
@@ -88,6 +88,8 @@ Commercial pages such as `/plans`, `/alerts`, `/advisory` and `/premium-roadmap`
 - Enterprise/API is future-state only.
 
 Do not imply that paid subscriptions, automated alerts, email monitoring, accounts, workspaces, API access, billing or gated content are live unless those systems are actually implemented and approved.
+
+Manual conversion tracking must remain transparent and lightweight during the static MVP. Do not add analytics SDKs, cookies, CRM sync, account tracking, billing events or hidden user profiling without explicit approval.
 
 ## Alert Preview Safeguards
 

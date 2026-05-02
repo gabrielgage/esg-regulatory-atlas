@@ -129,6 +129,7 @@ Current important routes:
 - `/changelog`: public update log
 - `/about`: product, author and trend context
 - `/premium-roadmap`: static future commercial roadmap with no gating, Stripe, auth or database
+- `/premium-packs/[id]`: static premium pack sample scopes with no gating, billing or account system
 - `/plans`: static Free Atlas / Premium Intelligence / Advisory Atlas / Enterprise Future comparison
 - `/alerts`: static premium alert and watchlist preview with no email backend
 - `/advisory`: static advisory service surface for manual scans and briefings
@@ -283,6 +284,8 @@ Already delivered in Phase 1D: master data model metadata, record type/legal for
 Already delivered in Phase 1E: assessment explanations with review priority, evidence needs, functions involved and source-to-verify guidance; quarter-level timeline milestones across consultation, effective, reporting, due-date and source-review events; data-quality review scoring reasons; richer jurisdiction briefs with 30-day readiness starters, watch items and evidence packages; improved client summary copy.
 
 Already delivered in Phase 1F: `/plans`, `/alerts`, `/advisory`, commercial offer data, alert digest previews, premium market-pack previews, launch asset seeds, reusable commercial CTA, stronger premium roadmap and source-trust copy. These are static validation surfaces only; no billing, auth, database, email backend, scraping, cron or paid APIs were added.
+
+Already delivered in Phase 1G: `/premium-packs/[id]` sample pages, manual conversion tracking data/docs, manual validation signals on `/plans`, and advisory next-step text in copied client/jurisdiction summaries. These are still static validation surfaces only; no analytics SDK, cookies, CRM sync, billing events, database, accounts or automated email were added.
 
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 

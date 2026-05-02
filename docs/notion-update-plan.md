@@ -57,6 +57,13 @@ ADR-017:
 - Consequence: Do not gate core map/regulation/methodology before validation.
 - Status: Active.
 
+ADR-018:
+
+- Decision: Track May commercial interest manually before analytics or CRM.
+- Why: The static MVP can learn from mailto subjects, route context and direct replies without cookies, SDKs, accounts, databases or CRM sync.
+- Consequence: Use `data/conversionTracking.ts`, copied-summary subject lines and a manual review cadence until demand justifies instrumentation.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -79,6 +86,8 @@ Track:
 - LinkedIn launch post 3: advisory scans
 - Direct outreach email for advisory scan
 - Direct outreach email for premium alert preview
+- Premium pack sample pages for EU, ISSB, supply chain, financial services and portfolio/private equity use cases
+- Manual conversion tracking log template
 
 ## QA And Review Findings
 

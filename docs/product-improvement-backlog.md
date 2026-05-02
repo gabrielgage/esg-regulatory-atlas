@@ -107,9 +107,14 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add `/advisory` with exposure scans, custom watchlists, portfolio/supplier maps, board/client briefings and market-pack support.
 
 40. **Premium market-pack previews**
-    Status: partially delivered in `0.5.6 - May 2026`.
+    Status: partially delivered in `0.5.6 - May 2026` and expanded with individual sample pages in `0.5.7 - May 2026`.
     Revenue relevance: Market packs.
     Add concrete premium pack concepts and table-of-contents previews for EU, ISSB, supply chain, financial services and portfolio/private equity use cases.
+
+42. **Manual conversion tracking loop**
+    Status: partially delivered in `0.5.7 - May 2026`.
+    Revenue relevance: Lead-gen, premium alerts, market packs and advisory.
+    Track commercial interest through visible CTA routes, mailto subjects and manual review notes before adding analytics, CRM sync, email automation or billing infrastructure.
 
 41. **Feature request intake and scoring**
     Status: partially delivered in `0.5.6 - May 2026`.

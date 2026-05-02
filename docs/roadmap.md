@@ -137,6 +137,16 @@ Current capability areas:
 - Added source-trust and coverage-tier explainers to Data Quality and Methodology.
 - Added `docs/feature-request-tracking.md` and `docs/notion-update-plan.md` for launch sprint task tracking and deep-research intake.
 
+## Recently Delivered Phase 1G Items
+
+- Updated dataset metadata and changelog to `0.5.7 - May 2026`.
+- Added `/premium-packs/[id]` static sample pages so each premium market-pack concept has an inspectable scope, table of contents, outputs, included regimes and caveats.
+- Linked `/premium-roadmap` pack cards to the new premium-pack sample pages.
+- Added `data/conversionTracking.ts` and `docs/conversion-tracking-plan.md` for manual, no-dependency conversion validation.
+- Added manual validation loop signals to `/plans`.
+- Added advisory next-step language to copied jurisdiction briefs and client planning summaries.
+- Kept conversion tracking intentionally manual: no analytics SDK, cookies, CRM sync, production email automation, billing events, accounts or database were added.
+
 ## May 2026 Commercialization Validation Sprint
 
 Goal: launch a credible public MVP by May 23, 2026 and validate monetization by May 31, 2026 without adding paid infrastructure.
@@ -174,7 +184,7 @@ Recommended improvements:
 - Better assessment scoring with visible reasons: partially delivered in Phase 1E.
 - Stronger regulation detail pages with threshold summaries and caveats
 - Improved map legend and layer explanations
-- Static premium alert and market-pack previews: partially delivered in Phase 1F.
+- Static premium alert and market-pack previews: partially delivered in Phase 1F and expanded with individual pack sample pages in Phase 1G.
 - Advisory-led monetization surfaces: partially delivered in Phase 1F.
 - Better mobile and tablet refinements
 - Excel and PDF-ready export formats after the CSV/JSON pattern is validated

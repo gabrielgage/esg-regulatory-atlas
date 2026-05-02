@@ -2,7 +2,22 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1F commercial-validation and premium-preview pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion and Phase 1E decision-support polish. The goal remains deployability and legal caution, with added emphasis on making the public Free Atlas commercially directed through static Premium Intelligence previews and Advisory Atlas inquiry paths without adding payments, authentication, databases, production alerts or automation.
+The app is now in a static Phase 1G premium-pack and manual-conversion follow-up pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish and Phase 1F commercial-validation surfaces. The goal remains deployability and legal caution, with added emphasis on making premium pack demand easier to validate without adding payments, authentication, databases, analytics, production alerts or automation.
+
+## Phase 1G Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.7 - May 2026`.
+- Added `/premium-packs/[id]` as static sample pages for each premium market pack.
+- Linked `/premium-roadmap` pack cards to the new premium-pack sample pages.
+- Added `data/conversionTracking.ts` for manual CTA, mailto-subject and validation-loop tracking.
+- Added `docs/conversion-tracking-plan.md` for no-dependency commercial interest tracking.
+- Added manual validation loop signals to `/plans`.
+- Added advisory next-step language to copied jurisdiction briefs and client planning summaries.
+- Updated README, roadmap, product brief, product backlog, data methodology, legal safeguards, development workflow and agent context.
+
+## Phase 1G Product Rationale
+
+Phase 1F made the offer architecture visible. Phase 1G makes that offer architecture more concrete and more measurable: users can inspect a specific premium pack before asking for it, and Etica can track which CTAs and subject lines generate interest without introducing analytics, CRM sync, accounts, billing or email automation too early.
 
 ## Phase 1F Changes Delivered
 
@@ -217,6 +232,11 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1G validation: `next build --webpack` passed locally using the bundled Node runtime and generated 264 static pages, including the five `/premium-packs/[id]` sample pages.
+- Phase 1G validation: `tsc --noEmit` passed locally using the bundled Node runtime after the production build completed.
+- Phase 1G validation: `git diff --check` passed.
+- Phase 1G out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM plus the existing Playwright `process.env.CI` check; no implementation code or dependencies were added for those items.
+- Phase 1G Notion update: Launch Command Center now includes the premium pack/manual conversion follow-up note; Launch Tasks LAUNCH-026 through LAUNCH-029 were created; ADR-018 was added to Decisions Log; Launch Assets were seeded for premium pack sample pages and manual conversion tracking.
 - Phase 1F validation: `next build --webpack` passed locally using the bundled Node runtime and generated 259 static pages, including `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/assessment`, `/timeline`, `/briefing`, `/data-quality`, expanded `/regulations/[slug]` pages and edition snapshot pages.
 - Phase 1F validation: `tsc --noEmit` passed locally using the bundled Node runtime after the production build completed.
 - Phase 1F validation: `git diff --check` passed.

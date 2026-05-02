@@ -102,6 +102,7 @@ Seed data is stored in:
 - `data/alertDigests.ts`
 - `data/premiumPacks.ts`
 - `data/launchAssets.ts`
+- `data/conversionTracking.ts`
 - `data/taxonomy.ts`
 
 Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
@@ -122,12 +123,22 @@ Use these files to brief future coding agents, reviewers and collaborators:
 - `docs/product-improvement-backlog.md`: prioritized PM/ESG specialist improvement backlog across three waves
 - `docs/feature-request-tracking.md`: feature request schema, scoring rubric and deep-research intake process
 - `docs/notion-update-plan.md`: Notion-ready launch sprint updates, ADRs and task plan
+- `docs/conversion-tracking-plan.md`: no-dependency manual tracking process for commercial interest
 
 ## Current edition
 
-The current seed dataset edition is `0.5.6 - May 2026`.
+The current seed dataset edition is `0.5.7 - May 2026`.
 
-The latest local update focuses on commercial validation surfaces and premium-preview architecture:
+The latest local update makes premium validation more concrete without adding product infrastructure:
+
+- adds `/premium-packs/[id]` static sample pages for each premium market pack
+- links premium roadmap pack cards to inspectable sample pack pages
+- adds `data/conversionTracking.ts` for manual CTA and mailto subject tracking
+- adds `docs/conversion-tracking-plan.md` for no-dependency lead validation
+- adds advisory next-step language to copied jurisdiction briefs and client planning summaries
+- keeps conversion tracking manual, with no analytics SDK, cookies, CRM sync, database, billing or automated email
+
+The prior `0.5.6 - May 2026` update focused on commercial validation surfaces and premium-preview architecture:
 
 - adds `/plans` to explain Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
 - adds `/alerts` with static weekly/monthly digest previews, watchlist concepts, source-quality legend and request-access CTA

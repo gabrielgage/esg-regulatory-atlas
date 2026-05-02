@@ -9,6 +9,7 @@ import { Badge } from "@/components/Badge";
 import { StatusBadge } from "@/components/StatusBadge";
 import { jurisdictions, regulations } from "@/data/seed";
 import { recordsForJurisdiction } from "@/lib/layers";
+import { readinessBand, readinessScore } from "@/lib/scoring";
 import { uniq } from "@/lib/utils";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 
@@ -125,7 +126,9 @@ function JurisdictionColumn({
   const peerIds = new Set(peerRecords.map((regulation) => regulation.id));
   const topics = uniq(records.flatMap((regulation) => regulation.topics)).slice(0, 8);
   const obligations = uniq(records.flatMap((regulation) => regulation.businessImpacts)).slice(0, 8);
+  const advisory = uniq(records.flatMap((regulation) => regulation.advisoryOpportunities)).slice(0, 8);
   const highConfidence = records.filter((regulation) => regulation.confidenceLevel === "high").length;
+  const highImpact = records.filter((regulation) => regulation.highImpact).length;
 
   return (
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
@@ -138,14 +141,16 @@ function JurisdictionColumn({
         <Badge className="border-slate-200 bg-slate-50 text-slate-600">{records.length} records</Badge>
       </div>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+      <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <Metric label="High confidence" value={String(highConfidence)} />
+        <Metric label="High impact" value={String(highImpact)} />
         <Metric label="Unique records" value={String(records.filter((record) => !peerIds.has(record.id)).length)} />
         <Metric label="Shared records" value={String(records.filter((record) => peerIds.has(record.id)).length)} />
       </div>
 
       <ListBlock title="Primary topics" values={topics} />
       <ListBlock title="Business obligations" values={obligations} />
+      <ListBlock title="Advisory workstreams" values={advisory} />
     </section>
   );
 }
@@ -247,9 +252,15 @@ function RegulationCompare({ records, requestedIds }: { records: Regulation[]; r
                   <CompareRow label="Jurisdiction" records={records} render={(record) => record.jurisdiction} />
                   <CompareRow label="Issuing body" records={records} render={(record) => record.issuingBody} />
                   <CompareRow label="First reporting" records={records} render={(record) => String(record.firstReportingYear || "n/a")} />
+                  <CompareRow label="First report due" records={records} render={(record) => record.firstReportDueDate || "n/a"} />
+                  <CompareRow label="Thresholds" records={records} render={(record) => (record.applicabilityScope?.thresholds || []).slice(0, 3).join("; ") || "Confirm source record"} />
+                  <CompareRow label="Readiness priority" records={records} render={(record) => `${readinessBand(record)} (${readinessScore(record)}/100)`} />
                   <CompareRow label="Applicability" records={records} render={(record) => record.applicability} />
                   <CompareRow label="Business impact" records={records} render={(record) => record.businessImpact} />
+                  <CompareRow label="Business functions" records={records} render={(record) => record.affectedFunctions.slice(0, 6).join("; ")} />
                   <CompareRow label="Evidence required" records={records} render={(record) => (record.evidenceRequired || []).slice(0, 4).join("; ") || "Review source record"} />
+                  <CompareRow label="Advisory opportunities" records={records} render={(record) => record.advisoryOpportunities.slice(0, 5).join("; ")} />
+                  <CompareRow label="Penalties or enforcement" records={records} render={(record) => record.penalties || "Not captured in seed record"} />
                   <CompareRow label="Source confidence" records={records} render={(record) => `${record.confidenceLevel.replaceAll("_", " ")} · ${record.dataQualityStatus.replaceAll("_", " ")}`} />
                 </tbody>
               </table>

@@ -12,6 +12,7 @@ The MVP stores data in static TypeScript files:
 
 - `data/regulations.ts`
 - `data/coverageAdditions.ts`
+- `data/marketCoverage.ts`
 - `data/jurisdictions.ts`
 - `data/sectors.ts`
 - `data/taxonomy.ts`
@@ -25,8 +26,13 @@ Filtering and applicability logic lives in:
 
 - `lib/filters.ts`
 - `lib/applicability.ts`
+- `lib/scoring.ts`
+- `lib/urlFilters.ts`
+- `lib/i18n.ts`
 
 Do not hardcode regulatory records inside UI components.
+
+Use `data/marketCoverage.ts` for additive market-depth records that broaden the MVP's jurisdiction coverage. These records should usually be marked `needs_review`, `date_uncertain`, or `verified_seed` depending on source maturity, and should not imply complete local legal coverage.
 
 ## Source Hierarchy
 
@@ -139,6 +145,8 @@ Recommended review cadence:
 - Voluntary frameworks and standards: every 180 days
 - Records marked needs review, source missing, or date uncertain: prioritize before client use
 
+The Data Quality page now surfaces a prioritized review queue that considers data-quality status, missing sources, high-impact flags and upcoming review dates.
+
 ## Adding A Regulation
 
 When adding a regulation:
@@ -152,6 +160,13 @@ When adding a regulation:
 7. Add confidence and data quality status.
 8. Add caveats for threshold uncertainty, implementation uncertainty, or source limitations.
 9. Verify filters and detail views still render.
+10. If the record broadens market coverage, add a changelog or handoff note so future reviewers understand why the record was introduced.
+
+## Planning Scores
+
+`lib/scoring.ts` provides an indicative readiness-priority score. It is based on status, timing, obligation breadth, high-impact classification, source count and review uncertainty.
+
+The score is not legal applicability logic. It is only a planning signal for triage, advisory scoping and readiness conversations.
 
 ## Updating A Regulation
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Database, Gauge, HelpCircle } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Filters } from "@/components/Filters";
@@ -11,10 +11,13 @@ import { RegulationTable } from "@/components/RegulationTable";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { ShareViewButton } from "@/components/ShareViewButton";
 import { ViewSelector } from "@/components/ViewSelector";
+import { useLanguage } from "@/components/LanguageProvider";
 import { DATASET_META } from "@/data/_meta";
 import { jurisdictions, quickViews, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
+import { filtersFromSearchParams, filtersToSearchParams, viewFromSearchParams } from "@/lib/urlFilters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 
 export default function Home() {
@@ -24,11 +27,27 @@ export default function Home() {
     jurisdictions.find((jurisdiction) => jurisdiction.id === "eu") || null
   );
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
+  const [urlReady, setUrlReady] = useState(false);
+  const { t } = useLanguage();
 
   const filtered = useMemo(() => filterRegulations(regulations, filters), [filters]);
   const activeViewLabel = activeView === "overview" ? "Global overview" : quickViews.find((view) => view.id === activeView)?.label || "Custom view";
   const sourceCount = filtered.reduce((count, regulation) => count + regulation.sourceUrls.length, 0);
   const highImpact = filtered.filter((regulation) => regulation.highImpact).length;
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setFilters(filtersFromSearchParams(params));
+    setActiveView(viewFromSearchParams(params));
+    setUrlReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!urlReady) return;
+    const params = filtersToSearchParams(filters, activeView);
+    const query = params.toString();
+    window.history.replaceState(null, "", query ? `?${query}` : window.location.pathname);
+  }, [activeView, filters, urlReady]);
 
   function applyView(id: string, quickFilters: Partial<typeof filters>) {
     setActiveView(id);
@@ -53,16 +72,17 @@ export default function Home() {
           <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
             <div>
               <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl">
-                Etica ESG · Regulatory Atlas
+                {t("home.heroTitle")}
               </h1>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-                Interactive sustainability regulatory intelligence by jurisdiction, sector, value chain and reporting year.
+                {t("home.heroBody")}
               </p>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400">{t("home.languageCaveat")}</p>
             </div>
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              <HeroMetric icon={Database} label="Current view" value={`${filtered.length} records`} />
-              <HeroMetric icon={Gauge} label="High impact" value={`${highImpact} records`} />
-              <HeroMetric icon={Database} label="Sources" value={`${sourceCount} links`} />
+              <HeroMetric icon={Database} label={t("home.currentView")} value={`${filtered.length} records`} />
+              <HeroMetric icon={Gauge} label={t("home.highImpact")} value={`${highImpact} records`} />
+              <HeroMetric icon={Database} label={t("home.sources")} value={`${sourceCount} links`} />
             </div>
           </div>
         </section>
@@ -71,14 +91,17 @@ export default function Home() {
 
         <section className="flex flex-col gap-3 rounded-2xl border border-teal/20 bg-teal/5 p-4 shadow-sm md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-sm font-semibold text-teal">What's new</p>
+            <p className="text-sm font-semibold text-teal">{t("home.whatsNew")}</p>
             <p className="mt-1 text-sm leading-6 text-slate-600">
-              {DATASET_META.edition}: EU source-quality pass, threshold and penalty placeholder cleanup, direct map counts and new compare, changelog and jurisdiction brief routes.
+              {DATASET_META.edition}: expanded market coverage, stronger map outlines, shareable filtered views, export tools, readiness scoring and multilingual interface chrome.
             </p>
           </div>
-          <Link href="/changelog" className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-semibold text-teal shadow-sm hover:bg-slate-50">
-            View changelog <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <ShareViewButton />
+            <Link href="/changelog" className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-semibold text-teal shadow-sm hover:bg-slate-50">
+              {t("home.viewChangelog")} <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </section>
 
         <ViewSelector activeId={activeView} onApply={applyView} />
@@ -105,11 +128,11 @@ export default function Home() {
           <div>
             <div className="mb-3 flex items-center justify-between gap-3 px-1">
               <div>
-                <h2 className="font-semibold text-ink">Regulation table preview</h2>
-                <p className="mt-1 text-sm text-slate-500">Open the full Regulations workspace for deep review and filtering.</p>
+                <h2 className="font-semibold text-ink">{t("home.tableTitle")}</h2>
+                <p className="mt-1 text-sm text-slate-500">{t("home.tableBody")}</p>
               </div>
               <Link href="/regulations" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">
-                View all <ArrowRight className="h-4 w-4" />
+                {t("home.viewAll")} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
             <RegulationTable regulations={filtered.slice(0, 6)} onSelect={setSelectedRegulation} />
@@ -124,6 +147,8 @@ export default function Home() {
 }
 
 function AssessmentPrompt() {
+  const { t } = useLanguage();
+
   return (
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
       <div className="flex items-start gap-3">
@@ -131,12 +156,12 @@ function AssessmentPrompt() {
           <HelpCircle className="h-5 w-5" />
         </div>
         <div>
-          <h2 className="font-semibold text-ink">Not sure what applies?</h2>
+          <h2 className="font-semibold text-ink">{t("home.assessmentTitle")}</h2>
           <p className="mt-2 text-sm leading-6 text-slate-500">
-            Answer a few questions to generate an indicative shortlist by jurisdiction, company type, sector and value-chain exposure.
+            {t("home.assessmentBody")}
           </p>
           <Link href="/assessment" className="mt-4 inline-flex items-center gap-2 rounded-xl bg-navy px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
-            Start assessment <ArrowRight className="h-4 w-4" />
+            {t("home.startAssessment")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

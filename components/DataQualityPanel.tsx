@@ -22,9 +22,19 @@ export function DataQualityPanel({
   const sourceCount = regulations.reduce((count, regulation) => count + regulation.sourceUrls.length, 0);
   const sourced = regulations.filter((regulation) => regulation.sourceUrls.length > 0).length;
   const sourceCoverage = total ? Math.round((sourced / total) * 100) : 0;
+  const upcomingReview = regulations.filter((regulation) => isDueSoon(regulation.nextReviewDate)).length;
+  const highImpactNeedsReview = regulations.filter(
+    (regulation) => regulation.highImpact && ["needs_review", "date_uncertain", "source_missing"].includes(regulation.dataQualityStatus)
+  ).length;
   const reviewQueue = regulations
-    .filter((regulation) => ["needs_review", "date_uncertain", "source_missing"].includes(regulation.dataQualityStatus))
-    .slice(0, 5);
+    .filter(
+      (regulation) =>
+        ["needs_review", "date_uncertain", "source_missing"].includes(regulation.dataQualityStatus) ||
+        isDueSoon(regulation.nextReviewDate) ||
+        regulation.sourceUrls.length === 0
+    )
+    .sort((a, b) => Number(Boolean(b.highImpact)) - Number(Boolean(a.highImpact)) || String(a.nextReviewDate || "").localeCompare(String(b.nextReviewDate || "")))
+    .slice(0, 10);
   const statusRows = Object.entries(qualityLabels).map(([status, label]) => ({
     status: status as Regulation["dataQualityStatus"],
     label,
@@ -46,10 +56,11 @@ export function DataQualityPanel({
         <Badge className="border-slate-200 bg-slate-50 text-slate-600">Methodology control</Badge>
       </div>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Metric icon={ShieldCheck} label="Source coverage" value={`${sourceCoverage}%`} detail={`${sourced}/${total || 0} records have source links`} />
         <Metric icon={Link2} label="Source links" value={String(sourceCount)} detail="primary, regulator and secondary links" />
         <Metric icon={TriangleAlert} label="Review queue" value={String(reviewQueue.length)} detail="records needing production research" />
+        <Metric icon={TriangleAlert} label="Priority checks" value={String(highImpactNeedsReview)} detail={`${upcomingReview} records have upcoming review dates`} />
       </div>
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[.85fr_1.15fr]">
@@ -124,4 +135,12 @@ function qualityClass(status: Regulation["dataQualityStatus"]) {
   if (status === "needs_review") return "border-amber-200 bg-amber-50 text-amber-800";
   if (status === "date_uncertain") return "border-violet/20 bg-violet/10 text-violet";
   return "border-red-200 bg-red-50 text-red-700";
+}
+
+function isDueSoon(date?: string) {
+  if (!date) return false;
+  const reviewDate = new Date(date);
+  if (Number.isNaN(reviewDate.getTime())) return false;
+  const ninetyDays = 1000 * 60 * 60 * 24 * 90;
+  return reviewDate.getTime() - Date.now() <= ninetyDays;
 }

@@ -90,6 +90,8 @@ Primary folders:
 
 Prefer keeping regulatory data out of UI components. Components should render data, not define the regulatory dataset.
 
+Use `data/marketCoverage.ts` for additive country-market records that broaden MVP coverage while remaining clearly labelled as seed intelligence. Use `data/regulations.ts` for core canonical records and `data/coverageAdditions.ts` for broader framework/content additions from prior phases.
+
 Current important routes:
 
 - `/`: map workspace
@@ -117,6 +119,8 @@ Current brand context:
 - LinkedIn: `https://www.linkedin.com/in/gabrielgage/`
 - Temporary logo assets are in `public/etica-esg-logo.svg`, `public/favicon.svg`, and `public/og-image.svg`
 - The global theme toggle lives in `components/ThemeToggle.tsx`; it persists `etica-theme` in local storage and uses Tailwind `darkMode: "class"`
+- The language toggle lives in `components/LanguageToggle.tsx` and `components/LanguageProvider.tsx`; supported interface languages are English, Spanish, Dutch, French, German and Portuguese.
+- Translations live in `lib/i18n.ts`. Do not imply that the regulatory records themselves are legally translated; the current implementation translates product chrome and disclaimer guidance.
 
 ## Product Experience Principles
 
@@ -212,6 +216,7 @@ The map must remain deployable without paid services:
 - Do not add Mapbox, paid tokens, runtime geography APIs, or external map calls
 - Keep jurisdiction IDs and visible jurisdiction labels consistent
 - Do not confuse regulatory intensity with regulatory status
+- Keep country outlines visibly legible. The current map uses local Natural Earth geometry, stronger borders and a subtle graticule without adding map dependencies.
 
 Recommended distinction:
 
@@ -239,6 +244,8 @@ Before opening a PR, verify:
 ## Preferred Phase Boundaries
 
 Phase 1 may improve static product depth, such as better timelines, source review status, richer jurisdiction pages, CSV/JSON export, comparison enhancements and more complete source-reviewed data.
+
+Already delivered in Phase 1B: market coverage additions, language toggle, shareable filtered views, CSV/JSON export, readiness scoring, grouped timeline and expanded comparison fields.
 
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 

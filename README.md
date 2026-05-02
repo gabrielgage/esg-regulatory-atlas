@@ -12,6 +12,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Stable Tailwind/PostCSS v3 setup for Vercel deployment
 - Production build uses the stable Next.js webpack build path for this MVP
 - Static Natural Earth choropleth map with no paid map API and no Mapbox token
+- Improved country-outline contrast and local graticule cues so countries are visible without adding a map dependency
 - Jurisdiction profile panel
 - Regulation detail drawer and `/regulations/[slug]` pages with sources, caveats, business impact and advisory opportunities
 - Public changelog at `/changelog`
@@ -27,6 +28,10 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Edition snapshot route at `/edition/0.5/regulations/[slug]`
 - Branded 404 page and ISSB redirect aliases
 - Light/dark mode toggle with local preference persistence
+- English, Spanish, Dutch, French, German and Portuguese language toggle for product chrome and disclaimer guidance
+- Shareable filtered URLs for the Map and Regulations workspaces
+- CSV and JSON export for the filtered regulation database
+- Readiness-priority scoring for planning conversations
 - Copyable client planning summary
 - Static TypeScript seed data only
 - No authentication, database, Supabase, Stripe, scraping, cron jobs, AI summaries, email alerts or required environment variables
@@ -78,9 +83,10 @@ Seed data is stored in:
 - `data/jurisdictions.ts`
 - `data/regulations.ts`
 - `data/coverageAdditions.ts`
+- `data/marketCoverage.ts`
 - `data/taxonomy.ts`
 
-Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`.
+Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
 
 ## Project guidance
 
@@ -99,7 +105,18 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 The current seed dataset edition is `0.5 - May 2026`.
 
-This edition focuses on the Etica rebrand and credibility improvements from the v4 review:
+The latest local update on top of this edition focuses on Phase 1B market coverage and usability:
+
+- added `data/marketCoverage.ts` for under-covered markets including Mexico, the Netherlands, China, California, Singapore, Japan, Australia, Brazil, Switzerland and Turkey
+- added a language toggle for English, Spanish, Dutch, French, German and Portuguese interface/disclaimer chrome
+- improved the map contrast so country outlines are visible while keeping the same local Natural Earth data
+- added shareable filtered views for Map and Regulations
+- added CSV and JSON export for filtered regulation records
+- added readiness-priority scoring to tables, drawers and regulation detail pages
+- strengthened timeline grouping, comparison dimensions and data-quality review queues
+- updated the public changelog with a `0.5.1 - May 2026` market coverage and usability entry
+
+The base `0.5 - May 2026` edition focuses on the Etica rebrand and credibility improvements from the v4 review:
 
 - rebranded global identity to Etica ESG with temporary SVG logo, favicon and social image
 - updated dataset metadata with Etica publisher, editor, contact email and LinkedIn fields
@@ -127,6 +144,7 @@ The shortest rule is: if a change affects how the product works, how it is valid
 ## Adding a regulation
 
 Add a typed record to `data/regulations.ts` or `data/coverageAdditions.ts`.
+Use `data/marketCoverage.ts` for incremental market-depth records that broaden country coverage but still need deeper production source review.
 
 At minimum include:
 

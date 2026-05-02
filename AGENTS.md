@@ -246,6 +246,7 @@ The map must remain deployable without paid services:
 - Keep jurisdiction IDs and visible jurisdiction labels consistent
 - Do not confuse regulatory intensity with regulatory status
 - Keep country outlines visibly legible. The current map uses local Natural Earth geometry, stronger borders and a subtle graticule without adding map dependencies.
+- Verify visible SVG country paths at tablet and desktop widths when touching map code; checking only the outer map container is not enough.
 
 Recommended distinction:
 
@@ -288,6 +289,8 @@ Already delivered in Phase 1F: `/plans`, `/alerts`, `/advisory`, commercial offe
 Already delivered in Phase 1G: `/premium-packs/[id]` sample pages, manual conversion tracking data/docs, manual validation signals on `/plans`, and advisory next-step text in copied client/jurisdiction summaries. These are still static validation surfaces only; no analytics SDK, cookies, CRM sync, billing events, database, accounts or automated email were added.
 
 Already delivered in Phase 1H: copyable/printable premium pack briefs and a Marquee launch review queue on `/data-quality` backed by `data/contentReview.ts`. Treat the review queue as editorial/source-governance support only, not legal verification.
+
+Already delivered in Phase 1I: tablet-and-desktop country-outline map visibility, map geometry fallback, coverage-depth targets in `data/coverageTargets.ts`, a Data Quality coverage-depth panel and direct market-depth seed records in `data/marketDepthAdditions.ts`. Treat coverage targets as product QA controls, not complete legal inventory claims.
 
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 

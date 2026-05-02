@@ -65,7 +65,7 @@ The MVP includes:
 - Static Next.js application deployable on Vercel
 - Local Tailwind v3 styling
 - Static typed seed data
-- Interactive map using local assets
+- Interactive map using local Natural Earth assets, visible country outlines and a geometry fallback
 - Jurisdiction profiles
 - Searchable and filterable regulations
 - Record type, legal force and client relevance filters and badges
@@ -78,6 +78,7 @@ The MVP includes:
 - Quarter-level milestone timeline for consultation, effective, reporting, due-date and source-review planning
 - Data Quality surface for source coverage and review-risk governance
 - Data-quality review queue with visible scoring reasons for research prioritization
+- Market coverage-depth dashboard showing target direct-record depth, current count, gaps and review risk by jurisdiction
 - Public changelog
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs

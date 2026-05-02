@@ -11,6 +11,23 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.9 - May 2026",
+    date: "2026-05-02",
+    label: "Visible map and market coverage depth",
+    summary:
+      "Made the local Natural Earth country-outline map visible from tablet widths upward, strengthened border contrast, added a geometry failure fallback and expanded direct seed-record depth across under-covered markets.",
+    added: [
+      "Coverage target data model for deep-anchor, core-commercial and watch-expansion markets",
+      "Market coverage depth panel on Data Quality",
+      "Market-depth seed records for France, Germany, Norway, Hong Kong, South Korea, Taiwan, New Zealand, Malaysia, Indonesia, Thailand, Philippines and South Africa",
+      "Additional direct records for California, India, Brazil, China, Japan, Switzerland and Turkey",
+      "Playwright checks for visible country paths and map fallback behavior"
+    ],
+    updated: ["World choropleth map", "Data Quality", "Regulation seed data", "Smoke tests", "Project documentation"],
+    records: ["france-duty-of-vigilance", "germany-lksg", "norway-transparency-act", "hong-kong-hkex-climate-disclosure", "new-zealand-climate-standards", "california-cap-and-invest", "brazil-sbce-emissions-trading"],
+    caveat: "New market-depth records are illustrative seed intelligence and improve orientation coverage only. They are not complete local legal inventories and require primary-source review before client reliance."
+  },
+  {
     edition: "0.5.8 - May 2026",
     date: "2026-05-02",
     label: "Premium output and Marquee review governance",

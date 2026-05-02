@@ -153,6 +153,8 @@ Known lesson from PR #11:
 - Theme behavior should default first-time visitors to light mode, then respect the user's saved explicit light/dark selection.
 - The app requires no environment variables.
 - The map uses local static assets and no paid map provider.
+- Map changes should preserve local Natural Earth geometry, visible country outlines from tablet widths upward, keyboard-selectable tracked countries and a clear geometry fallback.
+- Coverage-depth changes should update `data/coverageTargets.ts`, keep direct-record target checks passing and mark new market records as seed intelligence unless a production source review has verified them.
 - Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.
 - The project intentionally avoids Stripe, Supabase, authentication, paid APIs, scraping, cron jobs, email alerts and production AI summaries.
 - Local dev servers may be blocked in some Codex sandboxes by port-binding restrictions; do not treat that as an app failure if production build passes.

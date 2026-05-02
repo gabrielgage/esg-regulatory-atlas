@@ -13,8 +13,10 @@ The MVP stores data in static TypeScript files:
 - `data/regulations.ts`
 - `data/coverageAdditions.ts`
 - `data/marketCoverage.ts`
+- `data/marketDepthAdditions.ts`
 - `data/phase1cCoverage.ts`
 - `data/masterUpdateAdditions.ts`
+- `data/coverageTargets.ts`
 - `data/commercialOffers.ts`
 - `data/alertDigests.ts`
 - `data/premiumPacks.ts`
@@ -40,7 +42,9 @@ Filtering and applicability logic lives in:
 
 Do not hardcode regulatory records inside UI components.
 
-Use `data/marketCoverage.ts` and `data/phase1cCoverage.ts` for additive market-depth records that broaden the MVP's jurisdiction coverage. These records should usually be marked `needs_review`, `date_uncertain`, or `verified_seed` depending on source maturity, and should not imply complete local legal coverage.
+Use `data/marketCoverage.ts`, `data/phase1cCoverage.ts` and `data/marketDepthAdditions.ts` for additive market-depth records that broaden the MVP's jurisdiction coverage. These records should usually be marked `needs_review`, `date_uncertain`, or `verified_seed` depending on source maturity, and should not imply complete local legal coverage.
+
+Use `data/coverageTargets.ts` to manage minimum direct-record depth by market. Core commercial markets should generally have at least five direct records; watch-expansion markets should generally have at least three. These targets are product coverage controls, not assertions of complete legal coverage.
 
 Use `data/masterUpdateAdditions.ts` for the master-pack expansion layer. This file contains condensed EU financial-services parent records, APAC/ISSB market expansion records, voluntary and investor/customer-driven framework records, and enrichment metadata for existing parent records such as CSRD, ESRS, SFDR, EU Taxonomy, CSDDD, EUDR, EU Batteries and ISSB.
 

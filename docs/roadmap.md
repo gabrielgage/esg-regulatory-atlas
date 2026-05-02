@@ -54,9 +54,20 @@ Current capability areas:
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
 - Quarter-level milestone timeline covering consultation, effective-date, reporting-year, report-due and Atlas review events
 - Review-queue scoring in the data-quality dashboard with visible reasons for source and confidence follow-up
+- Market coverage-depth targets and Data Quality panel for direct records per jurisdiction
+- Tablet-and-desktop Natural Earth country-outline map with stronger visual contrast and geometry fallback
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1I Items
+
+- Made the local Natural Earth choropleth visible from tablet widths upward rather than hiding the SVG until large desktop layouts.
+- Strengthened map border, ocean/land, selected-state and EU overlay contrast so country outlines are visibly inspectable.
+- Added a clear map-geometry fallback state while keeping jurisdiction navigation available.
+- Added `data/coverageTargets.ts` and `components/CoverageDepthPanel.tsx` to track minimum direct-record depth by market.
+- Added `data/marketDepthAdditions.ts` with seed records that bring core commercial markets to at least five direct records and watch-expansion markets to at least three.
+- Added Playwright checks for country path rendering, tablet map size, jurisdiction selection and geometry fallback.
 
 ## Recently Delivered Phase 1A Items
 

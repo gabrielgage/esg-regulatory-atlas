@@ -11,6 +11,12 @@ const qualityLabels: Record<Regulation["dataQualityStatus"], string> = {
   source_missing: "Source missing"
 };
 
+type ReviewQueueItem = {
+  regulation: Regulation;
+  score: number;
+  reasons: string[];
+};
+
 export function DataQualityPanel({
   regulations,
   onSelect
@@ -23,17 +29,15 @@ export function DataQualityPanel({
   const sourced = regulations.filter((regulation) => regulation.sourceUrls.length > 0).length;
   const sourceCoverage = total ? Math.round((sourced / total) * 100) : 0;
   const upcomingReview = regulations.filter((regulation) => isDueSoon(regulation.nextReviewDate)).length;
+  const primaryBacked = regulations.filter((regulation) => hasPrioritySource(regulation)).length;
+  const confidenceNeedsReview = regulations.filter((regulation) => regulation.confidenceLevel !== "high" || regulation.sourceConfidence === "needs_review").length;
   const highImpactNeedsReview = regulations.filter(
     (regulation) => regulation.highImpact && ["needs_review", "date_uncertain", "source_missing"].includes(regulation.dataQualityStatus)
   ).length;
   const reviewQueue = regulations
-    .filter(
-      (regulation) =>
-        ["needs_review", "date_uncertain", "source_missing"].includes(regulation.dataQualityStatus) ||
-        isDueSoon(regulation.nextReviewDate) ||
-        regulation.sourceUrls.length === 0
-    )
-    .sort((a, b) => Number(Boolean(b.highImpact)) - Number(Boolean(a.highImpact)) || String(a.nextReviewDate || "").localeCompare(String(b.nextReviewDate || "")))
+    .map(reviewQueueItem)
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || a.regulation.shortName.localeCompare(b.regulation.shortName))
     .slice(0, 10);
   const statusRows = Object.entries(qualityLabels).map(([status, label]) => ({
     status: status as Regulation["dataQualityStatus"],
@@ -56,11 +60,12 @@ export function DataQualityPanel({
         <Badge className="border-slate-200 bg-slate-50 text-slate-600">Methodology control</Badge>
       </div>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
         <Metric icon={ShieldCheck} label="Source coverage" value={`${sourceCoverage}%`} detail={`${sourced}/${total || 0} records have source links`} />
-        <Metric icon={Link2} label="Source links" value={String(sourceCount)} detail="primary, regulator and secondary links" />
+        <Metric icon={Link2} label="Priority sources" value={`${primaryBacked}/${total || 0}`} detail="primary, regulator or standard-setter backed" />
         <Metric icon={TriangleAlert} label="Review queue" value={String(reviewQueue.length)} detail="records needing production research" />
         <Metric icon={TriangleAlert} label="Priority checks" value={String(highImpactNeedsReview)} detail={`${upcomingReview} records have upcoming review dates`} />
+        <Metric icon={TriangleAlert} label="Confidence checks" value={String(confidenceNeedsReview)} detail={`${sourceCount} captured source links in total`} />
       </div>
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[.85fr_1.15fr]">
@@ -80,7 +85,7 @@ export function DataQualityPanel({
           <h3 className="text-sm font-semibold text-ink">Research queue</h3>
           <div className="mt-3 space-y-3">
             {reviewQueue.length ? (
-              reviewQueue.map((regulation) => (
+              reviewQueue.map(({ regulation, score, reasons }) => (
                 <button
                   key={regulation.id}
                   type="button"
@@ -89,11 +94,23 @@ export function DataQualityPanel({
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="font-semibold text-ink">{regulation.shortName}</span>
-                    <Badge className={qualityClass(regulation.dataQualityStatus)}>{qualityLabels[regulation.dataQualityStatus]}</Badge>
+                    <div className="flex flex-wrap gap-1">
+                      <Badge className={score >= 7 ? "border-red-200 bg-red-50 text-red-700" : "border-amber-200 bg-amber-50 text-amber-800"}>
+                        Review score {score}
+                      </Badge>
+                      <Badge className={qualityClass(regulation.dataQualityStatus)}>{qualityLabels[regulation.dataQualityStatus]}</Badge>
+                    </div>
                   </div>
                   <p className="mt-1 text-sm leading-5 text-slate-500">
                     Next review: {formatDate(regulation.nextReviewDate)}. {regulation.latestUpdate}
                   </p>
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {reasons.slice(0, 4).map((reason) => (
+                      <Badge key={reason} className="border-slate-200 bg-white text-slate-600">
+                        {reason}
+                      </Badge>
+                    ))}
+                  </div>
                 </button>
               ))
             ) : (
@@ -143,4 +160,55 @@ function isDueSoon(date?: string) {
   if (Number.isNaN(reviewDate.getTime())) return false;
   const ninetyDays = 1000 * 60 * 60 * 24 * 90;
   return reviewDate.getTime() - Date.now() <= ninetyDays;
+}
+
+function hasPrioritySource(regulation: Regulation) {
+  return regulation.sourceUrls.some((source) => source.type === "primary" || source.type === "regulator" || source.type === "standards_body");
+}
+
+function reviewQueueItem(regulation: Regulation): ReviewQueueItem {
+  let score = 0;
+  const reasons: string[] = [];
+
+  if (regulation.highImpact) {
+    score += 3;
+    reasons.push("high impact");
+  }
+  if (!regulation.sourceUrls.length) {
+    score += 5;
+    reasons.push("missing source");
+  } else if (!hasPrioritySource(regulation)) {
+    score += 3;
+    reasons.push("needs priority source");
+  }
+  if (regulation.dataQualityStatus === "source_missing") {
+    score += 5;
+    reasons.push("source missing status");
+  }
+  if (regulation.dataQualityStatus === "needs_review") {
+    score += 4;
+    reasons.push("needs review status");
+  }
+  if (regulation.dataQualityStatus === "date_uncertain") {
+    score += 3;
+    reasons.push("date uncertain");
+  }
+  if (isDueSoon(regulation.nextReviewDate)) {
+    score += 2;
+    reasons.push("review due soon");
+  }
+  if (regulation.confidenceLevel !== "high" || regulation.sourceConfidence === "needs_review") {
+    score += 2;
+    reasons.push("confidence check");
+  }
+  if (regulation.status === "consultation" || regulation.status === "transition" || regulation.status === "paused") {
+    score += 1;
+    reasons.push("changing status");
+  }
+  if (regulation.legalForce === "mandatory" && regulation.displayTier === "core") {
+    score += 1;
+    reasons.push("core mandatory record");
+  }
+
+  return { regulation, score, reasons: Array.from(new Set(reasons)) };
 }

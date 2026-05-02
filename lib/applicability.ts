@@ -28,6 +28,11 @@ export interface ApplicabilityResult {
   reasons: string[];
   triggeredBy: string[];
   firstActions: string[];
+  evidenceNeeded: string[];
+  functionsInvolved: string[];
+  sourceToVerify: string;
+  sourceQualityNote: string;
+  reviewPriority: "High" | "Medium" | "Monitor";
   caveat: string;
 }
 
@@ -102,6 +107,34 @@ function scoreRegulation(regulation: Regulation, answers: ApplicabilityAnswers):
     triggeredBy.push("company type");
   }
 
+  if (regulation.legalForce === "mandatory" && (directJurisdiction || (answers.euMarketExposure && euRelated))) {
+    score += 2;
+    reasons.push("The record is tagged as a mandatory rule or regime in the relevant market context.");
+    triggeredBy.push("mandatory legal force");
+  }
+
+  if (regulation.displayTier === "core") {
+    score += 1;
+    triggeredBy.push("core Atlas record");
+  }
+
+  if (regulation.highImpact) {
+    score += 1;
+    triggeredBy.push("high impact");
+  }
+
+  if (regulation.clientRelevanceCategory === "potentially-direct" && directJurisdiction) {
+    score += 2;
+    reasons.push("The record is tagged as potentially direct for entities in this market, subject to thresholds and local interpretation.");
+    triggeredBy.push("direct relevance tag");
+  }
+
+  if (regulation.clientRelevanceCategory === "investor-or-customer-driven" && (answers.financialInstitution || answers.portfolioExposure || answers.regulatedImports || answers.companyType === "Supplier")) {
+    score += 2;
+    reasons.push("The record is often driven by investor, lender, customer or procurement expectations for this profile.");
+    triggeredBy.push("investor/customer exposure");
+  }
+
   if (answers.listed && (regulation.sectors.includes("Listed companies") || regulation.topics.includes("Corporate reporting"))) {
     score += 2;
     reasons.push("Listed-company status often increases disclosure and governance relevance.");
@@ -134,22 +167,64 @@ function scoreRegulation(regulation: Regulation, answers: ApplicabilityAnswers):
     triggeredBy.push("portfolio exposure");
   }
 
+  if (answers.companyType === "Supplier" && regulation.valueChain.some((value) => value.includes("Upstream") || value.includes("supplier"))) {
+    score += 2;
+    reasons.push("Supplier profile aligns with upstream data collection, customer requests or due diligence expectations.");
+    triggeredBy.push("supplier exposure");
+  }
+
+  const category = categoryFor(regulation, score, directJurisdiction);
+
   return {
     regulation,
-    category: categoryFor(score, directJurisdiction),
+    category,
     score,
     reasons: reasons.length ? reasons : ["This record is retained as a monitor item based on adjacent ESG regulatory relevance."],
     triggeredBy: triggeredBy.length ? Array.from(new Set(triggeredBy)) : ["monitor"],
     firstActions: profile.requiredActions.slice(0, 4),
+    evidenceNeeded: profile.evidenceRequired.slice(0, 4),
+    functionsInvolved: regulation.affectedFunctions.slice(0, 4),
+    sourceToVerify: sourceToVerify(regulation),
+    sourceQualityNote: sourceQualityNote(regulation),
+    reviewPriority: reviewPriorityFor(regulation, category, score),
     caveat: "Indicative only. This tool does not determine legal applicability and should be validated against entity-specific facts and primary sources."
   };
 }
 
-function categoryFor(score: number, directJurisdiction: boolean): ApplicabilityCategory {
+function categoryFor(regulation: Regulation, score: number, directJurisdiction: boolean): ApplicabilityCategory {
+  if (score >= 8 && directJurisdiction && regulation.legalForce === "mandatory") return "Potentially directly relevant";
   if (score >= 7 && directJurisdiction) return "Potentially directly relevant";
   if (score >= 5) return "Potentially indirectly relevant";
+  if (regulation.clientRelevanceCategory === "investor-or-customer-driven" && score >= 3) return "Relevant through investors or customers";
   if (score >= 3) return "Relevant through investors or customers";
   return "Monitor only";
+}
+
+function reviewPriorityFor(regulation: Regulation, category: ApplicabilityCategory, score: number): ApplicabilityResult["reviewPriority"] {
+  if (
+    regulation.highImpact &&
+    (category === "Potentially directly relevant" || category === "Potentially indirectly relevant") &&
+    (regulation.legalForce === "mandatory" || regulation.firstReportingYear === 2026 || regulation.firstReportingYear === 2027)
+  ) {
+    return "High";
+  }
+  if (score >= 5 || regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high") return "Medium";
+  return "Monitor";
+}
+
+function sourceToVerify(regulation: Regulation) {
+  const primary = regulation.sourceUrls.find((source) => source.type === "primary" || source.type === "regulator" || source.type === "standards_body");
+  const source = primary || regulation.sourceUrls[0];
+  return source ? `${source.label} (${source.type})` : "No source link captured yet";
+}
+
+function sourceQualityNote(regulation: Regulation) {
+  if (!regulation.sourceUrls.length) return "Source missing; do not rely on this record before research review.";
+  if (regulation.dataQualityStatus === "verified_seed" && regulation.confidenceLevel === "high") return "Source-backed seed record with high confidence metadata.";
+  if (regulation.dataQualityStatus === "recently_updated") return "Recently updated seed record; confirm the latest official source before client reliance.";
+  if (regulation.dataQualityStatus === "date_uncertain") return "Date-sensitive record; validate effective date and reporting year before planning.";
+  if (regulation.dataQualityStatus === "needs_review") return "Needs production research review before being treated as verified guidance.";
+  return "Source coverage should be reviewed before compliance use.";
 }
 
 function defaultActions(regulation: Regulation) {

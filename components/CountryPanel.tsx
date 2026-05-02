@@ -37,9 +37,11 @@ export function CountryPanel({
   const inheritedRegs = jurisdiction.parent ? regulations.filter((regulation) => regulation.jurisdictionIds.includes(jurisdiction.parent || "")) : [];
   const sectors = uniq(regs.flatMap((regulation) => regulation.sectors)).slice(0, 8);
   const impacts = uniq(regs.flatMap((regulation) => regulation.valueChain)).slice(0, 8);
+  const evidence = uniq(regs.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 8);
   const drivers = uniq(regs.flatMap((regulation) => regulation.topics)).slice(0, 6);
   const years = uniq(regs.map((regulation) => String(regulation.firstReportingYear || "")).filter(Boolean)).sort();
   const sourceCount = regs.reduce((count, regulation) => count + regulation.sourceUrls.length, 0);
+  const reviewFlags = regs.filter((regulation) => regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high").length;
   const confidenceSummary = `${regs.filter((regulation) => regulation.confidenceLevel === "high").length} high / ${regs.filter((regulation) => regulation.confidenceLevel === "medium").length} medium`;
   const intensity = jurisdiction.regulatoryIntensity;
 
@@ -63,6 +65,7 @@ export function CountryPanel({
         <Metric label="Sources" value={String(sourceCount)} />
         <Metric label="First years" value={years.length ? years.slice(0, 3).join(", ") : "n/a"} />
         <Metric label="Confidence" value={confidenceSummary} />
+        <Metric label="Review flags" value={String(reviewFlags)} />
       </div>
 
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -157,6 +160,9 @@ export function CountryPanel({
             </PanelSection>
             <PanelSection title="Advisory opportunities">
               <BadgeList values={uniq(regs.flatMap((regulation) => regulation.advisoryOpportunities))} tone="violet" empty="No advisory opportunities for current filters." limit={10} />
+            </PanelSection>
+            <PanelSection title="Evidence to prepare">
+              <BadgeList values={evidence} tone="slate" empty="No evidence summary for current filters." limit={8} />
             </PanelSection>
           </div>
         )}

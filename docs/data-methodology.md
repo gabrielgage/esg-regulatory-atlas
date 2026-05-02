@@ -192,7 +192,7 @@ Recommended review cadence:
 - Voluntary frameworks and standards: every 180 days
 - Records marked needs review, source missing, or date uncertain: prioritize before client use
 
-The Data Quality page now surfaces a prioritized review queue that considers data-quality status, missing sources, high-impact flags and upcoming review dates.
+The Data Quality page now surfaces a prioritized review queue that considers data-quality status, missing sources, missing primary/regulator/standard-setter sources, high-impact flags, upcoming review dates, confidence flags, changing statuses and core mandatory records. Each review queue item should show visible reason chips so researchers know why the record needs attention.
 
 ## Adding A Regulation
 
@@ -239,7 +239,7 @@ Approved output categories:
 - Relevant through investors or customers
 - Monitor only
 
-The wizard must explain why a record appears and should direct users to sources and qualified advisors for confirmation.
+The wizard must explain why a record appears and should direct users to sources and qualified advisors for confirmation. Current outputs include trigger reasons, review priority, first actions, evidence to start collecting, functions involved, source to verify and a source-quality note. These are planning aids, not legal conclusions.
 
 ## Production Research Workflow Recommendation
 

@@ -17,6 +17,30 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-02 - Parallel TypeScript Check Saw Missing `.next/types` During Build
+
+Status: resolved.
+
+### Symptom
+
+A local TypeScript check reported missing generated files under `.next/types/app/...` immediately after a production build command was started in parallel.
+
+### Root Cause
+
+The TypeScript check and Next.js production build were run at the same time. Next.js regenerates `.next/types` during the build, so the standalone TypeScript process briefly saw generated files that had been removed and not yet recreated. This was a validation sequencing issue, not an application TypeScript failure.
+
+### Resolution
+
+The production build was allowed to finish, then `tsc --noEmit` was rerun after `.next/types` had been regenerated. The rerun passed.
+
+### Prevention Rule
+
+Do not run standalone `tsc --noEmit` in parallel with `next build` when the project includes `.next/types/**/*.ts` in `tsconfig.json`. Run the production build first, then run TypeScript or lint checks sequentially if a separate check is needed.
+
+### Files Changed
+
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-02 - PR #11 Browser Smoke And Lighthouse Checks Failed After Vercel Deployed
 
 Status: resolved.

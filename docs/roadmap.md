@@ -47,6 +47,10 @@ Current capability areas:
 - APAC/ISSB coverage expansion including Hong Kong, South Korea, Taiwan, New Zealand, Malaysia, Indonesia, Thailand and Philippines
 - Voluntary framework coverage for CDP, SBTi, PCAF, PRI, ICMA, GRESB, IFC/Equator/World Bank safeguards and ISO environmental/GHG standards
 - Static market briefing CTA and premium roadmap page without payments, authentication or gated data
+- Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
+- Quarter-level milestone timeline covering consultation, effective-date, reporting-year, report-due and Atlas review events
+- Review-queue scoring in the data-quality dashboard with visible reasons for source and confidence follow-up
+- Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
 
@@ -103,17 +107,30 @@ Current capability areas:
 - Added source-of-truth governance guidance on `/data-quality`.
 - Added a static market briefing CTA and `/premium-roadmap` route for future market packs, sector packs and portfolio scans without adding Stripe, authentication, Supabase, databases or paid APIs.
 
+## Recently Delivered Phase 1E Items
+
+- Updated dataset metadata and changelog to `0.5.5 - May 2026`.
+- Improved `lib/applicability.ts` so the assessment wizard considers legal force, display tier, high-impact classification, client relevance tags, supplier exposure and investor/customer-driven records.
+- Added assessment result fields for evidence needed, source to verify, source-quality note, functions involved and high/medium/monitor review priority.
+- Upgraded `/assessment` cards and copied shortlists so results explain why each record appears and what should be verified before reliance.
+- Converted `/timeline` from a single-date list into a quarter-level milestone view across consultation deadlines, effective dates, first reporting years, first report due dates and Atlas review dates.
+- Improved timeline filtering so year filters match any relevant milestone year, not only `firstReportingYear`.
+- Upgraded `/data-quality` with review-queue scoring, priority-source coverage and visible reasons for source/confidence follow-up.
+- Improved `/briefing` priority cards and copied client summaries with evidence packages, first moves, functions, legal force, client relevance and source-coverage notes.
+- Enriched `/jurisdiction/[code]/brief` with source-backed counts, status/metadata badges, 30-day readiness starters, watch items, functions, evidence and market briefing CTA.
+- Added evidence summaries and review-flag counts to the map-side jurisdiction panel.
+
 ## Phase 1: Credibility And Utility
 
 Phase 1 should deepen the static product without changing the deployment model.
 
 Recommended improvements:
 
-- More precise timeline view with quarter-level milestone grouping
-- Deeper source review queue workflow with assigned owners and review states
+- More precise timeline view with quarter-level milestone grouping: partially delivered in Phase 1E; horizontal swimlane layout remains a later refinement.
+- Deeper source review queue workflow with assigned owners and review states: review scoring delivered in Phase 1E; named owners remain a later data-governance step.
 - Changelog detail grouped by regulation and jurisdiction
 - More consistent source metadata across all records
-- Better assessment scoring with visible reasons
+- Better assessment scoring with visible reasons: partially delivered in Phase 1E.
 - Stronger regulation detail pages with threshold summaries and caveats
 - Improved map legend and layer explanations
 - Better mobile and tablet refinements

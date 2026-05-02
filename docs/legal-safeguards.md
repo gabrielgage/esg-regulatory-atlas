@@ -56,6 +56,8 @@ The assessment wizard should use these categories:
 
 Do not use "Likely directly applicable" unless threshold logic, source verification, and legal review support the statement. For the MVP, safer wording is preferred.
 
+Assessment outputs may show review priority, evidence to collect, functions involved and source-to-verify guidance. These are planning prompts only. They must not be worded as compliance instructions, legal conclusions or final applicability decisions.
+
 ## Regulation Detail Caveat
 
 Each regulation detail surface should include a caveat similar to:
@@ -128,6 +130,8 @@ These outputs may help plan review or advisory work, but they should not say or 
 - a company is definitively in or out of scope
 - a date is a final compliance deadline for a specific entity
 - the output is a legal opinion
+
+Client summaries and jurisdiction briefs may include first 30-day actions and evidence packages when phrased as readiness planning steps. Avoid imperative legal language such as "you must file" or "you are required to comply"; use "confirm", "review", "prepare", "assign" and "validate" instead.
 
 ## Context Maintenance
 

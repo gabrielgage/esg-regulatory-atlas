@@ -13,6 +13,7 @@ import {
 import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
 import { CopyMarkdownButton } from "./CopyMarkdownButton";
+import { RecordMetaBadges } from "./RecordMetaBadges";
 
 type PersonaId = "cso" | "supplier" | "legal" | "advisor";
 
@@ -240,9 +241,19 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="font-semibold text-ink">{result.regulation.shortName}</div>
-                    <Badge className={categoryClass(result.category)}>{result.category}</Badge>
+                    <div className="flex flex-wrap gap-1">
+                      <Badge className={reviewPriorityClass(result.reviewPriority)}>{result.reviewPriority} review</Badge>
+                      <Badge className={categoryClass(result.category)}>{result.category}</Badge>
+                    </div>
                   </div>
-                  <p className="mt-2 text-xs leading-5 text-slate-500">{result.reasons[0]}</p>
+                  <RecordMetaBadges regulation={result.regulation} compact />
+                  <div className="mt-2 space-y-1">
+                    {result.reasons.slice(0, 2).map((reason) => (
+                      <p key={reason} className="text-xs leading-5 text-slate-500">
+                        {reason}
+                      </p>
+                    ))}
+                  </div>
                   <div className="mt-2 flex flex-wrap gap-1">
                     {result.triggeredBy.slice(0, 3).map((trigger) => (
                       <Badge key={trigger} className="border-slate-200 bg-slate-50 text-slate-600">
@@ -250,9 +261,25 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
                       </Badge>
                     ))}
                   </div>
-                  <p className="mt-2 text-xs text-slate-400">
-                    First action: {result.firstActions[0] || "Review primary sources and assign an accountable owner."}
-                  </p>
+                  <div className="mt-3 grid gap-2 rounded-lg bg-slate-50 p-3 text-xs leading-5 text-slate-600 sm:grid-cols-2">
+                    <div>
+                      <span className="font-semibold text-ink">First action: </span>
+                      {result.firstActions[0] || "Review primary sources and assign an accountable owner."}
+                    </div>
+                    <div>
+                      <span className="font-semibold text-ink">Evidence: </span>
+                      {result.evidenceNeeded[0] || "Applicability assessment"}
+                    </div>
+                    <div>
+                      <span className="font-semibold text-ink">Functions: </span>
+                      {result.functionsInvolved.join(", ") || "Assign owner"}
+                    </div>
+                    <div>
+                      <span className="font-semibold text-ink">Verify: </span>
+                      {result.sourceToVerify}
+                    </div>
+                  </div>
+                  <p className="mt-2 text-xs leading-5 text-slate-400">{result.sourceQualityNote}</p>
                 </button>
               ))
             ) : (
@@ -353,6 +380,12 @@ function categoryClass(category: string) {
   return "border-slate-200 bg-slate-50 text-slate-600";
 }
 
+function reviewPriorityClass(priority: string) {
+  if (priority === "High") return "border-red-200 bg-red-50 text-red-700";
+  if (priority === "Medium") return "border-amber-200 bg-amber-50 text-amber-800";
+  return "border-slate-200 bg-slate-50 text-slate-600";
+}
+
 function buildAssessmentSummary(results: ReturnType<typeof evaluateApplicability>, answers: ApplicabilityAnswers) {
   return [
     "# Etica ESG · Regulatory Atlas indicative shortlist",
@@ -364,7 +397,14 @@ function buildAssessmentSummary(results: ReturnType<typeof evaluateApplicability
     `Sectors: ${answers.sectors.join(", ")}`,
     "",
     "## Recommended records",
-    ...results.slice(0, 12).map((result) => `- ${result.regulation.shortName} (${result.category}): ${result.reasons[0]} First action: ${result.firstActions[0] || "Review primary sources."}`),
+    ...results.slice(0, 12).flatMap((result) => [
+      `- ${result.regulation.shortName} (${result.category}; ${result.reviewPriority} review priority)`,
+      `  - Why it appears: ${result.reasons[0]}`,
+      `  - Triggered by: ${result.triggeredBy.join(", ")}`,
+      `  - First action: ${result.firstActions[0] || "Review primary sources."}`,
+      `  - Evidence to start: ${result.evidenceNeeded.slice(0, 2).join(", ") || "Applicability assessment"}`,
+      `  - Source to verify: ${result.sourceToVerify}`
+    ]),
     "",
     "## Caveat",
     "This shortlist is indicative only. It does not constitute legal, tax, investment or assurance advice and does not determine entity-specific applicability."

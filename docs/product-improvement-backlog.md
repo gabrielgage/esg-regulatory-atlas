@@ -37,6 +37,7 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Add quick filters for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and external advisor personas.
 
 6. **Evidence-needed summaries**
+   Status: partially delivered in `0.5.5 - May 2026`.
    Surface the most common evidence requirements per selected regulation or jurisdiction, such as emissions inventory, supplier attestations, board minutes, controls evidence and financial statement links.
 
 7. **Sector-specific starting points**
@@ -50,13 +51,14 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Define a minimum credible coverage target per jurisdiction: corporate reporting, climate disclosure, sustainable finance, supply chain/human rights, product/trade and data-quality status.
 
 10. **Data quality review queue refinement**
-    Status: partially delivered in `0.5.4 - May 2026`.
+    Status: partially delivered in `0.5.5 - May 2026`.
     Rank review queue items by high-impact status, upcoming date, missing primary source, source age and likely client demand.
 
 11. **Workbook sync routine**
     Document and automate, where possible, a repeatable static export of website seed data to the regulation tracker workbook so website and review inventory stay aligned.
 
 12. **Client briefing copy polish**
+    Status: partially delivered in `0.5.5 - May 2026`.
     Make copied summaries more useful for client conversations by including persona, selected sector, jurisdiction, caveat, priority regulations, evidence needs and first 30-day actions.
 
 ## Wave 2: Regulatory Depth And Advisory Workflow
@@ -64,6 +66,7 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
 Target: next 1 to 3 months. Still avoid production databases unless the owner changes scope.
 
 13. **Quarter-level regulatory timeline**
+    Status: partially delivered in `0.5.5 - May 2026`.
     Convert the timeline into a quarter-based swimlane for effective dates, reporting years, consultation deadlines, first reports and phase-in notes.
 
 14. **Threshold matrix**
@@ -76,6 +79,7 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add a separate maturity classification, such as voluntary framework, consultation, adopted not yet in force, partially in force, in force, delayed or under review.
 
 17. **Jurisdiction market pages**
+    Status: partially delivered in `0.5.5 - May 2026` through richer printable/copyable jurisdiction briefs; standalone market pages remain open.
     Build richer `/jurisdiction/[code]` pages with local regulatory drivers, source confidence, first reporting years, priority sectors and watch items.
 
 18. **Cross-framework mapping**

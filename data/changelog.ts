@@ -11,6 +11,23 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.5 - May 2026",
+    date: "2026-05-02",
+    label: "Decision-support and launch-readiness polish",
+    summary:
+      "Upgraded assessment outputs, timeline milestones, data-quality review prioritisation, jurisdiction briefs and client planning summaries so the static MVP behaves more like a decision-support workspace for ESG advisory and compliance planning.",
+    added: [
+      "Assessment review priority, evidence-needed and source-to-verify explanations",
+      "Quarter-level timeline milestones across consultation, effective, reporting, due-date and Atlas review events",
+      "Review-queue scoring reasons for data-quality governance",
+      "Jurisdiction brief readiness starters, watch items, evidence packages and market briefing CTA",
+      "Client summary evidence, functions, source-coverage and priority-record detail"
+    ],
+    updated: ["Assessment wizard", "Timeline page", "Data quality page", "Briefing workspace", "Jurisdiction briefs", "Jurisdiction panel", "Project documentation"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "california-sb253-sb261", "malaysia-nsrf", "pcaf-financed-emissions"],
+    caveat: "This release improves decision support and planning workflow only. It does not convert seed records into legal advice or verified compliance determinations."
+  },
+  {
     edition: "0.5.4 - May 2026",
     date: "2026-05-02",
     label: "Master content and commercial-readiness update",

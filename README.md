@@ -115,9 +115,18 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.4 - May 2026`.
+The current seed dataset edition is `0.5.5 - May 2026`.
 
-The latest local update focuses on the master update pack and the fastest credible MVP path from static map to decision-support Atlas:
+The latest local update focuses on decision-support polish for launch readiness:
+
+- upgrades the assessment wizard with visible review priority, evidence-needed, functions-involved, source-to-verify and source-quality explanations
+- expands the timeline into quarter-level milestones across consultation deadlines, effective dates, first reporting years, first report due dates and Atlas source-review dates
+- improves the data-quality dashboard with review-queue scoring reasons such as missing priority sources, high impact, date uncertainty, upcoming review and lower confidence
+- enriches jurisdiction briefs with 30-day readiness starters, watch items, evidence packages, source-backed priority-record counts and a market briefing CTA
+- improves copied client summaries with priority-record legal force, client relevance, source coverage, evidence needs and first planning actions
+- adds evidence summaries to jurisdiction panels and briefing cards so the product supports scoping conversations, not only search
+
+The prior `0.5.4 - May 2026` update focused on the master update pack and the fastest credible MVP path from static map to decision-support Atlas:
 
 - adds condensed parent-record metadata so users can distinguish regulations, directives, laws, standards, frameworks, guidance, taxonomies, exchange rules and market expectations
 - expands EU financial-services coverage with banking, insurance, MiFID/IDD, AIFMD/UCITS, benchmarks, EuGBS, ESG ratings and ESAP records

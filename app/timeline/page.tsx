@@ -8,7 +8,6 @@ import { PageIntro } from "@/components/PageIntro";
 import { RegulatoryTimeline } from "@/components/RegulatoryTimeline";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { jurisdictions, regulations, topics } from "@/data/seed";
-import { yearsFrom } from "@/lib/filters";
 import { Regulation } from "@/types/regulation";
 
 export default function TimelinePage() {
@@ -16,14 +15,14 @@ export default function TimelinePage() {
   const [topic, setTopic] = useState("");
   const [year, setYear] = useState("");
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
-  const years = yearsFrom(regulations);
+  const years = timelineYearsFrom(regulations);
   const filtered = useMemo(
     () =>
       regulations.filter(
         (regulation) =>
           (!jurisdiction || regulation.jurisdictionIds.includes(jurisdiction)) &&
           (!topic || regulation.topics.includes(topic)) &&
-          (!year || regulation.firstReportingYear === Number(year))
+          (!year || recordHasTimelineYear(regulation, Number(year)))
       ),
     [jurisdiction, topic, year]
   );
@@ -55,6 +54,31 @@ export default function TimelinePage() {
       <RegulationDetail regulation={selectedRegulation} onClose={() => setSelectedRegulation(null)} />
     </main>
   );
+}
+
+function timelineYearsFrom(records: Regulation[]) {
+  return Array.from(new Set(records.flatMap((regulation) => timelineYearsFor(regulation)).filter((candidate) => candidate >= 2021))).sort((a, b) => a - b);
+}
+
+function recordHasTimelineYear(regulation: Regulation, year: number) {
+  return timelineYearsFor(regulation).includes(year);
+}
+
+function timelineYearsFor(regulation: Regulation) {
+  return [
+    regulation.firstReportingYear,
+    yearFromDate(regulation.effectiveDate),
+    yearFromDate(regulation.firstReportDueDate),
+    yearFromDate(regulation.consultationDeadline),
+    yearFromDate(regulation.nextReviewDate)
+  ].filter((value): value is number => Boolean(value));
+}
+
+function yearFromDate(value?: string) {
+  if (!value || value.toLowerCase().includes("uncertain") || value.toLowerCase().includes("market") || value.toLowerCase().includes("stayed")) return null;
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.getFullYear();
 }
 
 function Select({

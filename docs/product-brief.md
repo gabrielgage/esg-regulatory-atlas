@@ -65,12 +65,16 @@ The MVP includes:
 - Condensed parent-record model with child items, aliases and milestones
 - Regulation detail pages or drawers
 - Assessment wizard with legally cautious output categories
+- Assessment results with visible trigger reasons, review priority, evidence to prepare, functions involved and source-to-verify guidance
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor users
 - Timeline and methodology surfaces
+- Quarter-level milestone timeline for consultation, effective, reporting, due-date and source-review planning
 - Data Quality surface for source coverage and review-risk governance
+- Data-quality review queue with visible scoring reasons for research prioritization
 - Public changelog
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs
+- Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - Briefing sector heatmap
 - Citation copy blocks and edition snapshot routes
 - Light/dark mode toggle
@@ -152,6 +156,7 @@ The MVP is successful when:
 - Users can filter regulations without breaking the interface.
 - Regulation records expose sources, caveats, confidence, and data quality.
 - The assessment wizard produces cautious, useful orientation.
+- Timelines, briefings and jurisdiction briefs show what to do next without implying legal advice.
 - The product avoids legal overclaiming.
 - Future agents can safely extend the system using the documentation in this folder.
 

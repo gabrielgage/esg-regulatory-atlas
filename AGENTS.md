@@ -73,8 +73,24 @@ When changing the app, also consider whether to update:
 - `docs/legal-safeguards.md` when wording, disclaimers, assessment categories or export/copy behavior changes
 - `docs/regulatory-taxonomy.md` when topics, sectors, statuses, value-chain labels or company-type labels change
 - `docs/development-workflow.md` when a process, validation command, handoff step or agent workflow becomes clearer
+- `docs/issue-resolution-log.md` when a bug, failed check, failed deployment, visible product defect or platform issue is investigated and resolved
 
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
+
+## Issue Resolution Rule
+
+When a bug or failed check appears, do not guess and do not patch around it blindly.
+
+Use this sequence:
+
+1. Separate symptom from root cause.
+2. Confirm whether the app, deployment, CI check, browser test, Lighthouse check or platform setting actually failed.
+3. Inspect the relevant logs, route output or browser behavior.
+4. Fix the smallest responsible layer.
+5. Re-run the closest available validation.
+6. Record the issue, root cause, fix and prevention rule in `docs/issue-resolution-log.md`.
+
+Example: on 2026-05-02, PR #11 deployed successfully on Vercel but GitHub checks failed. The root causes were a brittle Playwright heading assertion and an overly strict Lighthouse preset, not a Vercel deployment failure. The fix is documented in the issue log so future agents do not repeat it.
 
 ## Architecture Map
 
@@ -90,7 +106,7 @@ Primary folders:
 
 Prefer keeping regulatory data out of UI components. Components should render data, not define the regulatory dataset.
 
-Use `data/marketCoverage.ts` for additive country-market records that broaden MVP coverage while remaining clearly labelled as seed intelligence. Use `data/regulations.ts` for core canonical records and `data/coverageAdditions.ts` for broader framework/content additions from prior phases.
+Use `data/marketCoverage.ts` or `data/phase1cCoverage.ts` for additive country-market records that broaden MVP coverage while remaining clearly labelled as seed intelligence. Use `data/regulations.ts` for core canonical records and `data/coverageAdditions.ts` for broader framework/content additions from prior phases.
 
 Current important routes:
 
@@ -120,7 +136,7 @@ Current brand context:
 - Temporary logo assets are in `public/etica-esg-logo.svg`, `public/favicon.svg`, and `public/og-image.svg`
 - The global theme toggle lives in `components/ThemeToggle.tsx`; it persists `etica-theme` in local storage and uses Tailwind `darkMode: "class"`
 - The language toggle lives in `components/LanguageToggle.tsx` and `components/LanguageProvider.tsx`; supported interface languages are English, Spanish, Dutch, French, German and Portuguese.
-- Translations live in `lib/i18n.ts`. Do not imply that the regulatory records themselves are legally translated; the current implementation translates product chrome and disclaimer guidance.
+- Translations live in `lib/i18n.ts`. Product chrome, filters, table controls and map guidance should use translation keys. Do not imply that the regulatory records themselves are legally translated; the current implementation translates product guidance and leaves source-linked regulatory record content in English.
 
 ## Product Experience Principles
 
@@ -238,6 +254,7 @@ Before opening a PR, verify:
 - Empty states do not crash
 - The README or docs are updated for meaningful architecture or workflow changes
 - The public changelog or handoff is updated when the product edition, shipped route set or data methodology changes
+- `docs/issue-resolution-log.md` is updated when the PR fixes a bug, failing check, failed deployment, visible product defect or workflow incident
 - `git diff --check` passes
 - Search checks confirm old personal/Gmail framing is not present in app code
 
@@ -246,6 +263,8 @@ Before opening a PR, verify:
 Phase 1 may improve static product depth, such as better timelines, source review status, richer jurisdiction pages, CSV/JSON export, comparison enhancements and more complete source-reviewed data.
 
 Already delivered in Phase 1B: market coverage additions, language toggle, shareable filtered views, CSV/JSON export, readiness scoring, grouped timeline and expanded comparison fields.
+
+Already delivered in Phase 1C: GitHub Actions CI, Playwright smoke tests, Lighthouse CI, PR preview checklist, broader interface translation coverage, 80+ seed records through `data/phase1cCoverage.ts`, stronger map outlines and a workbook-backed regulation tracker workflow.
 
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 

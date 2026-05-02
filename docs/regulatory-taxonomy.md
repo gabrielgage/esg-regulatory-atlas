@@ -41,6 +41,9 @@ Preferred sector labels:
 - Energy
 - Transport
 - Construction
+- Chemicals
+- Mining
+- Waste
 - Packaging
 - Retail
 - Consumer goods

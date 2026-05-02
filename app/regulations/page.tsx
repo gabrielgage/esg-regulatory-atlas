@@ -11,6 +11,7 @@ import { RegulationExportButtons } from "@/components/RegulationExportButtons";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { RegulationTable } from "@/components/RegulationTable";
 import { ShareViewButton } from "@/components/ShareViewButton";
+import { useLanguage } from "@/components/LanguageProvider";
 import { regulations } from "@/data/seed";
 import { filterRegulations, initialFilters } from "@/lib/filters";
 import { filtersFromSearchParams, filtersToSearchParams } from "@/lib/urlFilters";
@@ -21,6 +22,7 @@ export default function RegulationsPage() {
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
   const [urlReady, setUrlReady] = useState(false);
   const filtered = useMemo(() => filterRegulations(regulations, filters), [filters]);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setFilters(filtersFromSearchParams(new URLSearchParams(window.location.search)));
@@ -39,9 +41,9 @@ export default function RegulationsPage() {
       <Header />
       <div className="mx-auto max-w-7xl space-y-5 px-4 py-5 md:px-6">
         <PageIntro
-          eyebrow="Regulations"
-          title="Search the ESG regulatory database"
-          body="Review records by jurisdiction, sector, company type, obligation, reporting year, source quality and advisory opportunity."
+          eyebrow={t("page.regulations.eyebrow")}
+          title={t("page.regulations.title")}
+          body={t("page.regulations.body")}
         />
         <DisclaimerBanner />
         <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">

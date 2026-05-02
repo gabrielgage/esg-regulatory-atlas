@@ -28,9 +28,11 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Edition snapshot route at `/edition/0.5/regulations/[slug]`
 - Branded 404 page and ISSB redirect aliases
 - Light/dark mode toggle with local preference persistence
-- English, Spanish, Dutch, French, German and Portuguese language toggle for product chrome and disclaimer guidance
+- English, Spanish, Dutch, French, German and Portuguese language toggle for product chrome, filters, table controls, map guidance and disclaimer guidance
 - Shareable filtered URLs for the Map and Regulations workspaces
 - CSV and JSON export for the filtered regulation database
+- GitHub Actions CI, Playwright smoke tests, Lighthouse CI and pull request preview review checklist
+- Excel-ready regulation tracker workbook generated from the website seed data for source review and coverage planning
 - Readiness-priority scoring for planning conversations
 - Copyable client planning summary
 - Static TypeScript seed data only
@@ -49,6 +51,8 @@ npm install
 npm run dev
 npm run lint
 npm run build
+npm run test:e2e
+npm run lhci
 ```
 
 Open `http://localhost:3000`.
@@ -84,6 +88,7 @@ Seed data is stored in:
 - `data/regulations.ts`
 - `data/coverageAdditions.ts`
 - `data/marketCoverage.ts`
+- `data/phase1cCoverage.ts`
 - `data/taxonomy.ts`
 
 Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
@@ -100,10 +105,22 @@ Use these files to brief future coding agents, reviewers and collaborators:
 - `docs/legal-safeguards.md`: approved legal wording, disclaimers and caution rules
 - `docs/regulatory-taxonomy.md`: canonical topics, sectors, value chain labels and statuses
 - `docs/development-workflow.md`: working process, validation steps and documentation update rules
+- `docs/issue-resolution-log.md`: resolved bugs, failed checks, root causes, fixes and prevention rules
 
 ## Current edition
 
-The current seed dataset edition is `0.5 - May 2026`.
+The current seed dataset edition is `0.5.2 - May 2026`.
+
+The latest local update focuses on Phase 1C workflow hardening, broader interface translation and deeper market coverage:
+
+- added GitHub Actions CI for typecheck/build validation
+- added Playwright smoke tests for launch-critical routes and interface checks
+- added Lighthouse CI for preview performance/accessibility/best-practice guardrails
+- added a pull request template that forces Vercel preview review and MVP guardrail checks
+- added `data/phase1cCoverage.ts` with additional source-linked seed records across the EU, UK, US, Canada, Australia, Singapore, Japan, India, Brazil, Mexico, China, Switzerland and Turkey
+- expanded interface translations for filters, table controls, map guidance, statuses, confidence labels and data-quality labels
+- strengthened map country outline rendering with an explicit border overlay
+- created a workbook-ready regulatory tracker process for coverage control and source review
 
 The latest local update on top of this edition focuses on Phase 1B market coverage and usability:
 
@@ -141,10 +158,12 @@ When making meaningful updates, keep the context files current. Future Codex or 
 
 The shortest rule is: if a change affects how the product works, how it is validated, how data is structured, or how legal risk is managed, update the relevant documentation in the same pass.
 
+When fixing a bug, failed deployment, failed GitHub check, visible product defect or platform issue, identify the root cause, deploy the smallest durable fix, validate it, and add a note to `docs/issue-resolution-log.md`.
+
 ## Adding a regulation
 
 Add a typed record to `data/regulations.ts` or `data/coverageAdditions.ts`.
-Use `data/marketCoverage.ts` for incremental market-depth records that broaden country coverage but still need deeper production source review.
+Use `data/marketCoverage.ts` and `data/phase1cCoverage.ts` for incremental market-depth records that broaden country coverage but still need deeper production source review.
 
 At minimum include:
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Globe2, Layers2 } from "lucide-react";
+import { useLanguage } from "./LanguageProvider";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 import { cn } from "@/lib/utils";
 
@@ -88,6 +89,7 @@ export function WorldChoropleth({
   const [features, setFeatures] = useState<CountryFeature[]>([]);
   const [hoveredIso, setHoveredIso] = useState<string | null>(null);
   const [hoveredJurisdictionId, setHoveredJurisdictionId] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     let cancelled = false;
@@ -137,23 +139,23 @@ export function WorldChoropleth({
         <div>
           <div className="flex items-center gap-2">
             <Globe2 className="h-5 w-5 text-teal" />
-            <h2 className="font-semibold text-ink">Interactive regulatory map</h2>
+            <h2 className="font-semibold text-ink">{t("map.title")}</h2>
           </div>
           <p className="mt-1 text-sm text-slate-500">
-            Country fill reflects the number of regulations in the active view.
+            {t("map.body")}
           </p>
         </div>
         <div className="flex flex-wrap gap-3 text-xs text-slate-500">
-          <Legend color={colors.high} label="High 7+" />
-          <Legend color={colors.medium} label="Medium 3-6" />
-          <Legend color={colors.emerging} label="Emerging 1-2" />
-          <Legend color={colors.none} label="No data" />
+          <Legend color={colors.high} label={t("map.high")} />
+          <Legend color={colors.medium} label={t("map.medium")} />
+          <Legend color={colors.emerging} label={t("map.emerging")} />
+          <Legend color={colors.none} label={t("map.noData")} />
         </div>
       </div>
 
       <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-300 bg-[#edf3f8]">
         <div className="pointer-events-none absolute right-2 top-2 z-20 rounded-md border border-violet/20 bg-white/90 px-2 py-1 text-[10px] font-semibold text-violet shadow-sm">
-          View: {viewLabel}
+          {t("map.view")}: {viewLabel}
         </div>
 
         {featured && (
@@ -163,12 +165,12 @@ export function WorldChoropleth({
                 <div className="font-semibold text-ink">{featured.name}</div>
                 <div className="mt-0.5 text-xs font-semibold text-slate-500">{featured.code}</div>
               </div>
-              <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">{featuredCount} records</span>
+              <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600">{featuredCount} {t("map.records")}</span>
             </div>
             <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">{featured.executiveSummary}</p>
             <div className="mt-2 flex flex-wrap gap-1">
               <span className="rounded-full bg-teal/10 px-2 py-1 text-xs font-semibold text-teal">
-                First reporting {featuredFirstYear || "varies"}
+                {t("map.firstReporting")} {featuredFirstYear || t("map.varies")}
               </span>
               <span className="rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold capitalize text-slate-600">{featured.type}</span>
             </div>
@@ -223,7 +225,7 @@ export function WorldChoropleth({
           </div>
         </noscript>
 
-        <svg className="absolute inset-0 hidden h-full w-full lg:block" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="World regulatory coverage choropleth map">
+        <svg className="absolute inset-0 hidden h-full w-full lg:block" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="World regulatory coverage choropleth map" preserveAspectRatio="xMidYMid meet">
           <rect width={width} height={height} fill={colors.background} />
           <g opacity="0.32">
             {[-120, -60, 0, 60, 120].map((longitude) => {
@@ -253,6 +255,8 @@ export function WorldChoropleth({
                   fill={fill}
                   stroke={active || hovered ? "#312e81" : euOverlay ? "#0f766e" : colors.border}
                   strokeWidth={active || hovered ? 2.1 : euOverlay ? 1.25 : 0.9}
+                  vectorEffect="non-scaling-stroke"
+                  strokeLinejoin="round"
                   opacity={selectable || euOverlay ? 0.98 : 0.86}
                   role={selectable ? "button" : undefined}
                   tabIndex={selectable ? 0 : undefined}
@@ -271,6 +275,21 @@ export function WorldChoropleth({
                 </path>
               );
             })}
+          </g>
+
+          <g pointerEvents="none">
+            {features.map((feature) => (
+              <path
+                key={`outline-${feature.properties.iso3}`}
+                d={geometryToPath(feature.geometry)}
+                fill="none"
+                stroke="#334155"
+                strokeOpacity="0.42"
+                strokeWidth="0.7"
+                vectorEffect="non-scaling-stroke"
+                strokeLinejoin="round"
+              />
+            ))}
           </g>
 
           {trackedCountries.map((jurisdiction) => (

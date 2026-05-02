@@ -16,6 +16,22 @@ The preferred loop is:
 6. Update context files when the change affects future work.
 7. Summarize exactly what changed, why it changed, and what still needs review.
 
+## Bug And Failed Check Workflow
+
+Any time a bug, failed GitHub check, failed Vercel deployment, visible UI defect or data issue appears, follow this workflow:
+
+1. Capture the exact symptom, including the route, screenshot, check name, job name or log message.
+2. Determine what failed: app code, deployment, test, Lighthouse, data, configuration or platform setting.
+3. Inspect the source evidence before changing code.
+4. Fix the smallest layer responsible for the issue.
+5. Validate with the closest available local or remote check.
+6. Document the incident in `docs/issue-resolution-log.md`.
+7. Update this workflow, `AGENTS.md`, README or handoff docs if the learning changes how future work should be done.
+
+Do not treat a successful Vercel deployment plus failing GitHub checks as a deployment failure. In that case, inspect the failing GitHub Actions logs first.
+
+Do not weaken checks just to make a PR green. If a check is brittle or configured at the wrong strictness for the MVP, fix the check configuration and explain why in the issue log.
+
 ## Context Files To Read First
 
 For product or UX work:
@@ -37,6 +53,7 @@ For agent or process work:
 
 - `AGENTS.md`
 - `docs/development-workflow.md`
+- `docs/issue-resolution-log.md`
 - `ESG_Regulatory_Atlas_Claude_Handoff.md`
 
 ## Validation Commands
@@ -46,6 +63,8 @@ Use:
 ```bash
 npm run lint
 npm run build
+npm run test:e2e
+npm run lhci
 ```
 
 Current `npm run build` uses:
@@ -57,6 +76,15 @@ next build --webpack
 This is intentional for the MVP because the verified webpack path avoids local Turbopack sandbox port-binding failures and gives a stable Vercel-compatible production build.
 
 If `npm` is unavailable in the Codex shell, use the bundled Node runtime against local package entry points, or document why validation could not run.
+
+GitHub should now run four high-ROI launch checks:
+
+- CI typecheck and production build on pull requests and pushes to `main`
+- Playwright smoke tests against the built app
+- Lighthouse CI on key public routes
+- Pull request preview checklist requiring Vercel preview review before merge
+
+The local Codex sandbox may not have `npm` or Playwright browser binaries available. In that case, run TypeScript and production build with the bundled Node runtime, then rely on GitHub Actions/Vercel for browser and Lighthouse validation after pushing.
 
 ## Documentation Update Rule
 
@@ -70,6 +98,18 @@ Examples:
 - New legal wording or assessment category: update `docs/legal-safeguards.md`.
 - Delivered roadmap item: update `docs/roadmap.md`.
 - New validation limitation or build strategy: update `README.md`, `AGENTS.md`, and this file.
+- New automation or review workflow: update `README.md`, `.github/pull_request_template.md` where relevant, and this file.
+- Bug, failed deployment or failed check: update `docs/issue-resolution-log.md`, then update adjacent docs if the learning affects future workflow.
+
+## CI Lessons Learned
+
+The current browser and Lighthouse checks are intended to protect launch-critical behavior without making the MVP impossible to iterate.
+
+Known lesson from PR #11:
+
+- Browser smoke tests should assert stable UI contracts with scoped locators. For regulation detail pages, assert the short-name heading and scoped supporting title text rather than assuming the full regulation title is the H1.
+- Citation widgets repeat regulation titles inside copy blocks. Avoid broad text locators where repeated content is expected.
+- Lighthouse category thresholds are warning-level launch signals. Do not use the full `lighthouse:recommended` assertion preset as a hard gate unless the team intentionally accepts every default audit as blocking.
 
 ## Coding Principles
 
@@ -87,5 +127,6 @@ Examples:
 - Tailwind dark mode uses class strategy and `components/ThemeToggle.tsx` stores the `etica-theme` preference in local storage.
 - The app requires no environment variables.
 - The map uses local static assets and no paid map provider.
+- Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.
 - The project intentionally avoids Stripe, Supabase, authentication, paid APIs, scraping, cron jobs, email alerts and production AI summaries.
 - Local dev servers may be blocked in some Codex sandboxes by port-binding restrictions; do not treat that as an app failure if production build passes.

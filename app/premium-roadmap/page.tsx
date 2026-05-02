@@ -99,9 +99,14 @@ export default function PremiumRoadmapPage() {
                   <MiniList title="Sample contents" values={pack.sampleTableOfContents.slice(0, 4)} />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-slate-500">{pack.advisoryExtension}</p>
-                <a href={pack.ctaHref} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-teal underline">
-                  {pack.ctaLabel} <ArrowRight className="h-4 w-4" />
-                </a>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <Link href={`/premium-packs/${pack.id}`} className="inline-flex items-center gap-2 text-sm font-semibold text-teal underline">
+                    View sample pack <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <a href={pack.ctaHref} className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 underline">
+                    {pack.ctaLabel} <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
               </article>
             ))}
           </div>

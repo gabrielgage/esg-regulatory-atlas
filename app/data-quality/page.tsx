@@ -7,6 +7,7 @@ import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { CoverageMatrix } from "@/components/CoverageMatrix";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
+import { MarqueeReviewQueue } from "@/components/MarqueeReviewQueue";
 import { SourceLibrary } from "@/components/SourceLibrary";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { DATASET_META } from "@/data/_meta";
@@ -62,6 +63,7 @@ export default function DataQualityPage() {
           selectedId={selectedJurisdiction?.id}
           onSelect={setSelectedJurisdiction}
         />
+        <MarqueeReviewQueue regulations={regulations} onSelect={setSelectedRegulation} />
         <DataQualityPanel regulations={regulations} onSelect={setSelectedRegulation} />
         <FooterDisclaimer />
       </div>

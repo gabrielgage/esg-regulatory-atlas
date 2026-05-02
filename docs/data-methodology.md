@@ -19,6 +19,8 @@ The MVP stores data in static TypeScript files:
 - `data/alertDigests.ts`
 - `data/premiumPacks.ts`
 - `data/launchAssets.ts`
+- `data/conversionTracking.ts`
+- `data/contentReview.ts`
 - `data/jurisdictions.ts`
 - `data/sectors.ts`
 - `data/taxonomy.ts`
@@ -46,7 +48,9 @@ Do not duplicate an existing top-level record when a child item, alias or milest
 
 The external regulation tracker workbook should mirror the website seed data and add review workflow fields such as owner, review priority, source status, website inclusion, next review date and notes. Treat the workbook as a planning and QA control file, not as a separate legal source of truth.
 
-Commercial data files support static offer, alert, premium pack and launch asset previews. They are product and go-to-market data, not legal source-of-truth files.
+Commercial data files support static offer, alert, premium pack, launch asset and manual conversion-tracking previews. They are product and go-to-market data, not legal source-of-truth files.
+
+Content review data in `data/contentReview.ts` identifies Marquee launch records, review status, premium-pack use cases and questions to resolve before deeper advisory or premium reliance. It is an editorial governance layer, not a legal verification layer.
 
 ## Source Hierarchy
 

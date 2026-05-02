@@ -227,6 +227,10 @@ function buildBriefMarkdown(jurisdictionName: string, scoped: typeof regulations
     "## Evidence to prepare",
     ...(evidence.length ? evidence.map((item) => `- ${item}`) : ["- Applicability assessment", "- Source review log", "- Management sign-off record"]),
     "",
+    "## Optional advisory next step",
+    `Request a source-linked jurisdiction exposure scan, market pack or board/client briefing from ${DATASET_META.publisher}: ${DATASET_META.contactEmail}`,
+    `Suggested request subject: Etica ESG advisory review - ${jurisdictionName} brief`,
+    "",
     "## Caveat",
     "This brief is indicative seed regulatory intelligence. It is not legal, tax, investment or assurance advice. Applicability depends on entity-specific facts, thresholds, jurisdictional implementation, sector rules and legal interpretation."
   ].join("\n");

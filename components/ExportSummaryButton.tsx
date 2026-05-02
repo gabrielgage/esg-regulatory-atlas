@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { ClipboardCheck, ClipboardCopy } from "lucide-react";
+import { DATASET_META } from "@/data/_meta";
 import { companyTypes, jurisdictions, sectors } from "@/data/seed";
 import { clientRelevanceLabel, legalForceLabel, statusLabel } from "@/data/taxonomy";
 import { Jurisdiction, Regulation } from "@/types/regulation";
@@ -172,6 +173,10 @@ function buildSummary(jurisdiction: Jurisdiction | null, scoped: Regulation[], s
     "",
     "Evidence to start collecting:",
     ...(evidence.length ? evidence.map((item) => `- ${item}`) : ["- Applicability assessment", "- Source review log", "- Accountable owner and management sign-off record"]),
+    "",
+    "Optional advisory next step:",
+    `Request a source-linked exposure scan, market pack or board/client briefing from ${DATASET_META.publisher}: ${DATASET_META.contactEmail}`,
+    "Suggested request subject: Etica ESG advisory review - copied client planning summary",
     "",
     "Source and legal caution:",
     "This summary is generated from indicative regulatory intelligence. It is not legal, tax, investment or assurance advice. Applicability depends on entity-specific facts, thresholds, jurisdictional implementation, sector rules and legal interpretation. Review primary sources and validate with qualified counsel or regulatory advisors before relying on it for compliance decisions."

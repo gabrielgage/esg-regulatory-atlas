@@ -7,6 +7,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
 import { CommercialCTA } from "@/components/CommercialCTA";
 import { commercialCaveat, commercialComparisonRows, commercialOffers } from "@/data/commercialOffers";
+import { conversionSurfaces, conversionTrackingCaveat } from "@/data/conversionTracking";
 import { DATASET_META } from "@/data/_meta";
 
 const tierClass = {
@@ -122,6 +123,28 @@ export default function PlansPage() {
           <Faq title="Why no checkout yet?" body="The offer needs validation first. Billing, accounts and subscriptions add operational complexity before demand is proven." />
           <Faq title="Are alerts live?" body="No. The alerts page shows sample editorial previews and request-access options. Production email alerts are a later phase." />
           <Faq title="Can advisory work start now?" body="Yes. Advisory scans and briefings can be handled manually using the current Atlas, source links, caveats and review-risk workflow." />
+        </section>
+
+        <section className="rounded-2xl border bg-white p-5 shadow-sm">
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-lg font-semibold text-ink">Manual validation loop</h2>
+              <p className="mt-1 text-sm text-slate-500">{conversionTrackingCaveat}</p>
+            </div>
+            <Link href="/advisory" className="inline-flex items-center gap-2 text-sm font-semibold text-teal underline">
+              Advisory path <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            {conversionSurfaces.slice(0, 6).map((surface) => (
+              <article key={surface.id} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">{surface.intent.replaceAll("-", " ")}</div>
+                <h3 className="mt-2 font-semibold text-ink">{surface.ctaLabel}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{surface.successSignal}</p>
+                <p className="mt-2 text-xs text-slate-500">Subject signal: {surface.mailtoSubject}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <CommercialCTA

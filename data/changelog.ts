@@ -11,6 +11,38 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.8 - May 2026",
+    date: "2026-05-02",
+    label: "Premium output and Marquee review governance",
+    summary:
+      "Made premium pack previews copyable and printable, then added a Marquee launch review queue to Data Quality so the highest-value regimes used in premium packs and advisory examples have visible content-governance status.",
+    added: [
+      "Copy and print actions for premium pack sample pages",
+      "Marquee 10 and Marquee 25 launch review queue",
+      "Content review data file for high-value launch regimes",
+      "Visible review questions, premium-use mapping and launch-blocker labels"
+    ],
+    updated: ["Premium pack pages", "Data Quality", "Changelog", "Project documentation and Notion context"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr", "csddd", "eudr", "cbam", "california-sb253-sb261", "uk-sdr", "us-sec-climate-watch"],
+    caveat: "The Marquee review queue is a content-governance tool. It does not verify legal completeness, determine applicability or replace primary-source review."
+  },
+  {
+    edition: "0.5.7 - May 2026",
+    date: "2026-05-02",
+    label: "Premium pack and manual conversion follow-up",
+    summary:
+      "Added individual premium-pack preview pages, linked market packs from the premium roadmap, added advisory next steps to copied summaries and documented a no-dependency manual conversion tracking plan.",
+    added: [
+      "/premium-packs/[id] static premium pack detail pages",
+      "Manual conversion tracking data model",
+      "Manual conversion tracking documentation",
+      "Advisory next-step language in copied jurisdiction and client summaries"
+    ],
+    updated: ["Premium roadmap", "Plans page", "Jurisdiction briefs", "Client planning summary export", "Project documentation"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr", "csddd", "eudr", "cbam"],
+    caveat: "Premium pack pages are static sample scopes for validation only. No billing, gated content, analytics SDK, CRM sync, production alerts or legal advice functionality was added."
+  },
+  {
     edition: "0.5.6 - May 2026",
     date: "2026-05-02",
     label: "Commercial validation and premium-preview sprint",

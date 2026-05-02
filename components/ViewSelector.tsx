@@ -4,13 +4,7 @@ import { Layers3 } from "lucide-react";
 import { quickViews } from "@/data/seed";
 import { FilterState } from "@/types/regulation";
 import { cn } from "@/lib/utils";
-
-const overview = {
-  id: "overview",
-  label: "Global overview",
-  description: "All tracked jurisdictions and records",
-  filters: {}
-};
+import { useLanguage } from "./LanguageProvider";
 
 export function ViewSelector({
   activeId,
@@ -19,13 +13,20 @@ export function ViewSelector({
   activeId: string;
   onApply: (id: string, filters: Partial<FilterState>) => void;
 }) {
+  const { t } = useLanguage();
+  const overview = {
+    id: "overview",
+    label: t("views.overview"),
+    description: t("views.overviewDescription"),
+    filters: {}
+  };
   const views = [overview, ...quickViews];
 
   return (
     <section className="rounded-2xl border bg-white p-3 shadow-sm">
       <div className="mb-2 flex items-center gap-2 px-1 text-sm font-semibold text-ink">
         <Layers3 className="h-4 w-4 text-teal" />
-        Views
+        {t("views.title")}
       </div>
       <div className="flex gap-2 overflow-x-auto pb-1">
         {views.map((view) => (

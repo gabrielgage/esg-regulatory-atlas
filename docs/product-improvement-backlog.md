@@ -1,0 +1,157 @@
+# Product Improvement Backlog
+
+This backlog captures a project/product manager and ESG specialist review of Etica ESG · Regulatory Atlas as of the Phase 1C MVP. It prioritizes improvements that help users understand global sustainability regulation coverage, likely business relevance, evidence needs, implementation timing and advisory next steps.
+
+The backlog is intentionally split into three waves:
+
+- Wave 1 improves the current static MVP without changing the deployment model.
+- Wave 2 deepens regulatory usefulness and client workflow quality while staying mostly static or file-backed.
+- Wave 3 introduces operational platform capabilities that require explicit scope approval, data governance and likely authentication or database architecture.
+
+Non-negotiable boundaries still apply: no Stripe, Supabase, authentication, paid APIs, Mapbox, scraping, cron jobs, email alerts, production AI summaries or required environment variables unless the project owner explicitly changes phase.
+
+## Review Summary
+
+The MVP already has the right core shape: a map-centered workspace, source-linked regulation records, jurisdiction panels, assessment, timeline, briefing, data-quality surfaces, exports, comparison, language toggle and launch checks. The next improvement step is not adding more visual sections to the homepage. The highest-value work is making the existing surfaces more decision-oriented, more accessible, more source-governed and more useful for specific personas such as CSOs, legal teams, procurement leads, finance controllers and ESG advisors.
+
+## Wave 1: Launch Quality And Static MVP Usefulness
+
+Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
+
+1. **Theme and accessibility QA pass**
+   Status: partially delivered in `0.5.3 - May 2026`.
+   Improve dark-mode text contrast, default first visit to light mode, verify status badges, warning banners, inputs and source links across core routes.
+
+2. **Map legend and layer explanation upgrade**
+   Status: partially delivered in `0.5.3 - May 2026`.
+   Add clearer explanatory copy for what country fill, border, selected layer and record count mean so users do not confuse regulatory intensity with legal applicability.
+
+3. **Coverage confidence view**
+   Status: partially delivered in `0.5.4 - May 2026`.
+   Add a map/table mode that distinguishes "record volume" from "source confidence" and "needs review" so users can see where the Atlas is strong versus provisional.
+
+4. **Jurisdiction quick-start cards**
+   Add compact starter cards for EU, UK, US, California, Singapore, Australia, Japan, India, China, Brazil, Canada, Mexico and Netherlands with first action prompts.
+
+5. **Persona-specific table presets**
+   Add quick filters for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and external advisor personas.
+
+6. **Evidence-needed summaries**
+   Surface the most common evidence requirements per selected regulation or jurisdiction, such as emissions inventory, supplier attestations, board minutes, controls evidence and financial statement links.
+
+7. **Sector-specific starting points**
+   Add sector entry filters for financial services, manufacturing, agriculture, energy, real estate, retail, technology and transport.
+
+8. **Translation coverage audit**
+   Track which UI strings are translated versus intentionally left as English source-linked regulatory content. Add a process note so future records are not accidentally machine-presented as legal translations.
+
+9. **Minimum market coverage checklist**
+   Status: partially delivered in `0.5.4 - May 2026`.
+   Define a minimum credible coverage target per jurisdiction: corporate reporting, climate disclosure, sustainable finance, supply chain/human rights, product/trade and data-quality status.
+
+10. **Data quality review queue refinement**
+    Status: partially delivered in `0.5.4 - May 2026`.
+    Rank review queue items by high-impact status, upcoming date, missing primary source, source age and likely client demand.
+
+11. **Workbook sync routine**
+    Document and automate, where possible, a repeatable static export of website seed data to the regulation tracker workbook so website and review inventory stay aligned.
+
+12. **Client briefing copy polish**
+    Make copied summaries more useful for client conversations by including persona, selected sector, jurisdiction, caveat, priority regulations, evidence needs and first 30-day actions.
+
+## Wave 2: Regulatory Depth And Advisory Workflow
+
+Target: next 1 to 3 months. Still avoid production databases unless the owner changes scope.
+
+13. **Quarter-level regulatory timeline**
+    Convert the timeline into a quarter-based swimlane for effective dates, reporting years, consultation deadlines, first reports and phase-in notes.
+
+14. **Threshold matrix**
+    Add structured threshold fields and a comparison matrix for employee, revenue, balance sheet, listing, financial institution, supply chain and market-exposure triggers.
+
+15. **Penalty and enforcement layer**
+    Add legally cautious penalty/enforcement fields by jurisdiction, with source priority and clear caveats where penalties are implementation-dependent or uncertain.
+
+16. **Regulation maturity axis**
+    Add a separate maturity classification, such as voluntary framework, consultation, adopted not yet in force, partially in force, in force, delayed or under review.
+
+17. **Jurisdiction market pages**
+    Build richer `/jurisdiction/[code]` pages with local regulatory drivers, source confidence, first reporting years, priority sectors and watch items.
+
+18. **Cross-framework mapping**
+    Status: partially delivered in `0.5.4 - May 2026`.
+    Map connections among CSRD/ESRS, ISSB, GRI, TNFD, TCFD, GHG Protocol, SFDR and taxonomy requirements so users can spot overlapping data needs.
+
+19. **Private equity portfolio view**
+    Status: partially delivered in `0.5.4 - May 2026` through PCAF, PRI and portfolio-oriented quick views; deeper assessment logic remains open.
+    Add a portfolio-focused assessment flow that classifies regulations by fund manager obligations, portfolio company obligations, financed emissions and investor-requested data.
+
+20. **Supplier and exporter view**
+    Add a value-chain flow for suppliers/exporters exposed to EU, UK, US, deforestation, forced labour, CBAM, batteries, product and green claims rules.
+
+21. **Implementation effort scoring**
+    Status: partially delivered before `0.5.4`; master metadata now adds record type, legal force and relevance categories for future scoring improvements.
+    Add a non-legal readiness score for effort level, likely functions involved, data maturity needed, assurance/control burden and typical advisory workstreams.
+
+22. **Source freshness dashboard**
+    Show source age, next review date, stale-source warnings and owner/reviewer placeholders in a governance-focused data-quality dashboard.
+
+23. **Glossary and regulatory taxonomy page**
+    Create a user-facing glossary for terms such as double materiality, value chain, assurance, transition plan, taxonomy alignment, due diligence and financed emissions.
+
+24. **Responsive map refinement**
+    Improve mobile/tablet map behavior with a tighter map height, easier selected-jurisdiction drawer, larger tap targets and simplified legend behavior.
+
+## Wave 3: Scaled Platform And Data Operations
+
+Target: later phase only, after explicit approval and product validation.
+
+25. **Database-backed regulation records**
+    Move from static files to a governed content store only after data ownership, review workflow and access model are designed.
+
+26. **Admin editing interface**
+    Add controlled editing for regulation records, jurisdiction profiles, source links, review dates and changelog entries.
+
+27. **Formal research workflow**
+    Add source assignment, review status, legal review checkpoints, reviewer comments, approval history and stale-record escalation.
+
+28. **Authentication and client workspaces**
+    Add accounts, saved client views, portfolio-specific assessments and workspace permissions only after the MVP is stable.
+
+29. **Regulatory monitoring pipeline**
+    Add monitored sources, update queues and change alerts after the legal/research governance model is ready.
+
+30. **Human-reviewed AI assistance**
+    Add AI-assisted summaries or source extraction only with source grounding, confidence indicators, human review and clear non-legal-advice safeguards.
+
+31. **PDF and board-pack exports**
+    Add branded report exports for client briefings, board packs, jurisdiction snapshots and portfolio views.
+
+32. **Audit trail and edition diffing**
+    Show what changed between dataset editions by regulation, jurisdiction, source, status, date and confidence level.
+
+33. **Role-specific dashboards**
+    Create dashboards for CSO, legal, finance, procurement, investor, board and advisor users with different default priorities and evidence needs.
+
+34. **Enterprise integrations**
+    Evaluate integrations with ESG data platforms, GRC systems, document repositories and reporting tools only after core data quality stabilizes.
+
+35. **Localization governance**
+    Add professional translation workflows, source-language tracking and jurisdiction-specific legal review for multilingual regulatory content.
+
+36. **Commercial packaging**
+    Explore paid plans, enterprise workspaces, billing and sales collateral only after product-market validation. Stripe remains out of scope until explicitly requested.
+
+## Recommended Immediate Priority
+
+The next implementation sequence should be:
+
+1. Finish theme/accessibility QA and ensure first visit defaults to light mode.
+2. Strengthen the map legend and layer explanation.
+3. Add coverage confidence and review-risk visibility to map/table surfaces.
+4. Improve persona and sector presets so users can start from their business context.
+5. Tighten client briefing copy with evidence needs and first actions.
+
+## Documentation Rule
+
+When an item from this backlog is implemented, update this file, `docs/roadmap.md`, `ESG_Regulatory_Atlas_Claude_Handoff.md` and any affected methodology/legal/taxonomy docs. If an implementation reveals a bug or product defect, also update `docs/issue-resolution-log.md`.

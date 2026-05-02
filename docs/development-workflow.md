@@ -39,6 +39,7 @@ For product or UX work:
 - `README.md`
 - `docs/product-brief.md`
 - `docs/roadmap.md`
+- `docs/product-improvement-backlog.md`
 - `ESG_Regulatory_Atlas_Claude_Handoff.md`
 
 For data or regulatory content work:
@@ -125,6 +126,7 @@ Known lesson from PR #11:
 
 - Tailwind uses v3 configuration.
 - Tailwind dark mode uses class strategy and `components/ThemeToggle.tsx` stores the `etica-theme` preference in local storage.
+- Theme behavior should default first-time visitors to light mode, then respect the user's saved explicit light/dark selection.
 - The app requires no environment variables.
 - The map uses local static assets and no paid map provider.
 - Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.

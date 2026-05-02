@@ -74,6 +74,7 @@ When changing the app, also consider whether to update:
 - `docs/regulatory-taxonomy.md` when topics, sectors, statuses, value-chain labels or company-type labels change
 - `docs/development-workflow.md` when a process, validation command, handoff step or agent workflow becomes clearer
 - `docs/issue-resolution-log.md` when a bug, failed check, failed deployment, visible product defect or platform issue is investigated and resolved
+- `docs/product-improvement-backlog.md` when PM/ESG roadmap priorities, waves or product-review findings change
 
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
@@ -106,7 +107,7 @@ Primary folders:
 
 Prefer keeping regulatory data out of UI components. Components should render data, not define the regulatory dataset.
 
-Use `data/marketCoverage.ts` or `data/phase1cCoverage.ts` for additive country-market records that broaden MVP coverage while remaining clearly labelled as seed intelligence. Use `data/regulations.ts` for core canonical records and `data/coverageAdditions.ts` for broader framework/content additions from prior phases.
+Use `data/marketCoverage.ts` or `data/phase1cCoverage.ts` for additive country-market records that broaden MVP coverage while remaining clearly labelled as seed intelligence. Use `data/masterUpdateAdditions.ts` for the master content expansion layer: condensed EU financial-services parent records, APAC/ISSB market expansion, voluntary frameworks and enrichment metadata for existing parent records. Use `data/regulations.ts` for core canonical records and `data/coverageAdditions.ts` for broader framework/content additions from prior phases.
 
 Current important routes:
 
@@ -125,6 +126,7 @@ Current important routes:
 - `/methodology`: methodology and source-quality explanation surface
 - `/changelog`: public update log
 - `/about`: product, author and trend context
+- `/premium-roadmap`: static future commercial roadmap with no gating, Stripe, auth or database
 
 Current brand context:
 
@@ -135,6 +137,7 @@ Current brand context:
 - LinkedIn: `https://www.linkedin.com/in/gabrielgage/`
 - Temporary logo assets are in `public/etica-esg-logo.svg`, `public/favicon.svg`, and `public/og-image.svg`
 - The global theme toggle lives in `components/ThemeToggle.tsx`; it persists `etica-theme` in local storage and uses Tailwind `darkMode: "class"`
+- First-time visitors should default to light mode. Respect a saved user choice after the user explicitly toggles the theme.
 - The language toggle lives in `components/LanguageToggle.tsx` and `components/LanguageProvider.tsx`; supported interface languages are English, Spanish, Dutch, French, German and Portuguese.
 - Translations live in `lib/i18n.ts`. Product chrome, filters, table controls and map guidance should use translation keys. Do not imply that the regulatory records themselves are legally translated; the current implementation translates product guidance and leaves source-linked regulatory record content in English.
 
@@ -161,6 +164,8 @@ Every regulation record should include, where feasible:
 
 - Stable `id`
 - Title and short name
+- Atlas record type, legal force, display tier, granularity, aliases and child items where relevant
+- Client relevance category and market maturity score where useful for planning
 - Jurisdiction and jurisdiction IDs
 - `transposedJurisdictionIds` where an EU or parent-level rule is relevant to a jurisdiction but should not inflate direct map counts
 - Issuing body
@@ -178,6 +183,8 @@ Every regulation record should include, where feasible:
 - Change log summary or latest update
 
 All records are illustrative seed data unless independently verified through a production research workflow.
+
+Follow the condensation rule: major regimes and frameworks should usually be one parent record. ESRS, GRI, ISSB/SASB, SFDR, EU Taxonomy, CDP, PCAF, SBTi, PRI, ICMA, ISO, EU banking prudential ESG risk, EU insurance ESG risk and MiFID/IDD sustainability preferences should not be exploded into dozens of top-level records. Use child items, aliases, milestones and source notes instead.
 
 For map counts, distinguish direct jurisdiction records from parent or transposed exposure. EU rules can inform a Netherlands profile, but they should not make the Netherlands appear to have more direct records than the EU bloc.
 
@@ -265,6 +272,8 @@ Phase 1 may improve static product depth, such as better timelines, source revie
 Already delivered in Phase 1B: market coverage additions, language toggle, shareable filtered views, CSV/JSON export, readiness scoring, grouped timeline and expanded comparison fields.
 
 Already delivered in Phase 1C: GitHub Actions CI, Playwright smoke tests, Lighthouse CI, PR preview checklist, broader interface translation coverage, 80+ seed records through `data/phase1cCoverage.ts`, stronger map outlines and a workbook-backed regulation tracker workflow.
+
+Already delivered in Phase 1D: master data model metadata, record type/legal force/client relevance filters and badges, condensed EU financial-services records, APAC/ISSB market expansion, voluntary framework records, source-of-truth governance language, static market briefing CTA and `/premium-roadmap`.
 
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 

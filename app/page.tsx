@@ -31,7 +31,7 @@ export default function Home() {
   const { t } = useLanguage();
 
   const filtered = useMemo(() => filterRegulations(regulations, filters), [filters]);
-  const activeViewLabel = activeView === "overview" ? "Global overview" : quickViews.find((view) => view.id === activeView)?.label || "Custom view";
+  const activeViewLabel = activeView === "overview" ? t("views.overview") : quickViews.find((view) => view.id === activeView)?.label || t("views.custom");
   const sourceCount = filtered.reduce((count, regulation) => count + regulation.sourceUrls.length, 0);
   const highImpact = filtered.filter((regulation) => regulation.highImpact).length;
 
@@ -93,7 +93,7 @@ export default function Home() {
           <div>
             <p className="text-sm font-semibold text-teal">{t("home.whatsNew")}</p>
             <p className="mt-1 text-sm leading-6 text-slate-600">
-              {DATASET_META.edition}: expanded market coverage, stronger map outlines, shareable filtered views, export tools, readiness scoring and multilingual interface chrome.
+              {DATASET_META.edition}: {t("home.whatsNewBody")}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">

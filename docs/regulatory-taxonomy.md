@@ -22,6 +22,12 @@ Preferred topic labels:
 - Waste and pollution
 - Governance
 - Assurance
+- Prudential risk
+- Climate risk supervision
+- Market infrastructure
+- Voluntary frameworks
+- Responsible investment
+- Project finance safeguards
 - Financial risk
 
 ## Sectors
@@ -84,6 +90,8 @@ Preferred company type labels:
 - Private equity fund
 - Bank
 - Insurer
+- Benchmark administrator
+- ESG rating provider
 - Non EU parent
 - Supplier
 - Exporter
@@ -101,6 +109,7 @@ Preferred business function labels:
 - Risk
 - Internal audit
 - Investor relations
+- Product governance
 - Operations
 - Product
 - Supply chain
@@ -146,6 +155,57 @@ Preferred legal instrument labels:
 - Consultation
 - Voluntary framework
 
+## Atlas Record Types
+
+Use `recordType` to distinguish what kind of record the user is seeing:
+
+- Regulation
+- Directive
+- Law
+- Standard
+- Framework
+- Guidance
+- Taxonomy
+- Exchange rule
+- Supervisory expectation
+- Voluntary questionnaire
+- Commitment
+- Roadmap
+- Source note
+
+## Legal Force
+
+Use `legalForce` to avoid treating mandatory laws, supervisory expectations and voluntary frameworks as if they had the same legal effect:
+
+- Mandatory
+- Voluntary
+- Comply or explain
+- Supervisory expectation
+- Market expectation
+- Roadmap
+- Monitor
+
+## Client Relevance
+
+Use `clientRelevanceCategory` to express planning relevance without overclaiming legal applicability:
+
+- Potentially direct
+- Potentially indirect
+- Investor/customer driven
+- Voluntary best practice
+- Monitor only
+
+## Granularity
+
+Use `atlasGranularity` to keep the Atlas condensed:
+
+- Parent
+- Child
+- Alias
+- Source
+
+Major regimes should usually be parent records. Subrules, delegated acts, questionnaires, modules and source notes should usually be child items or aliases.
+
 ## Status Labels
 
 Preferred status labels:
@@ -181,7 +241,8 @@ Preferred confidence labels:
 
 - High
 - Medium
-- Low
+- Needs review
+- Date uncertain
 
 Confidence is about source and review reliability, not whether the regulation is important.
 
@@ -191,9 +252,9 @@ Preferred data quality labels:
 
 - Verified
 - Needs review
+- Recently updated
 - Source missing
 - Date uncertain
-- Seed data
 
 ## Advisory Opportunities
 

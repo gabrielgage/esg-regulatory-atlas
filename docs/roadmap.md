@@ -41,6 +41,13 @@ Current capability areas:
 - Workbook-backed regulation tracker for coverage and review planning
 - Sector heatmap in the briefing workspace
 - Copyable assessment shortlist
+- First-visit light mode default with a saved explicit dark-mode preference
+- Condensed parent-record model with record type, legal force, client relevance, aliases and child items
+- EU financial-services regulatory lens covering banking, insurance, MiFID/IDD, AIFMD/UCITS, benchmarks, EuGBS, ESG ratings and ESAP
+- APAC/ISSB coverage expansion including Hong Kong, South Korea, Taiwan, New Zealand, Malaysia, Indonesia, Thailand and Philippines
+- Voluntary framework coverage for CDP, SBTi, PCAF, PRI, ICMA, GRESB, IFC/Equator/World Bank safeguards and ISO environmental/GHG standards
+- Static market briefing CTA and premium roadmap page without payments, authentication or gated data
+- PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
 
 ## Recently Delivered Phase 1A Items
@@ -85,6 +92,16 @@ Current capability areas:
 - Added `data/phase1cCoverage.ts`, bringing the static seed dataset to 80+ source-linked records.
 - Added a workbook-backed coverage control workflow for regulation inventory and review planning.
 - Strengthened map outline rendering with an explicit country-border overlay.
+
+## Recently Delivered Phase 1D Items
+
+- Added `data/masterUpdateAdditions.ts` for the master update pack expansion.
+- Added master metadata fields to `types/regulation.ts`: record type, legal force, display tier, atlas granularity, parent record ID, aliases, child items, source system, source confidence, client relevance category, market maturity score and monetization tier.
+- Added filters and badges for record type, legal force and client relevance category.
+- Expanded the static dataset with condensed EU financial-services records, APAC/ISSB market records, South Africa and Europe national due-diligence coverage, and major voluntary frameworks.
+- Added Hong Kong, South Korea, Taiwan, New Zealand, Malaysia, Indonesia, Thailand, Philippines, France, Germany, Norway and South Africa as jurisdiction tiles.
+- Added source-of-truth governance guidance on `/data-quality`.
+- Added a static market briefing CTA and `/premium-roadmap` route for future market packs, sector packs and portfolio scans without adding Stripe, authentication, Supabase, databases or paid APIs.
 
 ## Phase 1: Credibility And Utility
 
@@ -170,6 +187,8 @@ Stripe is explicitly out of scope until the project owner requests commercializa
 3. Improve exportability: CSV/JSON export and richer copyable briefs.
 4. Improve usability: map legend, mobile layout, comparison fields and filters.
 5. Improve maintainability: reusable data helpers, consistent taxonomy and living documentation.
+
+For the current 36-item PM/ESG specialist backlog, use `docs/product-improvement-backlog.md` as the working prioritization source. Wave 1 keeps the product static and focuses on launch quality, map clarity, persona presets, evidence summaries, source confidence and briefing quality.
 
 ## Non-Goals For The MVP
 

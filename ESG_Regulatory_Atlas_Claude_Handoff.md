@@ -2,10 +2,45 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1C workflow, translation and coverage-control pass on top of the Phase 1A Etica credibility update and Phase 1B market coverage pass. The goal remains deployability and legal caution, with added emphasis on launch checks, broader UI translation, deeper per-market regulation coverage and a workbook-backed review inventory.
+The app is now in a static Phase 1D master content and monetization-readiness pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass and Phase 1C workflow/translation/coverage-control pass. The goal remains deployability and legal caution, with added emphasis on condensed parent records, EU financial-services coverage, APAC/ISSB market expansion, voluntary framework coverage and lead-generation workflows that do not add payments, authentication or databases.
+
+## Phase 1D Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.4 - May 2026`.
+- Added master-pack metadata fields to `types/regulation.ts`: `recordType`, `legalForce`, `displayTier`, `atlasGranularity`, `parentRecordId`, `aliases`, `sourceSystem`, `sourceConfidence`, `lastVerified`, `childItems`, `clientRelevanceCategory`, `marketMaturityScore` and `monetizationTier`.
+- Added `data/masterUpdateAdditions.ts` and imported it through `data/seed.ts`.
+- Added condensed EU financial-services parent records for banking prudential ESG risk, insurance Solvency/ORSA ESG risk, MiFID II/IDD sustainability preferences, AIFMD/UCITS ESG risk, ESG benchmarks, EuGBS, ESG ratings, ESAP, EU ETS and EU Nature Restoration.
+- Added UK Modern Slavery Act and a condensed France/Germany/Norway national supply-chain due-diligence cluster.
+- Added APAC/ISSB market records for South Korea, Taiwan, New Zealand, Malaysia, Indonesia, Thailand and Philippines.
+- Added South Africa as an Africa anchor market through JSE sustainability guidance and green finance taxonomy context.
+- Added voluntary and investor/customer-driven framework records for CDP, SBTi, PCAF, PRI, ICMA labelled finance principles, GRESB, IFC/Equator/World Bank safeguards and ISO environmental/GHG standards.
+- Added jurisdiction tiles for Hong Kong, South Korea, Taiwan, New Zealand, Malaysia, Indonesia, Thailand, Philippines, France, Germany, Norway and South Africa.
+- Enriched existing parent records such as CSRD, ESRS, SFDR, EU Taxonomy, CSDDD, EUDR, EU Batteries, EU Forced Labour, GRI and ISSB with aliases, child items, source-system and client-relevance metadata.
+- Linked the existing Hong Kong climate record to the new Hong Kong jurisdiction tile instead of leaving it assigned to `int`.
+- Added record type, legal force and client relevance filters in the advanced filter groups.
+- Added `components/RecordMetaBadges.tsx` and surfaced metadata badges in the regulation table, jurisdiction panel, regulation detail drawer and per-regulation pages.
+- Added source-of-truth governance language to `/data-quality` explaining source hierarchy, review cadence and condensation rules.
+- Added `components/MarketBriefingCTA.tsx` and surfaced it on `/briefing` and in jurisdiction panels.
+- Added `/premium-roadmap` as a static commercial roadmap page for future market packs, sector packs, portfolio scans, alerts and client workspaces without adding Stripe, auth, Supabase, paid APIs, databases, scraping, cron or required environment variables.
+- Updated README, roadmap, data methodology, regulatory taxonomy and product backlog context files so future agents inherit the master-pack direction.
+
+## Phase 1D Product Rationale
+
+The master update pack correctly identified that the Atlas should become a client decision system, not a catalogue of thousands of disconnected standards. The chosen MVP-safe implementation focuses on the highest-leverage static upgrades:
+
+- richer metadata so users can distinguish legal obligations from standards, guidance, voluntary frameworks and market expectations
+- condensed parent records with aliases and child details so frameworks remain searchable without overwhelming the map
+- stronger market coverage where the current product was weakest: EU financial services and APAC/ISSB adoption
+- voluntary frameworks that matter commercially because investors, lenders, customers and procurement teams often drive them
+- lead-generation CTAs and a premium roadmap that prepare for monetization without adding payment or account complexity
 
 ## Phase 1C Changes Delivered
 
+- Defaulted first-time visitors to light mode while preserving explicit saved dark-mode preferences.
+- Improved dark-mode contrast for colored badges, warning/disclaimer text, form controls, rings, borders and hover states.
+- Added `docs/product-improvement-backlog.md` with 36 PM/ESG specialist improvements prioritized across three waves.
+- Added map interpretation guidance that separates direct seed record volume from legal applicability.
+- Updated dataset metadata and changelog to `0.5.3 - May 2026`.
 - Added GitHub Actions CI for typecheck and production build validation.
 - Added Playwright smoke tests for the map workspace, language toggle, regulation detail route and launch-critical pages.
 - Added Lighthouse CI for key public routes with warning-level launch thresholds.
@@ -122,6 +157,7 @@ The deep review identified three credibility risks: the map claimed country fill
 ## Technical Notes
 
 - No Stripe, Supabase, authentication, paid APIs, Mapbox, environment variables, database, scraping, cron jobs or runtime AI calls were added.
+- Theme behavior now defaults first-time visitors to light mode. The saved `etica-theme` preference is still respected after a user explicitly toggles light or dark mode.
 - The new map fetches `/world-110m/index.json` and same-origin Natural Earth geometry from the app's own `public/` directory.
 - The country fill bucket is driven by direct record count in the active view: `0`, `1-2`, `3-6`, and `7+`.
 - EU-level records highlight EU member-state polygons and keep a separate `EUU` overlay label for the supranational jurisdiction.
@@ -131,12 +167,18 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1D validation: `tsc --noEmit` passed locally using the bundled Node runtime.
+- Phase 1D validation: `next build --webpack` passed locally and generated 256 static pages, including `/premium-roadmap`, expanded `/regulations/[slug]` pages and expanded `/jurisdiction/[code]/brief` pages.
+- Phase 1D validation: `git diff --check` passed.
+- Phase 1D out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron and environment variables; no implementation code or dependencies were added for those items.
+- `npm audit --omit=dev` could not be run in the Codex sandbox because the bundled runtime exposes `node` but not an `npm` executable. Re-run with a local Node/npm installation or in CI if audit evidence is required.
 - `tsc --noEmit` passed locally using the bundled Node runtime.
 - `next build --webpack` passed locally and generated the app routes, including `/changelog`, `/compare`, `/jurisdiction/[code]/brief` and `/regulations/[slug]`.
 - New Etica routes to verify include `/compare?jurisdictions=EUU,GBR`, `/compare?ids=csrd,issb-s1-s2`, `/regulations/issb-s1-s2`, `/edition/0.5/regulations/csrd` and the ISSB redirects.
 - `git diff --check` passed.
 - Out-of-scope dependency/code scan found no Stripe, Supabase, Mapbox, payment, webhook or environment-variable usage.
 - PR #11 CI incident is documented in `docs/issue-resolution-log.md`; future bug fixes should update that log.
+- Dark-mode default and contrast issue is documented in `docs/issue-resolution-log.md`; future visual defects should be treated as bugs with root-cause notes.
 - Local dev-server startup may be blocked by sandbox port-binding restrictions. Treat that as an environment limitation if TypeScript and production build pass.
 
 ## Known Tradeoffs
@@ -151,6 +193,11 @@ The deep review identified three credibility risks: the map claimed country fill
 
 Next useful improvements:
 
+- use `docs/product-improvement-backlog.md` as the active 36-item PM/ESG specialist backlog
+- clearer map legend and layer explanation
+- coverage confidence view separating record volume from source confidence and review risk
+- persona-specific quick filters and sector starting points
+- stronger evidence-needed summaries in briefing and regulation detail surfaces
 - horizontal timeline/swimlane with quarter precision
 - CSV or JSON export of the static regulation database
 - richer comparison fields for thresholds, assurance, taxonomy and transition plans

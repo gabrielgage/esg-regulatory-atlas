@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Badge } from "@/components/Badge";
+import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
 import { CitationWidget } from "@/components/CitationWidget";
 import { regulations } from "@/data/seed";
@@ -55,6 +56,7 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
             <Badge className="border-slate-200 bg-slate-50 text-slate-600">{qualityLabel(regulation.dataQualityStatus)}</Badge>
             {regulation.highImpact && <Badge className="border-red-200 bg-red-50 text-red-700">High impact</Badge>}
           </div>
+          <RecordMetaBadges regulation={regulation} />
           <h1 className="mt-5 text-4xl font-bold tracking-tight text-ink">{regulation.shortName}</h1>
           <p className="mt-2 text-lg text-slate-600">{regulation.title}</p>
           <p className="mt-3 text-sm font-semibold text-slate-500">Last reviewed by Gabriel Gage on {formatDate(regulation.lastReviewed)}</p>
@@ -72,6 +74,38 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
         </Section>
 
         <CitationWidget regulation={regulation} />
+
+        <Section title="Atlas record governance">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <Metric label="Record type" value={labelOrMissing(regulation.recordType)} />
+            <Metric label="Legal force" value={labelOrMissing(regulation.legalForce)} />
+            <Metric label="Client relevance" value={labelOrMissing(regulation.clientRelevanceCategory)} />
+            <Metric label="Display tier" value={labelOrMissing(regulation.displayTier)} />
+            <Metric label="Granularity" value={labelOrMissing(regulation.atlasGranularity)} />
+            <Metric label="Source system" value={labelOrMissing(regulation.sourceSystem)} />
+          </div>
+          <p className="mt-4 text-slate-600">
+            The Atlas uses condensed parent records. Delegated acts, questionnaires, sector modules and source notes appear as child details or aliases so the map remains usable.
+          </p>
+        </Section>
+
+        {(regulation.aliases?.length || regulation.childItems?.length) ? (
+          <Section title="Aliases and child details">
+            {regulation.aliases?.length ? <ListBlock title="Search aliases" values={regulation.aliases} /> : null}
+            {regulation.childItems?.length ? (
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                {regulation.childItems.map((item) => (
+                  <div key={`${item.label}-${item.date || item.type}`} className="rounded-xl bg-slate-50 p-4">
+                    <h3 className="font-semibold text-ink">{item.label}</h3>
+                    <p className="mt-1 text-xs uppercase tracking-wide text-slate-400">{item.type.replaceAll("-", " ")}</p>
+                    {item.note ? <p className="mt-2 text-slate-600">{item.note}</p> : null}
+                    {item.date ? <p className="mt-2 text-xs text-slate-500">Indicative timing: {item.date}</p> : null}
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </Section>
+        ) : null}
 
         <Section title="Scope of application">
           <p>{regulation.applicability}</p>
@@ -212,4 +246,8 @@ function BadgeList({ values }: { values: string[] }) {
 function qualityLabel(status: string) {
   if (status === "verified_seed") return "Verified source set";
   return status.replaceAll("_", " ");
+}
+
+function labelOrMissing(value: string | undefined) {
+  return value ? value.replaceAll("-", " ") : "Not classified";
 }

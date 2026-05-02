@@ -16,7 +16,10 @@ export const initialFilters: FilterState = {
   obligation: "",
   confidence: "",
   dataQuality: "",
-  advisory: ""
+  advisory: "",
+  recordType: "",
+  legalForce: "",
+  clientRelevance: ""
 };
 
 export function filterRegulations(regulations: Regulation[], filters: FilterState) {
@@ -32,6 +35,12 @@ export function filterRegulations(regulations: Regulation[], filters: FilterStat
       regulation.issuingBody,
       regulation.latestUpdate,
       regulation.changeLogSummary || "",
+      regulation.recordType || "",
+      regulation.legalForce || "",
+      regulation.clientRelevanceCategory || "",
+      regulation.sourceSystem || "",
+      ...(regulation.aliases || []),
+      ...(regulation.childItems || []).flatMap((item) => [item.label, item.type, item.status || "", item.note || ""]),
       ...regulation.topics,
       ...regulation.sectors,
       ...regulation.valueChain,
@@ -64,7 +73,10 @@ export function filterRegulations(regulations: Regulation[], filters: FilterStat
       (!filters.obligation || regulation.businessImpacts.includes(filters.obligation as Regulation["businessImpacts"][number])) &&
       (!filters.confidence || regulation.confidenceLevel === filters.confidence) &&
       (!filters.dataQuality || regulation.dataQualityStatus === filters.dataQuality) &&
-      (!filters.advisory || regulation.advisoryOpportunities.includes(filters.advisory))
+      (!filters.advisory || regulation.advisoryOpportunities.includes(filters.advisory)) &&
+      (!filters.recordType || regulation.recordType === filters.recordType) &&
+      (!filters.legalForce || regulation.legalForce === filters.legalForce) &&
+      (!filters.clientRelevance || regulation.clientRelevanceCategory === filters.clientRelevance)
     );
   });
 }

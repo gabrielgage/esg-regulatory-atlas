@@ -5,6 +5,8 @@ import { useState } from "react";
 import { ArrowUpRight, CalendarDays, FileText, GitCompare, Globe2, Layers3, LinkIcon, Network } from "lucide-react";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
+import { MarketBriefingCTA } from "./MarketBriefingCTA";
+import { RecordMetaBadges } from "./RecordMetaBadges";
 import { StatusBadge } from "./StatusBadge";
 import { cn, formatDate, uniq } from "@/lib/utils";
 import { internationalRecords, localRecords, recordsForJurisdiction, sectoralRecords } from "@/lib/layers";
@@ -176,6 +178,9 @@ export function CountryPanel({
           </PanelSection>
         )}
       </div>
+      <div className="mt-5">
+        <MarketBriefingCTA compact jurisdictionName={jurisdiction.name} />
+      </div>
     </aside>
   );
 }
@@ -244,6 +249,7 @@ function RegulationButton({ regulation, onRegulation }: { regulation: Regulation
         <span className="font-semibold text-ink">{regulation.shortName}</span>
         <StatusBadge status={regulation.status} />
       </div>
+      <RecordMetaBadges regulation={regulation} compact />
       <p className="mt-2 line-clamp-2 text-sm leading-5 text-slate-500">{regulation.summary}</p>
     </button>
   );

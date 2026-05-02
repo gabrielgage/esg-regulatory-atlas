@@ -13,6 +13,7 @@ The MVP stores data in static TypeScript files:
 - `data/regulations.ts`
 - `data/coverageAdditions.ts`
 - `data/marketCoverage.ts`
+- `data/phase1cCoverage.ts`
 - `data/jurisdictions.ts`
 - `data/sectors.ts`
 - `data/taxonomy.ts`
@@ -32,7 +33,9 @@ Filtering and applicability logic lives in:
 
 Do not hardcode regulatory records inside UI components.
 
-Use `data/marketCoverage.ts` for additive market-depth records that broaden the MVP's jurisdiction coverage. These records should usually be marked `needs_review`, `date_uncertain`, or `verified_seed` depending on source maturity, and should not imply complete local legal coverage.
+Use `data/marketCoverage.ts` and `data/phase1cCoverage.ts` for additive market-depth records that broaden the MVP's jurisdiction coverage. These records should usually be marked `needs_review`, `date_uncertain`, or `verified_seed` depending on source maturity, and should not imply complete local legal coverage.
+
+The external regulation tracker workbook should mirror the website seed data and add review workflow fields such as owner, review priority, source status, website inclusion, next review date and notes. Treat the workbook as a planning and QA control file, not as a separate legal source of truth.
 
 ## Source Hierarchy
 
@@ -161,6 +164,7 @@ When adding a regulation:
 8. Add caveats for threshold uncertainty, implementation uncertainty, or source limitations.
 9. Verify filters and detail views still render.
 10. If the record broadens market coverage, add a changelog or handoff note so future reviewers understand why the record was introduced.
+11. Regenerate or update the regulation tracker workbook when a coverage expansion changes the website seed data.
 
 ## Planning Scores
 

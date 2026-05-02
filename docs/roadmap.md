@@ -37,6 +37,8 @@ Current capability areas:
 - Shareable filtered Map and Regulations URLs
 - Filtered CSV and JSON regulation exports
 - Readiness-priority scoring on records
+- GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist
+- Workbook-backed regulation tracker for coverage and review planning
 - Sector heatmap in the briefing workspace
 - Copyable assessment shortlist
 - Static seed data
@@ -72,6 +74,17 @@ Current capability areas:
 - Expanded comparison mode with thresholds, first report due date, readiness, affected functions, advisory opportunities and enforcement rows.
 - Improved the data-quality page with high-impact review checks and a larger prioritized research queue.
 - Added configurable client planning summaries by jurisdiction, sector and company type.
+
+## Recently Delivered Phase 1C Items
+
+- Added GitHub Actions CI for typecheck and production build validation.
+- Added Playwright smoke tests for the map workspace, language toggle, regulation detail route and launch-critical pages.
+- Added Lighthouse CI on key public routes with warning-level launch thresholds.
+- Added a pull request template requiring Vercel preview review and MVP guardrail checks.
+- Expanded translated UI chrome across filters, map guidance, status labels, confidence labels, data-quality labels and regulation table controls.
+- Added `data/phase1cCoverage.ts`, bringing the static seed dataset to 80+ source-linked records.
+- Added a workbook-backed coverage control workflow for regulation inventory and review planning.
+- Strengthened map outline rendering with an explicit country-border overlay.
 
 ## Phase 1: Credibility And Utility
 

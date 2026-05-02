@@ -1,8 +1,11 @@
+"use client";
+
 import { CheckCircle2, Clock3, Flag, Gavel, Handshake, MessageSquare, PauseCircle } from "lucide-react";
 import type { ComponentType } from "react";
 import { Status } from "@/types/regulation";
-import { cn, statusClass, statusLabel } from "@/lib/utils";
+import { cn, statusClass } from "@/lib/utils";
 import { Badge } from "./Badge";
+import { useLanguage } from "./LanguageProvider";
 
 const statusIcon = {
   consultation: MessageSquare,
@@ -16,11 +19,12 @@ const statusIcon = {
 
 export function StatusBadge({ status, className }: { status: Status; className?: string }) {
   const Icon = statusIcon[status];
+  const { t } = useLanguage();
 
   return (
     <Badge className={cn("inline-flex items-center gap-1.5", statusClass[status], className)}>
       <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-      {statusLabel[status]}
+      {t(`status.${status}`)}
     </Badge>
   );
 }

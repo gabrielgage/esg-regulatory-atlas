@@ -11,6 +11,17 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.2 - May 2026",
+    date: "2026-05-02",
+    label: "Workflow, translation and coverage control update",
+    summary:
+      "Added launch-quality automation, broadened translated product chrome, expanded the seed dataset past 80 source-linked records and introduced a workbook-ready control file workflow.",
+    added: ["GitHub Actions CI", "Playwright smoke tests", "Lighthouse CI", "PR preview checklist", "Phase 1C coverage records", "Regulation tracker workbook"],
+    updated: ["Filter translations", "Table translations", "Map translations", "Country-outline rendering", "Development workflow documentation"],
+    records: ["uk-secr", "uk-esos", "uk-ets", "uk-packaging-epr", "us-uflpa", "australia-nger-scheme", "india-brsr-core", "canada-osfi-b15"],
+    caveat: "Phase 1C records are broader market coverage seed data and need production legal/source review before compliance reliance."
+  },
+  {
     edition: "0.5.1 - May 2026",
     date: "2026-05-02",
     label: "Market coverage and usability update",

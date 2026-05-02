@@ -72,7 +72,7 @@ Filtered CSV/JSON exports should be treated as data extracts from illustrative s
 
 ## Language Toggle Safeguard
 
-The language toggle translates product chrome, disclaimer guidance and navigation. It does not create legally reviewed translations of regulatory records.
+The language toggle translates product chrome, filters, table controls, map guidance, disclaimer guidance and navigation. It does not create legally reviewed translations of regulatory record content.
 
 Do not describe the product as providing official legal translations. If deeper localization is added later, it should include source-language review, translation review and jurisdiction-specific legal review.
 

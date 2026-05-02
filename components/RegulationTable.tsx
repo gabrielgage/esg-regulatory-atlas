@@ -1,19 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowUpRight, Database, ShieldAlert } from "lucide-react";
 import { Badge } from "./Badge";
 import { StatusBadge } from "./StatusBadge";
+import { useLanguage } from "./LanguageProvider";
 import { Regulation } from "@/types/regulation";
 import { readinessBand, readinessClass, readinessScore } from "@/lib/scoring";
 import { cn } from "@/lib/utils";
 
 export function RegulationTable({ regulations, onSelect }: { regulations: Regulation[]; onSelect: (r: Regulation) => void }) {
+  const { t } = useLanguage();
+
   if (!regulations.length) {
     return (
       <div className="rounded-2xl border bg-white p-10 text-center shadow-sm">
         <ShieldAlert className="mx-auto h-8 w-8 text-amber-500" />
-        <h2 className="mt-3 text-lg font-semibold text-ink">No regulations match these filters</h2>
+        <h2 className="mt-3 text-lg font-semibold text-ink">{t("table.emptyTitle")}</h2>
         <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-500">
-          No regulations match the current filters. Try clearing filters or selecting a broader quick view.
+          {t("table.emptyBody")}
         </p>
       </div>
     );
@@ -25,25 +30,25 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
         <div>
           <div className="flex items-center gap-2">
             <Database className="h-5 w-5 text-teal" />
-            <h2 className="font-semibold text-ink">Regulation database</h2>
+            <h2 className="font-semibold text-ink">{t("table.title")}</h2>
           </div>
-          <p className="mt-1 text-sm text-slate-500">{regulations.length} records in the current view</p>
+          <p className="mt-1 text-sm text-slate-500">{regulations.length} {t("table.records")}</p>
         </div>
-        <Badge className="border-teal/20 bg-teal/10 text-teal">Source-linked intelligence</Badge>
+        <Badge className="border-teal/20 bg-teal/10 text-teal">{t("table.sourceLinked")}</Badge>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
             <tr>
-              <th className="px-5 py-3">Regulation</th>
-              <th className="px-5 py-3">Jurisdiction</th>
-              <th className="px-5 py-3">Status</th>
-              <th className="px-5 py-3">Impact</th>
-              <th className="px-5 py-3">Readiness</th>
-              <th className="px-5 py-3">First reporting</th>
-              <th className="px-5 py-3">Confidence</th>
-              <th className="px-5 py-3">Data quality</th>
-              <th className="px-5 py-3">Open</th>
+              <th className="px-5 py-3">{t("table.regulation")}</th>
+              <th className="px-5 py-3">{t("table.jurisdiction")}</th>
+              <th className="px-5 py-3">{t("table.status")}</th>
+              <th className="px-5 py-3">{t("table.impact")}</th>
+              <th className="px-5 py-3">{t("table.readiness")}</th>
+              <th className="px-5 py-3">{t("table.firstReporting")}</th>
+              <th className="px-5 py-3">{t("table.confidence")}</th>
+              <th className="px-5 py-3">{t("table.dataQuality")}</th>
+              <th className="px-5 py-3">{t("table.open")}</th>
             </tr>
           </thead>
           <tbody className="divide-y">
@@ -89,12 +94,12 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
                     {readinessBand(regulation)} · {readinessScore(regulation)}
                   </Badge>
                 </td>
-                <td className="px-5 py-4">{regulation.firstReportingYear || "n/a"}</td>
+                <td className="px-5 py-4">{regulation.firstReportingYear || t("table.notAvailable")}</td>
                 <td className="px-5 py-4">
-                  <Badge className={confidenceClass(regulation.confidenceLevel)}>{regulation.confidenceLevel.replaceAll("_", " ")}</Badge>
+                  <Badge className={confidenceClass(regulation.confidenceLevel)}>{t(`confidence.${regulation.confidenceLevel}`)}</Badge>
                 </td>
                 <td className="px-5 py-4">
-                  <Badge className={qualityClass(regulation.dataQualityStatus)}>{qualityLabel(regulation.dataQualityStatus)}</Badge>
+                  <Badge className={qualityClass(regulation.dataQualityStatus)}>{t(`quality.${regulation.dataQualityStatus}`)}</Badge>
                 </td>
                 <td className="px-5 py-4">
                   <Link
@@ -115,11 +120,6 @@ export function RegulationTable({ regulations, onSelect }: { regulations: Regula
       </div>
     </section>
   );
-}
-
-function qualityLabel(status: Regulation["dataQualityStatus"]) {
-  if (status === "verified_seed") return "Verified source set";
-  return status.replaceAll("_", " ");
 }
 
 function confidenceClass(confidence: Regulation["confidenceLevel"]) {

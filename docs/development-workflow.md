@@ -46,6 +46,8 @@ Use:
 ```bash
 npm run lint
 npm run build
+npm run test:e2e
+npm run lhci
 ```
 
 Current `npm run build` uses:
@@ -57,6 +59,15 @@ next build --webpack
 This is intentional for the MVP because the verified webpack path avoids local Turbopack sandbox port-binding failures and gives a stable Vercel-compatible production build.
 
 If `npm` is unavailable in the Codex shell, use the bundled Node runtime against local package entry points, or document why validation could not run.
+
+GitHub should now run four high-ROI launch checks:
+
+- CI typecheck and production build on pull requests and pushes to `main`
+- Playwright smoke tests against the built app
+- Lighthouse CI on key public routes
+- Pull request preview checklist requiring Vercel preview review before merge
+
+The local Codex sandbox may not have `npm` or Playwright browser binaries available. In that case, run TypeScript and production build with the bundled Node runtime, then rely on GitHub Actions/Vercel for browser and Lighthouse validation after pushing.
 
 ## Documentation Update Rule
 
@@ -70,6 +81,7 @@ Examples:
 - New legal wording or assessment category: update `docs/legal-safeguards.md`.
 - Delivered roadmap item: update `docs/roadmap.md`.
 - New validation limitation or build strategy: update `README.md`, `AGENTS.md`, and this file.
+- New automation or review workflow: update `README.md`, `.github/pull_request_template.md` where relevant, and this file.
 
 ## Coding Principles
 
@@ -87,5 +99,6 @@ Examples:
 - Tailwind dark mode uses class strategy and `components/ThemeToggle.tsx` stores the `etica-theme` preference in local storage.
 - The app requires no environment variables.
 - The map uses local static assets and no paid map provider.
+- Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.
 - The project intentionally avoids Stripe, Supabase, authentication, paid APIs, scraping, cron jobs, email alerts and production AI summaries.
 - Local dev servers may be blocked in some Codex sandboxes by port-binding restrictions; do not treat that as an app failure if production build passes.

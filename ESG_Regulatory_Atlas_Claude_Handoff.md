@@ -2,7 +2,19 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1B market coverage and usability pass on top of the Phase 1A Etica credibility update. The goal remains deployability and legal caution, but the emphasis has moved to broader per-market regulation coverage, clearer map legibility, multilingual interface chrome, share/export utility and planning-grade scoring.
+The app is now in a static Phase 1C workflow, translation and coverage-control pass on top of the Phase 1A Etica credibility update and Phase 1B market coverage pass. The goal remains deployability and legal caution, with added emphasis on launch checks, broader UI translation, deeper per-market regulation coverage and a workbook-backed review inventory.
+
+## Phase 1C Changes Delivered
+
+- Added GitHub Actions CI for typecheck and production build validation.
+- Added Playwright smoke tests for the map workspace, language toggle, regulation detail route and launch-critical pages.
+- Added Lighthouse CI for key public routes with warning-level launch thresholds.
+- Added a pull request template requiring Vercel preview review and explicit MVP guardrail checks.
+- Added `data/phase1cCoverage.ts` and imported it through `data/seed.ts`, bringing the static seed dataset to 80+ source-linked records.
+- Expanded translations in `lib/i18n.ts` and applied them to filters, table controls, map guidance, status labels, confidence labels and data-quality labels.
+- Strengthened `components/WorldChoropleth.tsx` with an explicit country-border overlay so country outlines are clearer.
+- Added a `0.5.2 - May 2026` changelog entry for workflow checks, expanded translations, regulation tracker workflow and Phase 1C coverage.
+- Created a workbook-backed regulation tracker process so website data can be reviewed as a structured coverage inventory.
 
 ## Phase 1B Changes Delivered
 

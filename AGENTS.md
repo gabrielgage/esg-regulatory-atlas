@@ -90,7 +90,7 @@ Primary folders:
 
 Prefer keeping regulatory data out of UI components. Components should render data, not define the regulatory dataset.
 
-Use `data/marketCoverage.ts` for additive country-market records that broaden MVP coverage while remaining clearly labelled as seed intelligence. Use `data/regulations.ts` for core canonical records and `data/coverageAdditions.ts` for broader framework/content additions from prior phases.
+Use `data/marketCoverage.ts` or `data/phase1cCoverage.ts` for additive country-market records that broaden MVP coverage while remaining clearly labelled as seed intelligence. Use `data/regulations.ts` for core canonical records and `data/coverageAdditions.ts` for broader framework/content additions from prior phases.
 
 Current important routes:
 
@@ -120,7 +120,7 @@ Current brand context:
 - Temporary logo assets are in `public/etica-esg-logo.svg`, `public/favicon.svg`, and `public/og-image.svg`
 - The global theme toggle lives in `components/ThemeToggle.tsx`; it persists `etica-theme` in local storage and uses Tailwind `darkMode: "class"`
 - The language toggle lives in `components/LanguageToggle.tsx` and `components/LanguageProvider.tsx`; supported interface languages are English, Spanish, Dutch, French, German and Portuguese.
-- Translations live in `lib/i18n.ts`. Do not imply that the regulatory records themselves are legally translated; the current implementation translates product chrome and disclaimer guidance.
+- Translations live in `lib/i18n.ts`. Product chrome, filters, table controls and map guidance should use translation keys. Do not imply that the regulatory records themselves are legally translated; the current implementation translates product guidance and leaves source-linked regulatory record content in English.
 
 ## Product Experience Principles
 
@@ -246,6 +246,8 @@ Before opening a PR, verify:
 Phase 1 may improve static product depth, such as better timelines, source review status, richer jurisdiction pages, CSV/JSON export, comparison enhancements and more complete source-reviewed data.
 
 Already delivered in Phase 1B: market coverage additions, language toggle, shareable filtered views, CSV/JSON export, readiness scoring, grouped timeline and expanded comparison fields.
+
+Already delivered in Phase 1C: GitHub Actions CI, Playwright smoke tests, Lighthouse CI, PR preview checklist, broader interface translation coverage, 80+ seed records through `data/phase1cCoverage.ts`, stronger map outlines and a workbook-backed regulation tracker workflow.
 
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 

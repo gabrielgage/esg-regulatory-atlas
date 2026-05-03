@@ -73,7 +73,7 @@ test("persona presets apply shareable regulation filters", async ({ page }) => {
   await page.getByRole("button", { name: /Apply Finance or ESG controller persona preset/i }).click();
   await expect(page).toHaveURL(/persona=finance-controller/);
   await expect(page.getByText(/Active role lens/i)).toBeVisible();
-  await expect(page.getByText(/Finance or ESG controller/i)).toBeVisible();
+  await expect(page.getByTestId("active-persona-role")).toHaveText("Finance or ESG controller");
   await expect(page.getByLabel(/Business function/i)).toHaveValue("Finance");
 });
 

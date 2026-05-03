@@ -30,6 +30,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Static `/launch` page with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview launch assets
 - Client applicability wizard with indicative categories
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor use cases
+- Persona starting points on `/regulations` for CSO, legal, finance, procurement, private equity and advisor workflows
 - Search and filters across jurisdiction, region, topic, sector, company type, value chain, function, obligation, status, year, confidence, data quality and advisory opportunity
 - Saved quick views for consulting and compliance workflows
 - Timeline, methodology/source library, coverage matrix, impact matrix and comparison views
@@ -110,6 +111,7 @@ Seed data is stored in:
 - `data/alertDigests.ts`
 - `data/premiumPacks.ts`
 - `data/launchAssets.ts`
+- `data/personaPresets.ts`
 - `data/conversionTracking.ts`
 - `data/contentReview.ts`
 - `data/taxonomy.ts`
@@ -136,9 +138,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.14 - May 2026`.
+The current seed dataset edition is `0.5.15 - May 2026`.
 
-The latest local update adds sector starting points:
+The latest local update adds persona regulation presets:
+
+- adds role-based starting points to `/regulations`
+- supports CSO, legal, finance/controller, procurement/supplier, private equity and external advisor lenses
+- persists active role lenses in shareable `?persona=` URLs
+- adds first questions and first actions for each role without creating legal applicability conclusions
+- keeps persona presets as orientation filters only, not role-specific legal advice or complete coverage
+
+The prior `0.5.14 - May 2026` update added sector starting points:
 
 - adds `/sectors` for browsing tracked business sectors by direct record count, high-impact links, market signals and review flags
 - adds `/sectors/[slug]` sector profile pages with priority records, evidence needs, first actions, source confidence, timing/watch items and advisory next steps

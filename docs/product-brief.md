@@ -74,6 +74,7 @@ The MVP includes:
 - Assessment wizard with legally cautious output categories
 - Assessment results with visible trigger reasons, review priority, evidence to prepare, functions involved, source-to-verify guidance, missing facts, suggested owners and next 30-day actions
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor users
+- Persona starting points in the Regulations workspace for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and advisor workflows
 - Timeline and methodology surfaces
 - Quarter-level milestone timeline for consultation, effective, reporting, due-date and source-review planning
 - Data Quality surface for source coverage and review-risk governance
@@ -187,6 +188,7 @@ The MVP is successful when:
 
 - Map workspace: `/`
 - Regulation database: `/regulations`
+- Persona role lenses: `/regulations?persona=finance-controller`
 - Regulation detail: `/regulations/[slug]`
 - Edition snapshot: `/edition/0.5/regulations/[slug]`
 - Assessment wizard: `/assessment`

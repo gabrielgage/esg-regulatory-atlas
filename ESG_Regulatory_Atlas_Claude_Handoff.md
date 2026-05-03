@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1N sector-starting-point pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass and Phase 1M market-profile navigation pass. The goal remains deployability and legal caution, with added emphasis on helping users move from business sector context into priority records, market signals and evidence needs without treating seed coverage as complete sector legal inventory.
+The app is now in a static Phase 1O persona-preset pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass and Phase 1N sector-starting-point pass. The goal remains deployability and legal caution, with added emphasis on helping buyer and advisor personas apply fast, shareable database lenses without accounts, saved profiles or legal applicability conclusions.
+
+## Phase 1O Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.15 - May 2026`.
+- Added `data/personaPresets.ts` for static role-based regulation database lenses.
+- Added `components/PersonaPresets.tsx` to `/regulations`.
+- Added shareable `/regulations?persona=` URL support.
+- Added presets for CSO, legal/compliance, finance/controller, procurement/supplier, private equity/investor and external advisor users.
+- Added smoke coverage for applying the Finance persona preset.
+
+## Phase 1O Product Rationale
+
+The Atlas has strong map, market and sector entry points, but many launch conversations start with a role: a CSO wants executive reporting priorities, legal wants thresholds and caveats, finance wants controls and assurance, procurement wants supplier evidence, private equity wants portfolio exposure, and advisors want gap-assessment workstreams. Phase 1O gives those users a faster first click while staying static and cautious. Persona presets are filters and prompts only, not saved workspaces or applicability determinations.
 
 ## Phase 1N Changes Delivered
 
@@ -324,6 +337,14 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1O validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1O validation: `git diff --check` passed.
+- Phase 1O validation: `npm run lint` could not run because the Codex desktop shell does not expose an `npm` executable; the equivalent TypeScript command passed with the local Node runtime.
+- Phase 1O validation: local Playwright and Lighthouse binaries are not present in this sandbox's `node_modules/.bin`; the added smoke coverage should run in GitHub Actions after dependency installation.
+- Phase 1O validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1O out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM; no implementation code or dependencies were added for those items.
+- Phase 1O legal-risk wording scan found only banned phrases inside "do not use" guidance, disclaimers and intentional coverage caveats.
+- Phase 1O Notion update: Launch Tasks LAUNCH-053 through LAUNCH-055 were documented and ADR-025 was added to the Decisions Log.
 - Phase 1N validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1N validation: `git diff --check` passed.
 - Phase 1N validation: `npm run lint` could not run because the Codex desktop shell does not expose an `npm` executable; the equivalent TypeScript command passed with the local Node runtime.
@@ -416,7 +437,6 @@ Next useful improvements:
 - use `docs/product-improvement-backlog.md` as the active 36-item PM/ESG specialist backlog
 - clearer map legend and layer explanation
 - coverage confidence view separating record volume from source confidence and review risk
-- persona-specific quick filters
 - stronger evidence-needed summaries in briefing and regulation detail surfaces
 - horizontal timeline/swimlane with quarter precision
 - CSV or JSON export of the static regulation database

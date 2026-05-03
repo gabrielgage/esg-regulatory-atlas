@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.15 - May 2026",
+    date: "2026-05-03",
+    label: "Persona regulation presets",
+    summary:
+      "Added role-based starting points to the Regulations workspace so CSOs, legal teams, finance controllers, procurement leads, private equity users and external advisors can apply cautious filters and first-action prompts quickly.",
+    added: [
+      "Persona preset data model for role-based regulation database lenses",
+      "Persona starting point panel on `/regulations`",
+      "Shareable `?persona=` URLs for active role lenses",
+      "Smoke coverage for persona preset application"
+    ],
+    updated: ["Regulations workspace", "Dataset metadata", "Changelog", "Project documentation"],
+    records: ["CSO", "Legal", "Finance", "Procurement", "Private equity", "Advisor"],
+    caveat: "Persona presets are orientation filters only. They do not determine applicability, legal obligations or complete role-specific coverage."
+  },
+  {
     edition: "0.5.14 - May 2026",
     date: "2026-05-03",
     label: "Sector starting points",

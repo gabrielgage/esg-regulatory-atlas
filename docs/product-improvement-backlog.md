@@ -43,6 +43,7 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Add compact starter cards for EU, UK, US, California, Singapore, Australia, Japan, India, China, Brazil, Canada, Mexico and Netherlands with first action prompts.
 
 5. **Persona-specific table presets**
+   Status: materially delivered in `0.5.15 - May 2026` through `/regulations` persona starting points and shareable `?persona=` filters.
    Add quick filters for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and external advisor personas.
 
 6. **Evidence-needed summaries**

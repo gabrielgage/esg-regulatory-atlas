@@ -141,6 +141,8 @@ Current important routes:
 
 Use `lib/marketProfile.ts` for jurisdiction profile aggregation and `lib/sectorProfile.ts` for sector profile aggregation. Do not hardcode regulatory records inside route components when an existing regulation field can drive the output.
 
+Persona starting points live in `data/personaPresets.ts` and are rendered on `/regulations`. Keep them as static orientation filters with cautious first-question and first-action prompts. Do not turn them into saved user profiles without explicit approval for authentication and database scope.
+
 Current brand context:
 
 - Publisher: Etica ESG

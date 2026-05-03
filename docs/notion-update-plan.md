@@ -106,6 +106,13 @@ ADR-024:
 - Consequence: Add `/sectors` and `/sectors/[slug]` from existing seed data; keep sector outputs as current tracked coverage and planning prompts, not complete sector legal inventories.
 - Status: Active.
 
+ADR-025:
+
+- Decision: Add persona presets as shareable static filters before building saved profiles or user dashboards.
+- Why: CSOs, legal teams, finance controllers, procurement leads, private equity users and advisors need different first-pass database lenses, but saved workspaces would require auth/database scope.
+- Consequence: Add `/regulations?persona=` role lenses backed by static data and keep them as orientation filters, not applicability determinations.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -178,6 +185,9 @@ Launch Tasks:
 - LAUNCH-050 - Add sector starting point index at `/sectors`
 - LAUNCH-051 - Add sector profile pages at `/sectors/[slug]`
 - LAUNCH-052 - Add sector-profile smoke coverage and documentation updates
+- LAUNCH-053 - Add persona starting points to the Regulations workspace
+- LAUNCH-054 - Preserve persona lenses in shareable regulation URLs
+- LAUNCH-055 - Add smoke coverage for role-based regulation filters
 
 QA finding:
 
@@ -198,3 +208,19 @@ Launch Tasks:
 QA finding:
 
 - Sector navigation now has a smoke check for `/sectors` and `/sectors/financial-services`. Future additions to the sector taxonomy should preserve stable slug generation and avoid hardcoding sector regulatory content in UI components.
+
+## 2026-05-03 Codex Update - Persona Regulation Presets
+
+Launch Command Center note:
+
+> Phase 1O added role-based starting points to the Regulations workspace so common buyer and advisor personas can apply a cautious first-pass lens without needing accounts, saved profiles or a database. Each preset shows first questions and first actions while preserving the caveat that role lenses are orientation filters only.
+
+Launch Tasks:
+
+- LAUNCH-053 - Add persona starting points to `/regulations`
+- LAUNCH-054 - Persist active role lenses in shareable `?persona=` URLs
+- LAUNCH-055 - Add smoke coverage for persona filter application
+
+QA finding:
+
+- Persona presets now clear automatically when a user manually changes filters, preventing stale role labels from remaining active after a custom filter change.

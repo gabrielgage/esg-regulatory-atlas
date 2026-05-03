@@ -59,11 +59,22 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
   await page.goto("/regulations");
 
   await expect(page.getByRole("heading", { name: /Search the ESG regulatory database/i })).toBeVisible();
+  await expect(page.getByText(/Persona starting points/i)).toBeVisible();
   await expect(page.getByRole("table")).toBeVisible();
   await page.getByRole("link", { name: /Open CSRD/i }).click();
   await expect(page).toHaveURL(/\/regulations\/csrd$/);
   await expect(page.getByRole("heading", { name: /^CSRD$/i })).toBeVisible();
   await expect(page.locator("p").filter({ hasText: /^Corporate Sustainability Reporting Directive$/ })).toBeVisible();
+});
+
+test("persona presets apply shareable regulation filters", async ({ page }) => {
+  await page.goto("/regulations");
+
+  await page.getByRole("button", { name: /Apply Finance or ESG controller persona preset/i }).click();
+  await expect(page).toHaveURL(/persona=finance-controller/);
+  await expect(page.getByText(/Active role lens/i)).toBeVisible();
+  await expect(page.getByTestId("active-persona-role")).toHaveText("Finance or ESG controller");
+  await expect(page.getByLabel(/Business function/i)).toHaveValue("Finance");
 });
 
 test("launch asset copy blocks render", async ({ page }) => {

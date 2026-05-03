@@ -7,34 +7,57 @@ import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { Filters } from "@/components/Filters";
 import { ComparePicker } from "@/components/ComparePicker";
+import { PersonaPresets } from "@/components/PersonaPresets";
 import { RegulationExportButtons } from "@/components/RegulationExportButtons";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { RegulationTable } from "@/components/RegulationTable";
 import { ShareViewButton } from "@/components/ShareViewButton";
 import { useLanguage } from "@/components/LanguageProvider";
 import { regulations } from "@/data/seed";
+import { personaPresetById, type PersonaPreset } from "@/data/personaPresets";
 import { filterRegulations, initialFilters } from "@/lib/filters";
 import { filtersFromSearchParams, filtersToSearchParams } from "@/lib/urlFilters";
-import { Regulation } from "@/types/regulation";
+import { FilterState, Regulation } from "@/types/regulation";
 
 export default function RegulationsPage() {
   const [filters, setFilters] = useState(initialFilters);
+  const [activePersona, setActivePersona] = useState("");
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
   const [urlReady, setUrlReady] = useState(false);
   const filtered = useMemo(() => filterRegulations(regulations, filters), [filters]);
   const { t } = useLanguage();
 
   useEffect(() => {
-    setFilters(filtersFromSearchParams(new URLSearchParams(window.location.search)));
+    const params = new URLSearchParams(window.location.search);
+    const persona = personaPresetById(params.get("persona") || "");
+    const explicitFilters = compactFilters(filtersFromSearchParams(params));
+    setActivePersona(persona?.id || "");
+    setFilters(persona ? { ...initialFilters, ...persona.filters, ...explicitFilters } : { ...initialFilters, ...explicitFilters });
     setUrlReady(true);
   }, []);
 
   useEffect(() => {
     if (!urlReady) return;
     const params = filtersToSearchParams(filters);
+    if (activePersona) params.set("persona", activePersona);
     const query = params.toString();
     window.history.replaceState(null, "", query ? `?${query}` : window.location.pathname);
-  }, [filters, urlReady]);
+  }, [activePersona, filters, urlReady]);
+
+  function applyPersona(preset: PersonaPreset) {
+    setActivePersona(preset.id);
+    setFilters({ ...initialFilters, ...preset.filters });
+  }
+
+  function updateFilters(nextFilters: FilterState) {
+    setActivePersona("");
+    setFilters(nextFilters);
+  }
+
+  function resetFilters() {
+    setActivePersona("");
+    setFilters(initialFilters);
+  }
 
   return (
     <main id="main-content" className="min-h-screen pb-12">
@@ -53,11 +76,16 @@ export default function RegulationsPage() {
             <RegulationExportButtons regulations={filtered} />
           </div>
         </div>
-        <Filters filters={filters} regulations={regulations} onChange={setFilters} onReset={() => setFilters(initialFilters)} />
+        <PersonaPresets activeId={activePersona} onApply={applyPersona} onClear={resetFilters} />
+        <Filters filters={filters} regulations={regulations} onChange={updateFilters} onReset={resetFilters} />
         <RegulationTable regulations={filtered} onSelect={setSelectedRegulation} />
         <FooterDisclaimer />
       </div>
       <RegulationDetail regulation={selectedRegulation} onClose={() => setSelectedRegulation(null)} />
     </main>
   );
+}
+
+function compactFilters(filters: FilterState) {
+  return Object.fromEntries(Object.entries(filters).filter(([, value]) => Boolean(value))) as Partial<FilterState>;
 }

@@ -34,6 +34,7 @@ Current capability areas:
 - Printable and copyable jurisdiction briefs
 - Citation copy blocks and edition snapshot routes
 - Persona doorway presets in the assessment wizard
+- Persona starting points in the Regulations workspace with shareable role-lens URLs
 - Light/dark mode toggle
 - Multilingual interface chrome for English, Spanish, Dutch, French, German and Portuguese
 - Shareable filtered Map and Regulations URLs
@@ -65,6 +66,16 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1O Items
+
+- Updated dataset metadata and changelog to `0.5.15 - May 2026`.
+- Added `data/personaPresets.ts` for role-based database lenses.
+- Added `components/PersonaPresets.tsx` to the Regulations workspace.
+- Added shareable `?persona=` URL support on `/regulations`.
+- Added role lenses for CSO, legal/compliance, finance/controller, procurement/supplier, private equity/investor and external advisor workflows.
+- Added smoke coverage for applying the Finance persona preset.
+- Kept persona presets as orientation filters and first-action prompts, not applicability determinations.
 
 ## Recently Delivered Phase 1N Items
 

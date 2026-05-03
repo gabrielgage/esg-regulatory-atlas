@@ -157,8 +157,8 @@ export default function PremiumRoadmapPage() {
           body="Share the market pack, alert, watchlist or advisory scan you would most likely use. This informs what gets validated before infrastructure is added."
           href={`mailto:${DATASET_META.contactEmail}?subject=${subject}&body=${body}`}
           label="Discuss roadmap"
-          secondaryHref="/alerts"
-          secondaryLabel="View alert previews"
+          secondaryHref="/launch"
+          secondaryLabel="Copy launch assets"
         />
 
         <FooterDisclaimer />

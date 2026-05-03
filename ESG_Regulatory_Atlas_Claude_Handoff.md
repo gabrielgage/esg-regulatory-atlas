@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1J decision-readiness launch pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass and Phase 1I visible-map/coverage-depth pass. The goal remains deployability and legal caution, with added emphasis on turning Atlas outputs into better planning conversations without adding payments, authentication, databases, analytics, production alerts or automation.
+The app is now in a static Phase 1K launch-assets and commercial-funnel pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass and Phase 1J decision-readiness pass. The goal remains deployability and legal caution, with added emphasis on turning commercial validation materials into reusable, caveated launch assets without adding payments, authentication, databases, analytics, production alerts or automation.
+
+## Phase 1K Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.11 - May 2026`.
+- Added `/launch` as a public launch-resource workspace.
+- Added `components/LaunchAssetLibrary.tsx` to render `data/launchAssets.ts` as copyable cards with caveats and draft-email actions.
+- Added Header navigation for Launch.
+- Linked Plans, Alerts, Advisory and Premium Roadmap CTAs into the launch workflow.
+- Updated README, roadmap, product brief, legal safeguards, development workflow, product backlog and handoff context.
+
+## Phase 1K Product Rationale
+
+The Atlas now has free, premium-preview and advisory offer surfaces, but launch execution needs reusable copy. Phase 1K makes the launch assets visible and copyable so LinkedIn posts, email drafts and advisory scan language can be reused consistently without overclaiming that paid subscriptions, automated alerts or production monitoring are live.
 
 ## Phase 1J Changes Delivered
 
@@ -272,6 +285,12 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1K validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1K validation: `git diff --check` passed.
+- Phase 1K validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1K out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM plus the existing Playwright `process.env.CI` check and a false-positive Public Safety Canada URL; no implementation code or dependencies were added for those items.
+- Phase 1K legal-risk wording scan found only banned phrases inside "do not use" guidance, disclaimers and intentional coverage caveats.
+- Phase 1K Notion update: Launch Tasks LAUNCH-041 through LAUNCH-043 were created and ADR-022 was added to the Decisions Log.
 - Phase 1J validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1J validation: `git diff --check` passed.
 - Phase 1J validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.

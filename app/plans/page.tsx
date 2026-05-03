@@ -152,8 +152,8 @@ export default function PlansPage() {
           body="Request an alert preview, market pack outline or advisory exposure scan. The current path is manual and source-linked, not automated SaaS."
           href={`mailto:${DATASET_META.contactEmail}?subject=${encodeURIComponent("Etica ESG commercial preview request")}`}
           label="Request preview"
-          secondaryHref="/alerts"
-          secondaryLabel="View alerts preview"
+          secondaryHref="/launch"
+          secondaryLabel="Copy launch assets"
         />
 
         <FooterDisclaimer />

@@ -151,6 +151,7 @@ The UI should reinforce caution through:
 - Edition snapshot routes that make version context explicit
 - Public update log and dataset edition metadata
 - Commercial preview caveats that separate free, premium-preview, advisory and future enterprise functionality
+- Launch-asset caveats that preserve manual-validation, no-production-monitoring and no-legal-advice language when copy is reused outside the site
 
 ## Review Checklist For New Features
 
@@ -166,6 +167,8 @@ Before shipping a new feature, confirm:
 ## Copy, Export And Briefing Safeguards
 
 Copyable assessment summaries, client planning summaries and jurisdiction briefs must include a caveat that the output is indicative and based on static seed data.
+
+Copyable launch assets must also preserve commercial caveats. They may invite feedback, premium-preview interest or advisory conversations, but they must not imply that paid subscriptions, automated alerts, account features or production monitoring are live.
 
 These outputs may help plan review or advisory work, but they should not say or imply that:
 

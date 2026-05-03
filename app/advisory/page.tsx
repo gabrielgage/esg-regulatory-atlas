@@ -84,8 +84,8 @@ export default function AdvisoryPage() {
             "Hi Gabriel,\n\nI would like to discuss an Advisory Atlas engagement.\n\nContext:\n- Jurisdiction(s):\n- Company/portfolio/supplier profile:\n- Main question:\n"
           )}`}
           label="Request advisory support"
-          secondaryHref="/plans"
-          secondaryLabel="View plans"
+          secondaryHref="/launch"
+          secondaryLabel="Copy outreach assets"
         />
 
         <FooterDisclaimer />

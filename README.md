@@ -25,6 +25,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Static `/plans` page explaining Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
 - Static `/alerts` page with weekly and monthly digest previews and watchlist concepts
 - Static `/advisory` page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
+- Static `/launch` page with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview launch assets
 - Client applicability wizard with indicative categories
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor use cases
 - Search and filters across jurisdiction, region, topic, sector, company type, value chain, function, obligation, status, year, confidence, data quality and advisory opportunity
@@ -44,6 +45,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Copyable client planning summary
 - Static market briefing CTA and `/premium-roadmap` route for future market packs, sector packs and portfolio scans without payments or gating
 - Static commercial offer, alert digest, premium pack and launch asset data files for May 2026 monetization validation
+- Launch-operator workflow that keeps conversion tracking manual through mailto subjects and caveated outreach copy
 - Static TypeScript seed data only
 - No authentication, database, Supabase, Stripe, scraping, cron jobs, AI summaries, email alerts or required environment variables
 
@@ -131,9 +133,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.10 - May 2026`.
+The current seed dataset edition is `0.5.11 - May 2026`.
 
-The latest local update improves decision readiness:
+The latest local update adds a launch-operator workspace:
+
+- adds `/launch` as a public page for copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets
+- promotes `data/launchAssets.ts` from passive data into visible copy blocks
+- adds copy and draft-email actions while preserving legal and commercial caveats
+- links Plans, Alerts, Advisory and Premium Roadmap CTAs into the launch workflow
+- keeps conversion tracking manual through mailto subjects and review notes only
+
+The prior `0.5.10 - May 2026` update improved decision readiness:
 
 - adds missing-facts prompts to assessment results
 - adds suggested owner and next 30-day action signals to the indicative shortlist

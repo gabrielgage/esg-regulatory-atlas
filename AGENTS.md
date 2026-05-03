@@ -294,6 +294,8 @@ Already delivered in Phase 1I: tablet-and-desktop country-outline map visibility
 
 Already delivered in Phase 1J: assessment missing-facts prompts, suggested owners, next 30-day actions and regulation-detail decision cards. Treat these as planning prompts only, not applicability conclusions.
 
+Already delivered in Phase 1K: `/launch` and `components/LaunchAssetLibrary.tsx` render copyable launch assets from `data/launchAssets.ts`. Treat launch assets as manual commercial-validation material only; copied text must preserve caveats and must not imply live paid subscriptions, automated alerts or production monitoring.
+
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 
 Phase 3 may introduce commercial packaging and paid plans, including Stripe, but Stripe remains out of scope until explicitly requested.

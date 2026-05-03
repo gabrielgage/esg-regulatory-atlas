@@ -205,6 +205,7 @@ The next implementation sequence should be:
 2. Add missing-facts prompts to assessment results.
    Status: delivered in `0.5.10 - May 2026` as assessment result and copied-shortlist prompts.
 3. Prepare LinkedIn, email and direct outreach launch assets from `data/launchAssets.ts`.
+   Status: delivered in `0.5.11 - May 2026` through `/launch` copyable asset cards and draft-email actions.
 4. Run launch QA across `/`, `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/regulations/[slug]`, `/assessment`, `/data-quality` and `/briefing`.
 5. Validate demand manually before adding paid or automated infrastructure.
 

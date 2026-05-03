@@ -64,8 +64,18 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
   await expect(page.locator("p").filter({ hasText: /^Corporate Sustainability Reporting Directive$/ })).toBeVisible();
 });
 
+test("launch asset copy blocks render", async ({ page }) => {
+  await page.goto("/launch");
+
+  await expect(page.getByRole("heading", { name: /Copyable launch assets/i })).toBeVisible();
+  await expect(page.getByText(/LinkedIn launch post: free Atlas/i)).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy asset/i }).first()).toBeVisible();
+  await expect(page.getByRole("link", { name: /Draft email/i }).first()).toBeVisible();
+  await expect(page.getByText(/commercial validation/i).first()).toBeVisible();
+});
+
 test("key launch routes render", async ({ page }) => {
-  for (const path of ["/assessment", "/timeline", "/briefing", "/data-quality", "/compare?jurisdictions=EUU,GBR", "/jurisdiction/euu/brief"]) {
+  for (const path of ["/assessment", "/timeline", "/briefing", "/data-quality", "/compare?jurisdictions=EUU,GBR", "/jurisdiction/euu/brief", "/launch"]) {
     await page.goto(path);
     await expect(page.locator("body")).toContainText(/Etica ESG|Regulatory Atlas|Brief|Timeline|Assessment|Data Quality/i);
   }

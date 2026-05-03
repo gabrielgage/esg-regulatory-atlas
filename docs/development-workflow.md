@@ -106,7 +106,7 @@ Examples:
 
 ## Commercial Surface Checklist
 
-When changing `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/premium-packs/[id]`, commercial CTAs or launch assets, confirm:
+When changing `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/premium-packs/[id]`, `/launch`, commercial CTAs or launch assets, confirm:
 
 - The page is static and deployable without required environment variables.
 - No Stripe, checkout, billing SDK, subscription, authentication, database, production email backend, scraping, cron job or paid API was added.
@@ -116,6 +116,7 @@ When changing `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/premium-pa
 - Advisory copy avoids definitive legal applicability language.
 - Commercial data files are treated as product/go-to-market data, not legal source authority.
 - Manual conversion tracking stays no-dependency unless analytics, CRM, database or email infrastructure is explicitly approved.
+- Copyable launch assets preserve caveats when copied into email, LinkedIn or sales-one-pager contexts.
 - README, product brief, roadmap, legal safeguards and handoff docs are updated.
 
 When changing content review queues or Marquee launch governance:

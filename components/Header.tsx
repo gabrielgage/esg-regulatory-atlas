@@ -18,7 +18,8 @@ const navItems = [
   { href: "/data-quality", labelKey: "nav.dataQuality" },
   { href: "/plans", label: "Plans" },
   { href: "/alerts", label: "Alerts" },
-  { href: "/advisory", label: "Advisory" }
+  { href: "/advisory", label: "Advisory" },
+  { href: "/launch", label: "Launch" }
 ] satisfies Array<{ href: string; labelKey?: TranslationKey; label?: string }>;
 
 export function Header() {

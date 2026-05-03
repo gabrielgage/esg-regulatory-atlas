@@ -85,6 +85,13 @@ ADR-021:
 - Consequence: Add missing facts, suggested owners and next 30-day actions while preserving source-review and legal-advice caveats.
 - Status: Active.
 
+ADR-022:
+
+- Decision: Use copyable launch assets for manual commercial validation before adding automation.
+- Why: The product needs faster feedback on premium alerts, market packs and advisory scans, but infrastructure such as email automation, CRM sync, accounts and billing is still out of scope.
+- Consequence: Add `/launch` with caveated copy blocks and draft-email actions; keep conversion tracking manual.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -112,6 +119,7 @@ Track:
 - Copyable premium pack brief template
 - Marquee content review queue for premium/advisory launch records
 - Market coverage-depth launch note
+- Copyable launch-resource page for LinkedIn, email, direct outreach, advisory scan and premium-preview assets
 
 ## QA And Review Findings
 
@@ -144,6 +152,9 @@ Launch Tasks:
 - LAUNCH-038 - Add missing-facts prompts to assessment results
 - LAUNCH-039 - Add suggested owner and next 30-day actions to assessment output
 - LAUNCH-040 - Add threshold, timing, enforcement and missing-data decision cards to regulation details
+- LAUNCH-041 - Publish copyable launch-resource page backed by `data/launchAssets.ts`
+- LAUNCH-042 - Link commercial CTAs to launch assets for manual validation
+- LAUNCH-043 - Preserve legal and commercial caveats in copied launch assets
 
 QA finding:
 

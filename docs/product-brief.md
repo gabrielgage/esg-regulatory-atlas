@@ -100,6 +100,7 @@ The MVP includes:
 - `/premium-packs/[id]` static sample pages for individual premium pack scopes
 - Premium pack pages with copyable and printable Markdown briefs
 - Manual conversion tracking model for CTA and mailto-subject validation without analytics infrastructure
+- `/launch` workspace with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
 - Reusable commercial CTA surfaces
 - Source quality indicators

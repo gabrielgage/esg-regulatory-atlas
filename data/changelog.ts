@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.11 - May 2026",
+    date: "2026-05-03",
+    label: "Launch assets and commercial funnel",
+    summary:
+      "Added a public launch-resource workspace so outreach copy, LinkedIn drafts, advisory scan copy and premium-alert validation prompts can be copied directly from the site while preserving legal and commercial caveats.",
+    added: [
+      "/launch route for copyable launch resources",
+      "Reusable launch asset library component",
+      "Copy and draft-email actions for launch assets",
+      "Navigation and CTA links from commercial pages into the launch workflow"
+    ],
+    updated: ["Plans", "Alerts preview", "Advisory page", "Premium roadmap", "Header navigation", "Project documentation"],
+    records: ["homepage-commercial-strip", "linkedin-free-atlas", "direct-advisory-scan-email", "premium-alert-preview-email"],
+    caveat: "Launch assets are manual commercial validation materials. They do not describe live paid subscriptions, production monitoring, automated alerts or legal advice."
+  },
+  {
     edition: "0.5.10 - May 2026",
     date: "2026-05-03",
     label: "Decision-readiness launch layer",

@@ -50,6 +50,7 @@ Current capability areas:
 - `/plans` commercial architecture page for Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
 - `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
+- `/launch` launch-resource workspace with copyable LinkedIn, email, direct-outreach, advisory and premium-preview assets
 - Concrete premium market-pack previews in `/premium-roadmap`
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
 - Assessment outputs with missing facts, suggested owners and next 30-day actions
@@ -61,6 +62,14 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1K Items
+
+- Updated dataset metadata and changelog to `0.5.11 - May 2026`.
+- Added `/launch` as a public launch-operator page for copyable commercial validation assets.
+- Added `components/LaunchAssetLibrary.tsx` to render `data/launchAssets.ts` with copy and draft-email actions.
+- Linked Plans, Alerts, Advisory and Premium Roadmap CTAs into the launch workflow.
+- Kept launch conversion manual through mailto subjects, static copy and caveats; no analytics, CRM sync, email backend, billing, accounts or database were added.
 
 ## Recently Delivered Phase 1J Items
 

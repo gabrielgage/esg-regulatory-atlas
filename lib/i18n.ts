@@ -12,6 +12,7 @@ export const languages: Array<{ code: LanguageCode; label: string; shortLabel: s
 export const dictionary = {
   en: {
     "nav.map": "Map",
+    "nav.markets": "Markets",
     "nav.regulations": "Regulations",
     "nav.assessment": "Assessment",
     "nav.timeline": "Timeline",
@@ -121,6 +122,7 @@ export const dictionary = {
   },
   es: {
     "nav.map": "Mapa",
+    "nav.markets": "Mercados",
     "nav.regulations": "Regulaciones",
     "nav.assessment": "Evaluación",
     "nav.timeline": "Cronograma",
@@ -229,6 +231,7 @@ export const dictionary = {
   },
   nl: {
     "nav.map": "Kaart",
+    "nav.markets": "Markten",
     "nav.regulations": "Regelgeving",
     "nav.assessment": "Beoordeling",
     "nav.timeline": "Tijdlijn",
@@ -337,6 +340,7 @@ export const dictionary = {
   },
   fr: {
     "nav.map": "Carte",
+    "nav.markets": "Marchés",
     "nav.regulations": "Réglementations",
     "nav.assessment": "Évaluation",
     "nav.timeline": "Calendrier",
@@ -445,6 +449,7 @@ export const dictionary = {
   },
   de: {
     "nav.map": "Karte",
+    "nav.markets": "Märkte",
     "nav.regulations": "Regulierung",
     "nav.assessment": "Bewertung",
     "nav.timeline": "Zeitplan",
@@ -553,6 +558,7 @@ export const dictionary = {
   },
   pt: {
     "nav.map": "Mapa",
+    "nav.markets": "Mercados",
     "nav.regulations": "Regulações",
     "nav.assessment": "Avaliação",
     "nav.timeline": "Cronograma",

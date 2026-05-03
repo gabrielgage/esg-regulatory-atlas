@@ -114,6 +114,8 @@ Use `data/marketCoverage.ts` or `data/phase1cCoverage.ts` for additive country-m
 Current important routes:
 
 - `/`: map workspace
+- `/markets`: jurisdiction market profile index
+- `/jurisdiction/[code]`: jurisdiction market profile
 - `/regulations`: searchable regulation database
 - `/regulations/[slug]`: per-regulation detail route
 - `/assessment`: indicative applicability wizard
@@ -133,6 +135,7 @@ Current important routes:
 - `/plans`: static Free Atlas / Premium Intelligence / Advisory Atlas / Enterprise Future comparison
 - `/alerts`: static premium alert and watchlist preview with no email backend
 - `/advisory`: static advisory service surface for manual scans and briefings
+- `/launch`: static launch-resource workspace for caveated outreach copy
 
 Current brand context:
 
@@ -297,6 +300,8 @@ Already delivered in Phase 1J: assessment missing-facts prompts, suggested owner
 Already delivered in Phase 1K: `/launch` and `components/LaunchAssetLibrary.tsx` render copyable launch assets from `data/launchAssets.ts`. Treat launch assets as manual commercial-validation material only; copied text must preserve caveats and must not imply live paid subscriptions, automated alerts or production monitoring.
 
 Already delivered in Phase 1L: Data Quality source freshness signals and Marquee review owner/action/premium-blocker controls. Treat these as editorial source-governance signals only, not legal verification, source certification or complete review.
+
+Already delivered in Phase 1M: `/markets` and `/jurisdiction/[code]` market profile pages. Treat market profiles as current tracked seed coverage and planning context, not complete local legal inventories or applicability determinations.
 
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 

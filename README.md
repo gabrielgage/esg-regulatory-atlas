@@ -21,6 +21,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Filters and badges for regulations, standards, frameworks, guidance, market expectations and voluntary frameworks
 - Public changelog at `/changelog`
 - Jurisdiction and regulation comparison workspace at `/compare`
+- Market profile index at `/markets` and jurisdiction market pages at `/jurisdiction/[code]`
 - Printable/copyable jurisdiction briefs at `/jurisdiction/[code]/brief`
 - Static `/plans` page explaining Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
 - Static `/alerts` page with weekly and monthly digest previews and watchlist concepts
@@ -112,7 +113,7 @@ Seed data is stored in:
 - `data/contentReview.ts`
 - `data/taxonomy.ts`
 
-Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
+Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market profile aggregation lives in `lib/marketProfile.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
 
 ## Project guidance
 
@@ -134,9 +135,16 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.12 - May 2026`.
+The current seed dataset edition is `0.5.13 - May 2026`.
 
-The latest local update deepens source governance:
+The latest local update adds market profile navigation:
+
+- adds `/markets` for browsing tracked jurisdictions by region, direct seed coverage and review flags
+- adds `/jurisdiction/[code]` market profile pages with priority records, timing signals, evidence needs, source confidence and advisory next steps
+- links selected jurisdictions from the map panel into the new market profile route
+- keeps market profiles as current tracked seed coverage, not complete local legal inventories
+
+The prior `0.5.12 - May 2026` update deepened source governance:
 
 - adds source freshness signals on `/data-quality` for stale sources, upcoming review, missing priority source and date-sensitive records
 - adds owner placeholders and source/threshold next actions to the Marquee launch review queue

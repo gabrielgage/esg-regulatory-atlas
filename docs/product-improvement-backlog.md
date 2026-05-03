@@ -90,7 +90,7 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add a separate maturity classification, such as voluntary framework, consultation, adopted not yet in force, partially in force, in force, delayed or under review.
 
 17. **Jurisdiction market pages**
-    Status: partially delivered in `0.5.5 - May 2026` through richer printable/copyable jurisdiction briefs; standalone market pages remain open.
+    Status: materially delivered in `0.5.13 - May 2026` through `/markets` and `/jurisdiction/[code]`; richer source-review workflow and formal owner assignment remain open.
     Build richer `/jurisdiction/[code]` pages with local regulatory drivers, source confidence, first reporting years, priority sectors and watch items.
 
 37. **Commercial offer architecture**
@@ -207,6 +207,7 @@ The next implementation sequence should be:
 3. Prepare LinkedIn, email and direct outreach launch assets from `data/launchAssets.ts`.
    Status: delivered in `0.5.11 - May 2026` through `/launch` copyable asset cards and draft-email actions.
 4. Run launch QA across `/`, `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/regulations/[slug]`, `/assessment`, `/data-quality` and `/briefing`.
+   Status: expanded in `0.5.13 - May 2026` with smoke coverage for `/markets` and `/jurisdiction/euu`; full visual QA remains ongoing.
 5. Validate demand manually before adding paid or automated infrastructure.
 
 ## Documentation Rule

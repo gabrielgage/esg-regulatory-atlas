@@ -19,6 +19,7 @@ The current MVP should remain:
 Current capability areas:
 
 - Interactive regulatory map
+- `/markets` market profile index and `/jurisdiction/[code]` market profile pages
 - Jurisdiction profiles
 - Filterable regulation table
 - Regulation detail view
@@ -63,6 +64,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1M Items
+
+- Updated dataset metadata and changelog to `0.5.13 - May 2026`.
+- Added `/markets` as a browseable market profile index grouped by region.
+- Added `/jurisdiction/[code]` market profile pages for tracked jurisdictions.
+- Added reusable market profile aggregation logic in `lib/marketProfile.ts`.
+- Linked selected map jurisdictions to market profile pages.
+- Added smoke coverage for `/markets` and `/jurisdiction/euu`.
 
 ## Recently Delivered Phase 1L Items
 

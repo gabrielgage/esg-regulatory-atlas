@@ -1,4 +1,4 @@
-import { ClipboardList, Link2, ShieldCheck, TriangleAlert } from "lucide-react";
+import { CalendarClock, ClipboardList, Link2, ShieldCheck, TriangleAlert } from "lucide-react";
 import { Badge } from "./Badge";
 import { Regulation } from "@/types/regulation";
 import { formatDate } from "@/lib/utils";
@@ -28,7 +28,10 @@ export function DataQualityPanel({
   const sourceCount = regulations.reduce((count, regulation) => count + regulation.sourceUrls.length, 0);
   const sourced = regulations.filter((regulation) => regulation.sourceUrls.length > 0).length;
   const sourceCoverage = total ? Math.round((sourced / total) * 100) : 0;
+  const staleSources = regulations.filter((regulation) => isOverdue(regulation.nextReviewDate)).length;
   const upcomingReview = regulations.filter((regulation) => isDueSoon(regulation.nextReviewDate)).length;
+  const missingPrioritySource = regulations.filter((regulation) => !hasPrioritySource(regulation)).length;
+  const dateSensitive = regulations.filter((regulation) => isDateSensitive(regulation)).length;
   const primaryBacked = regulations.filter((regulation) => hasPrioritySource(regulation)).length;
   const confidenceNeedsReview = regulations.filter((regulation) => regulation.confidenceLevel !== "high" || regulation.sourceConfidence === "needs_review").length;
   const highImpactNeedsReview = regulations.filter(
@@ -44,6 +47,32 @@ export function DataQualityPanel({
     label,
     count: regulations.filter((regulation) => regulation.dataQualityStatus === status).length
   }));
+  const freshnessSignals = [
+    {
+      label: "Stale source",
+      value: staleSources,
+      detail: "next-review date has passed",
+      className: "border-red-200 bg-red-50 text-red-700"
+    },
+    {
+      label: "Upcoming review",
+      value: upcomingReview,
+      detail: "next review due within 90 days",
+      className: "border-amber-200 bg-amber-50 text-amber-800"
+    },
+    {
+      label: "Missing primary source",
+      value: missingPrioritySource,
+      detail: "no primary, regulator or standard-setter source",
+      className: "border-violet/20 bg-violet/10 text-violet"
+    },
+    {
+      label: "Date-sensitive record",
+      value: dateSensitive,
+      detail: "consultation, transition, paused or date-uncertain",
+      className: "border-blue-200 bg-blue-50 text-blue-700"
+    }
+  ];
 
   return (
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
@@ -66,6 +95,27 @@ export function DataQualityPanel({
         <Metric icon={TriangleAlert} label="Review queue" value={String(reviewQueue.length)} detail="records needing production research" />
         <Metric icon={TriangleAlert} label="Priority checks" value={String(highImpactNeedsReview)} detail={`${upcomingReview} records have upcoming review dates`} />
         <Metric icon={TriangleAlert} label="Confidence checks" value={String(confidenceNeedsReview)} detail={`${sourceCount} captured source links in total`} />
+      </div>
+
+      <div className="mt-5 rounded-xl border border-slate-200 p-4">
+        <div className="flex items-center gap-2">
+          <CalendarClock className="h-5 w-5 text-teal" />
+          <h3 className="text-sm font-semibold text-ink">Source freshness signals</h3>
+        </div>
+        <p className="mt-1 text-sm leading-6 text-slate-500">
+          These signals help decide which records need source review before premium examples, advisory scans or client-ready summaries.
+        </p>
+        <div className="mt-4 grid gap-3 md:grid-cols-4">
+          {freshnessSignals.map((signal) => (
+            <div key={signal.label} className="rounded-lg bg-slate-50 p-3">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">{signal.label}</span>
+                <Badge className={signal.className}>{signal.value}</Badge>
+              </div>
+              <p className="mt-2 text-sm leading-5 text-slate-600">{signal.detail}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[.85fr_1.15fr]">
@@ -159,11 +209,30 @@ function isDueSoon(date?: string) {
   const reviewDate = new Date(date);
   if (Number.isNaN(reviewDate.getTime())) return false;
   const ninetyDays = 1000 * 60 * 60 * 24 * 90;
-  return reviewDate.getTime() - Date.now() <= ninetyDays;
+  const delta = reviewDate.getTime() - Date.now();
+  return delta >= 0 && delta <= ninetyDays;
+}
+
+function isOverdue(date?: string) {
+  if (!date) return false;
+  const reviewDate = new Date(date);
+  if (Number.isNaN(reviewDate.getTime())) return false;
+  return reviewDate.getTime() < Date.now();
 }
 
 function hasPrioritySource(regulation: Regulation) {
   return regulation.sourceUrls.some((source) => source.type === "primary" || source.type === "regulator" || source.type === "standards_body");
+}
+
+function isDateSensitive(regulation: Regulation) {
+  return (
+    regulation.dataQualityStatus === "date_uncertain" ||
+    regulation.status === "consultation" ||
+    regulation.status === "transition" ||
+    regulation.status === "paused" ||
+    isDueSoon(regulation.consultationDeadline) ||
+    isDueSoon(regulation.firstReportDueDate)
+  );
 }
 
 function reviewQueueItem(regulation: Regulation): ReviewQueueItem {
@@ -193,7 +262,10 @@ function reviewQueueItem(regulation: Regulation): ReviewQueueItem {
     score += 3;
     reasons.push("date uncertain");
   }
-  if (isDueSoon(regulation.nextReviewDate)) {
+  if (isOverdue(regulation.nextReviewDate)) {
+    score += 3;
+    reasons.push("stale source");
+  } else if (isDueSoon(regulation.nextReviewDate)) {
     score += 2;
     reasons.push("review due soon");
   }

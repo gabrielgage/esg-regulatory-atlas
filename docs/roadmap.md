@@ -57,11 +57,20 @@ Current capability areas:
 - Regulation detail decision cards for threshold gaps, timing caveats, enforcement cues and missing data
 - Quarter-level milestone timeline covering consultation, effective-date, reporting-year, report-due and Atlas review events
 - Review-queue scoring in the data-quality dashboard with visible reasons for source and confidence follow-up
+- Source freshness signals and Marquee owner/action controls for premium/advisory review readiness
 - Market coverage-depth targets and Data Quality panel for direct records per jurisdiction
 - Tablet-and-desktop Natural Earth country-outline map with stronger visual contrast and geometry fallback
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1L Items
+
+- Updated dataset metadata and changelog to `0.5.12 - May 2026`.
+- Added Data Quality source freshness signals for stale sources, upcoming review, missing primary/regulator/standard-setter sources and date-sensitive records.
+- Extended the Marquee launch review data model with optional owner, source-review action, threshold-review action and premium-use blocker fields.
+- Surfaced owner placeholders, next actions and premium-use blocked labels in the Marquee review queue.
+- Added Playwright smoke coverage for the Data Quality source-governance queue.
 
 ## Recently Delivered Phase 1K Items
 

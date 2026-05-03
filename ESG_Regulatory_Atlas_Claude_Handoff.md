@@ -2,7 +2,19 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1K launch-assets and commercial-funnel pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass and Phase 1J decision-readiness pass. The goal remains deployability and legal caution, with added emphasis on turning commercial validation materials into reusable, caveated launch assets without adding payments, authentication, databases, analytics, production alerts or automation.
+The app is now in a static Phase 1L source-governance pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass and Phase 1K launch-assets pass. The goal remains deployability and legal caution, with added emphasis on making source freshness, review ownership and premium-use blockers visible without turning the static MVP into legal verification or production monitoring.
+
+## Phase 1L Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.12 - May 2026`.
+- Added source freshness signals to Data Quality: stale source, upcoming review, missing primary source and date-sensitive record.
+- Extended `data/contentReview.ts` with optional review owner, source-review next action, threshold-review next action and premium-use blocker fields.
+- Upgraded `components/MarqueeReviewQueue.tsx` with owner placeholders, next actions and premium-use blocked labels.
+- Added smoke coverage for the Data Quality source-governance queue.
+
+## Phase 1L Product Rationale
+
+Premium packs and advisory scans need a visible review-control layer before they can be trusted in client conversations. Phase 1L makes review risk easier to triage while preserving the core legal safeguard: source-governance signals are editorial controls, not legal verification or completeness claims.
 
 ## Phase 1K Changes Delivered
 
@@ -285,6 +297,13 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1L validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1L validation: `git diff --check` passed.
+- Phase 1L validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1L out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM plus the existing Playwright `process.env.CI` check and a false-positive Public Safety Canada URL; no implementation code or dependencies were added for those items.
+- Phase 1L legal-risk wording scan found only banned phrases inside "do not use" guidance, disclaimers and intentional coverage caveats.
+- Phase 1L Notion update: Launch Tasks LAUNCH-044 through LAUNCH-046 were created and ADR-023 was added to the Decisions Log.
+- Phase 1L publishing note: direct git push from the Codex sandbox was blocked by missing GitHub HTTPS credentials after network access was granted. This workflow limitation is documented in `docs/issue-resolution-log.md`; publish the current branch through GitHub Desktop if shell credentials are unavailable.
 - Phase 1K validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1K validation: `git diff --check` passed.
 - Phase 1K validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.

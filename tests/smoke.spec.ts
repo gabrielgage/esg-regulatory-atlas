@@ -74,6 +74,16 @@ test("launch asset copy blocks render", async ({ page }) => {
   await expect(page.getByText(/commercial validation/i).first()).toBeVisible();
 });
 
+test("data quality source-governance queue renders", async ({ page }) => {
+  await page.goto("/data-quality");
+
+  await expect(page.getByText(/Source freshness signals/i)).toBeVisible();
+  await expect(page.getByText(/Stale source/i)).toBeVisible();
+  await expect(page.getByText(/Missing primary source/i)).toBeVisible();
+  await expect(page.getByText(/Owner placeholder:/i).first()).toBeVisible();
+  await expect(page.getByText(/Premium use:/i).first()).toBeVisible();
+});
+
 test("key launch routes render", async ({ page }) => {
   for (const path of ["/assessment", "/timeline", "/briefing", "/data-quality", "/compare?jurisdictions=EUU,GBR", "/jurisdiction/euu/brief", "/launch"]) {
     await page.goto(path);

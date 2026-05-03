@@ -57,10 +57,29 @@ export function MarqueeReviewQueue({
               <div className="flex flex-wrap gap-2">
                 <Badge className={statusClass(item.status)}>{marqueeReviewStatusLabel[item.status]}</Badge>
                 {item.launchBlocker ? <Badge className="border-red-200 bg-red-50 text-red-700">Launch blocker</Badge> : null}
+                {premiumUseBlocked(item) ? <Badge className="border-amber-200 bg-amber-50 text-amber-800">Premium use blocked</Badge> : null}
               </div>
             </div>
             <p className="mt-3 text-sm leading-6 text-slate-600">{item.whyItMatters}</p>
             {item.premiumUse ? <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-violet">{item.premiumUse}</p> : null}
+            <div className="mt-3 grid gap-2 rounded-lg bg-white p-3 text-xs leading-5 text-slate-600 sm:grid-cols-2">
+              <div>
+                <span className="font-semibold text-ink">Owner placeholder: </span>
+                {item.ownerPlaceholder || defaultOwner(item.status)}
+              </div>
+              <div>
+                <span className="font-semibold text-ink">Premium use: </span>
+                {premiumUseBlocked(item) ? "Blocked until source/status/threshold review" : "Orientation-ready with caveats"}
+              </div>
+              <div className="sm:col-span-2">
+                <span className="font-semibold text-ink">Source next action: </span>
+                {item.sourceReviewNextAction || defaultSourceAction(item.status)}
+              </div>
+              <div className="sm:col-span-2">
+                <span className="font-semibold text-ink">Threshold next action: </span>
+                {item.thresholdReviewNextAction || defaultThresholdAction(item.status)}
+              </div>
+            </div>
             <div className="mt-3 space-y-2">
               {item.reviewQuestions.slice(0, 3).map((question) => (
                 <div key={question} className="flex gap-2 text-sm leading-5 text-slate-600">
@@ -103,4 +122,29 @@ function statusClass(status: MarqueeReviewStatus) {
   if (status === "needs-status-review") return "border-violet/20 bg-violet/10 text-violet";
   if (status === "needs-source-review") return "border-red-200 bg-red-50 text-red-700";
   return "border-slate-200 bg-white text-slate-600";
+}
+
+function premiumUseBlocked(item: { status: MarqueeReviewStatus; tier: string; launchBlocker: boolean; premiumUseBlockedUntilReviewed?: boolean }) {
+  return item.premiumUseBlockedUntilReviewed ?? (item.launchBlocker || (item.tier === "marquee-10" && item.status !== "source-ready"));
+}
+
+function defaultOwner(status: MarqueeReviewStatus) {
+  if (status === "needs-threshold-review") return "Threshold review owner";
+  if (status === "needs-status-review") return "Regulatory status review owner";
+  if (status === "needs-source-review") return "Source review owner";
+  if (status === "watchlist-gap") return "Coverage expansion owner";
+  return "Content QA owner";
+}
+
+function defaultSourceAction(status: MarqueeReviewStatus) {
+  if (status === "source-ready") return "Confirm sources stay current during the next scheduled review.";
+  if (status === "needs-source-review") return "Add or refresh primary, regulator or standard-setter sources before premium use.";
+  if (status === "watchlist-gap") return "Identify the first official source set before adding premium examples.";
+  return "Recheck official sources and source dates before using this record in premium or advisory outputs.";
+}
+
+function defaultThresholdAction(status: MarqueeReviewStatus) {
+  if (status === "needs-threshold-review") return "Confirm scope thresholds, phase-ins, listing triggers and cross-border exposure rules.";
+  if (status === "needs-status-review") return "Confirm whether the record is in force, transitional, consultation-stage, paused or monitor-only.";
+  return "Confirm entity-specific scope facts before any client reliance.";
 }

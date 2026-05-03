@@ -102,6 +102,7 @@ The MVP includes:
 - Manual conversion tracking model for CTA and mailto-subject validation without analytics infrastructure
 - `/launch` workspace with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
+- Source freshness and premium-use blocker signals for source-governance triage
 - Reusable commercial CTA surfaces
 - Source quality indicators
 - Advisory opportunity and business impact views

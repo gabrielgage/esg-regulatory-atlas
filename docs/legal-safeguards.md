@@ -140,6 +140,7 @@ The UI should reinforce caution through:
 - Persistent short disclaimer
 - Footer disclaimer
 - Source links
+- Source freshness and review-blocker signals
 - Confidence badges
 - Data quality badges
 - Last reviewed dates
@@ -169,6 +170,8 @@ Before shipping a new feature, confirm:
 Copyable assessment summaries, client planning summaries and jurisdiction briefs must include a caveat that the output is indicative and based on static seed data.
 
 Copyable launch assets must also preserve commercial caveats. They may invite feedback, premium-preview interest or advisory conversations, but they must not imply that paid subscriptions, automated alerts, account features or production monitoring are live.
+
+Source-governance labels such as "source-ready seed", "premium use blocked", "stale source" or "missing primary source" are editorial controls for review prioritization. They must not be framed as legal verification, official source approval or complete legal review.
 
 These outputs may help plan review or advisory work, but they should not say or imply that:
 

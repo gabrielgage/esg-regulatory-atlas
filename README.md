@@ -32,6 +32,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Saved quick views for consulting and compliance workflows
 - Timeline, methodology/source library, coverage matrix, impact matrix and comparison views
 - Dedicated Data Quality page for source coverage and review risk
+- Source freshness signals and Marquee review owner/action controls for premium/advisory readiness
 - Citation widget on regulation detail pages with APA-style, legal research note and BibTeX copy blocks
 - Edition snapshot route at `/edition/0.5/regulations/[slug]`
 - Branded 404 page and ISSB redirect aliases
@@ -133,9 +134,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.11 - May 2026`.
+The current seed dataset edition is `0.5.12 - May 2026`.
 
-The latest local update adds a launch-operator workspace:
+The latest local update deepens source governance:
+
+- adds source freshness signals on `/data-quality` for stale sources, upcoming review, missing priority source and date-sensitive records
+- adds owner placeholders and source/threshold next actions to the Marquee launch review queue
+- marks premium-use blockers where launch-critical records need review before premium or advisory examples
+- adds smoke coverage for the Data Quality source-governance queue
+- keeps these signals as editorial review controls, not legal verification
+
+The prior `0.5.11 - May 2026` update added a launch-operator workspace:
 
 - adds `/launch` as a public page for copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets
 - promotes `data/launchAssets.ts` from passive data into visible copy blocks

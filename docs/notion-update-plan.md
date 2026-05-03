@@ -92,6 +92,13 @@ ADR-022:
 - Consequence: Add `/launch` with caveated copy blocks and draft-email actions; keep conversion tracking manual.
 - Status: Active.
 
+ADR-023:
+
+- Decision: Treat source freshness and premium-use blockers as editorial governance signals.
+- Why: The static Atlas can show which records need review before premium/advisory examples, but it cannot certify legal completeness or source verification.
+- Consequence: Add source freshness, owner placeholders, next actions and premium-use blocked labels on Data Quality while preserving caveats.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -155,6 +162,9 @@ Launch Tasks:
 - LAUNCH-041 - Publish copyable launch-resource page backed by `data/launchAssets.ts`
 - LAUNCH-042 - Link commercial CTAs to launch assets for manual validation
 - LAUNCH-043 - Preserve legal and commercial caveats in copied launch assets
+- LAUNCH-044 - Add source freshness signals to Data Quality
+- LAUNCH-045 - Add Marquee review owners, next actions and premium-use blockers
+- LAUNCH-046 - Add source-governance smoke coverage
 
 QA finding:
 

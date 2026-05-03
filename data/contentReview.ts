@@ -15,6 +15,10 @@ export type MarqueeReviewItem = {
   whyItMatters: string;
   reviewQuestions: string[];
   premiumUse?: string;
+  ownerPlaceholder?: string;
+  sourceReviewNextAction?: string;
+  thresholdReviewNextAction?: string;
+  premiumUseBlockedUntilReviewed?: boolean;
 };
 
 export const marqueeReviewItems: MarqueeReviewItem[] = [
@@ -25,7 +29,11 @@ export const marqueeReviewItems: MarqueeReviewItem[] = [
     launchBlocker: true,
     whyItMatters: "Anchor EU corporate reporting regime and primary advisory wedge for double materiality, controls and assurance readiness.",
     reviewQuestions: ["Are non-EU undertaking triggers clearly caveated?", "Are phase-in years and assurance timing still current?", "Are linked ESRS dependencies clear?"],
-    premiumUse: "EU ESG Compliance Pack"
+    premiumUse: "EU ESG Compliance Pack",
+    ownerPlaceholder: "EU corporate reporting reviewer",
+    sourceReviewNextAction: "Recheck Commission CSRD/ESRS and member-state transposition sources before using in premium examples.",
+    thresholdReviewNextAction: "Confirm EU and non-EU undertaking thresholds, phase-in groups and assurance timing.",
+    premiumUseBlockedUntilReviewed: true
   },
   {
     id: "issb-s1-s2",
@@ -34,7 +42,11 @@ export const marqueeReviewItems: MarqueeReviewItem[] = [
     launchBlocker: true,
     whyItMatters: "Global baseline for ISSB adoption views and market-by-market climate reporting readiness.",
     reviewQuestions: ["Which markets have adopted or proposed ISSB-aligned rules?", "Are voluntary framework caveats separate from mandatory adoption?", "Are market aliases searchable?"],
-    premiumUse: "ISSB Adoption Tracker Pack"
+    premiumUse: "ISSB Adoption Tracker Pack",
+    ownerPlaceholder: "ISSB adoption reviewer",
+    sourceReviewNextAction: "Verify IFRS/ISSB standards and market adoption sources separately.",
+    thresholdReviewNextAction: "Confirm each market's local scope, listing trigger and effective date before premium use.",
+    premiumUseBlockedUntilReviewed: true
   },
   {
     id: "eu-taxonomy",
@@ -43,7 +55,11 @@ export const marqueeReviewItems: MarqueeReviewItem[] = [
     launchBlocker: true,
     whyItMatters: "Core sustainable finance and CSRD-linked disclosure regime with high client demand.",
     reviewQuestions: ["Are eligibility and alignment outputs distinguished?", "Are financial vs non-financial undertakings separated?", "Are source links primary enough for client review?"],
-    premiumUse: "EU ESG Compliance Pack"
+    premiumUse: "EU ESG Compliance Pack",
+    ownerPlaceholder: "Sustainable finance reviewer",
+    sourceReviewNextAction: "Recheck taxonomy regulation, delegated acts and Commission guidance before premium use.",
+    thresholdReviewNextAction: "Separate financial, non-financial and CSRD-linked disclosure triggers.",
+    premiumUseBlockedUntilReviewed: true
   },
   {
     id: "sfdr",

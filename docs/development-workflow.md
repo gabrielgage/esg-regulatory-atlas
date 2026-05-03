@@ -124,6 +124,8 @@ When changing content review queues or Marquee launch governance:
 - Treat the queue as editorial/source-governance support, not legal verification.
 - Confirm launch-blocker labels do not imply complete legal coverage.
 - Check that premium-use labels map to static previews or advisory workflows only.
+- Keep owner placeholders and next actions operational, not legal conclusions.
+- Source freshness labels should mean review priority, not source verification.
 - Update `docs/data-methodology.md`, `docs/legal-safeguards.md`, `docs/roadmap.md` and the handoff.
 
 When changing assessment or decision-readiness output:

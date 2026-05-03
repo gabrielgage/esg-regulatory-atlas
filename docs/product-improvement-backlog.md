@@ -119,9 +119,9 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Track commercial interest through visible CTA routes, mailto subjects and manual review notes before adding analytics, CRM sync, email automation or billing infrastructure.
 
 43. **Marquee launch review queue**
-    Status: partially delivered in `0.5.8 - May 2026`.
+    Status: partially delivered in `0.5.8 - May 2026` and expanded in `0.5.12 - May 2026`.
     Revenue relevance: Trust, premium packs and advisory.
-    Maintain a high-value content-review queue for Marquee 10 and Marquee 25 regimes with launch-blocker flags, review questions, premium-use mapping and visible source/status/threshold review needs.
+    Maintain a high-value content-review queue for Marquee 10 and Marquee 25 regimes with launch-blocker flags, review questions, owner placeholders, source/threshold next actions, premium-use blockers and visible source/status/threshold review needs.
 
 44. **Copyable premium pack briefs**
     Status: partially delivered in `0.5.8 - May 2026`.

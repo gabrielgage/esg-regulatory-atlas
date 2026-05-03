@@ -80,6 +80,7 @@ function PersonaButton({
   return (
     <button
       type="button"
+      aria-label={`Apply ${preset.role} persona preset`}
       aria-pressed={active}
       onClick={onApply}
       className={cn(

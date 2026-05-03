@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.13 - May 2026",
+    date: "2026-05-03",
+    label: "Market profile navigation layer",
+    summary:
+      "Added a Markets workspace and jurisdiction-level market profile pages so users can move from the map into structured market context, priority records, timing signals, evidence needs, source confidence and advisory next steps.",
+    added: [
+      "/markets route for browsing tracked jurisdictions by region",
+      "/jurisdiction/[code] market profile route for every tracked market",
+      "Reusable market profile aggregation logic",
+      "Market profile links from the selected-jurisdiction panel"
+    ],
+    updated: ["Header navigation", "Jurisdiction panel", "Smoke tests", "Project documentation"],
+    records: ["EUU", "GBR", "USA", "USA-CA", "SGP", "AUS", "JPN", "IND", "BRA", "CAN", "MEX", "NLD"],
+    caveat: "Market profiles show current tracked seed coverage and planning prompts only. They are not complete local legal inventories and do not determine entity-specific applicability."
+  },
+  {
     edition: "0.5.12 - May 2026",
     date: "2026-05-03",
     label: "Source governance and freshness signals",

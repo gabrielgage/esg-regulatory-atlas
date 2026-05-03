@@ -70,12 +70,22 @@ export function CountryPanel({
 
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
         <Link
+          href={`/jurisdiction/${jurisdiction.code.toLowerCase()}`}
+          className="inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+        >
+          <ArrowUpRight className="h-4 w-4" />
+          Open market profile
+        </Link>
+        <Link
           href={`/jurisdiction/${jurisdiction.code.toLowerCase()}/brief`}
           className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50"
         >
           <FileText className="h-4 w-4" />
           Open country brief
         </Link>
+      </div>
+
+      <div className="mt-2 grid gap-2 sm:grid-cols-1">
         <Link
           href={`/compare?a=${jurisdiction.code}&b=${jurisdiction.code === "GBR" ? "EUU" : "GBR"}`}
           className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50"

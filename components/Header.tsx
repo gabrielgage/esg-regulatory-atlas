@@ -11,6 +11,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { href: "/", labelKey: "nav.map" },
+  { href: "/markets", labelKey: "nav.markets" },
   { href: "/regulations", labelKey: "nav.regulations" },
   { href: "/assessment", labelKey: "nav.assessment" },
   { href: "/timeline", labelKey: "nav.timeline" },

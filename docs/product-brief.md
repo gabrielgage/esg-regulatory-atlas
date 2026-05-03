@@ -101,6 +101,7 @@ The MVP includes:
 - Premium pack pages with copyable and printable Markdown briefs
 - Manual conversion tracking model for CTA and mailto-subject validation without analytics infrastructure
 - `/launch` workspace with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets
+- `/markets` workspace for browsing jurisdiction market profiles by region, source coverage and review flags
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
 - Source freshness and premium-use blocker signals for source-governance triage
 - Reusable commercial CTA surfaces
@@ -193,6 +194,7 @@ The MVP is successful when:
 - Data Quality: `/data-quality`
 - Comparison: `/compare`, `/compare?jurisdictions=EUU,GBR`, `/compare?ids=csrd,issb-s1-s2`
 - Jurisdiction brief: `/jurisdiction/[code]/brief`
+- Jurisdiction market profile: `/jurisdiction/[code]`
 - Plans: `/plans`
 - Alerts preview: `/alerts`
 - Advisory: `/advisory`

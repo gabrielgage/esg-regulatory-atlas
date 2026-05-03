@@ -2,7 +2,21 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1L source-governance pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass and Phase 1K launch-assets pass. The goal remains deployability and legal caution, with added emphasis on making source freshness, review ownership and premium-use blockers visible without turning the static MVP into legal verification or production monitoring.
+The app is now in a static Phase 1M market-profile navigation pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass and Phase 1L source-governance pass. The goal remains deployability and legal caution, with added emphasis on helping users move from the map into jurisdiction-level market context without treating seed coverage as complete local legal inventory.
+
+## Phase 1M Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.13 - May 2026`.
+- Added `/markets` as a public index of tracked jurisdiction market profiles grouped by region.
+- Added `/jurisdiction/[code]` market profile pages for every tracked non-international jurisdiction.
+- Added `lib/marketProfile.ts` to aggregate priority records, direct/inherited coverage, timing signals, source confidence, evidence needs, review flags and advisory opportunities.
+- Linked the selected-jurisdiction map panel to the new market profile route.
+- Added Header navigation and translated `nav.markets` labels for supported interface languages.
+- Added smoke coverage for `/markets` and `/jurisdiction/euu`.
+
+## Phase 1M Product Rationale
+
+The map is the strongest visual entry point, but users also need a browseable way to understand each market without opening a printable brief first. Market profile pages make jurisdiction context, priority records, evidence needs, timing signals and review caveats easier to inspect while preserving the core safeguard: market profiles show tracked seed intelligence and planning prompts only, not complete coverage or applicability conclusions.
 
 ## Phase 1L Changes Delivered
 
@@ -297,6 +311,11 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1M validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1M validation: `git diff --check` passed.
+- Phase 1M validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1M out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM plus the existing Playwright `process.env.CI` check and a false-positive Public Safety Canada URL; no implementation code or dependencies were added for those items.
+- Phase 1M legal-risk wording scan found only banned phrases inside "do not use" guidance, disclaimers and intentional coverage caveats.
 - Phase 1L validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1L validation: `git diff --check` passed.
 - Phase 1L validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.

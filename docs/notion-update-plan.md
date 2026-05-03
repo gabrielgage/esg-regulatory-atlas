@@ -165,6 +165,9 @@ Launch Tasks:
 - LAUNCH-044 - Add source freshness signals to Data Quality
 - LAUNCH-045 - Add Marquee review owners, next actions and premium-use blockers
 - LAUNCH-046 - Add source-governance smoke coverage
+- LAUNCH-047 - Add market profile index at `/markets`
+- LAUNCH-048 - Add jurisdiction market profile pages at `/jurisdiction/[code]`
+- LAUNCH-049 - Link map-side jurisdiction selection to market profile pages
 
 QA finding:
 

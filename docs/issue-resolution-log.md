@@ -17,6 +17,34 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-03 - PR #21 Persona Smoke Test Matched The Wrong Button
+
+Status: resolved.
+
+### Symptom
+
+PR #21 showed one failing GitHub check: `CI / Browser smoke tests`. Typecheck/build and Vercel deployment checks were successful.
+
+### Root Cause
+
+The new persona smoke test clicked `page.getByRole("button", { name: /Finance/i })`. Playwright found two matching persona cards because the private equity preset also contained finance-related text in its accessible button name. The application behavior was correct; the browser test locator was too broad.
+
+### Resolution
+
+- Added explicit `aria-label` values to persona preset buttons using the full role name.
+- Updated the smoke test to click `Apply Finance or ESG controller persona preset`.
+- Kept the test focused on the user-facing accessibility contract instead of hidden implementation details.
+
+### Prevention Rule
+
+When card buttons contain rich descriptive text, give them clear accessible labels and use exact role-label locators in smoke tests. Do not rely on a broad keyword when several cards may contain that word in supporting copy.
+
+### Files Changed
+
+- `components/PersonaPresets.tsx`
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-03 - PR #16 Browser Smoke Test Used Broad Assessment Locator
 
 Status: resolved.

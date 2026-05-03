@@ -43,6 +43,16 @@ test("language toggle updates interface chrome", async ({ page }) => {
   await expect(page.getByText(/Inteligencia regulatoria indicativa/i)).toBeVisible();
 });
 
+test("assessment results include decision readiness prompts", async ({ page }) => {
+  await page.goto("/assessment");
+
+  await expect(page.getByText(/Indicative shortlist/i)).toBeVisible();
+  await expect(page.getByText(/Suggested owner:/i).first()).toBeVisible();
+  await expect(page.getByText(/Missing fact:/i).first()).toBeVisible();
+  await expect(page.getByText(/Next 30 days:/i).first()).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy shortlist/i })).toBeVisible();
+});
+
 test("regulations workspace supports detail navigation", async ({ page }) => {
   await page.goto("/regulations");
 

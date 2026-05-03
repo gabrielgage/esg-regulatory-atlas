@@ -93,6 +93,8 @@ Manual conversion tracking must remain transparent and lightweight during the st
 
 Content review queues must be described as editorial/source-governance tools. Do not imply that a record is legally complete, verified for client reliance or definitively applicable because it appears in a Marquee review list.
 
+Assessment missing-fact prompts, suggested owners and next 30-day actions must be described as planning prompts. They do not determine applicability, confirm compliance duties or replace qualified legal review.
+
 ## Alert Preview Safeguards
 
 Alert previews must use wording such as:

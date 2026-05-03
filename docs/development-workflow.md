@@ -125,6 +125,13 @@ When changing content review queues or Marquee launch governance:
 - Check that premium-use labels map to static previews or advisory workflows only.
 - Update `docs/data-methodology.md`, `docs/legal-safeguards.md`, `docs/roadmap.md` and the handoff.
 
+When changing assessment or decision-readiness output:
+
+- Preserve cautious categories such as potentially relevant, facts to confirm and source to verify.
+- Do not add definitive applicability language or compliance instructions.
+- Ensure copied summaries keep legal caveats and source-review warnings.
+- Update smoke tests when new decision prompts become launch-critical.
+
 ## CI Lessons Learned
 
 The current browser and Lighthouse checks are intended to protect launch-critical behavior without making the MVP impossible to iterate.

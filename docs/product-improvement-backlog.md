@@ -46,8 +46,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Add quick filters for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and external advisor personas.
 
 6. **Evidence-needed summaries**
-   Status: partially delivered in `0.5.5 - May 2026`.
-   Surface the most common evidence requirements per selected regulation or jurisdiction, such as emissions inventory, supplier attestations, board minutes, controls evidence and financial statement links.
+   Status: partially delivered in `0.5.5 - May 2026` and expanded in `0.5.10 - May 2026`.
+   Surface the most common evidence requirements per selected regulation or jurisdiction, such as emissions inventory, supplier attestations, board minutes, controls evidence and financial statement links. Assessment results now include evidence, missing facts, suggested owners and next 30-day actions.
 
 7. **Sector-specific starting points**
    Add sector entry filters for financial services, manufacturing, agriculture, energy, real estate, retail, technology and transport.
@@ -79,9 +79,11 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Convert the timeline into a quarter-based swimlane for effective dates, reporting years, consultation deadlines, first reports and phase-in notes.
 
 14. **Threshold matrix**
+    Status: partially delivered in `0.5.10 - May 2026` through threshold and missing-fact decision prompts; structured matrix remains open.
     Add structured threshold fields and a comparison matrix for employee, revenue, balance sheet, listing, financial institution, supply chain and market-exposure triggers.
 
 15. **Penalty and enforcement layer**
+    Status: partially delivered in `0.5.10 - May 2026` through enforcement/penalty cue cards; record-level population remains open.
     Add legally cautious penalty/enforcement fields by jurisdiction, with source priority and clear caveats where penalties are implementation-dependent or uncertain.
 
 16. **Regulation maturity axis**
@@ -201,6 +203,7 @@ The next implementation sequence should be:
 
 1. Source-review Marquee 10 and Marquee 25 records used in premium examples.
 2. Add missing-facts prompts to assessment results.
+   Status: delivered in `0.5.10 - May 2026` as assessment result and copied-shortlist prompts.
 3. Prepare LinkedIn, email and direct outreach launch assets from `data/launchAssets.ts`.
 4. Run launch QA across `/`, `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/regulations/[slug]`, `/assessment`, `/data-quality` and `/briefing`.
 5. Validate demand manually before adding paid or automated infrastructure.

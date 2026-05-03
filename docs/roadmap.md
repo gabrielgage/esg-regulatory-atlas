@@ -52,6 +52,8 @@ Current capability areas:
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
 - Concrete premium market-pack previews in `/premium-roadmap`
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
+- Assessment outputs with missing facts, suggested owners and next 30-day actions
+- Regulation detail decision cards for threshold gaps, timing caveats, enforcement cues and missing data
 - Quarter-level milestone timeline covering consultation, effective-date, reporting-year, report-due and Atlas review events
 - Review-queue scoring in the data-quality dashboard with visible reasons for source and confidence follow-up
 - Market coverage-depth targets and Data Quality panel for direct records per jurisdiction
@@ -59,6 +61,14 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1J Items
+
+- Updated dataset metadata and changelog to `0.5.10 - May 2026`.
+- Extended the assessment engine with missing facts, next steps and suggested owner signals.
+- Upgraded the assessment result cards and copied shortlist output with evidence, source-to-verify, missing facts, next 30-day action and caveats.
+- Added regulation-detail decision cards for thresholds, timing uncertainty, enforcement or penalty cues, related regimes and missing decision data.
+- Kept the new outputs as planning prompts only, not legal applicability determinations.
 
 ## Recently Delivered Phase 1I Items
 

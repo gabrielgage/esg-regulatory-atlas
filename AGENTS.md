@@ -292,6 +292,8 @@ Already delivered in Phase 1H: copyable/printable premium pack briefs and a Marq
 
 Already delivered in Phase 1I: tablet-and-desktop country-outline map visibility, map geometry fallback, coverage-depth targets in `data/coverageTargets.ts`, a Data Quality coverage-depth panel and direct market-depth seed records in `data/marketDepthAdditions.ts`. Treat coverage targets as product QA controls, not complete legal inventory claims.
 
+Already delivered in Phase 1J: assessment missing-facts prompts, suggested owners, next 30-day actions and regulation-detail decision cards. Treat these as planning prompts only, not applicability conclusions.
+
 Phase 2 may introduce a database, admin editing, authentication, client workspaces, regulatory monitoring workflows, source review workflows, and AI-assisted summaries, but only after explicit scope approval.
 
 Phase 3 may introduce commercial packaging and paid plans, including Stripe, but Stripe remains out of scope until explicitly requested.

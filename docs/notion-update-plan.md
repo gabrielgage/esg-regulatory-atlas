@@ -78,6 +78,13 @@ ADR-020:
 - Consequence: Add coverage-depth targets, visible gaps and direct-record QA while preserving seed-data caveats.
 - Status: Active.
 
+ADR-021:
+
+- Decision: Treat assessment missing-fact output as planning prompts, not applicability conclusions.
+- Why: Users need practical next steps, owners and evidence prompts, but the static MVP cannot determine legal applicability.
+- Consequence: Add missing facts, suggested owners and next 30-day actions while preserving source-review and legal-advice caveats.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -134,6 +141,9 @@ Launch Tasks:
 - LAUNCH-035 - Add market coverage-depth target model and Data Quality panel
 - LAUNCH-036 - Expand direct market-depth seed records for under-covered jurisdictions
 - LAUNCH-037 - Add map rendering and coverage target QA checks
+- LAUNCH-038 - Add missing-facts prompts to assessment results
+- LAUNCH-039 - Add suggested owner and next 30-day actions to assessment output
+- LAUNCH-040 - Add threshold, timing, enforcement and missing-data decision cards to regulation details
 
 QA finding:
 

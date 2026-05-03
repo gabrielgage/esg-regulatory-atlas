@@ -72,7 +72,7 @@ The MVP includes:
 - Condensed parent-record model with child items, aliases and milestones
 - Regulation detail pages or drawers
 - Assessment wizard with legally cautious output categories
-- Assessment results with visible trigger reasons, review priority, evidence to prepare, functions involved and source-to-verify guidance
+- Assessment results with visible trigger reasons, review priority, evidence to prepare, functions involved, source-to-verify guidance, missing facts, suggested owners and next 30-day actions
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor users
 - Timeline and methodology surfaces
 - Quarter-level milestone timeline for consultation, effective, reporting, due-date and source-review planning

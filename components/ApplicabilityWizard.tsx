@@ -265,20 +265,24 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
                   </div>
                   <div className="mt-3 grid gap-2 rounded-lg bg-slate-50 p-3 text-xs leading-5 text-slate-600 sm:grid-cols-2">
                     <div>
-                      <span className="font-semibold text-ink">First action: </span>
-                      {result.firstActions[0] || "Review primary sources and assign an accountable owner."}
+                      <span className="font-semibold text-ink">Suggested owner: </span>
+                      {result.suggestedOwner}
                     </div>
                     <div>
                       <span className="font-semibold text-ink">Evidence: </span>
                       {result.evidenceNeeded[0] || "Applicability assessment"}
                     </div>
                     <div>
-                      <span className="font-semibold text-ink">Functions: </span>
-                      {result.functionsInvolved.join(", ") || "Assign owner"}
+                      <span className="font-semibold text-ink">Missing fact: </span>
+                      {result.missingFacts[0] || "Confirm entity-specific scope."}
                     </div>
                     <div>
                       <span className="font-semibold text-ink">Verify: </span>
                       {result.sourceToVerify}
+                    </div>
+                    <div className="sm:col-span-2">
+                      <span className="font-semibold text-ink">Next 30 days: </span>
+                      {result.nextSteps[0] || result.firstActions[0] || "Review primary sources and assign an accountable owner."}
                     </div>
                   </div>
                   <p className="mt-2 text-xs leading-5 text-slate-400">{result.sourceQualityNote}</p>
@@ -418,9 +422,13 @@ function buildAssessmentSummary(results: ReturnType<typeof evaluateApplicability
       `- ${result.regulation.shortName} (${result.category}; ${result.reviewPriority} review priority)`,
       `  - Why it appears: ${result.reasons[0]}`,
       `  - Triggered by: ${result.triggeredBy.join(", ")}`,
+      `  - Suggested owner: ${result.suggestedOwner}`,
       `  - First action: ${result.firstActions[0] || "Review primary sources."}`,
+      `  - Missing facts to confirm: ${result.missingFacts.slice(0, 2).join("; ") || "Entity-specific scope and thresholds"}`,
+      `  - Next 30-day action: ${result.nextSteps[0] || "Assign owner and review primary sources."}`,
       `  - Evidence to start: ${result.evidenceNeeded.slice(0, 2).join(", ") || "Applicability assessment"}`,
-      `  - Source to verify: ${result.sourceToVerify}`
+      `  - Source to verify: ${result.sourceToVerify}`,
+      `  - Caveat: ${result.caveat}`
     ]),
     "",
     "## Caveat",

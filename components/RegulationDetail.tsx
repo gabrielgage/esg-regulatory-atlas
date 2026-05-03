@@ -12,6 +12,11 @@ import { profileFor } from "@/lib/applicability";
 export function RegulationDetail({ regulation, onClose }: { regulation: Regulation | null; onClose: () => void }) {
   if (!regulation) return null;
   const profile = profileFor(regulation);
+  const thresholdSummary = thresholdSummaryFor(regulation);
+  const phaseInSummary = phaseInSummaryFor(regulation);
+  const enforcementSummary = enforcementSummaryFor(regulation);
+  const missingData = missingDecisionDataFor(regulation);
+  const relatedRegimes = relatedRegimesFor(regulation);
 
   return (
     <aside className="fixed inset-y-0 right-0 z-50 w-full max-w-2xl overflow-y-auto overscroll-contain border-l bg-white p-6 shadow-2xl">
@@ -43,9 +48,21 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
         <div className="grid gap-3 sm:grid-cols-2">
           <DecisionCard title="What this is" body={`${labelOrMissing(regulation.recordType)} - ${labelOrMissing(regulation.legalForce)} - ${regulation.status.replaceAll("_", " ")}`} />
           <DecisionCard title="Who may be affected" body={profile.companyTypes.slice(0, 5).join(", ") || "Confirm entity profile and thresholds."} />
+          <DecisionCard title="Facts to confirm" body={thresholdSummary} />
+          <DecisionCard title="Timing uncertainty" body={phaseInSummary} />
           <DecisionCard title="Evidence likely needed" body={profile.evidenceRequired.slice(0, 3).join(", ") || "Applicability assessment and source review log."} />
           <DecisionCard title="Suggested owners" body={regulation.affectedFunctions.slice(0, 4).join(", ") || "Assign accountable owner before reliance."} />
+          <DecisionCard title="Enforcement or penalty cue" body={enforcementSummary} />
+          <DecisionCard title="Missing decision data" body={missingData.join("; ")} />
         </div>
+        {relatedRegimes.length ? (
+          <Card title="Related regimes and dependencies">
+            <BadgeList values={relatedRegimes} tone="slate" />
+            <p className="mt-3 text-sm text-slate-600">
+              Related items are orientation links only. Confirm whether each regime is legally separate, transposed locally or only a market expectation before using it in a compliance workplan.
+            </p>
+          </Card>
+        ) : null}
         <Card title="Atlas record governance">
           <div className="grid gap-3 sm:grid-cols-2">
             <Metric label="Record type" value={labelOrMissing(regulation.recordType)} />
@@ -217,6 +234,47 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
       </div>
     </aside>
   );
+}
+
+function thresholdSummaryFor(regulation: Regulation) {
+  if (regulation.applicabilityScope?.thresholds?.length) return regulation.applicabilityScope.thresholds.slice(0, 2).join("; ");
+  if (regulation.legalForce === "mandatory") return "Thresholds are not fully structured yet; confirm employee, revenue, asset, listing, sector and market-exposure triggers in primary sources.";
+  return "Confirm whether the record is voluntary, investor/customer-driven or only a monitor item for this entity profile.";
+}
+
+function phaseInSummaryFor(regulation: Regulation) {
+  if (regulation.phaseInNotes) return regulation.phaseInNotes;
+  if (regulation.firstReportDueDate) return `First report due date captured as ${formatDate(regulation.firstReportDueDate)}; verify any phase-in relief or local guidance.`;
+  if (regulation.consultationDeadline) return `Consultation deadline captured as ${formatDate(regulation.consultationDeadline)}; monitor whether final rules change timing or scope.`;
+  if (regulation.firstReportingYear) return `Indicative first reporting year ${regulation.firstReportingYear}; confirm entity-specific phase-in and filing date.`;
+  return "No specific phase-in date captured; treat timing as a source-review item.";
+}
+
+function enforcementSummaryFor(regulation: Regulation) {
+  if (regulation.penalties) return regulation.penalties;
+  if (regulation.legalForce === "mandatory") return "Penalty or enforcement detail is not captured in structured form yet; review official sources before client reliance.";
+  if (regulation.legalForce === "supervisory-expectation") return "Supervisory expectation; confirm regulator guidance, examination focus and enforcement posture.";
+  return "No enforcement claim is made for this seed record.";
+}
+
+function missingDecisionDataFor(regulation: Regulation) {
+  const missing = new Set<string>();
+  if (!regulation.applicabilityScope?.thresholds?.length && regulation.legalForce === "mandatory") missing.add("threshold detail");
+  if (!regulation.penalties && regulation.legalForce === "mandatory") missing.add("penalty/enforcement detail");
+  if (!regulation.firstReportDueDate && regulation.businessImpacts.includes("reporting obligation")) missing.add("first report due date");
+  if (regulation.dataQualityStatus !== "verified_seed") missing.add(`data quality: ${qualityLabel(regulation.dataQualityStatus)}`);
+  if (regulation.confidenceLevel !== "high") missing.add(`confidence: ${regulation.confidenceLevel}`);
+  if (!regulation.sourceUrls.some((source) => source.type === "primary" || source.type === "regulator" || source.type === "standards_body")) missing.add("primary/regulator source");
+  return missing.size ? Array.from(missing) : ["No obvious decision-data gaps captured in the seed record."];
+}
+
+function relatedRegimesFor(regulation: Regulation) {
+  const values = new Set<string>();
+  regulation.aliases?.slice(0, 5).forEach((alias) => values.add(alias));
+  regulation.childItems?.slice(0, 5).forEach((item) => values.add(item.label));
+  if (regulation.parentRecordId) values.add(`Parent record: ${regulation.parentRecordId}`);
+  regulation.topics.slice(0, 3).forEach((topic) => values.add(topic));
+  return Array.from(values).slice(0, 8);
 }
 
 function qualityLabel(status: Regulation["dataQualityStatus"]) {

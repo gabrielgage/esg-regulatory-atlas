@@ -2,7 +2,19 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1I visible-map and market-coverage-depth pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up and Phase 1H premium-output/content-governance pass. The goal remains deployability and legal caution, with added emphasis on making the map visibly inspectable and making direct market coverage depth transparent without adding payments, authentication, databases, analytics, production alerts or automation.
+The app is now in a static Phase 1J decision-readiness launch pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass and Phase 1I visible-map/coverage-depth pass. The goal remains deployability and legal caution, with added emphasis on turning Atlas outputs into better planning conversations without adding payments, authentication, databases, analytics, production alerts or automation.
+
+## Phase 1J Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.10 - May 2026`.
+- Extended `ApplicabilityResult` with missing facts, next steps and suggested owner signals.
+- Upgraded assessment result cards with suggested owner, missing fact, evidence, source-to-verify and next 30-day action fields.
+- Expanded copied assessment shortlists with missing facts, next actions, evidence, source-to-verify and per-record caveats.
+- Upgraded the regulation detail drawer with decision cards for thresholds, timing uncertainty, enforcement cues, related regimes and missing decision data.
+
+## Phase 1J Product Rationale
+
+The Atlas already identifies potentially relevant records, but launch demos need to answer the next practical questions: what facts are missing, who should own review, what should happen in the next 30 days and which source should be verified first. Phase 1J makes the output more useful for client triage while preserving cautious legal language and source-review caveats.
 
 ## Phase 1I Changes Delivered
 
@@ -260,6 +272,11 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1J validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1J validation: `git diff --check` passed.
+- Phase 1J validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1J out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM plus the existing Playwright `process.env.CI` check; no implementation code or dependencies were added for those items.
+- Phase 1J legal-risk wording scan found only banned phrases inside "do not use" guidance plus intentional coverage caveats that tracked coverage is not complete global coverage.
 - Phase 1I validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1I validation: `git diff --check` passed.
 - Phase 1I validation: static coverage target check passed for 27 coverage targets using `node -r sucrase/register`; all tracked target markets meet the direct-record target configured in `data/coverageTargets.ts`.

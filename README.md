@@ -22,6 +22,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Public changelog at `/changelog`
 - Jurisdiction and regulation comparison workspace at `/compare`
 - Market profile index at `/markets` and jurisdiction market pages at `/jurisdiction/[code]`
+- Sector starting point index at `/sectors` and sector profile pages at `/sectors/[slug]`
 - Printable/copyable jurisdiction briefs at `/jurisdiction/[code]/brief`
 - Static `/plans` page explaining Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
 - Static `/alerts` page with weekly and monthly digest previews and watchlist concepts
@@ -113,7 +114,7 @@ Seed data is stored in:
 - `data/contentReview.ts`
 - `data/taxonomy.ts`
 
-Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market profile aggregation lives in `lib/marketProfile.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
+Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market profile aggregation lives in `lib/marketProfile.ts`, and sector profile aggregation lives in `lib/sectorProfile.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
 
 ## Project guidance
 
@@ -135,9 +136,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.13 - May 2026`.
+The current seed dataset edition is `0.5.14 - May 2026`.
 
-The latest local update adds market profile navigation:
+The latest local update adds sector starting points:
+
+- adds `/sectors` for browsing tracked business sectors by direct record count, high-impact links, market signals and review flags
+- adds `/sectors/[slug]` sector profile pages with priority records, evidence needs, first actions, source confidence, timing/watch items and advisory next steps
+- adds `lib/sectorProfile.ts` so sector pages are aggregated from existing regulation seed data rather than hardcoded UI content
+- adds Sectors to global navigation and smoke coverage for `/sectors` and `/sectors/financial-services`
+- keeps sector pages as current tracked seed coverage, not complete sector legal inventories or applicability conclusions
+
+The prior `0.5.13 - May 2026` update added market profile navigation:
 
 - adds `/markets` for browsing tracked jurisdictions by region, direct seed coverage and review flags
 - adds `/jurisdiction/[code]` market profile pages with priority records, timing signals, evidence needs, source confidence and advisory next steps

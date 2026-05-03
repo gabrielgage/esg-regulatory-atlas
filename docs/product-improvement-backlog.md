@@ -50,6 +50,7 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Surface the most common evidence requirements per selected regulation or jurisdiction, such as emissions inventory, supplier attestations, board minutes, controls evidence and financial statement links. Assessment results now include evidence, missing facts, suggested owners and next 30-day actions.
 
 7. **Sector-specific starting points**
+   Status: materially delivered in `0.5.14 - May 2026` through `/sectors`, `/sectors/[slug]` and `lib/sectorProfile.ts`.
    Add sector entry filters for financial services, manufacturing, agriculture, energy, real estate, retail, technology and transport.
 
 8. **Translation coverage audit**

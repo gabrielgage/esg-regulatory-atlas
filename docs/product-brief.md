@@ -51,9 +51,9 @@ Common user questions:
 The intended workflow is:
 
 1. Start on the map.
-2. Select a jurisdiction or pre-defined view.
+2. Select a jurisdiction, market profile, sector starting point or pre-defined view.
 3. Narrow the dataset with search and filters.
-4. Review the jurisdiction panel for regulatory drivers and key obligations.
+4. Review jurisdiction or sector context for regulatory drivers, priority records and likely evidence needs.
 5. Open individual regulation detail pages or drawers.
 6. Review applicability caveats, key dates, sources, confidence, and data quality.
 7. Use assessment, timeline, methodology, and briefing pages for deeper planning.
@@ -102,6 +102,7 @@ The MVP includes:
 - Manual conversion tracking model for CTA and mailto-subject validation without analytics infrastructure
 - `/launch` workspace with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets
 - `/markets` workspace for browsing jurisdiction market profiles by region, source coverage and review flags
+- `/sectors` workspace and `/sectors/[slug]` pages for business-context regulatory triage by sector, market signal, evidence need and advisory workstream
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
 - Source freshness and premium-use blocker signals for source-governance triage
 - Reusable commercial CTA surfaces
@@ -195,6 +196,7 @@ The MVP is successful when:
 - Comparison: `/compare`, `/compare?jurisdictions=EUU,GBR`, `/compare?ids=csrd,issb-s1-s2`
 - Jurisdiction brief: `/jurisdiction/[code]/brief`
 - Jurisdiction market profile: `/jurisdiction/[code]`
+- Sector starting points: `/sectors`, `/sectors/[slug]`
 - Plans: `/plans`
 - Alerts preview: `/alerts`
 - Advisory: `/advisory`

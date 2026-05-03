@@ -99,6 +99,13 @@ ADR-023:
 - Consequence: Add source freshness, owner placeholders, next actions and premium-use blocked labels on Data Quality while preserving caveats.
 - Status: Active.
 
+ADR-024:
+
+- Decision: Add sector starting points as static triage surfaces before building role-specific dashboards.
+- Why: Many users begin with business context such as financial services, manufacturing, agriculture or technology rather than a regulation name. Sector pages improve orientation without adding accounts, saved profiles or database infrastructure.
+- Consequence: Add `/sectors` and `/sectors/[slug]` from existing seed data; keep sector outputs as current tracked coverage and planning prompts, not complete sector legal inventories.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -168,7 +175,26 @@ Launch Tasks:
 - LAUNCH-047 - Add market profile index at `/markets`
 - LAUNCH-048 - Add jurisdiction market profile pages at `/jurisdiction/[code]`
 - LAUNCH-049 - Link map-side jurisdiction selection to market profile pages
+- LAUNCH-050 - Add sector starting point index at `/sectors`
+- LAUNCH-051 - Add sector profile pages at `/sectors/[slug]`
+- LAUNCH-052 - Add sector-profile smoke coverage and documentation updates
 
 QA finding:
 
 - Map visual defect resolved: SVG country paths were hidden below the large desktop breakpoint and borders were too subtle. Future map QA must assert visible country paths, not just the map container.
+
+## 2026-05-03 Codex Update - Sector Starting Points
+
+Launch Command Center note:
+
+> Phase 1N added sector starting points so users can begin from business context before opening an assessment or filtered regulation table. The new sector pages aggregate current tracked seed records into priority records, market signals, evidence needs, source confidence and advisory next steps while preserving the caveat that sector coverage is not complete legal inventory.
+
+Launch Tasks:
+
+- LAUNCH-050 - Add sector starting point index at `/sectors`
+- LAUNCH-051 - Add sector profile pages at `/sectors/[slug]`
+- LAUNCH-052 - Add sector-profile smoke coverage and update README, roadmap, product brief, backlog and handoff docs
+
+QA finding:
+
+- Sector navigation now has a smoke check for `/sectors` and `/sectors/financial-services`. Future additions to the sector taxonomy should preserve stable slug generation and avoid hardcoding sector regulatory content in UI components.

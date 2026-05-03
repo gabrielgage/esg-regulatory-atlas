@@ -116,6 +116,8 @@ Current important routes:
 - `/`: map workspace
 - `/markets`: jurisdiction market profile index
 - `/jurisdiction/[code]`: jurisdiction market profile
+- `/sectors`: sector starting point index
+- `/sectors/[slug]`: sector profile page
 - `/regulations`: searchable regulation database
 - `/regulations/[slug]`: per-regulation detail route
 - `/assessment`: indicative applicability wizard
@@ -136,6 +138,8 @@ Current important routes:
 - `/alerts`: static premium alert and watchlist preview with no email backend
 - `/advisory`: static advisory service surface for manual scans and briefings
 - `/launch`: static launch-resource workspace for caveated outreach copy
+
+Use `lib/marketProfile.ts` for jurisdiction profile aggregation and `lib/sectorProfile.ts` for sector profile aggregation. Do not hardcode regulatory records inside route components when an existing regulation field can drive the output.
 
 Current brand context:
 

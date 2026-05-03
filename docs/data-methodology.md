@@ -208,7 +208,14 @@ Recommended review cadence:
 - Voluntary frameworks and standards: every 180 days
 - Records marked needs review, source missing, or date uncertain: prioritize before client use
 
-The Data Quality page now surfaces a prioritized review queue that considers data-quality status, missing sources, missing primary/regulator/standard-setter sources, high-impact flags, upcoming review dates, confidence flags, changing statuses and core mandatory records. Each review queue item should show visible reason chips so researchers know why the record needs attention.
+The Data Quality page now surfaces a prioritized review queue that considers data-quality status, missing sources, missing primary/regulator/standard-setter sources, high-impact flags, source freshness, upcoming review dates, confidence flags, changing statuses and core mandatory records. Each review queue item should show visible reason chips so researchers know why the record needs attention.
+
+Source freshness signals should distinguish:
+
+- stale source: the next-review date has passed
+- upcoming review: the next-review date is within 90 days
+- missing primary source: no primary, regulator or standard-setter source is captured
+- date-sensitive record: the record is consultation-stage, transitional, paused or date-uncertain
 
 ## Premium And Alert Preview Governance
 
@@ -219,9 +226,10 @@ Before using a record in a premium example:
 1. Confirm the record has a source URL or mark it clearly as needing review.
 2. Prefer primary, regulator or standard-setter sources.
 3. Check last-reviewed and next-review dates.
-4. Do not imply automated monitoring is live.
-5. Include a caveat that alerts and packs are static previews or advisory-supported outputs unless a later phase explicitly implements production operations.
-6. Treat source-missing, date-uncertain and needs-review records as review priorities before client reliance.
+4. Check the Marquee review queue for owner placeholders, source-review actions, threshold-review actions and premium-use blocked markers.
+5. Do not imply automated monitoring is live.
+6. Include a caveat that alerts and packs are static previews or advisory-supported outputs unless a later phase explicitly implements production operations.
+7. Treat source-missing, date-uncertain and needs-review records as review priorities before client reliance.
 
 ## Adding A Regulation
 

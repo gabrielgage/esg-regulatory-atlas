@@ -246,3 +246,34 @@ The theme initialization script and `ThemeToggle` helper used `prefers-color-sch
 - `docs/development-workflow.md`
 - `docs/product-brief.md`
 - `docs/roadmap.md`
+
+## 2026-05-03 - Codex Sandbox Could Not Push Branch To GitHub
+
+Status: documented workflow limitation.
+
+### Symptom
+
+After the next launch-train updates were committed locally, `git push -u origin codex/source-governance-deepening` could not publish the branch from the Codex sandbox.
+
+### Root Cause
+
+Two separate environment constraints appeared:
+
+- before network permission was granted, the sandbox could not resolve `github.com`
+- after network permission was granted, git still could not read GitHub HTTPS credentials from the sandbox (`could not read Username for 'https://github.com': Device not configured`)
+
+The local repository was clean and the commits existed locally, so this was a publish-credential limitation rather than an application, build or branch-state defect.
+
+### Resolution
+
+- Kept the completed commits on local branches.
+- Documented that GitHub Desktop should be used to publish the current branch when shell credentials are unavailable.
+- Future Codex rounds should attempt direct push only after network access exists, then fall back quickly to the GitHub Desktop "Publish branch" flow if credentials are unavailable.
+
+### Prevention Rule
+
+When local git push fails with credential access errors, do not keep retrying or change repository remotes. Confirm the branch is clean, document the limitation and ask the owner to publish the branch through GitHub Desktop or another authenticated Git client.
+
+### Files Changed
+
+- `docs/issue-resolution-log.md`

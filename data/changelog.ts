@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.12 - May 2026",
+    date: "2026-05-03",
+    label: "Source governance and freshness signals",
+    summary:
+      "Deepened the Data Quality governance layer with source freshness signals, Marquee review owners, next actions and premium-use blockers so launch-critical regimes can be triaged before premium examples or advisory reliance.",
+    added: [
+      "Source freshness signals for stale sources, upcoming review, missing priority source and date-sensitive records",
+      "Owner placeholders and source/threshold next actions in the Marquee launch review queue",
+      "Premium-use blocked marker for records that need review before premium or advisory examples",
+      "Smoke coverage for the source-governance queue"
+    ],
+    updated: ["Data Quality", "Marquee review queue", "Content review data", "Smoke tests", "Project documentation"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr", "csddd", "eudr", "california-sb253-sb261", "uk-sdr"],
+    caveat: "Source-governance signals are editorial controls for review prioritisation. They do not verify legal completeness or determine entity-specific applicability."
+  },
+  {
     edition: "0.5.11 - May 2026",
     date: "2026-05-03",
     label: "Launch assets and commercial funnel",

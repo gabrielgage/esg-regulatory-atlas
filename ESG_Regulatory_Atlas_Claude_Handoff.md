@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1M market-profile navigation pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass and Phase 1L source-governance pass. The goal remains deployability and legal caution, with added emphasis on helping users move from the map into jurisdiction-level market context without treating seed coverage as complete local legal inventory.
+The app is now in a static Phase 1N sector-starting-point pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass and Phase 1M market-profile navigation pass. The goal remains deployability and legal caution, with added emphasis on helping users move from business sector context into priority records, market signals and evidence needs without treating seed coverage as complete sector legal inventory.
+
+## Phase 1N Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.14 - May 2026`.
+- Added `/sectors` as a public index of tracked sector starting points.
+- Added `/sectors/[slug]` sector profile pages for every tracked sector.
+- Added `lib/sectorProfile.ts` to aggregate direct sector records, broad all-sector context, priority records, market signals, timing/watch items, evidence needs, source confidence, affected functions and advisory opportunities.
+- Added Header navigation and translated `nav.sectors` labels for supported interface languages.
+- Added smoke coverage for `/sectors` and `/sectors/financial-services`.
+
+## Phase 1N Product Rationale
+
+Many buyers and advisory conversations start with sector context rather than a regulation name or country. Sector starting points help a financial-services, manufacturing, agriculture, energy, retail or technology user understand which records to inspect first, which markets are most visible in the current seed coverage, what evidence may be needed and where source review risk remains. The pages are intentionally caveated as current tracked seed intelligence, not complete sector inventories or applicability determinations.
 
 ## Phase 1M Changes Delivered
 
@@ -311,6 +324,14 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1N validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1N validation: `git diff --check` passed.
+- Phase 1N validation: `npm run lint` could not run because the Codex desktop shell does not expose an `npm` executable; the equivalent TypeScript command passed with the local Node runtime.
+- Phase 1N validation: local Playwright and Lighthouse binaries are not present in this sandbox's `node_modules/.bin`; the added smoke coverage should run in GitHub Actions after dependency installation.
+- Phase 1N validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1N out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM; no implementation code or dependencies were added for those items.
+- Phase 1N legal-risk wording scan found only banned phrases inside "do not use" guidance, disclaimers and intentional coverage caveats.
+- Phase 1N Notion update: Launch Tasks LAUNCH-050 through LAUNCH-052 were documented and ADR-024 was added to the Decisions Log.
 - Phase 1M validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1M validation: `git diff --check` passed.
 - Phase 1M validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
@@ -395,7 +416,7 @@ Next useful improvements:
 - use `docs/product-improvement-backlog.md` as the active 36-item PM/ESG specialist backlog
 - clearer map legend and layer explanation
 - coverage confidence view separating record volume from source confidence and review risk
-- persona-specific quick filters and sector starting points
+- persona-specific quick filters
 - stronger evidence-needed summaries in briefing and regulation detail surfaces
 - horizontal timeline/swimlane with quarter precision
 - CSV or JSON export of the static regulation database

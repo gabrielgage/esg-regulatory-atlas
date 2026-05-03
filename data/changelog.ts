@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.14 - May 2026",
+    date: "2026-05-03",
+    label: "Sector starting points",
+    summary:
+      "Added a Sectors workspace and static sector profile pages so users can begin regulatory triage from business context, then move into priority records, market signals, evidence needs, source confidence and advisory next steps.",
+    added: [
+      "/sectors route for browsing sector starting points",
+      "/sectors/[slug] route for direct sector records, broad all-sector context and source-review cues",
+      "Reusable sector profile aggregation logic built from the existing static regulation dataset",
+      "Sector navigation and smoke coverage for the new workspace"
+    ],
+    updated: ["Header navigation", "Changelog", "Smoke tests", "Project documentation"],
+    records: ["Financial services", "Manufacturing", "Agriculture", "Energy", "Retail", "Technology", "Private equity"],
+    caveat: "Sector pages show current tracked seed coverage and broad all-sector records where relevant. They are not complete sector legal inventories and do not determine entity-specific applicability."
+  },
+  {
     edition: "0.5.13 - May 2026",
     date: "2026-05-03",
     label: "Market profile navigation layer",

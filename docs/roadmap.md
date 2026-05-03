@@ -20,6 +20,7 @@ Current capability areas:
 
 - Interactive regulatory map
 - `/markets` market profile index and `/jurisdiction/[code]` market profile pages
+- `/sectors` sector starting point index and `/sectors/[slug]` sector profile pages
 - Jurisdiction profiles
 - Filterable regulation table
 - Regulation detail view
@@ -64,6 +65,16 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1N Items
+
+- Updated dataset metadata and changelog to `0.5.14 - May 2026`.
+- Added `/sectors` as a browseable sector starting point index.
+- Added `/sectors/[slug]` sector profile pages for every tracked sector in the static taxonomy.
+- Added reusable sector profile aggregation logic in `lib/sectorProfile.ts`.
+- Added Sectors to the global navigation and translated `nav.sectors` labels for supported interface languages.
+- Added smoke coverage for `/sectors` and `/sectors/financial-services`.
+- Kept sector profiles as current tracked seed coverage and broad all-sector context, not complete sector legal inventories.
 
 ## Recently Delivered Phase 1M Items
 

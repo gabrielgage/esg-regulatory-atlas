@@ -55,7 +55,7 @@ export function PersonaPresets({
         <div className="mt-4 rounded-xl border border-teal/20 bg-teal/5 p-4">
           <div className="flex flex-wrap items-center gap-2">
             <Badge className="border-teal/20 bg-teal/10 text-teal">Active role lens</Badge>
-            <span className="text-sm font-semibold text-ink">{active.role}</span>
+            <span data-testid="active-persona-role" className="text-sm font-semibold text-ink">{active.role}</span>
           </div>
           <div className="mt-3 grid gap-4 lg:grid-cols-2">
             <PromptList title="Questions to answer" values={active.firstQuestions} />

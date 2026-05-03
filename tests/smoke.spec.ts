@@ -70,7 +70,7 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
 test("persona presets apply shareable regulation filters", async ({ page }) => {
   await page.goto("/regulations");
 
-  await page.getByRole("button", { name: /Finance/i }).click();
+  await page.getByRole("button", { name: /Apply Finance or ESG controller persona preset/i }).click();
   await expect(page).toHaveURL(/persona=finance-controller/);
   await expect(page.getByText(/Active role lens/i)).toBeVisible();
   await expect(page.getByText(/Finance or ESG controller/i)).toBeVisible();

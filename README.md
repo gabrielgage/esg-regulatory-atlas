@@ -131,9 +131,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.9 - May 2026`.
+The current seed dataset edition is `0.5.10 - May 2026`.
 
-The latest local update improves map visibility and market coverage depth:
+The latest local update improves decision readiness:
+
+- adds missing-facts prompts to assessment results
+- adds suggested owner and next 30-day action signals to the indicative shortlist
+- expands copied assessment summaries with evidence, missing facts, source to verify and legal caveats
+- upgrades the regulation detail drawer with threshold, timing, enforcement and missing decision-data cues
+- keeps every output as orientation and planning support, not legal applicability advice
+
+The prior `0.5.9 - May 2026` update improved map visibility and market coverage depth:
 
 - makes the local Natural Earth SVG country map visible from tablet widths upward
 - strengthens country borders, ocean/land contrast, selected states and EU overlay cues

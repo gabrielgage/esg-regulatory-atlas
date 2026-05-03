@@ -17,6 +17,32 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-03 - PR #16 Browser Smoke Test Used Broad Assessment Locator
+
+Status: resolved.
+
+### Symptom
+
+PR #16 showed one failing GitHub check: `CI / Browser smoke tests`. Typecheck/build, Lighthouse, Vercel deployment and preview comments were successful.
+
+### Root Cause
+
+The new assessment smoke test used `page.getByText(/Indicative shortlist/i)`. The assessment page also includes intro copy containing "indicative shortlist", so Playwright strict mode found two matching visible elements. The application rendered correctly; the test locator was too broad.
+
+### Resolution
+
+Changed the assertion to the exact shortlist label: `page.getByText("Indicative shortlist", { exact: true })`.
+
+### Prevention Rule
+
+Browser smoke tests should use exact text, roles, headings or scoped locators when repeated marketing or helper copy may share words with component labels.
+
+### Files Changed
+
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`
+- `docs/development-workflow.md`
+
 ## 2026-05-02 - Country Outline Map Was Hidden On Tablet/Narrow Desktop Layouts
 
 Status: resolved.

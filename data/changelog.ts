@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.10 - May 2026",
+    date: "2026-05-03",
+    label: "Decision-readiness launch layer",
+    summary:
+      "Strengthened the assessment and regulation detail experience so users can see missing facts, next 30-day actions, suggested owners, threshold gaps, timing caveats and source-review warnings before turning Atlas output into a client or internal planning conversation.",
+    added: [
+      "Missing-facts output in the assessment engine",
+      "Suggested owner and next 30-day action signals",
+      "Decision cards for threshold, timing, enforcement and missing-data cues",
+      "More complete copied assessment summaries with caveats"
+    ],
+    updated: ["Assessment wizard", "Regulation detail drawer", "Applicability scoring", "Project documentation"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr", "csddd", "eudr", "cbam", "california-sb253-sb261"],
+    caveat: "Decision-readiness outputs are planning prompts only. They do not determine legal applicability and should be validated against entity-specific facts, primary sources and qualified advice."
+  },
+  {
     edition: "0.5.9 - May 2026",
     date: "2026-05-02",
     label: "Visible map and market coverage depth",

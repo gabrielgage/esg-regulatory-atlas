@@ -125,6 +125,13 @@ When changing content review queues or Marquee launch governance:
 - Check that premium-use labels map to static previews or advisory workflows only.
 - Update `docs/data-methodology.md`, `docs/legal-safeguards.md`, `docs/roadmap.md` and the handoff.
 
+When changing assessment or decision-readiness output:
+
+- Preserve cautious categories such as potentially relevant, facts to confirm and source to verify.
+- Do not add definitive applicability language or compliance instructions.
+- Ensure copied summaries keep legal caveats and source-review warnings.
+- Update smoke tests when new decision prompts become launch-critical.
+
 ## CI Lessons Learned
 
 The current browser and Lighthouse checks are intended to protect launch-critical behavior without making the MVP impossible to iterate.
@@ -133,6 +140,7 @@ Known lesson from PR #11:
 
 - Browser smoke tests should assert stable UI contracts with scoped locators. For regulation detail pages, assert the short-name heading and scoped supporting title text rather than assuming the full regulation title is the H1.
 - Citation widgets repeat regulation titles inside copy blocks. Avoid broad text locators where repeated content is expected.
+- Assessment and workspace pages often repeat feature labels in hero/helper copy. Prefer exact labels, roles or scoped locators for smoke tests so repeated explanatory text does not create strict-mode failures.
 - Lighthouse category thresholds are warning-level launch signals. Do not use the full `lighthouse:recommended` assertion preset as a hard gate unless the team intentionally accepts every default audit as blocking.
 - Do not run standalone TypeScript checks in parallel with `next build` while `.next/types/**/*.ts` is included in `tsconfig.json`; run build first, then rerun TypeScript if needed.
 

@@ -30,6 +30,9 @@ export interface ApplicabilityResult {
   firstActions: string[];
   evidenceNeeded: string[];
   functionsInvolved: string[];
+  missingFacts: string[];
+  nextSteps: string[];
+  suggestedOwner: string;
   sourceToVerify: string;
   sourceQualityNote: string;
   reviewPriority: "High" | "Medium" | "Monitor";
@@ -184,6 +187,9 @@ function scoreRegulation(regulation: Regulation, answers: ApplicabilityAnswers):
     firstActions: profile.requiredActions.slice(0, 4),
     evidenceNeeded: profile.evidenceRequired.slice(0, 4),
     functionsInvolved: regulation.affectedFunctions.slice(0, 4),
+    missingFacts: missingFactsFor(regulation, answers).slice(0, 4),
+    nextSteps: nextStepsFor(regulation, profile.requiredActions).slice(0, 4),
+    suggestedOwner: suggestedOwnerFor(regulation),
     sourceToVerify: sourceToVerify(regulation),
     sourceQualityNote: sourceQualityNote(regulation),
     reviewPriority: reviewPriorityFor(regulation, category, score),
@@ -225,6 +231,75 @@ function sourceQualityNote(regulation: Regulation) {
   if (regulation.dataQualityStatus === "date_uncertain") return "Date-sensitive record; validate effective date and reporting year before planning.";
   if (regulation.dataQualityStatus === "needs_review") return "Needs production research review before being treated as verified guidance.";
   return "Source coverage should be reviewed before compliance use.";
+}
+
+function missingFactsFor(regulation: Regulation, answers: ApplicabilityAnswers) {
+  const facts = new Set<string>();
+  facts.add("Confirm entity-specific scope, reporting boundary and local implementation status.");
+
+  if (regulation.applicabilityScope?.thresholds?.length) {
+    facts.add(`Confirm threshold evidence: ${regulation.applicabilityScope.thresholds[0]}`);
+  } else if (regulation.legalForce === "mandatory") {
+    facts.add("Confirm applicable employee, revenue, listing, asset or sector thresholds from primary sources.");
+  }
+
+  if (answers.euMarketExposure && regulation.jurisdictionIds.includes("eu")) {
+    facts.add("Confirm whether EU market exposure, non-EU parent rules or local transposition create a relevant trigger.");
+  }
+
+  if (regulation.businessImpacts.some((impact) => impact.includes("supply chain") || impact.includes("due diligence"))) {
+    facts.add("Confirm supplier, importer, commodity, product and upstream value-chain exposure.");
+  }
+
+  if (regulation.businessImpacts.some((impact) => impact.includes("financial disclosure") || impact.includes("taxonomy"))) {
+    facts.add("Confirm financial-market participant, fund, product or portfolio status.");
+  }
+
+  if (answers.listed || regulation.sectors.includes("Listed companies")) {
+    facts.add("Confirm listing venue, issuer status and public-interest entity treatment.");
+  }
+
+  if (regulation.firstReportingYear || regulation.firstReportDueDate || regulation.phaseInNotes) {
+    facts.add("Confirm phase-in date, first reporting period and filing deadline against current official guidance.");
+  }
+
+  if (regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high") {
+    facts.add("Resolve source-review, date or confidence caveats before client reliance.");
+  }
+
+  return Array.from(facts);
+}
+
+function nextStepsFor(regulation: Regulation, requiredActions: string[]) {
+  const steps = new Set<string>();
+  steps.add("Assign a named owner to review sources, thresholds and entity facts within 30 days.");
+  requiredActions.slice(0, 2).forEach((action) => steps.add(action));
+  steps.add("Create a source-review note with the primary source, last reviewed date and open caveats.");
+
+  if (regulation.businessImpacts.includes("data collection obligation")) {
+    steps.add("Map the first-pass data owners and evidence sources for the likely datapoints.");
+  }
+
+  if (regulation.businessImpacts.includes("assurance obligation")) {
+    steps.add("Identify controls, evidence owners and assurance-readiness gaps.");
+  }
+
+  if (regulation.businessImpacts.includes("supply chain obligation") || regulation.businessImpacts.includes("due diligence obligation")) {
+    steps.add("Screen supplier, importer and value-chain exposure before designing a workplan.");
+  }
+
+  return Array.from(steps);
+}
+
+function suggestedOwnerFor(regulation: Regulation) {
+  const functions = new Set(regulation.affectedFunctions);
+  if (functions.has("Legal") && (functions.has("Compliance") || regulation.legalForce === "mandatory")) return "Legal / Compliance";
+  if (functions.has("Finance") && (regulation.businessImpacts.includes("financial disclosure obligation") || regulation.businessImpacts.includes("assurance obligation"))) return "Finance / ESG controllership";
+  if (functions.has("Procurement") || functions.has("Supply chain")) return "Procurement / Supply chain";
+  if (functions.has("Risk")) return "Risk / Compliance";
+  if (functions.has("Product")) return "Product / Legal";
+  if (functions.has("Board")) return "Board secretary / Legal";
+  return functions.has("Sustainability") ? "Sustainability" : "Assign accountable regulatory owner";
 }
 
 function defaultActions(regulation: Regulation) {

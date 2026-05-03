@@ -143,6 +143,7 @@ Known lesson from PR #11:
 
 - Browser smoke tests should assert stable UI contracts with scoped locators. For regulation detail pages, assert the short-name heading and scoped supporting title text rather than assuming the full regulation title is the H1.
 - Citation widgets repeat regulation titles inside copy blocks. Avoid broad text locators where repeated content is expected.
+- Assessment and workspace pages often repeat feature labels in hero/helper copy. Prefer exact labels, roles or scoped locators for smoke tests so repeated explanatory text does not create strict-mode failures.
 - Lighthouse category thresholds are warning-level launch signals. Do not use the full `lighthouse:recommended` assertion preset as a hard gate unless the team intentionally accepts every default audit as blocking.
 - Do not run standalone TypeScript checks in parallel with `next build` while `.next/types/**/*.ts` is included in `tsconfig.json`; run build first, then rerun TypeScript if needed.
 

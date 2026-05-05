@@ -90,6 +90,12 @@ Current decision-readiness convention:
 - `components/DecisionReadinessChecklist.tsx` and `components/MarqueeEvidenceGate.tsx` surface those controls on regulation details and Data Quality.
 - Treat these outputs as governance prompts for review and advisory scoping. They are not legal verification, premium certification or applicability determinations.
 
+Current source-evidence convention:
+
+- `lib/sourceGovernance.ts` centralizes source posture, freshness, priority-source selection, source-review packets and copyable source-review memo text.
+- `components/SourceEvidencePanel.tsx` surfaces source evidence on regulation detail pages and drawers.
+- Treat source evidence trails as QA and governance aids. They are not legal verification, official translation, source completeness certification or applicability determinations.
+
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
 ## Issue Resolution Rule

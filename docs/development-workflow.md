@@ -135,6 +135,14 @@ When changing assessment or decision-readiness output:
 - Ensure copied summaries keep legal caveats and source-review warnings.
 - Update smoke tests when new decision prompts become launch-critical.
 
+When changing source evidence or source-governance output:
+
+- Use `lib/sourceGovernance.ts` for source posture, review packet and copyable source memo logic.
+- Keep source evidence panels as governance and QA aids, not legal verification.
+- Preserve source links, last-reviewed date, next-review date, confidence, data quality and caveats in copied memos.
+- Do not imply that a source has been officially translated, fully reviewed or certified for client reliance.
+- Update `docs/data-methodology.md`, `docs/legal-safeguards.md`, `docs/roadmap.md`, README and handoff docs when the source workflow changes.
+
 ## CI Lessons Learned
 
 The current browser and Lighthouse checks are intended to protect launch-critical behavior without making the MVP impossible to iterate.

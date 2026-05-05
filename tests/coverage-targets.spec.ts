@@ -3,6 +3,7 @@ import { coverageTargets } from "../data/coverageTargets";
 import { jurisdictions, regulations } from "../data/seed";
 import { coverageConfidenceForJurisdiction } from "../lib/coverageConfidence";
 import { decisionReadinessFor } from "../lib/decisionReadiness";
+import { sourceEvidenceFor, sourceGovernanceMemo } from "../lib/sourceGovernance";
 
 test("every tracked jurisdiction has a coverage target", () => {
   const targetIds = new Set(coverageTargets.map((target) => target.jurisdictionId));
@@ -45,4 +46,18 @@ test("decision readiness produces review controls for marquee records", () => {
   expect(plan.firstThirtyDayActions.length).toBeGreaterThan(0);
   expect(plan.sourceReviewSteps.length).toBeGreaterThan(0);
   expect(plan.level).toMatch(/orientation-ready|review-before-client-use|premium-blocked/);
+});
+
+test("source governance produces review packets and caveated copy", () => {
+  const csrd = regulations.find((regulation) => regulation.id === "csrd");
+  expect(csrd).toBeTruthy();
+
+  const evidence = sourceEvidenceFor(csrd!);
+  const memo = sourceGovernanceMemo(csrd!);
+
+  expect(evidence.sourceReviewSteps.length).toBeGreaterThan(0);
+  expect(evidence.reviewPacket.length).toBeGreaterThan(0);
+  expect(evidence.level).toMatch(/current|upcoming-review|stale|review-date-missing|priority-source-needed|source-missing/);
+  expect(memo).toContain("Source review memo");
+  expect(memo).toContain("does not constitute legal");
 });

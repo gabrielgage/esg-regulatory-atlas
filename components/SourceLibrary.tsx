@@ -1,6 +1,7 @@
 import { ArrowUpRight, BookOpenCheck, ExternalLink, FileWarning, Library } from "lucide-react";
 import { Badge } from "./Badge";
 import { Regulation, SourceLink } from "@/types/regulation";
+import { sourceEvidenceFor, sourceFreshnessClass } from "@/lib/sourceGovernance";
 import { formatDate, uniq } from "@/lib/utils";
 
 const sourceTypeLabel: Record<SourceLink["type"], string> = {
@@ -31,7 +32,7 @@ export function SourceLibrary({
     .slice(0, 4);
 
   return (
-    <section className="rounded-2xl border bg-white p-5 shadow-sm">
+    <section id="source-library" className="rounded-2xl border bg-white p-5 shadow-sm">
       <div className="flex flex-col gap-3 border-b border-slate-100 pb-4 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <div className="flex items-center gap-2">
@@ -39,7 +40,7 @@ export function SourceLibrary({
             <h2 className="font-semibold text-ink">Source library</h2>
           </div>
           <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500">
-            Source inventory for the current filter view, including missing-source records and upcoming review dates.
+            Source inventory for the current dataset, including missing-source records, upcoming review dates and links into record-level source review packets.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -146,6 +147,26 @@ export function SourceLibrary({
                 </button>
               ))}
               {!nextReviews.length && <p className="rounded-lg bg-slate-50 p-3 text-sm text-slate-500">No review dates in current filters.</p>}
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-slate-200 p-4">
+            <h3 className="text-sm font-semibold text-ink">Source posture samples</h3>
+            <div className="mt-3 space-y-2">
+              {regulations.slice(0, 5).map((regulation) => {
+                const evidence = sourceEvidenceFor(regulation);
+                return (
+                  <button
+                    key={regulation.id}
+                    type="button"
+                    onClick={() => onSelect(regulation)}
+                    className="flex w-full items-center justify-between gap-3 rounded-lg bg-slate-50 p-3 text-left hover:bg-teal/5"
+                  >
+                    <span className="font-semibold text-ink">{regulation.shortName}</span>
+                    <Badge className={sourceFreshnessClass[evidence.level]}>{evidence.levelLabel}</Badge>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

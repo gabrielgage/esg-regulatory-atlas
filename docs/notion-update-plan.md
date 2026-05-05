@@ -271,3 +271,20 @@ Launch Tasks:
 QA finding:
 
 - Premium/advisory readiness needs more than source confidence. Future client-ready surfaces should show facts to confirm, evidence package, first 30-day actions, source-review steps and commercial-use gates before presenting a regulation as usable in premium examples.
+
+## 2026-05-05 Codex Update - Source Evidence Review Packets
+
+Launch Command Center note:
+
+> Phase 1R added source evidence trails and copyable source-review memos so regulation details can move from seed orientation into a clearer content QA, premium-pack or advisory-review workflow. Source posture, review timing, captured sources and source-review steps are visible at the record level while preserving the caveat that these controls do not verify legal completeness or determine applicability.
+
+Launch Tasks:
+
+- LAUNCH-062 - Add shared source-governance helper for regulation records
+- LAUNCH-063 - Add Source Evidence Trail panel to regulation detail pages and drawers
+- LAUNCH-064 - Add copyable source-review memo with caveats and captured source links
+- LAUNCH-065 - Add source posture samples to the Data Quality source library
+
+QA finding:
+
+- Source links alone are not enough for client-ready or premium reuse. Future record-detail work should show the priority source, review freshness and source-review packet before a record is used in advisory outputs, premium examples or copied briefs.

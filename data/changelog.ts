@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.18 - May 2026",
+    date: "2026-05-05",
+    label: "Source evidence review packets",
+    summary:
+      "Added reusable source evidence trails and copyable source-review memos so regulation records can move from seed orientation into a clearer content QA or advisory review workflow.",
+    added: [
+      "Shared source-governance helper for source posture, freshness and review packets",
+      "Source Evidence Trail panel on regulation detail pages and detail drawers",
+      "Copyable source-review memo with caveats, source links, review timing and facts to confirm",
+      "Source posture samples in the Data Quality source library"
+    ],
+    updated: ["Regulation detail pages", "Regulation detail drawer", "Data Quality source library", "Smoke tests", "Project documentation"],
+    records: ["Priority source", "Review timing", "Captured sources", "Source-review steps", "Copyable source memo"],
+    caveat: "Source evidence trails are governance and QA aids. They do not verify legal completeness, provide official translations or determine applicability."
+  },
+  {
     edition: "0.5.17 - May 2026",
     date: "2026-05-05",
     label: "Decision readiness evidence gates",

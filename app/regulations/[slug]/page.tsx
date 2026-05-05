@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Badge } from "@/components/Badge";
@@ -9,19 +9,12 @@ import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
 import { CitationWidget } from "@/components/CitationWidget";
 import { DecisionReadinessChecklist } from "@/components/DecisionReadinessChecklist";
+import { SourceEvidencePanel } from "@/components/SourceEvidencePanel";
 import { DATASET_META } from "@/data/_meta";
 import { regulations } from "@/data/seed";
-import { SourceLink } from "@/types/regulation";
 import { profileFor } from "@/lib/applicability";
 import { readinessBand, readinessClass, readinessReasons, readinessScore } from "@/lib/scoring";
 import { formatDate } from "@/lib/utils";
-
-const sourceTypeLabel: Record<SourceLink["type"], string> = {
-  primary: "Primary source",
-  regulator: "Regulator guidance",
-  standards_body: "Standard setter",
-  secondary: "Secondary source"
-};
 
 export function generateStaticParams() {
   return regulations.map((regulation) => ({ slug: regulation.id }));
@@ -89,6 +82,8 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
         <DecisionReadinessChecklist regulation={regulation} allRegulations={regulations} />
 
         <CitationWidget regulation={regulation} />
+
+        <SourceEvidencePanel regulation={regulation} />
 
         <Section title="Atlas record governance">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -201,29 +196,6 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           secondaryHref="/advisory"
           secondaryLabel="Advisory options"
         />
-
-        <Section title="Primary sources and data quality">
-          <div className="mb-4 grid gap-3 sm:grid-cols-3">
-            <Metric label="Confidence" value={regulation.confidenceLevel.replaceAll("_", " ")} />
-            <Metric label="Quality status" value={qualityLabel(regulation.dataQualityStatus)} />
-            <Metric label="Source links" value={String(regulation.sourceUrls.length)} />
-          </div>
-          <div className="space-y-3">
-            {regulation.sourceUrls.length ? (
-              regulation.sourceUrls.map((source) => (
-                <a key={source.url} href={source.url} target="_blank" rel="noreferrer" className="flex items-start gap-3 rounded-xl border border-slate-200 p-4 text-sm hover:bg-teal/5">
-                  <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                  <span>
-                    <span className="font-semibold text-ink">{sourceTypeLabel[source.type]}: </span>
-                    <span className="text-teal underline">{source.label}</span>
-                  </span>
-                </a>
-              ))
-            ) : (
-              <p>No source URL is available for this record yet.</p>
-            )}
-          </div>
-        </Section>
 
         <Section title="Caveats">
           <ul className="space-y-2">

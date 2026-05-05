@@ -19,6 +19,19 @@ Coverage confidence labels are internal readiness signals only:
 
 No coverage confidence label verifies complete legal coverage or determines applicability.
 
+## Decision Readiness Gates
+
+Decision readiness translates a record's source, threshold, evidence and timing signals into practical review controls:
+
+- facts to confirm
+- evidence package
+- first 30-day actions
+- source-review steps
+- missing decision data
+- premium/advisory use gate
+
+The shared logic lives in `lib/decisionReadiness.ts` and is surfaced on regulation details, the detail drawer and the Data Quality Marquee evidence gate. These outputs are governance prompts for source review and advisory scoping. They are not legal verification, premium certification or applicability determinations.
+
 ## Data Storage
 
 The MVP stores data in static TypeScript files:

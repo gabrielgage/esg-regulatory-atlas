@@ -2,6 +2,7 @@ import { ExternalLink, X } from "lucide-react";
 import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
 import { CommercialCTA } from "./CommercialCTA";
+import { DecisionReadinessChecklist } from "./DecisionReadinessChecklist";
 import { RecordMetaBadges } from "./RecordMetaBadges";
 import { StatusBadge } from "./StatusBadge";
 import { DATASET_META } from "@/data/_meta";
@@ -63,6 +64,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
             </p>
           </Card>
         ) : null}
+        <DecisionReadinessChecklist regulation={regulation} compact />
         <Card title="Atlas record governance">
           <div className="grid gap-3 sm:grid-cols-2">
             <Metric label="Record type" value={labelOrMissing(regulation.recordType)} />

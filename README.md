@@ -36,6 +36,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Timeline, methodology/source library, coverage matrix, impact matrix and comparison views
 - Dedicated Data Quality page for source coverage and review risk
 - Source freshness signals and Marquee review owner/action controls for premium/advisory readiness
+- Decision-readiness evidence gates for regulation details and Marquee premium/advisory review controls
 - Citation widget on regulation detail pages with APA-style, legal research note and BibTeX copy blocks
 - Edition snapshot route at `/edition/0.5/regulations/[slug]`
 - Branded 404 page and ISSB redirect aliases
@@ -116,7 +117,7 @@ Seed data is stored in:
 - `data/contentReview.ts`
 - `data/taxonomy.ts`
 
-Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market profile aggregation lives in `lib/marketProfile.ts`, and sector profile aggregation lives in `lib/sectorProfile.ts`. Readiness-priority logic lives in `lib/scoring.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
+Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market profile aggregation lives in `lib/marketProfile.ts`, and sector profile aggregation lives in `lib/sectorProfile.ts`. Readiness-priority logic lives in `lib/scoring.ts`, decision-readiness evidence gates live in `lib/decisionReadiness.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
 
 ## Project guidance
 
@@ -138,9 +139,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.16 - May 2026`.
+The current seed dataset edition is `0.5.17 - May 2026`.
 
-The latest local update adds a coverage-confidence view:
+The latest local update adds decision-readiness evidence gates:
+
+- adds a shared decision-readiness helper for regulation records
+- adds a Decision Readiness checklist to regulation detail pages and drawers
+- adds Premium Evidence Gates to `/data-quality`
+- turns facts to confirm, evidence packages, first 30-day actions and source-review steps into visible review controls
+- keeps these gates as orientation and governance controls, not legal verification or applicability determinations
+
+The prior `0.5.16 - May 2026` update added a coverage-confidence view:
 
 - adds a coverage-confidence score and label for every tracked market
 - separates record volume from source quality, review flags, stale dates and date-sensitive records

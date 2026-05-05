@@ -205,6 +205,7 @@ Target: later phase only, after explicit approval and product validation.
 The next implementation sequence should be:
 
 1. Source-review Marquee 10 and Marquee 25 records used in premium examples.
+   Status: advanced in `0.5.17 - May 2026` with shared decision-readiness evidence gates and a Data Quality premium-use gate panel. Record-level source/legal review is still required before client reliance.
 2. Add missing-facts prompts to assessment results.
    Status: delivered in `0.5.10 - May 2026` as assessment result and copied-shortlist prompts.
 3. Prepare LinkedIn, email and direct outreach launch assets from `data/launchAssets.ts`.

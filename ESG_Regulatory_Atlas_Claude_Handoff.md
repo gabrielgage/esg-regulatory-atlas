@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1P coverage-confidence pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass and Phase 1O persona-preset pass. The goal remains deployability and legal caution, with added emphasis on separating record volume from source confidence and review risk before premium or advisory use.
+The app is now in a static Phase 1Q decision-readiness evidence-gate pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass and Phase 1P coverage-confidence pass. The goal remains deployability and legal caution, with added emphasis on turning source, threshold and evidence gaps into practical review controls before premium or advisory use.
+
+## Phase 1Q Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.17 - May 2026`.
+- Added `lib/decisionReadiness.ts` as a shared regulation decision-readiness helper.
+- Added `components/DecisionReadinessChecklist.tsx` on regulation detail pages and drawers.
+- Added `components/MarqueeEvidenceGate.tsx` on `/data-quality`.
+- Added smoke and static coverage for decision-readiness controls.
+- Kept decision-readiness outputs as orientation and governance controls, not legal verification or applicability determinations.
+
+## Phase 1Q Product Rationale
+
+Coverage confidence and Marquee review queues show what needs attention, but launch users also need to know exactly what to confirm, what evidence to gather, who should own review and whether a record is blocked from premium examples. Phase 1Q turns those questions into reusable product surfaces while preserving legal caution.
 
 ## Phase 1P Changes Delivered
 
@@ -350,6 +363,11 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1Q validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1Q validation: `git diff --check` passed.
+- Phase 1Q validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1Q out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM; no implementation code or dependencies were added for those items.
+- Phase 1Q Notion update: Launch Tasks LAUNCH-059 through LAUNCH-061 were documented.
 - Phase 1P validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1P validation: `git diff --check` passed.
 - Phase 1P validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.

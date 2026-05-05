@@ -65,6 +65,8 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
   await expect(page).toHaveURL(/\/regulations\/csrd$/);
   await expect(page.getByRole("heading", { name: /^CSRD$/i })).toBeVisible();
   await expect(page.locator("p").filter({ hasText: /^Corporate Sustainability Reporting Directive$/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Decision readiness/i })).toBeVisible();
+  await expect(page.getByText(/Facts to confirm/i).first()).toBeVisible();
 });
 
 test("persona presets apply shareable regulation filters", async ({ page }) => {
@@ -119,6 +121,8 @@ test("data quality source-governance queue renders", async ({ page }) => {
 
   await expect(page.getByText(/Coverage confidence/i)).toBeVisible();
   await expect(page.getByText(/Average confidence/i)).toBeVisible();
+  await expect(page.getByText(/Premium evidence gates/i)).toBeVisible();
+  await expect(page.getByText(/Premium-use blockers/i)).toBeVisible();
   await expect(page.getByText(/Source freshness signals/i)).toBeVisible();
   await expect(page.getByText(/Stale source/i)).toBeVisible();
   await expect(page.getByText(/Missing primary source/i)).toBeVisible();

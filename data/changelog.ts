@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.17 - May 2026",
+    date: "2026-05-05",
+    label: "Decision readiness evidence gates",
+    summary:
+      "Added a reusable decision-readiness layer for regulation details and Marquee review governance, turning source, threshold and evidence gaps into practical review controls.",
+    added: [
+      "Shared decision-readiness helper for regulation records",
+      "Decision Readiness checklist on regulation detail pages and drawers",
+      "Premium Evidence Gates panel on `/data-quality`",
+      "Smoke-test assertions for decision readiness and premium evidence gates"
+    ],
+    updated: ["Regulation details", "Regulation detail drawer", "Data Quality", "Marquee review queue", "Project documentation"],
+    records: ["Facts to confirm", "Evidence package", "First 30-day actions", "Source-review steps", "Premium-use blockers"],
+    caveat: "Decision readiness is an orientation and governance control. It does not verify legal completeness, determine applicability or replace qualified review."
+  },
+  {
     edition: "0.5.16 - May 2026",
     date: "2026-05-03",
     label: "Coverage confidence view",

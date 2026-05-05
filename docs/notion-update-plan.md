@@ -120,6 +120,13 @@ ADR-026:
 - Consequence: Add coverage-confidence scoring and labels on Data Quality, Markets and jurisdiction profiles while preserving the caveat that confidence is not legal verification or complete coverage.
 - Status: Active.
 
+ADR-027:
+
+- Decision: Treat decision-readiness outputs as review gates, not legal conclusions.
+- Why: Premium packs and advisory scans need practical facts, evidence, owners and source-review steps, but the static MVP cannot certify legal applicability or complete source review.
+- Consequence: Add shared decision-readiness logic and Premium Evidence Gates while preserving caveats that these are governance prompts for review and scoping.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -248,3 +255,19 @@ Launch Tasks:
 QA finding:
 
 - Market depth targets alone are not enough for commercial readiness. Future market/profile work should check both direct-record depth and coverage confidence before presenting a jurisdiction as ready for premium examples or advisory scans.
+
+## 2026-05-05 Codex Update - Decision Readiness Evidence Gates
+
+Launch Command Center note:
+
+> Phase 1Q added decision-readiness evidence gates so regulation details, drawers and the Data Quality workspace convert source, threshold, evidence and timing gaps into practical review controls. These controls support premium-pack and advisory readiness without claiming legal verification or definitive applicability.
+
+Launch Tasks:
+
+- LAUNCH-059 - Add shared decision-readiness helper for regulation records
+- LAUNCH-060 - Add Decision Readiness checklist to regulation details and drawers
+- LAUNCH-061 - Add Premium Evidence Gates panel to Data Quality
+
+QA finding:
+
+- Premium/advisory readiness needs more than source confidence. Future client-ready surfaces should show facts to confirm, evidence package, first 30-day actions, source-review steps and commercial-use gates before presenting a regulation as usable in premium examples.

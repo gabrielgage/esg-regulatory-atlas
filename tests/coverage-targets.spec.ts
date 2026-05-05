@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { coverageTargets } from "../data/coverageTargets";
 import { jurisdictions, regulations } from "../data/seed";
 import { coverageConfidenceForJurisdiction } from "../lib/coverageConfidence";
+import { decisionReadinessFor } from "../lib/decisionReadiness";
 
 test("every tracked jurisdiction has a coverage target", () => {
   const targetIds = new Set(coverageTargets.map((target) => target.jurisdictionId));
@@ -32,4 +33,16 @@ test("coverage confidence is classified for every tracked jurisdiction", () => {
   expect(rows).toHaveLength(coverageTargets.length);
   expect(rows.every((row) => row.confidenceScore >= 0 && row.confidenceScore <= 100)).toBe(true);
   expect(rows.some((row) => row.reviewFlagCount > 0)).toBe(true);
+});
+
+test("decision readiness produces review controls for marquee records", () => {
+  const csrd = regulations.find((regulation) => regulation.id === "csrd");
+  expect(csrd).toBeTruthy();
+
+  const plan = decisionReadinessFor(csrd!, regulations);
+  expect(plan.factsToConfirm.length).toBeGreaterThan(0);
+  expect(plan.evidencePackage.length).toBeGreaterThan(0);
+  expect(plan.firstThirtyDayActions.length).toBeGreaterThan(0);
+  expect(plan.sourceReviewSteps.length).toBeGreaterThan(0);
+  expect(plan.level).toMatch(/orientation-ready|review-before-client-use|premium-blocked/);
 });

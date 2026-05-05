@@ -95,6 +95,8 @@ Content review queues must be described as editorial/source-governance tools. Do
 
 Assessment missing-fact prompts, suggested owners and next 30-day actions must be described as planning prompts. They do not determine applicability, confirm compliance duties or replace qualified legal review.
 
+Decision-readiness gates, facts-to-confirm lists, evidence packages, source-review steps and premium-use blockers are governance controls for source review and advisory scoping. They must not be described as legal verification, premium certification, complete source review or definitive applicability.
+
 ## Alert Preview Safeguards
 
 Alert previews must use wording such as:
@@ -172,6 +174,8 @@ Copyable assessment summaries, client planning summaries and jurisdiction briefs
 Copyable launch assets must also preserve commercial caveats. They may invite feedback, premium-preview interest or advisory conversations, but they must not imply that paid subscriptions, automated alerts, account features or production monitoring are live.
 
 Source-governance labels such as "source-ready seed", "premium use blocked", "stale source" or "missing primary source" are editorial controls for review prioritization. They must not be framed as legal verification, official source approval or complete legal review.
+
+Decision-readiness labels such as "orientation-ready seed", "review before client use" and "premium use blocked" are also editorial controls. They indicate review posture for the static seed record, not whether a business is in or out of scope.
 
 These outputs may help plan review or advisory work, but they should not say or imply that:
 

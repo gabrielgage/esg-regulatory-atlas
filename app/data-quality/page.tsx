@@ -10,6 +10,7 @@ import { CoverageConfidencePanel } from "@/components/CoverageConfidencePanel";
 import { CoverageDepthPanel } from "@/components/CoverageDepthPanel";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
 import { MarqueeReviewQueue } from "@/components/MarqueeReviewQueue";
+import { MarqueeEvidenceGate } from "@/components/MarqueeEvidenceGate";
 import { SourceLibrary } from "@/components/SourceLibrary";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { DATASET_META } from "@/data/_meta";
@@ -67,6 +68,7 @@ export default function DataQualityPage() {
         />
         <CoverageConfidencePanel jurisdictions={jurisdictions} regulations={regulations} onSelect={setSelectedJurisdiction} />
         <CoverageDepthPanel jurisdictions={jurisdictions} regulations={regulations} onSelect={setSelectedJurisdiction} />
+        <MarqueeEvidenceGate regulations={regulations} />
         <MarqueeReviewQueue regulations={regulations} onSelect={setSelectedRegulation} />
         <DataQualityPanel regulations={regulations} onSelect={setSelectedRegulation} />
         <FooterDisclaimer />

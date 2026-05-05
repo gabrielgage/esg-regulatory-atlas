@@ -84,6 +84,12 @@ Current coverage-governance convention:
 - `lib/coverageConfidence.ts` and `components/CoverageConfidencePanel.tsx` track whether current records are priority-source backed, high-confidence, current and low-risk enough for premium examples or advisory use.
 - Treat both as internal readiness signals. They are not legal verification, complete market coverage or applicability determinations.
 
+Current decision-readiness convention:
+
+- `lib/decisionReadiness.ts` centralizes facts-to-confirm, evidence-package, first-30-day-action, source-review-step and commercial-use-gate logic.
+- `components/DecisionReadinessChecklist.tsx` and `components/MarqueeEvidenceGate.tsx` surface those controls on regulation details and Data Quality.
+- Treat these outputs as governance prompts for review and advisory scoping. They are not legal verification, premium certification or applicability determinations.
+
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
 ## Issue Resolution Rule

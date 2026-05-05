@@ -33,11 +33,14 @@ The new persona smoke test clicked `page.getByRole("button", { name: /Finance/i 
 
 - Added explicit `aria-label` values to persona preset buttons using the full role name.
 - Updated the smoke test to click `Apply Finance or ESG controller persona preset`.
+- Added a focused active-persona test hook so the smoke test does not match both the card label and the active role label.
 - Kept the test focused on the user-facing accessibility contract instead of hidden implementation details.
 
 ### Prevention Rule
 
 When card buttons contain rich descriptive text, give them clear accessible labels and use exact role-label locators in smoke tests. Do not rely on a broad keyword when several cards may contain that word in supporting copy.
+
+When a selected state repeats a card label elsewhere on the page, scope the assertion to the selected-state region or a stable test hook rather than using broad page text.
 
 ### Files Changed
 

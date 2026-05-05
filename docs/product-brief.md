@@ -107,6 +107,7 @@ The MVP includes:
 - `/sectors` workspace and `/sectors/[slug]` pages for business-context regulatory triage by sector, market signal, evidence need and advisory workstream
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
 - Source freshness and premium-use blocker signals for source-governance triage
+- Decision-readiness checklists that translate source, threshold and evidence gaps into review controls for regulation details and Marquee premium/advisory use
 - Reusable commercial CTA surfaces
 - Source quality indicators
 - Advisory opportunity and business impact views

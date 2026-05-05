@@ -8,6 +8,7 @@ import { CommercialCTA } from "@/components/CommercialCTA";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
 import { CitationWidget } from "@/components/CitationWidget";
+import { DecisionReadinessChecklist } from "@/components/DecisionReadinessChecklist";
 import { DATASET_META } from "@/data/_meta";
 import { regulations } from "@/data/seed";
 import { SourceLink } from "@/types/regulation";
@@ -84,6 +85,8 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           <DecisionCard title="Evidence likely needed" body={profile.evidenceRequired.slice(0, 3).join(", ") || "Applicability assessment and source review log."} />
           <DecisionCard title="Suggested internal owners" body={regulation.affectedFunctions.slice(0, 4).join(", ") || "Assign accountable owner before reliance."} />
         </section>
+
+        <DecisionReadinessChecklist regulation={regulation} allRegulations={regulations} />
 
         <CitationWidget regulation={regulation} />
 

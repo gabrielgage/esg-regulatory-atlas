@@ -62,10 +62,20 @@ Current capability areas:
 - Review-queue scoring in the data-quality dashboard with visible reasons for source and confidence follow-up
 - Source freshness signals and Marquee owner/action controls for premium/advisory review readiness
 - Market coverage-depth targets and Data Quality panel for direct records per jurisdiction
+- Decision-readiness evidence gates on regulation details and Data Quality for premium/advisory review controls
 - Tablet-and-desktop Natural Earth country-outline map with stronger visual contrast and geometry fallback
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1Q Items
+
+- Updated dataset metadata and changelog to `0.5.17 - May 2026`.
+- Added `lib/decisionReadiness.ts` to centralize facts-to-confirm, evidence-package, first-30-day action and source-review-step logic.
+- Added `components/DecisionReadinessChecklist.tsx` to regulation detail pages and drawers.
+- Added `components/MarqueeEvidenceGate.tsx` to `/data-quality`.
+- Added smoke and static test coverage for decision-readiness controls.
+- Kept decision-readiness gates as orientation and content-governance controls, not legal verification, premium certification or applicability determinations.
 
 ## Recently Delivered Phase 1P Items
 

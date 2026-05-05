@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Globe2, Layers3, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/Badge";
+import { CoverageConfidenceBadge } from "@/components/CoverageConfidenceBadge";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Header } from "@/components/Header";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
@@ -89,6 +90,7 @@ function MarketCard({ profile }: { profile: ReturnType<typeof marketProfiles>[nu
           <div className="flex flex-wrap gap-2">
             <Badge className="border-teal/20 bg-teal/10 text-teal">{jurisdiction.code}</Badge>
             <Badge className="border-slate-200 bg-slate-50 text-slate-600 capitalize">{jurisdiction.type}</Badge>
+            <CoverageConfidenceBadge level={profile.coverageConfidence.level} />
           </div>
           <h3 className="mt-4 text-xl font-bold tracking-tight text-ink">{jurisdiction.name}</h3>
         </div>
@@ -99,8 +101,8 @@ function MarketCard({ profile }: { profile: ReturnType<typeof marketProfiles>[nu
       <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">{jurisdiction.executiveSummary}</p>
       <div className="mt-4 grid grid-cols-3 gap-2 text-center">
         <MiniMetric label="Direct" value={String(profile.directRecords.length)} />
-        <MiniMetric label="Linked" value={String(profile.scoped.length)} />
-        <MiniMetric label="Review" value={String(profile.reviewFlags)} />
+        <MiniMetric label="Score" value={`${profile.coverageConfidence.confidenceScore}`} />
+        <MiniMetric label="Review" value={String(profile.coverageConfidence.reviewFlagCount)} />
       </div>
       <div className="mt-4 flex flex-wrap gap-2">
         {topTopics.map((topic) => (

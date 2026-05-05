@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, CalendarDays, CheckCircle2, ExternalLink, FileText, GitCompare, ShieldAlert } from "lucide-react";
 import { Badge } from "@/components/Badge";
+import { CoverageConfidenceBadge } from "@/components/CoverageConfidenceBadge";
 import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Header } from "@/components/Header";
@@ -63,6 +64,7 @@ export default async function JurisdictionMarketPage({ params }: { params: Promi
             <Badge className="border-white/20 bg-white/10 text-white capitalize">{jurisdiction.type}</Badge>
             <Badge className="border-white/20 bg-white/10 text-white">{jurisdiction.region}</Badge>
             <Badge className="border-mint/30 bg-mint/10 text-mint">{DATASET_META.edition}</Badge>
+            <CoverageConfidenceBadge level={profile.coverageConfidence.level} />
           </div>
           <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_.4fr] lg:items-end">
             <div>
@@ -126,12 +128,13 @@ export default async function JurisdictionMarketPage({ params }: { params: Promi
             <section className="rounded-2xl border bg-white p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-ink">Source confidence</h2>
               <div className="mt-4 grid gap-3">
+                <MiniMetric label="Coverage confidence" value={`${profile.coverageConfidence.confidenceScore}/100`} />
                 <MiniMetric label="Source-backed records" value={`${profile.sourceBacked}/${profile.scoped.length || 0}`} />
                 <MiniMetric label="Priority-source records" value={`${profile.primarySourceBacked}/${profile.scoped.length || 0}`} />
                 <MiniMetric label="Inherited/EU records" value={String(profile.inheritedRecords.length)} />
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-600">
-                Counts are transparency signals only. A source-backed record still needs entity-specific applicability review before reliance.
+                {profile.coverageConfidence.nextAction} Counts are transparency signals only. A source-backed record still needs entity-specific applicability review before reliance.
               </p>
             </section>
           </aside>

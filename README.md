@@ -138,9 +138,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.15 - May 2026`.
+The current seed dataset edition is `0.5.16 - May 2026`.
 
-The latest local update adds persona regulation presets:
+The latest local update adds a coverage-confidence view:
+
+- adds a coverage-confidence score and label for every tracked market
+- separates record volume from source quality, review flags, stale dates and date-sensitive records
+- adds a Coverage Confidence panel to `/data-quality`
+- adds coverage confidence badges to `/markets` and `/jurisdiction/[code]`
+- keeps confidence labels as internal readiness signals, not complete legal verification
+
+The prior `0.5.15 - May 2026` update added persona regulation presets:
 
 - adds role-based starting points to `/regulations`
 - supports CSO, legal, finance/controller, procurement/supplier, private equity and external advisor lenses

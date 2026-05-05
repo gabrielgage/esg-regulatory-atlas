@@ -78,6 +78,12 @@ When changing the app, also consider whether to update:
 - `docs/issue-resolution-log.md` when a bug, failed check, failed deployment, visible product defect or platform issue is investigated and resolved
 - `docs/product-improvement-backlog.md` when PM/ESG roadmap priorities, waves or product-review findings change
 
+Current coverage-governance convention:
+
+- `data/coverageTargets.ts` and `components/CoverageDepthPanel.tsx` track whether each market has enough direct seed-record depth for a credible profile.
+- `lib/coverageConfidence.ts` and `components/CoverageConfidencePanel.tsx` track whether current records are priority-source backed, high-confidence, current and low-risk enough for premium examples or advisory use.
+- Treat both as internal readiness signals. They are not legal verification, complete market coverage or applicability determinations.
+
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
 ## Issue Resolution Rule

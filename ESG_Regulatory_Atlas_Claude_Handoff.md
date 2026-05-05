@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1O persona-preset pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass and Phase 1N sector-starting-point pass. The goal remains deployability and legal caution, with added emphasis on helping buyer and advisor personas apply fast, shareable database lenses without accounts, saved profiles or legal applicability conclusions.
+The app is now in a static Phase 1P coverage-confidence pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass and Phase 1O persona-preset pass. The goal remains deployability and legal caution, with added emphasis on separating record volume from source confidence and review risk before premium or advisory use.
+
+## Phase 1P Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.16 - May 2026`.
+- Added `lib/coverageConfidence.ts` to classify markets as source-reviewed seed, usable seed coverage, review needed or watch-only.
+- Added `components/CoverageConfidencePanel.tsx` to `/data-quality`.
+- Added coverage confidence badges to `/markets` and `/jurisdiction/[code]`.
+- Added static coverage confidence test coverage.
+- Kept confidence labels as internal readiness and transparency signals, not complete legal coverage or applicability conclusions.
+
+## Phase 1P Product Rationale
+
+Market depth alone can mislead. A country with five records may still need source review if dates are stale, confidence is low or primary sources are missing. Phase 1P makes that distinction visible so the Atlas can support advisory and premium conversations without overclaiming data completeness.
 
 ## Phase 1O Changes Delivered
 
@@ -337,6 +350,12 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1P validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1P validation: `git diff --check` passed.
+- Phase 1P validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1P out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM; no implementation code or dependencies were added for those items.
+- Phase 1P legal-risk wording scan found only banned phrases inside "do not use" guidance, disclaimers and intentional coverage caveats.
+- Phase 1P Notion update: Launch Tasks LAUNCH-056 through LAUNCH-058 were documented and ADR-026 was added to the Decisions Log.
 - Phase 1O validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1O validation: `git diff --check` passed.
 - Phase 1O validation: `npm run lint` could not run because the Codex desktop shell does not expose an `npm` executable; the equivalent TypeScript command passed with the local Node runtime.

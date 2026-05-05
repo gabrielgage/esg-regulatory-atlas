@@ -60,6 +60,7 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
 9. **Minimum market coverage checklist**
    Status: materially delivered in `0.5.9 - May 2026`.
    `data/coverageTargets.ts` defines deep-anchor, core-commercial and watch-expansion direct-record targets. `/data-quality` now shows current depth, target depth, gaps and review risk per jurisdiction.
+   Follow-up status: expanded in `0.5.16 - May 2026` with a coverage-confidence view that separates direct record depth from priority-source backing, review flags, stale dates and date-sensitive records.
 
 10. **Data quality review queue refinement**
     Status: partially delivered in `0.5.5 - May 2026`.

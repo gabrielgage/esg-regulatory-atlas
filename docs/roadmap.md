@@ -67,6 +67,15 @@ Current capability areas:
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
 
+## Recently Delivered Phase 1P Items
+
+- Updated dataset metadata and changelog to `0.5.16 - May 2026`.
+- Added `lib/coverageConfidence.ts` to score each tracked market by depth, priority-source backing, confidence and review risk.
+- Added `components/CoverageConfidencePanel.tsx` to `/data-quality`.
+- Added coverage confidence badges to `/markets` and `/jurisdiction/[code]`.
+- Added static test coverage for jurisdiction confidence scoring.
+- Kept coverage confidence as an internal readiness signal, not legal verification or complete market coverage.
+
 ## Recently Delivered Phase 1O Items
 
 - Updated dataset metadata and changelog to `0.5.15 - May 2026`.

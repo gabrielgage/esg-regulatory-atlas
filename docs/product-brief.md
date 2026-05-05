@@ -80,6 +80,7 @@ The MVP includes:
 - Data Quality surface for source coverage and review-risk governance
 - Data-quality review queue with visible scoring reasons for research prioritization
 - Market coverage-depth dashboard showing target direct-record depth, current count, gaps and review risk by jurisdiction
+- Coverage-confidence dashboard separating record volume from priority-source backing, review flags, stale dates and date-sensitive records
 - Public changelog
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs

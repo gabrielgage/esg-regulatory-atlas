@@ -113,6 +113,13 @@ ADR-025:
 - Consequence: Add `/regulations?persona=` role lenses backed by static data and keep them as orientation filters, not applicability determinations.
 - Status: Active.
 
+ADR-026:
+
+- Decision: Separate coverage confidence from market coverage depth.
+- Why: Direct-record counts help avoid thin market profiles, but users and advisors also need to know whether records are priority-source backed, current and low-risk enough for premium examples or client-ready planning.
+- Consequence: Add coverage-confidence scoring and labels on Data Quality, Markets and jurisdiction profiles while preserving the caveat that confidence is not legal verification or complete coverage.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -157,6 +164,7 @@ Log issues discovered during implementation, especially:
 - mobile CTA/layout issues
 - map country outlines hidden or visually too faint
 - market coverage depth below the current launch target
+- coverage confidence showing review-needed markets that are presented as commercially ready
 
 ## 2026-05-02 Codex Update - Visible Map And Market Coverage Depth
 
@@ -224,3 +232,19 @@ Launch Tasks:
 QA finding:
 
 - Persona presets now clear automatically when a user manually changes filters, preventing stale role labels from remaining active after a custom filter change.
+
+## 2026-05-03 Codex Update - Coverage Confidence View
+
+Launch Command Center note:
+
+> Phase 1P added a coverage-confidence layer so Data Quality, Markets and jurisdiction profiles distinguish record volume from source trust. The new scoring uses direct depth, priority-source backing, high-confidence records, review flags, stale dates and date-sensitive records. It remains an internal readiness signal, not legal verification or complete market coverage.
+
+Launch Tasks:
+
+- LAUNCH-056 - Add coverage-confidence scoring for tracked jurisdictions
+- LAUNCH-057 - Add Coverage Confidence panel to Data Quality
+- LAUNCH-058 - Add coverage confidence badges to Markets and jurisdiction profiles
+
+QA finding:
+
+- Market depth targets alone are not enough for commercial readiness. Future market/profile work should check both direct-record depth and coverage confidence before presenting a jurisdiction as ready for premium examples or advisory scans.

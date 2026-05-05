@@ -108,6 +108,7 @@ The MVP includes:
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
 - Source freshness and premium-use blocker signals for source-governance triage
 - Decision-readiness checklists that translate source, threshold and evidence gaps into review controls for regulation details and Marquee premium/advisory use
+- Source evidence trails and copyable source-review memos that turn captured sources into practical QA packets
 - Reusable commercial CTA surfaces
 - Source quality indicators
 - Advisory opportunity and business impact views
@@ -179,6 +180,7 @@ The MVP is successful when:
 - Users can select a jurisdiction and understand key regulatory drivers.
 - Users can filter regulations without breaking the interface.
 - Regulation records expose sources, caveats, confidence, and data quality.
+- Regulation detail pages show the priority source, source freshness posture and source-review packet before client-ready or premium reuse.
 - The assessment wizard produces cautious, useful orientation.
 - Timelines, briefings and jurisdiction briefs show what to do next without implying legal advice.
 - Users can understand what is free, what is premium-preview, what can be requested as advisory support and what is future enterprise/API scope.

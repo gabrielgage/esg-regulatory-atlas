@@ -32,6 +32,19 @@ Decision readiness translates a record's source, threshold, evidence and timing 
 
 The shared logic lives in `lib/decisionReadiness.ts` and is surfaced on regulation details, the detail drawer and the Data Quality Marquee evidence gate. These outputs are governance prompts for source review and advisory scoping. They are not legal verification, premium certification or applicability determinations.
 
+## Source Evidence Review Packets
+
+Source evidence packets translate captured sources into a practical content QA workflow:
+
+- priority source to verify
+- review freshness status
+- source authority type
+- source-review packet
+- source-review steps
+- copyable source-review memo
+
+The shared logic lives in `lib/sourceGovernance.ts` and is surfaced through `components/SourceEvidencePanel.tsx` on regulation detail pages and detail drawers. The copyable memo should preserve caveats, source links, review timing and facts to confirm. It is a research workflow aid only; it does not verify legal completeness, provide official translation or determine applicability.
+
 ## Data Storage
 
 The MVP stores data in static TypeScript files:
@@ -63,6 +76,7 @@ Filtering and applicability logic lives in:
 - `lib/filters.ts`
 - `lib/applicability.ts`
 - `lib/scoring.ts`
+- `lib/sourceGovernance.ts`
 - `lib/urlFilters.ts`
 - `lib/i18n.ts`
 

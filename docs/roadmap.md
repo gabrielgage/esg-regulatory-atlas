@@ -63,10 +63,20 @@ Current capability areas:
 - Source freshness signals and Marquee owner/action controls for premium/advisory review readiness
 - Market coverage-depth targets and Data Quality panel for direct records per jurisdiction
 - Decision-readiness evidence gates on regulation details and Data Quality for premium/advisory review controls
+- Source evidence trails and copyable source-review memos on regulation details and drawers
 - Tablet-and-desktop Natural Earth country-outline map with stronger visual contrast and geometry fallback
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1R Items
+
+- Updated dataset metadata and changelog to `0.5.18 - May 2026`.
+- Added `lib/sourceGovernance.ts` to centralize source posture, freshness, priority-source selection, review packets and copyable source-review memo text.
+- Added `components/SourceEvidencePanel.tsx` to regulation detail pages and drawers.
+- Added source posture samples to the Data Quality source library.
+- Added smoke and static test coverage for source evidence trails and memo caveats.
+- Kept source evidence as governance and QA support, not legal verification, official translation or applicability determination.
 
 ## Recently Delivered Phase 1Q Items
 

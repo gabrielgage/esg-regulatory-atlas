@@ -37,6 +37,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Dedicated Data Quality page for source coverage and review risk
 - Source freshness signals and Marquee review owner/action controls for premium/advisory readiness
 - Decision-readiness evidence gates for regulation details and Marquee premium/advisory review controls
+- Source evidence trails and copyable source-review memos for regulation records
 - Citation widget on regulation detail pages with APA-style, legal research note and BibTeX copy blocks
 - Edition snapshot route at `/edition/0.5/regulations/[slug]`
 - Branded 404 page and ISSB redirect aliases
@@ -117,7 +118,7 @@ Seed data is stored in:
 - `data/contentReview.ts`
 - `data/taxonomy.ts`
 
-Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market profile aggregation lives in `lib/marketProfile.ts`, and sector profile aggregation lives in `lib/sectorProfile.ts`. Readiness-priority logic lives in `lib/scoring.ts`, decision-readiness evidence gates live in `lib/decisionReadiness.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
+Shared types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market profile aggregation lives in `lib/marketProfile.ts`, and sector profile aggregation lives in `lib/sectorProfile.ts`. Readiness-priority logic lives in `lib/scoring.ts`, decision-readiness evidence gates live in `lib/decisionReadiness.ts`, source evidence packet logic lives in `lib/sourceGovernance.ts`, URL filter serialization lives in `lib/urlFilters.ts`, and interface translations live in `lib/i18n.ts`.
 
 ## Project guidance
 
@@ -139,9 +140,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.17 - May 2026`.
+The current seed dataset edition is `0.5.18 - May 2026`.
 
-The latest local update adds decision-readiness evidence gates:
+The latest local update adds source evidence review packets:
+
+- adds a shared source-governance helper for source posture, freshness and review packets
+- adds a Source Evidence Trail panel to regulation detail pages and drawers
+- adds copyable source-review memos with caveats, source links, facts to confirm and source-review steps
+- adds source posture samples to the Data Quality source library
+- keeps source evidence as governance and QA support, not legal verification or an applicability determination
+
+The prior `0.5.17 - May 2026` update added decision-readiness evidence gates:
 
 - adds a shared decision-readiness helper for regulation records
 - adds a Decision Readiness checklist to regulation detail pages and drawers

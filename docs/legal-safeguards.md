@@ -97,6 +97,8 @@ Assessment missing-fact prompts, suggested owners and next 30-day actions must b
 
 Decision-readiness gates, facts-to-confirm lists, evidence packages, source-review steps and premium-use blockers are governance controls for source review and advisory scoping. They must not be described as legal verification, premium certification, complete source review or definitive applicability.
 
+Source evidence trails, source freshness labels and copied source-review memos are also governance controls. They may identify which source to check and which facts to confirm, but they must not imply that Etica ESG has completed legal review, certified source completeness, translated legal text officially or confirmed applicability.
+
 ## Alert Preview Safeguards
 
 Alert previews must use wording such as:
@@ -174,6 +176,8 @@ Copyable assessment summaries, client planning summaries and jurisdiction briefs
 Copyable launch assets must also preserve commercial caveats. They may invite feedback, premium-preview interest or advisory conversations, but they must not imply that paid subscriptions, automated alerts, account features or production monitoring are live.
 
 Source-governance labels such as "source-ready seed", "premium use blocked", "stale source" or "missing primary source" are editorial controls for review prioritization. They must not be framed as legal verification, official source approval or complete legal review.
+
+Copyable source-review memos must preserve the non-legal-advice caveat, source links, review timing and facts-to-confirm language. They are suitable for research workflow notes, not final legal opinions.
 
 Decision-readiness labels such as "orientation-ready seed", "review before client use" and "premium use blocked" are also editorial controls. They indicate review posture for the static seed record, not whether a business is in or out of scope.
 

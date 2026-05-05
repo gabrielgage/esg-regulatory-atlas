@@ -152,7 +152,8 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add a non-legal readiness score for effort level, likely functions involved, data maturity needed, assurance/control burden and typical advisory workstreams.
 
 22. **Source freshness dashboard**
-    Show source age, next review date, stale-source warnings and owner/reviewer placeholders in a governance-focused data-quality dashboard.
+    Status: partially delivered in `0.5.12 - May 2026`, `0.5.17 - May 2026` and `0.5.18 - May 2026`.
+    The Data Quality dashboard now shows source freshness signals, Marquee review owners, evidence gates and source posture samples. Regulation records now include source evidence trails and copyable source-review memos. A formal named reviewer workflow remains future-state until a database or content workflow is approved.
 
 23. **Glossary and regulatory taxonomy page**
     Create a user-facing glossary for terms such as double materiality, value chain, assurance, transition plan, taxonomy alignment, due diligence and financed emissions.
@@ -205,7 +206,7 @@ Target: later phase only, after explicit approval and product validation.
 The next implementation sequence should be:
 
 1. Source-review Marquee 10 and Marquee 25 records used in premium examples.
-   Status: advanced in `0.5.17 - May 2026` with shared decision-readiness evidence gates and a Data Quality premium-use gate panel. Record-level source/legal review is still required before client reliance.
+   Status: advanced in `0.5.17 - May 2026` with shared decision-readiness evidence gates and in `0.5.18 - May 2026` with source evidence trails and copyable source-review memos. Record-level source/legal review is still required before client reliance.
 2. Add missing-facts prompts to assessment results.
    Status: delivered in `0.5.10 - May 2026` as assessment result and copied-shortlist prompts.
 3. Prepare LinkedIn, email and direct outreach launch assets from `data/launchAssets.ts`.

@@ -1,9 +1,10 @@
-import { ExternalLink, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
 import { CommercialCTA } from "./CommercialCTA";
 import { DecisionReadinessChecklist } from "./DecisionReadinessChecklist";
 import { RecordMetaBadges } from "./RecordMetaBadges";
+import { SourceEvidencePanel } from "./SourceEvidencePanel";
 import { StatusBadge } from "./StatusBadge";
 import { DATASET_META } from "@/data/_meta";
 import { readinessBand, readinessClass, readinessReasons, readinessScore } from "@/lib/scoring";
@@ -65,6 +66,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
           </Card>
         ) : null}
         <DecisionReadinessChecklist regulation={regulation} compact />
+        <SourceEvidencePanel regulation={regulation} compact />
         <Card title="Atlas record governance">
           <div className="grid gap-3 sm:grid-cols-2">
             <Metric label="Record type" value={labelOrMissing(regulation.recordType)} />
@@ -212,26 +214,6 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
               </li>
             ))}
           </ul>
-        </Card>
-        <Card title="Sources">
-          {regulation.sourceUrls.length ? (
-            <div className="space-y-2">
-              {regulation.sourceUrls.map((source) => (
-                <a
-                  key={source.url}
-                  className="flex items-start gap-2 text-sm text-teal underline"
-                  href={source.url}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <ExternalLink className="mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="break-words">{source.label}</span>
-                </a>
-              ))}
-            </div>
-          ) : (
-            <p className="text-sm text-slate-500">No source URL is available for this record yet.</p>
-          )}
         </Card>
       </div>
     </aside>

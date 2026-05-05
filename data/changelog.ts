@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.16 - May 2026",
+    date: "2026-05-03",
+    label: "Coverage confidence view",
+    summary:
+      "Added a coverage-confidence layer that separates direct market depth from source quality, review flags, stale dates and date-sensitive regulatory records.",
+    added: [
+      "Coverage confidence scoring helper for every tracked jurisdiction",
+      "Coverage Confidence panel on `/data-quality`",
+      "Coverage confidence badges on market cards and jurisdiction profiles",
+      "Static coverage-confidence test coverage"
+    ],
+    updated: ["Data Quality", "Markets", "Jurisdiction profiles", "Smoke tests", "Project documentation"],
+    records: ["Source-reviewed seed", "Usable seed coverage", "Review needed", "Watch-only"],
+    caveat: "Coverage confidence is an internal readiness and transparency signal. It does not verify complete market coverage or determine legal applicability."
+  },
+  {
     edition: "0.5.15 - May 2026",
     date: "2026-05-03",
     label: "Persona regulation presets",

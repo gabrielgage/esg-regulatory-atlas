@@ -6,6 +6,19 @@ The data layer provides structured seed regulatory intelligence for orientation 
 
 The methodology is designed to make uncertainty visible, keep the product legally cautious, and make future data review easier.
 
+## Coverage Confidence
+
+The Atlas separates market coverage depth from coverage confidence. Depth asks whether a jurisdiction has enough direct seed records for a credible profile. Confidence asks whether those records and linked inherited records are sufficiently source-backed, high-confidence, current and low-risk for premium examples or advisory scans.
+
+Coverage confidence labels are internal readiness signals only:
+
+- **Source-reviewed seed** means the current seed set has stronger priority-source and high-confidence support, while still requiring entity-specific review.
+- **Usable seed coverage** means the market can support orientation but should be reviewed before premium or client-ready reliance.
+- **Review needed** means source, date, threshold or confidence flags should be resolved before commercial use.
+- **Watch-only** means the market should be treated as monitored coverage rather than a complete local profile.
+
+No coverage confidence label verifies complete legal coverage or determines applicability.
+
 ## Data Storage
 
 The MVP stores data in static TypeScript files:

@@ -1,4 +1,5 @@
 import { jurisdictions, regulations } from "@/data/seed";
+import { coverageConfidenceForJurisdiction } from "@/lib/coverageConfidence";
 import { recordsForJurisdiction } from "@/lib/layers";
 import { readinessScore } from "@/lib/scoring";
 import { uniq } from "@/lib/utils";
@@ -31,9 +32,11 @@ export function marketProfileFor(jurisdiction: Jurisdiction) {
     regulation.sourceUrls.some((source) => source.type === "primary" || source.type === "regulator" || source.type === "standards_body")
   ).length;
   const reviewFlags = scoped.filter((regulation) => regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high").length;
+  const coverageConfidence = coverageConfidenceForJurisdiction(jurisdiction, regulations);
 
   return {
     jurisdiction,
+    coverageConfidence,
     scoped,
     directRecords,
     inheritedRecords,

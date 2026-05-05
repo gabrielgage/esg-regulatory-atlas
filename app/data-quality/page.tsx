@@ -6,6 +6,7 @@ import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { CoverageMatrix } from "@/components/CoverageMatrix";
+import { CoverageConfidencePanel } from "@/components/CoverageConfidencePanel";
 import { CoverageDepthPanel } from "@/components/CoverageDepthPanel";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
 import { MarqueeReviewQueue } from "@/components/MarqueeReviewQueue";
@@ -64,6 +65,7 @@ export default function DataQualityPage() {
           selectedId={selectedJurisdiction?.id}
           onSelect={setSelectedJurisdiction}
         />
+        <CoverageConfidencePanel jurisdictions={jurisdictions} regulations={regulations} onSelect={setSelectedJurisdiction} />
         <CoverageDepthPanel jurisdictions={jurisdictions} regulations={regulations} onSelect={setSelectedJurisdiction} />
         <MarqueeReviewQueue regulations={regulations} onSelect={setSelectedRegulation} />
         <DataQualityPanel regulations={regulations} onSelect={setSelectedRegulation} />

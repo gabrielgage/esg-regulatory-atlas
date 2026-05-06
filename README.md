@@ -37,7 +37,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Dedicated Data Quality page for source coverage and review risk
 - Source freshness signals and Marquee review owner/action controls for premium/advisory readiness
 - Decision-readiness evidence gates for regulation details and Marquee premium/advisory review controls
-- Source evidence trails and copyable source-review memos for regulation records
+- Source evidence trails, copyable source-review memos and Data Quality review workflow exports
 - Citation widget on regulation detail pages with APA-style, legal research note and BibTeX copy blocks
 - Edition snapshot route at `/edition/0.5/regulations/[slug]`
 - Branded 404 page and ISSB redirect aliases
@@ -140,9 +140,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.18 - May 2026`.
+The current seed dataset edition is `0.5.19 - May 2026`.
 
-The latest local update adds source evidence review packets:
+The latest local update adds review workflow export controls:
+
+- adds a shared review-workflow helper for source/threshold/evidence review rows and priority scoring
+- adds a Review Workflow Export panel to `/data-quality`
+- exports reviewer-ready CSV and JSON files from the static seed dataset
+- copies a caveated priority review packet for Notion, advisory prep and content QA
+- keeps exports as operational QA aids, not legal opinions, official translations or verified compliance determinations
+
+The prior `0.5.18 - May 2026` update added source evidence review packets:
 
 - adds a shared source-governance helper for source posture, freshness and review packets
 - adds a Source Evidence Trail panel to regulation detail pages and drawers

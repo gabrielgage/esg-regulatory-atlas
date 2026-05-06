@@ -138,8 +138,10 @@ When changing assessment or decision-readiness output:
 When changing source evidence or source-governance output:
 
 - Use `lib/sourceGovernance.ts` for source posture, review packet and copyable source memo logic.
+- Use `lib/reviewWorkflow.ts` for Data Quality review rows, priority scoring, CSV/JSON exports and copyable priority packets.
 - Keep source evidence panels as governance and QA aids, not legal verification.
 - Preserve source links, last-reviewed date, next-review date, confidence, data quality and caveats in copied memos.
+- Preserve caveats in exported review trackers and copied priority packets when moving them into Notion, spreadsheets or advisory prep.
 - Do not imply that a source has been officially translated, fully reviewed or certified for client reliance.
 - Update `docs/data-methodology.md`, `docs/legal-safeguards.md`, `docs/roadmap.md`, README and handoff docs when the source workflow changes.
 

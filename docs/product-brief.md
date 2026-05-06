@@ -109,6 +109,7 @@ The MVP includes:
 - Source freshness and premium-use blocker signals for source-governance triage
 - Decision-readiness checklists that translate source, threshold and evidence gaps into review controls for regulation details and Marquee premium/advisory use
 - Source evidence trails and copyable source-review memos that turn captured sources into practical QA packets
+- Review workflow CSV/JSON exports and copyable priority review packets from `/data-quality`
 - Reusable commercial CTA surfaces
 - Source quality indicators
 - Advisory opportunity and business impact views
@@ -178,6 +179,7 @@ The MVP is successful when:
 - The map is visually credible and interactive.
 - Country outlines are visible enough for users to recognize the map as a true world map, not abstract shapes.
 - Users can select a jurisdiction and understand key regulatory drivers.
+- Reviewers can export source, threshold and evidence review rows without treating them as legal verification.
 - Users can filter regulations without breaking the interface.
 - Regulation records expose sources, caveats, confidence, and data quality.
 - Regulation detail pages show the priority source, source freshness posture and source-review packet before client-ready or premium reuse.

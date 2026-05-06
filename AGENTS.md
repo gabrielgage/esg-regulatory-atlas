@@ -96,6 +96,12 @@ Current source-evidence convention:
 - `components/SourceEvidencePanel.tsx` surfaces source evidence on regulation detail pages and drawers.
 - Treat source evidence trails as QA and governance aids. They are not legal verification, official translation, source completeness certification or applicability determinations.
 
+Current review-workflow export convention:
+
+- `lib/reviewWorkflow.ts` centralizes reviewer-ready rows, priority scoring, CSV/JSON export content and copyable priority packets.
+- `components/ReviewWorkflowExportPanel.tsx` surfaces those exports on `/data-quality`.
+- Treat review workflow exports as operational QA trackers for Notion, spreadsheets or advisory prep. They are not legal opinions, official translations, source verification or compliance determinations.
+
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
 ## Issue Resolution Rule
@@ -324,6 +330,8 @@ Already delivered in Phase 1J: assessment missing-facts prompts, suggested owner
 Already delivered in Phase 1K: `/launch` and `components/LaunchAssetLibrary.tsx` render copyable launch assets from `data/launchAssets.ts`. Treat launch assets as manual commercial-validation material only; copied text must preserve caveats and must not imply live paid subscriptions, automated alerts or production monitoring.
 
 Already delivered in Phase 1L: Data Quality source freshness signals and Marquee review owner/action/premium-blocker controls. Treat these as editorial source-governance signals only, not legal verification, source certification or complete review.
+
+Already delivered in Phase 1S: Data Quality review workflow exports backed by `lib/reviewWorkflow.ts`. Treat exported CSV/JSON rows and copied priority packets as operational source QA aids only.
 
 Already delivered in Phase 1M: `/markets` and `/jurisdiction/[code]` market profile pages. Treat market profiles as current tracked seed coverage and planning context, not complete local legal inventories or applicability determinations.
 

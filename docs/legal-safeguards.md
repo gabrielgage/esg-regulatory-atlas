@@ -99,6 +99,8 @@ Decision-readiness gates, facts-to-confirm lists, evidence packages, source-revi
 
 Source evidence trails, source freshness labels and copied source-review memos are also governance controls. They may identify which source to check and which facts to confirm, but they must not imply that Etica ESG has completed legal review, certified source completeness, translated legal text officially or confirmed applicability.
 
+Review workflow CSV/JSON exports and copied priority review packets are operational tracker outputs. They can be moved into Notion, spreadsheets or advisory prep, but they must keep their caveat and should not be treated as legal opinions, official translations, legal verification, source completeness certification or compliance determinations.
+
 ## Alert Preview Safeguards
 
 Alert previews must use wording such as:
@@ -178,6 +180,8 @@ Copyable launch assets must also preserve commercial caveats. They may invite fe
 Source-governance labels such as "source-ready seed", "premium use blocked", "stale source" or "missing primary source" are editorial controls for review prioritization. They must not be framed as legal verification, official source approval or complete legal review.
 
 Copyable source-review memos must preserve the non-legal-advice caveat, source links, review timing and facts-to-confirm language. They are suitable for research workflow notes, not final legal opinions.
+
+Review workflow exports must preserve the non-legal-advice caveat, source posture, priority source, facts to confirm, evidence needed and next-review action fields. If a reviewer copies the export into another tracker, the caveat and source-review action should stay attached to the row.
 
 Decision-readiness labels such as "orientation-ready seed", "review before client use" and "premium use blocked" are also editorial controls. They indicate review posture for the static seed record, not whether a business is in or out of scope.
 

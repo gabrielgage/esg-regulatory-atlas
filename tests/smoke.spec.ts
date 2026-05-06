@@ -125,6 +125,9 @@ test("data quality source-governance queue renders", async ({ page }) => {
   await expect(page.getByText(/Average confidence/i)).toBeVisible();
   await expect(page.getByText(/Premium evidence gates/i)).toBeVisible();
   await expect(page.getByText(/Premium-use blockers/i)).toBeVisible();
+  await expect(page.getByText(/Review workflow export/i)).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy priority review packet/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Export review CSV/i })).toBeVisible();
   await expect(page.getByText(/Source posture samples/i)).toBeVisible();
   await expect(page.getByText(/Source freshness signals/i)).toBeVisible();
   await expect(page.getByText(/Stale source/i)).toBeVisible();

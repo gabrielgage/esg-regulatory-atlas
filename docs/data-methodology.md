@@ -45,6 +45,26 @@ Source evidence packets translate captured sources into a practical content QA w
 
 The shared logic lives in `lib/sourceGovernance.ts` and is surfaced through `components/SourceEvidencePanel.tsx` on regulation detail pages and detail drawers. The copyable memo should preserve caveats, source links, review timing and facts to confirm. It is a research workflow aid only; it does not verify legal completeness, provide official translation or determine applicability.
 
+## Review Workflow Exports
+
+Review workflow exports convert the static regulation dataset into reviewer-ready operational rows:
+
+- review priority score
+- decision gate
+- source posture
+- priority source and URL
+- owner placeholder
+- source next action
+- threshold next action
+- facts to confirm
+- evidence needed
+- first actions
+- premium-use caveat
+
+The shared logic lives in `lib/reviewWorkflow.ts` and is surfaced through `components/ReviewWorkflowExportPanel.tsx` on `/data-quality`. CSV and JSON exports should be used to seed Notion tasks, content review trackers, workbook reviews or advisory prep checklists. The copied priority packet should preserve the caveat that it is seed regulatory intelligence for source QA and planning only.
+
+Do not treat exported review rows as legal verification, official translation, source completeness certification or an applicability determination. If the exported tracker is moved into a spreadsheet or Notion, keep the caveat and the source-review next action attached to each row.
+
 ## Data Storage
 
 The MVP stores data in static TypeScript files:
@@ -77,6 +97,7 @@ Filtering and applicability logic lives in:
 - `lib/applicability.ts`
 - `lib/scoring.ts`
 - `lib/sourceGovernance.ts`
+- `lib/reviewWorkflow.ts`
 - `lib/urlFilters.ts`
 - `lib/i18n.ts`
 

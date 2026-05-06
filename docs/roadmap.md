@@ -64,10 +64,21 @@ Current capability areas:
 - Market coverage-depth targets and Data Quality panel for direct records per jurisdiction
 - Decision-readiness evidence gates on regulation details and Data Quality for premium/advisory review controls
 - Source evidence trails and copyable source-review memos on regulation details and drawers
+- Data Quality review workflow exports for source, threshold, evidence and premium-use QA tracking
 - Tablet-and-desktop Natural Earth country-outline map with stronger visual contrast and geometry fallback
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1S Items
+
+- Updated dataset metadata and changelog to `0.5.19 - May 2026`.
+- Added `lib/reviewWorkflow.ts` to generate source/threshold/evidence review rows, priority scoring and caveated exports.
+- Added `components/ReviewWorkflowExportPanel.tsx` to `/data-quality`.
+- Added reviewer-ready CSV and JSON exports for the static seed dataset.
+- Added a copyable priority review packet for Notion, advisory prep and content QA.
+- Added smoke and static test coverage for the review workflow export panel and caveated export content.
+- Kept exports as operational QA aids, not legal opinions, official translations or verified compliance determinations.
 
 ## Recently Delivered Phase 1R Items
 

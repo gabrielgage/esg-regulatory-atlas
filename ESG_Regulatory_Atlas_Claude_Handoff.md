@@ -2,7 +2,21 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1R source-evidence review-packet pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass and Phase 1Q decision-readiness evidence-gate pass. The goal remains deployability and legal caution, with added emphasis on turning source, threshold and evidence gaps into practical review controls before premium or advisory use.
+The app is now in a static Phase 1S review-workflow export pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass and Phase 1R source-evidence review-packet pass. The goal remains deployability and legal caution, with added emphasis on turning source, threshold and evidence gaps into practical review controls before premium or advisory use.
+
+## Phase 1S Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.19 - May 2026`.
+- Added `lib/reviewWorkflow.ts` as a shared review workflow export helper.
+- Added `components/ReviewWorkflowExportPanel.tsx` on `/data-quality`.
+- Added CSV and JSON exports for source, threshold, evidence, owner and premium-use QA tracking.
+- Added a copyable priority review packet for Notion, advisory prep and content QA.
+- Added smoke and static coverage for the review workflow export panel and caveated export content.
+- Kept review workflow exports as operational QA aids, not legal opinions, official translations or verified compliance determinations.
+
+## Phase 1S Product Rationale
+
+The Atlas now has source evidence trails at record level, but reviewers still need an easy way to move the highest-priority rows into Notion, a workbook or an advisory prep tracker. Phase 1S converts the static seed dataset into a reviewer-ready export without adding a database, automation or legal verification claims.
 
 ## Phase 1R Changes Delivered
 
@@ -377,6 +391,12 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1S validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1S validation: `git diff --check` passed.
+- Phase 1S validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1S out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM; no implementation code or dependencies were added for those items.
+- Phase 1S legal-risk wording scan found only banned phrases inside "do not use" guidance, disclaimers and intentional coverage caveats.
+- Phase 1S Notion update: Launch Tasks LAUNCH-066 through LAUNCH-069 were documented for review workflow exports.
 - Phase 1R validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1R validation: `git diff --check` passed.
 - Phase 1R validation: `npm run lint` could not run because the Codex desktop shell does not expose an `npm` executable; the equivalent TypeScript command passed with the local Node runtime.

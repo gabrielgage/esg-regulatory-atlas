@@ -3,6 +3,7 @@ import { coverageTargets } from "../data/coverageTargets";
 import { jurisdictions, regulations } from "../data/seed";
 import { coverageConfidenceForJurisdiction } from "../lib/coverageConfidence";
 import { decisionReadinessFor } from "../lib/decisionReadiness";
+import { buildReviewWorkflowRows, reviewWorkflowCsv, reviewWorkflowMarkdown } from "../lib/reviewWorkflow";
 import { sourceEvidenceFor, sourceGovernanceMemo } from "../lib/sourceGovernance";
 
 test("every tracked jurisdiction has a coverage target", () => {
@@ -60,4 +61,17 @@ test("source governance produces review packets and caveated copy", () => {
   expect(evidence.level).toMatch(/current|upcoming-review|stale|review-date-missing|priority-source-needed|source-missing/);
   expect(memo).toContain("Source review memo");
   expect(memo).toContain("does not constitute legal");
+});
+
+test("review workflow exports source review rows with caveats", () => {
+  const rows = buildReviewWorkflowRows(regulations);
+  const csv = reviewWorkflowCsv(rows);
+  const markdown = reviewWorkflowMarkdown(rows, 3);
+
+  expect(rows.length).toBe(regulations.length);
+  expect(rows[0].reviewPriority).toBeGreaterThanOrEqual(rows[1].reviewPriority);
+  expect(csv).toContain("sourcePosture");
+  expect(csv).toContain("prioritySourceUrl");
+  expect(markdown).toContain("source review workflow packet");
+  expect(markdown).toContain("does not constitute legal");
 });

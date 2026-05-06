@@ -127,9 +127,30 @@ ADR-027:
 - Consequence: Add shared decision-readiness logic and Premium Evidence Gates while preserving caveats that these are governance prompts for review and scoping.
 - Status: Active.
 
+ADR-028:
+
+- Decision: Treat source evidence trails as review packets, not legal verification.
+- Why: Source posture and review timing make content QA easier, but source trails cannot certify complete legal coverage, official translation or entity-specific applicability.
+- Consequence: Add source evidence trails and copyable source-review memos while preserving caveats.
+- Status: Active.
+
+ADR-029:
+
+- Decision: Treat review workflow exports as operational QA trackers.
+- Why: Reviewers need CSV/JSON and copyable packets to move static seed records into Notion, spreadsheets or advisory prep, but exported rows cannot become legal opinions.
+- Consequence: Add Data Quality review workflow exports with caveats, priority sources, facts to confirm and next actions.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
+
+Recent follow-up launch tasks:
+
+- LAUNCH-066 - Add Data Quality review workflow export panel
+- LAUNCH-067 - Add caveated CSV/JSON review workflow exports
+- LAUNCH-068 - Add copyable priority review packet for source QA
+- LAUNCH-069 - Add static and smoke coverage for review workflow exports
 
 ## Content Review
 

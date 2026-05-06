@@ -63,11 +63,12 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Follow-up status: expanded in `0.5.16 - May 2026` with a coverage-confidence view that separates direct record depth from priority-source backing, review flags, stale dates and date-sensitive records.
 
 10. **Data quality review queue refinement**
-    Status: partially delivered in `0.5.5 - May 2026`.
-    Rank review queue items by high-impact status, upcoming date, missing primary source, source age and likely client demand.
+    Status: materially delivered across `0.5.5`, `0.5.12`, `0.5.17`, `0.5.18` and `0.5.19 - May 2026`.
+    Data Quality now ranks review priorities through review-queue scoring, Marquee owners/actions, decision-readiness gates, source evidence trails and CSV/JSON review workflow exports. Formal named reviewer assignment remains future-state until a database or governed content workflow is approved.
 
 11. **Workbook sync routine**
-    Document and automate, where possible, a repeatable static export of website seed data to the regulation tracker workbook so website and review inventory stay aligned.
+    Status: partially delivered in `0.5.19 - May 2026`.
+    `/data-quality` now exports reviewer-ready CSV/JSON rows with source posture, decision gate, priority source, owner, facts to confirm, evidence needed and first actions. A true workbook sync file and reviewer ownership workflow remain open.
 
 12. **Client briefing copy polish**
     Status: partially delivered in `0.5.5 - May 2026`.
@@ -152,8 +153,8 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add a non-legal readiness score for effort level, likely functions involved, data maturity needed, assurance/control burden and typical advisory workstreams.
 
 22. **Source freshness dashboard**
-    Status: partially delivered in `0.5.12 - May 2026`, `0.5.17 - May 2026` and `0.5.18 - May 2026`.
-    The Data Quality dashboard now shows source freshness signals, Marquee review owners, evidence gates and source posture samples. Regulation records now include source evidence trails and copyable source-review memos. A formal named reviewer workflow remains future-state until a database or content workflow is approved.
+    Status: materially delivered in `0.5.12`, `0.5.17`, `0.5.18` and `0.5.19 - May 2026`.
+    The Data Quality dashboard now shows source freshness signals, Marquee review owners, evidence gates, source posture samples and review workflow exports. Regulation records now include source evidence trails and copyable source-review memos. A formal named reviewer workflow remains future-state until a database or content workflow is approved.
 
 23. **Glossary and regulatory taxonomy page**
     Create a user-facing glossary for terms such as double materiality, value chain, assurance, transition plan, taxonomy alignment, due diligence and financed emissions.
@@ -206,7 +207,7 @@ Target: later phase only, after explicit approval and product validation.
 The next implementation sequence should be:
 
 1. Source-review Marquee 10 and Marquee 25 records used in premium examples.
-   Status: advanced in `0.5.17 - May 2026` with shared decision-readiness evidence gates and in `0.5.18 - May 2026` with source evidence trails and copyable source-review memos. Record-level source/legal review is still required before client reliance.
+   Status: advanced in `0.5.17 - May 2026` with shared decision-readiness evidence gates, in `0.5.18 - May 2026` with source evidence trails and in `0.5.19 - May 2026` with Data Quality review workflow exports. Record-level source/legal review is still required before client reliance.
 2. Add missing-facts prompts to assessment results.
    Status: delivered in `0.5.10 - May 2026` as assessment result and copied-shortlist prompts.
 3. Prepare LinkedIn, email and direct outreach launch assets from `data/launchAssets.ts`.

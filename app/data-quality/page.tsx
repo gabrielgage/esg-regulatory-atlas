@@ -18,9 +18,19 @@ import { DATASET_META } from "@/data/_meta";
 import { jurisdictions, regulations } from "@/data/seed";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 
+type DataQualityTab = "overview" | "sources" | "coverage" | "review";
+
+const dataQualityTabs: { id: DataQualityTab; label: string; description: string }[] = [
+  { id: "overview", label: "Overview", description: "Principles and research queue" },
+  { id: "sources", label: "Sources", description: "Source library and posture" },
+  { id: "coverage", label: "Coverage", description: "Market depth and confidence" },
+  { id: "review", label: "Review workflow", description: "Premium gates and exports" }
+];
+
 export default function DataQualityPage() {
   const [selectedJurisdiction, setSelectedJurisdiction] = useState<Jurisdiction | null>(jurisdictions.find((jurisdiction) => jurisdiction.id === "eu") || null);
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
+  const [activeTab, setActiveTab] = useState<DataQualityTab>("overview");
 
   return (
     <main id="main-content" className="min-h-screen pb-12">
@@ -33,50 +43,113 @@ export default function DataQualityPage() {
           meta={`Current edition ${DATASET_META.edition}. Dataset last reviewed ${DATASET_META.lastReviewed}.`}
         />
         <DisclaimerBanner />
-        <section className="rounded-2xl border bg-white p-5 text-sm leading-6 text-slate-700 shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-wide text-teal">Source-of-truth governance</p>
-          <h2 className="mt-2 text-xl font-semibold text-ink">Condensed parent records keep the Atlas decision-ready</h2>
-          <p className="mt-2">
-            The Atlas intentionally does not split ESRS, GRI, ISSB, SFDR, EU Taxonomy, CDP, PCAF or major financial-services packages into dozens of disconnected top-level records. Modules, delegated acts, questionnaires and milestones are captured as aliases or child details so users can search them without losing the market view.
-          </p>
-          <div className="mt-4 grid gap-3 md:grid-cols-4">
-            <GovernanceCard title="Source hierarchy" body="Primary law, regulator guidance and standard-setter materials are prioritised above secondary commentary." />
-            <GovernanceCard title="Review cadence" body="Records carry last-reviewed and next-review dates so high-impact, uncertain or changing items can be queued." />
-            <GovernanceCard title="Legal caution" body="Records describe potential relevance and planning actions. They do not decide legal applicability." />
-            <GovernanceCard title="Granularity rule" body="Top-level records are parent regimes; subrules stay as child items, aliases, milestones or source notes." />
+
+        <section className="sticky top-16 z-20 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-sm backdrop-blur">
+          <div className="grid gap-2 md:grid-cols-4" role="tablist" aria-label="Data quality sections">
+            {dataQualityTabs.map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                aria-controls={`data-quality-${tab.id}`}
+                onClick={() => setActiveTab(tab.id)}
+                className={
+                  activeTab === tab.id
+                    ? "rounded-xl bg-navy px-4 py-3 text-left text-white shadow-sm"
+                    : "rounded-xl px-4 py-3 text-left text-slate-600 hover:bg-slate-50"
+                }
+              >
+                <span className="block text-sm font-semibold">{tab.label}</span>
+                <span className={activeTab === tab.id ? "mt-1 block text-xs text-white/75" : "mt-1 block text-xs text-slate-400"}>{tab.description}</span>
+              </button>
+            ))}
           </div>
         </section>
-        <section className="rounded-2xl border bg-white p-5 text-sm leading-6 text-slate-700 shadow-sm">
-          <p className="text-xs font-semibold uppercase tracking-wide text-teal">Coverage trust model</p>
-          <h2 className="mt-2 text-xl font-semibold text-ink">Tracked coverage is not complete global coverage</h2>
-          <p className="mt-2">
-            The Atlas separates current tracked records from watchlist topics, source-reviewed records, seed intelligence and records needing review. This distinction is essential for premium previews and advisory outputs because users need to know whether a record is ready for orientation, source review or deeper legal analysis.
-          </p>
-          <div className="mt-4 grid gap-3 md:grid-cols-5">
-            <GovernanceCard title="Tracked" body="Included in the public seed dataset with source, confidence and review metadata." />
-            <GovernanceCard title="Watchlist" body="Relevant topic or market lens that may need future monitoring or source review." />
-            <GovernanceCard title="Source-reviewed" body="Record has primary, regulator or standard-setter source support and recent review." />
-            <GovernanceCard title="Seed" body="Illustrative regulatory intelligence for orientation; not production-verified legal content." />
-            <GovernanceCard title="Needs review" body="Source, date, threshold or wording should be validated before client reliance." />
-          </div>
-        </section>
-        <SourceLibrary regulations={regulations} onSelect={setSelectedRegulation} />
-        <CoverageMatrix
-          jurisdictions={jurisdictions}
-          regulations={regulations}
-          selectedId={selectedJurisdiction?.id}
-          onSelect={setSelectedJurisdiction}
-        />
-        <CoverageConfidencePanel jurisdictions={jurisdictions} regulations={regulations} onSelect={setSelectedJurisdiction} />
-        <CoverageDepthPanel jurisdictions={jurisdictions} regulations={regulations} onSelect={setSelectedJurisdiction} />
-        <MarqueeEvidenceGate regulations={regulations} />
-        <ReviewWorkflowExportPanel regulations={regulations} onSelect={setSelectedRegulation} />
-        <MarqueeReviewQueue regulations={regulations} onSelect={setSelectedRegulation} />
-        <DataQualityPanel regulations={regulations} onSelect={setSelectedRegulation} />
+
+        <div id={`data-quality-${activeTab}`} role="tabpanel" className="space-y-5">
+          {activeTab === "overview" ? (
+            <>
+              <section className="grid gap-5 lg:grid-cols-2">
+                <GovernanceSection
+                  eyebrow="Source-of-truth governance"
+                  title="Condensed parent records keep the Atlas decision-ready"
+                  body="The Atlas intentionally does not split ESRS, GRI, ISSB, SFDR, EU Taxonomy, CDP, PCAF or major financial-services packages into dozens of disconnected top-level records. Modules, delegated acts, questionnaires and milestones are captured as aliases or child details so users can search them without losing the market view."
+                  cards={[
+                    ["Source hierarchy", "Primary law, regulator guidance and standard-setter materials are prioritised above secondary commentary."],
+                    ["Review cadence", "Records carry last-reviewed and next-review dates so high-impact, uncertain or changing items can be queued."],
+                    ["Legal caution", "Records describe potential relevance and planning actions. They do not decide legal applicability."],
+                    ["Granularity rule", "Top-level records are parent regimes; subrules stay as child items, aliases, milestones or source notes."]
+                  ]}
+                />
+                <GovernanceSection
+                  eyebrow="Coverage trust model"
+                  title="Tracked coverage is not complete global coverage"
+                  body="The Atlas separates current tracked records from watchlist topics, source-reviewed records, seed intelligence and records needing review. This distinction helps users understand whether a record is ready for orientation, source review or deeper legal analysis."
+                  cards={[
+                    ["Tracked", "Included in the public seed dataset with source, confidence and review metadata."],
+                    ["Watchlist", "Relevant topic or market lens that may need future monitoring or source review."],
+                    ["Source-reviewed", "Priority-source support and recent review, still with entity-specific caveats."],
+                    ["Needs review", "Source, date, threshold or wording should be validated before client reliance."]
+                  ]}
+                />
+              </section>
+              <DataQualityPanel regulations={regulations} onSelect={setSelectedRegulation} />
+            </>
+          ) : null}
+
+          {activeTab === "sources" ? <SourceLibrary regulations={regulations} onSelect={setSelectedRegulation} /> : null}
+
+          {activeTab === "coverage" ? (
+            <>
+              <CoverageConfidencePanel jurisdictions={jurisdictions} regulations={regulations} onSelect={setSelectedJurisdiction} />
+              <CoverageDepthPanel jurisdictions={jurisdictions} regulations={regulations} onSelect={setSelectedJurisdiction} />
+              <CoverageMatrix
+                jurisdictions={jurisdictions}
+                regulations={regulations}
+                selectedId={selectedJurisdiction?.id}
+                onSelect={setSelectedJurisdiction}
+              />
+            </>
+          ) : null}
+
+          {activeTab === "review" ? (
+            <>
+              <MarqueeEvidenceGate regulations={regulations} />
+              <ReviewWorkflowExportPanel regulations={regulations} onSelect={setSelectedRegulation} />
+              <MarqueeReviewQueue regulations={regulations} onSelect={setSelectedRegulation} />
+            </>
+          ) : null}
+        </div>
         <FooterDisclaimer />
       </div>
       <RegulationDetail regulation={selectedRegulation} onClose={() => setSelectedRegulation(null)} />
     </main>
+  );
+}
+
+function GovernanceSection({
+  eyebrow,
+  title,
+  body,
+  cards
+}: {
+  eyebrow: string;
+  title: string;
+  body: string;
+  cards: [string, string][];
+}) {
+  return (
+    <section className="rounded-2xl border bg-white p-5 text-sm leading-6 text-slate-700 shadow-sm">
+      <p className="text-xs font-semibold uppercase tracking-wide text-teal">{eyebrow}</p>
+      <h2 className="mt-2 text-xl font-semibold text-ink">{title}</h2>
+      <p className="mt-2">{body}</p>
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        {cards.map(([cardTitle, cardBody]) => (
+          <GovernanceCard key={cardTitle} title={cardTitle} body={cardBody} />
+        ))}
+      </div>
+    </section>
   );
 }
 

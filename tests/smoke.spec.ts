@@ -121,17 +121,24 @@ test("sector starting point pages render business-context triage", async ({ page
 test("data quality source-governance queue renders", async ({ page }) => {
   await page.goto("/data-quality");
 
+  await expect(page.getByRole("tab", { name: /Overview/i })).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByText(/Source freshness signals/i)).toBeVisible();
+  await expect(page.getByText(/Stale source/i)).toBeVisible();
+  await expect(page.getByText(/Missing primary source/i)).toBeVisible();
+
+  await page.getByRole("tab", { name: /Sources/i }).click();
+  await expect(page.getByText(/Source posture samples/i)).toBeVisible();
+
+  await page.getByRole("tab", { name: /Coverage/i }).click();
   await expect(page.getByText(/Coverage confidence/i)).toBeVisible();
   await expect(page.getByText(/Average confidence/i)).toBeVisible();
+
+  await page.getByRole("tab", { name: /Review workflow/i }).click();
   await expect(page.getByText(/Premium evidence gates/i)).toBeVisible();
   await expect(page.getByText(/Premium-use blockers/i)).toBeVisible();
   await expect(page.getByText(/Review workflow export/i)).toBeVisible();
   await expect(page.getByRole("button", { name: /Copy priority review packet/i })).toBeVisible();
   await expect(page.getByRole("button", { name: /Export review CSV/i })).toBeVisible();
-  await expect(page.getByText(/Source posture samples/i)).toBeVisible();
-  await expect(page.getByText(/Source freshness signals/i)).toBeVisible();
-  await expect(page.getByText(/Stale source/i)).toBeVisible();
-  await expect(page.getByText(/Missing primary source/i)).toBeVisible();
   await expect(page.getByText(/Owner placeholder:/i).first()).toBeVisible();
   await expect(page.getByText(/Premium use:/i).first()).toBeVisible();
 });

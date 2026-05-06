@@ -16,6 +16,14 @@ The preferred loop is:
 6. Update context files when the change affects future work.
 7. Summarize exactly what changed, why it changed, and what still needs review.
 
+When creating a branch that the user will publish from GitHub Desktop, avoid tracking `origin/main` as the upstream. Prefer:
+
+```bash
+git switch --no-track -c codex/my-feature origin/main
+```
+
+If the branch was already created from `origin/main`, run `git branch --unset-upstream` before asking the user to click Publish Branch. Confirm `git status --short --branch` shows only the local branch name, not `...origin/main`.
+
 ## Bug And Failed Check Workflow
 
 Any time a bug, failed GitHub check, failed Vercel deployment, visible UI defect or data issue appears, follow this workflow:

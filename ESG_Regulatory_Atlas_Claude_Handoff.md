@@ -11,12 +11,13 @@ The app is now in a static Phase 1S review-workflow export pass on top of the Ph
 - Added `components/ReviewWorkflowExportPanel.tsx` on `/data-quality`.
 - Added CSV and JSON exports for source, threshold, evidence, owner and premium-use QA tracking.
 - Added a copyable priority review packet for Notion, advisory prep and content QA.
+- Streamlined `/data-quality` into Overview, Sources, Coverage and Review Workflow tabs.
 - Added smoke and static coverage for the review workflow export panel and caveated export content.
 - Kept review workflow exports as operational QA aids, not legal opinions, official translations or verified compliance determinations.
 
 ## Phase 1S Product Rationale
 
-The Atlas now has source evidence trails at record level, but reviewers still need an easy way to move the highest-priority rows into Notion, a workbook or an advisory prep tracker. Phase 1S converts the static seed dataset into a reviewer-ready export without adding a database, automation or legal verification claims.
+The Atlas now has source evidence trails at record level, but reviewers still need an easy way to move the highest-priority rows into Notion, a workbook or an advisory prep tracker. Phase 1S converts the static seed dataset into a reviewer-ready export and cleans the Data Quality information architecture so governance controls remain usable without adding a database, automation or legal verification claims.
 
 ## Phase 1R Changes Delivered
 
@@ -396,7 +397,7 @@ The deep review identified three credibility risks: the map claimed country fill
 - Phase 1S validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.
 - Phase 1S out-of-scope scan found only guardrail/documentation mentions of Stripe, Supabase, Mapbox, payments, webhooks, scraping, cron, environment variables, analytics, cookies and CRM; no implementation code or dependencies were added for those items.
 - Phase 1S legal-risk wording scan found only banned phrases inside "do not use" guidance, disclaimers and intentional coverage caveats.
-- Phase 1S Notion update: Launch Tasks LAUNCH-066 through LAUNCH-069 were documented for review workflow exports.
+- Phase 1S Notion update: Launch Tasks LAUNCH-066 through LAUNCH-070 were documented for review workflow exports and Data Quality tab streamlining.
 - Phase 1R validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1R validation: `git diff --check` passed.
 - Phase 1R validation: `npm run lint` could not run because the Codex desktop shell does not expose an `npm` executable; the equivalent TypeScript command passed with the local Node runtime.

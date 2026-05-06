@@ -362,3 +362,40 @@ When local git push fails with credential access errors, do not keep retrying or
 ### Files Changed
 
 - `docs/issue-resolution-log.md`
+
+## 2026-05-07 - Homepage Felt Busy And Map Lacked Inspectable Pan/Zoom Context
+
+Status: resolved in the next map-workspace refresh branch.
+
+### Symptom
+
+The homepage had too many commercial and update panels before the core product workspace, making the first experience feel busy. The map also did not feel like an inspectable world map because users could not zoom or pan it, untracked countries were too visually quiet, and the always-on map labels competed with the country outlines.
+
+### Root Cause
+
+`app/page.tsx` placed the changelog strip, three commercial tiles, view selector and filter card ahead of the map. `components/WorldChoropleth.tsx` rendered the local Natural Earth country paths, but the SVG had no viewport controls and used subtle static colors. Tracked-market labels were also always rendered, which made the canvas noisier while not improving country recognition.
+
+### Resolution
+
+- Refactored the homepage into a calmer map-first workspace with a compact hero, one disclaimer, one control surface and the map/jurisdiction panel as the main product.
+- Added no-dependency SVG zoom, reset and drag-to-pan controls to the map.
+- Added CSS variables for ocean, untracked land, borders, outlines and graticules so light and dark themes render the map with clear contrast.
+- Reduced map label noise by showing persistent labels only for selected, hovered, EU and subnational markers while retaining clickable country paths.
+- Added smoke checks for visible untracked countries and map viewport controls.
+
+### Prevention Rule
+
+Homepage changes should keep the map workspace within the first meaningful viewport after the hero and disclaimer. Map QA must verify not only that SVG paths exist, but also that untracked countries, outlines, background contrast and viewport controls are visible.
+
+### Files Changed
+
+- `app/page.tsx`
+- `components/WorldChoropleth.tsx`
+- `components/Filters.tsx`
+- `components/ViewSelector.tsx`
+- `app/globals.css`
+- `lib/i18n.ts`
+- `tests/smoke.spec.ts`
+- `data/_meta.ts`
+- `data/changelog.ts`
+- `docs/issue-resolution-log.md`

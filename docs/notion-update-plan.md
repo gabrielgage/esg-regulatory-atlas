@@ -141,6 +141,20 @@ ADR-029:
 - Consequence: Add Data Quality review workflow exports with caveats, priority sources, facts to confirm and next actions.
 - Status: Active.
 
+ADR-030:
+
+- Decision: Keep the homepage map-first and move non-map commercial/governance content into supporting routes.
+- Why: The public MVP was becoming visually busy as launch, premium and data-quality surfaces accumulated. The strongest first impression is still the map, selected jurisdiction panel and regulation preview.
+- Consequence: Use a compact hero, one disclaimer and one map-control surface on `/`; keep plans, alerts, advisory, launch assets and governance controls in their dedicated routes.
+- Status: Active.
+
+ADR-031:
+
+- Decision: Use local SVG pan/zoom controls before introducing a map platform.
+- Why: Users need inspectable map behavior, but Mapbox, paid map APIs and runtime geospatial services remain out of MVP scope.
+- Consequence: Add no-dependency SVG pan/zoom/reset controls, stronger country outlines and untracked-country styling while preserving local Natural Earth geometry.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -152,6 +166,10 @@ Recent follow-up launch tasks:
 - LAUNCH-068 - Add copyable priority review packet for source QA
 - LAUNCH-069 - Add static and smoke coverage for review workflow exports
 - LAUNCH-070 - Streamline Data Quality into focused governance tabs
+- LAUNCH-071 - Refresh homepage into a calmer map-first workspace
+- LAUNCH-072 - Add no-dependency map pan, zoom and reset controls
+- LAUNCH-073 - Make untracked countries, ocean background and country outlines visibly distinct
+- LAUNCH-074 - Add smoke coverage for map viewport controls and untracked countries
 
 ## Content Review
 
@@ -194,6 +212,8 @@ Log issues discovered during implementation, especially:
 - map country outlines hidden or visually too faint
 - market coverage depth below the current launch target
 - coverage confidence showing review-needed markets that are presented as commercially ready
+- map viewport controls missing or visually unavailable
+- homepage commercial panels crowding the primary map workspace
 
 ## 2026-05-02 Codex Update - Visible Map And Market Coverage Depth
 
@@ -310,3 +330,21 @@ Launch Tasks:
 QA finding:
 
 - Source links alone are not enough for client-ready or premium reuse. Future record-detail work should show the priority source, review freshness and source-review packet before a record is used in advisory outputs, premium examples or copied briefs.
+
+## 2026-05-07 Codex Update - Review Workflow Tabs And Map Workspace Refresh
+
+Launch Command Center note:
+
+> Phase 1S streamlined Data Quality into focused governance tabs, and Phase 1T refreshed the homepage into a calmer map-first product workspace. The local Natural Earth SVG map now includes no-dependency zoom, reset and drag-to-pan controls, stronger country outlines, visible untracked-country styling and a clearer ocean background. The controls remain static, local and legally cautious: map color is tracked seed record volume, not legal applicability or complete coverage.
+
+Launch Tasks:
+
+- LAUNCH-070 - Streamline Data Quality into focused governance tabs
+- LAUNCH-071 - Refresh homepage into a calmer map-first workspace
+- LAUNCH-072 - Add no-dependency map pan, zoom and reset controls
+- LAUNCH-073 - Make untracked countries, ocean background and country outlines visibly distinct
+- LAUNCH-074 - Add smoke coverage for map viewport controls and untracked countries
+
+QA finding:
+
+- The map can technically render country paths and still fail as a product experience if users cannot inspect it. Future map QA should include visible untracked countries, outline/background contrast, viewport controls, selected jurisdiction behavior and page scroll behavior.

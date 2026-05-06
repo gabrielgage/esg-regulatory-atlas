@@ -195,7 +195,7 @@ Design should feel:
 - Premium SaaS, not playful
 - Useful to an ESG consultant or regulatory team in a client meeting
 
-Avoid turning the home page into a long catalogue of every feature. The map should remain the main workspace, with heavier assessment, timeline, methodology, and briefing surfaces separated into dedicated pages.
+Avoid turning the home page into a long catalogue of every feature. The map should remain the main workspace, with heavier assessment, timeline, methodology, commercial, launch and briefing surfaces separated into dedicated pages.
 
 ## Regulatory Data Rules
 
@@ -278,8 +278,8 @@ The map must remain deployable without paid services:
 - Do not add Mapbox, paid tokens, runtime geography APIs, or external map calls
 - Keep jurisdiction IDs and visible jurisdiction labels consistent
 - Do not confuse regulatory intensity with regulatory status
-- Keep country outlines visibly legible. The current map uses local Natural Earth geometry, stronger borders and a subtle graticule without adding map dependencies.
-- Verify visible SVG country paths at tablet and desktop widths when touching map code; checking only the outer map container is not enough.
+- Keep country outlines, untracked countries and ocean background visibly legible. The current map uses local Natural Earth geometry, stronger borders, untracked-land styling, pan/zoom/reset controls and a subtle graticule without adding map dependencies.
+- Verify visible SVG country paths, untracked-country paths and viewport controls at tablet and desktop widths when touching map code; checking only the outer map container is not enough.
 
 Recommended distinction:
 
@@ -336,6 +336,8 @@ Already delivered in Phase 1L: Data Quality source freshness signals and Marquee
 Already delivered in Phase 1S: Data Quality review workflow exports backed by `lib/reviewWorkflow.ts`. Treat exported CSV/JSON rows and copied priority packets as operational source QA aids only.
 
 The `/data-quality` page is now tabbed into Overview, Sources, Coverage and Review Workflow. Add future governance surfaces to the relevant tab instead of appending another full-width panel to the default view.
+
+Already delivered in Phase 1T: homepage map-workspace refresh and no-dependency SVG map pan/zoom/reset controls. Keep `/` map-first and route non-map commercial or governance surfaces to dedicated pages.
 
 Already delivered in Phase 1M: `/markets` and `/jurisdiction/[code]` market profile pages. Treat market profiles as current tracked seed coverage and planning context, not complete local legal inventories or applicability determinations.
 

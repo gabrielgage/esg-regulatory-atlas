@@ -32,8 +32,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Improve dark-mode text contrast, default first visit to light mode, verify status badges, warning banners, inputs and source links across core routes.
 
 2. **Map legend and layer explanation upgrade**
-   Status: materially delivered through `0.5.3 - May 2026` and `0.5.9 - May 2026`.
-   The map now uses local country outlines from tablet widths upward, stronger border contrast, selected/EU overlay cues and fallback behavior. Continue improving interpretation copy as layers become more sophisticated.
+   Status: materially delivered through `0.5.3`, `0.5.9` and `0.5.20 - May 2026`.
+   The map now uses local country outlines from tablet widths upward, stronger border contrast, selected/EU overlay cues, visible untracked-country styling, ocean background contrast, pan/zoom/reset controls and fallback behavior. Continue improving interpretation copy as layers become more sophisticated.
 
 3. **Coverage confidence view**
    Status: partially delivered in `0.5.4 - May 2026`.

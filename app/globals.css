@@ -6,12 +6,22 @@
   color-scheme: light;
   --background: #f6f8fb;
   --foreground: #0f172a;
+  --map-ocean: #dbeaf5;
+  --map-land-untracked: #f4f7fb;
+  --map-border: #60758b;
+  --map-outline: #334155;
+  --map-graticule: #93a9bd;
 }
 
 .dark {
   color-scheme: dark;
   --background: #061524;
   --foreground: #edf6ff;
+  --map-ocean: #082236;
+  --map-land-untracked: #163149;
+  --map-border: #7893aa;
+  --map-outline: #a8bfd3;
+  --map-graticule: #3e6077;
 }
 
 * {

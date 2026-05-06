@@ -29,16 +29,17 @@ interface Props {
   regulations: Regulation[];
   onChange: (filters: FilterState) => void;
   onReset: () => void;
+  embedded?: boolean;
 }
 
-export function Filters({ filters, regulations, onChange, onReset }: Props) {
+export function Filters({ filters, regulations, onChange, onReset, embedded = false }: Props) {
   const update = (key: keyof FilterState, value: string) => onChange({ ...filters, [key]: value });
   const years = yearsFrom(regulations);
   const regions = uniq(jurisdictions.map((jurisdiction) => jurisdiction.region));
   const { t } = useLanguage();
 
   return (
-    <section className="rounded-2xl border bg-white p-3 shadow-sm">
+    <section className={embedded ? "" : "rounded-2xl border bg-white p-3 shadow-sm"}>
       <div className="grid gap-3 xl:grid-cols-[1.5fr_repeat(5,minmax(0,1fr))_auto]">
         <label className="relative">
           <span className="sr-only">{t("filters.search")}</span>

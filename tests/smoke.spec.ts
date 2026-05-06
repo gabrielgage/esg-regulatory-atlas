@@ -19,10 +19,17 @@ test("country outline map renders and supports jurisdiction selection on tablet"
   await expect(page.getByTestId("country-outline-map")).toBeVisible();
   await expect(page.getByTestId("country-path").first()).toBeVisible();
   expect(await page.getByTestId("country-path").count()).toBeGreaterThan(30);
+  expect(await page.locator('[data-testid="country-path"][data-coverage="untracked"]').count()).toBeGreaterThan(20);
+  await expect(page.getByRole("button", { name: /Zoom in/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Zoom out/i })).toBeVisible();
+  await expect(page.getByText(/Drag to pan, scroll to zoom/i)).toBeVisible();
 
   const mapBox = await page.getByTestId("country-outline-map").boundingBox();
   expect(mapBox?.width).toBeGreaterThan(500);
   expect(mapBox?.height).toBeGreaterThan(300);
+
+  await page.getByRole("button", { name: /Zoom in/i }).click();
+  await page.getByRole("button", { name: /Reset map/i }).click();
 
   await page.getByRole("button", { name: /Canada:/ }).first().click();
   await expect(page.getByRole("heading", { name: /Canada/i }).first()).toBeVisible();

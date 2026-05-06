@@ -8,10 +8,12 @@ import { useLanguage } from "./LanguageProvider";
 
 export function ViewSelector({
   activeId,
-  onApply
+  onApply,
+  embedded = false
 }: {
   activeId: string;
   onApply: (id: string, filters: Partial<FilterState>) => void;
+  embedded?: boolean;
 }) {
   const { t } = useLanguage();
   const overview = {
@@ -23,7 +25,7 @@ export function ViewSelector({
   const views = [overview, ...quickViews];
 
   return (
-    <section className="rounded-2xl border bg-white p-3 shadow-sm">
+    <section className={embedded ? "" : "rounded-2xl border bg-white p-3 shadow-sm"}>
       <div className="mb-2 flex items-center gap-2 px-1 text-sm font-semibold text-ink">
         <Layers3 className="h-4 w-4 text-teal" />
         {t("views.title")}

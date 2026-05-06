@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.20 - May 2026",
+    date: "2026-05-07",
+    label: "Map workspace redesign and pan/zoom controls",
+    summary:
+      "Refreshed the homepage into a calmer map-first workspace and upgraded the SVG map so untracked countries, country outlines, ocean background, zoom controls and drag-to-pan behavior are visible from tablet widths upward.",
+    added: [
+      "No-dependency map zoom, reset and drag-to-pan controls",
+      "Visible ocean background and untracked-country land styling",
+      "Smoke-test checks for untracked countries and map viewport controls",
+      "Tabbed Data Quality cleanup carried forward from the previous deployment"
+    ],
+    updated: ["Homepage information architecture", "World choropleth rendering", "Map dark-mode variables", "Smoke tests", "Project documentation"],
+    records: ["Tracked coverage", "Untracked countries", "Map controls", "Country outlines", "View filters"],
+    caveat: "Map color reflects current tracked seed record volume in the active view. It is not a statement of complete legal coverage, legal applicability or regulatory maturity."
+  },
+  {
     edition: "0.5.19 - May 2026",
     date: "2026-05-06",
     label: "Review workflow export controls",

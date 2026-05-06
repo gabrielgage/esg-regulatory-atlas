@@ -68,18 +68,27 @@ export default function Home() {
     <main id="main-content" className="min-h-screen pb-12">
       <Header />
       <div className="mx-auto max-w-7xl space-y-4 px-4 py-5 md:px-6">
-        <section className="rounded-2xl bg-navy p-6 text-white shadow-xl md:p-8">
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+        <section className="rounded-2xl border bg-white p-5 shadow-sm md:p-6">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,1.4fr)_minmax(320px,.6fr)] lg:items-end">
             <div>
-              <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight md:text-5xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">{DATASET_META.edition} · source-linked seed intelligence</p>
+              <h1 className="mt-3 max-w-4xl text-3xl font-bold tracking-tight text-ink md:text-4xl">
                 {t("home.heroTitle")}
               </h1>
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+              <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
                 {t("home.heroBody")}
               </p>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400">{t("home.languageCaveat")}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Link href="/changelog" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">
+                  {t("home.viewChangelog")} <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="/plans" className="inline-flex items-center gap-2 rounded-xl bg-navy px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+                  Compare options <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+              <p className="mt-3 max-w-2xl text-xs leading-5 text-slate-500">{t("home.languageCaveat")}</p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-1">
               <HeroMetric icon={Database} label={t("home.currentView")} value={`${filtered.length} records`} />
               <HeroMetric icon={Gauge} label={t("home.highImpact")} value={`${highImpact} records`} />
               <HeroMetric icon={Database} label={t("home.sources")} value={`${sourceCount} links`} />
@@ -89,45 +98,19 @@ export default function Home() {
 
         <DisclaimerBanner />
 
-        <section className="flex flex-col gap-3 rounded-2xl border border-teal/20 bg-teal/5 p-4 shadow-sm md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-sm font-semibold text-teal">{t("home.whatsNew")}</p>
-            <p className="mt-1 text-sm leading-6 text-slate-600">
-              {DATASET_META.edition}: {t("home.whatsNewBody")}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
+        <section className="rounded-2xl border bg-white p-3 shadow-sm">
+          <div className="mb-3 flex flex-col gap-2 px-1 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="text-sm font-semibold text-ink">Map workspace</h2>
+              <p className="mt-1 text-xs leading-5 text-slate-500">Select a planning view, filter the seed dataset, then inspect jurisdictions on the map.</p>
+            </div>
             <ShareViewButton />
-            <Link href="/changelog" className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-semibold text-teal shadow-sm hover:bg-slate-50">
-              {t("home.viewChangelog")} <ArrowRight className="h-4 w-4" />
-            </Link>
+          </div>
+          <div className="space-y-3">
+            <ViewSelector activeId={activeView} onApply={applyView} embedded />
+            <Filters filters={filters} regulations={regulations} onChange={updateFilters} onReset={resetFilters} embedded />
           </div>
         </section>
-
-        <section className="grid gap-3 md:grid-cols-3">
-          <CommercialTile
-            title="Free Atlas"
-            body="Use the public map, database, assessment, timeline and source-quality views for ESG regulatory orientation."
-            href="/plans"
-            label="Compare options"
-          />
-          <CommercialTile
-            title="Alerts preview"
-            body="Preview weekly and monthly regulatory intelligence formats before production email alerts exist."
-            href="/alerts"
-            label="View alerts"
-          />
-          <CommercialTile
-            title="Advisory scans"
-            body="Request a manual exposure scan, custom watchlist, portfolio map or client-ready briefing."
-            href="/advisory"
-            label="Explore advisory"
-          />
-        </section>
-
-        <ViewSelector activeId={activeView} onApply={applyView} />
-
-        <Filters filters={filters} regulations={regulations} onChange={updateFilters} onReset={resetFilters} />
 
         <section className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(360px,.65fr)]">
           <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-hidden">
@@ -190,19 +173,6 @@ function AssessmentPrompt() {
   );
 }
 
-function CommercialTile({ title, body, href, label }: { title: string; body: string; href: string; label: string }) {
-  return (
-    <Link href={href} className="rounded-2xl border bg-white p-5 shadow-sm transition hover:border-teal/30 hover:bg-teal/5">
-      <h2 className="font-semibold text-ink">{title}</h2>
-      <p className="mt-2 text-sm leading-6 text-slate-500">{body}</p>
-      <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-teal">
-        {label}
-        <ArrowRight className="h-4 w-4" />
-      </span>
-    </Link>
-  );
-}
-
 function HeroMetric({
   icon: Icon,
   label,
@@ -213,12 +183,12 @@ function HeroMetric({
   value: string;
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
+    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
       <div className="flex items-center justify-between gap-3">
-        <div className="text-sm text-slate-300">{label}</div>
-        <Icon className="h-4 w-4 text-mint" />
+        <div className="text-sm text-slate-500">{label}</div>
+        <Icon className="h-4 w-4 text-teal" />
       </div>
-      <div className="mt-2 text-xl font-bold">{value}</div>
+      <div className="mt-2 text-xl font-bold text-ink">{value}</div>
     </div>
   );
 }

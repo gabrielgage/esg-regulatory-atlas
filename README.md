@@ -12,7 +12,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Stable Tailwind/PostCSS v3 setup for Vercel deployment
 - Production build uses the stable Next.js webpack build path for this MVP
 - Static Natural Earth choropleth map with no paid map API and no Mapbox token
-- Tablet-and-desktop country-outline map with stronger contrast, local graticule cues and a clear geometry fallback
+- Tablet-and-desktop country-outline map with stronger contrast, local graticule cues, untracked-country styling, pan/zoom/reset controls and a clear geometry fallback
 - Expanded APAC, South Africa and European national due-diligence jurisdiction coverage
 - Coverage-depth targets for core commercial and watch-expansion markets
 - Jurisdiction profile panel
@@ -140,9 +140,18 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.19 - May 2026`.
+The current seed dataset edition is `0.5.20 - May 2026`.
 
-The latest local update adds review workflow export controls:
+The latest local update refreshes the map workspace:
+
+- makes the homepage calmer by moving the map, selected jurisdiction context and regulation preview back to the centre of the first experience
+- consolidates Views, filters and share-link controls into one compact map workspace surface
+- adds no-dependency SVG zoom, reset and drag-to-pan controls
+- strengthens ocean, untracked land, borders, outlines and graticule contrast in light and dark mode
+- reduces always-on map label noise while keeping country paths, EU context and subnational markers selectable
+- keeps map color as tracked seed record volume, not legal applicability, maturity or complete market coverage
+
+The prior `0.5.19 - May 2026` update added review workflow export controls:
 
 - adds a shared review-workflow helper for source/threshold/evidence review rows and priority scoring
 - adds a Review Workflow Export panel to `/data-quality`

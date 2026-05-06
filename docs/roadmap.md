@@ -77,6 +77,7 @@ Current capability areas:
 - Added `components/ReviewWorkflowExportPanel.tsx` to `/data-quality`.
 - Added reviewer-ready CSV and JSON exports for the static seed dataset.
 - Added a copyable priority review packet for Notion, advisory prep and content QA.
+- Streamlined `/data-quality` into Overview, Sources, Coverage and Review Workflow tabs so governance tools stay scannable as the product grows.
 - Added smoke and static test coverage for the review workflow export panel and caveated export content.
 - Kept exports as operational QA aids, not legal opinions, official translations or verified compliance determinations.
 

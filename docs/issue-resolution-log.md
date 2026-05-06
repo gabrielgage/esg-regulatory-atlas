@@ -17,6 +17,34 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-06 - Local Feature Branch Tracked `origin/main`
+
+Status: resolved.
+
+### Symptom
+
+The Phase 1S review-workflow export commit appeared on remote `main` after the user published from GitHub Desktop, while the expected feature branch `codex/source-workflow-export-qa` was not visible on GitHub.
+
+### Root Cause
+
+The local feature branch had been created from `origin/main` with upstream tracking still pointed at `origin/main`. That made the desktop publish/push flow ambiguous and allowed the local feature commit to land on `main` instead of a same-named remote feature branch.
+
+### Resolution
+
+- Treated the remote `main` commit as source of truth because Vercel reported success for it.
+- Created a clean follow-up branch from the new `origin/main`.
+- Unset the local upstream on the follow-up branch before asking for desktop publish.
+- Documented the branch-creation prevention rule in the development workflow.
+
+### Prevention Rule
+
+When creating a local feature branch for user-assisted GitHub Desktop publishing, create it without tracking `origin/main`, or immediately unset upstream tracking before asking the user to publish. Use `git switch --no-track -c <branch> origin/main` or run `git branch --unset-upstream` after branch creation. Confirm `git status --short --branch` does not show `...origin/main` before asking the user to click Publish Branch.
+
+### Files Changed
+
+- `docs/issue-resolution-log.md`
+- `docs/development-workflow.md`
+
 ## 2026-05-03 - PR #21 Persona Smoke Test Matched The Wrong Button
 
 Status: resolved.

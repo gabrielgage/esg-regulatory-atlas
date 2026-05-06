@@ -148,6 +148,7 @@ The latest local update adds review workflow export controls:
 - adds a Review Workflow Export panel to `/data-quality`
 - exports reviewer-ready CSV and JSON files from the static seed dataset
 - copies a caveated priority review packet for Notion, advisory prep and content QA
+- streamlines `/data-quality` into Overview, Sources, Coverage and Review Workflow tabs
 - keeps exports as operational QA aids, not legal opinions, official translations or verified compliance determinations
 
 The prior `0.5.18 - May 2026` update added source evidence review packets:

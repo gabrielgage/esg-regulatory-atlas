@@ -78,6 +78,7 @@ The MVP includes:
 - Timeline and methodology surfaces
 - Quarter-level milestone timeline for consultation, effective, reporting, due-date and source-review planning
 - Data Quality surface for source coverage and review-risk governance
+- Tabbed Data Quality workspace for overview, sources, coverage and review workflow
 - Data-quality review queue with visible scoring reasons for research prioritization
 - Market coverage-depth dashboard showing target direct-record depth, current count, gaps and review risk by jurisdiction
 - Coverage-confidence dashboard separating record volume from priority-source backing, review flags, stale dates and date-sensitive records

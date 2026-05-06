@@ -288,6 +288,8 @@ Recommended distinction:
 
 ## Pull Request Checklist
 
+When creating a local branch for user-assisted GitHub Desktop publishing, do not leave it tracking `origin/main`. Use `git switch --no-track -c codex/<topic> origin/main` or run `git branch --unset-upstream`, then confirm `git status --short --branch` does not show `...origin/main` before asking the user to publish.
+
 Before opening a PR, verify:
 
 - TypeScript passes
@@ -332,6 +334,8 @@ Already delivered in Phase 1K: `/launch` and `components/LaunchAssetLibrary.tsx`
 Already delivered in Phase 1L: Data Quality source freshness signals and Marquee review owner/action/premium-blocker controls. Treat these as editorial source-governance signals only, not legal verification, source certification or complete review.
 
 Already delivered in Phase 1S: Data Quality review workflow exports backed by `lib/reviewWorkflow.ts`. Treat exported CSV/JSON rows and copied priority packets as operational source QA aids only.
+
+The `/data-quality` page is now tabbed into Overview, Sources, Coverage and Review Workflow. Add future governance surfaces to the relevant tab instead of appending another full-width panel to the default view.
 
 Already delivered in Phase 1M: `/markets` and `/jurisdiction/[code]` market profile pages. Treat market profiles as current tracked seed coverage and planning context, not complete local legal inventories or applicability determinations.
 

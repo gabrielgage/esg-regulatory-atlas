@@ -64,7 +64,7 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
 
 10. **Data quality review queue refinement**
     Status: materially delivered across `0.5.5`, `0.5.12`, `0.5.17`, `0.5.18` and `0.5.19 - May 2026`.
-    Data Quality now ranks review priorities through review-queue scoring, Marquee owners/actions, decision-readiness gates, source evidence trails and CSV/JSON review workflow exports. Formal named reviewer assignment remains future-state until a database or governed content workflow is approved.
+    Data Quality now ranks review priorities through review-queue scoring, Marquee owners/actions, decision-readiness gates, source evidence trails and CSV/JSON review workflow exports. The page is tabbed into Overview, Sources, Coverage and Review Workflow so governance controls stay scannable. Formal named reviewer assignment remains future-state until a database or governed content workflow is approved.
 
 11. **Workbook sync routine**
     Status: partially delivered in `0.5.19 - May 2026`.

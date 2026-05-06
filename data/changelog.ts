@@ -20,9 +20,10 @@ export const CHANGELOG: ChangelogEntry[] = [
       "Shared review-workflow helper for review rows, priority scoring and caveated exports",
       "Review Workflow Export panel on `/data-quality`",
       "CSV and JSON exports for source, threshold, evidence and premium-use review tracking",
-      "Copyable priority review packet for Notion, advisory prep and content QA"
+      "Copyable priority review packet for Notion, advisory prep and content QA",
+      "Tabbed Data Quality workspace that separates overview, source library, coverage and review workflow"
     ],
-    updated: ["Data Quality", "Source governance workflow", "Static tests", "Smoke tests", "Project documentation"],
+    updated: ["Data Quality information architecture", "Source governance workflow", "Static tests", "Smoke tests", "Project documentation"],
     records: ["Review priority", "Decision gate", "Source posture", "Priority source", "Owner", "Next action"],
     caveat: "Review workflow exports are operational QA aids for source review and planning. They are not legal opinions, official translations or verified compliance determinations."
   },

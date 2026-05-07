@@ -392,8 +392,6 @@ export function WorldChoropleth({
                   vectorEffect="non-scaling-stroke"
                   strokeLinejoin="round"
                   opacity={selectable || euOverlay ? 0.99 : 0.9}
-                  role={selectable ? "button" : undefined}
-                  tabIndex={selectable ? 0 : undefined}
                   aria-label={selectable ? `${info.jurisdiction?.name}: ${info.count} records` : feature.properties.name}
                   className={cn("outline-none transition", selectable && "cursor-pointer hover:brightness-95")}
                   onClick={() => {
@@ -441,7 +439,13 @@ export function WorldChoropleth({
                 onHover={setHoveredJurisdictionId}
               />
             ) : (
-              <MapPin key={jurisdiction.id} jurisdiction={jurisdiction} count={countsById.get(jurisdiction.id) || 0} />
+              <MapPin
+                key={jurisdiction.id}
+                jurisdiction={jurisdiction}
+                count={countsById.get(jurisdiction.id) || 0}
+                onSelect={selectFromMap}
+                onHover={setHoveredJurisdictionId}
+              />
             );
           })}
 
@@ -563,12 +567,36 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
 }
 
-function MapPin({ jurisdiction, count }: { jurisdiction: Jurisdiction; count: number }) {
+function MapPin({
+  jurisdiction,
+  count,
+  onSelect,
+  onHover
+}: {
+  jurisdiction: Jurisdiction;
+  count: number;
+  onSelect: (jurisdiction: Jurisdiction) => void;
+  onHover: (id: string | null) => void;
+}) {
   if (!jurisdiction.coordinates) return null;
   const base = project(jurisdiction.coordinates[0], jurisdiction.coordinates[1]);
 
   return (
-    <g pointerEvents="none" aria-hidden="true">
+    <g
+      role="button"
+      tabIndex={0}
+      aria-label={`${jurisdiction.name}: ${count} records`}
+      onClick={() => onSelect(jurisdiction)}
+      onMouseEnter={() => onHover(jurisdiction.id)}
+      onMouseLeave={() => onHover(null)}
+      onFocus={() => onHover(jurisdiction.id)}
+      onBlur={() => onHover(null)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") onSelect(jurisdiction);
+      }}
+      className="cursor-pointer outline-none"
+    >
+      <circle cx={base.x} cy={base.y} r="12" fill="transparent" pointerEvents="all" />
       <circle cx={base.x} cy={base.y} r="3.8" fill="#ffffff" fillOpacity="0.9" stroke={colorForCount(count)} strokeWidth="2" vectorEffect="non-scaling-stroke" />
       <circle cx={base.x} cy={base.y} r="1.8" fill={colorForCount(count)} />
     </g>

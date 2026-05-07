@@ -377,6 +377,8 @@ The homepage had too many commercial and update panels before the core product w
 
 A follow-up CI smoke test also exposed that `public/world-110m/index.json` only pointed to `tracked.json`, a subset of tracked jurisdictions and EU member states. That meant untracked countries could not render as neutral background land even after the map styling supported them.
 
+A second smoke-test run then exposed a separate interaction issue: the test could see the full country map, but clicking Canada did not open the Canada panel reliably. The country path itself was being used as the accessible button. For large irregular SVG countries, the browser click target can land near the center of the path's bounding box rather than on a practical visible interaction point.
+
 ### Resolution
 
 - Refactored the homepage into a calmer map-first workspace with a compact hero, one disclaimer, one control surface and the map/jurisdiction panel as the main product.
@@ -384,11 +386,12 @@ A follow-up CI smoke test also exposed that `public/world-110m/index.json` only 
 - Added CSS variables for ocean, untracked land, borders, outlines and graticules so light and dark themes render the map with clear contrast.
 - Reduced map label noise by showing persistent labels only for selected, hovered, EU and subnational markers while retaining clickable country paths.
 - Replaced the tracked-only geometry bundle with locally bundled public-domain Natural Earth 1:110m Admin 0 country geometry so untracked countries can render as neutral land.
+- Added clickable, keyboard-accessible jurisdiction pin hit targets on top of the country outlines while keeping country paths selectable, so irregular country geometry does not create fragile click behavior.
 - Added smoke checks for visible untracked countries and map viewport controls.
 
 ### Prevention Rule
 
-Homepage changes should keep the map workspace within the first meaningful viewport after the hero and disclaimer. Map QA must verify not only that SVG paths exist, but also that untracked countries, outlines, background contrast and viewport controls are visible. Do not ship a map geometry index that only includes tracked countries if the UI claims no-data countries are visible.
+Homepage changes should keep the map workspace within the first meaningful viewport after the hero and disclaimer. Map QA must verify not only that SVG paths exist, but also that untracked countries, outlines, background contrast and viewport controls are visible. Do not ship a map geometry index that only includes tracked countries if the UI claims no-data countries are visible. Do not rely on complex SVG country polygons as the only accessible click target; tracked markets need a stable button or pin target for testing, keyboard users and practical user selection.
 
 ### Files Changed
 

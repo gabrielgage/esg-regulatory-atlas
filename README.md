@@ -11,7 +11,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Next.js, React, TypeScript and Tailwind v3
 - Stable Tailwind/PostCSS v3 setup for Vercel deployment
 - Production build uses the stable Next.js webpack build path for this MVP
-- Static Natural Earth choropleth map with no paid map API and no Mapbox token
+- Static Natural Earth choropleth map with locally bundled Admin 0 country geometry, no paid map API and no Mapbox token
 - Tablet-and-desktop country-outline map with stronger contrast, local graticule cues, untracked-country styling, pan/zoom/reset controls and a clear geometry fallback
 - Expanded APAC, South Africa and European national due-diligence jurisdiction coverage
 - Coverage-depth targets for core commercial and watch-expansion markets
@@ -147,6 +147,7 @@ The latest local update refreshes the map workspace:
 - makes the homepage calmer by moving the map, selected jurisdiction context and regulation preview back to the centre of the first experience
 - consolidates Views, filters and share-link controls into one compact map workspace surface
 - adds no-dependency SVG zoom, reset and drag-to-pan controls
+- replaces the tracked-only map geometry index with locally bundled Natural Earth Admin 0 country geometry so non-covered countries appear as neutral land
 - strengthens ocean, untracked land, borders, outlines and graticule contrast in light and dark mode
 - reduces always-on map label noise while keeping country paths, EU context and subnational markers selectable
 - keeps map color as tracked seed record volume, not legal applicability, maturity or complete market coverage

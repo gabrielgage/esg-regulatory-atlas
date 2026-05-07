@@ -278,8 +278,9 @@ The map must remain deployable without paid services:
 - Do not add Mapbox, paid tokens, runtime geography APIs, or external map calls
 - Keep jurisdiction IDs and visible jurisdiction labels consistent
 - Do not confuse regulatory intensity with regulatory status
-- Keep country outlines, untracked countries and ocean background visibly legible. The current map uses local Natural Earth geometry, stronger borders, untracked-land styling, pan/zoom/reset controls and a subtle graticule without adding map dependencies.
+- Keep country outlines, untracked countries and ocean background visibly legible. The current map uses locally bundled Natural Earth Admin 0 geometry, stronger borders, untracked-land styling, pan/zoom/reset controls and a subtle graticule without adding map dependencies.
 - Verify visible SVG country paths, untracked-country paths and viewport controls at tablet and desktop widths when touching map code; checking only the outer map container is not enough.
+- Do not point the map index back to tracked-only geometry if the UI claims untracked or no-data countries are visible.
 
 Recommended distinction:
 

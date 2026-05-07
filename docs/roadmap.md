@@ -65,7 +65,7 @@ Current capability areas:
 - Decision-readiness evidence gates on regulation details and Data Quality for premium/advisory review controls
 - Source evidence trails and copyable source-review memos on regulation details and drawers
 - Data Quality review workflow exports for source, threshold, evidence and premium-use QA tracking
-- Tablet-and-desktop Natural Earth country-outline map with stronger visual contrast, untracked-country styling, pan/zoom controls and geometry fallback
+- Tablet-and-desktop Natural Earth Admin 0 country-outline map with stronger visual contrast, untracked-country styling, pan/zoom controls and geometry fallback
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
@@ -76,6 +76,7 @@ Current capability areas:
 - Refreshed the homepage into a calmer map-first workspace by removing the top update strip and commercial tile row.
 - Consolidated view selection, default filters and share-link controls into a single compact workspace surface.
 - Added no-dependency SVG map zoom, reset and drag-to-pan controls.
+- Replaced the tracked-only map geometry index with locally bundled Natural Earth Admin 0 country geometry so non-covered markets render as neutral land.
 - Strengthened map ocean, untracked land, country border, outline and graticule contrast in light and dark mode.
 - Reduced always-on map labels while retaining clickable country paths, EU context and subnational markers.
 - Added smoke coverage for untracked country visibility and map viewport controls.

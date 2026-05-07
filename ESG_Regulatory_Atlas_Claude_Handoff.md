@@ -12,6 +12,7 @@ The app is now in a static Phase 1T map-workspace refresh pass on top of the Pha
 - Added no-dependency SVG map zoom, reset and drag-to-pan controls.
 - Strengthened map ocean, untracked land, border, outline and graticule contrast with light/dark theme variables.
 - Reduced always-on map label noise while keeping national country paths, EU and subnational markers selectable.
+- Replaced the tracked-only map geometry index with locally bundled Natural Earth Admin 0 country geometry so non-covered countries render as neutral land.
 - Added smoke coverage for visible untracked countries and map viewport controls.
 
 ## Phase 1T Product Rationale
@@ -397,7 +398,7 @@ The deep review identified three credibility risks: the map claimed country fill
 
 - No Stripe, Supabase, authentication, paid APIs, Mapbox, environment variables, database, scraping, cron jobs or runtime AI calls were added.
 - Theme behavior now defaults first-time visitors to light mode. The saved `etica-theme` preference is still respected after a user explicitly toggles light or dark mode.
-- The new map fetches `/world-110m/index.json` and same-origin Natural Earth geometry from the app's own `public/` directory.
+- The map fetches `/world-110m/index.json` and same-origin Natural Earth geometry from the app's own `public/` directory. `countries.json` contains bundled public-domain Natural Earth Admin 0 geometry so untracked countries can still render as background land.
 - The map now has local SVG zoom, reset and drag-to-pan controls; do not replace this with Mapbox or a paid map service during the MVP.
 - The country fill bucket is driven by direct record count in the active view: `0`, `1-2`, `3-6`, and `7+`.
 - EU-level records highlight EU member-state polygons and keep a separate `EUU` overlay label for the supranational jurisdiction.
@@ -410,6 +411,7 @@ The deep review identified three credibility risks: the map claimed country fill
 - Phase 1T validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1T validation: `git diff --check` passed.
 - Phase 1T validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1T CI follow-up: first PR #26 smoke run failed because the bundled map index still referenced tracked-only geometry, leaving zero untracked country paths. The fix was to bundle Natural Earth Admin 0 countries locally and keep the untracked-country smoke assertion.
 - Phase 1T guardrail scan found only existing guardrail/documentation mentions of Stripe, Supabase, Mapbox, checkout, webhooks, scraping, cron and related future infrastructure; no implementation code or dependencies were added.
 - Phase 1T legal-risk wording scan found only the intentional caveat that tracked coverage is not complete global coverage.
 - Phase 1T Notion update: Launch Tasks LAUNCH-071 through LAUNCH-074 were created for homepage streamlining, map viewport controls, untracked-country visibility and smoke coverage.

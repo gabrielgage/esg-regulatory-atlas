@@ -337,6 +337,10 @@ Launch Command Center note:
 
 > Phase 1S streamlined Data Quality into focused governance tabs, and Phase 1T refreshed the homepage into a calmer map-first product workspace. The local Natural Earth SVG map now includes no-dependency zoom, reset and drag-to-pan controls, stronger country outlines, visible untracked-country styling and a clearer ocean background. The controls remain static, local and legally cautious: map color is tracked seed record volume, not legal applicability or complete coverage.
 
+Follow-up CI note:
+
+> PR #26 initially failed browser smoke tests because the map index still referenced tracked-only geometry, leaving zero untracked country paths. The fix was to bundle Natural Earth Admin 0 country geometry locally and keep the untracked-country assertion so this does not regress.
+
 Launch Tasks:
 
 - LAUNCH-070 - Streamline Data Quality into focused governance tabs

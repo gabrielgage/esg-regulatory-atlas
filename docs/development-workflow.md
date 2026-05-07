@@ -182,7 +182,7 @@ Known lesson from PR #11:
 - Theme behavior should default first-time visitors to light mode, then respect the user's saved explicit light/dark selection.
 - The app requires no environment variables.
 - The map uses local static assets and no paid map provider.
-- Map changes should preserve local Natural Earth geometry, visible country outlines from tablet widths upward, keyboard-selectable tracked countries, visible untracked-country styling, pan/zoom/reset controls and a clear geometry fallback.
+- Map changes should preserve local Natural Earth Admin 0 geometry, visible country outlines from tablet widths upward, keyboard-selectable tracked countries, visible untracked-country styling, pan/zoom/reset controls and a clear geometry fallback. Smoke tests should fail if the geometry bundle contains only tracked countries.
 - Coverage-depth changes should update `data/coverageTargets.ts`, keep direct-record target checks passing and mark new market records as seed intelligence unless a production source review has verified them.
 - Sector-starting-point changes should use `lib/sectorProfile.ts` and existing regulation sector tags instead of hardcoding regulatory content in route components. Preserve the caveat that sector pages are current tracked coverage, not complete sector legal inventories.
 - Persona preset changes should update `data/personaPresets.ts`, preserve `?persona=` URL behavior on `/regulations`, and clear the active role lens when a user manually changes filters.

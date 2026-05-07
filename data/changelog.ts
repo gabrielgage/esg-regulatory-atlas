@@ -19,6 +19,7 @@ export const CHANGELOG: ChangelogEntry[] = [
     added: [
       "No-dependency map zoom, reset and drag-to-pan controls",
       "Visible ocean background and untracked-country land styling",
+      "Locally bundled Natural Earth Admin 0 country geometry so untracked countries render as neutral land",
       "Smoke-test checks for untracked countries and map viewport controls",
       "Tabbed Data Quality cleanup carried forward from the previous deployment"
     ],

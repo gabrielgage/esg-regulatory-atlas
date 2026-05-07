@@ -65,7 +65,7 @@ The MVP includes:
 - Static Next.js application deployable on Vercel
 - Local Tailwind v3 styling
 - Static typed seed data
-- Interactive map using local Natural Earth assets, visible country outlines, untracked-country styling, pan/zoom/reset controls and a geometry fallback
+- Interactive map using local Natural Earth Admin 0 assets, visible country outlines, untracked-country styling, pan/zoom/reset controls and a geometry fallback
 - Jurisdiction profiles
 - Searchable and filterable regulations
 - Record type, legal force and client relevance filters and badges

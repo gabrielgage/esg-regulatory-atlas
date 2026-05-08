@@ -377,7 +377,7 @@ The homepage had too many commercial and update panels before the core product w
 
 A follow-up CI smoke test also exposed that `public/world-110m/index.json` only pointed to `tracked.json`, a subset of tracked jurisdictions and EU member states. That meant untracked countries could not render as neutral background land even after the map styling supported them.
 
-A second smoke-test run then exposed a separate interaction issue: the test could see the full country map, but clicking Canada did not open the Canada panel reliably. The country path itself was being used as the accessible button. For large irregular SVG countries, the browser click target can land near the center of the path's bounding box rather than on a practical visible interaction point.
+A second smoke-test run then exposed a separate interaction issue: the test could see the full country map, but clicking Canada did not open the Canada panel reliably. The country path itself was being used as the accessible button. For large irregular SVG countries, the browser click target can land near the center of the path's bounding box rather than on a practical visible interaction point. A follow-up run showed that the SVG-level drag handler could still capture pointer events before the pin click completed.
 
 ### Resolution
 
@@ -387,11 +387,12 @@ A second smoke-test run then exposed a separate interaction issue: the test coul
 - Reduced map label noise by showing persistent labels only for selected, hovered, EU and subnational markers while retaining clickable country paths.
 - Replaced the tracked-only geometry bundle with locally bundled public-domain Natural Earth 1:110m Admin 0 country geometry so untracked countries can render as neutral land.
 - Added clickable, keyboard-accessible jurisdiction pin hit targets on top of the country outlines while keeping country paths selectable, so irregular country geometry does not create fragile click behavior.
+- Stopped pin and label pointer-down events from bubbling into the map pan handler so click selection and drag-to-pan do not compete.
 - Added smoke checks for visible untracked countries and map viewport controls.
 
 ### Prevention Rule
 
-Homepage changes should keep the map workspace within the first meaningful viewport after the hero and disclaimer. Map QA must verify not only that SVG paths exist, but also that untracked countries, outlines, background contrast and viewport controls are visible. Do not ship a map geometry index that only includes tracked countries if the UI claims no-data countries are visible. Do not rely on complex SVG country polygons as the only accessible click target; tracked markets need a stable button or pin target for testing, keyboard users and practical user selection.
+Homepage changes should keep the map workspace within the first meaningful viewport after the hero and disclaimer. Map QA must verify not only that SVG paths exist, but also that untracked countries, outlines, background contrast and viewport controls are visible. Do not ship a map geometry index that only includes tracked countries if the UI claims no-data countries are visible. Do not rely on complex SVG country polygons as the only accessible click target; tracked markets need a stable button or pin target for testing, keyboard users and practical user selection. When an SVG supports both drag-to-pan and clickable children, child controls should stop pointer-down propagation so the pan handler does not capture ordinary clicks.
 
 ### Files Changed
 

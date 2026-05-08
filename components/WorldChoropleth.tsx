@@ -586,6 +586,7 @@ function MapPin({
       role="button"
       tabIndex={0}
       aria-label={`${jurisdiction.name}: ${count} records`}
+      onPointerDown={(event) => event.stopPropagation()}
       onClick={() => onSelect(jurisdiction)}
       onMouseEnter={() => onHover(jurisdiction.id)}
       onMouseLeave={() => onHover(null)}
@@ -630,6 +631,7 @@ function MapLabel({
       role="button"
       tabIndex={0}
       aria-label={`${jurisdiction.name}: ${count} records`}
+      onPointerDown={(event) => event.stopPropagation()}
       onClick={() => onSelect(jurisdiction)}
       onMouseEnter={() => onHover(jurisdiction.id)}
       onMouseLeave={() => onHover(null)}

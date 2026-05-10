@@ -28,6 +28,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Static `/alerts` page with weekly and monthly digest previews and watchlist concepts
 - Static `/advisory` page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
 - Static `/launch` page with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview launch assets
+- Grouped primary/secondary navigation so core workspaces stay visible while governance, launch and commercial routes remain one click away
 - Client applicability wizard with indicative categories
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor use cases
 - Persona starting points on `/regulations` for CSO, legal, finance, procurement, private equity and advisor workflows
@@ -140,9 +141,17 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.20 - May 2026`.
+The current seed dataset edition is `0.5.21 - May 2026`.
 
-The latest local update refreshes the map workspace:
+The latest local update simplifies navigation and calms the homepage:
+
+- keeps Map, Markets, Sectors, Regulations, Assessment and Plans visible as core workspaces
+- groups Timeline, Briefing, Data Quality, Alerts, Advisory and Launch into a translated More menu
+- adds navigation labels for Plans, Alerts, Advisory, Launch and More across English, Spanish, Dutch, French, German and Portuguese interface chrome
+- replaces three homepage hero metric cards with one compact workspace snapshot
+- keeps all capabilities intact while reducing first-screen visual noise
+
+The prior `0.5.20 - May 2026` update refreshed the map workspace:
 
 - makes the homepage calmer by moving the map, selected jurisdiction context and regulation preview back to the centre of the first experience
 - consolidates Views, filters and share-link controls into one compact map workspace surface

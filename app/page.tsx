@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Database, Gauge, HelpCircle } from "lucide-react";
+import { ArrowRight, Database, HelpCircle } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Filters } from "@/components/Filters";
 import { WorldChoropleth as WorldMap } from "@/components/WorldChoropleth";
@@ -88,11 +88,7 @@ export default function Home() {
               </div>
               <p className="mt-3 max-w-2xl text-xs leading-5 text-slate-500">{t("home.languageCaveat")}</p>
             </div>
-            <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-1">
-              <HeroMetric icon={Database} label={t("home.currentView")} value={`${filtered.length} records`} />
-              <HeroMetric icon={Gauge} label={t("home.highImpact")} value={`${highImpact} records`} />
-              <HeroMetric icon={Database} label={t("home.sources")} value={`${sourceCount} links`} />
-            </div>
+            <WorkspaceSnapshot records={filtered.length} highImpact={highImpact} sources={sourceCount} />
           </div>
         </section>
 
@@ -173,22 +169,30 @@ function AssessmentPrompt() {
   );
 }
 
-function HeroMetric({
-  icon: Icon,
-  label,
-  value
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-  value: string;
-}) {
+function WorkspaceSnapshot({ records, highImpact, sources }: { records: number; highImpact: number; sources: number }) {
+  const { t } = useLanguage();
+  const metrics = [
+    { label: t("home.currentView"), value: records },
+    { label: t("home.highImpact"), value: highImpact },
+    { label: t("home.sources"), value: sources }
+  ];
+
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-      <div className="flex items-center justify-between gap-3">
-        <div className="text-sm text-slate-500">{label}</div>
-        <Icon className="h-4 w-4 text-teal" />
+    <aside className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900/60">
+      <div className="flex items-center gap-2 text-sm font-semibold text-ink">
+        <span className="rounded-lg bg-white p-2 text-teal shadow-sm dark:bg-slate-800">
+          <Database className="h-4 w-4" />
+        </span>
+        {t("home.currentView")}
       </div>
-      <div className="mt-2 text-xl font-bold text-ink">{value}</div>
-    </div>
+      <dl className="mt-4 grid grid-cols-3 gap-2">
+        {metrics.map((metric) => (
+          <div key={metric.label} className="rounded-xl bg-white p-3 text-center shadow-sm dark:bg-slate-800/80">
+            <dt className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">{metric.label}</dt>
+            <dd className="mt-1 text-lg font-bold text-ink">{metric.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </aside>
   );
 }

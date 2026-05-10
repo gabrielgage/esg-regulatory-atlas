@@ -10,6 +10,11 @@ test("map workspace loads with core product controls", async ({ page }) => {
   await expect(page.getByRole("link", { name: /Markets/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Sectors/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Regulations/i })).toBeVisible();
+  await page.getByText("More", { exact: true }).click();
+  await expect(page.getByRole("link", { name: /Data Quality/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Alerts/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Advisory/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Launch/i })).toBeVisible();
 });
 
 test("country outline map renders and supports jurisdiction selection on tablet", async ({ page }) => {

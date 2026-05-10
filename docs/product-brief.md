@@ -99,6 +99,7 @@ The MVP includes:
 - `/plans` commercial architecture page
 - `/alerts` static premium digest and watchlist preview
 - `/advisory` manual service page for exposure scans, watchlists, portfolio/supplier maps and briefing packs
+- Grouped navigation that keeps core discovery routes prominent while placing timeline, briefing, data-quality, alert, advisory and launch-support routes in a More menu
 - Premium market-pack previews and sample table-of-contents sections
 - `/premium-packs/[id]` static sample pages for individual premium pack scopes
 - Premium pack pages with copyable and printable Markdown briefs

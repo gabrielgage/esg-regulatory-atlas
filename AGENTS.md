@@ -102,6 +102,12 @@ Current review-workflow export convention:
 - `components/ReviewWorkflowExportPanel.tsx` surfaces those exports on `/data-quality`.
 - Treat review workflow exports as operational QA trackers for Notion, spreadsheets or advisory prep. They are not legal opinions, official translations, source verification or compliance determinations.
 
+Current navigation convention:
+
+- Keep the header focused on the main discovery path: Map, Markets, Sectors, Regulations, Assessment and Plans.
+- Put secondary or supporting surfaces such as Timeline, Briefing, Data Quality, Alerts, Advisory and Launch in the More menu unless a future user test shows they need primary placement.
+- When adding a new route, decide whether it belongs in primary navigation, More, a route-specific CTA or documentation. Do not add every new route as a visible top-level header item.
+
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
 ## Issue Resolution Rule

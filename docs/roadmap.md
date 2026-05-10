@@ -54,6 +54,7 @@ Current capability areas:
 - `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
 - `/launch` launch-resource workspace with copyable LinkedIn, email, direct-outreach, advisory and premium-preview assets
+- Grouped primary and secondary navigation so core map, market, sector, regulation, assessment and plan routes stay prominent while governance, timeline, briefing, alerts, advisory and launch routes remain one click away
 - Concrete premium market-pack previews in `/premium-roadmap`
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
 - Assessment outputs with missing facts, suggested owners and next 30-day actions
@@ -69,6 +70,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1U Items
+
+- Updated dataset metadata and changelog to `0.5.21 - May 2026`.
+- Simplified global navigation by keeping Map, Markets, Sectors, Regulations, Assessment and Plans visible while grouping Timeline, Briefing, Data Quality, Alerts, Advisory and Launch into a translated More menu.
+- Added translated navigation labels for Plans, Alerts, Advisory, Launch and More across the six supported interface languages.
+- Replaced three separate homepage hero metric cards with one compact workspace snapshot for record count, high-impact count and source-link count.
+- Added dark-mode-aware styling to the new navigation and homepage snapshot surfaces.
+- Kept all routes and product capabilities intact while reducing first-screen visual noise.
 
 ## Recently Delivered Phase 1T Items
 

@@ -17,6 +17,36 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-10 - Codex Sandbox Could Edit Files But Could Not Write Git Index
+
+Status: documented workflow limitation.
+
+### Symptom
+
+During the navigation and homepage calm-down pass on `codex/workspace-navigation-polish`, Codex could edit repository files and run TypeScript checks, but `git add` failed with:
+
+`fatal: Unable to create '.git/index.lock': Operation not permitted`
+
+Manual checks also showed that creating any new file under `.git/` failed with `Operation not permitted`, even though the working tree files were writable.
+
+### Root Cause
+
+The local Codex sandbox could not write inside the repository's `.git` directory. The directory and files were owned by the user, but macOS reported protected metadata on `.git` and refused index-lock creation from the sandbox. This is a local git-index permission limitation, not an app-code, TypeScript, Tailwind, Vercel or deployment problem.
+
+### Resolution
+
+- Kept all code and documentation changes in the working tree.
+- Confirmed TypeScript and whitespace checks still pass from the editable working tree.
+- Documented that staging, resolving the already-clean conflict markers, committing and pushing may need to be done in GitHub Desktop or another authenticated local Git client when Codex cannot write `.git/index.lock`.
+
+### Prevention Rule
+
+If Codex reports `Operation not permitted` while creating `.git/index.lock`, do not keep retrying staging commands or change remotes. Confirm the working tree files are intact, check for conflict markers, run available source validation, document the limitation, and ask the project owner to stage/commit/push from GitHub Desktop.
+
+### Files Changed
+
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-06 - Local Feature Branch Tracked `origin/main`
 
 Status: resolved.

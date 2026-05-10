@@ -170,6 +170,9 @@ Recent follow-up launch tasks:
 - LAUNCH-072 - Add no-dependency map pan, zoom and reset controls
 - LAUNCH-073 - Make untracked countries, ocean background and country outlines visibly distinct
 - LAUNCH-074 - Add smoke coverage for map viewport controls and untracked countries
+- LAUNCH-075 - Group secondary navigation routes into a translated More menu
+- LAUNCH-076 - Replace homepage metric cards with a compact workspace snapshot
+- LAUNCH-077 - Add smoke coverage for grouped navigation links
 
 ## Content Review
 
@@ -214,6 +217,7 @@ Log issues discovered during implementation, especially:
 - coverage confidence showing review-needed markets that are presented as commercially ready
 - map viewport controls missing or visually unavailable
 - homepage commercial panels crowding the primary map workspace
+- global navigation crowding the header or hiding secondary routes without a stable More-menu test
 
 ## 2026-05-02 Codex Update - Visible Map And Market Coverage Depth
 
@@ -352,3 +356,19 @@ Launch Tasks:
 QA finding:
 
 - The map can technically render country paths and still fail as a product experience if users cannot inspect it. Future map QA should include visible untracked countries, outline/background contrast, viewport controls, selected jurisdiction behavior and page scroll behavior.
+
+## 2026-05-09 Codex Update - Navigation And Homepage Calm-Down
+
+Launch Command Center note:
+
+> Phase 1U keeps the Atlas broad without making the first screen feel overloaded. Core workspaces remain visible in the header, secondary governance/commercial/launch routes move into a translated More menu, and the homepage hero now uses one compact workspace snapshot instead of three separate metric cards.
+
+Launch Tasks:
+
+- LAUNCH-075 - Group secondary navigation routes into a translated More menu
+- LAUNCH-076 - Replace homepage metric cards with a compact workspace snapshot
+- LAUNCH-077 - Add smoke coverage for grouped navigation links
+
+QA finding:
+
+- Navigation breadth can become a UX bug even when every route works. Future route additions should be placed intentionally into primary navigation only if they support the main user journey; otherwise they should live in More, route-specific CTAs, or supporting pages.

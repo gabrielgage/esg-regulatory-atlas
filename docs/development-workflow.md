@@ -24,6 +24,8 @@ git switch --no-track -c codex/my-feature origin/main
 
 If the branch was already created from `origin/main`, run `git branch --unset-upstream` before asking the user to click Publish Branch. Confirm `git status --short --branch` shows only the local branch name, not `...origin/main`.
 
+If Codex can edit files but `git add` fails with `Unable to create .git/index.lock: Operation not permitted`, treat it as a local sandbox git-index limitation. Do not keep retrying git operations. Confirm there are no conflict markers, run source validation, document the incident in `docs/issue-resolution-log.md`, and have the project owner stage, commit and push from GitHub Desktop.
+
 ## Bug And Failed Check Workflow
 
 Any time a bug, failed GitHub check, failed Vercel deployment, visible UI defect or data issue appears, follow this workflow:

@@ -46,7 +46,7 @@ export function CountryPanel({
   const intensity = jurisdiction.regulatoryIntensity;
 
   return (
-    <aside className="rounded-2xl border bg-white p-5 shadow-sm">
+    <aside data-testid="jurisdiction-panel" className="rounded-2xl border bg-white p-5 shadow-sm">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-teal">Jurisdiction profile</p>

@@ -585,6 +585,9 @@ function MapPin({
     <g
       role="button"
       tabIndex={0}
+      data-testid="map-jurisdiction-pin"
+      data-jurisdiction-id={jurisdiction.id}
+      data-jurisdiction-code={jurisdiction.code}
       aria-label={`${jurisdiction.name}: ${count} records`}
       onPointerDown={(event) => event.stopPropagation()}
       onClick={() => onSelect(jurisdiction)}
@@ -630,6 +633,9 @@ function MapLabel({
     <g
       role="button"
       tabIndex={0}
+      data-testid="map-jurisdiction-label"
+      data-jurisdiction-id={jurisdiction.id}
+      data-jurisdiction-code={jurisdiction.code}
       aria-label={`${jurisdiction.name}: ${count} records`}
       onPointerDown={(event) => event.stopPropagation()}
       onClick={() => onSelect(jurisdiction)}

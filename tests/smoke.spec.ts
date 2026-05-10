@@ -7,14 +7,16 @@ test("map workspace loads with core product controls", async ({ page }) => {
   await expect(page.getByTestId("regulatory-map")).toBeVisible();
   await expect(page.getByLabel(/Language/i)).toBeVisible();
   await expect(page.getByPlaceholder(/Search title/i)).toBeVisible();
-  await expect(page.getByRole("link", { name: /Markets/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Sectors/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Regulations/i })).toBeVisible();
-  await page.getByText("More", { exact: true }).click();
-  await expect(page.getByRole("link", { name: /Data Quality/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Alerts/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Advisory/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Launch/i })).toBeVisible();
+
+  const navigation = page.locator("header").getByRole("navigation");
+  await expect(navigation.getByRole("link", { name: /Markets/i })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: /Sectors/i })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: /Regulations/i })).toBeVisible();
+  await navigation.getByText("More", { exact: true }).click();
+  await expect(navigation.getByRole("link", { name: /Data Quality/i })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: /^Alerts$/i })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: /^Advisory$/i })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: /^Launch$/i })).toBeVisible();
 });
 
 test("country outline map renders and supports jurisdiction selection on tablet", async ({ page }) => {
@@ -36,8 +38,8 @@ test("country outline map renders and supports jurisdiction selection on tablet"
   await page.getByRole("button", { name: /Zoom in/i }).click();
   await page.getByRole("button", { name: /Reset map/i }).click();
 
-  await page.getByRole("button", { name: /Canada:/ }).first().click();
-  await expect(page.getByRole("heading", { name: /Canada/i }).first()).toBeVisible();
+  await page.locator('[data-testid="map-jurisdiction-pin"][data-jurisdiction-code="CAN"]').click();
+  await expect(page.getByTestId("jurisdiction-panel").getByRole("heading", { name: /^Canada$/i })).toBeVisible();
 });
 
 test("map geometry failure keeps a clear fallback and jurisdiction list", async ({ page }) => {

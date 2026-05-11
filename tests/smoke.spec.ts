@@ -109,10 +109,12 @@ test("market profile pages render jurisdiction decision context", async ({ page 
   await page.goto("/markets");
 
   await expect(page.getByRole("heading", { name: /Jurisdiction market profiles/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Market quick starts/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /European Union/i }).first()).toBeVisible();
 
   await page.goto("/jurisdiction/euu");
   await expect(page.getByRole("heading", { name: /European Union/i })).toBeVisible();
+  await expect(page.getByText(/Evidence starter pack/i)).toBeVisible();
   await expect(page.getByText(/Priority records/i).first()).toBeVisible();
   await expect(page.getByText(/Source confidence/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Printable brief/i })).toBeVisible();

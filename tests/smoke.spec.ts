@@ -152,7 +152,7 @@ test("briefing client summary exposes handoff links", async ({ page }) => {
   await expect(page.getByRole("link", { name: /Run assessment/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Choose market brief/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Request review/i })).toBeVisible();
-  await page.getByLabel("Jurisdiction").selectOption("euu");
+  await page.getByLabel("Jurisdiction").selectOption("eu");
   await expect(page.getByRole("link", { name: /European Union brief/i })).toBeVisible();
 });
 

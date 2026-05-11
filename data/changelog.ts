@@ -11,6 +11,21 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.23 - May 2026",
+    date: "2026-05-11",
+    label: "Market brief quick-start alignment",
+    summary:
+      "Carried market quick-start playbooks into printable and copyable jurisdiction briefs so market profile pages and exported advisory notes use the same first-action, evidence and owner-function framing.",
+    added: [
+      "Quick-start headline and planning question on `/jurisdiction/[code]/brief`",
+      "Evidence starter pack and owner-function sections in printable briefs",
+      "Quick-start content in copied jurisdiction brief Markdown"
+    ],
+    updated: ["Jurisdiction brief pages", "Copyable brief Markdown", "Smoke tests", "Dataset metadata"],
+    records: ["Market quick start", "Evidence starter pack", "Likely owner functions", "Watch items", "Caveats"],
+    caveat: "Jurisdiction briefs remain indicative seed intelligence and do not determine legal applicability, complete market coverage or compliance obligations."
+  },
+  {
     edition: "0.5.22 - May 2026",
     date: "2026-05-11",
     label: "Market quick-start playbooks",

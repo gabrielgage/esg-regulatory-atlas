@@ -1,4 +1,5 @@
 import { jurisdictions, regulations } from "@/data/seed";
+import { fallbackMarketQuickStart, marketQuickStartFor } from "@/data/marketQuickStarts";
 import { coverageConfidenceForJurisdiction } from "@/lib/coverageConfidence";
 import { recordsForJurisdiction } from "@/lib/layers";
 import { readinessScore } from "@/lib/scoring";
@@ -70,11 +71,20 @@ export function buildMarketMarkdown(jurisdiction: Jurisdiction, records: Regulat
   const impacts = uniq(relevant.flatMap((regulation) => regulation.businessImpacts)).slice(0, 8);
   const evidence = uniq(relevant.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 8);
   const actions = uniq(relevant.flatMap((regulation) => regulation.requiredActions || [])).slice(0, 8);
+  const quickStart = marketQuickStartFor(jurisdiction.id) || fallbackMarketQuickStart(jurisdiction, actions);
 
   return [
     `# ${jurisdiction.name} market profile`,
     "",
     "This is indicative seed regulatory intelligence for orientation and planning. It is not legal, tax, investment or assurance advice.",
+    "",
+    "## Market quick start",
+    quickStart.headline,
+    "",
+    `Planning question: ${quickStart.userQuestion}`,
+    "",
+    "### First 30-day actions",
+    ...quickStart.firstActions.map((action) => `- ${action}`),
     "",
     "## Priority records",
     ...(relevant.length ? relevant.map((regulation) => `- ${regulation.shortName}: ${regulation.summary}`) : ["- No tracked records in the current seed dataset."]),
@@ -83,13 +93,16 @@ export function buildMarketMarkdown(jurisdiction: Jurisdiction, records: Regulat
     `Main business impacts: ${impacts.join(", ") || "n/a"}`,
     "",
     "## Evidence to prepare",
-    ...(evidence.length ? evidence.map((item) => `- ${item}`) : ["- Applicability assessment", "- Source review log", "- Entity threshold evidence"]),
+    ...(quickStart.evidenceStarterPack.length ? quickStart.evidenceStarterPack.map((item) => `- ${item}`) : evidence.length ? evidence.map((item) => `- ${item}`) : ["- Applicability assessment", "- Source review log", "- Entity threshold evidence"]),
     "",
-    "## First 30-day actions",
-    ...(actions.length ? actions.map((action) => `- ${action}`) : ["- Confirm entity scope and thresholds.", "- Assign accountable source review owner."]),
+    "## Likely owner functions",
+    ...quickStart.ownerFunctions.map((owner) => `- ${owner}`),
+    "",
+    "## Watch items",
+    ...quickStart.watchItems.map((item) => `- ${item}`),
     "",
     "## Caveat",
-    "Applicability depends on entity-specific facts, local implementation, thresholds, sector rules and legal interpretation. Review primary sources and qualified advice before reliance."
+    `${quickStart.caveat} Applicability depends on entity-specific facts, local implementation, thresholds, sector rules and legal interpretation. Review primary sources and qualified advice before reliance.`
   ].join("\n");
 }
 

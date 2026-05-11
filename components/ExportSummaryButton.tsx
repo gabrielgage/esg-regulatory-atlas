@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { ClipboardCheck, ClipboardCopy } from "lucide-react";
+import Link from "next/link";
+import { useMemo, useState, type ReactNode } from "react";
+import { ClipboardCheck, ClipboardCopy, FileText, Search, Send } from "lucide-react";
 import { DATASET_META } from "@/data/_meta";
 import { companyTypes, jurisdictions, sectors } from "@/data/seed";
 import { clientRelevanceLabel, legalForceLabel, statusLabel } from "@/data/taxonomy";
@@ -40,6 +41,7 @@ export function ExportSummaryButton({
     () => buildSummary(selectedJurisdiction, scoped, selectedSector, selectedCompanyType),
     [selectedCompanyType, selectedJurisdiction, scoped, selectedSector]
   );
+  const selectedBriefHref = selectedJurisdiction ? `/jurisdiction/${selectedJurisdiction.code.toLowerCase()}/brief` : "/markets";
 
   async function copySummary() {
     if (navigator.clipboard) {
@@ -117,6 +119,24 @@ export function ExportSummaryButton({
         </label>
       </div>
       <p className="mt-3 text-xs font-semibold text-slate-500">{scoped.length} records included in this planning summary.</p>
+      <div className="mt-4" data-testid="client-briefing-handoff">
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Briefing handoff path</p>
+        <div className="mt-3 grid gap-3 md:grid-cols-3">
+          <HandoffLink href="/assessment" title="Run assessment" body="Generate an indicative shortlist before copying a client note.">
+            <Search className="h-4 w-4" />
+          </HandoffLink>
+          <HandoffLink
+            href={selectedBriefHref}
+            title={selectedJurisdiction ? `${selectedJurisdiction.name} brief` : "Choose market brief"}
+            body="Open the printable jurisdiction brief with sources, evidence and owner prompts."
+          >
+            <FileText className="h-4 w-4" />
+          </HandoffLink>
+          <HandoffLink href="/advisory" title="Request review" body="Move from static orientation into a source-linked advisory exposure scan.">
+            <Send className="h-4 w-4" />
+          </HandoffLink>
+        </div>
+      </div>
       <details className="mt-3">
         <summary className="cursor-pointer text-sm font-semibold text-teal">Preview summary text</summary>
         <textarea
@@ -129,6 +149,18 @@ export function ExportSummaryButton({
   );
 }
 
+function HandoffLink({ href, title, body, children }: { href: string; title: string; body: string; children: ReactNode }) {
+  return (
+    <Link href={href} className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm transition hover:border-teal/30 hover:bg-teal/5">
+      <span className="flex items-center gap-2 font-semibold text-ink">
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-teal">{children}</span>
+        {title}
+      </span>
+      <span className="mt-2 block leading-5 text-slate-500">{body}</span>
+    </Link>
+  );
+}
+
 function buildSummary(jurisdiction: Jurisdiction | null, scoped: Regulation[], sector: string, companyType: string) {
   const highPriority = scoped.filter((regulation) => regulation.highImpact).slice(0, 6);
   const relevant = (highPriority.length ? highPriority : scoped).slice(0, 6);
@@ -138,6 +170,7 @@ function buildSummary(jurisdiction: Jurisdiction | null, scoped: Regulation[], s
   const evidence = uniq(relevant.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 8);
   const sourceBacked = relevant.filter((regulation) => regulation.sourceUrls.length > 0).length;
   const reviewFlags = relevant.filter((regulation) => regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high").length;
+  const briefPath = jurisdiction ? `/jurisdiction/${jurisdiction.code.toLowerCase()}/brief` : "/markets";
   const actions = uniq(
     relevant.flatMap((regulation) => {
       if (regulation.requiredActions?.length) return regulation.requiredActions;
@@ -173,6 +206,12 @@ function buildSummary(jurisdiction: Jurisdiction | null, scoped: Regulation[], s
     "",
     "Evidence to start collecting:",
     ...(evidence.length ? evidence.map((item) => `- ${item}`) : ["- Applicability assessment", "- Source review log", "- Accountable owner and management sign-off record"]),
+    "",
+    "Recommended Atlas next steps:",
+    "- Run or refresh the indicative assessment: /assessment",
+    `- Open the selected market brief: ${briefPath}`,
+    "- Review premium market-pack scope: /premium-roadmap",
+    "- Request advisory review: /advisory",
     "",
     "Optional advisory next step:",
     `Request a source-linked exposure scan, market pack or board/client briefing from ${DATASET_META.publisher}: ${DATASET_META.contactEmail}`,

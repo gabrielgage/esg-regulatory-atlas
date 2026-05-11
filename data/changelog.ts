@@ -11,6 +11,21 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.24 - May 2026",
+    date: "2026-05-11",
+    label: "Client briefing handoff path",
+    summary:
+      "Added a clearer handoff path inside the client planning summary so users can move from indicative assessment to printable jurisdiction brief and advisory review without adding accounts, billing or backend services.",
+    added: [
+      "Briefing handoff links in the client planning summary component",
+      "Assessment, market brief and advisory next-step links in copied summary text",
+      "Smoke coverage for the briefing handoff path"
+    ],
+    updated: ["Client planning summary", "Briefing workspace", "Copied summary Markdown", "Smoke tests", "Dataset metadata"],
+    records: ["Assessment", "Jurisdiction brief", "Premium roadmap", "Advisory review", "Caveats"],
+    caveat: "The handoff path is a static planning workflow. It does not create a client workspace, legal determination, paid product, automated alert or production advisory engagement."
+  },
+  {
     edition: "0.5.23 - May 2026",
     date: "2026-05-11",
     label: "Market brief quick-start alignment",

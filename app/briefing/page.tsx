@@ -134,7 +134,7 @@ export default function BriefingPage() {
                   href="/markets"
                   className="inline-flex items-center justify-between rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-ink hover:border-teal/40 hover:bg-teal/5"
                 >
-                  Choose market brief
+                  Browse market profiles
                   <ArrowRight className="h-4 w-4 text-teal" />
                 </Link>
               </div>

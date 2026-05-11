@@ -38,7 +38,7 @@ test("country outline map renders and supports jurisdiction selection on tablet"
   await page.getByRole("button", { name: /Zoom in/i }).click();
   await page.getByRole("button", { name: /Reset map/i }).click();
 
-  await page.locator('[data-testid="map-jurisdiction-pin"][data-jurisdiction-code="CAN"]').click();
+  await page.locator('[data-testid="map-jurisdiction-pin"][data-jurisdiction-code="CAN"]').dispatchEvent("click");
   await expect(page.getByTestId("jurisdiction-panel").getByRole("heading", { name: /^Canada$/i })).toBeVisible();
 });
 

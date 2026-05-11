@@ -20,11 +20,11 @@ The map selection test also clicked a broad Canada control by accessible name. A
 - Scoped navigation smoke-test assertions to the header navigation landmark.
 - Added stable test hooks to map jurisdiction pins and labels.
 - Added a stable test hook to the jurisdiction panel.
-- Updated the Canada smoke test to click the Canada map pin by jurisdiction code and verify the selected jurisdiction panel.
+- Updated the Canada smoke test to trigger the Canada map pin by jurisdiction code and verify the selected jurisdiction panel.
 
 ## Prevention Rule
 
-When a route appears in both navigation and body CTAs, browser tests should scope assertions to the intended landmark. Interactive SVG map tests should use stable jurisdiction hooks for pins, labels and panels rather than broad accessible-name matches that may target multiple controls.
+When a route appears in both navigation and body CTAs, browser tests should scope assertions to the intended landmark. Interactive SVG map tests should separately verify country path rendering, viewport controls and selected-jurisdiction state rather than relying on broad accessible-name matches.
 
 ## Files Changed
 

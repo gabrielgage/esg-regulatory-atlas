@@ -10,6 +10,7 @@ import { PrintButton } from "@/components/PrintButton";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
 import { DATASET_META } from "@/data/_meta";
+import { fallbackMarketQuickStart, marketQuickStartFor } from "@/data/marketQuickStarts";
 import { jurisdictions, regulations } from "@/data/seed";
 import { recordsForJurisdiction } from "@/lib/layers";
 import { formatDate, uniq } from "@/lib/utils";
@@ -42,11 +43,12 @@ export default async function JurisdictionBriefPage({ params }: { params: Promis
   const functions = uniq(scoped.flatMap((regulation) => regulation.affectedFunctions)).slice(0, 10);
   const evidence = uniq(scoped.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 10);
   const actions = uniq(scoped.flatMap((regulation) => regulation.requiredActions || [])).slice(0, 8);
+  const quickStart = marketQuickStartFor(jurisdiction.id) || fallbackMarketQuickStart(jurisdiction, actions);
   const years = uniq(scoped.map((regulation) => String(regulation.firstReportingYear || "")).filter(Boolean)).sort();
   const sourceBacked = scoped.filter((regulation) => regulation.sourceUrls.length > 0).length;
   const reviewFlags = scoped.filter((regulation) => regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high").length;
   const watchItems = scoped.filter((regulation) => regulation.status === "consultation" || regulation.status === "transition" || regulation.dataQualityStatus !== "verified_seed").slice(0, 5);
-  const markdown = buildBriefMarkdown(jurisdiction.name, scoped);
+  const markdown = buildBriefMarkdown(jurisdiction.name, scoped, quickStart);
 
   return (
     <main id="main-content" className="min-h-screen pb-12">
@@ -121,8 +123,12 @@ export default async function JurisdictionBriefPage({ params }: { params: Promis
         <section className="grid gap-5 md:grid-cols-[1fr_.85fr]">
           <section className="rounded-2xl border bg-white p-6 shadow-sm">
             <h2 className="text-lg font-semibold text-ink">30-day readiness starter</h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600">{quickStart.headline}</p>
+            <p className="mt-3 rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm leading-6 text-slate-700">
+              Planning question: {quickStart.userQuestion}
+            </p>
             <div className="mt-4 space-y-3">
-              {(actions.length ? actions : ["Confirm applicability thresholds and entity scope.", "Assign accountable owners for data, controls and source review.", "Create a short source validation log for high-impact records."]).slice(0, 6).map((action) => (
+              {quickStart.firstActions.slice(0, 6).map((action) => (
                 <div key={action} className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm leading-6 text-slate-700">
                   {action}
                 </div>
@@ -148,6 +154,11 @@ export default async function JurisdictionBriefPage({ params }: { params: Promis
               )}
             </div>
           </section>
+        </section>
+
+        <section className="grid gap-5 md:grid-cols-2">
+          <ListCard title="Evidence starter pack" values={quickStart.evidenceStarterPack} />
+          <ListCard title="Likely owner functions" values={quickStart.ownerFunctions} />
         </section>
 
         <section className="rounded-2xl border bg-white p-6 shadow-sm">
@@ -194,7 +205,7 @@ function findJurisdiction(code: string) {
   return jurisdictions.find((jurisdiction) => jurisdiction.code.toLowerCase() === normalized || jurisdiction.id.toLowerCase() === normalized);
 }
 
-function buildBriefMarkdown(jurisdictionName: string, scoped: typeof regulations) {
+function buildBriefMarkdown(jurisdictionName: string, scoped: typeof regulations, quickStart: ReturnType<typeof fallbackMarketQuickStart>) {
   const highImpact = scoped.filter((regulation) => regulation.highImpact).slice(0, 8);
   const relevant = highImpact.length ? highImpact : scoped.slice(0, 8);
   const years = uniq(relevant.map((regulation) => String(regulation.firstReportingYear || "")).filter(Boolean));
@@ -213,6 +224,11 @@ function buildBriefMarkdown(jurisdictionName: string, scoped: typeof regulations
     `Edition: ${DATASET_META.edition}`,
     `Dataset last reviewed: ${DATASET_META.lastReviewed}`,
     "",
+    "## Market quick start",
+    quickStart.headline,
+    "",
+    `Planning question: ${quickStart.userQuestion}`,
+    "",
     "## Priority records",
     ...relevant.map((regulation) => `- ${regulation.shortName}: ${regulation.summary}`),
     "",
@@ -222,10 +238,16 @@ function buildBriefMarkdown(jurisdictionName: string, scoped: typeof regulations
     `Source-backed priority records: ${sourceBacked}/${relevant.length || 0}`,
     "",
     "## First 30-day actions",
-    ...(actions.length ? actions.map((action) => `- ${action}`) : ["- Confirm applicability thresholds and entity scope.", "- Assign accountable source review and data owners."]),
+    ...quickStart.firstActions.map((action) => `- ${action}`),
     "",
-    "## Evidence to prepare",
-    ...(evidence.length ? evidence.map((item) => `- ${item}`) : ["- Applicability assessment", "- Source review log", "- Management sign-off record"]),
+    "## Evidence starter pack",
+    ...(quickStart.evidenceStarterPack.length ? quickStart.evidenceStarterPack.map((item) => `- ${item}`) : evidence.length ? evidence.map((item) => `- ${item}`) : ["- Applicability assessment", "- Source review log", "- Management sign-off record"]),
+    "",
+    "## Likely owner functions",
+    ...quickStart.ownerFunctions.map((owner) => `- ${owner}`),
+    "",
+    "## Watch items",
+    ...quickStart.watchItems.map((item) => `- ${item}`),
     "",
     "## Optional advisory next step",
     `Request a source-linked jurisdiction exposure scan, market pack or board/client briefing from ${DATASET_META.publisher}: ${DATASET_META.contactEmail}`,

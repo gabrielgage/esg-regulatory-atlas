@@ -134,6 +134,16 @@ test("sector starting point pages render business-context triage", async ({ page
   await expect(page.getByRole("link", { name: /Filter database/i })).toBeVisible();
 });
 
+test("jurisdiction briefs include market quick-start evidence framing", async ({ page }) => {
+  await page.goto("/jurisdiction/euu/brief");
+
+  await expect(page.getByRole("heading", { name: /European Union regulatory brief/i })).toBeVisible();
+  await expect(page.getByText(/Planning question:/i)).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Evidence starter pack/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Likely owner functions/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy as Markdown/i })).toBeVisible();
+});
+
 test("data quality source-governance queue renders", async ({ page }) => {
   await page.goto("/data-quality");
 

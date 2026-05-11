@@ -24,6 +24,8 @@ git switch --no-track -c codex/my-feature origin/main
 
 If the branch was already created from `origin/main`, run `git branch --unset-upstream` before asking the user to click Publish Branch. Confirm `git status --short --branch` shows only the local branch name, not `...origin/main`.
 
+If Codex can edit files but `git add` fails with `Unable to create .git/index.lock: Operation not permitted`, treat it as a local sandbox git-index limitation. Do not keep retrying git operations. Confirm there are no conflict markers, run source validation, document the incident in `docs/issue-resolution-log.md`, and have the project owner stage, commit and push from GitHub Desktop.
+
 ## Bug And Failed Check Workflow
 
 Any time a bug, failed GitHub check, failed Vercel deployment, visible UI defect or data issue appears, follow this workflow:
@@ -182,7 +184,7 @@ Known lesson from PR #11:
 - Theme behavior should default first-time visitors to light mode, then respect the user's saved explicit light/dark selection.
 - The app requires no environment variables.
 - The map uses local static assets and no paid map provider.
-- Map changes should preserve local Natural Earth geometry, visible country outlines from tablet widths upward, keyboard-selectable tracked countries and a clear geometry fallback.
+- Map changes should preserve local Natural Earth Admin 0 geometry, visible country outlines from tablet widths upward, keyboard-selectable tracked countries, visible untracked-country styling, pan/zoom/reset controls and a clear geometry fallback. Smoke tests should fail if the geometry bundle contains only tracked countries.
 - Coverage-depth changes should update `data/coverageTargets.ts`, keep direct-record target checks passing and mark new market records as seed intelligence unless a production source review has verified them.
 - Sector-starting-point changes should use `lib/sectorProfile.ts` and existing regulation sector tags instead of hardcoding regulatory content in route components. Preserve the caveat that sector pages are current tracked coverage, not complete sector legal inventories.
 - Persona preset changes should update `data/personaPresets.ts`, preserve `?persona=` URL behavior on `/regulations`, and clear the active role lens when a user manually changes filters.

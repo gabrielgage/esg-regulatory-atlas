@@ -32,8 +32,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Improve dark-mode text contrast, default first visit to light mode, verify status badges, warning banners, inputs and source links across core routes.
 
 2. **Map legend and layer explanation upgrade**
-   Status: materially delivered through `0.5.3 - May 2026` and `0.5.9 - May 2026`.
-   The map now uses local country outlines from tablet widths upward, stronger border contrast, selected/EU overlay cues and fallback behavior. Continue improving interpretation copy as layers become more sophisticated.
+   Status: materially delivered through `0.5.3`, `0.5.9` and `0.5.20 - May 2026`.
+   The map now uses local country outlines from tablet widths upward, stronger border contrast, selected/EU overlay cues, visible untracked-country styling, ocean background contrast, pan/zoom/reset controls and fallback behavior. Continue improving interpretation copy as layers become more sophisticated.
 
 3. **Coverage confidence view**
    Status: partially delivered in `0.5.4 - May 2026`.
@@ -55,7 +55,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Add sector entry filters for financial services, manufacturing, agriculture, energy, real estate, retail, technology and transport.
 
 8. **Translation coverage audit**
-   Track which UI strings are translated versus intentionally left as English source-linked regulatory content. Add a process note so future records are not accidentally machine-presented as legal translations.
+   Status: advanced in `0.5.21 - May 2026` with translated navigation labels for Plans, Alerts, Advisory, Launch and More across all supported interface languages.
+   Continue tracking which UI strings are translated versus intentionally left as English source-linked regulatory content. Add a process note so future records are not accidentally machine-presented as legal translations.
 
 9. **Minimum market coverage checklist**
    Status: materially delivered in `0.5.9 - May 2026`.
@@ -162,6 +163,11 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
 24. **Responsive map refinement**
     Improve mobile/tablet map behavior with a tighter map height, easier selected-jurisdiction drawer, larger tap targets and simplified legend behavior.
 
+45. **Navigation and homepage calm-down**
+    Status: materially delivered in `0.5.21 - May 2026`.
+    Revenue relevance: Trust, conversion clarity and demo usability.
+    The primary navigation now keeps core workspaces visible and groups secondary governance, launch and commercial routes into a More menu. The homepage hero now uses one compact workspace snapshot instead of three competing metric cards. Continue this direction by avoiding new homepage panels unless they directly help users select a jurisdiction, filter records or inspect the selected market.
+
 ## Wave 3: Scaled Platform And Data Operations
 
 Target: later phase only, after explicit approval and product validation.
@@ -213,7 +219,7 @@ The next implementation sequence should be:
 3. Prepare LinkedIn, email and direct outreach launch assets from `data/launchAssets.ts`.
    Status: delivered in `0.5.11 - May 2026` through `/launch` copyable asset cards and draft-email actions.
 4. Run launch QA across `/`, `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/regulations/[slug]`, `/assessment`, `/data-quality` and `/briefing`.
-   Status: expanded in `0.5.13 - May 2026` with smoke coverage for `/markets` and `/jurisdiction/euu`; full visual QA remains ongoing.
+   Status: expanded in `0.5.13 - May 2026` with smoke coverage for `/markets` and `/jurisdiction/euu`, and in `0.5.21 - May 2026` with coverage for the grouped More navigation; full visual QA remains ongoing.
 5. Validate demand manually before adding paid or automated infrastructure.
 
 ## Documentation Rule

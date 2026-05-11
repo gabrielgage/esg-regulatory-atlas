@@ -65,7 +65,7 @@ The MVP includes:
 - Static Next.js application deployable on Vercel
 - Local Tailwind v3 styling
 - Static typed seed data
-- Interactive map using local Natural Earth assets, visible country outlines and a geometry fallback
+- Interactive map using local Natural Earth Admin 0 assets, visible country outlines, untracked-country styling, pan/zoom/reset controls and a geometry fallback
 - Jurisdiction profiles
 - Searchable and filterable regulations
 - Record type, legal force and client relevance filters and badges
@@ -99,6 +99,7 @@ The MVP includes:
 - `/plans` commercial architecture page
 - `/alerts` static premium digest and watchlist preview
 - `/advisory` manual service page for exposure scans, watchlists, portfolio/supplier maps and briefing packs
+- Grouped navigation that keeps core discovery routes prominent while placing timeline, briefing, data-quality, alert, advisory and launch-support routes in a More menu
 - Premium market-pack previews and sample table-of-contents sections
 - `/premium-packs/[id]` static sample pages for individual premium pack scopes
 - Premium pack pages with copyable and printable Markdown briefs
@@ -146,7 +147,7 @@ The product can classify, summarize, organize, and prioritize. It must not imply
 
 ### Keep The Map Central
 
-The map is the main workspace. Heavy tools such as assessment, timeline, data methodology, and client briefing should support the map rather than crowd it.
+The map is the main workspace. Heavy tools such as assessment, timeline, data methodology, commercial validation, launch assets and client briefing should support the map from separate routes rather than crowd the homepage.
 
 ### Design For Consultant Workflows
 
@@ -178,7 +179,8 @@ The MVP is successful when:
 - It deploys reliably on Vercel.
 - Users can understand the product purpose within a few seconds.
 - The map is visually credible and interactive.
-- Country outlines are visible enough for users to recognize the map as a true world map, not abstract shapes.
+- Country outlines, untracked countries and ocean background are visible enough for users to recognize the map as a true world map, not abstract shapes.
+- Users can zoom, reset and drag the map viewport without adding a paid map dependency.
 - Users can select a jurisdiction and understand key regulatory drivers.
 - Reviewers can export source, threshold and evidence review rows without treating them as legal verification.
 - Users can filter regulations without breaking the interface.

@@ -11,8 +11,8 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Next.js, React, TypeScript and Tailwind v3
 - Stable Tailwind/PostCSS v3 setup for Vercel deployment
 - Production build uses the stable Next.js webpack build path for this MVP
-- Static Natural Earth choropleth map with no paid map API and no Mapbox token
-- Tablet-and-desktop country-outline map with stronger contrast, local graticule cues and a clear geometry fallback
+- Static Natural Earth choropleth map with locally bundled Admin 0 country geometry, no paid map API and no Mapbox token
+- Tablet-and-desktop country-outline map with stronger contrast, local graticule cues, untracked-country styling, pan/zoom/reset controls and a clear geometry fallback
 - Expanded APAC, South Africa and European national due-diligence jurisdiction coverage
 - Coverage-depth targets for core commercial and watch-expansion markets
 - Jurisdiction profile panel
@@ -28,6 +28,7 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 - Static `/alerts` page with weekly and monthly digest previews and watchlist concepts
 - Static `/advisory` page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
 - Static `/launch` page with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview launch assets
+- Grouped primary/secondary navigation so core workspaces stay visible while governance, launch and commercial routes remain one click away
 - Client applicability wizard with indicative categories
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor use cases
 - Persona starting points on `/regulations` for CSO, legal, finance, procurement, private equity and advisor workflows
@@ -140,9 +141,27 @@ Use these files to brief future coding agents, reviewers and collaborators:
 
 ## Current edition
 
-The current seed dataset edition is `0.5.19 - May 2026`.
+The current seed dataset edition is `0.5.21 - May 2026`.
 
-The latest local update adds review workflow export controls:
+The latest local update simplifies navigation and calms the homepage:
+
+- keeps Map, Markets, Sectors, Regulations, Assessment and Plans visible as core workspaces
+- groups Timeline, Briefing, Data Quality, Alerts, Advisory and Launch into a translated More menu
+- adds navigation labels for Plans, Alerts, Advisory, Launch and More across English, Spanish, Dutch, French, German and Portuguese interface chrome
+- replaces three homepage hero metric cards with one compact workspace snapshot
+- keeps all capabilities intact while reducing first-screen visual noise
+
+The prior `0.5.20 - May 2026` update refreshed the map workspace:
+
+- makes the homepage calmer by moving the map, selected jurisdiction context and regulation preview back to the centre of the first experience
+- consolidates Views, filters and share-link controls into one compact map workspace surface
+- adds no-dependency SVG zoom, reset and drag-to-pan controls
+- replaces the tracked-only map geometry index with locally bundled Natural Earth Admin 0 country geometry so non-covered countries appear as neutral land
+- strengthens ocean, untracked land, borders, outlines and graticule contrast in light and dark mode
+- reduces always-on map label noise while keeping country paths, EU context and subnational markers selectable
+- keeps map color as tracked seed record volume, not legal applicability, maturity or complete market coverage
+
+The prior `0.5.19 - May 2026` update added review workflow export controls:
 
 - adds a shared review-workflow helper for source/threshold/evidence review rows and priority scoring
 - adds a Review Workflow Export panel to `/data-quality`

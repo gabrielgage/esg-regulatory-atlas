@@ -2,7 +2,34 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1S review-workflow export pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass and Phase 1R source-evidence review-packet pass. The goal remains deployability and legal caution, with added emphasis on turning source, threshold and evidence gaps into practical review controls before premium or advisory use.
+The app is now in a static Phase 1U navigation and homepage calm-down pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass and Phase 1T map-workspace refresh pass. The goal remains deployability and legal caution, with added emphasis on making the main product workspace feel calm, navigable and map-led.
+
+## Phase 1U Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.21 - May 2026`.
+- Reduced global navigation clutter by keeping core workspaces visible and grouping Timeline, Briefing, Data Quality, Alerts, Advisory and Launch into a translated More menu.
+- Added translated navigation labels for Plans, Alerts, Advisory, Launch and More across English, Spanish, Dutch, French, German and Portuguese interface chrome.
+- Replaced the three separate homepage hero metric cards with one compact workspace snapshot for current record count, high-impact count and source-link count.
+- Added dark-mode-aware navigation and homepage snapshot styling so the calm-down pass works in both themes.
+
+## Phase 1U Product Rationale
+
+The Atlas now has many useful routes, but showing all of them equally in the header made the product feel busier than the actual workflow. Phase 1U preserves every feature while improving wayfinding: primary product routes stay visible, secondary governance/commercial/launch routes stay one click away, and the homepage first screen gives the map workspace more room to breathe.
+
+## Phase 1T Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.20 - May 2026`.
+- Refreshed the homepage into a calmer map-first layout by removing the update strip and commercial tile row from the top of the page.
+- Consolidated the map controls into one compact workspace surface with Views, default filters and share link.
+- Added no-dependency SVG map zoom, reset and drag-to-pan controls.
+- Strengthened map ocean, untracked land, border, outline and graticule contrast with light/dark theme variables.
+- Reduced always-on map label noise while keeping national country paths, EU and subnational markers selectable.
+- Replaced the tracked-only map geometry index with locally bundled Natural Earth Admin 0 country geometry so non-covered countries render as neutral land.
+- Added smoke coverage for visible untracked countries and map viewport controls.
+
+## Phase 1T Product Rationale
+
+The homepage had accumulated enough commercial, launch and governance surfaces that the core product felt buried. Phase 1T brings the Atlas back to its strongest entry point: map, selected jurisdiction context and regulation preview. The map remains static and local, but now gives users enough viewport control and visual contrast to recognize covered and uncovered countries without adding Mapbox, paid APIs or GIS infrastructure.
 
 ## Phase 1S Changes Delivered
 
@@ -383,7 +410,8 @@ The deep review identified three credibility risks: the map claimed country fill
 
 - No Stripe, Supabase, authentication, paid APIs, Mapbox, environment variables, database, scraping, cron jobs or runtime AI calls were added.
 - Theme behavior now defaults first-time visitors to light mode. The saved `etica-theme` preference is still respected after a user explicitly toggles light or dark mode.
-- The new map fetches `/world-110m/index.json` and same-origin Natural Earth geometry from the app's own `public/` directory.
+- The map fetches `/world-110m/index.json` and same-origin Natural Earth geometry from the app's own `public/` directory. `countries.json` contains bundled public-domain Natural Earth Admin 0 geometry so untracked countries can still render as background land.
+- The map now has local SVG zoom, reset and drag-to-pan controls; do not replace this with Mapbox or a paid map service during the MVP.
 - The country fill bucket is driven by direct record count in the active view: `0`, `1-2`, `3-6`, and `7+`.
 - EU-level records highlight EU member-state polygons and keep a separate `EUU` overlay label for the supranational jurisdiction.
 - California is shown as `USA-CA`, not `CA`, to avoid confusion with Canada.
@@ -392,6 +420,13 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1T validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
+- Phase 1T validation: `git diff --check` passed.
+- Phase 1T validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. GitHub Actions or Vercel should provide the authoritative build signal.
+- Phase 1T CI follow-up: first PR #26 smoke run failed because the bundled map index still referenced tracked-only geometry, leaving zero untracked country paths. The fix was to bundle Natural Earth Admin 0 countries locally and keep the untracked-country smoke assertion.
+- Phase 1T guardrail scan found only existing guardrail/documentation mentions of Stripe, Supabase, Mapbox, checkout, webhooks, scraping, cron and related future infrastructure; no implementation code or dependencies were added.
+- Phase 1T legal-risk wording scan found only the intentional caveat that tracked coverage is not complete global coverage.
+- Phase 1T Notion update: Launch Tasks LAUNCH-071 through LAUNCH-074 were created for homepage streamlining, map viewport controls, untracked-country visibility and smoke coverage.
 - Phase 1S validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1S validation: `git diff --check` passed.
 - Phase 1S validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. This is documented in `docs/issue-resolution-log.md`; GitHub Actions or Vercel should provide the authoritative build signal.

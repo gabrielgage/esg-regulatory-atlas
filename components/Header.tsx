@@ -2,31 +2,39 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShieldCheck } from "lucide-react";
+import { ChevronDown, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { TranslationKey } from "@/lib/i18n";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "./LanguageProvider";
 import { ThemeToggle } from "./ThemeToggle";
 
-const navItems = [
+const primaryNavItems = [
   { href: "/", labelKey: "nav.map" },
   { href: "/markets", labelKey: "nav.markets" },
   { href: "/sectors", labelKey: "nav.sectors" },
   { href: "/regulations", labelKey: "nav.regulations" },
   { href: "/assessment", labelKey: "nav.assessment" },
+  { href: "/plans", labelKey: "nav.plans" }
+] satisfies Array<{ href: string; labelKey: TranslationKey }>;
+
+const secondaryNavItems = [
   { href: "/timeline", labelKey: "nav.timeline" },
   { href: "/briefing", labelKey: "nav.briefing" },
   { href: "/data-quality", labelKey: "nav.dataQuality" },
-  { href: "/plans", label: "Plans" },
-  { href: "/alerts", label: "Alerts" },
-  { href: "/advisory", label: "Advisory" },
-  { href: "/launch", label: "Launch" }
-] satisfies Array<{ href: string; labelKey?: TranslationKey; label?: string }>;
+  { href: "/alerts", labelKey: "nav.alerts" },
+  { href: "/advisory", labelKey: "nav.advisory" },
+  { href: "/launch", labelKey: "nav.launch" }
+] satisfies Array<{ href: string; labelKey: TranslationKey }>;
+
+function isActive(pathname: string, href: string) {
+  return href === "/" ? pathname === "/" : pathname.startsWith(href);
+}
 
 export function Header() {
   const pathname = usePathname();
   const { t } = useLanguage();
+  const secondaryActive = secondaryNavItems.some((item) => isActive(pathname, item.href));
 
   return (
     <header className="sticky top-0 z-40 border-b bg-white/90 backdrop-blur dark:bg-navy/92">
@@ -40,22 +48,49 @@ export function Header() {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Regulatory Atlas</p>
           </div>
         </Link>
-        <nav className="flex gap-1 overflow-x-auto rounded-full border bg-slate-50 p-1 text-sm">
-          {navItems.map((item) => {
-            const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+        <nav className="flex max-w-full flex-wrap gap-1 rounded-2xl border bg-slate-50 p-1 text-sm dark:border-slate-700 dark:bg-slate-900/75">
+          {primaryNavItems.map((item) => {
+            const active = isActive(pathname, item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "shrink-0 rounded-full px-3 py-2 font-semibold text-slate-600 transition hover:bg-white hover:text-ink",
-                  active && "bg-white text-ink shadow-sm"
+                  "shrink-0 rounded-full px-3 py-2 font-semibold text-slate-600 transition hover:bg-white hover:text-ink dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white",
+                  active && "bg-white text-ink shadow-sm dark:bg-slate-800 dark:text-white"
                 )}
               >
-                {item.labelKey ? t(item.labelKey) : item.label}
+                {t(item.labelKey)}
               </Link>
             );
           })}
+          <details className="group relative shrink-0">
+            <summary
+              className={cn(
+                "flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 font-semibold text-slate-600 transition hover:bg-white hover:text-ink dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white [&::-webkit-details-marker]:hidden",
+                secondaryActive && "bg-white text-ink shadow-sm dark:bg-slate-800 dark:text-white"
+              )}
+            >
+              {t("nav.more")} <ChevronDown className="h-3.5 w-3.5 transition group-open:rotate-180" aria-hidden="true" />
+            </summary>
+            <div className="absolute right-0 top-[calc(100%+0.5rem)] z-50 hidden w-64 rounded-2xl border bg-white p-2 shadow-xl group-open:block dark:border-slate-700 dark:bg-slate-900">
+              {secondaryNavItems.map((item) => {
+                const active = isActive(pathname, item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      "block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-ink dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white",
+                      active && "bg-slate-100 text-ink dark:bg-slate-800 dark:text-white"
+                    )}
+                  >
+                    {t(item.labelKey)}
+                  </Link>
+                );
+              })}
+            </div>
+          </details>
         </nav>
         <div className="flex items-center gap-2">
           <div className="hidden items-center gap-2 rounded-full border bg-slate-50 px-4 py-2 text-sm text-slate-600 md:flex">

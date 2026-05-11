@@ -11,6 +11,38 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.21 - May 2026",
+    date: "2026-05-09",
+    label: "Navigation and homepage calm-down pass",
+    summary:
+      "Reduced first-screen clutter by grouping secondary workspaces into a translated More menu and replacing the three separate homepage metric cards with one compact workspace snapshot.",
+    added: [
+      "Translated navigation labels for Plans, Alerts, Advisory, Launch and More across the supported interface languages",
+      "Consolidated homepage workspace snapshot with record, high-impact and source-link counts",
+      "Dark-mode-aware navigation and snapshot styling"
+    ],
+    updated: ["Header navigation", "Homepage hero metrics", "Interface translation dictionary", "Project documentation"],
+    records: ["Primary navigation", "Workspace summary", "Language chrome", "Homepage information architecture"],
+    caveat: "This release changes product navigation and layout only. It does not change legal interpretation, data coverage or the illustrative seed-data status of the regulatory records."
+  },
+  {
+    edition: "0.5.20 - May 2026",
+    date: "2026-05-07",
+    label: "Map workspace redesign and pan/zoom controls",
+    summary:
+      "Refreshed the homepage into a calmer map-first workspace and upgraded the SVG map so untracked countries, country outlines, ocean background, zoom controls and drag-to-pan behavior are visible from tablet widths upward.",
+    added: [
+      "No-dependency map zoom, reset and drag-to-pan controls",
+      "Visible ocean background and untracked-country land styling",
+      "Locally bundled Natural Earth Admin 0 country geometry so untracked countries render as neutral land",
+      "Smoke-test checks for untracked countries and map viewport controls",
+      "Tabbed Data Quality cleanup carried forward from the previous deployment"
+    ],
+    updated: ["Homepage information architecture", "World choropleth rendering", "Map dark-mode variables", "Smoke tests", "Project documentation"],
+    records: ["Tracked coverage", "Untracked countries", "Map controls", "Country outlines", "View filters"],
+    caveat: "Map color reflects current tracked seed record volume in the active view. It is not a statement of complete legal coverage, legal applicability or regulatory maturity."
+  },
+  {
     edition: "0.5.19 - May 2026",
     date: "2026-05-06",
     label: "Review workflow export controls",

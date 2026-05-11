@@ -17,6 +17,36 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-10 - Codex Sandbox Could Edit Files But Could Not Write Git Index
+
+Status: documented workflow limitation.
+
+### Symptom
+
+During the navigation and homepage calm-down pass on `codex/workspace-navigation-polish`, Codex could edit repository files and run TypeScript checks, but `git add` failed with:
+
+`fatal: Unable to create '.git/index.lock': Operation not permitted`
+
+Manual checks also showed that creating any new file under `.git/` failed with `Operation not permitted`, even though the working tree files were writable.
+
+### Root Cause
+
+The local Codex sandbox could not write inside the repository's `.git` directory. The directory and files were owned by the user, but macOS reported protected metadata on `.git` and refused index-lock creation from the sandbox. This is a local git-index permission limitation, not an app-code, TypeScript, Tailwind, Vercel or deployment problem.
+
+### Resolution
+
+- Kept all code and documentation changes in the working tree.
+- Confirmed TypeScript and whitespace checks still pass from the editable working tree.
+- Documented that staging, resolving the already-clean conflict markers, committing and pushing may need to be done in GitHub Desktop or another authenticated local Git client when Codex cannot write `.git/index.lock`.
+
+### Prevention Rule
+
+If Codex reports `Operation not permitted` while creating `.git/index.lock`, do not keep retrying staging commands or change remotes. Confirm the working tree files are intact, check for conflict markers, run available source validation, document the limitation, and ask the project owner to stage/commit/push from GitHub Desktop.
+
+### Files Changed
+
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-06 - Local Feature Branch Tracked `origin/main`
 
 Status: resolved.
@@ -362,3 +392,49 @@ When local git push fails with credential access errors, do not keep retrying or
 ### Files Changed
 
 - `docs/issue-resolution-log.md`
+
+## 2026-05-07 - Homepage Felt Busy And Map Lacked Inspectable Pan/Zoom Context
+
+Status: resolved in the next map-workspace refresh branch.
+
+### Symptom
+
+The homepage had too many commercial and update panels before the core product workspace, making the first experience feel busy. The map also did not feel like an inspectable world map because users could not zoom or pan it, untracked countries were too visually quiet, and the always-on map labels competed with the country outlines.
+
+### Root Cause
+
+`app/page.tsx` placed the changelog strip, three commercial tiles, view selector and filter card ahead of the map. `components/WorldChoropleth.tsx` rendered local Natural Earth country paths, but the SVG had no viewport controls and used subtle static colors. Tracked-market labels were also always rendered, which made the canvas noisier while not improving country recognition.
+
+A follow-up CI smoke test also exposed that `public/world-110m/index.json` only pointed to `tracked.json`, a subset of tracked jurisdictions and EU member states. That meant untracked countries could not render as neutral background land even after the map styling supported them.
+
+A second smoke-test run then exposed a separate interaction issue: the test could see the full country map, but clicking Canada did not open the Canada panel reliably. The country path itself was being used as the accessible button. For large irregular SVG countries, the browser click target can land near the center of the path's bounding box rather than on a practical visible interaction point. A follow-up run showed that the SVG-level drag handler could still capture pointer events before the pin click completed.
+
+### Resolution
+
+- Refactored the homepage into a calmer map-first workspace with a compact hero, one disclaimer, one control surface and the map/jurisdiction panel as the main product.
+- Added no-dependency SVG zoom, reset and drag-to-pan controls to the map.
+- Added CSS variables for ocean, untracked land, borders, outlines and graticules so light and dark themes render the map with clear contrast.
+- Reduced map label noise by showing persistent labels only for selected, hovered, EU and subnational markers while retaining clickable country paths.
+- Replaced the tracked-only geometry bundle with locally bundled public-domain Natural Earth 1:110m Admin 0 country geometry so untracked countries can render as neutral land.
+- Added clickable, keyboard-accessible jurisdiction pin hit targets on top of the country outlines while keeping country paths selectable, so irregular country geometry does not create fragile click behavior.
+- Stopped pin and label pointer-down events from bubbling into the map pan handler so click selection and drag-to-pan do not compete.
+- Added smoke checks for visible untracked countries and map viewport controls.
+
+### Prevention Rule
+
+Homepage changes should keep the map workspace within the first meaningful viewport after the hero and disclaimer. Map QA must verify not only that SVG paths exist, but also that untracked countries, outlines, background contrast and viewport controls are visible. Do not ship a map geometry index that only includes tracked countries if the UI claims no-data countries are visible. Do not rely on complex SVG country polygons as the only accessible click target; tracked markets need a stable button or pin target for testing, keyboard users and practical user selection. When an SVG supports both drag-to-pan and clickable children, child controls should stop pointer-down propagation so the pan handler does not capture ordinary clicks.
+
+### Files Changed
+
+- `app/page.tsx`
+- `components/WorldChoropleth.tsx`
+- `components/Filters.tsx`
+- `components/ViewSelector.tsx`
+- `app/globals.css`
+- `lib/i18n.ts`
+- `tests/smoke.spec.ts`
+- `data/_meta.ts`
+- `data/changelog.ts`
+- `docs/issue-resolution-log.md`
+- `public/world-110m/countries.json`
+- `public/world-110m/index.json`

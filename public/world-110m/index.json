@@ -1,1 +1,7 @@
-{"source":"Natural Earth 1:110m Admin 0 countries, filtered to ESG Regulatory Atlas tracked jurisdictions and EU member states","license":"Public domain. See /world-110m.LICENSE.txt","chunks":["tracked.json"]}
+{
+  "source": "Natural Earth 1:110m Admin 0 countries, public domain, bundled locally for ESG Regulatory Atlas map coverage context",
+  "license": "Public domain. See /world-110m.LICENSE.txt",
+  "chunks": [
+    "countries.json"
+  ]
+}

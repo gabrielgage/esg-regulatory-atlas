@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Globe2, Layers2 } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { PointerEvent as ReactPointerEvent, WheelEvent as ReactWheelEvent } from "react";
+import { Globe2, Layers2, LocateFixed, Minus, Move, Plus } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
 import { Jurisdiction, Regulation } from "@/types/regulation";
 import { cn } from "@/lib/utils";
@@ -13,13 +14,17 @@ const colors = {
   high: "#0f766e",
   medium: "#3fb8ad",
   emerging: "#a7f3d0",
-  none: "#d7e0ea",
+  none: "var(--map-land-untracked)",
   active: "#6d5dfc",
-  border: "#42566d",
+  border: "var(--map-border)",
   euBorder: "#0f766e",
-  background: "#e6eef6",
-  graticule: "#9fb1c2"
+  background: "var(--map-ocean)",
+  graticule: "var(--map-graticule)",
+  outline: "var(--map-outline)"
 };
+
+const minZoom = 1;
+const maxZoom = 3.2;
 
 const euMembers = new Set([
   "AUT",
@@ -92,6 +97,10 @@ export function WorldChoropleth({
   const [mapStatus, setMapStatus] = useState<"loading" | "ready" | "failed">("loading");
   const [hoveredIso, setHoveredIso] = useState<string | null>(null);
   const [hoveredJurisdictionId, setHoveredJurisdictionId] = useState<string | null>(null);
+  const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const dragState = useRef<{ pointerId: number; x: number; y: number; pan: { x: number; y: number }; moved: boolean } | null>(null);
+  const ignoreNextClick = useRef(false);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -142,8 +151,63 @@ export function WorldChoropleth({
   const featuredCount = featuredRecords.length;
   const featuredFirstYear = firstReportingYear(featuredRecords);
 
+  function zoomBy(delta: number) {
+    setZoom((current) => clamp(current + delta, minZoom, maxZoom));
+  }
+
+  function resetMapView() {
+    setZoom(1);
+    setPan({ x: 0, y: 0 });
+  }
+
+  function handleWheel(event: ReactWheelEvent<SVGSVGElement>) {
+    event.preventDefault();
+    const delta = event.deltaY > 0 ? -0.16 : 0.16;
+    zoomBy(delta);
+  }
+
+  function handlePointerDown(event: ReactPointerEvent<SVGSVGElement>) {
+    if (event.button !== 0) return;
+    dragState.current = {
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      pan,
+      moved: false
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+
+  function handlePointerMove(event: ReactPointerEvent<SVGSVGElement>) {
+    const drag = dragState.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    const dx = event.clientX - drag.x;
+    const dy = event.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 4) drag.moved = true;
+    setPan({
+      x: clamp(drag.pan.x + dx, -width * 0.42, width * 0.42),
+      y: clamp(drag.pan.y + dy, -height * 0.38, height * 0.38)
+    });
+  }
+
+  function handlePointerUp(event: ReactPointerEvent<SVGSVGElement>) {
+    const drag = dragState.current;
+    if (drag?.pointerId === event.pointerId) {
+      ignoreNextClick.current = drag.moved;
+      dragState.current = null;
+      if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+      window.setTimeout(() => {
+        ignoreNextClick.current = false;
+      }, 0);
+    }
+  }
+
+  function selectFromMap(jurisdiction: Jurisdiction) {
+    if (!ignoreNextClick.current) onSelect(jurisdiction);
+  }
+
   return (
-    <section className="flex h-full min-h-[520px] flex-col rounded-2xl border bg-white p-4 shadow-sm">
+    <section className="flex h-full min-h-[560px] flex-col rounded-2xl border bg-white p-4 shadow-sm">
       <div className="mb-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
           <div className="flex items-center gap-2">
@@ -173,6 +237,41 @@ export function WorldChoropleth({
       <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-400 bg-[#e6eef6] shadow-inner">
         <div className="pointer-events-none absolute right-2 top-2 z-20 rounded-md border border-violet/20 bg-white/90 px-2 py-1 text-[10px] font-semibold text-violet shadow-sm">
           {t("map.view")}: {viewLabel}
+        </div>
+
+        <div className="absolute bottom-3 right-3 z-30 hidden flex-col overflow-hidden rounded-xl border border-slate-200 bg-white/95 shadow-lg md:flex">
+          <button
+            type="button"
+            aria-label={t("map.zoomIn")}
+            title={t("map.zoomIn")}
+            onClick={() => zoomBy(0.24)}
+            className="inline-flex h-9 w-9 items-center justify-center text-slate-700 transition hover:bg-slate-50"
+          >
+            <Plus className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            aria-label={t("map.zoomOut")}
+            title={t("map.zoomOut")}
+            onClick={() => zoomBy(-0.24)}
+            className="inline-flex h-9 w-9 items-center justify-center border-t border-slate-200 text-slate-700 transition hover:bg-slate-50"
+          >
+            <Minus className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            aria-label={t("map.reset")}
+            title={t("map.reset")}
+            onClick={resetMapView}
+            className="inline-flex h-9 w-9 items-center justify-center border-t border-slate-200 text-slate-700 transition hover:bg-slate-50"
+          >
+            <LocateFixed className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="pointer-events-none absolute bottom-3 left-3 z-20 hidden items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-3 py-2 text-xs font-semibold text-slate-600 shadow-sm md:flex">
+          <Move className="h-3.5 w-3.5 text-teal" />
+          {t("map.panHint")} · {Math.round(zoom * 100)}%
         </div>
 
         {featured && (
@@ -244,7 +343,20 @@ export function WorldChoropleth({
           </div>
         </noscript>
 
-        <svg className="absolute inset-0 hidden h-full w-full md:block" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="World regulatory coverage choropleth map" preserveAspectRatio="xMidYMid meet" data-testid="country-outline-map">
+        <svg
+          className="absolute inset-0 hidden h-full w-full cursor-grab touch-none select-none md:block"
+          viewBox={`0 0 ${width} ${height}`}
+          role="img"
+          aria-label="World regulatory coverage choropleth map"
+          preserveAspectRatio="xMidYMid meet"
+          data-testid="country-outline-map"
+          onWheel={handleWheel}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+          style={{ background: colors.background }}
+        >
           <rect width={width} height={height} fill={colors.background} />
           <g opacity="0.32">
             {[-120, -60, 0, 60, 120].map((longitude) => {
@@ -256,7 +368,7 @@ export function WorldChoropleth({
               return <line key={`lat-${latitude}`} x1={18} y1={y} x2={width - 18} y2={y} stroke={colors.graticule} strokeWidth="0.8" strokeDasharray="4 8" />;
             })}
           </g>
-          <g>
+          <g transform={`translate(${pan.x} ${pan.y}) scale(${zoom})`}>
             {features.map((feature) => {
               const info = countryInfo(feature.properties.iso3, features, trackedByIso3, euJurisdiction, countsById, euCount);
               const selectable = Boolean(info.jurisdiction);
@@ -273,17 +385,19 @@ export function WorldChoropleth({
                   d={geometryToPath(feature.geometry)}
                   data-testid="country-path"
                   data-iso3={feature.properties.iso3}
+                  data-coverage={info.count > 0 ? "tracked" : "untracked"}
                   fill={fill}
                   stroke={active || hovered ? "#312e81" : euOverlay ? colors.euBorder : colors.border}
-                  strokeWidth={active || hovered ? 2.6 : euOverlay ? 1.65 : 1.15}
+                  strokeWidth={active || hovered ? 2.8 : euOverlay ? 1.85 : 1.35}
                   vectorEffect="non-scaling-stroke"
                   strokeLinejoin="round"
                   opacity={selectable || euOverlay ? 0.99 : 0.9}
-                  role={selectable ? "button" : undefined}
-                  tabIndex={selectable ? 0 : undefined}
                   aria-label={selectable ? `${info.jurisdiction?.name}: ${info.count} records` : feature.properties.name}
                   className={cn("outline-none transition", selectable && "cursor-pointer hover:brightness-95")}
-                  onClick={() => info.jurisdiction && onSelect(info.jurisdiction)}
+                  onClick={() => {
+                    if (ignoreNextClick.current) return;
+                    if (info.jurisdiction) selectFromMap(info.jurisdiction);
+                  }}
                   onMouseEnter={() => setHoveredIso(feature.properties.iso3)}
                   onMouseLeave={() => setHoveredIso(null)}
                   onFocus={() => setHoveredIso(feature.properties.iso3)}
@@ -296,7 +410,6 @@ export function WorldChoropleth({
                 </path>
               );
             })}
-          </g>
 
           <g pointerEvents="none">
             {features.map((feature) => (
@@ -304,32 +417,44 @@ export function WorldChoropleth({
                 key={`outline-${feature.properties.iso3}`}
                 d={geometryToPath(feature.geometry)}
                 fill="none"
-                stroke="#1f2937"
-                strokeOpacity="0.55"
-                strokeWidth="0.85"
+                stroke={colors.outline}
+                strokeOpacity="0.72"
+                strokeWidth="0.95"
                 vectorEffect="non-scaling-stroke"
                 strokeLinejoin="round"
               />
             ))}
           </g>
 
-          {trackedCountries.map((jurisdiction) => (
-            <MapLabel
-              key={jurisdiction.id}
-              jurisdiction={jurisdiction}
-              selected={selectedId === jurisdiction.id}
-              count={countsById.get(jurisdiction.id) || 0}
-              onSelect={onSelect}
-              onHover={setHoveredJurisdictionId}
-            />
-          ))}
+          {trackedCountries.map((jurisdiction) => {
+            const selected = selectedId === jurisdiction.id;
+            const hovered = hoveredJurisdictionId === jurisdiction.id || hoveredCountry?.jurisdiction?.id === jurisdiction.id;
+            return selected || hovered ? (
+              <MapLabel
+                key={jurisdiction.id}
+                jurisdiction={jurisdiction}
+                selected={selected}
+                count={countsById.get(jurisdiction.id) || 0}
+                onSelect={selectFromMap}
+                onHover={setHoveredJurisdictionId}
+              />
+            ) : (
+              <MapPin
+                key={jurisdiction.id}
+                jurisdiction={jurisdiction}
+                count={countsById.get(jurisdiction.id) || 0}
+                onSelect={selectFromMap}
+                onHover={setHoveredJurisdictionId}
+              />
+            );
+          })}
 
           {euJurisdiction && (
             <MapLabel
               jurisdiction={euJurisdiction}
               selected={selectedId === euJurisdiction.id}
               count={euCount}
-              onSelect={onSelect}
+              onSelect={selectFromMap}
               onHover={setHoveredJurisdictionId}
               offset={{ x: -70, y: -30 }}
             />
@@ -341,11 +466,12 @@ export function WorldChoropleth({
               jurisdiction={jurisdiction}
               selected={selectedId === jurisdiction.id}
               count={countsById.get(jurisdiction.id) || 0}
-              onSelect={onSelect}
+              onSelect={selectFromMap}
               onHover={setHoveredJurisdictionId}
               offset={{ x: -36, y: 26 }}
             />
           ))}
+          </g>
         </svg>
       </div>
 
@@ -437,6 +563,50 @@ function project(longitude: number, latitude: number) {
   };
 }
 
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function MapPin({
+  jurisdiction,
+  count,
+  onSelect,
+  onHover
+}: {
+  jurisdiction: Jurisdiction;
+  count: number;
+  onSelect: (jurisdiction: Jurisdiction) => void;
+  onHover: (id: string | null) => void;
+}) {
+  if (!jurisdiction.coordinates) return null;
+  const base = project(jurisdiction.coordinates[0], jurisdiction.coordinates[1]);
+
+  return (
+    <g
+      role="button"
+      tabIndex={0}
+      data-testid="map-jurisdiction-pin"
+      data-jurisdiction-id={jurisdiction.id}
+      data-jurisdiction-code={jurisdiction.code}
+      aria-label={`${jurisdiction.name}: ${count} records`}
+      onPointerDown={(event) => event.stopPropagation()}
+      onClick={() => onSelect(jurisdiction)}
+      onMouseEnter={() => onHover(jurisdiction.id)}
+      onMouseLeave={() => onHover(null)}
+      onFocus={() => onHover(jurisdiction.id)}
+      onBlur={() => onHover(null)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") onSelect(jurisdiction);
+      }}
+      className="cursor-pointer outline-none"
+    >
+      <circle cx={base.x} cy={base.y} r="12" fill="transparent" pointerEvents="all" />
+      <circle cx={base.x} cy={base.y} r="3.8" fill="#ffffff" fillOpacity="0.9" stroke={colorForCount(count)} strokeWidth="2" vectorEffect="non-scaling-stroke" />
+      <circle cx={base.x} cy={base.y} r="1.8" fill={colorForCount(count)} />
+    </g>
+  );
+}
+
 function MapLabel({
   jurisdiction,
   count,
@@ -463,7 +633,11 @@ function MapLabel({
     <g
       role="button"
       tabIndex={0}
+      data-testid="map-jurisdiction-label"
+      data-jurisdiction-id={jurisdiction.id}
+      data-jurisdiction-code={jurisdiction.code}
       aria-label={`${jurisdiction.name}: ${count} records`}
+      onPointerDown={(event) => event.stopPropagation()}
       onClick={() => onSelect(jurisdiction)}
       onMouseEnter={() => onHover(jurisdiction.id)}
       onMouseLeave={() => onHover(null)}

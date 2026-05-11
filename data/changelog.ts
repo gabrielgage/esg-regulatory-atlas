@@ -11,6 +11,22 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.22 - May 2026",
+    date: "2026-05-11",
+    label: "Market quick-start playbooks",
+    summary:
+      "Added jurisdiction playbooks that translate tracked seed records into first 30-day actions, evidence starter packs, likely owner functions, watch items and advisory prompts for priority markets.",
+    added: [
+      "Structured market quick-start data for core launch markets",
+      "Market quick-start cards on `/markets`",
+      "Detailed quick-start panel on `/jurisdiction/[code]` market profile pages",
+      "Quick-start content in copyable market Markdown summaries"
+    ],
+    updated: ["Market profiles", "Jurisdiction market pages", "Copyable market summaries", "Smoke tests", "Project documentation"],
+    records: ["First 30-day actions", "Evidence starter pack", "Owner functions", "Watch items", "Advisory prompts"],
+    caveat: "Market quick starts are planning prompts generated from seed regulatory intelligence. They do not determine legal applicability, complete market coverage or compliance obligations."
+  },
+  {
     edition: "0.5.21 - May 2026",
     date: "2026-05-09",
     label: "Navigation and homepage calm-down pass",

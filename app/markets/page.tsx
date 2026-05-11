@@ -5,6 +5,7 @@ import { CoverageConfidenceBadge } from "@/components/CoverageConfidenceBadge";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Header } from "@/components/Header";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
+import { MarketQuickStartGrid } from "@/components/MarketQuickStartPanel";
 import { PageIntro } from "@/components/PageIntro";
 import { DATASET_META } from "@/data/_meta";
 import { marketProfiles } from "@/lib/marketProfile";
@@ -39,6 +40,8 @@ export default function MarketsPage() {
           <Metric icon={ShieldCheck} label="High-impact links" value={String(highImpact)} />
           <Metric icon={ShieldCheck} label="Review flags" value={String(reviewFlags)} />
         </section>
+
+        <MarketQuickStartGrid jurisdictions={profiles.map((profile) => profile.jurisdiction)} limit={13} />
 
         <section className="rounded-2xl border bg-white p-5 shadow-sm">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">

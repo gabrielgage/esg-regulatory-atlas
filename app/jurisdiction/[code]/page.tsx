@@ -7,6 +7,7 @@ import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Header } from "@/components/Header";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
+import { MarketQuickStartPanel } from "@/components/MarketQuickStartPanel";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
 import { DATASET_META } from "@/data/_meta";
@@ -113,17 +114,7 @@ export default async function JurisdictionMarketPage({ params }: { params: Promi
           </section>
 
           <aside className="space-y-5">
-            <section className="rounded-2xl border bg-white p-6 shadow-sm">
-              <h2 className="text-lg font-semibold text-ink">Market quick start</h2>
-              <div className="mt-4 space-y-3">
-                {(profile.requiredActions.length ? profile.requiredActions : fallbackActions()).slice(0, 5).map((action) => (
-                  <div key={action} className="flex gap-3 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
-                    <span>{action}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
+            <MarketQuickStartPanel jurisdiction={jurisdiction} profileActions={profile.requiredActions} />
 
             <section className="rounded-2xl border bg-white p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-ink">Source confidence</h2>
@@ -289,13 +280,4 @@ function ActionLink({
       <p className="mt-2 text-sm leading-6 text-slate-600">{body}</p>
     </Link>
   );
-}
-
-function fallbackActions() {
-  return [
-    "Confirm entity-specific thresholds, local implementation and reporting boundary.",
-    "Assign accountable owners across legal, sustainability, finance and operational teams.",
-    "Create a source-review log for high-impact and date-sensitive records.",
-    "Map evidence owners for emissions, supplier, finance, governance and assurance data."
-  ];
 }

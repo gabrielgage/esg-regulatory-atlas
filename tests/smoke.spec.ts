@@ -144,6 +144,18 @@ test("jurisdiction briefs include market quick-start evidence framing", async ({
   await expect(page.getByRole("button", { name: /Copy as Markdown/i })).toBeVisible();
 });
 
+test("briefing client summary exposes handoff links", async ({ page }) => {
+  await page.goto("/briefing");
+
+  await page.getByRole("button", { name: /Client summary/i }).click();
+  await expect(page.getByTestId("client-briefing-handoff")).toBeVisible();
+  await expect(page.getByRole("link", { name: /Run assessment/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Choose market brief/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Request review/i })).toBeVisible();
+  await page.getByLabel("Jurisdiction").selectOption("euu");
+  await expect(page.getByRole("link", { name: /European Union brief/i })).toBeVisible();
+});
+
 test("data quality source-governance queue renders", async ({ page }) => {
   await page.goto("/data-quality");
 

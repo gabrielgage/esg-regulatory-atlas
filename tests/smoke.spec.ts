@@ -82,7 +82,7 @@ test("assessment persona summary can be reset", async ({ page }) => {
   await page.getByRole("button", { name: /Reset profile/i }).click();
   expect(page.url()).not.toContain("persona=");
   await expect(page.getByTestId("assessment-profile-summary")).toContainText(/European Union headquarters/i);
-  await expect(page.getByTestId("assessment-profile-summary")).toContainText(/No exposure toggles selected/i);
+  await expect(page.getByTestId("assessment-profile-summary")).toContainText(/EU market exposure/i);
 });
 
 test("timeline filters expose active context and reset cleanly", async ({ page }) => {

@@ -514,3 +514,31 @@ Homepage changes should keep the map workspace within the first meaningful viewp
 - `docs/issue-resolution-log.md`
 - `public/world-110m/countries.json`
 - `public/world-110m/index.json`
+
+## 2026-05-12 - Homepage Priority Cue Smoke Test Matched Hidden Filter Option
+
+Status: resolved in PR #37 follow-up commit.
+
+### Symptom
+
+PR #37 passed Vercel and the TypeScript/build job, but `CI / Browser smoke tests` failed in the homepage smoke test. The failing assertion expected `First reporting` to be visible.
+
+### Root Cause
+
+The test used a broad page-level text locator: `page.getByText(/First reporting/i).first()`. Playwright resolved the first match to a hidden `<option value="first_reporting">First reporting</option>` inside the status filter rather than the visible priority-record card cue. The product UI was rendering the cue, but the assertion was not scoped to the new card.
+
+### Resolution
+
+- Added `data-testid="priority-record-card"` to homepage priority cards.
+- Scoped the smoke assertion to the first priority card and checked that the card contains both `Source to verify:` and `First reporting`.
+- Kept the product UI unchanged except for the test id.
+
+### Prevention Rule
+
+When asserting text that may also exist in hidden select options, scope browser smoke tests to the smallest stable container. Prefer component-level `data-testid` anchors for repeated homepage cards and filter-heavy pages.
+
+### Files Changed
+
+- `app/page.tsx`
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`

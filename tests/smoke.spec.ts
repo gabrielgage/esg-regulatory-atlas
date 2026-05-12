@@ -69,6 +69,17 @@ test("assessment results include decision readiness prompts", async ({ page }) =
   await expect(page.getByRole("button", { name: /Copy shortlist/i })).toBeVisible();
 });
 
+test("timeline filters expose active context and reset cleanly", async ({ page }) => {
+  await page.goto("/timeline");
+
+  await expect(page.getByTestId("timeline-filter-summary")).toContainText(/No timeline filters are active/i);
+  await page.getByLabel("Jurisdiction").selectOption("eu");
+  await expect(page.getByTestId("timeline-filter-summary")).toContainText(/Jurisdiction: European Union/i);
+  await page.getByRole("button", { name: /^Clear$/i }).click();
+  await expect(page.getByLabel("Jurisdiction")).toHaveValue("");
+  await expect(page.getByTestId("timeline-filter-summary")).toContainText(/No timeline filters are active/i);
+});
+
 test("regulations workspace supports detail navigation", async ({ page }) => {
   await page.goto("/regulations");
 

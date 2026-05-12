@@ -1,6 +1,6 @@
 "use client";
 
-import { Filter, RotateCcw } from "lucide-react";
+import { Filter, RotateCcw, X } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import { jurisdictions } from "@/data/jurisdictions";
 import { personaPresetById } from "@/data/personaPresets";
@@ -33,12 +33,14 @@ export function ActiveFilterSummary({
   activePersona,
   filteredCount,
   totalCount,
+  onClearFilter,
   onReset
 }: {
   filters: FilterState;
   activePersona: string;
   filteredCount: number;
   totalCount: number;
+  onClearFilter: (key: keyof FilterState) => void;
   onReset: () => void;
 }) {
   const persona = personaPresetById(activePersona);
@@ -77,9 +79,16 @@ export function ActiveFilterSummary({
         {persona ? <Badge className="border-teal/20 bg-teal/10 text-teal">Role lens: {persona.role}</Badge> : null}
         {activeFilters.length ? (
           activeFilters.map((filter) => (
-            <Badge key={filter.key} className="border-slate-200 bg-slate-50 text-slate-600">
+            <button
+              key={filter.key}
+              type="button"
+              onClick={() => onClearFilter(filter.key)}
+              aria-label={`Remove ${filter.label} filter`}
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium leading-none text-slate-600 transition hover:border-teal/30 hover:bg-teal/10 hover:text-teal"
+            >
               {filter.label}: {filter.value}
-            </Badge>
+              <X className="h-3 w-3" />
+            </button>
           ))
         ) : (
           <span className="text-sm text-slate-500">No filters are active. Use search, a role lens or filters to narrow the dataset.</span>

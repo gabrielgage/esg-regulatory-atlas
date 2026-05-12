@@ -87,13 +87,16 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
 
 test("persona presets apply shareable regulation filters", async ({ page }) => {
   await page.goto("/regulations");
+  const businessFunctionFilter = page.locator("label").filter({ hasText: /^Business function/ }).locator("select");
 
   await page.getByRole("button", { name: /Apply Finance or ESG controller persona preset/i }).click();
   await expect(page).toHaveURL(/persona=finance-controller/);
   await expect(page.getByText(/Active role lens/i)).toBeVisible();
   await expect(page.getByTestId("active-persona-role")).toHaveText("Finance or ESG controller");
   await expect(page.getByTestId("active-filter-summary")).toContainText(/Role lens: Finance or ESG controller/i);
-  await expect(page.getByLabel(/Business function/i)).toHaveValue("Finance");
+  await expect(businessFunctionFilter).toHaveValue("Finance");
+  await page.getByRole("button", { name: /Remove Business function filter/i }).click();
+  await expect(businessFunctionFilter).toHaveValue("");
 });
 
 test("launch asset copy blocks render", async ({ page }) => {

@@ -60,6 +60,11 @@ export default function RegulationsPage() {
     setFilters(initialFilters);
   }
 
+  function clearFilter(key: keyof FilterState) {
+    setActivePersona("");
+    setFilters((current) => ({ ...current, [key]: "" }));
+  }
+
   return (
     <main id="main-content" className="min-h-screen pb-12">
       <Header />
@@ -84,6 +89,7 @@ export default function RegulationsPage() {
           activePersona={activePersona}
           filteredCount={filtered.length}
           totalCount={regulations.length}
+          onClearFilter={clearFilter}
           onReset={resetFilters}
         />
         <RegulationTable regulations={filtered} onSelect={setSelectedRegulation} />

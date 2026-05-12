@@ -17,6 +17,86 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-12 - PR #33 Smoke Test Locator Collided With Removable Filter Chip
+
+Status: resolved.
+
+### Symptom
+
+PR #33 showed one failing GitHub check: `CI / Browser smoke tests`. Vercel deployment, TypeScript and production build were successful.
+
+### Root Cause
+
+The test used `page.getByLabel(/Business function/i)` to assert the filter select value. After active filter chips became removable buttons, the new button had the accessible label `Remove Business function filter`, so Playwright strict mode correctly found two matching labeled controls: the select and the remove-chip button. The product behavior was correct; the test locator was too broad for the new accessible UI.
+
+### Resolution
+
+Scoped the smoke test to the actual filter control with a label-scoped select locator before checking the value. The removable chip keeps its clear accessible label, and the test now distinguishes the filter input from the chip action.
+
+### Prevention Rule
+
+When adding accessible action buttons that repeat filter names, do not use broad `getByLabel(/Filter name/)` locators for form controls. Scope the locator to `label ... select`, use exact accessible names, or add a dedicated test hook for the form field.
+
+### Files Changed
+
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`
+
+## 2026-05-11 - README Current Edition Drifted Behind Dataset Metadata
+
+Status: resolved.
+
+### Symptom
+
+The public README `Current edition` section referenced an older May 2026 dataset edition while `data/_meta.ts` and `data/changelog.ts` had advanced through later launch-train releases.
+
+### Root Cause
+
+Several rapid PRs updated dataset metadata and the changelog, but the long-form README release narrative was not updated in the same pass. This created documentation drift rather than an app runtime defect.
+
+### Resolution
+
+- Updated README current edition notes to `0.5.25 - May 2026`.
+- Added the guided briefing-builder and client briefing handoff updates to the README release narrative.
+- Added this issue-log entry so future release PRs treat README edition alignment as part of the documentation checklist.
+
+### Prevention Rule
+
+Whenever `DATASET_META.edition` changes, update `data/changelog.ts` and the README `Current edition` section in the same PR. If a PR intentionally skips README release notes, state that in the PR body with a follow-up task.
+
+### Files Changed
+
+- `README.md`
+- `data/_meta.ts`
+- `data/changelog.ts`
+- `docs/issue-resolution-log.md`
+
+## 2026-05-11 - PR #29 Client Briefing Smoke Test Used Display Code Instead Of Data ID
+
+Status: resolved.
+
+### Symptom
+
+PR #29 passed typecheck/build, Lighthouse and Vercel, but `CI / Browser smoke tests` failed in the new briefing handoff test. The failing step attempted to select the European Union from the client-summary jurisdiction dropdown with `selectOption("euu")`.
+
+### Root Cause
+
+The application dropdown stores jurisdiction IDs as option values, while the visible route/code for the European Union is `EUU`. The correct option value is `eu`, not `euu`. The product UI rendered correctly; the new smoke assertion used the display code instead of the data-layer ID.
+
+### Resolution
+
+- Updated the smoke test to select the European Union by jurisdiction ID: `selectOption("eu")`.
+- Kept the subsequent assertion against the visible `European Union brief` link so the test still confirms the user-facing handoff changes.
+
+### Prevention Rule
+
+When testing dropdowns, inspect the application data model and select by option value, not by route code or display code unless those are confirmed to be the option values.
+
+### Files Changed
+
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-10 - Codex Sandbox Could Edit Files But Could Not Write Git Index
 
 Status: documented workflow limitation.
@@ -251,10 +331,6 @@ Validation used the closest checks that do not require opening a local port:
 - guardrail text/dependency scan
 
 Browser smoke and Lighthouse checks should run in GitHub Actions, Vercel preview checks or a local developer terminal with normal port permissions.
-
-### Prevention Rule
-
-Do not treat sandbox `listen EPERM` as an application defect when production build and TypeScript validation pass. Document the limitation, keep the app checks strict, and rely on CI/Vercel/browser QA for port-dependent smoke tests.
 
 ## 2026-05-02 - Parallel TypeScript Check Saw Missing `.next/types` During Build
 

@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
+import { ActiveFilterSummary } from "@/components/ActiveFilterSummary";
 import { Filters } from "@/components/Filters";
 import { ComparePicker } from "@/components/ComparePicker";
 import { PersonaPresets } from "@/components/PersonaPresets";
@@ -78,6 +79,13 @@ export default function RegulationsPage() {
         </div>
         <PersonaPresets activeId={activePersona} onApply={applyPersona} onClear={resetFilters} />
         <Filters filters={filters} regulations={regulations} onChange={updateFilters} onReset={resetFilters} />
+        <ActiveFilterSummary
+          filters={filters}
+          activePersona={activePersona}
+          filteredCount={filtered.length}
+          totalCount={regulations.length}
+          onReset={resetFilters}
+        />
         <RegulationTable regulations={filtered} onSelect={setSelectedRegulation} />
         <FooterDisclaimer />
       </div>

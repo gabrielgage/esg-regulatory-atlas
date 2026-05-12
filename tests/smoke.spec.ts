@@ -92,6 +92,7 @@ test("persona presets apply shareable regulation filters", async ({ page }) => {
   await expect(page).toHaveURL(/persona=finance-controller/);
   await expect(page.getByText(/Active role lens/i)).toBeVisible();
   await expect(page.getByTestId("active-persona-role")).toHaveText("Finance or ESG controller");
+  await expect(page.getByTestId("active-filter-summary")).toContainText(/Role lens: Finance or ESG controller/i);
   await expect(page.getByLabel(/Business function/i)).toHaveValue("Finance");
 });
 
@@ -147,6 +148,8 @@ test("jurisdiction briefs include market quick-start evidence framing", async ({
 test("briefing client summary exposes handoff links", async ({ page }) => {
   await page.goto("/briefing");
 
+  await expect(page.getByRole("heading", { name: /Briefing builder/i })).toBeVisible();
+  await expect(page.getByText(/Recommended path/i)).toBeVisible();
   await page.getByRole("button", { name: /Client summary/i }).click();
   await expect(page.getByTestId("client-briefing-handoff")).toBeVisible();
   await expect(page.getByRole("link", { name: /Run assessment/i })).toBeVisible();

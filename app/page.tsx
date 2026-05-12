@@ -218,6 +218,7 @@ function PriorityRecordCard({ regulation, onSelect }: { regulation: Regulation; 
       onClick={() => onSelect(regulation)}
       className="flex min-h-[16rem] flex-col rounded-xl border border-slate-200 bg-slate-50 p-3 text-left transition hover:border-teal/40 hover:bg-teal/5 focus-visible:border-teal/50"
       aria-label={`Review details for ${regulation.shortName}`}
+      data-testid="priority-record-card"
     >
       <span className="flex items-start justify-between gap-2">
         <span>

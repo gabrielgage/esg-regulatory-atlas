@@ -18,7 +18,7 @@ export function PersonaPresets({
   const active = personaPresets.find((preset) => preset.id === activeId);
 
   return (
-    <section className="rounded-2xl border bg-white p-4 shadow-sm">
+    <section className="rounded-2xl border bg-white p-3 shadow-sm">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <div className="flex items-center gap-2 text-sm font-semibold text-ink">
@@ -26,7 +26,7 @@ export function PersonaPresets({
             Persona starting points
           </div>
           <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500">
-            Apply a cautious role-based lens to the regulation database. These presets are orientation filters only; they do not determine applicability or replace source review.
+            Apply a cautious role-based filter. Presets support orientation only and do not determine applicability.
           </p>
         </div>
         {active ? (
@@ -40,7 +40,7 @@ export function PersonaPresets({
         ) : null}
       </div>
 
-      <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {personaPresets.map((preset) => (
           <PersonaButton
             key={preset.id}
@@ -84,21 +84,21 @@ function PersonaButton({
       aria-pressed={active}
       onClick={onApply}
       className={cn(
-        "rounded-xl border p-4 text-left transition hover:border-teal/40 hover:bg-teal/5",
+        "rounded-xl border p-3 text-left transition hover:border-teal/40 hover:bg-teal/5",
         active ? "border-teal bg-teal/10" : "border-slate-200 bg-white"
       )}
     >
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex h-full flex-col justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-start gap-2">
             <Icon className="h-4 w-4 text-teal" />
-            <span className="text-sm font-semibold text-ink">{preset.label}</span>
+            <span className="text-sm font-semibold leading-5 text-ink">{preset.label}</span>
           </div>
-          <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-400">{preset.role}</p>
+          <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-400">{preset.role}</p>
+          <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">{preset.description}</p>
         </div>
         <FilterSignal filters={preset.filters} />
       </div>
-      <p className="mt-3 text-sm leading-6 text-slate-600">{preset.description}</p>
     </button>
   );
 }

@@ -20,6 +20,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { DATASET_META } from "@/data/_meta";
 import { jurisdictions, quickViews, regulations } from "@/data/seed";
 import { initialFilters, filterRegulations } from "@/lib/filters";
+import { getHomepageChrome } from "@/lib/homepageChrome";
 import { readinessBand, readinessClass, readinessScore } from "@/lib/scoring";
 import { filtersFromSearchParams, filtersToSearchParams, viewFromSearchParams } from "@/lib/urlFilters";
 import { Jurisdiction, Regulation } from "@/types/regulation";
@@ -32,7 +33,8 @@ export default function Home() {
   );
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
   const [urlReady, setUrlReady] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const h = (key: Parameters<typeof getHomepageChrome>[1]) => getHomepageChrome(language, key);
 
   const filtered = useMemo(() => filterRegulations(regulations, filters), [filters]);
   const activeViewLabel = activeView === "overview" ? t("views.overview") : quickViews.find((view) => view.id === activeView)?.label || t("views.custom");
@@ -75,7 +77,9 @@ export default function Home() {
         <section className="rounded-2xl border bg-white p-5 shadow-sm md:p-6">
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1.4fr)_minmax(320px,.6fr)] lg:items-end">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">{DATASET_META.edition} · source-linked seed intelligence</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+                {DATASET_META.edition} · {h("editionLabel")}
+              </p>
               <h1 className="mt-3 max-w-4xl text-3xl font-bold tracking-tight text-ink md:text-4xl">
                 {t("home.heroTitle")}
               </h1>
@@ -87,7 +91,7 @@ export default function Home() {
                   {t("home.viewChangelog")} <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link href="/plans" className="inline-flex items-center gap-2 rounded-xl bg-navy px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800">
-                  Compare options <ArrowRight className="h-4 w-4" />
+                  {h("compareOptions")} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
               <p className="mt-3 max-w-2xl text-xs leading-5 text-slate-500">{t("home.languageCaveat")}</p>
@@ -101,8 +105,8 @@ export default function Home() {
         <section className="rounded-2xl border bg-white p-3 shadow-sm">
           <div className="mb-3 flex flex-col gap-2 px-1 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-sm font-semibold text-ink">Map workspace</h2>
-              <p className="mt-1 text-xs leading-5 text-slate-500">Select a planning view, filter the seed dataset, then inspect jurisdictions on the map.</p>
+              <h2 className="text-sm font-semibold text-ink">{h("mapWorkspace")}</h2>
+              <p className="mt-1 text-xs leading-5 text-slate-500">{h("mapWorkspaceBody")}</p>
             </div>
             <ShareViewButton />
           </div>
@@ -140,7 +144,8 @@ export default function Home() {
 }
 
 function AssessmentPrompt({ jurisdictionName, activeViewLabel, records }: { jurisdictionName: string; activeViewLabel: string; records: number }) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const h = (key: Parameters<typeof getHomepageChrome>[1]) => getHomepageChrome(language, key);
 
   return (
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
@@ -154,9 +159,9 @@ function AssessmentPrompt({ jurisdictionName, activeViewLabel, records }: { juri
             {t("home.assessmentBody")}
           </p>
           <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs leading-5 text-slate-600">
-            <p className="font-semibold text-ink">Current workspace context</p>
+            <p className="font-semibold text-ink">{h("currentWorkspaceContext")}</p>
             <p className="mt-1">
-              {jurisdictionName} · {activeViewLabel} · {records} matching seed records. Use the assessment when entity facts, value-chain exposure or role-specific relevance are still unclear.
+              {jurisdictionName} · {activeViewLabel} · {records} {h("matchingSeedRecords")}. {h("assessmentContextHint")}
             </p>
           </div>
           <Link href="/assessment" className="mt-4 inline-flex items-center gap-2 rounded-xl bg-navy px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
@@ -169,7 +174,8 @@ function AssessmentPrompt({ jurisdictionName, activeViewLabel, records }: { juri
 }
 
 function RegulationPreviewPanel({ regulations, onSelect }: { regulations: Regulation[]; onSelect: (regulation: Regulation) => void }) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const h = (key: Parameters<typeof getHomepageChrome>[1]) => getHomepageChrome(language, key);
   const priorityRecords = regulations.slice(0, 3);
   const tableRecords = regulations.slice(0, 6);
 
@@ -191,14 +197,14 @@ function RegulationPreviewPanel({ regulations, onSelect }: { regulations: Regula
         ))}
         {!priorityRecords.length && (
           <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-500 md:col-span-3">
-            No matching regulation records for the current view. Clear filters or broaden the selected view.
+            {h("noMatchingRecords")}
           </div>
         )}
       </div>
 
       <details className="mt-4 rounded-xl border border-slate-200 bg-slate-50/70">
         <summary className="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-slate-600">
-          Open scan-friendly table preview ({tableRecords.length} records)
+          {h("openTablePreview")} ({tableRecords.length} {h("records")})
         </summary>
         <div className="border-t border-slate-200 bg-white p-3">
           <RegulationTable regulations={tableRecords} onSelect={onSelect} />
@@ -209,6 +215,8 @@ function RegulationPreviewPanel({ regulations, onSelect }: { regulations: Regula
 }
 
 function PriorityRecordCard({ regulation, onSelect }: { regulation: Regulation; onSelect: (regulation: Regulation) => void }) {
+  const { t, language } = useLanguage();
+  const h = (key: Parameters<typeof getHomepageChrome>[1]) => getHomepageChrome(language, key);
   const band = readinessBand(regulation);
   const prioritySource = regulation.sourceUrls.find((source) => source.type === "primary" || source.type === "regulator" || source.type === "standards_body");
 
@@ -231,26 +239,26 @@ function PriorityRecordCard({ regulation, onSelect }: { regulation: Regulation; 
       <RecordMetaBadges regulation={regulation} compact />
       <span className="mt-3 grid grid-cols-2 gap-2 text-[11px] leading-4 text-slate-500">
         <span className="rounded-lg border border-slate-200 bg-white p-2">
-          <span className="block font-semibold text-ink">{regulation.firstReportingYear || "Monitor"}</span>
-          <span>First reporting</span>
+          <span className="block font-semibold text-ink">{regulation.firstReportingYear || h("monitor")}</span>
+          <span>{h("priorityFirstReporting")}</span>
         </span>
         <span className="rounded-lg border border-slate-200 bg-white p-2">
           <span className="block font-semibold text-ink">{regulation.sourceUrls.length}</span>
-          <span>Source links</span>
+          <span>{h("prioritySourceLinks")}</span>
         </span>
       </span>
       <span className="mt-2 flex flex-wrap gap-1.5">
         <Badge className={readinessClass(band)}>
-          {band} priority · {readinessScore(regulation)}
+          {band} {h("priority")} · {readinessScore(regulation)}
         </Badge>
-        {regulation.highImpact && <Badge className="border-red-200 bg-red-50 text-red-700">High impact</Badge>}
+        {regulation.highImpact && <Badge className="border-red-200 bg-red-50 text-red-700">{t("home.highImpact")}</Badge>}
       </span>
       <span className="mt-3 line-clamp-2 text-[11px] leading-4 text-slate-500">
-        Source to verify: {prioritySource?.label || regulation.sourceUrls[0]?.label || "source review needed"}
+        {h("sourceToVerify")}: {prioritySource?.label || regulation.sourceUrls[0]?.label || h("sourceReviewNeeded")}
       </span>
       <span className="mt-auto pt-3">
         <span className="inline-flex rounded-full bg-white px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-          Review details
+          {h("reviewDetails")}
         </span>
       </span>
     </button>

@@ -62,11 +62,27 @@ test("language toggle updates interface chrome", async ({ page }) => {
 test("assessment results include decision readiness prompts", async ({ page }) => {
   await page.goto("/assessment");
 
+  await expect(page.getByTestId("assessment-profile-summary")).toContainText(/European Union headquarters/i);
+  await expect(page.getByTestId("assessment-profile-summary")).toContainText(/Facts to confirm next/i);
   await expect(page.getByText("Indicative shortlist", { exact: true })).toBeVisible();
   await expect(page.getByText(/Suggested owner:/i).first()).toBeVisible();
   await expect(page.getByText(/Missing fact:/i).first()).toBeVisible();
   await expect(page.getByText(/Next 30 days:/i).first()).toBeVisible();
   await expect(page.getByRole("button", { name: /Copy shortlist/i })).toBeVisible();
+});
+
+test("assessment persona summary can be reset", async ({ page }) => {
+  await page.goto("/assessment");
+
+  await page.getByRole("button", { name: /SME supplier lead/i }).click();
+  await expect(page).toHaveURL(/persona=supplier/);
+  await expect(page.getByTestId("assessment-profile-summary")).toContainText(/Netherlands headquarters/i);
+  await expect(page.getByTestId("assessment-profile-summary")).toContainText(/Regulated imports \/ commodities/i);
+
+  await page.getByRole("button", { name: /Reset profile/i }).click();
+  expect(page.url()).not.toContain("persona=");
+  await expect(page.getByTestId("assessment-profile-summary")).toContainText(/European Union headquarters/i);
+  await expect(page.getByTestId("assessment-profile-summary")).toContainText(/No exposure toggles selected/i);
 });
 
 test("timeline filters expose active context and reset cleanly", async ({ page }) => {

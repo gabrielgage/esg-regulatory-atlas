@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Compass, ShieldCheck, UserRound } from "lucide-react";
+import { Compass, RotateCcw, ShieldCheck, UserRound } from "lucide-react";
 import { companyTypes, sectors } from "@/data/seed";
 import { jurisdictions } from "@/data/jurisdictions";
 import {
@@ -95,6 +95,14 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
   const summary = useMemo(() => buildAssessmentSummary(results, answers), [answers, results]);
   const trackedJurisdictions = jurisdictions.filter((jurisdiction) => jurisdiction.type !== "international");
   const sectorChoices = sectors.filter((sector) => sector !== "Listed companies");
+  const activeExposureLabels = [
+    answers.listed ? "Listed company" : null,
+    answers.financialInstitution ? "Financial institution / fund / insurer" : null,
+    answers.euMarketExposure ? "EU market exposure" : null,
+    answers.regulatedImports ? "Regulated imports / commodities" : null,
+    answers.portfolioExposure ? "Portfolio / financed emissions" : null
+  ].filter(Boolean) as string[];
+  const missingFactsPreview = Array.from(new Set(results.flatMap((result) => result.missingFacts))).slice(0, 3);
 
   useEffect(() => {
     const persona = new URLSearchParams(window.location.search).get("persona") as PersonaId | null;
@@ -117,6 +125,14 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
     }
   }
 
+  function resetProfile() {
+    setActivePersona(null);
+    setAnswers(defaultApplicabilityAnswers);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("persona");
+    window.history.replaceState({}, "", url);
+  }
+
   return (
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
       <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
@@ -132,6 +148,14 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
         <div className="flex flex-wrap gap-2">
           {activePersona && <Badge className="border-teal/20 bg-teal/10 text-teal">Persona: {personaDoorways.find((doorway) => doorway.id === activePersona)?.label}</Badge>}
           <Badge className="border-amber-200 bg-amber-50 text-amber-800">Indicative, not legal advice</Badge>
+          <button
+            type="button"
+            onClick={resetProfile}
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-teal/40 hover:text-ink"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+            Reset profile
+          </button>
           <CopyMarkdownButton text={summary} label="Copy shortlist" />
         </div>
       </div>
@@ -156,6 +180,49 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
             <p className="mt-2 text-xs leading-5 text-slate-500">{persona.description}</p>
           </button>
         ))}
+      </div>
+
+      <div data-testid="assessment-profile-summary" className="mb-4 grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 lg:grid-cols-[1fr_20rem]">
+        <div>
+          <div className="text-sm font-semibold text-ink">Assessment profile</div>
+          <p className="mt-1 text-sm leading-6 text-slate-600">
+            {jurisdictionLabel(answers.headquarters)} headquarters - {answers.companySize} - {answers.companyType} - {results.length} indicative records
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Badge className="border-slate-200 bg-white text-slate-600">
+              Operating markets:{" "}
+              {answers.operatingJurisdictions.length
+                ? answers.operatingJurisdictions
+                    .slice(0, 3)
+                    .map((jurisdiction) => jurisdictionLabel(jurisdiction))
+                    .join(", ")
+                : "Not specified"}
+              {answers.operatingJurisdictions.length > 3 ? ` +${answers.operatingJurisdictions.length - 3}` : ""}
+            </Badge>
+            <Badge className="border-slate-200 bg-white text-slate-600">
+              Sectors: {answers.sectors.slice(0, 2).join(", ")}
+              {answers.sectors.length > 2 ? ` +${answers.sectors.length - 2}` : ""}
+            </Badge>
+            {activeExposureLabels.length ? (
+              activeExposureLabels.map((label) => (
+                <Badge key={label} className="border-teal/20 bg-teal/10 text-teal">
+                  {label}
+                </Badge>
+              ))
+            ) : (
+              <Badge className="border-slate-200 bg-white text-slate-500">No exposure toggles selected</Badge>
+            )}
+          </div>
+        </div>
+        <div className="rounded-lg border border-slate-200 bg-white p-3 text-xs leading-5 text-slate-600">
+          <div className="font-semibold text-ink">Facts to confirm next</div>
+          <ul className="mt-2 space-y-1">
+            {(missingFactsPreview.length ? missingFactsPreview : ["Entity-specific scope, thresholds and local implementation status."]).map((fact) => (
+              <li key={fact}>- {fact}</li>
+            ))}
+          </ul>
+          <p className="mt-2 text-slate-400">This is an orientation summary, not an applicability determination.</p>
+        </div>
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">

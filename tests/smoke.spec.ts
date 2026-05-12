@@ -7,6 +7,8 @@ test("map workspace loads with core product controls", async ({ page }) => {
   await expect(page.getByTestId("regulatory-map")).toBeVisible();
   await expect(page.getByLabel(/Language/i)).toBeVisible();
   await expect(page.getByPlaceholder(/Search title/i)).toBeVisible();
+  await expect(page.getByText(/Source to verify:/i).first()).toBeVisible();
+  await expect(page.getByText(/First reporting/i).first()).toBeVisible();
 
   const navigation = page.locator("header").getByRole("navigation");
   await expect(navigation.getByRole("link", { name: /Markets/i })).toBeVisible();

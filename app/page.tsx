@@ -123,20 +123,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid gap-5 lg:grid-cols-[.75fr_1.25fr]">
-          <AssessmentPrompt />
-          <div>
-            <div className="mb-3 flex items-center justify-between gap-3 px-1">
-              <div>
-                <h2 className="font-semibold text-ink">{t("home.tableTitle")}</h2>
-                <p className="mt-1 text-sm text-slate-500">{t("home.tableBody")}</p>
-              </div>
-              <Link href="/regulations" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">
-                {t("home.viewAll")} <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <RegulationTable regulations={filtered.slice(0, 6)} onSelect={setSelectedRegulation} />
-          </div>
+        <section className="grid gap-4 lg:grid-cols-[.8fr_1.2fr]">
+          <AssessmentPrompt jurisdictionName={selectedJurisdiction?.name || "the selected market"} activeViewLabel={activeViewLabel} records={filtered.length} />
+          <RegulationPreviewPanel regulations={filtered} onSelect={setSelectedRegulation} />
         </section>
 
         <FooterDisclaimer />
@@ -146,7 +135,7 @@ export default function Home() {
   );
 }
 
-function AssessmentPrompt() {
+function AssessmentPrompt({ jurisdictionName, activeViewLabel, records }: { jurisdictionName: string; activeViewLabel: string; records: number }) {
   const { t } = useLanguage();
 
   return (
@@ -160,11 +149,68 @@ function AssessmentPrompt() {
           <p className="mt-2 text-sm leading-6 text-slate-500">
             {t("home.assessmentBody")}
           </p>
+          <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs leading-5 text-slate-600">
+            <p className="font-semibold text-ink">Current workspace context</p>
+            <p className="mt-1">
+              {jurisdictionName} · {activeViewLabel} · {records} matching seed records. Use the assessment when entity facts, value-chain exposure or role-specific relevance are still unclear.
+            </p>
+          </div>
           <Link href="/assessment" className="mt-4 inline-flex items-center gap-2 rounded-xl bg-navy px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
             {t("home.startAssessment")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>
+    </section>
+  );
+}
+
+function RegulationPreviewPanel({ regulations, onSelect }: { regulations: Regulation[]; onSelect: (regulation: Regulation) => void }) {
+  const { t } = useLanguage();
+  const priorityRecords = regulations.slice(0, 3);
+  const tableRecords = regulations.slice(0, 6);
+
+  return (
+    <section className="rounded-2xl border bg-white p-5 shadow-sm">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h2 className="font-semibold text-ink">{t("home.tableTitle")}</h2>
+          <p className="mt-1 text-sm leading-6 text-slate-500">{t("home.tableBody")}</p>
+        </div>
+        <Link href="/regulations" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">
+          {t("home.viewAll")} <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+
+      <div className="mt-4 grid gap-2 md:grid-cols-3">
+        {priorityRecords.map((regulation) => (
+          <button
+            key={regulation.id}
+            type="button"
+            onClick={() => onSelect(regulation)}
+            className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-left transition hover:border-teal/40 hover:bg-teal/5"
+          >
+            <span className="block text-sm font-semibold text-ink">{regulation.shortName}</span>
+            <span className="mt-1 line-clamp-2 block text-xs leading-5 text-slate-500">{regulation.summary}</span>
+            <span className="mt-3 inline-flex rounded-full bg-white px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+              Review details
+            </span>
+          </button>
+        ))}
+        {!priorityRecords.length && (
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-500 md:col-span-3">
+            No matching regulation records for the current view. Clear filters or broaden the selected view.
+          </div>
+        )}
+      </div>
+
+      <details className="mt-4 rounded-xl border border-slate-200 bg-slate-50/70">
+        <summary className="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-slate-600">
+          Open scan-friendly table preview ({tableRecords.length} records)
+        </summary>
+        <div className="border-t border-slate-200 bg-white p-3">
+          <RegulationTable regulations={tableRecords} onSelect={onSelect} />
+        </div>
+      </details>
     </section>
   );
 }

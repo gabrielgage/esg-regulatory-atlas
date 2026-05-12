@@ -94,6 +94,8 @@ test("persona presets apply shareable regulation filters", async ({ page }) => {
   await expect(page.getByTestId("active-persona-role")).toHaveText("Finance or ESG controller");
   await expect(page.getByTestId("active-filter-summary")).toContainText(/Role lens: Finance or ESG controller/i);
   await expect(page.getByLabel(/Business function/i)).toHaveValue("Finance");
+  await page.getByRole("button", { name: /Remove Business function filter/i }).click();
+  await expect(page.getByLabel(/Business function/i)).toHaveValue("");
 });
 
 test("launch asset copy blocks render", async ({ page }) => {

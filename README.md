@@ -8,15 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.27 - May 2026`.
+The current public release context is `0.5.28 - May 2026`.
 
 Latest release-context update:
 
-- adds a public glossary at `/glossary`
-- adds status and source-confidence guidance for interpreting Atlas labels
-- adds contextual glossary help on `/regulations`, `/data-quality` and `/regulations/[slug]`
-- keeps glossary definitions as orientation only, not official legal definitions, official translations or applicability determinations
-- adds `docs/current-release.md` so future Codex and Claude sessions can quickly understand the latest launch-train state
+- adds contextual glossary help to `/assessment`
+- clarifies that assessment categories, confidence labels and data-quality signals are triage prompts
+- keeps assessment outputs as orientation only, not official legal definitions, official translations or applicability determinations
+- keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
 
@@ -39,7 +38,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - sector profiles at `/sectors` and `/sectors/[slug]`
 - regulation database and regulation detail pages
 - public glossary and contextual label-help surfaces
-- assessment wizard with cautious indicative categories
+- assessment wizard with cautious indicative categories and glossary handoff
 - timeline, briefing, methodology, data-quality and comparison surfaces
 - printable/copyable jurisdiction briefs
 - citation copy blocks and edition snapshot routes

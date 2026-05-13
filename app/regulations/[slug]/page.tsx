@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Badge } from "@/components/Badge";
 import { CommercialCTA } from "@/components/CommercialCTA";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
 import { CitationWidget } from "@/components/CitationWidget";
@@ -66,6 +67,12 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
             <Metric label="Next review" value={formatDate(regulation.nextReviewDate)} />
           </div>
         </section>
+
+        <GlossaryHelpCard
+          compact
+          title="Interpret this record before using it"
+          body="Status, legal-force, readiness and data-quality labels are planning signals. The glossary explains how to read them before using this record in an assessment, market brief or advisory conversation."
+        />
 
         <Section title="Why it matters">
           <p>{regulation.summary}</p>

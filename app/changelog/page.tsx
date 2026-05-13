@@ -7,11 +7,14 @@ import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
 import { DATASET_META } from "@/data/_meta";
 import { CHANGELOG } from "@/data/changelog";
+import { RECENT_CHANGELOG } from "@/data/changelogRecent";
 import { regulations } from "@/data/seed";
 
 export const metadata = {
   title: "Changelog | Etica ESG"
 };
+
+const changelogEntries = [...RECENT_CHANGELOG, ...CHANGELOG];
 
 export default function ChangelogPage() {
   return (
@@ -27,7 +30,7 @@ export default function ChangelogPage() {
         <DisclaimerBanner />
 
         <div className="space-y-4">
-          {CHANGELOG.map((edition) => (
+          {changelogEntries.map((edition) => (
             <section key={edition.edition} className="rounded-2xl border bg-white p-5 shadow-sm">
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div>

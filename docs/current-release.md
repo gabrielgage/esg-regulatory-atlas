@@ -1,0 +1,47 @@
+# Current Release Context
+
+## Current Edition
+
+`0.5.27 - May 2026`
+
+## What Changed In The Latest Release Context Sync
+
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, plus the immediately preceding assessment and homepage handoff work.
+
+### 0.5.27 - Glossary And Label Interpretation
+
+- Public `/glossary` route for plain-language ESG regulatory terms.
+- Status and source-confidence guide for interpreting labels such as in force, consultation, voluntary, needs review, date uncertain and source missing.
+- Contextual glossary help on `/regulations`, `/data-quality` and `/regulations/[slug]`.
+- Smoke tests for glossary navigation and contextual label-help surfaces.
+
+### 0.5.26 - Homepage Workspace And Multilingual Handoff Polish
+
+- Homepage priority-record cards with source-to-verify and first-reporting cues.
+- Localized homepage workspace chrome across English, Spanish, Dutch, French, German and Portuguese.
+- Scoped smoke tests for priority-card and language-label behavior.
+
+### 0.5.25 - Assessment Profile Transparency
+
+- Active assessment profile summary.
+- Facts-to-confirm prompts before users interpret an indicative shortlist.
+- Reset-profile behavior for restarting the static assessment flow.
+
+## Why This Matters
+
+The Atlas now has many label-heavy decision surfaces. The glossary and contextual help reduce the chance that users treat status labels, confidence labels, data-quality labels or filtered regulation lists as legal applicability conclusions.
+
+## Legal And Product Caveat
+
+Glossary definitions and label guidance are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification or compliance determinations. Regulation records remain seed regulatory intelligence unless independently source-reviewed.
+
+## Future Release Sync Rule
+
+After every cluster of small launch-train PRs, update:
+
+- `data/_meta.ts`
+- public changelog data or changelog supplement
+- relevant docs or QA notes
+- the issue-resolution log when a bug, check failure or product defect was fixed
+
+Do this before starting the next feature round so future Codex and Claude sessions inherit the correct current state.

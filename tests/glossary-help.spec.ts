@@ -16,3 +16,11 @@ test("regulation detail page links record labels to glossary", async ({ page }) 
   await expect(page.getByText(/Status, legal-force, readiness and data-quality labels are planning signals/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
 });
+
+test("assessment page links shortlist categories to glossary", async ({ page }) => {
+  await page.goto("/assessment");
+
+  await expect(page.getByRole("heading", { name: /Interpret assessment categories carefully/i })).toBeVisible();
+  await expect(page.getByText(/Assessment categories, confidence labels and data-quality signals are triage prompts/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
+});

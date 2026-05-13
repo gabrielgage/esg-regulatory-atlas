@@ -6,6 +6,7 @@ import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { ApplicabilityWizard } from "@/components/ApplicabilityWizard";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { regulations } from "@/data/seed";
 import { Regulation } from "@/types/regulation";
@@ -24,6 +25,11 @@ export default function AssessmentPage() {
           meta="Indicative output only. Applicability still depends on thresholds, entity facts and legal interpretation."
         />
         <DisclaimerBanner />
+        <GlossaryHelpCard
+          title="Interpret assessment categories carefully"
+          body="Assessment categories, confidence labels and data-quality signals are triage prompts. Use the glossary before treating a shortlist as compliance scope or client-ready advice."
+          compact
+        />
         <ApplicabilityWizard regulations={regulations} onSelect={setSelectedRegulation} />
         <FooterDisclaimer />
       </div>

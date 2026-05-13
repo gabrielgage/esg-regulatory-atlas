@@ -2,6 +2,22 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.28 - May 2026",
+    date: "2026-05-13",
+    label: "Assessment label interpretation guardrail",
+    summary:
+      "Added contextual glossary help to the assessment workflow so users interpret shortlist categories, confidence labels and data-quality signals as triage prompts before using outputs in client or internal planning.",
+    added: [
+      "Assessment page glossary help card",
+      "Smoke coverage for assessment glossary handoff",
+      "Release context update for the assessment label guardrail"
+    ],
+    updated: ["Assessment wizard", "Glossary guidance", "Playwright smoke coverage", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "california-sb253-sb261", "uk-sdr"],
+    caveat:
+      "Assessment categories remain indicative planning prompts. They do not determine legal applicability, compliance scope, official translation or source verification."
+  },
+  {
     edition: "0.5.27 - May 2026",
     date: "2026-05-13",
     label: "Glossary and label interpretation rollout",

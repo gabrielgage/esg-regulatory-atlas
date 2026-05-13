@@ -2,11 +2,17 @@
 
 ## Current Edition
 
-`0.5.27 - May 2026`
+`0.5.28 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, plus the immediately preceding assessment and homepage handoff work.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, and the assessment label guardrail added immediately after.
+
+### 0.5.28 - Assessment Label Interpretation Guardrail
+
+- Added contextual glossary help to `/assessment`.
+- Clarified that shortlist categories, confidence labels and data-quality signals are triage prompts.
+- Added smoke coverage for the assessment glossary handoff.
 
 ### 0.5.27 - Glossary And Label Interpretation
 
@@ -29,11 +35,11 @@ The latest release context captures the glossary and label-interpretation rollou
 
 ## Why This Matters
 
-The Atlas now has many label-heavy decision surfaces. The glossary and contextual help reduce the chance that users treat status labels, confidence labels, data-quality labels or filtered regulation lists as legal applicability conclusions.
+The Atlas now has many label-heavy decision surfaces. The glossary and contextual help reduce the chance that users treat status labels, confidence labels, data-quality labels, filtered regulation lists or assessment shortlists as legal applicability conclusions.
 
 ## Legal And Product Caveat
 
-Glossary definitions and label guidance are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification or compliance determinations. Regulation records remain seed regulatory intelligence unless independently source-reviewed.
+Glossary definitions and label guidance are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification or compliance determinations. Regulation records and assessment categories remain seed regulatory intelligence unless independently source-reviewed.
 
 ## Future Release Sync Rule
 

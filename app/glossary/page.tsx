@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
 import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { GlossaryGuide } from "@/components/GlossaryGuide";
 import { glossaryCategories, glossaryTerms } from "@/data/glossary";
 
 export const metadata: Metadata = {
@@ -40,6 +41,8 @@ export default function GlossaryPage() {
         </section>
 
         <DisclaimerBanner />
+
+        <GlossaryGuide />
 
         <section className="rounded-2xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900/80">
           <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">

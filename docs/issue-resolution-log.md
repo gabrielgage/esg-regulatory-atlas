@@ -17,6 +17,32 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+
+## 2026-05-13 - PR #39 Glossary Smoke Test Used Broad Heading Locator
+
+Status: resolved in PR #39 follow-up commit.
+
+### Symptom
+
+PR #39 passed Vercel and Lighthouse, and the CI build/typecheck step succeeded, but `CI / Browser smoke tests` failed in the new glossary route test.
+
+### Root Cause
+
+The test used `page.getByRole("heading", { name: /Value chain/i })`. The glossary page intentionally renders both a category heading named `Value chain` and a term card heading named `Value chain`, so Playwright strict mode correctly found two matching headings. The product page was rendering correctly; the new smoke locator was too broad for a page where category and term names can overlap.
+
+### Resolution
+
+Scoped the assertion to the category heading level with `page.locator("h2", { hasText: "Value chain" })`. This preserves the user-facing page structure and makes the test assert the intended concept-area section.
+
+### Prevention Rule
+
+When glossary, taxonomy or directory pages can contain the same label as both a section heading and an item title, smoke tests should scope by heading level, region, card container or stable test hook instead of using broad role/name locators.
+
+### Files Changed
+
+- `tests/glossary.spec.ts`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-12 - PR #33 Smoke Test Locator Collided With Removable Filter Chip
 
 Status: resolved.

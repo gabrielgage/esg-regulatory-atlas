@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { TranslationKey } from "@/lib/i18n";
+import type { LanguageCode, TranslationKey } from "@/lib/i18n";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "./LanguageProvider";
 import { ThemeToggle } from "./ThemeToggle";
@@ -22,18 +22,23 @@ const secondaryNavItems = [
   { href: "/timeline", labelKey: "nav.timeline" },
   { href: "/briefing", labelKey: "nav.briefing" },
   { href: "/data-quality", labelKey: "nav.dataQuality" },
+  { href: "/glossary", labels: { en: "Glossary", es: "Glosario", nl: "Woordenlijst", fr: "Glossaire", de: "Glossar", pt: "Glossário" } },
   { href: "/alerts", labelKey: "nav.alerts" },
   { href: "/advisory", labelKey: "nav.advisory" },
   { href: "/launch", labelKey: "nav.launch" }
-] satisfies Array<{ href: string; labelKey: TranslationKey }>;
+] satisfies Array<{ href: string; labelKey?: TranslationKey; labels?: Record<LanguageCode, string> }>;
 
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }
 
+function secondaryLabel(item: (typeof secondaryNavItems)[number], language: LanguageCode, t: (key: TranslationKey) => string) {
+  return item.labelKey ? t(item.labelKey) : item.labels?.[language] || item.labels?.en || "Glossary";
+}
+
 export function Header() {
   const pathname = usePathname();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const secondaryActive = secondaryNavItems.some((item) => isActive(pathname, item.href));
 
   return (
@@ -85,7 +90,7 @@ export function Header() {
                       active && "bg-slate-100 text-ink dark:bg-slate-800 dark:text-white"
                     )}
                   >
-                    {t(item.labelKey)}
+                    {secondaryLabel(item, language, t)}
                   </Link>
                 );
               })}

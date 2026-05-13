@@ -9,6 +9,7 @@ import { CoverageMatrix } from "@/components/CoverageMatrix";
 import { CoverageConfidencePanel } from "@/components/CoverageConfidencePanel";
 import { CoverageDepthPanel } from "@/components/CoverageDepthPanel";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { MarqueeReviewQueue } from "@/components/MarqueeReviewQueue";
 import { MarqueeEvidenceGate } from "@/components/MarqueeEvidenceGate";
 import { ReviewWorkflowExportPanel } from "@/components/ReviewWorkflowExportPanel";
@@ -43,6 +44,10 @@ export default function DataQualityPage() {
           meta={`Current edition ${DATASET_META.edition}. Dataset last reviewed ${DATASET_META.lastReviewed}.`}
         />
         <DisclaimerBanner />
+        <GlossaryHelpCard
+          title="Need help interpreting status and source labels?"
+          body="The glossary explains status, legal-force, confidence and data-quality labels such as in force, first reporting, needs review, date uncertain and source missing."
+        />
 
         <section className="sticky top-16 z-20 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-sm backdrop-blur">
           <div className="grid gap-2 md:grid-cols-4" role="tablist" aria-label="Data quality sections">

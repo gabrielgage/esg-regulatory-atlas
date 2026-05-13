@@ -8,6 +8,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { ActiveFilterSummary } from "@/components/ActiveFilterSummary";
 import { Filters } from "@/components/Filters";
 import { ComparePicker } from "@/components/ComparePicker";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { PersonaPresets } from "@/components/PersonaPresets";
 import { RegulationExportButtons } from "@/components/RegulationExportButtons";
 import { RegulationDetail } from "@/components/RegulationDetail";
@@ -75,6 +76,11 @@ export default function RegulationsPage() {
           body={t("page.regulations.body")}
         />
         <DisclaimerBanner />
+        <GlossaryHelpCard
+          compact
+          title="How to read database labels"
+          body="The table uses status, readiness, confidence, legal-force and data-quality labels as triage signals. Use the glossary before treating a filtered result as compliance scope."
+        />
         <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
           <ComparePicker regulations={filtered} />
           <div className="flex flex-wrap justify-start gap-2 lg:justify-end">

@@ -102,6 +102,9 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
   await page.goto("/regulations");
 
   await expect(page.getByRole("heading", { name: /Search the ESG regulatory database/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /How to read database labels/i })).toBeVisible();
+  await expect(page.getByText(/Use the glossary before treating a filtered result as compliance scope/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
   await expect(page.getByText(/Persona starting points/i)).toBeVisible();
   await expect(page.getByRole("table")).toBeVisible();
   await page.getByRole("link", { name: /Open CSRD/i }).click();

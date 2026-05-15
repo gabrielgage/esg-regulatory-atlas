@@ -2,6 +2,22 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.33 - May 2026",
+    date: "2026-05-15",
+    label: "Market and sector detail interpretation guardrail",
+    summary:
+      "Added contextual glossary help to jurisdiction and sector profile detail pages so users interpret priority records, readiness scores, source-confidence signals, timing cues and advisory prompts as triage aids rather than complete local or sector legal coverage.",
+    added: [
+      "Jurisdiction profile glossary help card",
+      "Sector profile glossary help card",
+      "Smoke coverage for profile detail glossary handoffs"
+    ],
+    updated: ["Jurisdiction profile pages", "Sector profile pages", "Glossary guidance", "Playwright smoke coverage", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr"],
+    caveat:
+      "Profile detail outputs remain caveated planning aids. They are not complete local legal coverage, complete sector legal inventories, entity-specific applicability decisions, official translations or source verification."
+  },
+  {
     edition: "0.5.32 - May 2026",
     date: "2026-05-15",
     label: "Market and sector coverage interpretation guardrail",

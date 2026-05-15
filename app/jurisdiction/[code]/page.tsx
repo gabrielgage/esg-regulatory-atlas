@@ -5,6 +5,7 @@ import { Badge } from "@/components/Badge";
 import { CoverageConfidenceBadge } from "@/components/CoverageConfidenceBadge";
 import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { Header } from "@/components/Header";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
 import { MarketQuickStartPanel } from "@/components/MarketQuickStartPanel";
@@ -81,6 +82,12 @@ export default async function JurisdictionMarketPage({ params }: { params: Promi
             </div>
           </div>
         </section>
+
+        <GlossaryHelpCard
+          title="Interpret market profile details carefully"
+          body="This profile combines direct and inherited seed records, priority sorting, readiness scores and source-confidence signals. Treat them as market-triage prompts, not complete local legal coverage or entity-specific applicability."
+          compact
+        />
 
         <section className="grid gap-3 md:grid-cols-4">
           <Metric label="Direct records" value={String(profile.directRecords.length)} />

@@ -2,11 +2,17 @@
 
 ## Current Edition
 
-`0.5.32 - May 2026`
+`0.5.33 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, and the market/sector coverage guardrail added immediately after.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, and the profile-detail guardrail added immediately after.
+
+### 0.5.33 - Market And Sector Detail Interpretation Guardrail
+
+- Added contextual glossary help to `/jurisdiction/[code]` and `/sectors/[slug]`.
+- Clarified that profile detail pages combine seed records, readiness scores, source-confidence signals, timing cues and advisory prompts for triage only.
+- Added smoke coverage for jurisdiction and sector profile glossary handoffs.
 
 ### 0.5.32 - Market And Sector Coverage Interpretation Guardrail
 
@@ -59,11 +65,11 @@ The latest release context captures the glossary and label-interpretation rollou
 
 ## Why This Matters
 
-The Atlas now has many label-heavy decision surfaces. The glossary and contextual help reduce the chance that users treat status labels, confidence labels, data-quality labels, filtered regulation lists, assessment shortlists, timeline milestone dates, briefing outputs, side-by-side comparisons, market counts or sector counts as legal applicability conclusions or complete coverage claims.
+The Atlas now has many label-heavy decision surfaces. The glossary and contextual help reduce the chance that users treat status labels, confidence labels, data-quality labels, filtered regulation lists, assessment shortlists, timeline milestone dates, briefing outputs, side-by-side comparisons, market counts, sector counts or profile-detail priority signals as legal applicability conclusions or complete coverage claims.
 
 ## Legal And Product Caveat
 
-Glossary definitions and label guidance are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification or compliance determinations. Regulation records, assessment categories, timeline milestones, briefing summaries, comparison tables, market profiles and sector profiles remain seed regulatory intelligence unless independently source-reviewed.
+Glossary definitions and label guidance are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification or compliance determinations. Regulation records, assessment categories, timeline milestones, briefing summaries, comparison tables, market profiles, sector profiles and profile-detail priority records remain seed regulatory intelligence unless independently source-reviewed.
 
 ## Future Release Sync Rule
 

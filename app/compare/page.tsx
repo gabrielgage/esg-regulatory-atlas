@@ -4,6 +4,7 @@ import { ArrowRight, GitCompare } from "lucide-react";
 import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -65,6 +66,11 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
           body="Compare two jurisdictions across reporting, due diligence, sustainable finance, product and source-quality dimensions. Outputs are indicative and should be verified against primary sources."
         />
         <DisclaimerBanner />
+        <GlossaryHelpCard
+          title="Interpret comparison outputs carefully"
+          body="Comparison tables show tracked differences in seed records, not legal equivalence or complete market coverage. Use status, date, confidence and source labels as prompts to review primary sources before making scope decisions."
+          compact
+        />
 
         <section className="rounded-2xl border bg-white p-5 shadow-sm">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -212,6 +218,11 @@ function RegulationCompare({ records, requestedIds }: { records: Regulation[]; r
           meta={`${records.length} of ${requestedIds.length} requested records found.`}
         />
         <DisclaimerBanner />
+        <GlossaryHelpCard
+          title="Interpret comparison outputs carefully"
+          body="Comparison tables show tracked differences in seed records, not legal equivalence or complete market coverage. Use status, date, confidence and source labels as prompts to review primary sources before making scope decisions."
+          compact
+        />
 
         <section className="rounded-2xl border bg-white p-5 shadow-sm">
           <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">

@@ -8,13 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.30 - May 2026`.
+The current public release context is `0.5.31 - May 2026`.
 
 Latest release-context update:
 
-- adds contextual glossary help to `/briefing`
-- clarifies that priority records, copied summaries, evidence prompts and advisory signals are planning aids
-- keeps briefing outputs as orientation only, not client-ready legal opinions, compliance determinations or source verification
+- adds contextual glossary help to `/compare`
+- clarifies that jurisdiction and regulation comparisons show tracked seed-record differences, not legal equivalence or complete market coverage
+- keeps comparison outputs as orientation only, not compliance determinations, official translations or source verification
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -41,7 +41,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - assessment wizard with cautious indicative categories and glossary handoff
 - timeline with date-label glossary handoff
 - briefing workspace with copied-output glossary handoff
-- methodology, data-quality and comparison surfaces
+- methodology, data-quality and comparison surfaces with side-by-side glossary handoff
 - printable/copyable jurisdiction briefs
 - citation copy blocks and edition snapshot routes
 - light/dark mode toggle and first-visit light mode default

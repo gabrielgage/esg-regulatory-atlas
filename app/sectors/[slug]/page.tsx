@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, CalendarDays, CheckCircle2, ExternalLink, File
 import { Badge } from "@/components/Badge";
 import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { Header } from "@/components/Header";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
@@ -76,6 +77,12 @@ export default async function SectorProfilePage({ params }: { params: Promise<{ 
             </div>
           </div>
         </section>
+
+        <GlossaryHelpCard
+          title="Interpret sector profile details carefully"
+          body="This profile combines direct sector matches, broad all-sector records, timing signals, source-confidence cues and advisory prompts. Treat them as sector-triage aids before confirming thresholds, entity facts and primary sources."
+          compact
+        />
 
         <section className="grid gap-3 md:grid-cols-4">
           <Metric label="Direct records" value={String(profile.directRecords.length)} />

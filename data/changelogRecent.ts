@@ -2,6 +2,22 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.31 - May 2026",
+    date: "2026-05-15",
+    label: "Comparison output interpretation guardrail",
+    summary:
+      "Added contextual glossary help to the comparison workspace so users interpret jurisdiction and regulation comparisons as seed-record planning aids rather than legal equivalence, complete market coverage or source verification.",
+    added: [
+      "Compare page glossary help card",
+      "Smoke coverage for comparison glossary handoff",
+      "Release context update for side-by-side comparison interpretation"
+    ],
+    updated: ["Comparison workspace", "Glossary guidance", "Playwright smoke coverage", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "california-sb253-sb261"],
+    caveat:
+      "Comparison outputs remain caveated planning aids. They are not legal equivalence analyses, complete market coverage, compliance determinations, official translations or source verification."
+  },
+  {
     edition: "0.5.30 - May 2026",
     date: "2026-05-15",
     label: "Briefing output interpretation guardrail",

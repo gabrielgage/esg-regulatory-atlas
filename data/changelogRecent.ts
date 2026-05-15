@@ -2,6 +2,22 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.30 - May 2026",
+    date: "2026-05-15",
+    label: "Briefing output interpretation guardrail",
+    summary:
+      "Added contextual glossary help to the briefing workspace so users interpret priority records, copied summaries, evidence prompts and advisory signals as planning aids before using them in client or leadership conversations.",
+    added: [
+      "Briefing page glossary help card",
+      "Smoke coverage for briefing glossary handoff",
+      "Release context update for copied briefing output interpretation"
+    ],
+    updated: ["Briefing workspace", "Glossary guidance", "Playwright smoke coverage", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr"],
+    caveat:
+      "Briefing outputs remain caveated planning aids. They are not client-ready legal opinions, compliance determinations, official translations or source verification."
+  },
+  {
     edition: "0.5.29 - May 2026",
     date: "2026-05-14",
     label: "Timeline date interpretation guardrail",

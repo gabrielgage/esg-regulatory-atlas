@@ -2,6 +2,22 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.29 - May 2026",
+    date: "2026-05-14",
+    label: "Timeline date interpretation guardrail",
+    summary:
+      "Added contextual glossary help to the timeline workflow so users interpret effective dates, first reporting years, first report due dates and Atlas review dates as planning signals before relying on date-sensitive milestones.",
+    added: [
+      "Timeline page glossary help card",
+      "Smoke coverage for timeline glossary handoff",
+      "Release context update for timeline date-label interpretation"
+    ],
+    updated: ["Timeline workspace", "Glossary guidance", "Playwright smoke coverage", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "california-sb253-sb261"],
+    caveat:
+      "Timeline dates remain seed intelligence and planning prompts. They are not definitive compliance deadlines, legal advice, official translations or source verification."
+  },
+  {
     edition: "0.5.28 - May 2026",
     date: "2026-05-13",
     label: "Assessment label interpretation guardrail",

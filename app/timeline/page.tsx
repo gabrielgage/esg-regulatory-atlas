@@ -6,6 +6,7 @@ import { Badge } from "@/components/Badge";
 import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { PageIntro } from "@/components/PageIntro";
 import { RegulatoryTimeline } from "@/components/RegulatoryTimeline";
 import { RegulationDetail } from "@/components/RegulationDetail";
@@ -53,6 +54,11 @@ export default function TimelinePage() {
           meta="Validate date-sensitive planning against linked primary sources before reliance."
         />
         <DisclaimerBanner />
+        <GlossaryHelpCard
+          title="Interpret timeline dates carefully"
+          body="Timeline labels such as effective date, first reporting year, first report due date and Atlas review date are planning signals. Confirm date-sensitive obligations against primary sources and entity-specific facts before relying on them."
+          compact
+        />
         <section className="grid gap-3 rounded-2xl border bg-white p-4 shadow-sm md:grid-cols-[repeat(3,minmax(0,1fr))_auto] md:items-end">
           <Select
             label="Jurisdiction"

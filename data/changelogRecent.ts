@@ -2,6 +2,22 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.32 - May 2026",
+    date: "2026-05-15",
+    label: "Market and sector coverage interpretation guardrail",
+    summary:
+      "Added contextual glossary help to the market and sector discovery pages so users treat coverage counts, confidence badges, source-review flags and sector-tagged record links as tracked seed coverage rather than complete jurisdiction or sector inventories.",
+    added: [
+      "Market coverage glossary help card",
+      "Sector coverage glossary help card",
+      "Smoke coverage for market and sector glossary handoffs"
+    ],
+    updated: ["Market profiles", "Sector profiles", "Glossary guidance", "Playwright smoke coverage", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "eudr"],
+    caveat:
+      "Market and sector coverage outputs remain caveated planning aids. They are not complete jurisdiction inventories, complete sector legal inventories, compliance determinations, official translations or source verification."
+  },
+  {
     edition: "0.5.31 - May 2026",
     date: "2026-05-15",
     label: "Comparison output interpretation guardrail",

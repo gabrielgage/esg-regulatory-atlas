@@ -3,6 +3,7 @@ import { ArrowUpRight, Globe2, Layers3, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import { CoverageConfidenceBadge } from "@/components/CoverageConfidenceBadge";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { Header } from "@/components/Header";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
 import { MarketQuickStartGrid } from "@/components/MarketQuickStartPanel";
@@ -32,6 +33,11 @@ export default function MarketsPage() {
           title="Jurisdiction market profiles"
           body="Browse tracked ESG regulatory markets by region, direct seed coverage, source confidence and first action prompts. Market profiles are designed for orientation before a deeper brief, assessment or advisory scan."
           meta={`${DATASET_META.edition} · seed intelligence, not legal advice`}
+        />
+        <GlossaryHelpCard
+          title="Interpret market coverage carefully"
+          body="Market counts, confidence badges and review flags describe current tracked seed coverage, not a complete jurisdiction inventory. Use them to prioritize source review before advising on market exposure or compliance scope."
+          compact
         />
 
         <section className="grid gap-3 md:grid-cols-4">

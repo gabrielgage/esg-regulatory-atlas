@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, BriefcaseBusiness, Factory, Layers3, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { Header } from "@/components/Header";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
 import { PageIntro } from "@/components/PageIntro";
@@ -29,6 +30,11 @@ export default function SectorsPage() {
           title="Sector starting points for regulatory triage"
           body="Start from a business sector, then move into relevant records, markets, evidence needs, internal owners and advisory workstreams. Sector pages combine sector-tagged records with broad all-sector rules that may still matter."
           meta={`${DATASET_META.edition} · current tracked seed coverage, not complete sector legal inventory`}
+        />
+        <GlossaryHelpCard
+          title="Interpret sector coverage carefully"
+          body="Sector counts and source-review flags show current tagged seed records, not a complete sector legal inventory. Treat sector pages as first-pass triage before confirming thresholds, entity facts and primary sources."
+          compact
         />
 
         <section className="grid gap-3 md:grid-cols-4">

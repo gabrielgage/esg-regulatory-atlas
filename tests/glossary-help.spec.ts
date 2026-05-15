@@ -64,3 +64,19 @@ test("sectors page links sector coverage to glossary", async ({ page }) => {
   await expect(page.getByText(/Sector counts and source-review flags show current tagged seed records/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
 });
+
+test("jurisdiction profile links market detail labels to glossary", async ({ page }) => {
+  await page.goto("/jurisdiction/euu");
+
+  await expect(page.getByRole("heading", { name: /Interpret market profile details carefully/i })).toBeVisible();
+  await expect(page.getByText(/This profile combines direct and inherited seed records, priority sorting, readiness scores and source-confidence signals/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
+});
+
+test("sector profile links sector detail labels to glossary", async ({ page }) => {
+  await page.goto("/sectors/financial-services");
+
+  await expect(page.getByRole("heading", { name: /Interpret sector profile details carefully/i })).toBeVisible();
+  await expect(page.getByText(/This profile combines direct sector matches, broad all-sector records, timing signals, source-confidence cues and advisory prompts/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
+});

@@ -40,3 +40,11 @@ test("briefing page links copied outputs to glossary", async ({ page }) => {
   await expect(page.getByText(/Briefing tabs and copied summaries combine seed records, status labels, evidence prompts and advisory signals/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
 });
+
+test("compare page links comparison outputs to glossary", async ({ page }) => {
+  await page.goto("/compare?jurisdictions=EUU,GBR");
+
+  await expect(page.getByRole("heading", { name: /Interpret comparison outputs carefully/i })).toBeVisible();
+  await expect(page.getByText(/Comparison tables show tracked differences in seed records, not legal equivalence or complete market coverage/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
+});

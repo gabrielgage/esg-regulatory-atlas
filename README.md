@@ -8,13 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.29 - May 2026`.
+The current public release context is `0.5.30 - May 2026`.
 
 Latest release-context update:
 
-- adds contextual glossary help to `/timeline`
-- clarifies that effective dates, first reporting years, first report due dates and Atlas review dates are planning signals
-- keeps timeline milestones as orientation only, not definitive compliance deadlines, official translations or source verification
+- adds contextual glossary help to `/briefing`
+- clarifies that priority records, copied summaries, evidence prompts and advisory signals are planning aids
+- keeps briefing outputs as orientation only, not client-ready legal opinions, compliance determinations or source verification
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -40,7 +40,8 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - public glossary and contextual label-help surfaces
 - assessment wizard with cautious indicative categories and glossary handoff
 - timeline with date-label glossary handoff
-- briefing, methodology, data-quality and comparison surfaces
+- briefing workspace with copied-output glossary handoff
+- methodology, data-quality and comparison surfaces
 - printable/copyable jurisdiction briefs
 - citation copy blocks and edition snapshot routes
 - light/dark mode toggle and first-visit light mode default

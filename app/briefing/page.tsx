@@ -6,6 +6,7 @@ import { ArrowRight, ClipboardCheck, FileText, Gauge, Map, ShieldCheck, Sparkles
 import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
+import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { PageIntro } from "@/components/PageIntro";
 import { AdvisoryInsights } from "@/components/AdvisoryInsights";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
@@ -78,6 +79,11 @@ export default function BriefingPage() {
           body="Combine priority regulations, advisory workstreams, data governance risks and a copyable client planning summary in one focused briefing view."
         />
         <DisclaimerBanner />
+        <GlossaryHelpCard
+          title="Interpret briefing outputs carefully"
+          body="Briefing tabs and copied summaries combine seed records, status labels, evidence prompts and advisory signals. Treat them as planning aids to review with sources and qualified advisors, not client-ready legal conclusions."
+          compact
+        />
         <section className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
           <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start" aria-label="Briefing builder">
             <div className="rounded-2xl border bg-white p-4 shadow-sm">

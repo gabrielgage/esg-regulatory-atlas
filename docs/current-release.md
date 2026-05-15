@@ -2,11 +2,17 @@
 
 ## Current Edition
 
-`0.5.29 - May 2026`
+`0.5.30 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, and the timeline date-label guardrail added immediately after.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, and the briefing output guardrail added immediately after.
+
+### 0.5.30 - Briefing Output Interpretation Guardrail
+
+- Added contextual glossary help to `/briefing`.
+- Clarified that priority records, copied summaries, evidence prompts and advisory signals are planning aids.
+- Added smoke coverage for the briefing glossary handoff.
 
 ### 0.5.29 - Timeline Date Interpretation Guardrail
 
@@ -41,11 +47,11 @@ The latest release context captures the glossary and label-interpretation rollou
 
 ## Why This Matters
 
-The Atlas now has many label-heavy decision surfaces. The glossary and contextual help reduce the chance that users treat status labels, confidence labels, data-quality labels, filtered regulation lists, assessment shortlists or timeline milestone dates as legal applicability conclusions.
+The Atlas now has many label-heavy decision surfaces. The glossary and contextual help reduce the chance that users treat status labels, confidence labels, data-quality labels, filtered regulation lists, assessment shortlists, timeline milestone dates or briefing outputs as legal applicability conclusions.
 
 ## Legal And Product Caveat
 
-Glossary definitions and label guidance are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification or compliance determinations. Regulation records, assessment categories and timeline milestones remain seed regulatory intelligence unless independently source-reviewed.
+Glossary definitions and label guidance are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification or compliance determinations. Regulation records, assessment categories, timeline milestones and briefing summaries remain seed regulatory intelligence unless independently source-reviewed.
 
 ## Future Release Sync Rule
 

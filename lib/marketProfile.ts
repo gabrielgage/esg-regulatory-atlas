@@ -71,6 +71,8 @@ export function buildMarketMarkdown(jurisdiction: Jurisdiction, records: Regulat
   const impacts = uniq(relevant.flatMap((regulation) => regulation.businessImpacts)).slice(0, 8);
   const evidence = uniq(relevant.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 8);
   const actions = uniq(relevant.flatMap((regulation) => regulation.requiredActions || [])).slice(0, 8);
+  const sourceBacked = relevant.filter((regulation) => regulation.sourceUrls.length > 0).length;
+  const reviewFlags = relevant.filter((regulation) => regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high").length;
   const quickStart = marketQuickStartFor(jurisdiction.id) || fallbackMarketQuickStart(jurisdiction, actions);
 
   return [
@@ -91,6 +93,11 @@ export function buildMarketMarkdown(jurisdiction: Jurisdiction, records: Regulat
     "",
     `First reporting years captured: ${years.join(", ") || "n/a"}`,
     `Main business impacts: ${impacts.join(", ") || "n/a"}`,
+    `Source-backed priority records: ${sourceBacked}/${relevant.length || 0}`,
+    `Priority records needing confidence/source review: ${reviewFlags}`,
+    "",
+    "## Source review note",
+    "Source-backed means the record has at least one captured source link in the seed dataset. It does not mean the source has been independently reviewed for this copied output. Treat this summary as a planning aid and confirm primary sources before sharing or relying on it.",
     "",
     "## Evidence to prepare",
     ...(quickStart.evidenceStarterPack.length ? quickStart.evidenceStarterPack.map((item) => `- ${item}`) : evidence.length ? evidence.map((item) => `- ${item}`) : ["- Applicability assessment", "- Source review log", "- Entity threshold evidence"]),

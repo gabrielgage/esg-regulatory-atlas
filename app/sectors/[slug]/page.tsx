@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, CalendarDays, CheckCircle2, ExternalLink, FileText, ShieldAlert } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { Header } from "@/components/Header";
@@ -54,6 +55,7 @@ export default async function SectorProfilePage({ params }: { params: Promise<{ 
             </Link>
           </div>
         </div>
+        <CopyOutputNote className="max-w-2xl" />
 
         <section className="rounded-2xl bg-navy p-6 text-white shadow-xl md:p-8">
           <div className="flex flex-wrap gap-2">

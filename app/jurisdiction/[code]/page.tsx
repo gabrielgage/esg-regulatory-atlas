@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, CalendarDays, CheckCircle2, ExternalLink, File
 import { Badge } from "@/components/Badge";
 import { CoverageConfidenceBadge } from "@/components/CoverageConfidenceBadge";
 import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { Header } from "@/components/Header";
@@ -59,6 +60,7 @@ export default async function JurisdictionMarketPage({ params }: { params: Promi
             </Link>
           </div>
         </div>
+        <CopyOutputNote className="max-w-2xl" />
 
         <section className="rounded-2xl bg-navy p-6 text-white shadow-xl md:p-8">
           <div className="flex flex-wrap gap-2">

@@ -2,6 +2,23 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.34 - May 2026",
+    date: "2026-05-18",
+    label: "Copied summary caveat hardening",
+    summary:
+      "Strengthened copied Markdown outputs so market profiles, sector profiles and printable jurisdiction briefs carry source-review notes and clearer caveats when shared outside the Atlas interface.",
+    added: [
+      "Visible copied-output caveat notes near profile and brief copy controls",
+      "Source-review notes in copied market and sector summaries",
+      "Source-review notes in copied jurisdiction briefs",
+      "Smoke coverage for copied-output caveat notes"
+    ],
+    updated: ["Copied Markdown outputs", "Market profiles", "Sector profiles", "Jurisdiction briefs", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr"],
+    caveat:
+      "Copied outputs remain planning aids. They are not legal opinions, source verification, official translations, complete coverage or entity-specific applicability decisions."
+  },
+  {
     edition: "0.5.33 - May 2026",
     date: "2026-05-15",
     label: "Market and sector detail interpretation guardrail",

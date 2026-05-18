@@ -88,6 +88,8 @@ export function buildSectorMarkdown(sector: string, records: Regulation[]) {
   const impacts = uniq(relevant.flatMap((regulation) => regulation.businessImpacts)).slice(0, 8);
   const evidence = uniq(relevant.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 8);
   const actions = uniq(relevant.flatMap((regulation) => regulation.requiredActions || [])).slice(0, 8);
+  const sourceBacked = relevant.filter((regulation) => regulation.sourceUrls.length > 0).length;
+  const reviewFlags = relevant.filter((regulation) => regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high").length;
 
   return [
     `# ${sector} sector starting point`,
@@ -99,6 +101,11 @@ export function buildSectorMarkdown(sector: string, records: Regulation[]) {
     "",
     `Tracked markets: ${markets.map((market) => `${market.name} (${market.count})`).join(", ") || "n/a"}`,
     `Main business impacts: ${impacts.join(", ") || "n/a"}`,
+    `Source-backed priority records: ${sourceBacked}/${relevant.length || 0}`,
+    `Priority records needing confidence/source review: ${reviewFlags}`,
+    "",
+    "## Source review note",
+    "Source-backed means the record has at least one captured source link in the seed dataset. It does not mean the source has been independently reviewed for this copied output. Treat this sector summary as a planning aid and confirm primary sources before sharing or relying on it.",
     "",
     "## Evidence to prepare",
     ...(evidence.length ? evidence.map((item) => `- ${item}`) : ["- Entity applicability facts", "- Source review log", "- Threshold evidence"]),

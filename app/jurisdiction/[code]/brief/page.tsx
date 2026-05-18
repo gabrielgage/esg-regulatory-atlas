@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Badge } from "@/components/Badge";
 import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
 import { PrintButton } from "@/components/PrintButton";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
@@ -64,6 +65,7 @@ export default async function JurisdictionBriefPage({ params }: { params: Promis
             <CopyMarkdownButton text={markdown} />
           </div>
         </div>
+        <CopyOutputNote className="max-w-2xl" />
 
         <section className="rounded-2xl border bg-white p-6 shadow-sm">
           <div className="flex flex-wrap gap-2">
@@ -214,6 +216,7 @@ function buildBriefMarkdown(jurisdictionName: string, scoped: typeof regulations
   const evidence = uniq(relevant.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 6);
   const functions = uniq(relevant.flatMap((regulation) => regulation.affectedFunctions)).slice(0, 6);
   const sourceBacked = relevant.filter((regulation) => regulation.sourceUrls.length > 0).length;
+  const reviewFlags = relevant.filter((regulation) => regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high").length;
 
   return [
     `# ${jurisdictionName} regulatory brief`,
@@ -236,6 +239,10 @@ function buildBriefMarkdown(jurisdictionName: string, scoped: typeof regulations
     `Main business impacts: ${impacts.join(", ") || "n/a"}`,
     `Functions involved: ${functions.join(", ") || "n/a"}`,
     `Source-backed priority records: ${sourceBacked}/${relevant.length || 0}`,
+    `Priority records needing confidence/source review: ${reviewFlags}`,
+    "",
+    "## Source review note",
+    "Source-backed means the record has at least one captured source link in the seed dataset. It does not mean the source has been independently reviewed for this copied brief. Confirm primary sources and entity-specific facts before sharing or relying on this output.",
     "",
     "## First 30-day actions",
     ...quickStart.firstActions.map((action) => `- ${action}`),

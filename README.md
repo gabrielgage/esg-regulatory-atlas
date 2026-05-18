@@ -8,13 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.33 - May 2026`.
+The current public release context is `0.5.34 - May 2026`.
 
 Latest release-context update:
 
-- adds contextual glossary help to `/jurisdiction/[code]` and `/sectors/[slug]`
-- clarifies that market and sector profile details combine seed records, readiness scores, source-confidence signals, timing cues and advisory prompts for triage only
-- keeps profile-detail outputs as orientation only, not entity-specific applicability decisions, compliance determinations, official translations or source verification
+- adds copied-output caveat notes to `/jurisdiction/[code]`, `/sectors/[slug]` and `/jurisdiction/[code]/brief`
+- strengthens copied market, sector and jurisdiction brief Markdown with source-review notes and review-flag signals
+- keeps copied outputs as orientation only, not legal opinions, source verification, complete coverage, official translations or entity-specific applicability decisions
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -42,7 +42,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - timeline with date-label glossary handoff
 - briefing workspace with copied-output glossary handoff
 - methodology, data-quality and comparison surfaces with side-by-side glossary handoff
-- printable/copyable jurisdiction briefs
+- printable/copyable jurisdiction briefs and copied profile summaries with source-review caveats
 - citation copy blocks and edition snapshot routes
 - light/dark mode toggle and first-visit light mode default
 - English, Spanish, Dutch, French, German and Portuguese interface chrome

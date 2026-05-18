@@ -5,7 +5,7 @@ test("regulation detail source memo and citations carry caveats", async ({ page 
 
   await expect(page.getByRole("heading", { name: /^CSRD$/i })).toBeVisible();
   await expect(page.getByRole("button", { name: /Copy source memo/i })).toBeVisible();
-  await expect(page.getByText(/Copied Markdown includes caveats and source-review notes/i)).toBeVisible();
+  await expect(page.getByText(/Copied Markdown includes caveats and source-review notes/i).first()).toBeVisible();
 
   await page.getByText("Cite this record").click();
   await expect(page.getByTestId("citation-caveat")).toContainText(/not official legal citations/i);

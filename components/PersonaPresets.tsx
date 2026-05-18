@@ -9,11 +9,13 @@ import { cn } from "@/lib/utils";
 export function PersonaPresets({
   activeId,
   onApply,
-  onClear
+  onClear,
+  disabled = false
 }: {
   activeId: string;
   onApply: (preset: PersonaPreset) => void;
   onClear: () => void;
+  disabled?: boolean;
 }) {
   const active = personaPresets.find((preset) => preset.id === activeId);
 
@@ -33,7 +35,8 @@ export function PersonaPresets({
           <button
             type="button"
             onClick={onClear}
-            className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+            disabled={disabled}
+            className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
           >
             Clear role lens
           </button>
@@ -46,6 +49,7 @@ export function PersonaPresets({
             key={preset.id}
             preset={preset}
             active={activeId === preset.id}
+            disabled={disabled}
             onApply={() => onApply(preset)}
           />
         ))}
@@ -70,10 +74,12 @@ export function PersonaPresets({
 function PersonaButton({
   preset,
   active,
+  disabled,
   onApply
 }: {
   preset: PersonaPreset;
   active: boolean;
+  disabled: boolean;
   onApply: () => void;
 }) {
   const Icon = iconForPreset(preset.id);
@@ -82,9 +88,10 @@ function PersonaButton({
       type="button"
       aria-label={`Apply ${preset.role} persona preset`}
       aria-pressed={active}
+      disabled={disabled}
       onClick={onApply}
       className={cn(
-        "rounded-xl border p-3 text-left transition hover:border-teal/40 hover:bg-teal/5",
+        "rounded-xl border p-3 text-left transition hover:border-teal/40 hover:bg-teal/5 disabled:cursor-not-allowed disabled:opacity-50",
         active ? "border-teal bg-teal/10" : "border-slate-200 bg-white"
       )}
     >

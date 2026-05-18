@@ -2,6 +2,23 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.35 - May 2026",
+    date: "2026-05-18",
+    label: "Export caveat metadata",
+    summary:
+      "Strengthened CSV and JSON regulation exports so downloaded files carry edition metadata, review context, source-review notes and legal-caution caveats after they leave the Atlas interface.",
+    added: [
+      "Visible export caveat note near CSV and JSON controls",
+      "JSON export metadata envelope with edition, review dates and caveat fields",
+      "CSV export metadata columns for edition, source-review note and caveat language",
+      "Smoke coverage for export caveat guidance"
+    ],
+    updated: ["Regulation exports", "Regulations workspace", "Release metadata", "Current release docs"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr"],
+    caveat:
+      "Downloaded exports remain planning aids. They are not legal opinions, source verification, official translations, complete coverage or entity-specific applicability decisions."
+  },
+  {
     edition: "0.5.34 - May 2026",
     date: "2026-05-18",
     label: "Copied summary caveat hardening",

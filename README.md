@@ -8,13 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.35 - May 2026`.
+The current public release context is `0.5.36 - May 2026`.
 
 Latest release-context update:
 
-- adds export caveat guidance next to CSV/JSON regulation downloads on `/regulations`
-- wraps JSON exports with metadata and adds CSV metadata columns for edition, review dates, caveat and source-review notes
-- keeps downloaded export files as orientation only, not legal opinions, source verification, complete coverage, official translations or entity-specific applicability decisions
+- adds stronger source memo metadata and caveats to copied source-review outputs on regulation detail pages
+- adds visible citation caveats and embeds caveat language in APA, legal research note and BibTeX copy snippets
+- keeps source memos and citations as orientation only, not legal opinions, legal authority, source verification, complete coverage, official translations or entity-specific applicability decisions
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -44,7 +44,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - methodology, data-quality and comparison surfaces with side-by-side glossary handoff
 - printable/copyable jurisdiction briefs and copied profile summaries with source-review caveats
 - CSV/JSON regulation exports with edition metadata, caveat fields and source-review notes
-- citation copy blocks and edition snapshot routes
+- source review memo and citation copy blocks with edition metadata and legal-caution caveats
 - light/dark mode toggle and first-visit light mode default
 - English, Spanish, Dutch, French, German and Portuguese interface chrome
 - shareable filtered URLs and CSV/JSON exports

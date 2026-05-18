@@ -26,6 +26,9 @@ export function CitationWidget({ regulation }: { regulation: Regulation }) {
           </span>
           <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">APA · legal style · BibTeX</span>
         </summary>
+        <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-900" data-testid="citation-caveat">
+          Citation copies identify the Atlas seed record and edition. They are not official legal citations, source verification, official translations or legal authority. Cite and review primary sources separately before reliance.
+        </p>
         <div className="mt-4 grid gap-3">
           {citations.map((citation) => (
             <div key={citation.label} className="rounded-xl border border-slate-200 bg-slate-50 p-3">
@@ -55,15 +58,16 @@ function buildCitations(regulation: Regulation) {
   const primarySource = regulation.sourceUrls.find((source) => source.type === "primary") || regulation.sourceUrls[0];
   const year = DATASET_META.lastReviewed.slice(0, 4);
   const cleanTitle = `${regulation.shortName}: ${regulation.title}`;
+  const citationCaveat = "Atlas citation only; not legal authority, source verification or official translation.";
 
   return [
     {
       label: "APA style",
-      text: `${DATASET_META.publisher}. (${year}). ${cleanTitle}. ${DATASET_META.edition}. Edited by ${DATASET_META.editor}. ${editionUrl}`
+      text: `${DATASET_META.publisher}. (${year}). ${cleanTitle}. ${DATASET_META.edition}. Edited by ${DATASET_META.editor}. ${editionUrl} [${citationCaveat}]`
     },
     {
       label: "Legal research note",
-      text: `${cleanTitle}, ${DATASET_META.publisher} Regulatory Atlas ${DATASET_META.edition} (${DATASET_META.lastReviewed}), ${editionUrl}${primarySource ? `; primary source: ${primarySource.label}, ${primarySource.url}` : ""}.`
+      text: `${cleanTitle}, ${DATASET_META.publisher} Regulatory Atlas ${DATASET_META.edition} (${DATASET_META.lastReviewed}), ${editionUrl}${primarySource ? `; primary source to verify: ${primarySource.label}, ${primarySource.url}` : ""}. ${citationCaveat}`
     },
     {
       label: "BibTeX",
@@ -73,7 +77,7 @@ function buildCitations(regulation: Regulation) {
         `  author = {{${DATASET_META.publisher}}},`,
         `  editor = {${DATASET_META.editor}},`,
         `  year = {${year}},`,
-        `  note = {${DATASET_META.edition}; seed regulatory intelligence, not legal advice},`,
+        `  note = {${DATASET_META.edition}; seed regulatory intelligence; ${citationCaveat}},`,
         `  url = {${pageUrl}},`,
         `  urldate = {${DATASET_META.lastReviewed}}`,
         `}`

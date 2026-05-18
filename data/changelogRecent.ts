@@ -2,6 +2,23 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.36 - May 2026",
+    date: "2026-05-18",
+    label: "Source memo and citation caveats",
+    summary:
+      "Strengthened regulation detail source-review memos and citation snippets so copied research outputs carry edition context and clearer legal-caution language.",
+    added: [
+      "Visible source memo copied-output caveat guidance",
+      "Publisher, edition, contact and source-count metadata in copied source memos",
+      "Citation caveat guidance for Atlas record citations",
+      "Smoke coverage for source memo and citation caveats"
+    ],
+    updated: ["Source evidence panel", "Citation widget", "Source governance memo", "Regulation detail pages", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr"],
+    caveat:
+      "Source memos and citation snippets remain planning aids. They are not legal opinions, legal authority, source verification, official translations, complete coverage or entity-specific applicability decisions."
+  },
+  {
     edition: "0.5.35 - May 2026",
     date: "2026-05-18",
     label: "Export caveat metadata",

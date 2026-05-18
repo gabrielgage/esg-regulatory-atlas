@@ -2,11 +2,18 @@
 
 ## Current Edition
 
-`0.5.35 - May 2026`
+`0.5.36 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, and the export caveat metadata hardening added immediately after.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, and the source memo/citation caveat hardening added immediately after.
+
+### 0.5.36 - Source Memo And Citation Caveats
+
+- Added copied-output guidance next to source memo copy controls on regulation detail pages.
+- Added publisher, editor, contact, edition, dataset review date and source-count context to copied source governance memos.
+- Added visible citation caveat language and embedded citation-copy caveats for APA, legal research note and BibTeX snippets.
+- Added smoke coverage for source memo and citation caveat surfaces.
 
 ### 0.5.35 - Export Caveat Metadata
 
@@ -78,11 +85,11 @@ The latest release context captures the glossary and label-interpretation rollou
 
 ## Why This Matters
 
-The Atlas now has many label-heavy, copyable and exportable decision surfaces. The glossary, contextual help, copied-output caveats and export metadata reduce the chance that users treat status labels, confidence labels, data-quality labels, filtered regulation lists, assessment shortlists, timeline milestone dates, briefing outputs, side-by-side comparisons, market counts, sector counts, profile-detail priority signals, copied Markdown summaries or downloaded CSV/JSON files as legal applicability conclusions or complete coverage claims.
+The Atlas now has many label-heavy, copyable, citation-like and exportable decision surfaces. The glossary, contextual help, copied-output caveats, source memo metadata, citation caveats and export metadata reduce the chance that users treat status labels, confidence labels, data-quality labels, filtered regulation lists, assessment shortlists, timeline milestone dates, briefing outputs, side-by-side comparisons, market counts, sector counts, profile-detail priority signals, copied Markdown summaries, copied source memos, Atlas citation snippets or downloaded CSV/JSON files as legal applicability conclusions, source verification, official translations or complete coverage claims.
 
 ## Legal And Product Caveat
 
-Glossary definitions, label guidance, copied summaries and downloaded exports are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification, legal opinions or compliance determinations. Regulation records, assessment categories, timeline milestones, briefing summaries, comparison tables, market profiles, sector profiles, profile-detail priority records, copied Markdown outputs and CSV/JSON exports remain seed regulatory intelligence unless independently source-reviewed.
+Glossary definitions, label guidance, copied summaries, copied source memos, citation snippets and downloaded exports are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification, legal opinions, legal authority or compliance determinations. Regulation records, assessment categories, timeline milestones, briefing summaries, comparison tables, market profiles, sector profiles, profile-detail priority records, copied Markdown outputs, source memo outputs, Atlas citation snippets and CSV/JSON exports remain seed regulatory intelligence unless independently source-reviewed.
 
 ## Future Release Sync Rule
 

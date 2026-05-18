@@ -1,3 +1,4 @@
+import { DATASET_META } from "@/data/_meta";
 import type { Regulation, SourceLink } from "@/types/regulation";
 import { formatDate } from "@/lib/utils";
 
@@ -84,15 +85,26 @@ export function sourceGovernanceMemo(regulation: Regulation) {
   return [
     `# Source review memo - ${regulation.shortName}`,
     "",
+    `Publisher: ${DATASET_META.publisher}`,
+    `Editor: ${DATASET_META.editor}`,
+    `Contact: ${DATASET_META.contactEmail}`,
+    `Edition: ${DATASET_META.edition}`,
+    `Dataset last reviewed: ${DATASET_META.lastReviewed}`,
+    "",
     `Regulation: ${regulation.title}`,
     `Jurisdiction: ${regulation.jurisdiction}`,
     `Current Atlas status: ${regulation.status.replaceAll("_", " ")}`,
     `Source posture: ${evidence.levelLabel}`,
     `Priority source to verify: ${evidence.prioritySource ? evidence.prioritySource.label : "Add a primary, regulator or standard-setter source."}`,
+    `Source count: ${evidence.sourceCount}`,
+    `Priority-source count: ${evidence.prioritySourceCount}`,
     `Last reviewed: ${formatDate(regulation.lastReviewed)}`,
     `Next review: ${formatDate(regulation.nextReviewDate)}`,
     `Confidence: ${regulation.confidenceLevel.replaceAll("_", " ")}`,
     `Data quality: ${regulation.dataQualityStatus.replaceAll("_", " ")}`,
+    "",
+    "## Source-review note",
+    "This memo is a source-review workflow aid. Source-backed means the seed record has captured source links; it does not mean independent source verification, legal completeness, official translation or entity-specific applicability review has been completed.",
     "",
     "## Facts to confirm",
     ...(regulation.applicabilityScope?.thresholds?.length

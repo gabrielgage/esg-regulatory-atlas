@@ -1,6 +1,7 @@
 import { AlertTriangle, CalendarClock, ExternalLink, FileCheck2, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
 import type { Regulation } from "@/types/regulation";
 import {
   sourceEvidenceFor,
@@ -105,7 +106,10 @@ export function SourceEvidencePanel({
               Copy this memo into the content review process before using the record for premium packs, advisory scans or client-ready summaries.
             </p>
           </div>
-          <CopyMarkdownButton text={sourceGovernanceMemo(regulation)} label="Copy source memo" />
+          <div className="grid gap-2 sm:justify-items-end">
+            <CopyMarkdownButton text={sourceGovernanceMemo(regulation)} label="Copy source memo" />
+            <CopyOutputNote className="max-w-xs sm:text-right" />
+          </div>
         </div>
         <ul className="mt-4 grid gap-2 text-sm leading-6 text-slate-700 md:grid-cols-2">
           {evidence.sourceReviewSteps.map((step) => (

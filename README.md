@@ -8,13 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.38 - May 2026`.
+The current public release context is `0.5.39 - May 2026`.
 
 Latest release-context update:
 
-- improves map contrast so country outlines and untracked countries are easier to see
-- adds an explicit map key explaining that pale countries are visible but do not yet have direct Atlas seed records
-- preserves copy/export caveats and decision-readiness checklist hardening from the prior releases
+- localizes the new map coverage key across English, Spanish, Dutch, French, German and Portuguese
+- keeps map coverage explanations inside the interface translation dictionary rather than hardcoded English
+- preserves the stronger map contrast and untracked-country key from the prior release
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -46,7 +46,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - CSV/JSON regulation exports with edition metadata, caveat fields and source-review notes
 - source review memo, citation and decision-readiness copy blocks with edition metadata and legal-caution caveats
 - light/dark mode toggle and first-visit light mode default
-- English, Spanish, Dutch, French, German and Portuguese interface chrome
+- English, Spanish, Dutch, French, German and Portuguese interface chrome, including map coverage guidance
 - shareable filtered URLs and CSV/JSON exports
 - source quality, data quality, confidence, caveat and review-risk indicators
 - commercial validation pages for plans, alerts, advisory, launch assets and premium roadmap

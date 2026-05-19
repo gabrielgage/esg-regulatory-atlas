@@ -363,7 +363,7 @@ export function WorldChoropleth({
           <defs>
             <linearGradient id="atlas-ocean-gradient" x1="0" x2="1" y1="0" y2="1">
               <stop offset="0%" stopColor={colors.background} />
-              <stop offset="100%" stopColor="rgba(15, 118, 110, 0.18)" />
+              <stop offset="100%" stopColor="#0f766e" stopOpacity="0.18" />
             </linearGradient>
           </defs>
           <rect width={width} height={height} fill="url(#atlas-ocean-gradient)" />

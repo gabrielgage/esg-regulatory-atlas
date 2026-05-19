@@ -2,11 +2,18 @@
 
 ## Current Edition
 
-`0.5.37 - May 2026`
+`0.5.38 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, and the copyable decision-readiness checklist hardening added immediately after.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, and the map contrast/untracked coverage key added immediately after.
+
+### 0.5.38 - Map Contrast And Untracked Coverage Key
+
+- Increased ocean, untracked-land and country-border contrast in light and dark mode.
+- Added an explicit map key explaining that pale countries are visible but do not yet have direct Atlas seed coverage.
+- Added a subtle ocean gradient and map frame so the country outline map reads as a map rather than floating shapes.
+- Added smoke coverage for the map coverage key and untracked-country styling.
 
 ### 0.5.37 - Decision Readiness Checklist Copy
 
@@ -96,7 +103,7 @@ The Atlas now has many label-heavy, copyable, citation-like and exportable decis
 
 ## Legal And Product Caveat
 
-Glossary definitions, label guidance, copied summaries, copied source memos, copied decision-readiness checklists, citation snippets and downloaded exports are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification, legal opinions, legal authority or compliance determinations. Regulation records, assessment categories, timeline milestones, briefing summaries, comparison tables, market profiles, sector profiles, profile-detail priority records, copied Markdown outputs, source memo outputs, decision-readiness checklist outputs, Atlas citation snippets and CSV/JSON exports remain seed regulatory intelligence unless independently source-reviewed.
+Glossary definitions, label guidance, copied summaries, copied source memos, copied decision-readiness checklists, citation snippets and downloaded exports are plain-language orientation aids. They are not official legal definitions, official translations, legal advice, source verification, legal opinions, legal authority or compliance determinations. Regulation records, assessment categories, timeline milestones, briefing summaries, comparison tables, market profiles, sector profiles, profile-detail priority records, copied Markdown outputs, source memo outputs, decision-readiness checklist outputs, map color signals, Atlas citation snippets and CSV/JSON exports remain seed regulatory intelligence unless independently source-reviewed.
 
 ## Future Release Sync Rule
 

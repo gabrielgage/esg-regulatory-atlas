@@ -2,6 +2,22 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.39 - May 2026",
+    date: "2026-05-19",
+    label: "Localized map coverage key",
+    summary:
+      "Moved the new untracked-country map explanation into the interface translation dictionary so the language toggle covers the map coverage key across English, Spanish, Dutch, French, German and Portuguese.",
+    added: [
+      "Localized untracked-country map title and body copy",
+      "Spanish smoke coverage for the map coverage key",
+      "Issue-log learning for avoiding English-only product chrome"
+    ],
+    updated: ["Map workspace", "World choropleth", "Interface translation dictionary", "Smoke tests", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "california-sb253-sb261"],
+    caveat:
+      "Language toggle translations cover product guidance only. Regulation records, legal source titles and legal interpretation remain source-linked seed intelligence and are not official translations."
+  },
+  {
     edition: "0.5.38 - May 2026",
     date: "2026-05-19",
     label: "Map contrast and untracked coverage key",

@@ -233,7 +233,7 @@ export function WorldChoropleth({
           <span className="font-semibold text-ink">{t("map.legend.viewTitle")}</span> {t("map.legend.viewBody")}
         </div>
         <div data-testid="map-untracked-key" className="rounded-xl border border-slate-300 bg-white px-3 py-2 shadow-sm">
-          <span className="font-semibold text-ink">Untracked country outlines:</span> pale land with dark borders means the country is visible on the map but does not yet have direct Atlas seed coverage.
+          <span className="font-semibold text-ink">{t("map.untrackedTitle")}</span> {t("map.untrackedBody")}
         </div>
       </div>
 

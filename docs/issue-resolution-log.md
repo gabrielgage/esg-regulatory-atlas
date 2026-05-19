@@ -18,6 +18,33 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
 
+## 2026-05-19 - Map Coverage Key Was English-Only
+
+Status: resolved in PR #55.
+
+### Symptom
+
+The map coverage key added in PR #54 explained untracked countries in English only, while the rest of the map workspace supports English, Spanish, Dutch, French, German and Portuguese interface chrome.
+
+### Root Cause
+
+The new product guidance was hardcoded directly in `components/WorldChoropleth.tsx` instead of being added to `lib/i18n.ts` with the other map labels.
+
+### Resolution
+
+Moved the untracked-country title and body copy into the translation dictionary, added all six supported language strings, and extended the language smoke test to assert the Spanish map coverage key.
+
+### Prevention Rule
+
+When adding visible product chrome to the map, filters, navigation, homepage, exports or other already-localized surfaces, add translation keys in the same change. Hardcoded English is acceptable only for regulation source titles or legal record content that intentionally remains source-linked seed intelligence.
+
+### Files Changed
+
+- `components/WorldChoropleth.tsx`
+- `lib/i18n.ts`
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-19 - Map Untracked Countries Were Too Easy To Miss
 
 Status: resolved in PR #54.

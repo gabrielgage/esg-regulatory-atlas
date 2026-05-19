@@ -65,6 +65,7 @@ test("language toggle updates interface chrome", async ({ page }) => {
   await page.getByLabel(/Language/i).selectOption("es");
   await expect(page.getByRole("link", { name: /Regulaciones/i })).toBeVisible();
   await expect(page.getByText(/Inteligencia regulatoria indicativa/i)).toBeVisible();
+  await expect(page.getByTestId("map-untracked-key")).toContainText(/Contornos de países no rastreados/i);
 });
 
 test("assessment results include decision readiness prompts", async ({ page }) => {

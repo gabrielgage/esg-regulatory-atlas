@@ -18,6 +18,33 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
 
+## 2026-05-19 - Map Untracked Countries Were Too Easy To Miss
+
+Status: resolved in PR #54.
+
+### Symptom
+
+The map could appear visually blank or shape-like to users because untracked countries, ocean background and borders did not have enough visual separation. Users could reasonably miss that grey/pale countries were present but not yet covered by direct Atlas seed records.
+
+### Root Cause
+
+The map used local country geometry correctly, but the visual language did not make the distinction between "untracked country visible on the map" and "tracked jurisdiction with seed records" explicit enough. The ocean, untracked land and border colors were too subtle for a product whose map is the primary workspace.
+
+### Resolution
+
+Increased map color contrast, strengthened country borders, added a subtle ocean gradient/frame, and added an explicit map key explaining that pale countries are visible but do not yet have direct Atlas seed coverage. Smoke coverage now checks the map key and untracked-country styling.
+
+### Prevention Rule
+
+For map or coverage UI, do not rely on color alone or a generic legend. Always explain whether a visual state means untracked, no data, low intensity, selected, inherited coverage or direct seed coverage. Add smoke coverage for the state users previously found confusing.
+
+### Files Changed
+
+- `components/WorldChoropleth.tsx`
+- `app/globals.css`
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-18 - PR #53 Persona Preset Hydration Race
 
 Status: resolved in PR #53 follow-up commit.

@@ -8,13 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.37 - May 2026`.
+The current public release context is `0.5.38 - May 2026`.
 
 Latest release-context update:
 
-- makes regulation detail decision-readiness checklists copyable with edition metadata, source-review steps, evidence prompts and first actions
-- keeps copied readiness checklists as orientation only, not legal opinions, source verification, complete coverage, official translations or entity-specific applicability decisions
-- preserves the source memo and citation caveat hardening from the prior release
+- improves map contrast so country outlines and untracked countries are easier to see
+- adds an explicit map key explaining that pale countries are visible but do not yet have direct Atlas seed records
+- preserves copy/export caveats and decision-readiness checklist hardening from the prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -33,7 +33,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - stable Tailwind/PostCSS v3 setup for Vercel deployment
 - static TypeScript seed data only
 - local Natural Earth country geometry, no paid map API and no Mapbox token
-- interactive map with visible country outlines, untracked-country styling, pan/zoom/reset controls and geometry fallback
+- interactive map with visible country outlines, explicit untracked-country key, stronger map contrast, pan/zoom/reset controls and geometry fallback
 - market profiles at `/markets` and `/jurisdiction/[code]` with tracked-coverage and detail-level glossary handoffs
 - sector profiles at `/sectors` and `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
 - regulation database and regulation detail pages

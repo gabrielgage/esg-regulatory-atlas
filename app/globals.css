@@ -6,22 +6,22 @@
   color-scheme: light;
   --background: #f6f8fb;
   --foreground: #0f172a;
-  --map-ocean: #dbeaf5;
-  --map-land-untracked: #f4f7fb;
-  --map-border: #60758b;
-  --map-outline: #334155;
-  --map-graticule: #93a9bd;
+  --map-ocean: #c7ddeb;
+  --map-land-untracked: #f8fafc;
+  --map-border: #475569;
+  --map-outline: #1f2937;
+  --map-graticule: #7f9bb4;
 }
 
 .dark {
   color-scheme: dark;
   --background: #061524;
   --foreground: #edf6ff;
-  --map-ocean: #082236;
-  --map-land-untracked: #163149;
-  --map-border: #7893aa;
-  --map-outline: #a8bfd3;
-  --map-graticule: #3e6077;
+  --map-ocean: #061827;
+  --map-land-untracked: #1d3850;
+  --map-border: #a9bdd0;
+  --map-outline: #d4e2ee;
+  --map-graticule: #52768f;
 }
 
 * {

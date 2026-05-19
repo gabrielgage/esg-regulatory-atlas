@@ -225,16 +225,19 @@ export function WorldChoropleth({
           <Legend color={colors.none} label={t("map.noData")} />
         </div>
       </div>
-      <div className="mb-3 grid gap-2 text-xs leading-5 text-slate-600 lg:grid-cols-2">
+      <div data-testid="map-coverage-key" className="mb-3 grid gap-2 text-xs leading-5 text-slate-600 lg:grid-cols-3">
         <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
           <span className="font-semibold text-ink">{t("map.legend.directTitle")}</span> {t("map.legend.directBody")}
         </div>
         <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
           <span className="font-semibold text-ink">{t("map.legend.viewTitle")}</span> {t("map.legend.viewBody")}
         </div>
+        <div data-testid="map-untracked-key" className="rounded-xl border border-slate-300 bg-white px-3 py-2 shadow-sm">
+          <span className="font-semibold text-ink">Untracked country outlines:</span> pale land with dark borders means the country is visible on the map but does not yet have direct Atlas seed coverage.
+        </div>
       </div>
 
-      <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-400 bg-[#e6eef6] shadow-inner">
+      <div data-testid="regulatory-map" className="relative min-h-[420px] flex-1 overflow-hidden rounded-xl border border-slate-500 bg-[var(--map-ocean)] shadow-inner ring-1 ring-slate-300/70">
         <div className="pointer-events-none absolute right-2 top-2 z-20 rounded-md border border-violet/20 bg-white/90 px-2 py-1 text-[10px] font-semibold text-violet shadow-sm">
           {t("map.view")}: {viewLabel}
         </div>
@@ -357,8 +360,15 @@ export function WorldChoropleth({
           onPointerCancel={handlePointerUp}
           style={{ background: colors.background }}
         >
-          <rect width={width} height={height} fill={colors.background} />
-          <g opacity="0.32">
+          <defs>
+            <linearGradient id="atlas-ocean-gradient" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stopColor={colors.background} />
+              <stop offset="100%" stopColor="#0f766e" stopOpacity="0.18" />
+            </linearGradient>
+          </defs>
+          <rect width={width} height={height} fill="url(#atlas-ocean-gradient)" />
+          <rect x="10" y="10" width={width - 20} height={height - 20} rx="18" fill="none" stroke={colors.outline} strokeOpacity="0.28" strokeWidth="1.4" />
+          <g opacity="0.46">
             {[-120, -60, 0, 60, 120].map((longitude) => {
               const x = project(longitude, 0).x;
               return <line key={`lon-${longitude}`} x1={x} y1={18} x2={x} y2={height - 18} stroke={colors.graticule} strokeWidth="0.8" strokeDasharray="4 8" />;
@@ -388,10 +398,10 @@ export function WorldChoropleth({
                   data-coverage={info.count > 0 ? "tracked" : "untracked"}
                   fill={fill}
                   stroke={active || hovered ? "#312e81" : euOverlay ? colors.euBorder : colors.border}
-                  strokeWidth={active || hovered ? 2.8 : euOverlay ? 1.85 : 1.35}
+                  strokeWidth={active || hovered ? 3.1 : euOverlay ? 2.05 : info.count > 0 ? 1.55 : 1.65}
                   vectorEffect="non-scaling-stroke"
                   strokeLinejoin="round"
-                  opacity={selectable || euOverlay ? 0.99 : 0.9}
+                  opacity={selectable || euOverlay ? 0.99 : 0.96}
                   aria-label={selectable ? `${info.jurisdiction?.name}: ${info.count} records` : feature.properties.name}
                   className={cn("outline-none transition", selectable && "cursor-pointer hover:brightness-95")}
                   onClick={() => {
@@ -418,8 +428,8 @@ export function WorldChoropleth({
                 d={geometryToPath(feature.geometry)}
                 fill="none"
                 stroke={colors.outline}
-                strokeOpacity="0.72"
-                strokeWidth="0.95"
+                strokeOpacity="0.86"
+                strokeWidth="1.05"
                 vectorEffect="non-scaling-stroke"
                 strokeLinejoin="round"
               />

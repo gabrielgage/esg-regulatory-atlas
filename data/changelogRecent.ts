@@ -2,6 +2,23 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.38 - May 2026",
+    date: "2026-05-19",
+    label: "Map contrast and untracked coverage key",
+    summary:
+      "Improved the map workspace so untracked countries, country borders and ocean background are visually clearer, with a dedicated key explaining that pale countries are visible but do not yet have direct Atlas seed records.",
+    added: [
+      "Explicit untracked-country map key",
+      "Stronger country outline and untracked-land contrast",
+      "Subtle ocean gradient and map frame for better visual separation",
+      "Smoke coverage for map key and untracked-country styling"
+    ],
+    updated: ["Map workspace", "World choropleth", "Theme map colors", "Smoke tests", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "california-sb253-sb261"],
+    caveat:
+      "Map color intensity reflects tracked Atlas seed coverage, not complete legal applicability, regulatory burden or full market coverage."
+  },
+  {
     edition: "0.5.37 - May 2026",
     date: "2026-05-18",
     label: "Decision readiness checklist copy",

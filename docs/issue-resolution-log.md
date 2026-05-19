@@ -18,6 +18,57 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
 
+## 2026-05-18 - PR #53 Persona Preset Hydration Race
+
+Status: resolved in PR #53 follow-up commit.
+
+### Symptom
+
+PR #53 passed TypeScript/build and Vercel, but the browser smoke test for regulation persona presets failed. The test clicked the Finance or ESG controller persona preset and the URL stayed at `/regulations` instead of receiving `?persona=finance-controller`.
+
+### Root Cause
+
+The regulations page rendered persona preset buttons before the client-side URL filter hydration effect had finished. A fast click could set the persona state, then the initial URL hydration effect could run with an empty URL and overwrite that interaction. The product issue was a real timing race, not just a test issue.
+
+### Resolution
+
+Disabled persona preset and clear-role controls until URL filter hydration is complete, and guarded the persona apply/reset handlers while `urlReady` is false. This keeps shareable filter restoration and user clicks from racing each other.
+
+### Prevention Rule
+
+When a client page initializes filters from the URL and also exposes immediate filter/action buttons, disable or gate those actions until URL hydration is complete. Do not rely on tests or users waiting for effects implicitly.
+
+### Files Changed
+
+- `app/regulations/page.tsx`
+- `components/PersonaPresets.tsx`
+- `docs/issue-resolution-log.md`
+
+## 2026-05-18 - PR #53 Copy-Output Note Smoke Locator Ambiguity
+
+Status: resolved in PR #53 follow-up commit.
+
+### Symptom
+
+The source memo/citation smoke test failed after PR #53 added a second copied-output note to regulation detail pages. Playwright strict mode found two matching caveat note elements.
+
+### Root Cause
+
+The product page was correct, but the smoke test used a broad text locator for copy-output caveat guidance. Adding a legitimate second copy surface made the locator ambiguous.
+
+### Resolution
+
+Scoped the assertion to the first matching note in that smoke test. The new decision-readiness copy surface has its own dedicated smoke test.
+
+### Prevention Rule
+
+When a page can contain repeated copy-output caveat notes, smoke tests should scope by section, button proximity, stable test hook or an explicit index. Do not assume there will only be one generic caveat note on a page.
+
+### Files Changed
+
+- `tests/source-memo-citation-caveats.spec.ts`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-13 - PR #39 Glossary Smoke Test Used Broad Heading Locator
 
 Status: resolved in PR #39 follow-up commit.

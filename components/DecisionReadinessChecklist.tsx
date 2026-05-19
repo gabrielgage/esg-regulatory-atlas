@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { AlertTriangle, CheckCircle2, ClipboardCheck, ShieldAlert } from "lucide-react";
 import { Badge } from "@/components/Badge";
-import { decisionReadinessClass, decisionReadinessFor } from "@/lib/decisionReadiness";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
+import { decisionReadinessClass, decisionReadinessFor, decisionReadinessMarkdown } from "@/lib/decisionReadiness";
 import type { Regulation } from "@/types/regulation";
 
 export function DecisionReadinessChecklist({
@@ -14,6 +16,7 @@ export function DecisionReadinessChecklist({
   compact?: boolean;
 }) {
   const plan = decisionReadinessFor(regulation, allRegulations);
+  const checklistMarkdown = decisionReadinessMarkdown(regulation, allRegulations);
 
   return (
     <section className={compact ? "rounded-2xl border border-slate-200 bg-slate-50 p-5" : "rounded-2xl border bg-white p-6 text-sm leading-6 text-slate-700 shadow-sm"}>
@@ -27,7 +30,11 @@ export function DecisionReadinessChecklist({
             Practical review controls before this record is reused in a client-ready brief, premium pack or advisory scan.
           </p>
         </div>
-        <Badge className={decisionReadinessClass[plan.level]}>{plan.levelLabel}</Badge>
+        <div className="flex flex-col items-start gap-2 sm:items-end">
+          <Badge className={decisionReadinessClass[plan.level]}>{plan.levelLabel}</Badge>
+          <CopyMarkdownButton text={checklistMarkdown} label="Copy readiness checklist" />
+          <CopyOutputNote className="max-w-xs sm:text-right" />
+        </div>
       </div>
 
       <div className="mt-4 grid gap-3 md:grid-cols-3">

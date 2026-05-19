@@ -1,3 +1,4 @@
+import { DATASET_META } from "@/data/_meta";
 import { marqueeReviewItems } from "@/data/contentReview";
 import type { Regulation } from "@/types/regulation";
 import { formatDate } from "./utils";
@@ -41,6 +42,58 @@ export function decisionReadinessFor(regulation: Regulation, allRegulations: Reg
     caveat:
       "Decision readiness is an orientation control. It does not verify legal completeness, decide applicability or replace qualified legal, tax, investment or assurance review."
   };
+}
+
+export function decisionReadinessMarkdown(regulation: Regulation, allRegulations: Regulation[] = []) {
+  const plan = decisionReadinessFor(regulation, allRegulations);
+  const sourceLines = regulation.sourceUrls.length
+    ? regulation.sourceUrls.slice(0, 6).map((source) => `- ${source.label} (${source.type}): ${source.url}`)
+    : ["- Add at least one primary, regulator or standard-setter source before client-ready use."];
+
+  return [
+    `# Decision readiness checklist: ${regulation.shortName}`,
+    "",
+    `Atlas edition: ${DATASET_META.edition}`,
+    `Publisher: ${DATASET_META.publisher}`,
+    `Editor: ${DATASET_META.editor}`,
+    `Contact: ${DATASET_META.contactEmail}`,
+    `Record: ${regulation.title}`,
+    `Jurisdiction: ${regulation.jurisdiction}`,
+    `Status: ${regulation.status.replaceAll("_", " ")}`,
+    `Last reviewed: ${formatDate(regulation.lastReviewed)}`,
+    regulation.nextReviewDate ? `Next review: ${formatDate(regulation.nextReviewDate)}` : "Next review: Not captured in seed data",
+    "",
+    "## Decision status",
+    `- Readiness level: ${plan.levelLabel}`,
+    `- Suggested owner: ${plan.owner}`,
+    `- Commercial use gate: ${plan.commercialUse}`,
+    "",
+    "## Facts to confirm",
+    ...markdownList(plan.factsToConfirm),
+    "",
+    "## Evidence package",
+    ...markdownList(plan.evidencePackage),
+    "",
+    "## First 30-day actions",
+    ...markdownList(plan.firstThirtyDayActions),
+    "",
+    "## Source-review steps",
+    ...markdownList(plan.sourceReviewSteps),
+    "",
+    "## Decision-data gaps",
+    ...markdownList(plan.missingDecisionData),
+    "",
+    "## Sources to verify",
+    ...sourceLines,
+    "",
+    "## Related records to review",
+    ...(plan.relatedRecordIds.length ? plan.relatedRecordIds.map((id) => `- ${id}`) : ["- No related seed record surfaced by the current rule set."]),
+    "",
+    "## Caveat",
+    `- ${plan.caveat}`,
+    "- This copied checklist is a planning aid and source-review prompt. It is not legal advice, a legal opinion, source verification, an official translation, complete coverage or an entity-specific applicability determination.",
+    "- Review primary sources and validate entity-specific facts with qualified counsel or regulatory advisors before relying on this output."
+  ].join("\n");
 }
 
 export const decisionReadinessClass: Record<DecisionReadinessLevel, string> = {
@@ -170,4 +223,8 @@ function suggestedOwnerFor(regulation: Regulation) {
   if (regulation.affectedFunctions.includes("Risk")) return "Risk and sustainability governance lead";
   if (regulation.affectedFunctions.includes("Board")) return "Board or executive sponsor";
   return regulation.affectedFunctions[0] ? `${regulation.affectedFunctions[0]} lead` : "Named business owner";
+}
+
+function markdownList(values: string[]) {
+  return values.length ? values.map((value) => `- ${value}`) : ["- Not captured in seed data; confirm before reliance."];
 }

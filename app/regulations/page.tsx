@@ -47,6 +47,7 @@ export default function RegulationsPage() {
   }, [activePersona, filters, urlReady]);
 
   function applyPersona(preset: PersonaPreset) {
+    if (!urlReady) return;
     setActivePersona(preset.id);
     setFilters({ ...initialFilters, ...preset.filters });
   }
@@ -57,6 +58,7 @@ export default function RegulationsPage() {
   }
 
   function resetFilters() {
+    if (!urlReady) return;
     setActivePersona("");
     setFilters(initialFilters);
   }
@@ -88,7 +90,7 @@ export default function RegulationsPage() {
             <RegulationExportButtons regulations={filtered} />
           </div>
         </div>
-        <PersonaPresets activeId={activePersona} onApply={applyPersona} onClear={resetFilters} />
+        <PersonaPresets activeId={activePersona} onApply={applyPersona} onClear={resetFilters} disabled={!urlReady} />
         <Filters filters={filters} regulations={regulations} onChange={updateFilters} onReset={resetFilters} />
         <ActiveFilterSummary
           filters={filters}

@@ -2,6 +2,23 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.37 - May 2026",
+    date: "2026-05-18",
+    label: "Decision readiness checklist copy",
+    summary:
+      "Made regulation detail decision-readiness controls copyable so advisory planning checklists carry edition context, source-review steps, evidence prompts, first actions and legal-caution caveats outside the Atlas interface.",
+    added: [
+      "Copy readiness checklist control on regulation detail pages",
+      "Edition, publisher, editor and contact metadata in copied readiness checklists",
+      "Source-review steps, facts to confirm, evidence package and first 30-day actions in copied readiness output",
+      "Smoke coverage for the copyable decision-readiness checklist"
+    ],
+    updated: ["Decision readiness checklist", "Decision readiness markdown", "Regulation detail pages", "Release metadata"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "sfdr"],
+    caveat:
+      "Copied decision-readiness checklists remain planning aids. They are not legal opinions, source verification, official translations, complete coverage or entity-specific applicability decisions."
+  },
+  {
     edition: "0.5.36 - May 2026",
     date: "2026-05-18",
     label: "Source memo and citation caveats",

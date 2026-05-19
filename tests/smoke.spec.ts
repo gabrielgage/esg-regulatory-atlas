@@ -32,6 +32,12 @@ test("country outline map renders and supports jurisdiction selection on tablet"
   await expect(page.getByRole("button", { name: /Zoom in/i })).toBeVisible();
   await expect(page.getByRole("button", { name: /Zoom out/i })).toBeVisible();
   await expect(page.getByText(/Drag to pan, scroll to zoom/i)).toBeVisible();
+  await expect(page.getByTestId("map-coverage-key")).toBeVisible();
+  await expect(page.getByTestId("map-untracked-key")).toContainText(/does not yet have direct Atlas seed coverage/i);
+
+  const untrackedPath = page.locator('[data-testid="country-path"][data-coverage="untracked"]').first();
+  await expect(untrackedPath).toBeVisible();
+  await expect(untrackedPath).toHaveAttribute("fill", "var(--map-land-untracked)");
 
   const mapBox = await page.getByTestId("country-outline-map").boundingBox();
   expect(mapBox?.width).toBeGreaterThan(500);

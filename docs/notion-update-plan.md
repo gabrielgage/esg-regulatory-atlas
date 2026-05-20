@@ -155,6 +155,13 @@ ADR-031:
 - Consequence: `/briefing` now starts with curated static scenarios and only then renders priority records, workstreams, data-governance checks and copied summaries for that scenario.
 - Status: Active.
 
+ADR-032:
+
+- Decision: Default the regulatory timeline to near-term planning.
+- Why: A full chronology can bury urgent planning signals behind older or less actionable dates.
+- Consequence: `/timeline` now defaults to next 24 months plus high-impact already-effective obligations, with next-12, in-force, longer-term and full-history modes available.
+- Status: Active.
+
 ADR-031:
 
 - Decision: Use local SVG pan/zoom controls before introducing a map platform.

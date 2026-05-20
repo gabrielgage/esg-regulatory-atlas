@@ -11,6 +11,27 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.46 - May 2026",
+    date: "2026-05-20",
+    label: "Near-term regulatory timeline planning",
+    summary:
+      "Reworked the timeline default into a planning-horizon view so users see next-12, next-24, already-in-force, longer-term watch and full-history modes instead of an undifferentiated chronology.",
+    added: [
+      "Planning horizon selector on `/timeline`",
+      "Default next-24-month timeline view anchored to the May 2026 release context",
+      "Already-in-force, longer-term watch and full-history timeline modes",
+      "Smoke coverage for timeline horizon selection and reset behavior"
+    ],
+    updated: [
+      "Timeline filter summary",
+      "Regulatory timeline milestone filtering",
+      "Project documentation and release context"
+    ],
+    records: ["Timeline", "Planning horizon", "Date-sensitive milestones", "Legal caveats"],
+    caveat:
+      "Timeline horizons are planning filters over seed data. They do not confirm legal deadlines, filing obligations, local implementation or entity-specific applicability."
+  },
+  {
     edition: "0.5.45 - May 2026",
     date: "2026-05-20",
     label: "Scenario-led briefing workspace",

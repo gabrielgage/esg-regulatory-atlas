@@ -76,7 +76,7 @@ The MVP includes:
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor users
 - Persona starting points in the Regulations workspace for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and advisor workflows
 - Timeline and methodology surfaces
-- Quarter-level milestone timeline for consultation, effective, reporting, due-date and source-review planning
+- Quarter-level milestone timeline with default near-term planning horizon for consultation, effective, reporting, due-date and source-review planning
 - Data Quality surface for source coverage and review-risk governance
 - Tabbed Data Quality workspace for overview, sources, coverage and review workflow
 - Data-quality review queue with visible scoring reasons for research prioritization

@@ -77,6 +77,15 @@ Current capability areas:
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
 
+## Recently Delivered Phase 1AB Items
+
+- Updated dataset metadata and recent changelog to `0.5.46 - May 2026`.
+- Added planning-horizon tabs to `/timeline` for next 12 months, next 24 months, already in force, longer-term watch and full history.
+- Made next 24 months the default timeline view, with high-impact already-effective obligations retained for planning context.
+- Added active filter summary support for non-default planning horizons.
+- Added smoke coverage for timeline horizon selection and reset behavior.
+- Kept timeline output as source-linked planning intelligence, not confirmed legal deadline advice.
+
 ## Recently Delivered Phase 1AA Items
 
 - Updated dataset metadata and recent changelog to `0.5.45 - May 2026`.

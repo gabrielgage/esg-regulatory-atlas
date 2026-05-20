@@ -158,6 +158,7 @@ Current important routes:
 - `/jurisdiction/[code]`: jurisdiction market profile
 - `/sectors`: sector starting point index
 - `/sectors/[slug]`: sector profile page
+- `/value-chain`: value-chain exposure workspace for supplier, trade/import, product, portfolio, financed-emissions and own-operations triage
 - `/regulations`: searchable regulation database
 - `/regulations/[slug]`: per-regulation detail route
 - `/assessment`: indicative applicability wizard
@@ -179,7 +180,8 @@ Current important routes:
 - `/advisory`: static advisory service surface for manual scans and briefings
 - `/launch`: static launch-resource workspace for caveated outreach copy
 
-Use `lib/marketProfile.ts` for jurisdiction profile aggregation and `lib/sectorProfile.ts` for sector profile aggregation. Do not hardcode regulatory records inside route components when an existing regulation field can drive the output.
+Use `lib/marketProfile.ts` for jurisdiction profile aggregation and `lib/sectorProfile.ts` for sector profile aggregation. Use `lib/valueChainProfile.ts` for value-chain exposure aggregation. Do not hardcode regulatory records inside route components when an existing regulation field can drive the output.
+Keep `/value-chain` outputs as business-exposure triage and evidence-planning aids, not applicability determinations or complete value-chain legal coverage.
 
 Persona starting points live in `data/personaPresets.ts` and are rendered on `/regulations`. Keep them as static orientation filters with cautious first-question and first-action prompts. Do not turn them into saved user profiles without explicit approval for authentication and database scope.
 

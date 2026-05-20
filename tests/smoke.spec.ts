@@ -240,8 +240,8 @@ test("changelog exposes the daily launch pulse", async ({ page }) => {
 });
 
 test("key launch routes render", async ({ page }) => {
-  for (const path of ["/markets", "/jurisdiction/euu", "/sectors", "/sectors/financial-services", "/assessment", "/timeline", "/briefing", "/data-quality", "/compare?jurisdictions=EUU,GBR", "/jurisdiction/euu/brief", "/launch"]) {
+  for (const path of ["/markets", "/jurisdiction/euu", "/sectors", "/sectors/financial-services", "/value-chain", "/assessment", "/timeline", "/briefing", "/data-quality", "/compare?jurisdictions=EUU,GBR", "/jurisdiction/euu/brief", "/launch"]) {
     await page.goto(path);
-    await expect(page.locator("body")).toContainText(/Etica ESG|Regulatory Atlas|Brief|Timeline|Assessment|Data Quality/i);
+    await expect(page.locator("body")).toContainText(/Etica ESG|Regulatory Atlas|Brief|Timeline|Assessment|Data Quality|Value-chain exposure/i);
   }
 });

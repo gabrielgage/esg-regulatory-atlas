@@ -21,6 +21,7 @@ Current capability areas:
 - Interactive regulatory map
 - `/markets` market profile index and `/jurisdiction/[code]` market profile pages
 - `/sectors` sector starting point index and `/sectors/[slug]` sector profile pages
+- `/value-chain` business-exposure workspace for supplier, importer/exporter, product, portfolio, financed-emissions and own-operations triage
 - Jurisdiction profiles
 - Filterable regulation table
 - Regulation detail view
@@ -73,6 +74,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1Y Items
+
+- Updated dataset metadata and recent changelog to `0.5.43 - May 2026`.
+- Added `/value-chain` as a value-chain exposure workspace.
+- Added `lib/valueChainProfile.ts` to aggregate tagged records by supplier, trade/import, product, claims, investment, financed-emissions, own-operations and governance exposure.
+- Added copyable value-chain exposure briefs and filtered links into `/regulations?valueChain=...`.
+- Added the route to the Header More menu and smoke coverage.
+- Kept the surface as seed intelligence and evidence-planning support. It is not legal advice, complete value-chain coverage or entity-specific applicability.
 
 ## Recently Delivered Phase 1X Items
 

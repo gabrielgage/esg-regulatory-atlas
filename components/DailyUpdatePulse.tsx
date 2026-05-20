@@ -20,7 +20,7 @@ export function DailyUpdatePulse({ compact = false }: { compact?: boolean }) {
           </div>
           <h2 className="mt-3 text-xl font-semibold text-ink">{update.headline}</h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-500">
-            A concise operating note for what just shipped, how it should be validated and what the next product-review pass should prioritize.
+            A concise operating note for what just shipped, how it should be validated and the next product-review focus.
           </p>
         </div>
         <Link

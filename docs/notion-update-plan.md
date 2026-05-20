@@ -161,6 +161,7 @@ Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prom
 
 Recent follow-up launch tasks:
 
+- LAUNCH-073 - Add static daily launch pulse to Changelog and Data Quality
 - LAUNCH-066 - Add Data Quality review workflow export panel
 - LAUNCH-067 - Add caveated CSV/JSON review workflow exports
 - LAUNCH-068 - Add copyable priority review packet for source QA
@@ -362,6 +363,20 @@ QA finding:
 Launch Command Center note:
 
 > Phase 1U keeps the Atlas broad without making the first screen feel overloaded. Core workspaces remain visible in the header, secondary governance/commercial/launch routes move into a translated More menu, and the homepage hero now uses one compact workspace snapshot instead of three separate metric cards.
+
+### 2026-05-20 Daily Launch Pulse
+
+> Phase 1V adds a static daily launch pulse to the public changelog and Data Quality overview. The pulse records what shipped, validation expectations and the next review focus without adding automated monitoring, email alerts, accounts, payments, a database or legal-update-service claims.
+
+Suggested Notion task:
+
+- LAUNCH-073 - Add daily launch pulse to release governance
+
+Acceptance criteria:
+
+- Changelog and Data Quality display the same current daily pulse.
+- Pulse includes shipped items, validation expectations, next focus and caveat language.
+- Pulse remains static editorial launch-train context, not automated monitoring or legal advice.
 
 Launch Tasks:
 

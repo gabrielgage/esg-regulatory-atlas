@@ -17,6 +17,31 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-20 - Production Dependency Audit Flagged Next.js Advisory
+
+Status: resolved in PR #56.
+
+### Symptom
+
+`npm audit --omit=dev` flagged a high-severity production dependency advisory for the installed Next.js range.
+
+### Root Cause
+
+The app was pinned to `next ^16.2.4`, while the audit database identified vulnerabilities affecting the installed range up to the currently resolved version.
+
+### Resolution
+
+Updated Next.js to `^16.2.6`, refreshed the package lock, reran production dependency audit, and confirmed `npm audit --omit=dev` reports zero vulnerabilities.
+
+### Prevention Rule
+
+Every daily launch-train update should run a production dependency audit when dependencies are installed locally. If the issue affects production dependencies and a non-breaking patch is available, include the smallest dependency patch and document the root cause here.
+
+### Files Changed
+
+- `package.json`
+- `package-lock.json`
+- `docs/issue-resolution-log.md`
 
 ## 2026-05-19 - Map Coverage Key Was English-Only
 

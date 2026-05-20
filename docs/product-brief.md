@@ -83,6 +83,7 @@ The MVP includes:
 - Market coverage-depth dashboard showing target direct-record depth, current count, gaps and review risk by jurisdiction
 - Coverage-confidence dashboard separating record volume from priority-source backing, review flags, stale dates and date-sensitive records
 - Public changelog
+- Daily launch pulse on Changelog and Data Quality for latest shipping context, validation expectations and next product-review focus
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts

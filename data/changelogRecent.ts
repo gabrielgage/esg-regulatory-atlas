@@ -2,6 +2,23 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.40 - May 2026",
+    date: "2026-05-20",
+    label: "Daily launch pulse and dependency audit patch",
+    summary:
+      "Added a compact daily launch pulse so the public changelog and Data Quality workspace share the same latest shipping context, validation expectations and next product-review focus, and patched Next.js after the production dependency audit flagged a high-severity advisory.",
+    added: [
+      "Static daily launch pulse data",
+      "Daily launch pulse component on `/changelog`",
+      "Compact daily launch pulse in the Data Quality overview",
+      "Smoke coverage for the daily launch pulse"
+    ],
+    updated: ["Changelog", "Data Quality", "Next.js dependency", "Release metadata", "Project documentation"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "california-sb253-sb261"],
+    caveat:
+      "The daily pulse is an editorial launch-train note. It is not automated monitoring, legal advice, source verification, official translation or a complete regulatory update service."
+  },
+  {
     edition: "0.5.39 - May 2026",
     date: "2026-05-19",
     label: "Localized map coverage key",

@@ -2,11 +2,19 @@
 
 ## Current Edition
 
-`0.5.39 - May 2026`
+`0.5.40 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, and the map coverage key localization added immediately after.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, and the daily launch pulse added afterward.
+
+### 0.5.40 - Daily Launch Pulse And Dependency Audit Patch
+
+- Added static daily launch pulse data in `data/dailyUpdates.ts`.
+- Added a reusable daily launch pulse component for latest shipping context, validation expectations and next product-review focus.
+- Added the pulse to `/changelog` and the Data Quality overview without adding automation, accounts, email infrastructure or backend services.
+- Patched Next.js to `^16.2.6` after `npm audit --omit=dev` flagged a high-severity advisory on the prior production dependency range.
+- Added smoke coverage confirming the daily launch pulse renders on both public and governance surfaces.
 
 ### 0.5.39 - Localized Map Coverage Key
 

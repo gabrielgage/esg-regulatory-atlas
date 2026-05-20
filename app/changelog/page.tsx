@@ -5,6 +5,7 @@ import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
+import { DailyUpdatePulse } from "@/components/DailyUpdatePulse";
 import { DATASET_META } from "@/data/_meta";
 import { CHANGELOG } from "@/data/changelog";
 import { RECENT_CHANGELOG } from "@/data/changelogRecent";
@@ -28,6 +29,7 @@ export default function ChangelogPage() {
           meta={`Current edition: ${DATASET_META.edition}. Dataset last reviewed ${DATASET_META.lastReviewed}.`}
         />
         <DisclaimerBanner />
+        <DailyUpdatePulse />
 
         <div className="space-y-4">
           {changelogEntries.map((edition) => (

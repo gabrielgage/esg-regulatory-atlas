@@ -11,6 +11,30 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.44 - May 2026",
+    date: "2026-05-20",
+    label: "Expert review launch-readiness fixes",
+    summary:
+      "Applied the first trust-risk findings from the expert review: safer CSRD/CSDDD threshold separation, visible premium source-review gates, removal of internal launch resources from public navigation, and a clearer Start Here path on the homepage.",
+    added: [
+      "Homepage Start Here panel with assessment, market and regulation-search entry paths",
+      "Premium source-review gate summary on premium pack preview pages",
+      "Per-record premium-use labels for illustrative-only, review-before-use and orientation-ready records",
+      "Noindex metadata for the internal launch-resource route"
+    ],
+    updated: [
+      "CSRD and CSDDD threshold caveats",
+      "Premium pack copied Markdown",
+      "Public navigation",
+      "Commercial CTA secondary paths",
+      "Smoke tests",
+      "Project documentation"
+    ],
+    records: ["CSRD", "CSDDD", "EU ESG Compliance Pack", "Premium source-review gate", "Start Here", "Public navigation"],
+    caveat:
+      "Premium-use gates and threshold notes are source-governance controls for planning. They do not verify legal completeness, determine applicability or make premium/advisory outputs client-ready without qualified review."
+  },
+  {
     edition: "0.5.24 - May 2026",
     date: "2026-05-11",
     label: "Client briefing handoff path",

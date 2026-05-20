@@ -119,8 +119,8 @@ export default function AlertsPage() {
           body="Request a sample digest or design-partner preview. The current flow is manual and editorial; production monitoring and automated email delivery are future-state only."
           href={alertRequestHref}
           label="Request alert preview"
-          secondaryHref="/launch"
-          secondaryLabel="Copy alert outreach"
+          secondaryHref="/plans"
+          secondaryLabel="Compare options"
         />
 
         <FooterDisclaimer />

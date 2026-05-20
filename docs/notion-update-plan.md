@@ -415,3 +415,21 @@ Launch Tasks:
 QA finding:
 
 - Navigation breadth can become a UX bug even when every route works. Future route additions should be placed intentionally into primary navigation only if they support the main user journey; otherwise they should live in More, route-specific CTAs, or supporting pages.
+
+## 2026-05-20 Codex Update - Expert Review Launch-Readiness Fixes
+
+Launch Command Center note:
+
+> Phase 1W applies the highest-risk findings from the May 20 expert review. The release separates CSRD and CSDDD threshold signals, shows premium-use gates on premium pack previews, removes the internal launch-resource route from public navigation, and adds a Start Here panel so first-time users can choose assessment, market profile or regulation search before handling advanced controls.
+
+Launch Tasks:
+
+- LAUNCH-078 - Separate CSRD and CSDDD threshold caveats in source-linked seed records
+- LAUNCH-079 - Add premium-use/source-review gates to premium pack previews
+- LAUNCH-080 - Remove internal `/launch` resources from public navigation and mark route noindex
+- LAUNCH-081 - Add Start Here module to the homepage
+- LAUNCH-082 - Replace public commercial CTA secondary links to `/launch` with user-facing plan/advisory routes
+
+QA finding:
+
+- Premium and advisory validation surfaces must respect content-governance gates. If a record is blocked or review-needed in the Marquee queue, any premium pack or alert preview that mentions it needs a visible illustrative-only or review-before-use label.

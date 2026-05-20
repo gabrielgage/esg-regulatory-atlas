@@ -56,8 +56,10 @@ Current capability areas:
 - `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
 - `/launch` launch-resource workspace with copyable LinkedIn, email, direct-outreach, advisory and premium-preview assets
-- Grouped primary and secondary navigation so core map, market, sector, regulation, assessment and plan routes stay prominent while governance, timeline, briefing, alerts, advisory and launch routes remain one click away
+- Grouped primary and secondary navigation so core map, market, sector, regulation, assessment and plan routes stay prominent while governance, timeline, briefing, alerts and advisory routes remain one click away; `/launch` is kept as an operator route, not public navigation
+- Homepage Start Here panel for assessment, market profile and regulation database entry paths
 - Concrete premium market-pack previews in `/premium-roadmap`
+- Premium pack preview source-review gates for illustrative-only, review-before-use and orientation-ready records
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
 - Assessment outputs with missing facts, suggested owners and next 30-day actions
 - Regulation detail decision cards for threshold gaps, timing caveats, enforcement cues and missing data
@@ -74,6 +76,16 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1Z Items
+
+- Updated dataset metadata and recent changelog to `0.5.44 - May 2026`.
+- Added the homepage Start Here panel so first-time users can choose assessment, market profile or regulation search before advanced controls.
+- Removed `/launch` from public navigation, added noindex metadata to the route and replaced commercial CTA secondary links to launch assets with plan/advisory routes.
+- Added `lib/premiumUseGates.ts` and premium pack preview source-review gates for blocked, review-needed and orientation-ready records.
+- Strengthened CSRD/CSDDD threshold caveats so CSDDD due-diligence scope signals are not treated as general CSRD corporate-reporting thresholds.
+- Added smoke coverage for Start Here, hidden Launch nav and premium gates.
+- Kept the changes static, source-linked and legally cautious.
 
 ## Recently Delivered Phase 1Y Items
 

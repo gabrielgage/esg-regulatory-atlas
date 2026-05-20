@@ -9,6 +9,14 @@ import { CommercialCTA } from "@/components/CommercialCTA";
 import { DATASET_META } from "@/data/_meta";
 import { launchAssets } from "@/data/launchAssets";
 
+export const metadata = {
+  title: "Launch resources | Etica ESG",
+  robots: {
+    index: false,
+    follow: false
+  }
+};
+
 export default function LaunchPage() {
   return (
     <main id="main-content" className="min-h-screen pb-12">

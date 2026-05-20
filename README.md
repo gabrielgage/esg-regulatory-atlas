@@ -8,14 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.43 - May 2026`.
+The current public release context is `0.5.44 - May 2026`.
 
 Latest release-context update:
 
-- adds `/value-chain` as a business-exposure workspace for suppliers, imports, products, claims, portfolio companies, financed emissions and own operations
-- gives users copyable value-chain briefs and filtered regulation handoffs
-- adds reusable value-chain profile aggregation in `lib/valueChainProfile.ts`
-- keeps value-chain outputs caveated as seed intelligence and evidence-planning aids, not legal advice or complete coverage
+- adds a Start Here panel on the homepage so new users can begin with an assessment, market profile or regulation search instead of a dense control surface
+- removes the internal `/launch` resource page from public navigation and marks it noindex while keeping it available for operator use
+- adds premium source-review gates to premium pack previews so blocked or review-needed records are visibly labelled before commercial reuse
+- separates CSRD and CSDDD threshold caveats so CSDDD scope signals are not reused as general EU sustainability reporting thresholds
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -74,7 +74,7 @@ The MVP does not include authentication, Supabase, external databases, Stripe, c
 - Plans: `/plans`
 - Alerts preview: `/alerts`
 - Advisory: `/advisory`
-- Launch assets: `/launch`
+- Launch assets: `/launch` (operator route, noindex, not linked from public navigation)
 - Premium roadmap: `/premium-roadmap`
 - Methodology: `/methodology`
 - Changelog: `/changelog`

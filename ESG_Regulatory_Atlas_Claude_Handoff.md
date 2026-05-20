@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1V daily launch-pulse pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass and Phase 1U navigation/homepage calm-down pass. The goal remains deployability and legal caution, with added emphasis on making each launch-train increment easier to understand, validate and hand off.
+The app is now in a static Phase 1W AI review-pack pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass and Phase 1V daily launch-pulse pass. The goal remains deployability and legal caution, with added emphasis on making each launch-train increment easier to understand, validate, review externally and hand off.
+
+## Phase 1W Changes Delivered
+
+- Updated dataset metadata and recent changelog to `0.5.41 - May 2026`.
+- Added `docs/ai-review/ESG_Regulatory_Atlas_AI_Review_Export_2026-05-20.md` as a detailed current-state export for Claude, ChatGPT or another external reviewer.
+- Added `docs/ai-review/AI_Reviewer_Feedback_Prompt.md` with structured reviewer instructions for product, UX, ESG coverage, legal-safety, commercial and technical feedback.
+- Added `docs/ai-review/Future_Capabilities_Deep_Review_Backlog.md` to separate static MVP improvements from later platform capabilities that require explicit scope approval.
+- Added `docs/ai-review/Regulatory_Coverage_Review_Worksheet.md` and `.csv` to support market-by-market and regulation-by-regulation coverage review.
+- Updated README, roadmap, product brief, release context and agent handoff docs so the external review pack becomes part of the standing workflow.
+
+## Phase 1W Product Rationale
+
+The product owner wants to collect detailed critique from another AI while Codex continues implementation. A structured review pack prevents outside feedback from becoming generic or disconnected from current constraints. It also gives ESG, legal-safety and product reviewers a shared worksheet for coverage gaps, source quality, launch blockers and premium-use blockers without treating the review output as legal advice.
 
 ## Phase 1V Changes Delivered
 

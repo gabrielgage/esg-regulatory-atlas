@@ -67,10 +67,20 @@ Current capability areas:
 - Decision-readiness evidence gates on regulation details and Data Quality for premium/advisory review controls
 - Source evidence trails and copyable source-review memos on regulation details and drawers
 - Data Quality review workflow exports for source, threshold, evidence and premium-use QA tracking
+- AI review pack for external product, ESG, legal-safety and regulatory coverage feedback
 - Tablet-and-desktop Natural Earth Admin 0 country-outline map with stronger visual contrast, untracked-country styling, pan/zoom controls and geometry fallback
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1W Items
+
+- Updated dataset metadata and recent changelog to `0.5.41 - May 2026`.
+- Added `docs/ai-review/ESG_Regulatory_Atlas_AI_Review_Export_2026-05-20.md` as a detailed current-state handoff for external AI or expert review.
+- Added `docs/ai-review/AI_Reviewer_Feedback_Prompt.md` to request structured, critical feedback from Claude, ChatGPT or another reviewer.
+- Added `docs/ai-review/Future_Capabilities_Deep_Review_Backlog.md` to separate launch-safe improvements from later platform capabilities.
+- Added `docs/ai-review/Regulatory_Coverage_Review_Worksheet.md` and `.csv` to support market and regulation coverage review in Markdown, Notion or spreadsheet workflows.
+- Kept the review pack as product QA and source-governance planning material; it is not legal advice, source verification, official translation or complete coverage.
 
 ## Recently Delivered Phase 1V Items
 

@@ -155,6 +155,13 @@ ADR-031:
 - Consequence: Add no-dependency SVG pan/zoom/reset controls, stronger country outlines and untracked-country styling while preserving local Natural Earth geometry.
 - Status: Active.
 
+ADR-032:
+
+- Decision: Maintain an AI review pack as an external feedback interface.
+- Why: The product owner wants parallel critique from Claude, ChatGPT or other reviewers while Codex continues shipping, but reviewers need accurate constraints and current-state context.
+- Consequence: Keep `docs/ai-review/` current with a current-state export, reviewer prompt, future capability backlog and regulatory coverage worksheet.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -174,6 +181,9 @@ Recent follow-up launch tasks:
 - LAUNCH-075 - Group secondary navigation routes into a translated More menu
 - LAUNCH-076 - Replace homepage metric cards with a compact workspace snapshot
 - LAUNCH-077 - Add smoke coverage for grouped navigation links
+- LAUNCH-078 - Add external AI review export and reviewer prompt
+- LAUNCH-079 - Add regulatory coverage review worksheet for market and source-gap review
+- LAUNCH-080 - Reconcile external review findings into backlog, Notion and source-governance tasks
 
 ## Content Review
 

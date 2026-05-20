@@ -205,6 +205,8 @@ test("data quality source-governance queue renders", async ({ page }) => {
   await page.goto("/data-quality");
 
   await expect(page.getByRole("tab", { name: /Overview/i })).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByTestId("daily-launch-pulse")).toContainText(/Daily launch pulse/i);
+  await expect(page.getByTestId("daily-launch-pulse")).toContainText(/next product-review focus/i);
   await expect(page.getByText(/Source freshness signals/i)).toBeVisible();
   await expect(page.getByText(/Stale source/i)).toBeVisible();
   await expect(page.getByText(/Missing primary source/i)).toBeVisible();
@@ -224,6 +226,15 @@ test("data quality source-governance queue renders", async ({ page }) => {
   await expect(page.getByRole("button", { name: /Export review CSV/i })).toBeVisible();
   await expect(page.getByText(/Owner placeholder:/i).first()).toBeVisible();
   await expect(page.getByText(/Premium use:/i).first()).toBeVisible();
+});
+
+test("changelog exposes the daily launch pulse", async ({ page }) => {
+  await page.goto("/changelog");
+
+  await expect(page.getByRole("heading", { name: /Public update log/i })).toBeVisible();
+  await expect(page.getByTestId("daily-launch-pulse")).toContainText(/Daily launch pulse/i);
+  await expect(page.getByTestId("daily-launch-pulse")).toContainText(/0.5.40 - May 2026/i);
+  await expect(page.getByTestId("daily-launch-pulse")).toContainText(/not automated monitoring/i);
 });
 
 test("key launch routes render", async ({ page }) => {

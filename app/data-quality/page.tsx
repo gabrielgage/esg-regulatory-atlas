@@ -9,6 +9,7 @@ import { CoverageMatrix } from "@/components/CoverageMatrix";
 import { CoverageConfidencePanel } from "@/components/CoverageConfidencePanel";
 import { CoverageDepthPanel } from "@/components/CoverageDepthPanel";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
+import { DailyUpdatePulse } from "@/components/DailyUpdatePulse";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { MarqueeReviewQueue } from "@/components/MarqueeReviewQueue";
 import { MarqueeEvidenceGate } from "@/components/MarqueeEvidenceGate";
@@ -75,6 +76,7 @@ export default function DataQualityPage() {
         <div id={`data-quality-${activeTab}`} role="tabpanel" className="space-y-5">
           {activeTab === "overview" ? (
             <>
+              <DailyUpdatePulse compact />
               <section className="grid gap-5 lg:grid-cols-2">
                 <GovernanceSection
                   eyebrow="Source-of-truth governance"

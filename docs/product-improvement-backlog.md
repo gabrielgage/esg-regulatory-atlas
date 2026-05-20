@@ -166,7 +166,7 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
 45. **Navigation and homepage calm-down**
     Status: materially delivered in `0.5.21 - May 2026`.
     Revenue relevance: Trust, conversion clarity and demo usability.
-    The primary navigation now keeps core workspaces visible and groups secondary governance, launch and commercial routes into a More menu. The homepage hero now uses one compact workspace snapshot instead of three competing metric cards. Continue this direction by avoiding new homepage panels unless they directly help users select a jurisdiction, filter records or inspect the selected market.
+    The primary navigation now keeps core workspaces visible and groups secondary governance, launch and commercial routes into a More menu. The homepage hero now uses one compact workspace snapshot instead of three competing metric cards, while the daily launch pulse gives Changelog and Data Quality a focused release-context surface. Continue this direction by avoiding new homepage panels unless they directly help users select a jurisdiction, filter records or inspect the selected market.
 
 ## Wave 3: Scaled Platform And Data Operations
 

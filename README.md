@@ -8,13 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.39 - May 2026`.
+The current public release context is `0.5.40 - May 2026`.
 
 Latest release-context update:
 
-- localizes the new map coverage key across English, Spanish, Dutch, French, German and Portuguese
-- keeps map coverage explanations inside the interface translation dictionary rather than hardcoded English
-- preserves the stronger map contrast and untracked-country key from the prior release
+- adds a compact daily launch pulse to `/changelog` and `/data-quality`
+- shows latest shipping context, validation expectations and next product-review focus in one reusable surface
+- patches Next.js to `^16.2.6` after production dependency audit flagged a high-severity advisory in the previous range
+- keeps daily update notes static, caveated and free of backend automation
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -38,6 +39,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - sector profiles at `/sectors` and `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
 - regulation database and regulation detail pages
 - public glossary and contextual label-help surfaces
+- daily launch pulse for latest release context and next product-review focus
 - assessment wizard with cautious indicative categories and glossary handoff
 - timeline with date-label glossary handoff
 - briefing workspace with copied-output glossary handoff
@@ -121,6 +123,7 @@ Core static data lives in `data/`:
 - `coverageTargets.ts`, `contentReview.ts`
 - `glossary.ts`, `glossaryGuides.ts`
 - `commercialOffers.ts`, `alertDigests.ts`, `premiumPacks.ts`, `launchAssets.ts`, `conversionTracking.ts`
+- `dailyUpdates.ts`
 - `personaPresets.ts`
 
 Shared regulation types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market and sector aggregation live in `lib/marketProfile.ts` and `lib/sectorProfile.ts`. Readiness, source governance, review workflow, URL filters and translations live under `lib/`.

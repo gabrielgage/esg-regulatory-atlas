@@ -30,6 +30,7 @@ Current capability areas:
 - Consulting-oriented advisory opportunities
 - Business impact and obligation tags
 - Public changelog
+- Daily launch pulse for latest release context, validation expectations and next product-review focus
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs
 - Citation copy blocks and edition snapshot routes
@@ -70,6 +71,16 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1V Items
+
+- Updated dataset metadata and recent changelog to `0.5.40 - May 2026`.
+- Added `data/dailyUpdates.ts` for a static daily launch-train note.
+- Added `components/DailyUpdatePulse.tsx`.
+- Surfaced the daily pulse on `/changelog` and the Data Quality overview.
+- Patched Next.js to `^16.2.6` after production dependency audit flagged a high-severity advisory in the previous range.
+- Added smoke coverage for the daily pulse on public and governance surfaces.
+- Kept the pulse editorial and static; it does not add automated monitoring, email alerts, accounts, a database, payments or legal-update-service claims.
 
 ## Recently Delivered Phase 1U Items
 

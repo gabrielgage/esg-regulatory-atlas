@@ -2,7 +2,21 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1U navigation and homepage calm-down pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass and Phase 1T map-workspace refresh pass. The goal remains deployability and legal caution, with added emphasis on making the main product workspace feel calm, navigable and map-led.
+The app is now in a static Phase 1V daily launch-pulse pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass and Phase 1U navigation/homepage calm-down pass. The goal remains deployability and legal caution, with added emphasis on making each launch-train increment easier to understand, validate and hand off.
+
+## Phase 1V Changes Delivered
+
+- Updated dataset metadata and recent changelog to `0.5.40 - May 2026`.
+- Added `data/dailyUpdates.ts` as a static daily launch-train note for shipped work, validation expectations and next product-review focus.
+- Added `components/DailyUpdatePulse.tsx`.
+- Surfaced the daily pulse on `/changelog` and the Data Quality overview.
+- Patched Next.js to `^16.2.6` after production dependency audit flagged a high-severity advisory in the previous range.
+- Added smoke coverage for the daily pulse on both public and governance surfaces.
+- Kept the update static and caveated; it does not create automated monitoring, email alerts, a database, accounts, payments or a legal update service.
+
+## Phase 1V Product Rationale
+
+The Atlas is moving quickly. A compact daily pulse gives users, future agents and reviewers one place to understand what changed most recently and what should be reviewed next without turning the homepage into a busy project dashboard. The pulse is intentionally editorial and static so it supports launch operations while preserving the MVP guardrails.
 
 ## Phase 1U Changes Delivered
 

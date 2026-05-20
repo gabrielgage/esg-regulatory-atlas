@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.45 - May 2026",
+    date: "2026-05-20",
+    label: "Scenario-led briefing workspace",
+    summary:
+      "Rebuilt the briefing workspace around curated scenarios so users choose the planning question before generating priority records, evidence prompts, advisory workstreams or copied summaries.",
+    added: [
+      "Briefing scenario data model and matcher",
+      "Scenario selector for EU reporting, PE portfolio, supplier/exporter, financial services and board/risk updates",
+      "Scenario-specific leadership question, first operating move, evidence package, advisory motion and next-check prompts",
+      "Smoke coverage for the scenario-first briefing flow"
+    ],
+    updated: [
+      "Briefing page information architecture",
+      "Executive briefing snapshot copy",
+      "Briefing client-summary smoke test",
+      "Project documentation and release context"
+    ],
+    records: ["Briefing", "Advisory workstreams", "Client summary", "Scenario selector", "Legal caveats"],
+    caveat:
+      "Briefing scenarios are static orientation templates. They narrow seed records and planning prompts but do not create client-ready legal advice, definitive applicability findings or verified compliance outputs."
+  },
+  {
     edition: "0.5.44 - May 2026",
     date: "2026-05-20",
     label: "Expert review launch-readiness fixes",

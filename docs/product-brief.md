@@ -87,6 +87,7 @@ The MVP includes:
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
+- Scenario-led briefing workspace with EU reporting, PE portfolio, supplier/exporter, financial-services and board/risk committee planning paths
 - Briefing sector heatmap
 - Citation copy blocks and edition snapshot routes
 - Light/dark mode toggle
@@ -102,6 +103,7 @@ The MVP includes:
 - `/advisory` manual service page for exposure scans, watchlists, portfolio/supplier maps and briefing packs
 - Grouped navigation that keeps core discovery routes prominent while placing timeline, briefing, data-quality, alert and advisory routes in a More menu; launch-support assets remain an operator route rather than public navigation
 - Homepage Start Here panel that routes new users to assessment, markets or regulation search before advanced controls
+- Scenario selector on `/briefing` that keeps priority records, evidence prompts and copied summaries tied to a selected planning question
 - Premium market-pack previews and sample table-of-contents sections
 - `/premium-packs/[id]` static sample pages for individual premium pack scopes
 - Premium pack pages with copyable and printable Markdown briefs

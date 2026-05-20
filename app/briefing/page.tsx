@@ -15,6 +15,8 @@ import { ExportSummaryButton } from "@/components/ExportSummaryButton";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
 import { SectorHeatmap } from "@/components/SectorHeatmap";
 import { RegulationDetail } from "@/components/RegulationDetail";
+import { Badge } from "@/components/Badge";
+import { briefingScenarios, getBriefingScenarioById, getScenarioRegulations, type BriefingScenario } from "@/data/briefingScenarios";
 import { regulations } from "@/data/seed";
 import { Regulation } from "@/types/regulation";
 import { cn } from "@/lib/utils";
@@ -66,7 +68,10 @@ type BriefingTab = (typeof tabs)[number]["id"];
 
 export default function BriefingPage() {
   const [activeTab, setActiveTab] = useState<BriefingTab>("Priority regulations");
+  const [activeScenarioId, setActiveScenarioId] = useState<string | null>(null);
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
+  const activeScenario = getBriefingScenarioById(activeScenarioId);
+  const scenarioRegulations = activeScenario ? getScenarioRegulations(regulations, activeScenario) : [];
   const activeStep = tabs.find((tab) => tab.id === activeTab) || tabs[0];
 
   return (
@@ -76,7 +81,7 @@ export default function BriefingPage() {
         <PageIntro
           eyebrow="Briefing"
           title="Executive and advisory briefing workspace"
-          body="Combine priority regulations, advisory workstreams, data governance risks and a copyable client planning summary in one focused briefing view."
+          body="Choose a briefing scenario, then assemble priority records, advisory workstreams, data governance risks and a copyable planning summary for that context."
         />
         <DisclaimerBanner />
         <GlossaryHelpCard
@@ -84,8 +89,37 @@ export default function BriefingPage() {
           body="Briefing tabs and copied summaries combine seed records, status labels, evidence prompts and advisory signals. Treat them as planning aids to review with sources and qualified advisors, not client-ready legal conclusions."
           compact
         />
+        <BriefingScenarioSelector
+          activeScenarioId={activeScenarioId}
+          onSelect={(scenario) => {
+            setActiveScenarioId(scenario.id);
+            setActiveTab("Priority regulations");
+          }}
+        />
+        {activeScenario ? (
         <section className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
           <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start" aria-label="Briefing builder">
+            <div className="rounded-2xl border border-teal/20 bg-teal/5 p-4 shadow-sm" data-testid="active-briefing-scenario">
+              <p className="text-xs font-semibold uppercase tracking-wide text-teal">Selected scenario</p>
+              <h2 className="mt-2 text-base font-semibold text-ink">{activeScenario.label}</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{activeScenario.description}</p>
+              <div className="mt-3 flex flex-wrap gap-1">
+                {activeScenario.bestFor.slice(0, 4).map((audience) => (
+                  <Badge key={audience} className="border-teal/20 bg-white text-teal">
+                    {audience}
+                  </Badge>
+                ))}
+              </div>
+              <div className="mt-4 rounded-xl border border-teal/15 bg-white p-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Next briefing checks</p>
+                <ul className="mt-2 space-y-1 text-xs leading-5 text-slate-600">
+                  {activeScenario.nextSteps.map((step) => (
+                    <li key={step}>- {step}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
             <div className="rounded-2xl border bg-white p-4 shadow-sm">
               <div className="flex items-center gap-2">
                 <FileText className="h-5 w-5 text-teal" />
@@ -163,16 +197,69 @@ export default function BriefingPage() {
               </div>
             </section>
 
-            {activeTab === "Priority regulations" && <ExecutiveBriefing regulations={regulations} onSelect={setSelectedRegulation} />}
+            {activeTab === "Priority regulations" && <ExecutiveBriefing regulations={scenarioRegulations} onSelect={setSelectedRegulation} scenario={activeScenario} />}
             {activeTab === "Sector heatmap" && <SectorHeatmap />}
-            {activeTab === "Advisory workstreams" && <AdvisoryInsights regulations={regulations} />}
-            {activeTab === "Data governance risks" && <DataQualityPanel regulations={regulations} onSelect={setSelectedRegulation} />}
-            {activeTab === "Client summary" && <ExportSummaryButton jurisdiction={null} regulations={regulations} />}
+            {activeTab === "Advisory workstreams" && <AdvisoryInsights regulations={scenarioRegulations} />}
+            {activeTab === "Data governance risks" && <DataQualityPanel regulations={scenarioRegulations} onSelect={setSelectedRegulation} />}
+            {activeTab === "Client summary" && <ExportSummaryButton jurisdiction={null} regulations={scenarioRegulations} />}
           </div>
         </section>
+        ) : (
+          <section className="rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm" data-testid="briefing-scenario-empty">
+            <p className="text-xs font-semibold uppercase tracking-wide text-teal">Start with a scenario</p>
+            <h2 className="mt-2 text-2xl font-bold text-ink">Choose a briefing scenario before generating outputs</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+              This keeps the briefing from mixing unrelated regimes, evidence packages or leadership questions. Each scenario remains a source-linked planning aid, not legal advice or a definitive applicability view.
+            </p>
+          </section>
+        )}
         <FooterDisclaimer />
       </div>
       <RegulationDetail regulation={selectedRegulation} onClose={() => setSelectedRegulation(null)} />
     </main>
+  );
+}
+
+function BriefingScenarioSelector({
+  activeScenarioId,
+  onSelect
+}: {
+  activeScenarioId: string | null;
+  onSelect: (scenario: BriefingScenario) => void;
+}) {
+  return (
+    <section className="rounded-2xl border bg-white p-5 shadow-sm">
+      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-teal">Briefing scenario</p>
+          <h2 className="mt-2 text-xl font-semibold text-ink">Pick the planning question first</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+            Scenario selection narrows records, operating moves and evidence prompts so the output reads like an intentional advisory note rather than a raw database rollup.
+          </p>
+        </div>
+        <p className="text-xs font-semibold text-slate-500">{activeScenarioId ? "Scenario active" : "Required before briefing output"}</p>
+      </div>
+      <div className="mt-4 grid gap-3 lg:grid-cols-5">
+        {briefingScenarios.map((scenario) => {
+          const active = activeScenarioId === scenario.id;
+          return (
+            <button
+              key={scenario.id}
+              type="button"
+              onClick={() => onSelect(scenario)}
+              aria-pressed={active}
+              className={cn(
+                "rounded-xl border p-4 text-left transition",
+                active ? "border-teal/50 bg-teal/10 shadow-sm" : "border-slate-200 bg-slate-50 hover:border-teal/40 hover:bg-white"
+              )}
+            >
+              <span className="text-xs font-semibold uppercase tracking-wide text-teal">{scenario.eyebrow}</span>
+              <span className="mt-2 block text-sm font-semibold text-ink">{scenario.label}</span>
+              <span className="mt-2 block text-xs leading-5 text-slate-600">{scenario.description}</span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
   );
 }

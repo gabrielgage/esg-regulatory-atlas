@@ -224,6 +224,8 @@ test("data quality source-governance queue renders", async ({ page }) => {
   await expect(page.getByText(/Review workflow export/i)).toBeVisible();
   await expect(page.getByRole("button", { name: /Copy priority review packet/i })).toBeVisible();
   await expect(page.getByRole("button", { name: /Export review CSV/i })).toBeVisible();
+  await expect(page.getByTestId("external-review-intake")).toContainText(/External review intake/i);
+  await expect(page.getByRole("button", { name: /Copy intake routing/i })).toBeVisible();
   await expect(page.getByText(/Owner placeholder:/i).first()).toBeVisible();
   await expect(page.getByText(/Premium use:/i).first()).toBeVisible();
 });

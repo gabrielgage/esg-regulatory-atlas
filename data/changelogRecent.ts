@@ -2,6 +2,23 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.42 - May 2026",
+    date: "2026-05-20",
+    label: "External review intake workflow",
+    summary:
+      "Added a visible Data Quality intake lane so external AI, ESG specialist and legal-risk review findings can be routed into issue logs, coverage worksheets, product backlog or future-capability planning before implementation.",
+    added: [
+      "External review intake panel on `/data-quality`",
+      "Review intake routing data",
+      "Copyable intake routing packet",
+      "Review feedback intake template under `docs/ai-review/`"
+    ],
+    updated: ["Data Quality", "AI review docs", "Smoke tests", "Release metadata", "Project documentation"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "california-sb253-sb261"],
+    caveat:
+      "External review intake routes feedback for product QA, source governance and roadmap planning. It is not legal advice, source verification, official translation, complete coverage or a compliance determination."
+  },
+  {
     edition: "0.5.41 - May 2026",
     date: "2026-05-20",
     label: "AI review pack for current and future capabilities",

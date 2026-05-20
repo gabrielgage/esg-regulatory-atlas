@@ -114,6 +114,7 @@ The MVP includes:
 - Source evidence trails and copyable source-review memos that turn captured sources into practical QA packets
 - Review workflow CSV/JSON exports and copyable priority review packets from `/data-quality`
 - AI review pack under `docs/ai-review/` for external critique of current capabilities, future roadmap, regulatory coverage, source governance, UX and legal-safety posture
+- External review intake panel on Data Quality for routing findings into issue logs, coverage review, product backlog or future capability planning
 - Reusable commercial CTA surfaces
 - Source quality indicators
 - Advisory opportunity and business impact views

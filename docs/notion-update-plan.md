@@ -162,6 +162,13 @@ ADR-032:
 - Consequence: Keep `docs/ai-review/` current with a current-state export, reviewer prompt, future capability backlog and regulatory coverage worksheet.
 - Status: Active.
 
+ADR-033:
+
+- Decision: Route external review feedback before implementation.
+- Why: External AI and specialist feedback can mix bugs, source gaps, useful static UX improvements and future platform ideas. Treating all feedback as immediate code work creates scope risk.
+- Consequence: Add a Data Quality external review intake lane that routes findings to issue logs, coverage review, backlog or future capability planning.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -184,6 +191,8 @@ Recent follow-up launch tasks:
 - LAUNCH-078 - Add external AI review export and reviewer prompt
 - LAUNCH-079 - Add regulatory coverage review worksheet for market and source-gap review
 - LAUNCH-080 - Reconcile external review findings into backlog, Notion and source-governance tasks
+- LAUNCH-081 - Add Data Quality external review intake lane
+- LAUNCH-082 - Add review feedback intake template
 
 ## Content Review
 

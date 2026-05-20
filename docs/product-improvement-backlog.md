@@ -25,17 +25,17 @@ The MVP already has the right core shape: a map-centered workspace, source-linke
 
 ## 2026-05-20 Expert Review Intake
 
-The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`:
+The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026` and `0.5.45 - May 2026`:
 
 - CSRD/CSDDD threshold language now separates corporate-reporting and due-diligence scope signals.
 - Premium pack previews now show source-review and premium-use gates for blocked or review-needed records.
 - `/launch` is no longer in public navigation and is marked noindex as an operator resource.
 - Public commercial CTAs now point to user-facing plan or advisory paths instead of launch-operator assets.
 - The homepage now has a Start Here panel with assessment, market and regulation-search entry paths.
+- `/briefing` now starts with curated scenarios for EU reporting, PE portfolio, supplier/exporter, financial services and board/risk committee outputs before any briefing content renders.
 
 Remaining high-priority expert-review items:
 
-- Rebuild `/briefing` around curated scenarios before showing a full default briefing.
 - Make `/timeline` default to near-term planning with a full-history option.
 - Add a structured threshold matrix for the top 20 high-value records.
 - Add data lint checks for premium-use gates, missing sources, missing caveats and definitive legal wording.

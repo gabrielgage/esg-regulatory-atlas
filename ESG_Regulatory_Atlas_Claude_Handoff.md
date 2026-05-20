@@ -2,7 +2,19 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1Z expert-review launch-readiness pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass and Phase 1Y value-chain exposure pass. The goal remains deployability and legal caution, with added emphasis on improving user-facing regulatory triage rather than adding infrastructure.
+The app is now in a static Phase 1AA scenario-led briefing pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass and Phase 1Z expert-review launch-readiness pass. The goal remains deployability and legal caution, with added emphasis on improving user-facing regulatory triage rather than adding infrastructure.
+
+## Phase 1AA Changes Delivered
+
+- Updated dataset metadata and recent changelog to `0.5.45 - May 2026`.
+- Added `data/briefingScenarios.ts` for curated EU reporting, PE portfolio, supplier/exporter, financial-services and board/risk committee briefing scenarios.
+- Updated `/briefing` so users choose a planning scenario before any priority-record, advisory-workstream, data-governance or client-summary output renders.
+- Passed selected scenario context into executive briefing cards so leadership question, first operating move, evidence package, advisory motion, caveat and next checks match the chosen use case.
+- Added smoke coverage for the scenario-first briefing flow.
+
+## Phase 1AA Product Rationale
+
+The May 20 expert review found that the briefing workspace could feel like raw data aggregation if it showed default records and evidence packages before the user selected a planning question. Phase 1AA turns `/briefing` into a scenario-led advisory workspace so outputs are narrower, clearer and less likely to mix unrelated regulatory regimes.
 
 ## Phase 1Z Changes Delivered
 

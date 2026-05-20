@@ -150,6 +150,13 @@ ADR-030:
 
 ADR-031:
 
+- Decision: Require a briefing scenario before rendering briefing outputs.
+- Why: Default briefings can look like raw data aggregation when records, evidence packages and leadership questions are not tied to a clear client or management scenario.
+- Consequence: `/briefing` now starts with curated static scenarios and only then renders priority records, workstreams, data-governance checks and copied summaries for that scenario.
+- Status: Active.
+
+ADR-031:
+
 - Decision: Use local SVG pan/zoom controls before introducing a map platform.
 - Why: Users need inspectable map behavior, but Mapbox, paid map APIs and runtime geospatial services remain out of MVP scope.
 - Consequence: Add no-dependency SVG pan/zoom/reset controls, stronger country outlines and untracked-country styling while preserving local Natural Earth geometry.

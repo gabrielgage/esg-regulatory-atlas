@@ -4,15 +4,18 @@ import { AlertTriangle, ArrowUpRight, BriefcaseBusiness, ClipboardCheck, Gauge }
 import { Badge } from "./Badge";
 import { RecordMetaBadges } from "./RecordMetaBadges";
 import { StatusBadge } from "./StatusBadge";
+import type { BriefingScenario } from "@/data/briefingScenarios";
 import { Regulation } from "@/types/regulation";
 import { uniq } from "@/lib/utils";
 
 export function ExecutiveBriefing({
   regulations,
-  onSelect
+  onSelect,
+  scenario
 }: {
   regulations: Regulation[];
   onSelect: (regulation: Regulation) => void;
+  scenario?: BriefingScenario;
 }) {
   const priority = regulations
     .map((regulation) => ({ regulation, score: priorityScore(regulation) }))
@@ -30,11 +33,12 @@ export function ExecutiveBriefing({
         <div>
           <div className="flex items-center gap-2">
             <Gauge className="h-5 w-5 text-teal" />
-            <h2 className="font-semibold text-ink">Executive briefing</h2>
+            <h2 className="font-semibold text-ink">{scenario ? `${scenario.label} snapshot` : "Executive briefing"}</h2>
           </div>
           <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500">
-            Decision-ready snapshot of what needs leadership attention in the current regulatory view.
+            {scenario?.description || "Decision-ready snapshot of what needs leadership attention in the current regulatory view."}
           </p>
+          {scenario ? <p className="mt-2 max-w-3xl text-xs leading-5 text-slate-500">{scenario.caveat}</p> : null}
         </div>
         <div className="flex flex-wrap gap-2">
           <Badge className="border-red-200 bg-red-50 text-red-700">{urgent} urgent priorities</Badge>
@@ -94,22 +98,22 @@ export function ExecutiveBriefing({
           <BriefingCard
             icon={AlertTriangle}
             title="Leadership question"
-            body="Which obligations create board, finance or external assurance exposure in the next reporting cycles?"
+            body={scenario?.leadershipQuestion || "Which obligations create board, finance or external assurance exposure in the next reporting cycles?"}
           />
           <BriefingCard
             icon={ClipboardCheck}
             title="First operating move"
-            body={firstActions.length ? firstActions.slice(0, 2).join(" ") : workstreams.length ? `Stand up accountable owners for ${workstreams.slice(0, 3).join(", ")}.` : "Broaden filters to identify accountable workstreams."}
+            body={scenario?.firstOperatingMove || (firstActions.length ? firstActions.slice(0, 2).join(" ") : workstreams.length ? `Stand up accountable owners for ${workstreams.slice(0, 3).join(", ")}.` : "Broaden filters to identify accountable workstreams.")}
           />
           <BriefingCard
             icon={ClipboardCheck}
             title="Evidence package"
-            body={evidence.length ? evidence.slice(0, 4).join(", ") : "Start with an applicability assessment, source review log and management sign-off record."}
+            body={scenario?.evidencePackage || (evidence.length ? evidence.slice(0, 4).join(", ") : "Start with an applicability assessment, source review log and management sign-off record.")}
           />
           <BriefingCard
             icon={BriefcaseBusiness}
             title="Advisory motion"
-            body={advisory.length ? advisory.slice(0, 3).join(", ") : "No advisory opportunities in the current filter set."}
+            body={scenario?.advisoryMotion || (advisory.length ? advisory.slice(0, 3).join(", ") : "No advisory opportunities in the current filter set.")}
           />
         </div>
       </div>

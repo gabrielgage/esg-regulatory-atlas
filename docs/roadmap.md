@@ -77,6 +77,15 @@ Current capability areas:
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
 
+## Recently Delivered Phase 1AA Items
+
+- Updated dataset metadata and recent changelog to `0.5.45 - May 2026`.
+- Added `data/briefingScenarios.ts` with curated briefing scenarios for EU corporate reporting, PE portfolio exposure, SME supplier/exporter readiness, financial-services sustainable finance and board/risk committee updates.
+- Updated `/briefing` so users choose a scenario before priority records, advisory workstreams, data-governance risks or copied summaries render.
+- Added scenario-specific leadership questions, first operating moves, evidence packages, advisory motions, caveats and next-check prompts.
+- Added smoke coverage for the scenario-first briefing flow.
+- Kept briefing outputs as static planning aids, not legal advice or definitive applicability outputs.
+
 ## Recently Delivered Phase 1Z Items
 
 - Updated dataset metadata and recent changelog to `0.5.44 - May 2026`.

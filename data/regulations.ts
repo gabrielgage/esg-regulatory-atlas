@@ -29,12 +29,12 @@ export const regulations: Regulation[] = [
     effectiveDate: "2024-01-01",
     firstReportingYear: 2025,
     summary: "Requires in-scope companies to report sustainability information under ESRS, including double materiality, governance, strategy, impacts, risks, opportunities, metrics and targets.",
-    applicability: "Large EU public-interest entities in the first wave, later large-undertaking and listed-SME cohorts subject to stop-the-clock and Omnibus implementation, and certain non-EU parent groups subject to EU turnover and local presence triggers.",
+    applicability: "Large EU public-interest entities in the first wave, later large-undertaking and listed-SME cohorts subject to stop-the-clock, Omnibus and national implementation review, and certain non-EU parent groups subject to separate EU turnover and local presence triggers.",
     applicabilityScope: {
       thresholds: [
-        "Baseline EU large-undertaking definition references at least two of: EUR 25 million balance sheet total, EUR 50 million net turnover, and 250 employees.",
-        "Directive (EU) 2026/470 creates transitional relief for some FY2025-FY2026 cohorts and references EUR 450 million net turnover and 1,000-employee thresholds for those transition periods.",
-        "Non-EU group reporting remains subject to EU turnover, EU subsidiary or branch triggers, and ongoing Omnibus implementation review."
+        "CSRD baseline large-undertaking scope historically references at least two of: EUR 25 million balance sheet total, EUR 50 million net turnover, and 250 employees; confirm current national transposition and Omnibus implementation before relying on this signal.",
+        "CSRD simplification and transition measures should be reviewed separately from CSDDD scope. Do not reuse CSDDD employee or turnover thresholds as a general CSRD threshold.",
+        "Non-EU group reporting remains a separate CSRD trigger set based on EU turnover, EU subsidiary or branch presence, reporting year and ongoing implementation review."
       ],
       entityTypes: ["Large EU public-interest entities", "Large undertakings and groups", "Listed SMEs under later phase-in", "Certain non-EU parent groups"],
       sectorsInScope: ["All sectors", "Financial services", "Manufacturing", "Real estate", "Private equity"]
@@ -47,17 +47,22 @@ export const regulations: Regulation[] = [
       src("Directive (EU) 2022/2464", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2464"),
       src("Directive (EU) 2026/470 Omnibus amendments", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026L0470")
     ],
-    latestUpdate: "May 2026 seed update: added current large-undertaking thresholds and Omnibus transition caveat based on official EUR-Lex sources.",
+    latestUpdate: "May 2026 seed update: separated CSRD threshold language from CSDDD threshold signals and strengthened Omnibus/national implementation caveats based on official EUR-Lex sources.",
     lastReviewed: REVIEWED,
     nextReviewDate: NEXT_REVIEW,
     confidence: "high",
     confidenceLevel: "high",
     dataQualityStatus: "verified_seed",
-    changeLogSummary: "Updated scope thresholds, phase-in caveat and source set after v3 review.",
+    changeLogSummary: "Updated scope thresholds, phase-in caveat and source set after v3 review; v0.5.44 clarified that CSDDD thresholds must not be treated as general CSRD thresholds.",
     advisoryOpportunities: ["Double materiality assessment", "Gap assessment", "Reporting readiness", "Internal controls", "Assurance preparation", "ESG software implementation"],
     firstReportDueDate: "2025-12-31",
     phaseInNotes: "Wave 1 companies report from FY2024 in 2025. Later large-undertaking and listed-SME waves are affected by stop-the-clock and Omnibus amendments, so users should verify national implementation before relying on a date.",
     penalties: "CSRD enforcement is implemented through Member State law. Directive (EU) 2022/2464 requires effective, proportionate and dissuasive sanctions and assurance-related investigation and sanction systems; fine amounts and enforcement mechanics vary by national transposition.",
+    caveats: [
+      "CSRD threshold, cohort and timing signals are included for planning orientation only.",
+      "Do not treat CSDDD thresholds as CSRD thresholds; each regime should be reviewed against its own legal basis and implementation status.",
+      "Confirm entity-specific group structure, EU turnover, Member State transposition, phase-in relief and assurance requirements before relying on this record."
+    ],
     highImpact: true
   },
   {
@@ -211,13 +216,13 @@ export const regulations: Regulation[] = [
     effectiveDate: "2024-07-25",
     firstReportingYear: 2028,
     summary: "Introduces due diligence duties for actual and potential adverse human rights and environmental impacts across operations and chains of activities.",
-    applicability: "Very large EU and non-EU companies and ultimate parent groups subject to the current consolidated CSDDD scope thresholds, franchise and licensing triggers, and phased Member State implementation.",
+    applicability: "Very large EU and non-EU companies and ultimate parent groups subject to CSDDD-specific consolidated scope thresholds, franchise and licensing triggers, and phased Member State implementation.",
     applicabilityScope: {
       thresholds: [
-        "Current consolidated Article 2 threshold for EU companies: more than 5,000 employees and more than EUR 1.5 billion net worldwide turnover.",
+        "CSDDD-specific signal only: current consolidated Article 2 threshold for EU companies references more than 5,000 employees and more than EUR 1.5 billion net worldwide turnover.",
         "Ultimate parent companies are in scope where the group reaches the relevant thresholds.",
         "Franchise or licensing models can be in scope where EU royalties exceed EUR 75 million and worldwide turnover exceeds EUR 275 million.",
-        "Non-EU company thresholds depend on EU turnover and current consolidated CSDDD scope rules."
+        "Non-EU company thresholds depend on EU turnover and current consolidated CSDDD scope rules; do not reuse these thresholds for CSRD, ESRS or EU Taxonomy screening."
       ],
       entityTypes: ["Very large EU companies", "Ultimate parent companies", "Large non-EU companies with EU turnover", "Franchise or licensing groups"],
       sectorsInScope: ["All sectors", "Manufacturing", "Food and beverage", "Packaging", "Financial services", "Private equity"]
@@ -231,7 +236,7 @@ export const regulations: Regulation[] = [
       src("Current consolidated CSDDD text", "https://eur-lex.europa.eu/eli/dir/2024/1760/2026-03-18/eng"),
       src("Directive (EU) 2026/470 Omnibus amendments", "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026L0470")
     ],
-    latestUpdate: "May 2026 seed update: updated scope thresholds and penalty language against the current consolidated CSDDD text.",
+    latestUpdate: "May 2026 seed update: clarified CSDDD-specific thresholds and separated them from CSRD/ESRS applicability language.",
     lastReviewed: REVIEWED,
     nextReviewDate: NEXT_REVIEW,
     confidence: "high",
@@ -241,6 +246,11 @@ export const regulations: Regulation[] = [
     firstReportDueDate: "2029-12-31",
     phaseInNotes: "Member State implementation and first application are phased. Current consolidated text and Omnibus-related changes should be checked for the company cohort before client use.",
     penalties: "Current consolidated CSDDD penalty provisions require Member States to set effective, proportionate and dissuasive penalties. The amended Article 27 references maximum pecuniary penalties set at 3% of net worldwide turnover or consolidated worldwide turnover for parent-company cases.",
+    caveats: [
+      "CSDDD thresholds are regime-specific due-diligence scope signals, not general EU sustainability reporting thresholds.",
+      "Member State implementation, group structure, EU/non-EU turnover, franchise/licensing triggers and phase-in timing should be confirmed before client reliance.",
+      "Use this record for orientation and source review; it does not decide whether an entity is legally in scope."
+    ],
     highImpact: true
   },
   {

@@ -100,16 +100,18 @@ The MVP includes:
 - `/plans` commercial architecture page
 - `/alerts` static premium digest and watchlist preview
 - `/advisory` manual service page for exposure scans, watchlists, portfolio/supplier maps and briefing packs
-- Grouped navigation that keeps core discovery routes prominent while placing timeline, briefing, data-quality, alert, advisory and launch-support routes in a More menu
+- Grouped navigation that keeps core discovery routes prominent while placing timeline, briefing, data-quality, alert and advisory routes in a More menu; launch-support assets remain an operator route rather than public navigation
+- Homepage Start Here panel that routes new users to assessment, markets or regulation search before advanced controls
 - Premium market-pack previews and sample table-of-contents sections
 - `/premium-packs/[id]` static sample pages for individual premium pack scopes
 - Premium pack pages with copyable and printable Markdown briefs
 - Manual conversion tracking model for CTA and mailto-subject validation without analytics infrastructure
-- `/launch` workspace with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets
+- `/launch` operator workspace with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets, marked noindex and not linked from public navigation
 - `/markets` workspace for browsing jurisdiction market profiles by region, source coverage and review flags
 - `/sectors` workspace and `/sectors/[slug]` pages for business-context regulatory triage by sector, market signal, evidence need and advisory workstream
 - `/value-chain` workspace for supplier, importer/exporter, product, claims, portfolio, financed-emissions, own-operations and board-governance exposure triage
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
+- Premium pack source-review gates that disclose illustrative-only and review-before-use records before commercial reuse
 - Source freshness and premium-use blocker signals for source-governance triage
 - Decision-readiness checklists that translate source, threshold and evidence gaps into review controls for regulation details and Marquee premium/advisory use
 - Source evidence trails and copyable source-review memos that turn captured sources into practical QA packets

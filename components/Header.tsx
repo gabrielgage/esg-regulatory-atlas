@@ -25,8 +25,7 @@ const secondaryNavItems = [
   { href: "/data-quality", labelKey: "nav.dataQuality" },
   { href: "/glossary", labels: { en: "Glossary", es: "Glosario", nl: "Woordenlijst", fr: "Glossaire", de: "Glossar", pt: "Glossário" } },
   { href: "/alerts", labelKey: "nav.alerts" },
-  { href: "/advisory", labelKey: "nav.advisory" },
-  { href: "/launch", labelKey: "nav.launch" }
+  { href: "/advisory", labelKey: "nav.advisory" }
 ] satisfies Array<{ href: string; labelKey?: TranslationKey; labels?: Record<LanguageCode, string> }>;
 
 function isActive(pathname: string, href: string) {

@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1Y value-chain exposure pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass and Phase 1X external review-intake pass. The goal remains deployability and legal caution, with added emphasis on improving user-facing regulatory triage rather than adding infrastructure.
+The app is now in a static Phase 1Z expert-review launch-readiness pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass and Phase 1Y value-chain exposure pass. The goal remains deployability and legal caution, with added emphasis on improving user-facing regulatory triage rather than adding infrastructure.
+
+## Phase 1Z Changes Delivered
+
+- Updated dataset metadata and recent changelog to `0.5.44 - May 2026`.
+- Added a homepage Start Here panel with three first actions: exposure assessment, market profile and regulation search.
+- Removed `/launch` from public navigation, marked the route noindex and changed public commercial CTA secondary paths to user-facing plan/advisory routes.
+- Added `lib/premiumUseGates.ts` and premium pack preview labels for illustrative-only, review-before-use and orientation-ready records.
+- Strengthened CSRD/CSDDD seed-record wording so CSDDD thresholds are not reused as general EU corporate-reporting thresholds.
+- Added smoke coverage for the Start Here panel, hidden Launch nav item and premium pack source-review gates.
+
+## Phase 1Z Product Rationale
+
+The May 20 expert review identified trust-risk issues before the next product expansion: threshold wording needed to be regime-specific, blocked premium-use records needed visible gates, and operator launch resources should not be part of the public user journey. Phase 1Z fixes those credibility issues while improving first-time orientation on the homepage.
 
 ## Phase 1Y Changes Delivered
 

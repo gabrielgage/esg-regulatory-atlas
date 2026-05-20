@@ -121,6 +121,8 @@ When changing `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/premium-pa
 - The page is static and deployable without required environment variables.
 - No Stripe, checkout, billing SDK, subscription, authentication, database, production email backend, scraping, cron job or paid API was added.
 - CTAs use mailto or static links only.
+- Public user-facing routes should not link to `/launch`; keep `/launch` as an operator route unless it is rewritten as a client-facing resource.
+- Premium pack previews must render source-review or premium-use gates for matched regulation records.
 - Copy distinguishes Free Atlas, Premium Intelligence preview, Advisory Atlas and Enterprise/API future.
 - Alert previews do not imply production monitoring is live.
 - Advisory copy avoids definitive legal applicability language.

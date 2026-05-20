@@ -17,6 +17,84 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-20 - PR #60 Smoke Test Used Ambiguous Text Selectors
+
+Status: resolved in PR #60 follow-up commit.
+
+### Symptom
+
+The GitHub browser smoke test failed after the Start Here module and premium pack source-review gates were added. The app rendered correctly, but Playwright reported strict-mode violations because the Spanish "Regulaciones" link and the premium-use blocker sentence each appeared in more than one visible place.
+
+### Root Cause
+
+The smoke assertions selected global text instead of the intended UI region. The language toggle check looked for any link named "Regulaciones", which matched both the header and the homepage Start Here card. The premium pack check looked for blocker copy globally, which matched multiple regulation cards.
+
+### Resolution
+
+Scoped the language check to the header navigation and scoped the premium blocker check to the CSRD gate card. This keeps the smoke test verifying the same product behavior while avoiding false failures when repeated accessible text is valid.
+
+### Prevention Rule
+
+When a test validates navigation or repeated card content, scope the locator to the smallest stable region: header, table row, drawer, named card or `data-testid`. Do not use page-wide text selectors for phrases that can naturally appear in multiple product surfaces.
+
+### Files Changed
+
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`
+
+## 2026-05-20 - Expert Review Found Public Navigation And Premium Gate Trust Risks
+
+Status: resolved in PR #60.
+
+### Symptom
+
+The expert review found two trust-risk defects: `/launch` appeared in the public More menu even though it is an operator workspace, and premium pack previews could list records already marked as blocked pending source, status or threshold review without a visible pack-level gate.
+
+### Root Cause
+
+Navigation and commercial validation grew faster than the governance layer. The Header treated launch assets as a normal public workspace, while premium packs matched regime names directly to seed records without reading the Marquee review queue's premium-use blockers.
+
+### Resolution
+
+Removed `/launch` from public navigation, added noindex metadata to the launch route, replaced public commercial CTA secondary links to user-facing plan/advisory routes, and added `lib/premiumUseGates.ts` so premium pack previews label records as illustrative-only, review-before-use or orientation-ready.
+
+### Prevention Rule
+
+Internal/operator routes should not be placed in public navigation unless they are rewritten as client-facing resources. Any premium, advisory or alert preview that lists regulation records must also render record-level source-review or premium-use gates when those records are blocked or review-needed.
+
+### Files Changed
+
+- `components/Header.tsx`
+- `app/launch/page.tsx`
+- `app/premium-packs/[id]/page.tsx`
+- `lib/premiumUseGates.ts`
+- `tests/smoke.spec.ts`
+
+## 2026-05-20 - Expert Review Found CSRD/CSDDD Threshold Conflation Risk
+
+Status: resolved in PR #60.
+
+### Symptom
+
+The expert review flagged that EU threshold language could be read as mixing CSRD corporate-reporting signals with CSDDD due-diligence scope thresholds.
+
+### Root Cause
+
+High-risk EU records contained threshold text in the same general "applicability" shape, while the UI and assessment logic could surface the first threshold bullet without enough regime-specific warning.
+
+### Resolution
+
+Updated CSRD and CSDDD seed records to explicitly state that CSDDD thresholds must not be reused as general CSRD, ESRS or EU Taxonomy threshold signals. Added caveats and latest-update language emphasizing national implementation, Omnibus context and source review before reliance.
+
+### Prevention Rule
+
+EU thresholds must be regime-specific. Do not reuse employee, turnover, balance sheet, listing, franchise, due-diligence or reporting thresholds across CSRD, ESRS, CSDDD, EU Taxonomy or SFDR without an explicit source and caveat.
+
+### Files Changed
+
+- `data/regulations.ts`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-20 - Daily Pulse Compact Variant Hid Next-Focus Content
 
 Status: resolved in PR #56 follow-up commit.

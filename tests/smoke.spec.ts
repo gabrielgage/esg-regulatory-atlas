@@ -18,7 +18,11 @@ test("map workspace loads with core product controls", async ({ page }) => {
   await expect(navigation.getByRole("link", { name: /Data Quality/i })).toBeVisible();
   await expect(navigation.getByRole("link", { name: /^Alerts$/i })).toBeVisible();
   await expect(navigation.getByRole("link", { name: /^Advisory$/i })).toBeVisible();
-  await expect(navigation.getByRole("link", { name: /^Launch$/i })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: /^Launch$/i })).toHaveCount(0);
+  await expect(page.getByTestId("start-here-panel")).toContainText(/Choose the fastest path/i);
+  await expect(page.getByRole("link", { name: /Run an exposure assessment/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Explore a jurisdiction/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Search regulations/i })).toBeVisible();
 });
 
 test("country outline map renders and supports jurisdiction selection on tablet", async ({ page }) => {
@@ -63,7 +67,7 @@ test("language toggle updates interface chrome", async ({ page }) => {
   await page.goto("/");
 
   await page.getByLabel(/Language/i).selectOption("es");
-  await expect(page.getByRole("link", { name: /Regulaciones/i })).toBeVisible();
+  await expect(page.locator("header").getByRole("link", { name: /^Regulaciones$/i })).toBeVisible();
   await expect(page.getByText(/Inteligencia regulatoria indicativa/i)).toBeVisible();
   await expect(page.getByTestId("map-untracked-key")).toContainText(/Contornos de países no rastreados/i);
 });
@@ -146,6 +150,16 @@ test("launch asset copy blocks render", async ({ page }) => {
   await expect(page.getByRole("button", { name: /Copy asset/i }).first()).toBeVisible();
   await expect(page.getByRole("link", { name: /Draft email/i }).first()).toBeVisible();
   await expect(page.getByText(/commercial validation/i).first()).toBeVisible();
+});
+
+test("premium pack previews expose source-review gates", async ({ page }) => {
+  await page.goto("/premium-packs/eu-esg-compliance-pack");
+
+  await expect(page.getByTestId("premium-gate-summary")).toContainText(/Premium source-review gates/i);
+  await expect(page.getByTestId("premium-gate-summary")).toContainText(/Illustrative only/i);
+  const csrdGateCard = page.getByRole("link", { name: /CSRD/i }).first();
+  await expect(csrdGateCard).toContainText(/Illustrative only/i);
+  await expect(csrdGateCard).toContainText(/blocked from premium use until source, status and threshold review is complete/i);
 });
 
 test("market profile pages render jurisdiction decision context", async ({ page }) => {

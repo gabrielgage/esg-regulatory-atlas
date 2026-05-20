@@ -23,6 +23,24 @@ The deep research assessment adds a commercialization overlay to the backlog:
 
 The MVP already has the right core shape: a map-centered workspace, source-linked regulation records, jurisdiction panels, assessment, timeline, briefing, data-quality surfaces, exports, comparison, language toggle and launch checks. The next improvement step is not adding more visual sections to the homepage. The highest-value work is making the existing surfaces more decision-oriented, more accessible, more source-governed and more useful for specific personas such as CSOs, legal teams, procurement leads, finance controllers and ESG advisors.
 
+## 2026-05-20 Expert Review Intake
+
+The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`:
+
+- CSRD/CSDDD threshold language now separates corporate-reporting and due-diligence scope signals.
+- Premium pack previews now show source-review and premium-use gates for blocked or review-needed records.
+- `/launch` is no longer in public navigation and is marked noindex as an operator resource.
+- Public commercial CTAs now point to user-facing plan or advisory paths instead of launch-operator assets.
+- The homepage now has a Start Here panel with assessment, market and regulation-search entry paths.
+
+Remaining high-priority expert-review items:
+
+- Rebuild `/briefing` around curated scenarios before showing a full default briefing.
+- Make `/timeline` default to near-term planning with a full-history option.
+- Add a structured threshold matrix for the top 20 high-value records.
+- Add data lint checks for premium-use gates, missing sources, missing caveats and definitive legal wording.
+- Continue source-reviewing Marquee 10 before using records in premium or advisory examples.
+
 ## Wave 1: Launch Quality And Static MVP Usefulness
 
 Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.

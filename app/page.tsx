@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Database, HelpCircle } from "lucide-react";
+import { ArrowRight, ClipboardList, Database, HelpCircle, MapPinned, Search } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Filters } from "@/components/Filters";
 import { WorldChoropleth as WorldMap } from "@/components/WorldChoropleth";
@@ -102,6 +102,8 @@ export default function Home() {
 
         <DisclaimerBanner />
 
+        <StartHerePanel />
+
         <section className="rounded-2xl border bg-white p-3 shadow-sm">
           <div className="mb-3 flex flex-col gap-2 px-1 md:flex-row md:items-center md:justify-between">
             <div>
@@ -140,6 +142,64 @@ export default function Home() {
       </div>
       <RegulationDetail regulation={selectedRegulation} onClose={() => setSelectedRegulation(null)} />
     </main>
+  );
+}
+
+function StartHerePanel() {
+  const { t } = useLanguage();
+  const starts = [
+    {
+      href: "/assessment",
+      icon: ClipboardList,
+      title: t("home.startHereAssessmentTitle"),
+      body: t("home.startHereAssessmentBody"),
+      action: t("home.startHereAssessmentAction")
+    },
+    {
+      href: "/markets",
+      icon: MapPinned,
+      title: t("home.startHereMarketsTitle"),
+      body: t("home.startHereMarketsBody"),
+      action: t("home.startHereMarketsAction")
+    },
+    {
+      href: "/regulations",
+      icon: Search,
+      title: t("home.startHereRegulationsTitle"),
+      body: t("home.startHereRegulationsBody"),
+      action: t("home.startHereRegulationsAction")
+    }
+  ];
+
+  return (
+    <section className="rounded-2xl border bg-white p-5 shadow-sm md:p-6" data-testid="start-here-panel">
+      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">{t("home.startHereEyebrow")}</p>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink">{t("home.startHereTitle")}</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">{t("home.startHereBody")}</p>
+        </div>
+        <Badge className="border-amber-200 bg-amber-50 text-amber-800">{t("home.startHereCaveat")}</Badge>
+      </div>
+      <div className="mt-5 grid gap-3 lg:grid-cols-3">
+        {starts.map((item) => {
+          const Icon = item.icon;
+          return (
+            <Link key={item.href} href={item.href} className="group rounded-2xl border border-slate-200 bg-slate-50 p-4 transition hover:border-teal/40 hover:bg-teal/5">
+              <div className="flex items-start justify-between gap-3">
+                <span className="rounded-xl bg-white p-2 text-teal shadow-sm">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <ArrowRight className="h-4 w-4 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-teal" />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-ink">{item.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{item.body}</p>
+              <div className="mt-4 text-sm font-semibold text-teal">{item.action}</div>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 

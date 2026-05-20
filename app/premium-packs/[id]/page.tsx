@@ -11,6 +11,7 @@ import { PrintButton } from "@/components/PrintButton";
 import { DATASET_META } from "@/data/_meta";
 import { premiumPacks } from "@/data/premiumPacks";
 import { regulations } from "@/data/seed";
+import { premiumGateSummary, premiumUseGateFor } from "@/lib/premiumUseGates";
 import { Regulation } from "@/types/regulation";
 
 export function generateStaticParams() {
@@ -31,6 +32,7 @@ export default async function PremiumPackPage({ params }: { params: Promise<{ id
   if (!pack) notFound();
 
   const matchedRegulations = findPackRegulations(pack.includedRegimes);
+  const gateSummary = premiumGateSummary(matchedRegulations);
   const markdown = buildPackMarkdown(pack, matchedRegulations);
 
   return (
@@ -78,6 +80,27 @@ export default async function PremiumPackPage({ params }: { params: Promise<{ id
           <SummaryCard title="Topic scope" values={pack.topics} />
         </section>
 
+        <section className="rounded-2xl border bg-white p-5 shadow-sm" data-testid="premium-gate-summary">
+          <div className="grid gap-5 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
+            <div>
+              <h2 className="text-lg font-semibold text-ink">Premium source-review gates</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                The sample pack can mention launch-critical regimes for buyer validation, but blocked or review-needed records must be visibly labelled before they are reused in a premium, client-ready or advisory output.
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-3">
+              <GateMetric label="Illustrative only" value={String(gateSummary.blocked.length)} className="border-red-200 bg-red-50 text-red-700" />
+              <GateMetric label="Review before use" value={String(gateSummary.review.length)} className="border-amber-200 bg-amber-50 text-amber-800" />
+              <GateMetric label="Orientation-ready" value={String(gateSummary.ready.length)} className="border-teal/20 bg-teal/10 text-teal" />
+            </div>
+          </div>
+          {gateSummary.blocked.length || gateSummary.review.length ? (
+            <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900">
+              Records labelled illustrative-only or review-before-use remain suitable for public orientation and pack scoping, but should not be treated as premium-ready until source, status, threshold and timing checks are complete.
+            </div>
+          ) : null}
+        </section>
+
         <section className="grid gap-5 lg:grid-cols-[.9fr_1.1fr]">
           <section className="rounded-2xl border bg-white p-5 shadow-sm">
             <h2 className="text-lg font-semibold text-ink">Sample table of contents</h2>
@@ -120,12 +143,17 @@ export default async function PremiumPackPage({ params }: { params: Promise<{ id
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             {pack.includedRegimes.map((regime) => {
               const regulation = matchedRegulations.find((item) => matchesRegime(item, regime));
+              const gate = regulation ? premiumUseGateFor(regulation) : null;
               return regulation ? (
                 <Link key={regime} href={`/regulations/${regulation.id}`} className="rounded-xl border border-slate-200 bg-slate-50 p-4 hover:bg-teal/5">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="font-semibold text-ink">{regulation.shortName}</div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <div className="font-semibold text-ink">{regulation.shortName}</div>
+                        {gate ? <Badge className={gate.className}>{gate.label}</Badge> : null}
+                      </div>
                       <p className="mt-1 line-clamp-2 text-sm leading-5 text-slate-600">{regulation.summary}</p>
+                      {gate && gate.level !== "ready" ? <p className="mt-2 text-xs leading-5 text-slate-500">{gate.body}</p> : null}
                     </div>
                     <ExternalLink className="mt-1 h-4 w-4 shrink-0 text-teal" />
                   </div>
@@ -185,6 +213,15 @@ function DecisionCard({ title, body }: { title: string; body: string }) {
   );
 }
 
+function GateMetric({ label, value, className }: { label: string; value: string; className: string }) {
+  return (
+    <div className={`rounded-xl border p-4 ${className}`}>
+      <div className="text-xs font-semibold uppercase tracking-wide opacity-75">{label}</div>
+      <div className="mt-2 text-2xl font-bold">{value}</div>
+    </div>
+  );
+}
+
 function findPackRegulations(regimeNames: string[]) {
   return regulations.filter((regulation) => regimeNames.some((regime) => matchesRegime(regulation, regime)));
 }
@@ -203,7 +240,8 @@ function buildPackMarkdown(pack: (typeof premiumPacks)[number], matchedRegulatio
   const regimeLines = pack.includedRegimes.map((regime) => {
     const regulation = matchedRegulations.find((item) => matchesRegime(item, regime));
     if (!regulation) return `- ${regime}: pack-scope item to validate during source review.`;
-    return `- ${regulation.shortName}: ${regulation.summary}`;
+    const gate = premiumUseGateFor(regulation);
+    return `- ${regulation.shortName}: ${regulation.summary} Premium-use gate: ${gate.label}. ${gate.level === "ready" ? "Preserve caveats and source review." : gate.body}`;
   });
 
   return [

@@ -2,11 +2,20 @@
 
 ## Current Edition
 
-`0.5.43 - May 2026`
+`0.5.44 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, the AI review pack added for external product, ESG and legal-safety critique, the external review intake workflow added to Data Quality, and the value-chain exposure workspace added for business-exposure triage.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, the AI review pack added for external product, ESG and legal-safety critique, the external review intake workflow added to Data Quality, the value-chain exposure workspace added for business-exposure triage, and the expert-review launch-readiness fixes for threshold wording, premium gates, public navigation and homepage orientation.
+
+### 0.5.44 - Expert Review Launch-Readiness Fixes
+
+- Added a compact Start Here panel to `/` so first-time users can begin with an exposure assessment, market profile or regulation search.
+- Removed `/launch` from public navigation and set noindex metadata on the route because it is an operator workspace, not a client-facing product route.
+- Replaced public commercial CTA secondary links to `/launch` with user-facing plan or advisory routes.
+- Added premium source-review gates on premium pack preview pages so blocked or review-needed records are labelled as illustrative-only or review-before-use.
+- Strengthened CSRD/CSDDD threshold wording so CSDDD threshold signals are not presented as general EU corporate-reporting thresholds.
+- Added smoke coverage for the Start Here panel, hidden Launch nav item and premium gate visibility.
 
 ### 0.5.43 - Value-Chain Exposure Workspace
 

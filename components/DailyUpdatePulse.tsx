@@ -31,10 +31,10 @@ export function DailyUpdatePulse({ compact = false }: { compact?: boolean }) {
         </Link>
       </div>
 
-      <div className={compact ? "mt-4 grid gap-3 lg:grid-cols-2" : "mt-5 grid gap-4 lg:grid-cols-3"}>
+      <div className={compact ? "mt-4 grid gap-3 lg:grid-cols-3" : "mt-5 grid gap-4 lg:grid-cols-3"}>
         <PulseList icon="shipped" title="Shipped" items={update.shipped} />
         <PulseList icon="validation" title="Validation" items={update.validation} />
-        {!compact ? <PulseList icon="next" title="Next focus" items={update.nextFocus} /> : null}
+        <PulseList icon="next" title="Next focus" items={update.nextFocus} />
       </div>
 
       <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900">{update.caveat}</p>

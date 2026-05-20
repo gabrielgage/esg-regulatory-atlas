@@ -17,6 +17,31 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-20 - Daily Pulse Compact Variant Hid Next-Focus Content
+
+Status: resolved in PR #56 follow-up commit.
+
+### Symptom
+
+PR #56 browser smoke tests failed on Data Quality because the test expected the daily launch pulse to include next product-review focus content, but the compact variant rendered only shipped and validation sections.
+
+### Root Cause
+
+`DailyUpdatePulse` accepted a `compact` mode and used that mode to hide the Next focus column. The product intent for the pulse was to keep shipped, validation and next-focus context visible wherever the pulse appears.
+
+### Resolution
+
+Updated the compact layout to keep all three columns visible while tightening the grid spacing. The smoke test remains strict because the missing section was a real product-content mismatch, not a bad selector.
+
+### Prevention Rule
+
+For reusable launch-governance components, compact variants may reduce spacing or layout density but should not silently remove required decision context such as next actions, caveats, source status or validation expectations.
+
+### Files Changed
+
+- `components/DailyUpdatePulse.tsx`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-20 - Production Dependency Audit Flagged Next.js Advisory
 
 Status: resolved in PR #56.

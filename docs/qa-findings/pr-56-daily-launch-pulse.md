@@ -14,6 +14,8 @@ Added `data/dailyUpdates.ts` and `components/DailyUpdatePulse.tsx`, then surface
 
 During validation, `npm audit --omit=dev` also flagged a high-severity Next.js production dependency advisory. The release patches Next.js to `^16.2.6`, refreshes the package lock and documents the root cause in `docs/issue-resolution-log.md`.
 
+PR CI then caught that the compact Data Quality variant hid the Next focus column. The component now keeps Shipped, Validation and Next focus visible in both standard and compact layouts.
+
 ## Guardrail
 
 The daily pulse is static editorial release context. It does not create automated monitoring, email alerts, a database, accounts, payment infrastructure, official translations, source verification or legal advice.

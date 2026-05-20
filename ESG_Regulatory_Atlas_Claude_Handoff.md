@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1W AI review-pack pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass and Phase 1V daily launch-pulse pass. The goal remains deployability and legal caution, with added emphasis on making each launch-train increment easier to understand, validate, review externally and hand off.
+The app is now in a static Phase 1X external review-intake pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass and Phase 1W AI review-pack pass. The goal remains deployability and legal caution, with added emphasis on making each launch-train increment easier to understand, validate, review externally and hand off.
+
+## Phase 1X Changes Delivered
+
+- Updated dataset metadata and recent changelog to `0.5.42 - May 2026`.
+- Added `data/reviewIntake.ts` for external review categories and routing destinations.
+- Added `components/ExternalReviewIntakePanel.tsx` to the Data Quality review workflow tab.
+- Added copyable intake-routing text so feedback can move into issue logs, coverage worksheets, product backlog or future-capability planning.
+- Added `docs/ai-review/Review_Feedback_Intake_Template.md`.
+- Added smoke coverage for the new Data Quality external review intake surface.
+
+## Phase 1X Product Rationale
+
+The AI review pack helps collect feedback, but feedback only improves the product if it is triaged into the right artifact. Phase 1X turns outside critique into an operating workflow: confirmed defects go to the issue log, content gaps go to the coverage worksheet, static MVP improvements go to the backlog and future platform ideas stay out of the current build until explicitly approved.
 
 ## Phase 1W Changes Delivered
 

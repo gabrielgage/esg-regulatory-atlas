@@ -108,6 +108,8 @@ Current AI review-pack convention:
 - `docs/ai-review/AI_Reviewer_Feedback_Prompt.md` is the preferred prompt when asking Claude, ChatGPT or another reviewer for structured critique.
 - `docs/ai-review/Future_Capabilities_Deep_Review_Backlog.md` separates static launch-safe improvements from future platform capabilities.
 - `docs/ai-review/Regulatory_Coverage_Review_Worksheet.md` and `.csv` are the preferred templates for market and regulation coverage review.
+- `docs/ai-review/Review_Feedback_Intake_Template.md` is the preferred template for turning external feedback into routed implementation or review work.
+- `data/reviewIntake.ts` and `components/ExternalReviewIntakePanel.tsx` surface the intake routing workflow on `/data-quality`.
 - Treat AI/expert review outputs as product QA, content QA and source-governance input. They are not legal opinions, source verification, official translations, compliance determinations or complete-coverage certification.
 
 Current navigation convention:

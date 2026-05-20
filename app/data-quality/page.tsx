@@ -10,6 +10,7 @@ import { CoverageConfidencePanel } from "@/components/CoverageConfidencePanel";
 import { CoverageDepthPanel } from "@/components/CoverageDepthPanel";
 import { DataQualityPanel } from "@/components/DataQualityPanel";
 import { DailyUpdatePulse } from "@/components/DailyUpdatePulse";
+import { ExternalReviewIntakePanel } from "@/components/ExternalReviewIntakePanel";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { MarqueeReviewQueue } from "@/components/MarqueeReviewQueue";
 import { MarqueeEvidenceGate } from "@/components/MarqueeEvidenceGate";
@@ -124,6 +125,7 @@ export default function DataQualityPage() {
             <>
               <MarqueeEvidenceGate regulations={regulations} />
               <ReviewWorkflowExportPanel regulations={regulations} onSelect={setSelectedRegulation} />
+              <ExternalReviewIntakePanel />
               <MarqueeReviewQueue regulations={regulations} onSelect={setSelectedRegulation} />
             </>
           ) : null}

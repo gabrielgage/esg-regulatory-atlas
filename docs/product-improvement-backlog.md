@@ -173,6 +173,11 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Revenue relevance: Trust, content QA, launch readiness and source-governance throughput.
     `docs/ai-review/` now gives the owner a current-state export, reviewer prompt, future capability backlog and market/regulation coverage worksheet for collecting structured feedback from Claude, ChatGPT, ESG reviewers or legal-risk reviewers while Codex continues implementation. Next step: reconcile external findings into this backlog, Notion launch tasks and `docs/issue-resolution-log.md` when findings reveal real bugs or failed checks.
 
+47. **External review intake workflow**
+    Status: materially delivered in `0.5.42 - May 2026`.
+    Revenue relevance: Trust, content QA and launch-readiness operations.
+    `/data-quality` now includes an external review intake lane with a copyable routing packet. Findings should be classified as confirmed bugs, regulatory content gaps, static MVP improvements or future platform capabilities before implementation. This prevents future-scope ideas from leaking into the static MVP and keeps legal/source-review findings attached to the right governance artifacts.
+
 ## Wave 3: Scaled Platform And Data Operations
 
 Target: later phase only, after explicit approval and product validation.

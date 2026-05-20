@@ -8,13 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.41 - May 2026`.
+The current public release context is `0.5.42 - May 2026`.
 
 Latest release-context update:
 
-- adds `docs/ai-review/` as a reviewer-ready pack for Claude, ChatGPT or another external AI reviewer
-- includes a detailed current-state export, reviewer prompt, future capabilities backlog and regulatory coverage worksheet
-- keeps external-review instructions caveated as product QA and source-governance planning, not legal advice or source verification
+- adds an External review intake panel to `/data-quality`
+- routes outside AI, ESG specialist and legal-risk feedback into the right artifact before implementation
+- includes a copyable intake-routing packet and `docs/ai-review/Review_Feedback_Intake_Template.md`
+- keeps external-review intake caveated as product QA and source-governance planning, not legal advice or source verification
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -150,6 +151,7 @@ Use these files to brief future coding agents, reviewers and collaborators:
 - `docs/ai-review/Future_Capabilities_Deep_Review_Backlog.md`: current-versus-future capability roadmap for deeper review
 - `docs/ai-review/Regulatory_Coverage_Review_Worksheet.md`: structured market and regulation coverage review worksheet
 - `docs/ai-review/Regulatory_Coverage_Review_Worksheet.csv`: spreadsheet-ready coverage review template
+- `docs/ai-review/Review_Feedback_Intake_Template.md`: template for routing external review findings into issue logs, coverage review, backlog or future capability planning
 
 ## Agent Workflow Rule
 

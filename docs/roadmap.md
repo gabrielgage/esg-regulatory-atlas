@@ -68,10 +68,20 @@ Current capability areas:
 - Source evidence trails and copyable source-review memos on regulation details and drawers
 - Data Quality review workflow exports for source, threshold, evidence and premium-use QA tracking
 - AI review pack for external product, ESG, legal-safety and regulatory coverage feedback
+- External review intake workflow on Data Quality for routing external findings into the right operating artifact
 - Tablet-and-desktop Natural Earth Admin 0 country-outline map with stronger visual contrast, untracked-country styling, pan/zoom controls and geometry fallback
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1X Items
+
+- Updated dataset metadata and recent changelog to `0.5.42 - May 2026`.
+- Added `data/reviewIntake.ts` for review-finding categories, routing destinations, examples and copyable intake text.
+- Added `components/ExternalReviewIntakePanel.tsx` to the `/data-quality` review workflow tab.
+- Added `docs/ai-review/Review_Feedback_Intake_Template.md`.
+- Added smoke coverage confirming the Data Quality external review intake lane renders.
+- Kept the intake workflow as product QA and source-governance routing. It does not add a database, automation, legal verification or compliance determinations.
 
 ## Recently Delivered Phase 1W Items
 

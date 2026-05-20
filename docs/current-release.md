@@ -2,11 +2,19 @@
 
 ## Current Edition
 
-`0.5.41 - May 2026`
+`0.5.42 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, and the AI review pack added for external product, ESG and legal-safety critique.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, the AI review pack added for external product, ESG and legal-safety critique, and the external review intake workflow added to Data Quality.
+
+### 0.5.42 - External Review Intake Workflow
+
+- Added `data/reviewIntake.ts` to define how external feedback should be routed after AI, ESG specialist, legal-risk or user review.
+- Added `components/ExternalReviewIntakePanel.tsx` on the Data Quality review workflow tab.
+- Added a copyable intake-routing packet covering issue logs, coverage worksheets, product backlog and future capability planning.
+- Added `docs/ai-review/Review_Feedback_Intake_Template.md`.
+- Added smoke coverage for the new Data Quality intake surface.
 
 ### 0.5.41 - AI Review Pack
 

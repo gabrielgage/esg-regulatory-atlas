@@ -101,11 +101,16 @@ test("assessment persona summary can be reset", async ({ page }) => {
 test("timeline filters expose active context and reset cleanly", async ({ page }) => {
   await page.goto("/timeline");
 
+  await expect(page.getByTestId("timeline-scope-tabs")).toContainText(/Next 24 months/i);
+  await expect(page.getByRole("button", { name: /Next 24 months/i })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByTestId("timeline-filter-summary")).toContainText(/No timeline filters are active/i);
+  await page.getByRole("button", { name: /Full history/i }).click();
+  await expect(page.getByTestId("timeline-filter-summary")).toContainText(/Planning horizon: Full history/i);
   await page.getByLabel("Jurisdiction").selectOption("eu");
   await expect(page.getByTestId("timeline-filter-summary")).toContainText(/Jurisdiction: European Union/i);
   await page.getByRole("button", { name: /^Clear$/i }).click();
   await expect(page.getByLabel("Jurisdiction")).toHaveValue("");
+  await expect(page.getByRole("button", { name: /Next 24 months/i })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByTestId("timeline-filter-summary")).toContainText(/No timeline filters are active/i);
 });
 

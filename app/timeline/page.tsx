@@ -1,22 +1,31 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { RotateCcw, SlidersHorizontal } from "lucide-react";
+import { CalendarClock, RotateCcw, SlidersHorizontal } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { PageIntro } from "@/components/PageIntro";
-import { RegulatoryTimeline } from "@/components/RegulatoryTimeline";
+import { RegulatoryTimeline, type TimelineScope } from "@/components/RegulatoryTimeline";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { jurisdictions, regulations, topics } from "@/data/seed";
 import { Regulation } from "@/types/regulation";
+
+const timelineScopes: { id: TimelineScope; label: string; description: string }[] = [
+  { id: "next-12", label: "Next 12 months", description: "Most immediate milestones" },
+  { id: "next-24", label: "Next 24 months", description: "Default planning view" },
+  { id: "in-force", label: "Already in force", description: "Immediate source review" },
+  { id: "longer-watch", label: "Longer-term watch", description: "Beyond 24 months" },
+  { id: "full-history", label: "Full history", description: "All dated signals" }
+];
 
 export default function TimelinePage() {
   const [jurisdiction, setJurisdiction] = useState("");
   const [topic, setTopic] = useState("");
   const [year, setYear] = useState("");
+  const [scope, setScope] = useState<TimelineScope>("next-24");
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
   const years = timelineYearsFrom(regulations);
   const filtered = useMemo(
@@ -29,9 +38,11 @@ export default function TimelinePage() {
       ),
     [jurisdiction, topic, year]
   );
-  const hasTimelineFilters = Boolean(jurisdiction || topic || year);
+  const hasTimelineFilters = Boolean(jurisdiction || topic || year || scope !== "next-24");
   const dateBearingRecords = filtered.filter(recordHasAnyTimelineYear).length;
+  const activeScope = timelineScopes.find((item) => item.id === scope) || timelineScopes[1];
   const activeFilters = [
+    scope !== "next-24" && { label: "Planning horizon", value: activeScope.label },
     jurisdiction && { label: "Jurisdiction", value: jurisdictions.find((item) => item.id === jurisdiction)?.name || jurisdiction },
     topic && { label: "Topic", value: topic },
     year && { label: "Reporting year", value: year }
@@ -41,6 +52,7 @@ export default function TimelinePage() {
     setJurisdiction("");
     setTopic("");
     setYear("");
+    setScope("next-24");
   }
 
   return (
@@ -59,6 +71,38 @@ export default function TimelinePage() {
           body="Timeline labels such as effective date, first reporting year, first report due date and Atlas review date are planning signals. Confirm date-sensitive obligations against primary sources and entity-specific facts before relying on them."
           compact
         />
+        <section className="rounded-2xl border bg-white p-4 shadow-sm">
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <div className="flex items-center gap-2 text-sm font-semibold text-ink">
+                <CalendarClock className="h-4 w-4 text-teal" />
+                Planning horizon
+              </div>
+              <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500">
+                The default view prioritizes the next 24 months plus high-impact already-effective obligations, so users see what needs planning attention before the full historical timeline.
+              </p>
+            </div>
+            <Badge className="border-teal/20 bg-teal/10 text-teal">Default: next 24 months</Badge>
+          </div>
+          <div className="mt-4 grid gap-2 md:grid-cols-5" data-testid="timeline-scope-tabs">
+            {timelineScopes.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setScope(item.id)}
+                aria-pressed={scope === item.id}
+                className={
+                  scope === item.id
+                    ? "rounded-xl border border-teal/40 bg-teal/10 px-3 py-3 text-left text-sm font-semibold text-ink shadow-sm"
+                    : "rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-left text-sm font-semibold text-slate-600 hover:border-teal/30 hover:bg-white"
+                }
+              >
+                <span className="block">{item.label}</span>
+                <span className="mt-1 block text-xs font-normal leading-5 text-slate-500">{item.description}</span>
+              </button>
+            ))}
+          </div>
+        </section>
         <section className="grid gap-3 rounded-2xl border bg-white p-4 shadow-sm md:grid-cols-[repeat(3,minmax(0,1fr))_auto] md:items-end">
           <Select
             label="Jurisdiction"
@@ -88,7 +132,7 @@ export default function TimelinePage() {
                 Current timeline view
               </div>
               <p className="mt-1 text-sm leading-6 text-slate-500">
-                Showing {filtered.length} of {regulations.length} tracked seed records, including {dateBearingRecords} records with dated milestone signals.
+                Showing {filtered.length} of {regulations.length} tracked seed records in the {activeScope.label.toLowerCase()} horizon, including {dateBearingRecords} records with dated milestone signals.
               </p>
             </div>
             <Badge className="border-amber-200 bg-amber-50 text-amber-800">Date-sensitive planning</Badge>
@@ -105,7 +149,7 @@ export default function TimelinePage() {
             )}
           </div>
         </section>
-        <RegulatoryTimeline regulations={filtered} onSelect={setSelectedRegulation} />
+        <RegulatoryTimeline regulations={filtered} scope={scope} onSelect={setSelectedRegulation} />
         <FooterDisclaimer />
       </div>
       <RegulationDetail regulation={selectedRegulation} onClose={() => setSelectedRegulation(null)} />

@@ -4,6 +4,14 @@ import { StatusBadge } from "./StatusBadge";
 import { Regulation } from "@/types/regulation";
 import { formatDate } from "@/lib/utils";
 
+export type TimelineScope = "next-12" | "next-24" | "in-force" | "longer-watch" | "full-history";
+
+const PLANNING_ANCHOR_DATE = new Date("2026-05-20T00:00:00");
+const PLANNING_ANCHOR_KEY = sortKeyForDate(PLANNING_ANCHOR_DATE);
+const NEXT_12_MONTHS_KEY = sortKeyForDate(addMonths(PLANNING_ANCHOR_DATE, 12));
+const NEXT_24_MONTHS_KEY = sortKeyForDate(addMonths(PLANNING_ANCHOR_DATE, 24));
+const PLANNING_ANCHOR_YEAR = PLANNING_ANCHOR_DATE.getFullYear();
+
 type TimelineMilestone = {
   id: string;
   type: "Consultation" | "Effective date" | "First reporting year" | "First report due" | "Atlas review";
@@ -17,14 +25,19 @@ type TimelineMilestone = {
 
 export function RegulatoryTimeline({
   regulations,
-  onSelect
+  onSelect,
+  scope = "next-24"
 }: {
   regulations: Regulation[];
   onSelect: (regulation: Regulation) => void;
+  scope?: TimelineScope;
 }) {
-  const allMilestones = buildMilestones(regulations).sort((a, b) => a.sortKey - b.sortKey || a.regulation.shortName.localeCompare(b.regulation.shortName));
+  const allMilestones = buildMilestones(regulations)
+    .filter((milestone) => milestoneMatchesScope(milestone, scope))
+    .sort((a, b) => a.sortKey - b.sortKey || a.regulation.shortName.localeCompare(b.regulation.shortName));
   const milestones = allMilestones.slice(0, 80);
   const groups = groupMilestones(milestones);
+  const scopeLabel = scopeLabels[scope];
 
   return (
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
@@ -35,7 +48,7 @@ export function RegulatoryTimeline({
             <h2 className="font-semibold text-ink">Regulatory timeline</h2>
           </div>
           <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-500">
-            Quarter-level view of consultation deadlines, effective dates, first reporting years, report due dates and Atlas review milestones in the current filter set.
+            {scopeLabel.description}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -44,6 +57,7 @@ export function RegulatoryTimeline({
             {allMilestones.length > milestones.length ? `/${allMilestones.length}` : ""} milestones
           </Badge>
           <Badge className="border-amber-200 bg-amber-50 text-amber-800">Date-sensitive</Badge>
+          <Badge className="border-teal/20 bg-teal/10 text-teal">{scopeLabel.badge}</Badge>
         </div>
       </div>
 
@@ -96,7 +110,7 @@ export function RegulatoryTimeline({
           ))
         ) : (
           <div className="rounded-xl border border-dashed border-slate-200 p-6 text-sm text-slate-500">
-            No dated milestones match the current filters.
+            No dated milestones match the current filters and planning horizon.
           </div>
         )}
       </div>
@@ -108,6 +122,34 @@ export function RegulatoryTimeline({
     </section>
   );
 }
+
+const scopeLabels: Record<TimelineScope, { badge: string; description: string }> = {
+  "next-12": {
+    badge: "Next 12 months",
+    description:
+      "Near-term planning view for date-sensitive milestones in the next 12 months from the May 2026 release context."
+  },
+  "next-24": {
+    badge: "Next 24 months",
+    description:
+      "Default planning view for the next 24 months, with high-impact already-effective obligations kept visible for readiness context."
+  },
+  "in-force": {
+    badge: "Already in force",
+    description:
+      "Already-effective milestone view for obligations that may need immediate source review, owner assignment or evidence planning."
+  },
+  "longer-watch": {
+    badge: "Longer-term watch",
+    description:
+      "Longer-term watch view for date-sensitive items beyond the next 24 months from the May 2026 release context."
+  },
+  "full-history": {
+    badge: "Full history",
+    description:
+      "Full quarter-level view of consultation deadlines, effective dates, first reporting years, report due dates and Atlas review milestones."
+  }
+};
 
 function buildMilestones(regulations: Regulation[]) {
   return regulations.flatMap((regulation) => {
@@ -176,6 +218,31 @@ function groupMilestones(milestones: TimelineMilestone[]) {
     year,
     quarters: Array.from(quarterMap.entries()).map(([quarter, items]) => ({ quarter, items }))
   }));
+}
+
+function milestoneMatchesScope(milestone: TimelineMilestone, scope: TimelineScope) {
+  if (scope === "full-history") return true;
+  if (scope === "next-12") return milestone.sortKey >= PLANNING_ANCHOR_KEY && milestone.sortKey <= NEXT_12_MONTHS_KEY;
+  if (scope === "longer-watch") return milestone.sortKey > NEXT_24_MONTHS_KEY;
+  if (scope === "in-force") return milestone.type === "Effective date" && milestone.sortKey <= PLANNING_ANCHOR_KEY;
+  if (scope === "next-24") {
+    const year = Number(milestone.year);
+    const alreadyEffectiveHighImpact = milestone.type === "Effective date" && milestone.sortKey <= PLANNING_ANCHOR_KEY && milestone.regulation.highImpact;
+    const currentReportingCycle = milestone.type === "First reporting year" && year >= PLANNING_ANCHOR_YEAR && year <= PLANNING_ANCHOR_YEAR + 2;
+    const futureMilestone = milestone.sortKey >= PLANNING_ANCHOR_KEY && milestone.sortKey <= NEXT_24_MONTHS_KEY;
+    return Boolean(alreadyEffectiveHighImpact || currentReportingCycle || futureMilestone);
+  }
+  return true;
+}
+
+function addMonths(date: Date, months: number) {
+  const next = new Date(date);
+  next.setMonth(next.getMonth() + months);
+  return next;
+}
+
+function sortKeyForDate(date: Date) {
+  return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
 }
 
 function qualityLabel(regulation: Regulation) {

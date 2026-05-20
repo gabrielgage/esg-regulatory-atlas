@@ -2,6 +2,24 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.43 - May 2026",
+    date: "2026-05-20",
+    label: "Value-chain exposure workspace",
+    summary:
+      "Added a dedicated value-chain exposure workspace so users can start from suppliers, imports, products, claims, portfolio companies, financed emissions, own operations or board oversight before opening filtered regulation records.",
+    added: [
+      "Value-chain exposure route at `/value-chain`",
+      "Reusable value-chain profile aggregation helper",
+      "Copyable value-chain exposure briefs",
+      "Filtered regulation links by value-chain tag",
+      "Navigation and smoke coverage for the new workspace"
+    ],
+    updated: ["Value-chain triage", "Header navigation", "Regulation filtering handoff", "Smoke tests", "Release metadata", "Project documentation"],
+    records: ["csrd", "eudr", "cbam", "california-sb253-sb261"],
+    caveat:
+      "Value-chain exposure cards are seed intelligence and evidence-planning aids. They are not legal advice, source verification, complete value-chain coverage or entity-specific applicability determinations."
+  },
+  {
     edition: "0.5.42 - May 2026",
     date: "2026-05-20",
     label: "External review intake workflow",

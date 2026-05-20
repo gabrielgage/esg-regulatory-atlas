@@ -147,7 +147,8 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add a portfolio-focused assessment flow that classifies regulations by fund manager obligations, portfolio company obligations, financed emissions and investor-requested data.
 
 20. **Supplier and exporter view**
-    Add a value-chain flow for suppliers/exporters exposed to EU, UK, US, deforestation, forced labour, CBAM, batteries, product and green claims rules.
+    Status: materially delivered in `0.5.43 - May 2026`.
+    Add a value-chain flow for suppliers/exporters exposed to EU, UK, US, deforestation, forced labour, CBAM, batteries, product and green claims rules. The first version now lives at `/value-chain` and includes supplier, trade/import, product, claims, portfolio, financed-emissions, own-operations and governance exposure lanes with copyable briefs and filtered regulation handoffs.
 
 21. **Implementation effort scoring**
     Status: partially delivered before `0.5.4`; master metadata now adds record type, legal force and relevance categories for future scoring improvements.

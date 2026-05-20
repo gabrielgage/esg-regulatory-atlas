@@ -8,14 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.42 - May 2026`.
+The current public release context is `0.5.43 - May 2026`.
 
 Latest release-context update:
 
-- adds an External review intake panel to `/data-quality`
-- routes outside AI, ESG specialist and legal-risk feedback into the right artifact before implementation
-- includes a copyable intake-routing packet and `docs/ai-review/Review_Feedback_Intake_Template.md`
-- keeps external-review intake caveated as product QA and source-governance planning, not legal advice or source verification
+- adds `/value-chain` as a business-exposure workspace for suppliers, imports, products, claims, portfolio companies, financed emissions and own operations
+- gives users copyable value-chain briefs and filtered regulation handoffs
+- adds reusable value-chain profile aggregation in `lib/valueChainProfile.ts`
+- keeps value-chain outputs caveated as seed intelligence and evidence-planning aids, not legal advice or complete coverage
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -69,6 +69,7 @@ The MVP does not include authentication, Supabase, external databases, Stripe, c
 - Compare: `/compare`, `/compare?jurisdictions=EUU,GBR`, `/compare?ids=csrd,issb-s1-s2`
 - Markets: `/markets`, `/jurisdiction/[code]`
 - Sectors: `/sectors`, `/sectors/[slug]`
+- Value-chain exposure: `/value-chain`
 - Jurisdiction brief: `/jurisdiction/[code]/brief`
 - Plans: `/plans`
 - Alerts preview: `/alerts`
@@ -126,7 +127,7 @@ Core static data lives in `data/`:
 - `dailyUpdates.ts`
 - `personaPresets.ts`
 
-Shared regulation types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market and sector aggregation live in `lib/marketProfile.ts` and `lib/sectorProfile.ts`. Readiness, source governance, review workflow, URL filters and translations live under `lib/`.
+Shared regulation types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market, sector and value-chain aggregation live in `lib/marketProfile.ts`, `lib/sectorProfile.ts` and `lib/valueChainProfile.ts`. Readiness, source governance, review workflow, URL filters and translations live under `lib/`.
 
 ## Project Guidance
 

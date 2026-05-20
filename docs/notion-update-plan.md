@@ -169,6 +169,13 @@ ADR-033:
 - Consequence: Add a Data Quality external review intake lane that routes findings to issue logs, coverage review, backlog or future capability planning.
 - Status: Active.
 
+ADR-034:
+
+- Decision: Add value-chain triage as a product entry point.
+- Why: Procurement, exporter, product, investor and advisor users often start from exposure type rather than jurisdiction or regulation acronym.
+- Consequence: Add `/value-chain` as a static workspace that aggregates existing seed records by value-chain tag and links into filtered regulation views.
+- Status: Active.
+
 ## Launch Tasks
 
 Create or update `LAUNCH-001` through `LAUNCH-025` from the May 2026 sprint prompt. Mark implemented static website work as Review once code has shipped locally, and keep future infrastructure tasks as Post-launch or Deferred.
@@ -193,6 +200,8 @@ Recent follow-up launch tasks:
 - LAUNCH-080 - Reconcile external review findings into backlog, Notion and source-governance tasks
 - LAUNCH-081 - Add Data Quality external review intake lane
 - LAUNCH-082 - Add review feedback intake template
+- LAUNCH-083 - Add value-chain exposure workspace
+- LAUNCH-084 - Add copyable value-chain exposure briefs and filtered regulation handoffs
 
 ## Content Review
 

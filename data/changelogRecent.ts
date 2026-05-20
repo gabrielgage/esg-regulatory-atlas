@@ -2,6 +2,23 @@ import type { ChangelogEntry } from "./changelog";
 
 export const RECENT_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.41 - May 2026",
+    date: "2026-05-20",
+    label: "AI review pack for current and future capabilities",
+    summary:
+      "Added a reviewer-ready documentation pack so external AI reviewers, ESG specialists and product reviewers can critique current Atlas capabilities, future roadmap priorities, regulatory coverage and legal-safety gaps while implementation continues.",
+    added: [
+      "Detailed AI review export for current product state and capability context",
+      "Reviewer feedback prompt for Claude, ChatGPT or another AI reviewer",
+      "Future capabilities deep-review backlog",
+      "Regulatory coverage review worksheet in Markdown and CSV formats"
+    ],
+    updated: ["Release metadata", "README", "Current release docs", "Roadmap", "Product brief", "Agent handoff documentation"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "california-sb253-sb261"],
+    caveat:
+      "The AI review pack is a product QA and planning aid. It is not legal advice, source verification, official translation, complete regulatory coverage or a compliance determination."
+  },
+  {
     edition: "0.5.40 - May 2026",
     date: "2026-05-20",
     label: "Daily launch pulse and dependency audit patch",

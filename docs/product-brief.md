@@ -113,6 +113,7 @@ The MVP includes:
 - Decision-readiness checklists that translate source, threshold and evidence gaps into review controls for regulation details and Marquee premium/advisory use
 - Source evidence trails and copyable source-review memos that turn captured sources into practical QA packets
 - Review workflow CSV/JSON exports and copyable priority review packets from `/data-quality`
+- AI review pack under `docs/ai-review/` for external critique of current capabilities, future roadmap, regulatory coverage, source governance, UX and legal-safety posture
 - Reusable commercial CTA surfaces
 - Source quality indicators
 - Advisory opportunity and business impact views
@@ -193,6 +194,7 @@ The MVP is successful when:
 - Premium previews do not imply production monitoring, billing, accounts or gated data.
 - The product avoids legal overclaiming.
 - Future agents can safely extend the system using the documentation in this folder.
+- External reviewers can use the AI review pack to provide structured feedback without first reverse-engineering the full repository.
 
 ## Current Product Surfaces
 

@@ -102,6 +102,14 @@ Current review-workflow export convention:
 - `components/ReviewWorkflowExportPanel.tsx` surfaces those exports on `/data-quality`.
 - Treat review workflow exports as operational QA trackers for Notion, spreadsheets or advisory prep. They are not legal opinions, official translations, source verification or compliance determinations.
 
+Current AI review-pack convention:
+
+- `docs/ai-review/ESG_Regulatory_Atlas_AI_Review_Export_2026-05-20.md` gives external reviewers current product context.
+- `docs/ai-review/AI_Reviewer_Feedback_Prompt.md` is the preferred prompt when asking Claude, ChatGPT or another reviewer for structured critique.
+- `docs/ai-review/Future_Capabilities_Deep_Review_Backlog.md` separates static launch-safe improvements from future platform capabilities.
+- `docs/ai-review/Regulatory_Coverage_Review_Worksheet.md` and `.csv` are the preferred templates for market and regulation coverage review.
+- Treat AI/expert review outputs as product QA, content QA and source-governance input. They are not legal opinions, source verification, official translations, compliance determinations or complete-coverage certification.
+
 Current navigation convention:
 
 - Keep the header focused on the main discovery path: Map, Markets, Sectors, Regulations, Assessment and Plans.

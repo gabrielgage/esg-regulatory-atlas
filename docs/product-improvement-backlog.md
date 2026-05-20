@@ -168,6 +168,11 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Revenue relevance: Trust, conversion clarity and demo usability.
     The primary navigation now keeps core workspaces visible and groups secondary governance, launch and commercial routes into a More menu. The homepage hero now uses one compact workspace snapshot instead of three competing metric cards, while the daily launch pulse gives Changelog and Data Quality a focused release-context surface. Continue this direction by avoiding new homepage panels unless they directly help users select a jurisdiction, filter records or inspect the selected market.
 
+46. **External AI review pack**
+    Status: materially delivered in `0.5.41 - May 2026`.
+    Revenue relevance: Trust, content QA, launch readiness and source-governance throughput.
+    `docs/ai-review/` now gives the owner a current-state export, reviewer prompt, future capability backlog and market/regulation coverage worksheet for collecting structured feedback from Claude, ChatGPT, ESG reviewers or legal-risk reviewers while Codex continues implementation. Next step: reconcile external findings into this backlog, Notion launch tasks and `docs/issue-resolution-log.md` when findings reveal real bugs or failed checks.
+
 ## Wave 3: Scaled Platform And Data Operations
 
 Target: later phase only, after explicit approval and product validation.

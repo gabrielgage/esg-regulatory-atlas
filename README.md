@@ -8,14 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.40 - May 2026`.
+The current public release context is `0.5.41 - May 2026`.
 
 Latest release-context update:
 
-- adds a compact daily launch pulse to `/changelog` and `/data-quality`
-- shows latest shipping context, validation expectations and next product-review focus in one reusable surface
-- patches Next.js to `^16.2.6` after production dependency audit flagged a high-severity advisory in the previous range
-- keeps daily update notes static, caveated and free of backend automation
+- adds `docs/ai-review/` as a reviewer-ready pack for Claude, ChatGPT or another external AI reviewer
+- includes a detailed current-state export, reviewer prompt, future capabilities backlog and regulatory coverage worksheet
+- keeps external-review instructions caveated as product QA and source-governance planning, not legal advice or source verification
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -146,6 +145,11 @@ Use these files to brief future coding agents, reviewers and collaborators:
 - `docs/feature-request-tracking.md`: feature request schema, scoring rubric and research intake process
 - `docs/notion-update-plan.md`: Notion-ready launch sprint updates, ADRs and task plan
 - `docs/conversion-tracking-plan.md`: no-dependency manual tracking process for commercial interest
+- `docs/ai-review/ESG_Regulatory_Atlas_AI_Review_Export_2026-05-20.md`: deep current-state export for external AI or expert review
+- `docs/ai-review/AI_Reviewer_Feedback_Prompt.md`: prompt to request structured, critical feedback from another AI
+- `docs/ai-review/Future_Capabilities_Deep_Review_Backlog.md`: current-versus-future capability roadmap for deeper review
+- `docs/ai-review/Regulatory_Coverage_Review_Worksheet.md`: structured market and regulation coverage review worksheet
+- `docs/ai-review/Regulatory_Coverage_Review_Worksheet.csv`: spreadsheet-ready coverage review template
 
 ## Agent Workflow Rule
 

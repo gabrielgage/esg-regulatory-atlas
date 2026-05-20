@@ -2,11 +2,19 @@
 
 ## Current Edition
 
-`0.5.40 - May 2026`
+`0.5.41 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, and the daily launch pulse added afterward.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, and the AI review pack added for external product, ESG and legal-safety critique.
+
+### 0.5.41 - AI Review Pack
+
+- Added `docs/ai-review/ESG_Regulatory_Atlas_AI_Review_Export_2026-05-20.md` for a detailed external-review handoff covering current capabilities, architecture, UX, data model, commercial strategy, legal safeguards and open questions.
+- Added `docs/ai-review/AI_Reviewer_Feedback_Prompt.md` so the product owner can ask another AI for structured, critical findings instead of generic feedback.
+- Added `docs/ai-review/Future_Capabilities_Deep_Review_Backlog.md` to separate near-term static MVP improvements from later platform capabilities that require explicit scope approval.
+- Added `docs/ai-review/Regulatory_Coverage_Review_Worksheet.md` and `.csv` so market and regulation coverage review can be tracked in Markdown, Notion or spreadsheet form.
+- Updated release metadata and core context docs so future Codex and Claude sessions know where external feedback should be captured and reconciled.
 
 ### 0.5.40 - Daily Launch Pulse And Dependency Audit Patch
 

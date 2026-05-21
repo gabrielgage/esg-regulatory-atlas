@@ -61,6 +61,7 @@ Current capability areas:
 - Concrete premium market-pack previews in `/premium-roadmap`
 - Premium pack preview source-review gates for illustrative-only, review-before-use and orientation-ready records
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
+- Assessment trigger review explaining how profile facts drive jurisdiction, company, sector, value-chain, financial and source/threshold signals
 - Assessment outputs with missing facts, suggested owners and next 30-day actions
 - Assessment readiness plan cards for threshold facts, first actions and owner functions
 - Regulation detail decision cards for threshold gaps, timing caveats, enforcement cues and missing data
@@ -80,6 +81,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AI Items
+
+- Updated dataset metadata and changelog to `0.5.53 - May 2026`.
+- Added an assessment trigger-review panel for jurisdiction, company profile, sector, value-chain, financial/portfolio and source/threshold signals.
+- Added matched-record counts and next facts to verify for each trigger category.
+- Added trigger-review context to copied assessment shortlist Markdown.
+- Added smoke coverage for the assessment trigger review.
+- Kept trigger review as an explanation of planning signals, not legal applicability or compliance scope.
 
 ## Recently Delivered Phase 1AH Items
 

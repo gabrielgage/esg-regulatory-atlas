@@ -81,6 +81,7 @@ The MVP includes:
 - Data Quality surface for captured source links and source-review prompt governance
 - Tabbed Data Quality workspace for overview, sources, coverage and review workflow
 - Data-quality review queue with visible scoring reasons for research prioritization
+- Marquee 10 source-review packet showing premium-use blockers, priority sources, threshold facts and owner actions
 - Threshold matrix for high-value scope signals, facts to confirm, timing signals, source links and review-before-use caveats
 - Market coverage-depth dashboard showing target direct-record depth, current count, gaps and source-review prompts by jurisdiction
 - Coverage-confidence dashboard separating record volume from priority-source backing, review prompts, stale dates and date-sensitive records
@@ -115,6 +116,7 @@ The MVP includes:
 - `/sectors` workspace and `/sectors/[slug]` pages for business-context regulatory triage by sector, market signal, evidence need and advisory workstream
 - `/value-chain` workspace for supplier, importer/exporter, product, claims, portfolio, financed-emissions, own-operations and board-governance exposure triage
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
+- Marquee 10 operational source-review packet for launch-critical premium and advisory reuse checks
 - Premium pack source-review gates that disclose illustrative-only and review-before-use records before commercial reuse
 - Source freshness and premium-use blocker signals for source-governance triage
 - Decision-readiness checklists that translate source, threshold and evidence gaps into review controls for regulation details and Marquee premium/advisory use

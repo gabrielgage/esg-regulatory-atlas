@@ -495,3 +495,20 @@ Launch Tasks:
 QA finding:
 
 - Assessment output should not stop at a ranked shortlist. Each result set should help the user decide what to verify next, who should own it and which threshold-sensitive records require source review before client use.
+
+## 2026-05-21 Codex Update - Marquee 10 Source-Review Packet
+
+Launch Command Center note:
+
+> Phase 1AG turns the Marquee 10 review queue into an operational source-review packet. Data Quality now shows premium-use blockers, priority sources, threshold facts and owner actions for launch-critical regimes before those records are reused in premium packs, advisory scans or client-ready summaries.
+
+Launch Tasks:
+
+- LAUNCH-091 - Add Marquee 10 source-review packet to Data Quality
+- LAUNCH-092 - Combine review status, decision-readiness, source posture and threshold context for Marquee 10 records
+- LAUNCH-093 - Add source, threshold and owner/action cards for launch-critical regimes
+- LAUNCH-094 - Add smoke coverage for the Marquee 10 source-review packet
+
+QA finding:
+
+- Source links, threshold rows and premium-use gates become much more useful when they are shown together. Future premium or advisory examples should check this packet before presenting Marquee 10 records as client-ready content.

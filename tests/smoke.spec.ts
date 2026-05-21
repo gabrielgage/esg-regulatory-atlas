@@ -257,6 +257,9 @@ test("data quality source-governance queue renders", async ({ page }) => {
   await expect(page.getByText(/Average confidence/i)).toBeVisible();
 
   await page.getByRole("tab", { name: /Review workflow/i }).click();
+  await expect(page.getByTestId("marquee-source-review-packet")).toContainText(/Marquee 10 source-review packet/i);
+  await expect(page.getByTestId("marquee-source-review-packet")).toContainText(/Source to verify/i);
+  await expect(page.getByTestId("marquee-source-review-packet")).toContainText(/Threshold fact/i);
   await expect(page.getByText(/Premium evidence gates/i)).toBeVisible();
   await expect(page.getByText(/Premium-use blockers/i)).toBeVisible();
   await expect(page.getByText(/Review workflow export/i)).toBeVisible();

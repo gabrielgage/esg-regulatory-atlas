@@ -65,6 +65,7 @@ Current capability areas:
 - Assessment readiness plan cards for threshold facts, first actions and owner functions
 - Regulation detail decision cards for threshold gaps, timing caveats, enforcement cues and missing data
 - `/thresholds` threshold matrix for high-value scope signals, facts to confirm, source-to-verify links and review status
+- Marquee 10 source-review packet for premium-use blockers, priority sources, threshold facts and owner actions
 - Quarter-level milestone timeline covering consultation, effective-date, reporting-year, report-due and Atlas review events
 - Review-queue scoring in the data-quality dashboard with visible reasons for source and confidence follow-up
 - Source freshness signals and Marquee owner/action controls for premium/advisory review readiness
@@ -78,6 +79,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AG Items
+
+- Updated dataset metadata and changelog to `0.5.51 - May 2026`.
+- Added `components/MarqueeSourceReviewPacket.tsx` to the Data Quality review workflow.
+- Combined Marquee 10 review status, premium-use blockers, decision-readiness gates, source posture and threshold matrix context in one operational packet.
+- Added source, threshold and owner/action cards for launch-critical regimes used in premium and advisory examples.
+- Added smoke coverage for the Marquee 10 source-review packet.
+- Kept the packet static, caveated and source-governance oriented. It does not certify source completeness or determine legal applicability.
 
 ## Recently Delivered Phase 1AF Items
 

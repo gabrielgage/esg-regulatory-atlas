@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { premiumPacks } from "../data/premiumPacks";
 import { regulations } from "../data/seed";
+import { thresholdMatrixRows } from "../data/thresholdMatrix";
 import { premiumUseGateFor } from "../lib/premiumUseGates";
 import type { Regulation } from "../types/regulation";
 
@@ -58,6 +59,19 @@ test("seed copy avoids definitive applicability and completeness claims", () => 
 
   const hits = bannedDefinitivePhrases.filter((phrase) => searchableCopy.includes(phrase));
   expect(hits).toEqual([]);
+});
+
+test("threshold matrix rows map to sourced regulation records and preserve caveats", () => {
+  const regulationIds = new Set(regulations.map((regulation) => regulation.id));
+  const failures = thresholdMatrixRows.filter((row) => {
+    const hasKnownRecord = regulationIds.has(row.regulationId);
+    const hasSource = Boolean(row.sourceToVerify && row.sourceUrl);
+    const hasCaveat = /planning|orientation|review|verify|confirm|not/i.test(row.caveat);
+    const hasFacts = row.factsToConfirm.length >= 3;
+    return !hasKnownRecord || !hasSource || !hasCaveat || !hasFacts;
+  });
+
+  expect(failures).toEqual([]);
 });
 
 function matchedPackRegulations(regimeNames: string[]) {

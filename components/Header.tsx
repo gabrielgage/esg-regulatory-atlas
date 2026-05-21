@@ -22,6 +22,7 @@ const secondaryNavItems = [
   { href: "/timeline", labelKey: "nav.timeline" },
   { href: "/briefing", labelKey: "nav.briefing" },
   { href: "/value-chain", labels: { en: "Value chain", es: "Cadena de valor", nl: "Waardeketen", fr: "Chaîne de valeur", de: "Wertschöpfung", pt: "Cadeia de valor" } },
+  { href: "/thresholds", labels: { en: "Thresholds", es: "Umbrales", nl: "Drempels", fr: "Seuils", de: "Schwellen", pt: "Limiares" } },
   { href: "/data-quality", labelKey: "nav.dataQuality" },
   { href: "/glossary", labels: { en: "Glossary", es: "Glosario", nl: "Woordenlijst", fr: "Glossaire", de: "Glossar", pt: "Glossário" } },
   { href: "/alerts", labelKey: "nav.alerts" },

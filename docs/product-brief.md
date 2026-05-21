@@ -80,6 +80,7 @@ The MVP includes:
 - Data Quality surface for captured source links and source-review prompt governance
 - Tabbed Data Quality workspace for overview, sources, coverage and review workflow
 - Data-quality review queue with visible scoring reasons for research prioritization
+- Threshold matrix for high-value scope signals, facts to confirm, timing signals, source links and review-before-use caveats
 - Market coverage-depth dashboard showing target direct-record depth, current count, gaps and source-review prompts by jurisdiction
 - Coverage-confidence dashboard separating record volume from priority-source backing, review prompts, stale dates and date-sensitive records
 - Public changelog
@@ -214,6 +215,7 @@ The MVP is successful when:
 - Timeline: `/timeline`
 - Briefing workspace: `/briefing`
 - Data Quality: `/data-quality`
+- Threshold matrix: `/thresholds`
 - Comparison: `/compare`, `/compare?jurisdictions=EUU,GBR`, `/compare?ids=csrd,issb-s1-s2`
 - Jurisdiction brief: `/jurisdiction/[code]/brief`
 - Jurisdiction market profile: `/jurisdiction/[code]`

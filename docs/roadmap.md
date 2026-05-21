@@ -63,6 +63,7 @@ Current capability areas:
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
 - Assessment outputs with missing facts, suggested owners and next 30-day actions
 - Regulation detail decision cards for threshold gaps, timing caveats, enforcement cues and missing data
+- `/thresholds` threshold matrix for high-value scope signals, facts to confirm, source-to-verify links and review status
 - Quarter-level milestone timeline covering consultation, effective-date, reporting-year, report-due and Atlas review events
 - Review-queue scoring in the data-quality dashboard with visible reasons for source and confidence follow-up
 - Source freshness signals and Marquee owner/action controls for premium/advisory review readiness
@@ -76,6 +77,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AE Items
+
+- Updated dataset metadata and changelog to `0.5.49 - May 2026`.
+- Added `/thresholds` as a source-linked threshold matrix for high-value records.
+- Added `data/thresholdMatrix.ts` with threshold type, threshold signal, facts to confirm, timing signal, source to verify, review status, confidence and caveat.
+- Added Data Quality and regulation-detail handoffs so threshold-sensitive records have a visible review lane.
+- Added data guardrail coverage to make sure threshold matrix rows map to existing regulation records and preserve source/caveat metadata.
+- Kept the matrix static, caveated and source-linked. It does not decide legal scope, legal applicability or client-specific compliance obligations.
 
 ## Recently Delivered Phase 1AD Items
 

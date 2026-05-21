@@ -461,3 +461,20 @@ Launch Tasks:
 QA finding:
 
 - Premium and advisory validation surfaces must respect content-governance gates. If a record is blocked or review-needed in the Marquee queue, any premium pack or alert preview that mentions it needs a visible illustrative-only or review-before-use label.
+
+## 2026-05-20 Codex Update - Threshold Matrix For High-Value Records
+
+Launch Command Center note:
+
+> Phase 1AE adds a static threshold matrix for high-value records. The matrix makes entity, market, product, value-chain and jurisdiction-adoption facts visible before a user treats a record as assessment, premium-preview or advisory context. It remains source-linked seed planning intelligence, not a legal scope determination.
+
+Launch Tasks:
+
+- LAUNCH-083 - Add `/thresholds` page for high-value threshold and scope signals
+- LAUNCH-084 - Add `data/thresholdMatrix.ts` with facts to confirm, timing signal, source to verify, review status and caveat
+- LAUNCH-085 - Link Data Quality and regulation detail pages to threshold-sensitive review rows
+- LAUNCH-086 - Add data guardrail coverage for threshold matrix rows
+
+QA finding:
+
+- Threshold-sensitive records need a separate review lane. Future premium, alert or advisory examples should check the matrix before using CSRD, CSDDD, SFDR, Taxonomy, EUDR, California climate disclosure, ISSB adoption or national due-diligence records as client-ready examples.

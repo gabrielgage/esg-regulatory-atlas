@@ -262,7 +262,7 @@ function relatedRegimesFor(regulation: Regulation) {
 }
 
 function qualityLabel(status: Regulation["dataQualityStatus"]) {
-  if (status === "verified_seed") return "Verified source set";
+  if (status === "verified_seed") return "Source-reviewed seed";
   return status.replaceAll("_", " ");
 }
 

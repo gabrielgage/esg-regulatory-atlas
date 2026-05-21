@@ -8,13 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.47 - May 2026`.
+The current public release context is `0.5.48 - May 2026`.
 
 Latest release-context update:
 
-- adds automated regulatory data guardrail checks for source metadata, high-impact review signals, premium-use gates and definitive wording
-- adds `npm run check:data` so source-governance checks can run without introducing new dependencies
-- keeps those checks inside the existing Playwright CI flow so future seed-data changes fail before merge when common trust risks appear
+- clarifies coverage, source and review signals so users read them as planning prompts, not legal completeness claims
+- adds manual request panels to Plans, Alerts, Advisory and Premium Roadmap so users know what to send and what Etica returns
+- renames public review-flag and broad source-coverage wording into safer review-prompt and captured-source language
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -50,7 +50,9 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - English, Spanish, Dutch, French, German and Portuguese interface chrome, including map coverage guidance
 - shareable filtered URLs and CSV/JSON exports
 - source quality, data quality, confidence, caveat and review-risk indicators
+- quality-signal explainers for source links, review prompts, record counts and confidence labels
 - commercial validation pages for plans, alerts, advisory, launch assets and premium roadmap
+- manual request guidance on commercial and advisory routes with mailto-only conversion paths
 - GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist
 
 The MVP does not include authentication, Supabase, external databases, Stripe, checkout, billing, paid APIs, Mapbox, scraping, cron jobs, production email alerts, AI legal summaries, client workspaces or required environment variables.

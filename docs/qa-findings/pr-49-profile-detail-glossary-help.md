@@ -4,7 +4,7 @@ Date: 2026-05-15
 
 ## Finding
 
-Jurisdiction and sector profile detail pages are deeper advisory-planning surfaces than the market and sector index pages. They combine priority records, readiness scores, direct and inherited records, timing cues, source-confidence signals, review flags, evidence prompts and advisory prompts. Users can overread these combined signals as complete local legal coverage, complete sector legal coverage or entity-specific applicability.
+Jurisdiction and sector profile detail pages are deeper advisory-planning surfaces than the market and sector index pages. They combine priority records, readiness scores, direct and inherited records, timing cues, source-confidence signals, review prompts, evidence prompts and advisory prompts. Users can overread these combined signals as complete local legal coverage, complete sector legal coverage or entity-specific applicability.
 
 ## Product Reasoning
 

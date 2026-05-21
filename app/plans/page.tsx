@@ -6,6 +6,7 @@ import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
 import { CommercialCTA } from "@/components/CommercialCTA";
+import { ManualRequestPanel } from "@/components/ManualRequestPanel";
 import { commercialCaveat, commercialComparisonRows, commercialOffers } from "@/data/commercialOffers";
 import { conversionSurfaces, conversionTrackingCaveat } from "@/data/conversionTracking";
 import { DATASET_META } from "@/data/_meta";
@@ -146,6 +147,13 @@ export default function PlansPage() {
             ))}
           </div>
         </section>
+
+        <ManualRequestPanel
+          subject="Etica ESG commercial preview request"
+          requestType="a commercial preview, market pack or advisory scan"
+          whatToSend={["Which path you want to test: Premium Intelligence, market pack or advisory scan", "Jurisdiction, topic, sector or portfolio context", "Your role or intended audience", "Whether this is for internal planning, client scoping or board/advisory preparation"]}
+          whatEticaReturns={["Suggested Atlas route or offer path", "Relevant preview, sample pack or advisory scan scope", "Source-review caveats and facts to confirm", "Recommended next manual validation step"]}
+        />
 
         <CommercialCTA
           title="Help validate the first premium offer"

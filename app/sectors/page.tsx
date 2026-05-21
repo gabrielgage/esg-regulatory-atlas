@@ -33,7 +33,7 @@ export default function SectorsPage() {
         />
         <GlossaryHelpCard
           title="Interpret sector coverage carefully"
-          body="Sector counts and source-review flags show current tagged seed records, not a complete sector legal inventory. Treat sector pages as first-pass triage before confirming thresholds, entity facts and primary sources."
+          body="Sector counts and source-review prompts show current tagged seed records, not a complete sector legal inventory. Treat sector pages as first-pass triage before confirming thresholds, entity facts and primary sources."
           compact
         />
 
@@ -41,7 +41,7 @@ export default function SectorsPage() {
           <Metric icon={Factory} label="Tracked sectors" value={String(profiles.length)} />
           <Metric icon={Layers3} label="Sector-tagged links" value={String(directRecords)} />
           <Metric icon={ShieldCheck} label="High-impact links" value={String(highImpact)} />
-          <Metric icon={BriefcaseBusiness} label="Review flags" value={String(reviewFlags)} />
+          <Metric icon={BriefcaseBusiness} label="Review prompts" value={String(reviewFlags)} />
         </section>
 
         <section className="rounded-2xl border bg-white p-5 shadow-sm">

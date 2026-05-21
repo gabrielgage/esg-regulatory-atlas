@@ -65,7 +65,7 @@ export function CountryPanel({
         <Metric label="Sources" value={String(sourceCount)} />
         <Metric label="First years" value={years.length ? years.slice(0, 3).join(", ") : "n/a"} />
         <Metric label="Confidence" value={confidenceSummary} />
-        <Metric label="Review flags" value={String(reviewFlags)} />
+        <Metric label="Review prompts" value={String(reviewFlags)} />
       </div>
 
       <div className="mt-4 grid gap-2 sm:grid-cols-2">

@@ -77,6 +77,14 @@ Current capability areas:
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
 
+## Recently Delivered Phase 1AD Items
+
+- Updated dataset metadata and recent changelog to `0.5.48 - May 2026`.
+- Added `components/QualitySignalExplainer.tsx` to clarify that record counts, source-link rates, review prompts and confidence labels are planning signals rather than completeness or applicability claims.
+- Added `components/ManualRequestPanel.tsx` so Plans, Alerts, Advisory and Premium Roadmap explain exactly what a user should send and what Etica returns.
+- Renamed public review-flag/source-coverage wording into review-prompt and captured-source language across Data Quality, Markets, Sectors, Jurisdiction, Value Chain and detail surfaces.
+- Kept conversion manual through mailto-only paths with no payments, accounts, database, email automation or production monitoring.
+
 ## Recently Delivered Phase 1AC Items
 
 - Updated dataset metadata and recent changelog to `0.5.47 - May 2026`.

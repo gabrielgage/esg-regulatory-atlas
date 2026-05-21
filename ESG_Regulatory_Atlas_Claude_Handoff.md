@@ -2,7 +2,19 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1AC regulatory data guardrail pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass and Phase 1AB timeline planning pass. The goal remains deployability and legal caution, with added emphasis on improving user-facing regulatory triage rather than adding infrastructure.
+The app is now in a static Phase 1AD trust-signal clarity and manual request-path pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass and Phase 1AC data-guardrail pass. The goal remains deployability and legal caution, with added emphasis on improving user-facing regulatory triage rather than adding infrastructure.
+
+## Phase 1AD Changes Delivered
+
+- Updated dataset metadata and recent changelog to `0.5.48 - May 2026`.
+- Added `components/QualitySignalExplainer.tsx` on Data Quality and Markets so users understand record counts, source-link rates, review prompts and confidence labels.
+- Added `components/ManualRequestPanel.tsx` on Plans, Alerts, Advisory and Premium Roadmap so commercial/advisory CTAs explain what to send and what Etica returns.
+- Replaced public review-flag and broad source-coverage wording with safer review-prompt and captured-source language across core surfaces.
+- Kept conversion manual through mailto-only paths with no accounts, billing, database, production email alerts or legal-advice claims.
+
+## Phase 1AD Product Rationale
+
+The expert review found that transparency metrics can look like product defects or completeness claims if users do not understand them, and that request CTAs can feel circular without concrete next-step guidance. Phase 1AD makes trust signals easier to interpret and turns commercial/advisory CTAs into clear manual request paths while preserving the static MVP guardrails.
 
 ## Phase 1AC Changes Delivered
 
@@ -475,7 +487,7 @@ The deep review identified three credibility risks: the map claimed country fill
 - Updated the home page to use the new choropleth map instead of the previous tile-and-label map.
 - Added canonical jurisdiction `code` fields so the UI can show ISO-style labels such as `USA`, `CAN`, `GBR`, `NLD`, `EUU` and `USA-CA` without changing existing internal record IDs in a risky migration.
 - Added `data/_meta.ts` with dataset edition, last reviewed date, next review date, byline and contact email.
-- Added `/methodology` for methodology explanation and restored `/data-quality` as the primary source coverage and review-risk governance route.
+- Added `/methodology` for methodology explanation and restored `/data-quality` as the primary captured-source and review-prompt governance route.
 - Added `/about` with methodology, scope, byline, review cadence and contact CTA.
 - Added per-regulation detail routes under `/regulations/[slug]`.
 - Changed the regulation table "Open" action from a drawer-only button to a real link.

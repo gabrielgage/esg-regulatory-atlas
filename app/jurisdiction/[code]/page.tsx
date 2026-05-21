@@ -95,7 +95,7 @@ export default async function JurisdictionMarketPage({ params }: { params: Promi
           <Metric label="Direct records" value={String(profile.directRecords.length)} />
           <Metric label="Linked records" value={String(profile.scoped.length)} />
           <Metric label="High impact" value={String(profile.highImpact.length)} />
-          <Metric label="Review flags" value={String(profile.reviewFlags)} />
+          <Metric label="Review prompts" value={String(profile.reviewFlags)} />
         </section>
 
         <section className="grid gap-5 lg:grid-cols-[1.2fr_.8fr]">

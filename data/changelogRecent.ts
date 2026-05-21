@@ -192,7 +192,7 @@ export const RECENT_CHANGELOG: ChangelogEntry[] = [
     date: "2026-05-15",
     label: "Market and sector coverage interpretation guardrail",
     summary:
-      "Added contextual glossary help to the market and sector discovery pages so users treat coverage counts, confidence badges, source-review flags and sector-tagged record links as tracked seed coverage rather than complete jurisdiction or sector inventories.",
+      "Added contextual glossary help to the market and sector discovery pages so users treat coverage counts, confidence badges, source-review prompts and sector-tagged record links as tracked seed coverage rather than complete jurisdiction or sector inventories.",
     added: [
       "Market coverage glossary help card",
       "Sector coverage glossary help card",

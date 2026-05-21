@@ -4,7 +4,7 @@ Date: 2026-05-15
 
 ## Finding
 
-The market and sector discovery pages expose coverage counts, confidence badges, review flags, sector-tagged record links and high-impact signals. These are useful triage aids, but users can overread them as complete jurisdiction inventories, complete sector legal inventories or definitive statements about what applies in a market or industry.
+The market and sector discovery pages expose coverage counts, confidence badges, review prompts, sector-tagged record links and high-impact signals. These are useful triage aids, but users can overread them as complete jurisdiction inventories, complete sector legal inventories or definitive statements about what applies in a market or industry.
 
 ## Product Reasoning
 

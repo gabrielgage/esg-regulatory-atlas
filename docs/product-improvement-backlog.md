@@ -25,7 +25,7 @@ The MVP already has the right core shape: a map-centered workspace, source-linke
 
 ## 2026-05-20 Expert Review Intake
 
-The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`, `0.5.45 - May 2026`, `0.5.46 - May 2026` and `0.5.47 - May 2026`:
+The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`, `0.5.45 - May 2026`, `0.5.46 - May 2026`, `0.5.47 - May 2026` and `0.5.48 - May 2026`:
 
 - CSRD/CSDDD threshold language now separates corporate-reporting and due-diligence scope signals.
 - Premium pack previews now show source-review and premium-use gates for blocked or review-needed records.
@@ -35,6 +35,8 @@ The May 20 expert review prioritized trust-risk fixes before broader feature exp
 - `/briefing` now starts with curated scenarios for EU reporting, PE portfolio, supplier/exporter, financial services and board/risk committee outputs before any briefing content renders.
 - `/timeline` now defaults to a next-24-month planning horizon with next-12, already-in-force, longer-term watch and full-history modes.
 - Regulatory data guardrail tests now check source metadata, high-impact review signals, premium-use gates and definitive legal wording.
+- Data Quality and Markets now include a Quality Signal explainer so record counts, source-link rates, review prompts and confidence labels are interpreted as planning signals rather than completeness claims.
+- Plans, Alerts, Advisory and Premium Roadmap now include Manual Request panels that tell users what to send, what Etica returns and that the flow remains manual and caveated.
 
 Remaining high-priority expert-review items:
 
@@ -78,8 +80,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
 
 9. **Minimum market coverage checklist**
    Status: materially delivered in `0.5.9 - May 2026`.
-   `data/coverageTargets.ts` defines deep-anchor, core-commercial and watch-expansion direct-record targets. `/data-quality` now shows current depth, target depth, gaps and review risk per jurisdiction.
-   Follow-up status: expanded in `0.5.16 - May 2026` with a coverage-confidence view that separates direct record depth from priority-source backing, review flags, stale dates and date-sensitive records.
+   `data/coverageTargets.ts` defines deep-anchor, core-commercial and watch-expansion direct-record targets. `/data-quality` now shows current depth, target depth, gaps and source-review prompts per jurisdiction.
+   Follow-up status: expanded in `0.5.16 - May 2026` with a coverage-confidence view that separates direct record depth from priority-source backing, review prompts, stale dates and date-sensitive records.
 
 10. **Data quality review queue refinement**
     Status: materially delivered across `0.5.5`, `0.5.12`, `0.5.17`, `0.5.18` and `0.5.19 - May 2026`.

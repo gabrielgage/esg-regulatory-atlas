@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
+import { QualitySignalExplainer } from "@/components/QualitySignalExplainer";
 import { CoverageMatrix } from "@/components/CoverageMatrix";
 import { CoverageConfidencePanel } from "@/components/CoverageConfidencePanel";
 import { CoverageDepthPanel } from "@/components/CoverageDepthPanel";
@@ -41,8 +42,8 @@ export default function DataQualityPage() {
       <div className="mx-auto max-w-7xl space-y-5 px-4 py-5 md:px-6">
         <PageIntro
           eyebrow="Data quality"
-          title="Source coverage and review risk"
-          body="Internal governance view for coverage, source quality and review prioritisation across the static seed dataset."
+          title="Source links and review prompts"
+          body="Governance view for source links, source quality, coverage depth and review prioritisation across the static seed dataset."
           meta={`Current edition ${DATASET_META.edition}. Dataset last reviewed ${DATASET_META.lastReviewed}.`}
         />
         <DisclaimerBanner />
@@ -50,6 +51,7 @@ export default function DataQualityPage() {
           title="Need help interpreting status and source labels?"
           body="The glossary explains status, legal-force, confidence and data-quality labels such as in force, first reporting, needs review, date uncertain and source missing."
         />
+        <QualitySignalExplainer />
 
         <section className="sticky top-16 z-20 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-sm backdrop-blur">
           <div className="grid gap-2 md:grid-cols-4" role="tablist" aria-label="Data quality sections">

@@ -8,14 +8,15 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.53 - May 2026`.
+The current public release context is `0.5.54 - May 2026`.
 
 Latest release-context update:
 
-- adds a profile trigger review to `/assessment`
-- shows how jurisdiction, company size, sector, value-chain, financial and source/threshold signals shape the shortlist
-- adds matched-record counts and next facts to verify for each trigger category
-- preserves implementation roadmaps, the Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
+- adds market trigger reviews to `/jurisdiction/[code]`
+- shows which corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals drive a market profile
+- adds matched-record counts, priority record links, facts to verify and first actions for each market trigger category
+- adds market trigger context to copied market profile Markdown
+- preserves the assessment trigger review, implementation roadmaps, the Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -36,6 +37,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - local Natural Earth country geometry, no paid map API and no Mapbox token
 - interactive map with visible country outlines, explicit untracked-country key, stronger map contrast, pan/zoom/reset controls and geometry fallback
 - market profiles at `/markets` and `/jurisdiction/[code]` with tracked-coverage and detail-level glossary handoffs
+- market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals
 - sector profiles at `/sectors` and `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
 - regulation database and regulation detail pages
 - threshold matrix for high-value scope signals, facts to confirm and source-review status

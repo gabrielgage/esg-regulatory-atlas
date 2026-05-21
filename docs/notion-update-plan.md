@@ -545,3 +545,19 @@ Launch Tasks:
 QA finding:
 
 - Assessment users need to understand why results appear, not only what results appear. Trigger explanations should show planning logic and verification needs without implying legal applicability.
+
+## 2026-05-21 Codex Update - Market Trigger Review
+
+Launch Command Center note:
+
+> Phase 1AJ adds market trigger reviews to jurisdiction profile pages. The new panel groups a selected market's tracked seed records into corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals so users can see what drives the market profile before opening records or preparing an advisory brief.
+
+Launch Tasks:
+
+- LAUNCH-102 - Add reusable market trigger-review helper
+- LAUNCH-103 - Add market trigger panel to jurisdiction profile pages
+- LAUNCH-104 - Add market trigger context to copied market profile Markdown and smoke coverage
+
+QA finding:
+
+- Jurisdiction pages should explain why a market matters, not only list records. Market trigger reviews must stay framed as seed-data orientation and should not imply complete market coverage, legal applicability or entity-specific compliance scope.

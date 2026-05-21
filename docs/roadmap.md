@@ -20,6 +20,7 @@ Current capability areas:
 
 - Interactive regulatory map
 - `/markets` market profile index and `/jurisdiction/[code]` market profile pages
+- Market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review drivers
 - `/sectors` sector starting point index and `/sectors/[slug]` sector profile pages
 - `/value-chain` business-exposure workspace for supplier, importer/exporter, product, portfolio, financed-emissions and own-operations triage
 - Jurisdiction profiles
@@ -72,6 +73,7 @@ Current capability areas:
 - Review-queue scoring in the data-quality dashboard with visible reasons for source and confidence follow-up
 - Source freshness signals and Marquee owner/action controls for premium/advisory review readiness
 - Market coverage-depth targets and Data Quality panel for direct records per jurisdiction
+- Market trigger review panels that translate selected jurisdiction records into driver categories, facts to verify and first actions
 - Decision-readiness evidence gates on regulation details and Data Quality for premium/advisory review controls
 - Source evidence trails and copyable source-review memos on regulation details and drawers
 - Data Quality review workflow exports for source, threshold, evidence and premium-use QA tracking
@@ -81,6 +83,16 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AJ Items
+
+- Updated dataset metadata and changelog to `0.5.54 - May 2026`.
+- Added a market trigger-review panel to jurisdiction profile pages.
+- Grouped market drivers into corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals.
+- Added matched-record counts, priority record links, next verification facts and first actions for each trigger category.
+- Added trigger-review context to copied market profile Markdown.
+- Added smoke coverage for market trigger review on `/jurisdiction/euu`.
+- Kept market trigger review as a seed-data orientation aid, not legal applicability, complete coverage or entity-specific compliance scope.
 
 ## Recently Delivered Phase 1AI Items
 

@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.54 - May 2026",
+    date: "2026-05-21",
+    label: "Market trigger review",
+    summary:
+      "Added market-level trigger reviews to jurisdiction profiles so users can see what drives a market: corporate reporting, climate, sustainable finance, supply chain, product/trade and source-review signals.",
+    added: [
+      "Market trigger-review panel on jurisdiction profile pages",
+      "Reusable market trigger helper for jurisdiction records",
+      "Trigger-review context in copied market profile Markdown",
+      "Smoke coverage for market trigger review"
+    ],
+    updated: [
+      "Jurisdiction market profiles",
+      "Copied market profile output",
+      "Market profile smoke coverage",
+      "Release context documentation"
+    ],
+    records: ["Markets", "Jurisdiction profiles", "Market trigger review", "Source review"],
+    caveat:
+      "Market trigger review is a seed-data orientation aid. It does not determine legal applicability, complete jurisdiction coverage or entity-specific compliance obligations."
+  },
+  {
     edition: "0.5.53 - May 2026",
     date: "2026-05-21",
     label: "Assessment trigger review",

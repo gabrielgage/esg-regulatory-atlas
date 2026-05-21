@@ -5,6 +5,7 @@ import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
 import { CommercialCTA } from "@/components/CommercialCTA";
+import { ManualRequestPanel } from "@/components/ManualRequestPanel";
 import { advisoryServices } from "@/data/commercialOffers";
 import { DATASET_META } from "@/data/_meta";
 
@@ -40,6 +41,15 @@ export default function AdvisoryPage() {
             </div>
           </div>
         </section>
+
+        <ManualRequestPanel
+          title="Request an advisory-supported scan"
+          body="Use this path when the next step is a human-reviewed exposure scan, market pack, portfolio/supplier map or board/client briefing."
+          subject="Etica ESG advisory scan request"
+          requestType="an advisory-supported ESG regulatory scan"
+          whatToSend={["Jurisdictions and operating or selling markets", "Company type, listing status, sector and value-chain exposure", "Known investor, customer or supplier ESG data requests", "Preferred output: exposure scan, watchlist, market pack or briefing"]}
+          whatEticaReturns={["Indicative priority records and why they appear", "Missing facts and sources to verify", "Evidence package and suggested internal owners", "Caveated next-step plan for advisory or internal review"]}
+        />
 
         <section className="grid gap-4 lg:grid-cols-2">
           {advisoryServices.map((service) => (

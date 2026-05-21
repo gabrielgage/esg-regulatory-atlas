@@ -53,7 +53,7 @@ test("markets page links coverage counts to glossary", async ({ page }) => {
   await page.goto("/markets");
 
   await expect(page.getByRole("heading", { name: /Interpret market coverage carefully/i })).toBeVisible();
-  await expect(page.getByText(/Market counts, confidence badges and review flags describe current tracked seed coverage/i)).toBeVisible();
+  await expect(page.getByText(/Market counts, confidence badges and review prompts describe current tracked seed coverage/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
 });
 
@@ -61,7 +61,7 @@ test("sectors page links sector coverage to glossary", async ({ page }) => {
   await page.goto("/sectors");
 
   await expect(page.getByRole("heading", { name: /Interpret sector coverage carefully/i })).toBeVisible();
-  await expect(page.getByText(/Sector counts and source-review flags show current tagged seed records/i)).toBeVisible();
+  await expect(page.getByText(/Sector counts and source-review prompts show current tagged seed records/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
 });
 

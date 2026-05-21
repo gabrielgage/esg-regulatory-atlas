@@ -51,7 +51,7 @@ export function SourceEvidencePanel({
         />
         <MiniCard
           icon={AlertTriangle}
-          title="Source coverage"
+          title="Captured source mix"
           body={`${evidence.prioritySourceCount}/${evidence.sourceCount} priority`}
           detail="Primary, regulator or standard-setter sources are prioritized over secondary commentary."
         />

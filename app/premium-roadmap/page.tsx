@@ -5,6 +5,7 @@ import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
 import { CommercialCTA } from "@/components/CommercialCTA";
+import { ManualRequestPanel } from "@/components/ManualRequestPanel";
 import { alertDigestPreviews } from "@/data/alertDigests";
 import { commercialCaveat } from "@/data/commercialOffers";
 import { premiumPacks } from "@/data/premiumPacks";
@@ -151,6 +152,15 @@ export default function PremiumRoadmapPage() {
             <Guardrail text="Use internal and competitor research for product strategy only, not as legal authority." />
           </div>
         </section>
+
+        <ManualRequestPanel
+          title="Request a design-partner preview"
+          body="Use this path when you want to shape a future alert, market pack, watchlist or advisory-supported output before any gated SaaS infrastructure is added."
+          subject="Etica ESG premium roadmap discussion"
+          requestType="a premium roadmap or design-partner preview"
+          whatToSend={["The premium use case you would value most", "Market, sector, company type or portfolio context", "Which output format would be useful: alert, market pack, watchlist or briefing", "What would make the output credible enough for purchase or advisory use"]}
+          whatEticaReturns={["Relevant preview route or pack concept", "Manual validation questions", "Source-governance caveats and review needs", "Recommended next product or advisory step"]}
+        />
 
         <CommercialCTA
           title="Discuss a premium preview or design partnership"

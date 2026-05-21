@@ -32,13 +32,13 @@ export function CoverageConfidencePanel({
             <h2 className="font-semibold text-ink">Coverage confidence</h2>
           </div>
           <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500">
-            Separates record volume from source confidence, review risk and date sensitivity. Use this as an internal readiness signal before putting a market into premium examples, advisory scans or client-ready briefs.
+            Separates tracked seed-record volume from source confidence, review prompts and date sensitivity. Use this as an internal readiness signal before putting a market into premium examples, advisory scans or client-ready briefs.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <Badge className="border-teal/20 bg-teal/10 text-teal">{sourceReviewed} source-reviewed</Badge>
           <Badge className="border-blue-200 bg-blue-50 text-blue-700">{usableSeed} usable seed</Badge>
-          <Badge className="border-amber-200 bg-amber-50 text-amber-800">{reviewNeeded} need review</Badge>
+          <Badge className="border-amber-200 bg-amber-50 text-amber-800">{reviewNeeded} need source review</Badge>
           <Badge className="border-slate-200 bg-slate-50 text-slate-600">{watchOnly} watch-only</Badge>
         </div>
       </div>
@@ -46,7 +46,7 @@ export function CoverageConfidencePanel({
       <div className="mt-4 grid gap-3 md:grid-cols-4">
         <Metric icon={CheckCircle2} label="Priority-source backing" value={`${sum(rows, "prioritySourceCount")}/${sum(rows, "scopedCount") || 0}`} />
         <Metric icon={ShieldCheck} label="High-confidence records" value={`${sum(rows, "highConfidenceCount")}/${sum(rows, "scopedCount") || 0}`} />
-        <Metric icon={CircleAlert} label="Review flags" value={String(sum(rows, "reviewFlagCount"))} />
+        <Metric icon={CircleAlert} label="Review prompts" value={String(sum(rows, "reviewFlagCount"))} />
         <Metric icon={BarChart3} label="Average confidence" value={`${Math.round(rows.reduce((total, row) => total + row.confidenceScore, 0) / (rows.length || 1))}/100`} />
       </div>
 
@@ -60,7 +60,7 @@ export function CoverageConfidencePanel({
               <th className="px-3 py-2">Depth</th>
               <th className="px-3 py-2">Priority sources</th>
               <th className="px-3 py-2">High confidence</th>
-              <th className="px-3 py-2">Risk signals</th>
+              <th className="px-3 py-2">Review signals</th>
               <th className="px-3 py-2">Next action</th>
             </tr>
           </thead>

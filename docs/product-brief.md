@@ -77,11 +77,11 @@ The MVP includes:
 - Persona starting points in the Regulations workspace for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and advisor workflows
 - Timeline and methodology surfaces
 - Quarter-level milestone timeline with default near-term planning horizon for consultation, effective, reporting, due-date and source-review planning
-- Data Quality surface for source coverage and review-risk governance
+- Data Quality surface for captured source links and source-review prompt governance
 - Tabbed Data Quality workspace for overview, sources, coverage and review workflow
 - Data-quality review queue with visible scoring reasons for research prioritization
-- Market coverage-depth dashboard showing target direct-record depth, current count, gaps and review risk by jurisdiction
-- Coverage-confidence dashboard separating record volume from priority-source backing, review flags, stale dates and date-sensitive records
+- Market coverage-depth dashboard showing target direct-record depth, current count, gaps and source-review prompts by jurisdiction
+- Coverage-confidence dashboard separating record volume from priority-source backing, review prompts, stale dates and date-sensitive records
 - Public changelog
 - Daily launch pulse on Changelog and Data Quality for latest shipping context, validation expectations and next product-review focus
 - Jurisdiction and regulation comparison
@@ -109,7 +109,7 @@ The MVP includes:
 - Premium pack pages with copyable and printable Markdown briefs
 - Manual conversion tracking model for CTA and mailto-subject validation without analytics infrastructure
 - `/launch` operator workspace with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets, marked noindex and not linked from public navigation
-- `/markets` workspace for browsing jurisdiction market profiles by region, source coverage and review flags
+- `/markets` workspace for browsing jurisdiction market profiles by region, captured source links and review prompts
 - `/sectors` workspace and `/sectors/[slug]` pages for business-context regulatory triage by sector, market signal, evidence need and advisory workstream
 - `/value-chain` workspace for supplier, importer/exporter, product, claims, portfolio, financed-emissions, own-operations and board-governance exposure triage
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples

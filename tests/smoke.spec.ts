@@ -227,6 +227,9 @@ test("data quality source-governance queue renders", async ({ page }) => {
   await page.goto("/data-quality");
 
   await expect(page.getByRole("tab", { name: /Overview/i })).toHaveAttribute("aria-selected", "true");
+  await expect(page.getByRole("heading", { name: /Transparency signals are planning prompts/i })).toBeVisible();
+  await expect(page.getByText(/Record counts/i).first()).toBeVisible();
+  await expect(page.getByText(/Review prompts/i).first()).toBeVisible();
   await expect(page.getByTestId("daily-launch-pulse")).toContainText(/Daily launch pulse/i);
   await expect(page.getByTestId("daily-launch-pulse")).toContainText(/next product-review focus/i);
   await expect(page.getByText(/Source freshness signals/i)).toBeVisible();
@@ -250,6 +253,16 @@ test("data quality source-governance queue renders", async ({ page }) => {
   await expect(page.getByRole("button", { name: /Copy intake routing/i })).toBeVisible();
   await expect(page.getByText(/Owner placeholder:/i).first()).toBeVisible();
   await expect(page.getByText(/Premium use:/i).first()).toBeVisible();
+});
+
+test("commercial routes explain manual request paths", async ({ page }) => {
+  for (const path of ["/plans", "/alerts", "/advisory", "/premium-roadmap"]) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { name: /How to request support|Request a sample alert preview|Request an advisory-supported scan|Request a design-partner preview/i })).toBeVisible();
+    await expect(page.getByText(/What to send/i).first()).toBeVisible();
+    await expect(page.getByText(/What Etica returns/i).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: /Email Etica ESG/i }).first()).toHaveAttribute("href", /mailto:gabriel@eticaesg\.com/);
+  }
 });
 
 test("changelog exposes the daily launch pulse", async ({ page }) => {

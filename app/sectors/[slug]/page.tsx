@@ -90,7 +90,7 @@ export default async function SectorProfilePage({ params }: { params: Promise<{ 
           <Metric label="Direct records" value={String(profile.directRecords.length)} />
           <Metric label="Broad context" value={String(profile.broadRecords.length)} />
           <Metric label="High impact" value={String(profile.highImpact.length)} />
-          <Metric label="Review flags" value={String(profile.reviewFlags)} />
+          <Metric label="Review prompts" value={String(profile.reviewFlags)} />
         </section>
 
         <section className="grid gap-5 lg:grid-cols-[1.2fr_.8fr]">

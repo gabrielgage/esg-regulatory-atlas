@@ -104,7 +104,7 @@ function ValueChainCard({ profile }: { profile: ValueChainProfile }) {
         <div>
           <div className="flex flex-wrap gap-2">
             <Badge className="border-teal/20 bg-teal/10 text-teal">Value chain</Badge>
-            {profile.reviewFlags ? <Badge className="border-amber-200 bg-amber-50 text-amber-800">{profile.reviewFlags} review flags</Badge> : null}
+            {profile.reviewFlags ? <Badge className="border-amber-200 bg-amber-50 text-amber-800">{profile.reviewFlags} review prompts</Badge> : null}
           </div>
           <h2 className="mt-3 text-xl font-bold tracking-tight text-ink">{profile.label}</h2>
           <p className="mt-2 text-sm leading-6 text-slate-600">

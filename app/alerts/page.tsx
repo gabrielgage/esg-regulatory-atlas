@@ -5,6 +5,7 @@ import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
 import { CommercialCTA } from "@/components/CommercialCTA";
+import { ManualRequestPanel } from "@/components/ManualRequestPanel";
 import { alertDigestPreviews, alertRequestHref, alertWatchlistOptions, sourceQualityLegend } from "@/data/alertDigests";
 
 const frequencyLabel = {
@@ -112,6 +113,15 @@ export default function AlertsPage() {
             </div>
           </section>
         </section>
+
+        <ManualRequestPanel
+          title="Request a sample alert preview"
+          body="Tell Etica which jurisdiction, topic, sector or persona watchlist would be most useful. This validates editorial demand before production monitoring or email automation exists."
+          subject="Etica ESG alert preview request"
+          requestType="a sample ESG regulatory alert preview"
+          whatToSend={["Preferred frequency: weekly, monthly or urgent watchlist", "Jurisdictions, topics, sectors or personas to monitor", "Example business decision the alert should support", "Whether the output is for internal, board, client or portfolio use"]}
+          whatEticaReturns={["Sample digest framing", "Candidate watchlist structure", "Source-review and confidence caveats", "Recommended manual monitoring next step"]}
+        />
 
         <CommercialCTA
           eyebrow="Request access"

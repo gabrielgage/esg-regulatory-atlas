@@ -273,7 +273,7 @@ function BadgeList({ values }: { values: string[] }) {
 }
 
 function qualityLabel(status: string) {
-  if (status === "verified_seed") return "Verified source set";
+  if (status === "verified_seed") return "Source-reviewed seed";
   return status.replaceAll("_", " ");
 }
 

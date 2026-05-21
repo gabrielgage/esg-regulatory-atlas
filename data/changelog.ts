@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.48 - May 2026",
+    date: "2026-05-20",
+    label: "Trust-signal clarity and request paths",
+    summary:
+      "Clarified how users should interpret coverage, source and review signals, and added manual request guidance so commercial and advisory CTAs lead to concrete next steps without adding infrastructure.",
+    added: [
+      "Quality signal explainer for Data Quality and Markets",
+      "Manual request panel for Plans, Alerts, Advisory and Premium Roadmap",
+      "Clearer what-to-send and what-Etica-returns guidance for manual inquiries",
+      "Safer public wording around review prompts and source-linked seed records"
+    ],
+    updated: [
+      "Data Quality labels from source-coverage and review-risk language to captured source links and review prompts",
+      "Market, sector, jurisdiction and value-chain review labels",
+      "Commercial validation and advisory request surfaces",
+      "Project documentation and release context"
+    ],
+    records: ["Data Quality", "Markets", "Plans", "Alerts", "Advisory", "Premium roadmap"],
+    caveat:
+      "Quality signals and request paths support orientation, source review and advisory scoping only. They do not create legal advice, paid accounts, automated monitoring or complete coverage claims."
+  },
+  {
     edition: "0.5.47 - May 2026",
     date: "2026-05-20",
     label: "Regulatory data guardrail checks",

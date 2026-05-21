@@ -169,6 +169,13 @@ ADR-033:
 - Consequence: Add `npm run check:data` and Playwright data tests while preserving that automated checks do not replace legal/source review.
 - Status: Active.
 
+ADR-034:
+
+- Decision: Interpret trust metrics as planning signals.
+- Why: Users can misread source coverage, review flags or confidence scores as legal completeness, product defects or source verification.
+- Consequence: Use captured-source, review-prompt and confidence-label language with visible caveats on market and data-quality surfaces.
+- Status: Active.
+
 ADR-031:
 
 - Decision: Use local SVG pan/zoom controls before introducing a map platform.
@@ -273,7 +280,7 @@ Log issues discovered during implementation, especially:
 
 Launch Command Center note:
 
-> Phase 1I improved the first trust surface of the Atlas: the local Natural Earth country-outline map now appears from tablet widths upward with stronger borders, selected-state cues and a geometry fallback. Data Quality now includes market coverage-depth targets so core commercial markets and watch-expansion markets show direct-record depth, gaps and review risk.
+> Phase 1I improved the first trust surface of the Atlas: the local Natural Earth country-outline map now appears from tablet widths upward with stronger borders, selected-state cues and a geometry fallback. Data Quality now includes market coverage-depth targets so core commercial markets and watch-expansion markets show direct-record depth, gaps and source-review prompts.
 
 Launch Tasks:
 
@@ -340,7 +347,7 @@ QA finding:
 
 Launch Command Center note:
 
-> Phase 1P added a coverage-confidence layer so Data Quality, Markets and jurisdiction profiles distinguish record volume from source trust. The new scoring uses direct depth, priority-source backing, high-confidence records, review flags, stale dates and date-sensitive records. It remains an internal readiness signal, not legal verification or complete market coverage.
+> Phase 1P added a coverage-confidence layer so Data Quality, Markets and jurisdiction profiles distinguish record volume from source trust. The new scoring uses direct depth, priority-source backing, high-confidence records, review prompts, stale dates and date-sensitive records. It remains an internal readiness signal, not legal verification or complete market coverage.
 
 Launch Tasks:
 

@@ -4,7 +4,7 @@ import { Regulation } from "@/types/regulation";
 import { formatDate } from "@/lib/utils";
 
 const qualityLabels: Record<Regulation["dataQualityStatus"], string> = {
-  verified_seed: "Verified source set",
+  verified_seed: "Source-reviewed seed",
   needs_review: "Needs review",
   recently_updated: "Recently updated",
   date_uncertain: "Date uncertain",
@@ -83,16 +83,16 @@ export function DataQualityPanel({
             <h2 className="font-semibold text-ink">Review queue</h2>
           </div>
           <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-500">
-            Shows whether the current view is source-backed, recently reviewed or queued for deeper production research.
+            Shows whether the current static seed data is source-linked, recently reviewed or queued for deeper production research.
           </p>
         </div>
         <Badge className="border-slate-200 bg-slate-50 text-slate-600">Methodology control</Badge>
       </div>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-        <Metric icon={ShieldCheck} label="Source coverage" value={`${sourceCoverage}%`} detail={`${sourced}/${total || 0} records have source links`} />
+        <Metric icon={ShieldCheck} label="Records with source links" value={`${sourceCoverage}%`} detail={`${sourced}/${total || 0} seed records have at least one captured source link`} />
         <Metric icon={Link2} label="Priority sources" value={`${primaryBacked}/${total || 0}`} detail="primary, regulator or standard-setter backed" />
-        <Metric icon={TriangleAlert} label="Review queue" value={String(reviewQueue.length)} detail="records needing production research" />
+        <Metric icon={TriangleAlert} label="Review prompts" value={String(reviewQueue.length)} detail="records needing source, date or threshold review" />
         <Metric icon={TriangleAlert} label="Priority checks" value={String(highImpactNeedsReview)} detail={`${upcomingReview} records have upcoming review dates`} />
         <Metric icon={TriangleAlert} label="Confidence checks" value={String(confidenceNeedsReview)} detail={`${sourceCount} captured source links in total`} />
       </div>
@@ -132,7 +132,7 @@ export function DataQualityPanel({
         </div>
 
         <div className="rounded-xl border border-slate-200 p-4">
-          <h3 className="text-sm font-semibold text-ink">Research queue</h3>
+          <h3 className="text-sm font-semibold text-ink">Source-review queue</h3>
           <div className="mt-3 space-y-3">
             {reviewQueue.length ? (
               reviewQueue.map(({ regulation, score, reasons }) => (
@@ -164,7 +164,7 @@ export function DataQualityPanel({
                 </button>
               ))
             ) : (
-              <p className="rounded-lg bg-slate-50 p-3 text-sm text-slate-500">No research queue items in the current filters.</p>
+              <p className="rounded-lg bg-slate-50 p-3 text-sm text-slate-500">No source-review queue items in the current filters.</p>
             )}
           </div>
         </div>

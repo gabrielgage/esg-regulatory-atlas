@@ -8,13 +8,14 @@ import { Header } from "@/components/Header";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
 import { MarketQuickStartGrid } from "@/components/MarketQuickStartPanel";
 import { PageIntro } from "@/components/PageIntro";
+import { QualitySignalExplainer } from "@/components/QualitySignalExplainer";
 import { DATASET_META } from "@/data/_meta";
 import { marketProfiles } from "@/lib/marketProfile";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "Market profiles | Etica ESG Regulatory Atlas",
-  description: "Browse jurisdiction-level ESG regulatory market profiles with priority records, source coverage and review caveats."
+  description: "Browse jurisdiction-level ESG regulatory market profiles with priority records, captured source links and review caveats."
 };
 
 export default function MarketsPage() {
@@ -31,20 +32,21 @@ export default function MarketsPage() {
         <PageIntro
           eyebrow="Markets"
           title="Jurisdiction market profiles"
-          body="Browse tracked ESG regulatory markets by region, direct seed coverage, source confidence and first action prompts. Market profiles are designed for orientation before a deeper brief, assessment or advisory scan."
+          body="Browse tracked ESG regulatory markets by region, direct seed records, source confidence and first action prompts. Market profiles are designed for orientation before a deeper brief, assessment or advisory scan."
           meta={`${DATASET_META.edition} · seed intelligence, not legal advice`}
         />
         <GlossaryHelpCard
           title="Interpret market coverage carefully"
-          body="Market counts, confidence badges and review flags describe current tracked seed coverage, not a complete jurisdiction inventory. Use them to prioritize source review before advising on market exposure or compliance scope."
+          body="Market counts, confidence badges and review prompts describe current tracked seed coverage, not a complete jurisdiction inventory. Use them to prioritize source review before advising on market exposure or compliance scope."
           compact
         />
+        <QualitySignalExplainer compact />
 
         <section className="grid gap-3 md:grid-cols-4">
           <Metric icon={Globe2} label="Tracked markets" value={String(profiles.length)} />
           <Metric icon={Layers3} label="Direct market records" value={String(trackedRecords)} />
           <Metric icon={ShieldCheck} label="High-impact links" value={String(highImpact)} />
-          <Metric icon={ShieldCheck} label="Review flags" value={String(reviewFlags)} />
+          <Metric icon={ShieldCheck} label="Review prompts" value={String(reviewFlags)} />
         </section>
 
         <MarketQuickStartGrid jurisdictions={profiles.map((profile) => profile.jurisdiction)} limit={13} />
@@ -54,7 +56,7 @@ export default function MarketsPage() {
             <div>
               <h2 className="text-xl font-bold tracking-tight text-ink">Market coverage by region</h2>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-                Counts show current tracked seed coverage, not complete legal inventory. Markets with lower confidence or source gaps should be reviewed before client reliance.
+                Counts show current tracked seed records, not complete legal inventory. Markets with lower confidence or source-review prompts should be reviewed before client reliance.
               </p>
             </div>
             <Link href="/data-quality" className="inline-flex items-center gap-2 text-sm font-semibold text-teal underline">

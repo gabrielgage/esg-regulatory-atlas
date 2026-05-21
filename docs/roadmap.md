@@ -77,6 +77,14 @@ Current capability areas:
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
 
+## Recently Delivered Phase 1AC Items
+
+- Updated dataset metadata and recent changelog to `0.5.47 - May 2026`.
+- Added `tests/data-guardrails.spec.ts` to check minimum source metadata, high-impact review signals, premium-use gates and definitive legal wording.
+- Added `npm run check:data` for targeted static data-governance checks.
+- Kept the checks in the existing Playwright CI flow so future data regressions are caught before merge.
+- Preserved the distinction between automated guardrails and qualified source/legal review.
+
 ## Recently Delivered Phase 1AB Items
 
 - Updated dataset metadata and recent changelog to `0.5.46 - May 2026`.

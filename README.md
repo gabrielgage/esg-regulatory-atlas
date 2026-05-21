@@ -8,13 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.46 - May 2026`.
+The current public release context is `0.5.47 - May 2026`.
 
 Latest release-context update:
 
-- adds planning-horizon tabs on `/timeline` so users start with the next 24 months instead of a full historical chronology
-- keeps next 12 months, already-in-force, longer-term watch and full-history timeline views one click away
-- preserves date-sensitive caveats and source-review framing around every timeline view
+- adds automated regulatory data guardrail checks for source metadata, high-impact review signals, premium-use gates and definitive wording
+- adds `npm run check:data` so source-governance checks can run without introducing new dependencies
+- keeps those checks inside the existing Playwright CI flow so future seed-data changes fail before merge when common trust risks appear
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -85,6 +85,7 @@ The MVP does not include authentication, Supabase, external databases, Stripe, c
 npm install
 npm run dev
 npm run lint
+npm run check:data
 npm run build
 npm run test:e2e
 npm run lhci

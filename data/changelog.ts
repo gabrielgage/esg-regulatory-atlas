@@ -11,6 +11,26 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.47 - May 2026",
+    date: "2026-05-20",
+    label: "Regulatory data guardrail checks",
+    summary:
+      "Added automated data-governance checks so future seed-data changes catch missing source metadata, missing high-impact review signals, premium-use gate gaps and definitive legal wording before merge.",
+    added: [
+      "Playwright data guardrail test suite",
+      "`npm run check:data` command for static regulatory data checks",
+      "Premium-pack gate coverage checks",
+      "Definitive legal-claim phrase scan across seed and premium copy"
+    ],
+    updated: [
+      "CI smoke coverage through the existing Playwright test run",
+      "Project documentation and release context"
+    ],
+    records: ["Data guardrails", "Premium-use gates", "Source governance", "Legal wording"],
+    caveat:
+      "Automated guardrails catch common metadata and wording risks. They do not replace source review, qualified legal review or production regulatory research workflow."
+  },
+  {
     edition: "0.5.46 - May 2026",
     date: "2026-05-20",
     label: "Near-term regulatory timeline planning",

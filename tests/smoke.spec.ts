@@ -77,6 +77,8 @@ test("assessment results include decision readiness prompts", async ({ page }) =
 
   await expect(page.getByTestId("assessment-profile-summary")).toContainText(/European Union headquarters/i);
   await expect(page.getByTestId("assessment-profile-summary")).toContainText(/Facts to confirm next/i);
+  await expect(page.getByTestId("assessment-readiness-plan")).toContainText(/Threshold facts to check/i);
+  await expect(page.getByTestId("assessment-readiness-plan")).toContainText(/Open threshold matrix/i);
   await expect(page.getByText("Indicative shortlist", { exact: true })).toBeVisible();
   await expect(page.getByText(/Suggested owner:/i).first()).toBeVisible();
   await expect(page.getByText(/Missing fact:/i).first()).toBeVisible();

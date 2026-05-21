@@ -478,3 +478,20 @@ Launch Tasks:
 QA finding:
 
 - Threshold-sensitive records need a separate review lane. Future premium, alert or advisory examples should check the matrix before using CSRD, CSDDD, SFDR, Taxonomy, EUDR, California climate disclosure, ISSB adoption or national due-diligence records as client-ready examples.
+
+## 2026-05-20 Codex Update - Assessment Readiness Plan
+
+Launch Command Center note:
+
+> Phase 1AF brings threshold-review logic into the assessment workflow. Indicative shortlists now show threshold facts to check, first 30-day actions and likely owner functions, plus badges when a record appears in the threshold matrix.
+
+Launch Tasks:
+
+- LAUNCH-087 - Add assessment readiness plan cards
+- LAUNCH-088 - Flag threshold-matrix records in assessment shortlist cards
+- LAUNCH-089 - Add threshold-sensitive record context to copied assessment summaries
+- LAUNCH-090 - Add smoke coverage for assessment readiness plan
+
+QA finding:
+
+- Assessment output should not stop at a ranked shortlist. Each result set should help the user decide what to verify next, who should own it and which threshold-sensitive records require source review before client use.

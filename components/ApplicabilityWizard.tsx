@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Compass, RotateCcw, ShieldCheck, UserRound } from "lucide-react";
+import { ArrowRight, Compass, FileSearch, ListChecks, RotateCcw, ShieldCheck, UserRound } from "lucide-react";
 import { companyTypes, sectors } from "@/data/seed";
 import { jurisdictions } from "@/data/jurisdictions";
+import { thresholdMatrixRows } from "@/data/thresholdMatrix";
 import {
   ApplicabilityAnswers,
   defaultApplicabilityAnswers,
@@ -93,6 +95,7 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
   const [activePersona, setActivePersona] = useState<PersonaId | null>(null);
   const results = useMemo(() => evaluateApplicability(regulations, answers), [answers, regulations]);
   const summary = useMemo(() => buildAssessmentSummary(results, answers), [answers, results]);
+  const readinessPlan = useMemo(() => buildReadinessPlan(results), [results]);
   const trackedJurisdictions = jurisdictions.filter((jurisdiction) => jurisdiction.type !== "international");
   const sectorChoices = sectors.filter((sector) => sector !== "Listed companies");
   const activeExposureLabels = [
@@ -225,6 +228,26 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
         </div>
       </div>
 
+      <div data-testid="assessment-readiness-plan" className="mb-4 grid gap-3 lg:grid-cols-3">
+        <ReadinessPlanCard
+          title="Threshold facts to check"
+          icon="threshold"
+          values={readinessPlan.thresholdFacts.length ? readinessPlan.thresholdFacts : ["Confirm entity-specific scope and market nexus before using results."]}
+          href="/thresholds"
+          action="Open threshold matrix"
+        />
+        <ReadinessPlanCard
+          title="First 30-day actions"
+          icon="actions"
+          values={readinessPlan.nextActions.length ? readinessPlan.nextActions : ["Assign an accountable owner and review primary sources."]}
+        />
+        <ReadinessPlanCard
+          title="Likely owner functions"
+          icon="owners"
+          values={readinessPlan.owners.length ? readinessPlan.owners : ["Sustainability", "Legal / Compliance", "Finance / ESG controllership"]}
+        />
+      </div>
+
       <div className="grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="grid gap-3">
           <div className="grid gap-3 sm:grid-cols-2">
@@ -329,6 +352,9 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
                         {trigger}
                       </Badge>
                     ))}
+                    {thresholdMatrixRows.some((row) => row.regulationId === result.regulation.id) ? (
+                      <Badge className="border-amber-200 bg-amber-50 text-amber-800">Threshold matrix row</Badge>
+                    ) : null}
                   </div>
                   <div className="mt-3 grid gap-2 rounded-lg bg-slate-50 p-3 text-xs leading-5 text-slate-600 sm:grid-cols-2">
                     <div>
@@ -461,6 +487,43 @@ function Toggle({ label, checked, onChange }: { label: string; checked: boolean;
   );
 }
 
+function ReadinessPlanCard({
+  title,
+  icon,
+  values,
+  href,
+  action
+}: {
+  title: string;
+  icon: "threshold" | "actions" | "owners";
+  values: string[];
+  href?: string;
+  action?: string;
+}) {
+  const Icon = icon === "threshold" ? FileSearch : icon === "actions" ? ListChecks : UserRound;
+
+  return (
+    <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="flex items-center gap-2">
+        <span className="rounded-lg bg-teal/10 p-2 text-teal">
+          <Icon className="h-4 w-4" aria-hidden="true" />
+        </span>
+        <h3 className="text-sm font-semibold text-ink">{title}</h3>
+      </div>
+      <ul className="mt-3 space-y-2 text-xs leading-5 text-slate-600">
+        {values.slice(0, 4).map((value) => (
+          <li key={value}>{value}</li>
+        ))}
+      </ul>
+      {href && action ? (
+        <Link href={href} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-teal hover:text-ink">
+          {action} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+        </Link>
+      ) : null}
+    </article>
+  );
+}
+
 function categoryClass(category: string) {
   if (category === "Potentially directly relevant") return "border-teal/20 bg-teal/10 text-teal";
   if (category === "Potentially indirectly relevant") return "border-violet/20 bg-violet/10 text-violet";
@@ -475,6 +538,10 @@ function reviewPriorityClass(priority: string) {
 }
 
 function buildAssessmentSummary(results: ReturnType<typeof evaluateApplicability>, answers: ApplicabilityAnswers) {
+  const thresholdSensitive = results
+    .filter((result) => thresholdMatrixRows.some((row) => row.regulationId === result.regulation.id))
+    .map((result) => result.regulation.shortName);
+
   return [
     "# Etica ESG · Regulatory Atlas indicative shortlist",
     "",
@@ -483,6 +550,7 @@ function buildAssessmentSummary(results: ReturnType<typeof evaluateApplicability
     `Company size: ${answers.companySize}`,
     `Listed: ${answers.listed ? "yes" : "no"}`,
     `Sectors: ${answers.sectors.join(", ")}`,
+    `Threshold-sensitive records: ${thresholdSensitive.length ? thresholdSensitive.join(", ") : "none in current shortlist"}`,
     "",
     "## Recommended records",
     ...results.slice(0, 12).flatMap((result) => [
@@ -499,6 +567,30 @@ function buildAssessmentSummary(results: ReturnType<typeof evaluateApplicability
     ]),
     "",
     "## Caveat",
-    "This shortlist is indicative only. It does not constitute legal, tax, investment or assurance advice and does not determine entity-specific applicability."
+    "This shortlist is indicative only. It does not constitute legal, tax, investment or assurance advice and does not determine entity-specific applicability. Threshold-sensitive rows should be reviewed in the Atlas threshold matrix before client use."
   ].join("\n");
+}
+
+function buildReadinessPlan(results: ReturnType<typeof evaluateApplicability>) {
+  const thresholdFacts = new Set<string>();
+  const nextActions = new Set<string>();
+  const owners = new Set<string>();
+
+  results.slice(0, 8).forEach((result) => {
+    const thresholdRow = thresholdMatrixRows.find((row) => row.regulationId === result.regulation.id);
+    if (thresholdRow) {
+      thresholdFacts.add(`${result.regulation.shortName}: ${thresholdRow.factsToConfirm[0]}`);
+    } else if (result.missingFacts[0]) {
+      thresholdFacts.add(`${result.regulation.shortName}: ${result.missingFacts[0]}`);
+    }
+
+    if (result.nextSteps[0]) nextActions.add(`${result.regulation.shortName}: ${result.nextSteps[0]}`);
+    if (result.suggestedOwner) owners.add(result.suggestedOwner);
+  });
+
+  return {
+    thresholdFacts: Array.from(thresholdFacts).slice(0, 4),
+    nextActions: Array.from(nextActions).slice(0, 4),
+    owners: Array.from(owners).slice(0, 4)
+  };
 }

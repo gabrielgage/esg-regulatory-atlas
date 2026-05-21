@@ -2,6 +2,7 @@ import { jurisdictions, regulations } from "@/data/seed";
 import { fallbackMarketQuickStart, marketQuickStartFor } from "@/data/marketQuickStarts";
 import { coverageConfidenceForJurisdiction } from "@/lib/coverageConfidence";
 import { recordsForJurisdiction } from "@/lib/layers";
+import { marketTriggerMarkdown } from "@/lib/marketTriggerProfile";
 import { readinessScore } from "@/lib/scoring";
 import { uniq } from "@/lib/utils";
 import type { Jurisdiction, Regulation } from "@/types/regulation";
@@ -107,6 +108,8 @@ export function buildMarketMarkdown(jurisdiction: Jurisdiction, records: Regulat
     "",
     "## Watch items",
     ...quickStart.watchItems.map((item) => `- ${item}`),
+    "",
+    marketTriggerMarkdown(jurisdiction, relevant),
     "",
     "## Caveat",
     `${quickStart.caveat} Applicability depends on entity-specific facts, local implementation, thresholds, sector rules and legal interpretation. Review primary sources and qualified advice before reliance.`

@@ -25,7 +25,7 @@ The MVP already has the right core shape: a map-centered workspace, source-linke
 
 ## 2026-05-20 Expert Review Intake
 
-The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`, `0.5.45 - May 2026`, `0.5.46 - May 2026`, `0.5.47 - May 2026` and `0.5.48 - May 2026`:
+The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`, `0.5.45 - May 2026`, `0.5.46 - May 2026`, `0.5.47 - May 2026`, `0.5.48 - May 2026` and `0.5.49 - May 2026`:
 
 - CSRD/CSDDD threshold language now separates corporate-reporting and due-diligence scope signals.
 - Premium pack previews now show source-review and premium-use gates for blocked or review-needed records.
@@ -37,10 +37,10 @@ The May 20 expert review prioritized trust-risk fixes before broader feature exp
 - Regulatory data guardrail tests now check source metadata, high-impact review signals, premium-use gates and definitive legal wording.
 - Data Quality and Markets now include a Quality Signal explainer so record counts, source-link rates, review prompts and confidence labels are interpreted as planning signals rather than completeness claims.
 - Plans, Alerts, Advisory and Premium Roadmap now include Manual Request panels that tell users what to send, what Etica returns and that the flow remains manual and caveated.
+- `/thresholds` now provides a structured threshold matrix for high-value records with facts to confirm, timing signals, source links, review status and caveats.
 
 Remaining high-priority expert-review items:
 
-- Add a structured threshold matrix for the top 20 high-value records.
 - Continue source-reviewing Marquee 10 before using records in premium or advisory examples.
 
 ## Wave 1: Launch Quality And Static MVP Usefulness
@@ -104,8 +104,8 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Convert the timeline into a quarter-based swimlane for effective dates, reporting years, consultation deadlines, first reports and phase-in notes.
 
 14. **Threshold matrix**
-    Status: partially delivered in `0.5.10 - May 2026` through threshold and missing-fact decision prompts; structured matrix remains open.
-    Add structured threshold fields and a comparison matrix for employee, revenue, balance sheet, listing, financial institution, supply chain and market-exposure triggers.
+    Status: materially delivered in `0.5.49 - May 2026`.
+    `/thresholds` now gives high-value records structured threshold type, screening signal, facts to confirm, timing signal, source to verify, confidence, review status and caveat. Next content task: source-review and refine numeric threshold details for Marquee 10 and selected Marquee 25 records before premium or advisory reuse.
 
 15. **Penalty and enforcement layer**
     Status: partially delivered in `0.5.10 - May 2026` through enforcement/penalty cue cards; record-level population remains open.

@@ -133,6 +133,17 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
   await expect(page.getByRole("button", { name: /Copy source memo/i })).toBeVisible();
 });
 
+test("threshold matrix exposes high-value scope signals with caveats", async ({ page }) => {
+  await page.goto("/thresholds");
+
+  await expect(page.getByRole("heading", { name: /High-value scope signals/i })).toBeVisible();
+  await expect(page.getByText(/Threshold rows are seed planning signals/i)).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Threshold review matrix/i })).toBeVisible();
+  await expect(page.getByText(/CSRD/i).first()).toBeVisible();
+  await expect(page.getByText(/CSDDD threshold signals are regime-specific/i)).toBeVisible();
+  await expect(page.getByRole("link", { name: /Open source trail/i }).first()).toBeVisible();
+});
+
 test("persona presets apply shareable regulation filters", async ({ page }) => {
   await page.goto("/regulations");
   const businessFunctionFilter = page.locator("label").filter({ hasText: /^Business function/ }).locator("select");

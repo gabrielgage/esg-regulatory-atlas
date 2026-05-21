@@ -2,11 +2,19 @@
 
 ## Current Edition
 
-`0.5.48 - May 2026`
+`0.5.49 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, the AI review pack added for external product, ESG and legal-safety critique, the external review intake workflow added to Data Quality, the value-chain exposure workspace added for business-exposure triage, the expert-review launch-readiness fixes for threshold wording, premium gates, public navigation and homepage orientation, the scenario-led briefing workspace that prevents raw default briefing output, the near-term timeline planning view, automated regulatory data guardrail checks, and trust-signal/request-path clarity for user-facing commercial and governance surfaces.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, the AI review pack added for external product, ESG and legal-safety critique, the external review intake workflow added to Data Quality, the value-chain exposure workspace added for business-exposure triage, the expert-review launch-readiness fixes for threshold wording, premium gates, public navigation and homepage orientation, the scenario-led briefing workspace that prevents raw default briefing output, the near-term timeline planning view, automated regulatory data guardrail checks, trust-signal/request-path clarity for user-facing commercial and governance surfaces, and the threshold matrix for high-value scope signals.
+
+### 0.5.49 - Threshold Matrix For High-Value Records
+
+- Added `/thresholds` as a public decision-readiness surface for high-value scope signals.
+- Added `data/thresholdMatrix.ts` with threshold type, facts to confirm, timing signal, source to verify, review status, confidence and caveat for each row.
+- Linked Data Quality and threshold-sensitive regulation detail pages to the matrix so source, threshold and entity-fact review has a visible product lane.
+- Added data-guardrail coverage so threshold matrix rows must map to existing regulation records, include source links, provide facts to confirm and preserve caveats.
+- Kept threshold rows as seed planning signals, not legal determinations or client-ready scope findings.
 
 ### 0.5.48 - Trust-Signal Clarity And Request Paths
 

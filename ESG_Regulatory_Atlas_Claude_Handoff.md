@@ -2,7 +2,19 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1AD trust-signal clarity and manual request-path pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass and Phase 1AC data-guardrail pass. The goal remains deployability and legal caution, with added emphasis on improving user-facing regulatory triage rather than adding infrastructure.
+The app is now in a static Phase 1AE threshold-matrix pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass and Phase 1AD trust-signal clarity/manual request-path pass. The goal remains deployability and legal caution, with added emphasis on improving user-facing regulatory triage rather than adding infrastructure.
+
+## Phase 1AE Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.49 - May 2026`.
+- Added `/thresholds` as a source-linked threshold matrix for high-value records.
+- Added `data/thresholdMatrix.ts` with threshold type, screening signal, facts to confirm, timing signal, source to verify, review status, confidence and caveat.
+- Added a Data Quality handoff card and regulation-detail threshold callouts for records that appear in the matrix.
+- Added data guardrail coverage so threshold matrix rows must map to existing regulation records and include source/caveat metadata.
+
+## Phase 1AE Product Rationale
+
+The expert review identified threshold and scope interpretation as one of the highest trust risks. Phase 1AE turns threshold-sensitive records into a clear review lane: users can see what facts to confirm, which source to verify and whether a row is source-reviewed seed, date-sensitive, jurisdiction-dependent or review-before-use. The matrix remains an orientation tool, not a legal applicability engine.
 
 ## Phase 1AD Changes Delivered
 

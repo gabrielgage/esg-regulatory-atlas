@@ -11,6 +11,29 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.49 - May 2026",
+    date: "2026-05-20",
+    label: "Threshold matrix for high-value records",
+    summary:
+      "Added a source-linked threshold matrix so high-value ESG regulatory records expose the entity, market, product, value-chain or adoption facts that should be verified before assessment, premium-preview or advisory use.",
+    added: [
+      "Public `/thresholds` route for high-value threshold and scope signals",
+      "Static threshold matrix data with facts to confirm, timing signals, source links, confidence labels and caveats",
+      "Data Quality handoff card for threshold-sensitive records",
+      "Regulation detail callouts when a record appears in the threshold matrix",
+      "Data guardrail test coverage for threshold matrix source links and caveats"
+    ],
+    updated: [
+      "Header More menu with a localized Thresholds link",
+      "Regulation detail pages for threshold-sensitive records",
+      "Data Quality review workflow context",
+      "Project documentation and release context"
+    ],
+    records: ["csrd", "csddd", "eu-taxonomy", "sfdr", "cbam", "eudr", "california-sb253-sb261", "uk-sdr", "issb-s1-s2"],
+    caveat:
+      "Threshold matrix rows are seed planning signals. They do not decide entity-specific legal scope and must be verified against linked sources and qualified advisers before reliance."
+  },
+  {
     edition: "0.5.48 - May 2026",
     date: "2026-05-20",
     label: "Trust-signal clarity and request paths",

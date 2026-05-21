@@ -17,6 +17,52 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-20 - Threshold Matrix Guardrail Caught Weak Caveat Wording
+
+Status: resolved in PR #65.
+
+### Symptom
+
+The new threshold matrix data guardrail failed on the California climate disclosure row after the matrix was added. The row had a source link and facts to confirm, but its caveat did not contain the standard planning, review, verify or confirm language required by the guardrail.
+
+### Root Cause
+
+The caveat used "verified" as a passive description instead of the stronger product-safety wording that tells users the row is a planning signal and needs source review.
+
+### Resolution
+
+Updated the California climate disclosure threshold caveat to state that the threshold and deadline signals are implementation-sensitive planning signals and should be reviewed against CARB materials.
+
+### Prevention Rule
+
+Every threshold matrix row must include explicit caveat language that tells users the row is a planning or orientation signal and needs source review or confirmation before client reliance.
+
+### Files Changed
+
+- `data/thresholdMatrix.ts`
+- `tests/data-guardrails.spec.ts`
+- `docs/issue-resolution-log.md`
+
+## 2026-05-20 - Local Lint Failed On Duplicate Generated Next Types
+
+Status: resolved locally before PR #65 validation.
+
+### Symptom
+
+`npm run lint` failed with duplicate identifier errors in `.next/types/cache-life.d 2.ts` and `.next/types/routes.d 2.ts`.
+
+### Root Cause
+
+The local `.next/types` folder contained duplicate generated files with ` 2` suffixes. These are build artifacts, not source files, but the TypeScript config correctly includes `.next/types/**/*.ts` so generated route types are checked.
+
+### Resolution
+
+Deleted the duplicate generated files and reran lint successfully. No source-code change was required for this issue.
+
+### Prevention Rule
+
+If TypeScript reports duplicate identifiers from `.next/types/* 2.ts`, inspect generated artifacts before changing application code. Clean the duplicate generated files or regenerate `.next` through a fresh build.
+
 ## 2026-05-20 - PR #60 Smoke Test Used Ambiguous Text Selectors
 
 Status: resolved in PR #60 follow-up commit.

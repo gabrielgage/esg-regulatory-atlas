@@ -8,13 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.48 - May 2026`.
+The current public release context is `0.5.49 - May 2026`.
 
 Latest release-context update:
 
-- clarifies coverage, source and review signals so users read them as planning prompts, not legal completeness claims
-- adds manual request panels to Plans, Alerts, Advisory and Premium Roadmap so users know what to send and what Etica returns
-- renames public review-flag and broad source-coverage wording into safer review-prompt and captured-source language
+- adds a source-linked threshold matrix for high-value records at `/thresholds`
+- shows facts to confirm, timing signals, source links, review status and caveats for threshold-sensitive regimes
+- links threshold-sensitive regulation detail pages back to the matrix
+- adds data guardrail coverage so threshold rows must map to sourced records and preserve caveats
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -37,6 +38,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - market profiles at `/markets` and `/jurisdiction/[code]` with tracked-coverage and detail-level glossary handoffs
 - sector profiles at `/sectors` and `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
 - regulation database and regulation detail pages
+- threshold matrix for high-value scope signals, facts to confirm and source-review status
 - public glossary and contextual label-help surfaces
 - daily launch pulse for latest release context and next product-review focus
 - assessment wizard with cautious indicative categories and glossary handoff
@@ -67,6 +69,7 @@ The MVP does not include authentication, Supabase, external databases, Stripe, c
 - Timeline: `/timeline`
 - Briefing: `/briefing`
 - Data Quality: `/data-quality`
+- Threshold matrix: `/thresholds`
 - Compare: `/compare`, `/compare?jurisdictions=EUU,GBR`, `/compare?ids=csrd,issb-s1-s2`
 - Markets: `/markets`, `/jurisdiction/[code]`
 - Sectors: `/sectors`, `/sectors/[slug]`

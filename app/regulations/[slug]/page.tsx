@@ -13,6 +13,7 @@ import { DecisionReadinessChecklist } from "@/components/DecisionReadinessCheckl
 import { SourceEvidencePanel } from "@/components/SourceEvidencePanel";
 import { DATASET_META } from "@/data/_meta";
 import { regulations } from "@/data/seed";
+import { thresholdMatrixRows } from "@/data/thresholdMatrix";
 import { profileFor } from "@/lib/applicability";
 import { readinessBand, readinessClass, readinessReasons, readinessScore } from "@/lib/scoring";
 import { formatDate } from "@/lib/utils";
@@ -39,6 +40,7 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
   const related = regulations
     .filter((item) => item.id !== regulation.id && item.topics.some((topic) => regulation.topics.includes(topic)))
     .slice(0, 5);
+  const thresholdRows = thresholdMatrixRows.filter((row) => row.regulationId === regulation.id);
 
   return (
     <main id="main-content" className="min-h-screen pb-12">
@@ -87,6 +89,26 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
         </section>
 
         <DecisionReadinessChecklist regulation={regulation} allRegulations={regulations} />
+
+        {thresholdRows.length ? (
+          <Section title="Threshold matrix signals">
+            <p>
+              This record appears in the Atlas threshold matrix because its scope depends on facts that should be checked before assessment, premium or
+              advisory use.
+            </p>
+            <div className="mt-4 grid gap-3 md:grid-cols-2">
+              {thresholdRows.map((row) => (
+                <div key={row.id} className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-950">
+                  <h3 className="font-semibold text-ink">{row.thresholdSignal}</h3>
+                  <p className="mt-2 text-sm leading-6">{row.caveat}</p>
+                  <Link href="/thresholds" className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-teal hover:text-ink">
+                    Open threshold matrix
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </Section>
+        ) : null}
 
         <CitationWidget regulation={regulation} />
 

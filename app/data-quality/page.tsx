@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import { ArrowRight, FileSearch } from "lucide-react";
 import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
@@ -52,6 +54,25 @@ export default function DataQualityPage() {
           body="The glossary explains status, legal-force, confidence and data-quality labels such as in force, first reporting, needs review, date uncertain and source missing."
         />
         <QualitySignalExplainer />
+        <section className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-6 text-amber-950 shadow-sm">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="flex gap-3">
+              <span className="rounded-xl bg-white/80 p-2 text-amber-700">
+                <FileSearch className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <div>
+                <h2 className="font-semibold text-ink">Threshold-sensitive records need a separate review lane</h2>
+                <p className="mt-1 max-w-3xl">
+                  The threshold matrix shows which entity, market, product, value-chain or adoption facts should be checked before high-value records are used in
+                  assessments, premium previews or advisory conversations.
+                </p>
+              </div>
+            </div>
+            <Link href="/thresholds" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-navy px-4 py-2 font-semibold text-white hover:bg-slate-800">
+              Open threshold matrix <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
 
         <section className="sticky top-16 z-20 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-sm backdrop-blur">
           <div className="grid gap-2 md:grid-cols-4" role="tablist" aria-label="Data quality sections">
@@ -94,7 +115,7 @@ export default function DataQualityPage() {
                 />
                 <GovernanceSection
                   eyebrow="Coverage trust model"
-                  title="Tracked coverage is not complete global coverage"
+                  title="Tracked coverage is not a comprehensive legal inventory"
                   body="The Atlas separates current tracked records from watchlist topics, source-reviewed records, seed intelligence and records needing review. This distinction helps users understand whether a record is ready for orientation, source review or deeper legal analysis."
                   cards={[
                     ["Tracked", "Included in the public seed dataset with source, confidence and review metadata."],

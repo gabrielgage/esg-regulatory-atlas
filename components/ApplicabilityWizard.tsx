@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Compass, FileSearch, ListChecks, RotateCcw, ShieldCheck, UserRound } from "lucide-react";
+import { ArrowRight, Building2, Compass, FileSearch, Landmark, ListChecks, MapPin, Network, RotateCcw, SearchCheck, ShieldCheck, UserRound } from "lucide-react";
 import { companyTypes, sectors } from "@/data/seed";
 import { jurisdictions } from "@/data/jurisdictions";
 import { thresholdMatrixRows } from "@/data/thresholdMatrix";
@@ -96,6 +96,7 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
   const results = useMemo(() => evaluateApplicability(regulations, answers), [answers, regulations]);
   const summary = useMemo(() => buildAssessmentSummary(results, answers), [answers, results]);
   const readinessPlan = useMemo(() => buildReadinessPlan(results), [results]);
+  const triggerReview = useMemo(() => buildTriggerReview(results, answers), [answers, results]);
   const trackedJurisdictions = jurisdictions.filter((jurisdiction) => jurisdiction.type !== "international");
   const sectorChoices = sectors.filter((sector) => sector !== "Listed companies");
   const activeExposureLabels = [
@@ -225,6 +226,24 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
             ))}
           </ul>
           <p className="mt-2 text-slate-400">This is an orientation summary, not an applicability determination.</p>
+        </div>
+      </div>
+
+      <div data-testid="assessment-trigger-review" className="mb-4 rounded-xl border border-slate-200 bg-white p-4">
+        <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h3 className="text-sm font-semibold text-ink">Profile trigger review</h3>
+            <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500">
+              These are the planning signals currently driving the indicative shortlist. They show what the Atlas matched and what should be verified before
+              treating a result as client-ready.
+            </p>
+          </div>
+          <Badge className="border-amber-200 bg-amber-50 text-amber-800">Confirm facts before reliance</Badge>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {triggerReview.map((trigger) => (
+            <TriggerReviewCard key={trigger.title} trigger={trigger} />
+          ))}
         </div>
       </div>
 
@@ -487,6 +506,48 @@ function Toggle({ label, checked, onChange }: { label: string; checked: boolean;
   );
 }
 
+type TriggerReviewItem = {
+  title: string;
+  icon: "jurisdiction" | "company" | "sector" | "valueChain" | "finance" | "source";
+  signal: string;
+  matchedRecords: number;
+  verify: string;
+};
+
+function TriggerReviewCard({ trigger }: { trigger: TriggerReviewItem }) {
+  const Icon =
+    trigger.icon === "jurisdiction"
+      ? MapPin
+      : trigger.icon === "company"
+        ? Building2
+        : trigger.icon === "sector"
+          ? Landmark
+          : trigger.icon === "valueChain"
+            ? Network
+            : trigger.icon === "finance"
+              ? ShieldCheck
+              : SearchCheck;
+
+  return (
+    <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <span className="rounded-lg bg-white p-2 text-teal">
+            <Icon className="h-4 w-4" aria-hidden="true" />
+          </span>
+          <h4 className="text-sm font-semibold text-ink">{trigger.title}</h4>
+        </div>
+        <Badge className="border-slate-200 bg-white text-slate-600">{trigger.matchedRecords} matched</Badge>
+      </div>
+      <p className="mt-3 text-sm leading-6 text-slate-600">{trigger.signal}</p>
+      <p className="mt-3 rounded-lg border border-white bg-white p-3 text-xs leading-5 text-slate-500">
+        <span className="font-semibold text-ink">Verify next: </span>
+        {trigger.verify}
+      </p>
+    </article>
+  );
+}
+
 function ReadinessPlanCard({
   title,
   icon,
@@ -541,6 +602,7 @@ function buildAssessmentSummary(results: ReturnType<typeof evaluateApplicability
   const thresholdSensitive = results
     .filter((result) => thresholdMatrixRows.some((row) => row.regulationId === result.regulation.id))
     .map((result) => result.regulation.shortName);
+  const triggerReview = buildTriggerReview(results, answers);
 
   return [
     "# Etica ESG · Regulatory Atlas indicative shortlist",
@@ -551,6 +613,13 @@ function buildAssessmentSummary(results: ReturnType<typeof evaluateApplicability
     `Listed: ${answers.listed ? "yes" : "no"}`,
     `Sectors: ${answers.sectors.join(", ")}`,
     `Threshold-sensitive records: ${thresholdSensitive.length ? thresholdSensitive.join(", ") : "none in current shortlist"}`,
+    "",
+    "## Profile trigger review",
+    ...triggerReview.flatMap((trigger) => [
+      `- ${trigger.title}: ${trigger.signal}`,
+      `  - Matched records: ${trigger.matchedRecords}`,
+      `  - Verify next: ${trigger.verify}`
+    ]),
     "",
     "## Recommended records",
     ...results.slice(0, 12).flatMap((result) => [
@@ -593,4 +662,68 @@ function buildReadinessPlan(results: ReturnType<typeof evaluateApplicability>) {
     nextActions: Array.from(nextActions).slice(0, 4),
     owners: Array.from(owners).slice(0, 4)
   };
+}
+
+function buildTriggerReview(results: ReturnType<typeof evaluateApplicability>, answers: ApplicabilityAnswers): TriggerReviewItem[] {
+  const jurisdictionCount = countTriggered(results, ["jurisdiction footprint", "EU market exposure", "direct relevance tag"]);
+  const companyCount = countTriggered(results, ["company size", "company type", "listed company"]);
+  const sectorCount = countTriggered(results, ["sector match"]);
+  const valueChainCount = countTriggered(results, ["regulated imports or suppliers", "supplier exposure"]);
+  const financeCount = countTriggered(results, ["financial institution", "portfolio exposure", "investor/customer exposure"]);
+  const sourceReviewCount = results.filter((result) => result.reviewPriority !== "Monitor" || thresholdMatrixRows.some((row) => row.regulationId === result.regulation.id)).length;
+
+  return [
+    {
+      title: "Jurisdiction and market nexus",
+      icon: "jurisdiction",
+      signal: answers.euMarketExposure
+        ? `${jurisdictionLabel(answers.headquarters)} headquarters, ${answers.operatingJurisdictions.length} operating market signal(s) and EU market exposure are shaping the shortlist.`
+        : `${jurisdictionLabel(answers.headquarters)} headquarters and ${answers.operatingJurisdictions.length} operating market signal(s) are shaping the shortlist.`,
+      matchedRecords: jurisdictionCount,
+      verify: "Confirm headquarters, operating entities, sales markets, local transposition and any non-domestic trigger."
+    },
+    {
+      title: "Company profile and size",
+      icon: "company",
+      signal: `${answers.companySize} ${answers.companyType}${answers.listed ? " with listed-company status" : ""} is being used as a directional threshold signal.`,
+      matchedRecords: companyCount,
+      verify: "Confirm employee, revenue, balance-sheet, listing, public-interest entity and consolidated group facts from source documents."
+    },
+    {
+      title: "Sector relevance",
+      icon: "sector",
+      signal: `${answers.sectors.join(", ")} sector selection is compared with sector tags and all-sector reporting regimes.`,
+      matchedRecords: sectorCount,
+      verify: "Confirm whether sector-specific rules, financial-sector rules or all-sector obligations apply to the entity profile."
+    },
+    {
+      title: "Value-chain exposure",
+      icon: "valueChain",
+      signal: answers.regulatedImports
+        ? "Regulated imports, commodities or supplier exposure is increasing product, trade and due-diligence review signals."
+        : "Current value-chain matching is limited unless supplier, importer/exporter, product or commodity exposure is selected.",
+      matchedRecords: valueChainCount,
+      verify: "Confirm supplier role, importer/exporter status, commodity exposure, product placement and customer data requests."
+    },
+    {
+      title: "Financial or portfolio exposure",
+      icon: "finance",
+      signal: answers.financialInstitution || answers.portfolioExposure
+        ? "Financial institution, fund, insurer, private equity or portfolio exposure is shaping sustainable-finance and financed-emissions signals."
+        : "Financial, fund, insurer and portfolio signals are currently limited unless selected in the assessment profile.",
+      matchedRecords: financeCount,
+      verify: "Confirm regulated-entity role, fund/product status, portfolio company exposure, financed-emissions boundaries and investor requests."
+    },
+    {
+      title: "Source and threshold review",
+      icon: "source",
+      signal: `${sourceReviewCount} shortlisted record(s) have a non-monitor review priority or threshold-matrix context.`,
+      matchedRecords: sourceReviewCount,
+      verify: "Open primary sources, threshold rows and review caveats before using the shortlist in premium, advisory or compliance planning."
+    }
+  ];
+}
+
+function countTriggered(results: ReturnType<typeof evaluateApplicability>, triggers: string[]) {
+  return results.filter((result) => result.triggeredBy.some((trigger) => triggers.includes(trigger))).length;
 }

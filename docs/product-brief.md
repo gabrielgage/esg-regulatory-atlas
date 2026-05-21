@@ -72,6 +72,7 @@ The MVP includes:
 - Condensed parent-record model with child items, aliases and milestones
 - Regulation detail pages or drawers
 - Assessment wizard with legally cautious output categories
+- Assessment trigger review showing how jurisdiction, company profile, sector, value-chain, financial and source/threshold signals shape the shortlist
 - Assessment results with visible trigger reasons, review priority, evidence to prepare, functions involved, source-to-verify guidance, missing facts, suggested owners and next 30-day actions
 - Assessment readiness plan cards for threshold facts to check, first 30-day actions and likely owner functions
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor users

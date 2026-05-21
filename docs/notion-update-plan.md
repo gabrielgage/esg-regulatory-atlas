@@ -529,3 +529,19 @@ Launch Tasks:
 QA finding:
 
 - Regulation details should answer the user’s next operational question: what should we verify, who owns it, what evidence is needed and what could happen in the next 30/60/90 days. Roadmaps must remain caveated and source-review oriented.
+
+## 2026-05-21 Codex Update - Assessment Trigger Review
+
+Launch Command Center note:
+
+> Phase 1AI makes the assessment workflow explain why a shortlist appears. The new profile trigger review separates jurisdiction, company profile, sector, value-chain, financial and source/threshold signals so users can see which facts shape the indicative result and what they should verify next.
+
+Launch Tasks:
+
+- LAUNCH-099 - Add assessment trigger-review panel
+- LAUNCH-100 - Add trigger-review context to copied assessment shortlist
+- LAUNCH-101 - Add smoke coverage for assessment trigger explanations
+
+QA finding:
+
+- Assessment users need to understand why results appear, not only what results appear. Trigger explanations should show planning logic and verification needs without implying legal applicability.

@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.53 - May 2026",
+    date: "2026-05-21",
+    label: "Assessment trigger review",
+    summary:
+      "Added a profile trigger review to the assessment workspace so users can see how jurisdiction, company size, sector, value-chain and financial exposure signals shape the indicative shortlist.",
+    added: [
+      "Assessment trigger-review panel with jurisdiction, company, sector, value-chain, financial and source/threshold signals",
+      "Matched-record counts and next facts to verify for each trigger category",
+      "Trigger-review context in copied assessment shortlist Markdown",
+      "Smoke coverage for the trigger-review panel"
+    ],
+    updated: [
+      "Assessment wizard",
+      "Copied assessment shortlist",
+      "Assessment smoke coverage",
+      "Release context documentation"
+    ],
+    records: ["Assessment", "Applicability orientation", "Threshold matrix", "Source review"],
+    caveat:
+      "Assessment trigger review is a planning explanation only. It does not determine legal applicability, entity scope, deadlines or compliance obligations."
+  },
+  {
     edition: "0.5.52 - May 2026",
     date: "2026-05-21",
     label: "Regulation implementation roadmap",

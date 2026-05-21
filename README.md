@@ -8,14 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.52 - May 2026`.
+The current public release context is `0.5.53 - May 2026`.
 
 Latest release-context update:
 
-- adds a 30/60/90-day implementation roadmap to regulation detail pages and drawers
-- shows suggested owner, source to verify, source posture, evidence focus and staged actions
-- makes the roadmap copyable while preserving source-review and legal-caution caveats
-- preserves the Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
+- adds a profile trigger review to `/assessment`
+- shows how jurisdiction, company size, sector, value-chain, financial and source/threshold signals shape the shortlist
+- adds matched-record counts and next facts to verify for each trigger category
+- preserves implementation roadmaps, the Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -42,6 +42,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - public glossary and contextual label-help surfaces
 - daily launch pulse for latest release context and next product-review focus
 - assessment wizard with cautious indicative categories and glossary handoff
+- assessment trigger review explaining jurisdiction, company, sector, value-chain, financial and source/threshold signals
 - assessment readiness plan with threshold-fact, first-action and owner-function prompts
 - timeline with planning-horizon tabs and date-label glossary handoff
 - scenario-led briefing workspace with copied-output glossary handoff

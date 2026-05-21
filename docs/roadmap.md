@@ -64,6 +64,7 @@ Current capability areas:
 - Assessment outputs with missing facts, suggested owners and next 30-day actions
 - Assessment readiness plan cards for threshold facts, first actions and owner functions
 - Regulation detail decision cards for threshold gaps, timing caveats, enforcement cues and missing data
+- Regulation detail implementation roadmaps for cautious 30/60/90-day owner, evidence, source-review and briefing actions
 - `/thresholds` threshold matrix for high-value scope signals, facts to confirm, source-to-verify links and review status
 - Marquee 10 source-review packet for premium-use blockers, priority sources, threshold facts and owner actions
 - Quarter-level milestone timeline covering consultation, effective-date, reporting-year, report-due and Atlas review events
@@ -79,6 +80,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AH Items
+
+- Updated dataset metadata and changelog to `0.5.52 - May 2026`.
+- Added `lib/implementationRoadmap.ts` to derive cautious implementation stages from existing regulation, decision-readiness and source-governance data.
+- Added `components/ImplementationRoadmap.tsx` to regulation detail pages and drawers.
+- Added copyable roadmap Markdown with edition metadata, source-review context and caveats.
+- Added smoke and copy-surface coverage for the implementation roadmap.
+- Kept roadmap output as an orientation tool. It does not determine applicability, verify legal completeness or replace qualified review.
 
 ## Recently Delivered Phase 1AG Items
 

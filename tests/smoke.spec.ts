@@ -131,6 +131,8 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
   await expect(page.locator("p").filter({ hasText: /^Corporate Sustainability Reporting Directive$/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: /Decision readiness/i })).toBeVisible();
   await expect(page.getByText(/Facts to confirm/i).first()).toBeVisible();
+  await expect(page.getByTestId("implementation-roadmap")).toContainText(/Implementation roadmap/i);
+  await expect(page.getByTestId("implementation-roadmap")).toContainText(/0-30 days/i);
   await expect(page.getByRole("heading", { name: /Source evidence trail/i })).toBeVisible();
   await expect(page.getByRole("button", { name: /Copy source memo/i })).toBeVisible();
 });

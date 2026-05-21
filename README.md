@@ -8,14 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.51 - May 2026`.
+The current public release context is `0.5.52 - May 2026`.
 
 Latest release-context update:
 
-- adds a Marquee 10 source-review packet to `/data-quality`
-- shows premium-use blockers, priority sources, threshold facts and owner actions for launch-critical regimes
-- keeps Marquee review workflow output framed as source governance rather than legal verification
-- preserves the assessment readiness plan and threshold matrix handoffs from the prior release
+- adds a 30/60/90-day implementation roadmap to regulation detail pages and drawers
+- shows suggested owner, source to verify, source posture, evidence focus and staged actions
+- makes the roadmap copyable while preserving source-review and legal-caution caveats
+- preserves the Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -49,6 +49,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - printable/copyable jurisdiction briefs and copied profile summaries with source-review caveats
 - CSV/JSON regulation exports with edition metadata, caveat fields and source-review notes
 - source review memo, citation and decision-readiness copy blocks with edition metadata and legal-caution caveats
+- regulation-level 30/60/90-day implementation roadmaps with copyable caveated output
 - light/dark mode toggle and first-visit light mode default
 - English, Spanish, Dutch, French, German and Portuguese interface chrome, including map coverage guidance
 - shareable filtered URLs and CSV/JSON exports

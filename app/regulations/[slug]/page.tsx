@@ -10,6 +10,7 @@ import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
 import { CitationWidget } from "@/components/CitationWidget";
 import { DecisionReadinessChecklist } from "@/components/DecisionReadinessChecklist";
+import { ImplementationRoadmap } from "@/components/ImplementationRoadmap";
 import { SourceEvidencePanel } from "@/components/SourceEvidencePanel";
 import { DATASET_META } from "@/data/_meta";
 import { regulations } from "@/data/seed";
@@ -89,6 +90,7 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
         </section>
 
         <DecisionReadinessChecklist regulation={regulation} allRegulations={regulations} />
+        <ImplementationRoadmap regulation={regulation} allRegulations={regulations} />
 
         {thresholdRows.length ? (
           <Section title="Threshold matrix signals">

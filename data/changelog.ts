@@ -11,6 +11,27 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.51 - May 2026",
+    date: "2026-05-21",
+    label: "Marquee 10 source-review packet",
+    summary:
+      "Added a dedicated source-review packet to the Data Quality review workflow so the highest-demand regimes show premium-use blockers, priority sources, threshold facts and owner actions in one operational review lane.",
+    added: [
+      "Marquee 10 source-review packet on the Data Quality review workflow tab",
+      "Premium-use, source-posture, decision-readiness and review-status badges for each Marquee 10 record",
+      "Priority source, threshold fact and owner/action cards for launch-critical regimes",
+      "Smoke coverage for the source-review packet"
+    ],
+    updated: [
+      "Data Quality review workflow",
+      "Marquee source-governance documentation",
+      "Release context documentation"
+    ],
+    records: ["CSRD", "ISSB S1/S2", "EU Taxonomy", "SFDR", "CSDDD", "EUDR", "CBAM", "California SB 253/SB 261", "UK SDR", "SEC climate watch"],
+    caveat:
+      "The Marquee 10 packet is a static source-governance aid. It does not verify legal completeness, certify sources or determine entity-specific applicability."
+  },
+  {
     edition: "0.5.50 - May 2026",
     date: "2026-05-20",
     label: "Assessment readiness plan",

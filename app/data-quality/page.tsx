@@ -17,6 +17,7 @@ import { ExternalReviewIntakePanel } from "@/components/ExternalReviewIntakePane
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { MarqueeReviewQueue } from "@/components/MarqueeReviewQueue";
 import { MarqueeEvidenceGate } from "@/components/MarqueeEvidenceGate";
+import { MarqueeSourceReviewPacket } from "@/components/MarqueeSourceReviewPacket";
 import { ReviewWorkflowExportPanel } from "@/components/ReviewWorkflowExportPanel";
 import { SourceLibrary } from "@/components/SourceLibrary";
 import { RegulationDetail } from "@/components/RegulationDetail";
@@ -146,6 +147,7 @@ export default function DataQualityPage() {
 
           {activeTab === "review" ? (
             <>
+              <MarqueeSourceReviewPacket regulations={regulations} onSelect={setSelectedRegulation} />
               <MarqueeEvidenceGate regulations={regulations} />
               <ReviewWorkflowExportPanel regulations={regulations} onSelect={setSelectedRegulation} />
               <ExternalReviewIntakePanel />

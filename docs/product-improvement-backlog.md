@@ -25,7 +25,7 @@ The MVP already has the right core shape: a map-centered workspace, source-linke
 
 ## 2026-05-20 Expert Review Intake
 
-The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`, `0.5.45 - May 2026`, `0.5.46 - May 2026`, `0.5.47 - May 2026`, `0.5.48 - May 2026`, `0.5.49 - May 2026` and `0.5.50 - May 2026`:
+The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`, `0.5.45 - May 2026`, `0.5.46 - May 2026`, `0.5.47 - May 2026`, `0.5.48 - May 2026`, `0.5.49 - May 2026`, `0.5.50 - May 2026` and `0.5.51 - May 2026`:
 
 - CSRD/CSDDD threshold language now separates corporate-reporting and due-diligence scope signals.
 - Premium pack previews now show source-review and premium-use gates for blocked or review-needed records.
@@ -39,10 +39,11 @@ The May 20 expert review prioritized trust-risk fixes before broader feature exp
 - Plans, Alerts, Advisory and Premium Roadmap now include Manual Request panels that tell users what to send, what Etica returns and that the flow remains manual and caveated.
 - `/thresholds` now provides a structured threshold matrix for high-value records with facts to confirm, timing signals, source links, review status and caveats.
 - `/assessment` now shows a compact readiness plan with threshold facts to check, first 30-day actions and likely owner functions.
+- `/data-quality` now includes a Marquee 10 source-review packet that puts premium-use blockers, priority sources, threshold facts and owner actions in one operational review lane.
 
 Remaining high-priority expert-review items:
 
-- Continue source-reviewing Marquee 10 before using records in premium or advisory examples.
+- Complete human source review for Marquee 10 records before treating them as client-ready premium or advisory content.
 
 ## Wave 1: Launch Quality And Static MVP Usefulness
 
@@ -85,8 +86,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Follow-up status: expanded in `0.5.16 - May 2026` with a coverage-confidence view that separates direct record depth from priority-source backing, review prompts, stale dates and date-sensitive records.
 
 10. **Data quality review queue refinement**
-    Status: materially delivered across `0.5.5`, `0.5.12`, `0.5.17`, `0.5.18` and `0.5.19 - May 2026`.
-    Data Quality now ranks review priorities through review-queue scoring, Marquee owners/actions, decision-readiness gates, source evidence trails and CSV/JSON review workflow exports. The page is tabbed into Overview, Sources, Coverage and Review Workflow so governance controls stay scannable. Formal named reviewer assignment remains future-state until a database or governed content workflow is approved.
+    Status: materially delivered across `0.5.5`, `0.5.12`, `0.5.17`, `0.5.18`, `0.5.19` and `0.5.51 - May 2026`.
+    Data Quality now ranks review priorities through review-queue scoring, Marquee owners/actions, Marquee 10 source-review packets, decision-readiness gates, source evidence trails and CSV/JSON review workflow exports. The page is tabbed into Overview, Sources, Coverage and Review Workflow so governance controls stay scannable. Formal named reviewer assignment remains future-state until a database or governed content workflow is approved.
 
 11. **Workbook sync routine**
     Status: partially delivered in `0.5.19 - May 2026`.
@@ -145,7 +146,7 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Track commercial interest through visible CTA routes, mailto subjects and manual review notes before adding analytics, CRM sync, email automation or billing infrastructure.
 
 43. **Marquee launch review queue**
-    Status: partially delivered in `0.5.8 - May 2026` and expanded in `0.5.12 - May 2026`.
+    Status: partially delivered in `0.5.8 - May 2026`, expanded in `0.5.12 - May 2026` and operationalized for Marquee 10 in `0.5.51 - May 2026`.
     Revenue relevance: Trust, premium packs and advisory.
     Maintain a high-value content-review queue for Marquee 10 and Marquee 25 regimes with launch-blocker flags, review questions, owner placeholders, source/threshold next actions, premium-use blockers and visible source/status/threshold review needs.
 

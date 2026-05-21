@@ -8,14 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.50 - May 2026`.
+The current public release context is `0.5.51 - May 2026`.
 
 Latest release-context update:
 
-- adds a compact readiness plan to `/assessment`
-- shows threshold facts to check, first 30-day actions and likely owner functions before users open records
-- flags assessment shortlist records that have threshold matrix rows
-- keeps copied assessment summaries caveated and points threshold-sensitive rows back to the matrix
+- adds a Marquee 10 source-review packet to `/data-quality`
+- shows premium-use blockers, priority sources, threshold facts and owner actions for launch-critical regimes
+- keeps Marquee review workflow output framed as source governance rather than legal verification
+- preserves the assessment readiness plan and threshold matrix handoffs from the prior release
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -54,6 +54,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - shareable filtered URLs and CSV/JSON exports
 - source quality, data quality, confidence, caveat and review-risk indicators
 - quality-signal explainers for source links, review prompts, record counts and confidence labels
+- Marquee 10 source-review packet for premium-use blockers, priority sources, threshold facts and owner actions
 - commercial validation pages for plans, alerts, advisory, launch assets and premium roadmap
 - manual request guidance on commercial and advisory routes with mailto-only conversion paths
 - GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist

@@ -62,6 +62,7 @@ Current capability areas:
 - Premium pack preview source-review gates for illustrative-only, review-before-use and orientation-ready records
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
 - Assessment outputs with missing facts, suggested owners and next 30-day actions
+- Assessment readiness plan cards for threshold facts, first actions and owner functions
 - Regulation detail decision cards for threshold gaps, timing caveats, enforcement cues and missing data
 - `/thresholds` threshold matrix for high-value scope signals, facts to confirm, source-to-verify links and review status
 - Quarter-level milestone timeline covering consultation, effective-date, reporting-year, report-due and Atlas review events
@@ -77,6 +78,14 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AF Items
+
+- Updated dataset metadata and changelog to `0.5.50 - May 2026`.
+- Added assessment readiness plan cards for threshold facts to check, first 30-day actions and likely owner functions.
+- Added threshold matrix badges on assessment shortlist records.
+- Updated copied assessment summaries with threshold-sensitive record context.
+- Kept assessment results as indicative planning prompts only.
 
 ## Recently Delivered Phase 1AE Items
 

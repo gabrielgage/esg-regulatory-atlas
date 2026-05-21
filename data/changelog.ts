@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.50 - May 2026",
+    date: "2026-05-20",
+    label: "Assessment readiness plan",
+    summary:
+      "Added a compact readiness plan to the assessment workspace so indicative shortlists show threshold facts to check, first 30-day actions and likely owner functions before users open individual records.",
+    added: [
+      "Assessment readiness plan cards for threshold facts, first actions and owner functions",
+      "Threshold matrix handoff from the assessment result area",
+      "Threshold matrix row badges on assessment shortlist records",
+      "Copied assessment shortlist metadata for threshold-sensitive records"
+    ],
+    updated: [
+      "Assessment wizard decision flow",
+      "Assessment copied summary caveat",
+      "Smoke coverage for assessment readiness plan",
+      "Release context documentation"
+    ],
+    records: ["Assessment", "Threshold matrix", "csrd", "csddd", "sfdr", "eu-taxonomy"],
+    caveat:
+      "Assessment readiness plans are static planning prompts. They do not determine legal applicability, scope, deadlines or compliance obligations."
+  },
+  {
     edition: "0.5.49 - May 2026",
     date: "2026-05-20",
     label: "Threshold matrix for high-value records",

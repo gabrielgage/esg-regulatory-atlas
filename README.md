@@ -8,14 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.49 - May 2026`.
+The current public release context is `0.5.50 - May 2026`.
 
 Latest release-context update:
 
-- adds a source-linked threshold matrix for high-value records at `/thresholds`
-- shows facts to confirm, timing signals, source links, review status and caveats for threshold-sensitive regimes
-- links threshold-sensitive regulation detail pages back to the matrix
-- adds data guardrail coverage so threshold rows must map to sourced records and preserve caveats
+- adds a compact readiness plan to `/assessment`
+- shows threshold facts to check, first 30-day actions and likely owner functions before users open records
+- flags assessment shortlist records that have threshold matrix rows
+- keeps copied assessment summaries caveated and points threshold-sensitive rows back to the matrix
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -42,6 +42,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - public glossary and contextual label-help surfaces
 - daily launch pulse for latest release context and next product-review focus
 - assessment wizard with cautious indicative categories and glossary handoff
+- assessment readiness plan with threshold-fact, first-action and owner-function prompts
 - timeline with planning-horizon tabs and date-label glossary handoff
 - scenario-led briefing workspace with copied-output glossary handoff
 - methodology, data-quality and comparison surfaces with side-by-side glossary handoff

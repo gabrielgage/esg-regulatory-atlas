@@ -73,6 +73,7 @@ The MVP includes:
 - Regulation detail pages or drawers
 - Assessment wizard with legally cautious output categories
 - Assessment results with visible trigger reasons, review priority, evidence to prepare, functions involved, source-to-verify guidance, missing facts, suggested owners and next 30-day actions
+- Assessment readiness plan cards for threshold facts to check, first 30-day actions and likely owner functions
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor users
 - Persona starting points in the Regulations workspace for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and advisor workflows
 - Timeline and methodology surfaces

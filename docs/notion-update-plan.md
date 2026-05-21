@@ -162,6 +162,13 @@ ADR-032:
 - Consequence: `/timeline` now defaults to next 24 months plus high-impact already-effective obligations, with next-12, in-force, longer-term and full-history modes available.
 - Status: Active.
 
+ADR-033:
+
+- Decision: Add static regulatory data guardrails to CI.
+- Why: The Atlas is growing quickly and source metadata, high-impact review signals, premium-use gates and legal wording need automated regression checks before merge.
+- Consequence: Add `npm run check:data` and Playwright data tests while preserving that automated checks do not replace legal/source review.
+- Status: Active.
+
 ADR-031:
 
 - Decision: Use local SVG pan/zoom controls before introducing a map platform.

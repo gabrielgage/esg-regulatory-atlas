@@ -73,6 +73,7 @@ Use:
 
 ```bash
 npm run lint
+npm run check:data
 npm run build
 npm run test:e2e
 npm run lhci
@@ -94,6 +95,8 @@ GitHub should now run four high-ROI launch checks:
 - Playwright smoke tests against the built app
 - Lighthouse CI on key public routes
 - Pull request preview checklist requiring Vercel preview review before merge
+
+For regulatory data changes, run `npm run check:data` before build. It checks minimum source metadata, high-impact review signals, premium-use gates and definitive wording across static seed and premium-pack data. These checks support source governance; they do not replace legal review or official source verification.
 
 The local Codex sandbox may not have `npm` or Playwright browser binaries available. In that case, run TypeScript and production build with the bundled Node runtime, then rely on GitHub Actions/Vercel for browser and Lighthouse validation after pushing.
 

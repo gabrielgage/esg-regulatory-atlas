@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.52 - May 2026",
+    date: "2026-05-21",
+    label: "Regulation implementation roadmap",
+    summary:
+      "Added a cautious 30/60/90-day implementation roadmap to regulation details and drawers so users can translate a potentially relevant record into owner, evidence, source-review and briefing actions.",
+    added: [
+      "Implementation roadmap component on regulation detail pages and drawers",
+      "Reusable implementation-roadmap helper and copyable Markdown output",
+      "0-30, 31-60 and 61-90 day action stages with owner, source and evidence cues",
+      "Smoke and copy-surface checks for the roadmap"
+    ],
+    updated: [
+      "Regulation detail pages",
+      "Regulation detail drawer",
+      "Decision-readiness copy coverage",
+      "Release context documentation"
+    ],
+    records: ["Regulation details", "CSRD", "Decision readiness", "Implementation roadmap"],
+    caveat:
+      "Implementation roadmaps are static planning aids. They do not determine applicability, verify legal completeness or replace qualified legal, tax, investment or assurance advice."
+  },
+  {
     edition: "0.5.51 - May 2026",
     date: "2026-05-21",
     label: "Marquee 10 source-review packet",

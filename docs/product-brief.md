@@ -120,6 +120,7 @@ The MVP includes:
 - Premium pack source-review gates that disclose illustrative-only and review-before-use records before commercial reuse
 - Source freshness and premium-use blocker signals for source-governance triage
 - Decision-readiness checklists that translate source, threshold and evidence gaps into review controls for regulation details and Marquee premium/advisory use
+- Regulation implementation roadmaps that translate potentially relevant records into cautious 30/60/90-day owner, evidence, source-review and briefing actions
 - Source evidence trails and copyable source-review memos that turn captured sources into practical QA packets
 - Review workflow CSV/JSON exports and copyable priority review packets from `/data-quality`
 - AI review pack under `docs/ai-review/` for external critique of current capabilities, future roadmap, regulatory coverage, source governance, UX and legal-safety posture

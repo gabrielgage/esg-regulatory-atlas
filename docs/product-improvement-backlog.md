@@ -25,7 +25,7 @@ The MVP already has the right core shape: a map-centered workspace, source-linke
 
 ## 2026-05-20 Expert Review Intake
 
-The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`, `0.5.45 - May 2026`, `0.5.46 - May 2026`, `0.5.47 - May 2026`, `0.5.48 - May 2026`, `0.5.49 - May 2026`, `0.5.50 - May 2026` and `0.5.51 - May 2026`:
+The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`, `0.5.45 - May 2026`, `0.5.46 - May 2026`, `0.5.47 - May 2026`, `0.5.48 - May 2026`, `0.5.49 - May 2026`, `0.5.50 - May 2026`, `0.5.51 - May 2026` and `0.5.52 - May 2026`:
 
 - CSRD/CSDDD threshold language now separates corporate-reporting and due-diligence scope signals.
 - Premium pack previews now show source-review and premium-use gates for blocked or review-needed records.
@@ -40,6 +40,7 @@ The May 20 expert review prioritized trust-risk fixes before broader feature exp
 - `/thresholds` now provides a structured threshold matrix for high-value records with facts to confirm, timing signals, source links, review status and caveats.
 - `/assessment` now shows a compact readiness plan with threshold facts to check, first 30-day actions and likely owner functions.
 - `/data-quality` now includes a Marquee 10 source-review packet that puts premium-use blockers, priority sources, threshold facts and owner actions in one operational review lane.
+- Regulation detail pages now include a 30/60/90-day implementation roadmap with owner, evidence, source-review and briefing prompts.
 
 Remaining high-priority expert-review items:
 
@@ -69,8 +70,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Add quick filters for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and external advisor personas.
 
 6. **Evidence-needed summaries**
-   Status: partially delivered in `0.5.5 - May 2026`, expanded in `0.5.10 - May 2026`, and strengthened in `0.5.50 - May 2026`.
-   Surface the most common evidence requirements per selected regulation or jurisdiction, such as emissions inventory, supplier attestations, board minutes, controls evidence and financial statement links. Assessment results now include evidence, missing facts, suggested owners and next 30-day actions.
+   Status: partially delivered in `0.5.5 - May 2026`, expanded in `0.5.10 - May 2026`, strengthened in `0.5.50 - May 2026` and operationalized in `0.5.52 - May 2026`.
+   Surface the most common evidence requirements per selected regulation or jurisdiction, such as emissions inventory, supplier attestations, board minutes, controls evidence and financial statement links. Assessment results now include evidence, missing facts, suggested owners and next 30-day actions, while regulation details include a 30/60/90-day implementation roadmap.
 
 7. **Sector-specific starting points**
    Status: materially delivered in `0.5.14 - May 2026` through `/sectors`, `/sectors/[slug]` and `lib/sectorProfile.ts`.

@@ -512,3 +512,20 @@ Launch Tasks:
 QA finding:
 
 - Source links, threshold rows and premium-use gates become much more useful when they are shown together. Future premium or advisory examples should check this packet before presenting Marquee 10 records as client-ready content.
+
+## 2026-05-21 Codex Update - Regulation Implementation Roadmap
+
+Launch Command Center note:
+
+> Phase 1AH adds a 30/60/90-day implementation roadmap to regulation detail pages and drawers. The roadmap translates potentially relevant records into cautious source-review, owner, evidence and briefing actions without making legal applicability claims.
+
+Launch Tasks:
+
+- LAUNCH-095 - Add reusable implementation-roadmap helper
+- LAUNCH-096 - Add implementation roadmap to regulation detail pages and drawers
+- LAUNCH-097 - Add copyable roadmap output with edition metadata and caveats
+- LAUNCH-098 - Add smoke and copy-surface coverage for implementation roadmap
+
+QA finding:
+
+- Regulation details should answer the user’s next operational question: what should we verify, who owns it, what evidence is needed and what could happen in the next 30/60/90 days. Roadmaps must remain caveated and source-review oriented.

@@ -3,6 +3,7 @@ import { Regulation } from "@/types/regulation";
 import { Badge } from "./Badge";
 import { CommercialCTA } from "./CommercialCTA";
 import { DecisionReadinessChecklist } from "./DecisionReadinessChecklist";
+import { ImplementationRoadmap } from "./ImplementationRoadmap";
 import { RecordMetaBadges } from "./RecordMetaBadges";
 import { SourceEvidencePanel } from "./SourceEvidencePanel";
 import { StatusBadge } from "./StatusBadge";
@@ -66,6 +67,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
           </Card>
         ) : null}
         <DecisionReadinessChecklist regulation={regulation} compact />
+        <ImplementationRoadmap regulation={regulation} compact />
         <SourceEvidencePanel regulation={regulation} compact />
         <Card title="Atlas record governance">
           <div className="grid gap-3 sm:grid-cols-2">

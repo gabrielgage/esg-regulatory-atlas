@@ -96,6 +96,8 @@ GitHub should now run four high-ROI launch checks:
 - Lighthouse CI on key public routes
 - Pull request preview checklist requiring Vercel preview review before merge
 
+GitHub Actions workflows opt JavaScript actions into the Node 24 runtime with `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true`. This is separate from the application build runtime, which remains pinned through `actions/setup-node` at Node 22. Do not remove the Node 24 action-runtime opt-in unless GitHub changes the migration path or a checked workflow proves an action incompatibility.
+
 For regulatory data changes, run `npm run check:data` before build. It checks minimum source metadata, high-impact review signals, premium-use gates and definitive wording across static seed and premium-pack data. These checks support source governance; they do not replace legal review or official source verification.
 
 The local Codex sandbox may not have `npm` or Playwright browser binaries available. In that case, run TypeScript and production build with the bundled Node runtime, then rely on GitHub Actions/Vercel for browser and Lighthouse validation after pushing.

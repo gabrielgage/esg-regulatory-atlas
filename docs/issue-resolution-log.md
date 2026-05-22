@@ -17,6 +17,33 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-22 - GitHub Actions Warned About Node 20 Action Runtime Deprecation
+
+Status: resolved in PR #71.
+
+### Symptom
+
+The post-merge main CI for PR #70 passed, but GitHub added annotations warning that `actions/checkout@v4` and `actions/setup-node@v4` were running on the Node 20 JavaScript action runtime. GitHub's warning stated that JavaScript actions will be forced to Node 24 by default starting June 2, 2026, and that Node 20 will be removed from the runner later in 2026.
+
+### Root Cause
+
+The repository workflows had a clear application build runtime (`node-version: 22`) but had not opted the GitHub-hosted JavaScript actions themselves into the upcoming Node 24 action runtime. This created a future CI compatibility risk even though the current build, smoke and Lighthouse jobs were green.
+
+### Resolution
+
+Added workflow-level `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true` to both CI and Lighthouse workflows. This validates the GitHub action runtime migration early while preserving Node 22 for the application install, typecheck, build, browser smoke and Lighthouse steps.
+
+### Prevention Rule
+
+When GitHub Actions emits platform deprecation annotations on otherwise green checks, treat them as workflow maintenance issues. Fix the smallest workflow layer, validate the PR checks, and document the distinction between GitHub action runtime and application build runtime.
+
+### Files Changed
+
+- `.github/workflows/ci.yml`
+- `.github/workflows/lighthouse.yml`
+- `docs/development-workflow.md`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-20 - Threshold Matrix Guardrail Caught Weak Caveat Wording
 
 Status: resolved in PR #65.

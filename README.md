@@ -8,15 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.54 - May 2026`.
+The current public release context is `0.5.55 - May 2026`.
 
 Latest release-context update:
 
-- adds market trigger reviews to `/jurisdiction/[code]`
-- shows which corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals drive a market profile
-- adds matched-record counts, priority record links, facts to verify and first actions for each market trigger category
-- adds market trigger context to copied market profile Markdown
-- preserves the assessment trigger review, implementation roadmaps, the Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
+- opts GitHub Actions into the Node 24 JavaScript action runtime before the GitHub platform default changes
+- keeps the application build/runtime target on Node 22 while validating that checkout/setup actions are future-ready
+- documents the CI warning, root cause and prevention rule in the issue-resolution log
+- preserves the market trigger review, assessment trigger review, implementation roadmaps, Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -61,7 +60,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - Marquee 10 source-review packet for premium-use blockers, priority sources, threshold facts and owner actions
 - commercial validation pages for plans, alerts, advisory, launch assets and premium roadmap
 - manual request guidance on commercial and advisory routes with mailto-only conversion paths
-- GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist
+- GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist with Node 24 action-runtime readiness
 
 The MVP does not include authentication, Supabase, external databases, Stripe, checkout, billing, paid APIs, Mapbox, scraping, cron jobs, production email alerts, AI legal summaries, client workspaces or required environment variables.
 

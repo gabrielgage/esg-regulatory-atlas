@@ -43,7 +43,7 @@ Current capability areas:
 - Shareable filtered Map and Regulations URLs
 - Filtered CSV and JSON regulation exports
 - Readiness-priority scoring on records
-- GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist
+- GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist with Node 24 action-runtime readiness
 - Workbook-backed regulation tracker for coverage and review planning
 - Sector heatmap in the briefing workspace
 - Copyable assessment shortlist
@@ -83,6 +83,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AK Items
+
+- Updated dataset metadata and changelog to `0.5.55 - May 2026`.
+- Opted CI and Lighthouse workflows into the GitHub Actions Node 24 JavaScript action runtime.
+- Kept the app build runtime pinned through `actions/setup-node` at Node 22.
+- Documented the Node 20 action-runtime deprecation annotation in the issue-resolution log.
+- Updated development workflow notes so future CI changes keep action runtime and app runtime separate.
+- Kept this as launch-pipeline hardening only; it does not add infrastructure or product-scope changes.
 
 ## Recently Delivered Phase 1AJ Items
 

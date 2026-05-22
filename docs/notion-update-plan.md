@@ -561,3 +561,19 @@ Launch Tasks:
 QA finding:
 
 - Jurisdiction pages should explain why a market matters, not only list records. Market trigger reviews must stay framed as seed-data orientation and should not imply complete market coverage, legal applicability or entity-specific compliance scope.
+
+## 2026-05-22 Codex Update - CI Node 24 Readiness
+
+Launch Command Center note:
+
+> Phase 1AK resolves a GitHub Actions platform deprecation warning by opting CI and Lighthouse JavaScript actions into Node 24 before GitHub changes the default. The app build runtime remains Node 22, and the change is launch-pipeline hardening only.
+
+Launch Tasks:
+
+- LAUNCH-105 - Opt CI workflow JavaScript actions into Node 24 runtime
+- LAUNCH-106 - Opt Lighthouse workflow JavaScript actions into Node 24 runtime
+- LAUNCH-107 - Document action-runtime versus app-runtime distinction in workflow and issue-resolution notes
+
+QA finding:
+
+- Green checks can still contain platform deprecation warnings. Treat those annotations as workflow maintenance issues, fix the smallest configuration layer and document the prevention rule before the warning becomes a failed check.

@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1AK CI Node 24 readiness pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass and Phase 1AJ market-trigger-review pass. The goal remains deployability and legal caution, with added emphasis on keeping the launch pipeline stable before platform deprecations become failing checks.
+The app is now in a static Phase 1AL GitHub Actions Node 24 action-upgrade pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass and Phase 1AK CI Node 24 readiness pass. The goal remains deployability and legal caution, with added emphasis on keeping the launch pipeline stable before platform deprecations become failing checks.
+
+## Phase 1AL Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.56 - May 2026`.
+- Upgraded `actions/checkout` from v4 to v5 in CI and Lighthouse workflows.
+- Upgraded `actions/setup-node` from v4 to v5 in CI and Lighthouse workflows.
+- Kept the Node 24 action-runtime opt-in from Phase 1AK.
+- Kept the application build runtime on Node 22.
+- Updated issue-resolution and development workflow notes after PR #71 showed the v4 actions still targeted Node 20 while being forced onto Node 24.
+
+## Phase 1AL Product Rationale
+
+Phase 1AK proved the workflows could run under Node 24, but GitHub still warned that the v4 action versions target Node 20 internally. Phase 1AL upgrades the action versions themselves so CI is aligned with GitHub's Node 24 action runtime before the deprecation becomes a launch blocker.
 
 ## Phase 1AK Changes Delivered
 

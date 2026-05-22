@@ -11,6 +11,27 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.56 - May 2026",
+    date: "2026-05-22",
+    label: "GitHub Actions Node 24 action upgrade",
+    summary:
+      "Upgraded checkout and setup-node actions to their Node 24-compatible major versions so the launch validation workflows no longer target the deprecated Node 20 action runtime.",
+    added: [
+      "actions/checkout v5 in CI and Lighthouse workflows",
+      "actions/setup-node v5 in CI and Lighthouse workflows",
+      "Follow-up issue-resolution documentation for the remaining Node 20 target warning"
+    ],
+    updated: [
+      "GitHub Actions CI workflow",
+      "GitHub Actions Lighthouse workflow",
+      "Release context documentation",
+      "Development workflow documentation"
+    ],
+    records: ["CI", "GitHub Actions", "Launch validation", "Workflow governance"],
+    caveat:
+      "This is a launch reliability update. It does not change regulatory seed data, legal analysis, product scope, authentication, billing, monitoring or infrastructure guardrails."
+  },
+  {
     edition: "0.5.55 - May 2026",
     date: "2026-05-22",
     label: "CI Node 24 readiness",

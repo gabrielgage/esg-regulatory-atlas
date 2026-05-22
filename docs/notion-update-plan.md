@@ -577,3 +577,19 @@ Launch Tasks:
 QA finding:
 
 - Green checks can still contain platform deprecation warnings. Treat those annotations as workflow maintenance issues, fix the smallest configuration layer and document the prevention rule before the warning becomes a failed check.
+
+## 2026-05-22 Codex Update - GitHub Actions Node 24 Action Upgrade
+
+Launch Command Center note:
+
+> Phase 1AL upgrades CI and Lighthouse to `actions/checkout@v5` and `actions/setup-node@v5` after the first Node 24 opt-in proved compatibility but still showed that the v4 actions targeted Node 20 internally. The app runtime remains Node 22.
+
+Launch Tasks:
+
+- LAUNCH-108 - Upgrade checkout action to Node 24-compatible major version
+- LAUNCH-109 - Upgrade setup-node action to Node 24-compatible major version
+- LAUNCH-110 - Revalidate CI, browser smoke, Lighthouse and Vercel after action-version upgrade
+
+QA finding:
+
+- Runtime opt-ins can prove compatibility without removing the underlying target-version warning. If GitHub says an action still targets a deprecated runtime, check the official action metadata and upgrade the action version when a stable Node 24-compatible release exists.

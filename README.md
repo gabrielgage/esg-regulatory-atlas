@@ -8,12 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.55 - May 2026`.
+The current public release context is `0.5.56 - May 2026`.
 
 Latest release-context update:
 
-- opts GitHub Actions into the Node 24 JavaScript action runtime before the GitHub platform default changes
-- keeps the application build/runtime target on Node 22 while validating that checkout/setup actions are future-ready
+- upgrades GitHub Actions checkout/setup-node actions to Node 24-compatible major versions
+- keeps the application build/runtime target on Node 22 while ensuring the workflow actions no longer target deprecated Node 20
 - documents the CI warning, root cause and prevention rule in the issue-resolution log
 - preserves the market trigger review, assessment trigger review, implementation roadmaps, Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state

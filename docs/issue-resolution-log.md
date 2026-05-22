@@ -19,19 +19,19 @@ Do not hide a real product issue by weakening a check. If a check is itself brit
 
 ## 2026-05-22 - GitHub Actions Warned About Node 20 Action Runtime Deprecation
 
-Status: resolved in PR #71.
+Status: resolved in PR #72 after the first compatibility opt-in landed in PR #71.
 
 ### Symptom
 
-The post-merge main CI for PR #70 passed, but GitHub added annotations warning that `actions/checkout@v4` and `actions/setup-node@v4` were running on the Node 20 JavaScript action runtime. GitHub's warning stated that JavaScript actions will be forced to Node 24 by default starting June 2, 2026, and that Node 20 will be removed from the runner later in 2026.
+The post-merge main CI for PR #70 passed, but GitHub added annotations warning that `actions/checkout@v4` and `actions/setup-node@v4` were running on the Node 20 JavaScript action runtime. GitHub's warning stated that JavaScript actions will be forced to Node 24 by default starting June 2, 2026, and that Node 20 will be removed from the runner later in 2026. PR #71 opted the workflows into Node 24 and proved compatibility, but GitHub then clarified that the v4 actions still targeted Node 20 while being forced to run on Node 24.
 
 ### Root Cause
 
-The repository workflows had a clear application build runtime (`node-version: 22`) but had not opted the GitHub-hosted JavaScript actions themselves into the upcoming Node 24 action runtime. This created a future CI compatibility risk even though the current build, smoke and Lighthouse jobs were green.
+The repository workflows had a clear application build runtime (`node-version: 22`) but had not opted the GitHub-hosted JavaScript actions themselves into the upcoming Node 24 action runtime. After the opt-in, the remaining root cause was that `actions/checkout@v4` and `actions/setup-node@v4` target Node 20 internally.
 
 ### Resolution
 
-Added workflow-level `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true` to both CI and Lighthouse workflows. This validates the GitHub action runtime migration early while preserving Node 22 for the application install, typecheck, build, browser smoke and Lighthouse steps.
+Added workflow-level `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true` to both CI and Lighthouse workflows, then upgraded `actions/checkout` and `actions/setup-node` to v5. This validates the GitHub action runtime migration early while preserving Node 22 for the application install, typecheck, build, browser smoke and Lighthouse steps.
 
 ### Prevention Rule
 

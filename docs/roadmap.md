@@ -84,6 +84,15 @@ Current capability areas:
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
 
+## Recently Delivered Phase 1AL Items
+
+- Updated dataset metadata and changelog to `0.5.56 - May 2026`.
+- Upgraded CI and Lighthouse workflows to `actions/checkout@v5` and `actions/setup-node@v5`.
+- Kept the GitHub Actions Node 24 action-runtime opt-in in place.
+- Kept the app build runtime on Node 22.
+- Documented the follow-up learning that v4 actions still targeted Node 20 after the runtime opt-in.
+- Kept this as launch-pipeline hardening only; it does not add infrastructure or product-scope changes.
+
 ## Recently Delivered Phase 1AK Items
 
 - Updated dataset metadata and changelog to `0.5.55 - May 2026`.

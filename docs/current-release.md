@@ -2,11 +2,19 @@
 
 ## Current Edition
 
-`0.5.55 - May 2026`
+`0.5.56 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, the AI review pack added for external product, ESG and legal-safety critique, the external review intake workflow added to Data Quality, the value-chain exposure workspace added for business-exposure triage, the expert-review launch-readiness fixes for threshold wording, premium gates, public navigation and homepage orientation, the scenario-led briefing workspace that prevents raw default briefing output, the near-term timeline planning view, automated regulatory data guardrail checks, trust-signal/request-path clarity for user-facing commercial and governance surfaces, the threshold matrix for high-value scope signals, the assessment readiness plan, the Marquee 10 source-review packet, the regulation implementation roadmap, the assessment trigger review, the market trigger review on jurisdiction profiles, and the CI Node 24 readiness pass for GitHub Actions.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, the AI review pack added for external product, ESG and legal-safety critique, the external review intake workflow added to Data Quality, the value-chain exposure workspace added for business-exposure triage, the expert-review launch-readiness fixes for threshold wording, premium gates, public navigation and homepage orientation, the scenario-led briefing workspace that prevents raw default briefing output, the near-term timeline planning view, automated regulatory data guardrail checks, trust-signal/request-path clarity for user-facing commercial and governance surfaces, the threshold matrix for high-value scope signals, the assessment readiness plan, the Marquee 10 source-review packet, the regulation implementation roadmap, the assessment trigger review, the market trigger review on jurisdiction profiles, the CI Node 24 readiness pass for GitHub Actions, and the follow-up upgrade to Node 24-compatible GitHub action versions.
+
+### 0.5.56 - GitHub Actions Node 24 Action Upgrade
+
+- Upgraded `actions/checkout` from v4 to v5 in CI and Lighthouse workflows.
+- Upgraded `actions/setup-node` from v4 to v5 in CI and Lighthouse workflows.
+- Kept the workflow-level Node 24 action-runtime opt-in as an early compatibility signal.
+- Kept the application build/runtime target on Node 22.
+- Documented that the v4 actions were being forced to Node 24 but still targeted Node 20, so action-version upgrades were needed to remove the warning at source.
 
 ### 0.5.55 - CI Node 24 Readiness
 

@@ -11,6 +11,26 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.55 - May 2026",
+    date: "2026-05-22",
+    label: "CI Node 24 readiness",
+    summary:
+      "Opted GitHub Actions workflows into the Node 24 JavaScript action runtime ahead of the platform default change while keeping the application build runtime on Node 22.",
+    added: [
+      "Node 24 JavaScript action runtime opt-in for CI and Lighthouse workflows",
+      "Issue-resolution note documenting the deprecation warning and prevention rule"
+    ],
+    updated: [
+      "GitHub Actions CI workflow",
+      "GitHub Actions Lighthouse workflow",
+      "Release context documentation",
+      "Development workflow documentation"
+    ],
+    records: ["CI", "GitHub Actions", "Launch validation", "Workflow governance"],
+    caveat:
+      "This is a launch reliability update. It does not change regulatory seed data, legal analysis, product scope, authentication, billing, monitoring or infrastructure guardrails."
+  },
+  {
     edition: "0.5.54 - May 2026",
     date: "2026-05-21",
     label: "Market trigger review",

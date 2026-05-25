@@ -39,7 +39,7 @@ Status: implemented in `0.5.58 - May 2026`.
 | P1 | Value-chain lane cleanup | `/value-chain` | Six primary lanes, lane-specific evidence, and less repeated chip text. |
 | P1 | Briefing scenario flow | `/briefing` | Scenario cards appear before outputs; no large default briefing is shown before a scenario is selected. |
 | P1 | Plans simplification | `/plans` | Free Atlas and advisory-supported scan are primary; premium previews and future enterprise remain secondary. |
-| P1 | Language toggle label | Header | Label as interface language where helpful so users do not mistake translated chrome for official legal translation. |
+| P1 | Language toggle label | Header | Advanced in `0.5.63`: language selector now uses interface-language labelling and a localized caveat so users do not mistake translated chrome for official legal translation. |
 
 ## Next 30 Days
 

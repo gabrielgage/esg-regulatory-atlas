@@ -8,11 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.62 - May 2026`.
+The current public release context is `0.5.63 - May 2026`.
 
 Latest release-context update:
 
-- reworks `/sectors` into a searchable sector finder with business-context groups, practical triggers and review-first records
+- clarifies that the language selector changes interface guidance, not official legal translations
+- preserves the sector finder simplification from `0.5.62`
 - preserves the reusable advisory-scan CTA from `0.5.61`
 - keeps advisory scan requests as mailto-only, source-linked planning paths with legal caveats
 - preserves the search-first Regulations workspace from `0.5.60`

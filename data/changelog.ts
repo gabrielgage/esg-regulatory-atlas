@@ -11,6 +11,27 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.63 - May 2026",
+    date: "2026-05-25",
+    label: "Interface language clarity",
+    summary:
+      "Made the language selector explicitly describe interface-language behavior so users do not mistake translated navigation chrome for official legal translation of regulatory records.",
+    added: [
+      "Interface-language label and tooltip caveat on the language selector",
+      "Localized language-caveat copy for English, Spanish, Dutch, French, German and Portuguese",
+      "Dark-mode styling improvements for the language control"
+    ],
+    updated: [
+      "Language toggle accessibility label",
+      "Header language-control presentation",
+      "Release context documentation",
+      "Simplification roadmap status"
+    ],
+    records: ["Language toggle", "Interface chrome", "Legal caveats"],
+    caveat:
+      "The language toggle changes product interface guidance only. Regulatory records remain source-linked seed intelligence and are not official legal translations."
+  },
+  {
     edition: "0.5.62 - May 2026",
     date: "2026-05-25",
     label: "Sector finder simplification",

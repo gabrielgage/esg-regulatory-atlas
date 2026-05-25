@@ -32,7 +32,7 @@ Status: implemented in `0.5.58 - May 2026`.
 
 | Priority | Item | Route / Area | Acceptance Criteria |
 |---|---|---|---|
-| P1 | Assessment result hierarchy | `/assessment` | Results lead with top records, relevance grouping, facts to confirm, first 30-day actions and advisory scan CTA before detailed trigger logic. |
+| P1 | Assessment result hierarchy | `/assessment` | Advanced in `0.5.59`: results now lead with top records, relevance grouping, facts to confirm, first 30-day actions and advisory scan CTA before detailed trigger logic. |
 | P1 | Regulations search-first layout | `/regulations` | Search and five primary filters are visible first; compare, label help and advanced filters are secondary. |
 | P1 | Advisory scan module | Home, markets, regulation detail, assessment | One consistent reusable advisory CTA explains what to send, what Etica returns and the legal caveat. |
 | P1 | Sector page simplification | `/sectors` | Replace confusing aggregate metrics with business-friendly sector groups, search and practical trigger summaries. |

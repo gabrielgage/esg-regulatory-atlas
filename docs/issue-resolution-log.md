@@ -918,3 +918,41 @@ When changing public navigation or homepage CTAs, update both direct smoke tests
 - `docs/simplification-roadmap.md`
 - `docs/qa-findings/pr-74-public-journey-simplification.md`
 - `docs/issue-resolution-log.md`
+
+## 2026-05-25 - Assessment Results Needed A Decision-First Summary
+
+Status: resolved in the assessment-shortlist-overview branch.
+
+### Symptom
+
+The assessment workflow had useful profile context, trigger review, readiness plan and detailed shortlist cards, but users still had to scan multiple dense sections before seeing the clearest answer: which records should be reviewed first and what facts/actions matter next.
+
+### Root Cause
+
+Assessment capabilities were added iteratively as separate planning aids. The page accumulated strong evidence and trigger logic, but the result hierarchy did not yet put top records, relevance mix, facts to confirm and first 30-day actions ahead of the detailed reasoning.
+
+### Resolution
+
+- Added an assessment shortlist overview before the detailed trigger review.
+- Surfaced top records to review first with cautious category and review-priority labels.
+- Added relevance-mix counts across the four assessment categories.
+- Added facts-to-confirm and first-30-day action panels.
+- Added a direct advisory-scan CTA inside the assessment output.
+- Added smoke coverage for the new overview.
+
+### Prevention Rule
+
+Assessment changes should keep the sequence decision-first: summary, top records, missing facts, first actions, then detailed trigger logic. Do not add more trigger cards or chip walls above the shortlist overview unless they directly help the user choose a next action.
+
+### Files Changed
+
+- `components/ApplicabilityWizard.tsx`
+- `tests/smoke.spec.ts`
+- `data/_meta.ts`
+- `data/changelog.ts`
+- `README.md`
+- `docs/current-release.md`
+- `docs/simplification-roadmap.md`
+- `docs/product-improvement-backlog.md`
+- `docs/qa-findings/pr-75-assessment-shortlist-overview.md`
+- `docs/issue-resolution-log.md`

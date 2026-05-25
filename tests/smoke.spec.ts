@@ -82,6 +82,11 @@ test("assessment results include decision readiness prompts", async ({ page }) =
 
   await expect(page.getByTestId("assessment-profile-summary")).toContainText(/European Union headquarters/i);
   await expect(page.getByTestId("assessment-profile-summary")).toContainText(/Facts to confirm next/i);
+  await expect(page.getByTestId("assessment-shortlist-overview")).toContainText(/Shortlist overview/i);
+  await expect(page.getByTestId("assessment-shortlist-overview")).toContainText(/Top records to review first/i);
+  await expect(page.getByTestId("assessment-shortlist-overview")).toContainText(/Facts to confirm/i);
+  await expect(page.getByTestId("assessment-shortlist-overview")).toContainText(/First 30-day actions/i);
+  await expect(page.getByTestId("assessment-shortlist-overview").getByRole("link", { name: /Request advisory scan/i })).toBeVisible();
   await expect(page.getByTestId("assessment-trigger-review")).toContainText(/Profile trigger review/i);
   await expect(page.getByTestId("assessment-trigger-review")).toContainText(/Jurisdiction and market nexus/i);
   await expect(page.getByTestId("assessment-trigger-review")).toContainText(/Company profile and size/i);

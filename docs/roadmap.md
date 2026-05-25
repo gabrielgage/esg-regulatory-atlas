@@ -68,6 +68,7 @@ Current capability areas:
 - Assessment trigger review explaining how profile facts drive jurisdiction, company, sector, value-chain, financial and source/threshold signals
 - Assessment outputs with missing facts, suggested owners and next 30-day actions
 - Assessment readiness plan cards for threshold facts, first actions and owner functions
+- Assessment shortlist overview with top records, relevance mix, facts to confirm, first 30-day actions and advisory scan CTA before detailed trigger logic
 - Regulation detail decision cards for threshold gaps, timing caveats, enforcement cues and missing data
 - Regulation detail implementation roadmaps for cautious 30/60/90-day owner, evidence, source-review and briefing actions
 - `/thresholds` threshold matrix for high-value scope signals, facts to confirm, source-to-verify links and review status
@@ -87,6 +88,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AO Items
+
+- Updated dataset metadata and changelog to `0.5.59 - May 2026`.
+- Added a decision-first assessment shortlist overview before detailed trigger logic.
+- Surfaced top records to review first, relevance-mix counts, facts to confirm and first 30-day actions.
+- Added an advisory-scan CTA inside the assessment result hierarchy.
+- Added smoke coverage for the new overview.
+- Kept the overview as indicative planning support, not legal applicability or complete coverage.
 
 ## Recently Delivered Phase 1AM Items
 

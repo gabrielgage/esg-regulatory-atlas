@@ -119,6 +119,12 @@ Current navigation convention:
 - Keep Launch resources internal/noindex and out of public navigation.
 - When adding a new route, decide whether it belongs in primary navigation, More, a route-specific CTA or documentation. Do not add every new route as a visible top-level header item.
 
+Current assessment convention:
+
+- Keep `/assessment` decision-first: profile summary, shortlist overview, top records, facts to confirm, first 30-day actions and advisory scan CTA should appear before detailed trigger logic.
+- Detailed trigger cards, readiness plans and dense result cards should support the overview rather than replace it.
+- Do not turn assessment ranking into legal applicability, confirmed thresholds, client-ready compliance scope or definitive deadline language.
+
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
 ## Issue Resolution Rule

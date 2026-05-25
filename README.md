@@ -8,14 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.58 - May 2026`.
+The current public release context is `0.5.59 - May 2026`.
 
 Latest release-context update:
 
-- simplifies the public navigation to Start, Assessment, Markets, Regulations, Advisory and a grouped More menu
-- reframes the homepage around the three most useful first actions: run an assessment, browse markets and search regulations
-- adds an advisory-scan path to the Start panel while keeping premium and launch-operator surfaces secondary
-- replaces public MVP/operator wording in the market briefing CTA with customer-facing, source-linked advisory-scan language
+- adds a decision-first shortlist overview to `/assessment` before the detailed trigger logic
+- shows top records, relevance-mix counts, facts to confirm and first 30-day actions in the assessment hierarchy
+- adds an advisory-scan path directly inside the assessment output
+- preserves the simplified public navigation from `0.5.58`: Start, Assessment, Markets, Regulations, Advisory and grouped More
 - keeps `/launch` noindex and internal-facing, while preserving the market obligation footprint, trigger review, assessment readiness plan and source-review handoffs from prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
@@ -45,6 +45,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - public glossary and contextual label-help surfaces
 - daily launch pulse for latest release context and next product-review focus
 - assessment wizard with cautious indicative categories and glossary handoff
+- assessment shortlist overview with top records, relevance mix, facts to confirm and first 30-day actions
 - assessment trigger review explaining jurisdiction, company, sector, value-chain, financial and source/threshold signals
 - assessment readiness plan with threshold-fact, first-action and owner-function prompts
 - timeline with planning-horizon tabs and date-label glossary handoff

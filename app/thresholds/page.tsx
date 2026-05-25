@@ -133,7 +133,7 @@ export default function ThresholdsPage() {
                     <StatusBadge status={regulation.status} />
                     <Badge className={statusStyles[row.reviewStatus]}>{statusLabels[row.reviewStatus]}</Badge>
                     {reviewItem?.premiumUseBlockedUntilReviewed ? (
-                      <Badge className="border-amber-200 bg-amber-50 text-amber-800">Premium use blocked pending review</Badge>
+                      <Badge className="border-amber-200 bg-amber-50 text-amber-800">Review needed before client reuse</Badge>
                     ) : null}
                   </div>
                   <h3 className="mt-3 text-lg font-semibold text-ink">
@@ -237,4 +237,3 @@ function ListBlock({ title, values }: { title: string; values: string[] }) {
     </div>
   );
 }
-

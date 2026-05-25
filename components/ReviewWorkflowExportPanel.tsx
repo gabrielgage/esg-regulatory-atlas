@@ -20,7 +20,7 @@ export function ReviewWorkflowExportPanel({
 }) {
   const rows = buildReviewWorkflowRows(regulations);
   const topRows = rows.slice(0, 8);
-  const premiumBlocked = rows.filter((row) => row.decisionGate === "Premium use blocked").length;
+  const needsClientReuseReview = rows.filter((row) => row.decisionGate === "Source and threshold review needed").length;
   const sourceAttention = rows.filter((row) =>
     ["Source missing", "Priority source needed", "Stale source review", "Upcoming review"].includes(row.sourcePosture)
   ).length;
@@ -70,7 +70,7 @@ export function ReviewWorkflowExportPanel({
       <div className="mt-4 grid gap-3 md:grid-cols-4">
         <Metric label="Tracked records" value={String(rows.length)} detail="All static regulation records" />
         <Metric label="High priority" value={String(highPriority)} detail="Score 12+ in review queue" />
-        <Metric label="Premium blocked" value={String(premiumBlocked)} detail="Do not use in premium examples yet" />
+        <Metric label="Client reuse review" value={String(needsClientReuseReview)} detail="Source or threshold review needed" />
         <Metric label="Source attention" value={String(sourceAttention)} detail="Missing, stale or due soon" />
       </div>
 

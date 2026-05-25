@@ -19,6 +19,8 @@ The current MVP should remain:
 Current capability areas:
 
 - Interactive regulatory map
+- Simplified public navigation with Start, Assessment, Markets, Regulations, Advisory and grouped secondary routes
+- Homepage three-path start experience for assessment, market/regulation exploration and advisory scans
 - `/markets` market profile index and `/jurisdiction/[code]` market profile pages
 - Market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review drivers
 - Market obligation footprints on jurisdiction profiles for business-impact categories, owner functions, evidence starters and first actions
@@ -57,9 +59,9 @@ Current capability areas:
 - `/plans` commercial architecture page for Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
 - `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
-- `/launch` launch-resource workspace with copyable LinkedIn, email, direct-outreach, advisory and premium-preview assets
-- Grouped primary and secondary navigation so core map, market, sector, regulation, assessment and plan routes stay prominent while governance, timeline, briefing, alerts and advisory routes remain one click away; `/launch` is kept as an operator route, not public navigation
-- Homepage Start Here panel for assessment, market profile and regulation database entry paths
+- `/launch` internal launch-resource workspace with copyable LinkedIn, email, direct-outreach, advisory and premium-preview assets
+- Grouped primary and secondary navigation so Start, Assessment, Markets, Regulations and Advisory stay prominent while planning, trust and commercial-preview routes remain one click away; `/launch` is kept as a noindex operator route, not public navigation
+- Homepage Start Here panel for assessment, market/regulation exploration and advisory scan entry paths
 - Concrete premium market-pack previews in `/premium-roadmap`
 - Premium pack preview source-review gates for illustrative-only, review-before-use and orientation-ready records
 - Assessment outputs with review priority, explanation triggers, evidence needs, functions involved and source-to-verify guidance
@@ -252,6 +254,7 @@ Current capability areas:
 
 ## Recently Delivered Phase 1U Items
 
+- Current navigation supersedes the older Phase 1U pattern: Start, Assessment, Markets, Regulations and Advisory are primary; Sectors, Timeline, Briefing, Value chain, Thresholds, Methodology, Data Quality, Glossary, Changelog, Plans, Alerts, Premium Roadmap and About live in grouped More; `/launch` remains internal/noindex.
 - Updated dataset metadata and changelog to `0.5.21 - May 2026`.
 - Simplified global navigation by keeping Map, Markets, Sectors, Regulations, Assessment and Plans visible while grouping Timeline, Briefing, Data Quality, Alerts, Advisory and Launch into a translated More menu.
 - Added translated navigation labels for Plans, Alerts, Advisory, Launch and More across the six supported interface languages.

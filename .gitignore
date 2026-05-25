@@ -3,6 +3,7 @@ node_modules
 next-env.d.ts
 out
 tsconfig.tsbuildinfo
+test-results
 .env*
 !.env.example
 .vercel

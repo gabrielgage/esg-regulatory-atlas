@@ -13,7 +13,7 @@ export function MarqueeEvidenceGate({ regulations }: { regulations: Regulation[]
       plan: regulation ? decisionReadinessFor(regulation, regulations) : null
     };
   });
-  const blocked = rows.filter((row) => row.plan?.level === "premium-blocked").length;
+  const clientReuseBlocked = rows.filter((row) => row.plan?.level === "premium-blocked").length;
   const reviewBeforeClientUse = rows.filter((row) => row.plan?.level === "review-before-client-use").length;
   const orientationReady = rows.filter((row) => row.plan?.level === "orientation-ready").length;
 
@@ -23,21 +23,21 @@ export function MarqueeEvidenceGate({ regulations }: { regulations: Regulation[]
         <div>
           <div className="flex items-center gap-2">
             <LockKeyhole className="h-5 w-5 text-teal" />
-            <h2 className="font-semibold text-ink">Premium evidence gates</h2>
+            <h2 className="font-semibold text-ink">Client reuse review gates</h2>
           </div>
           <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500">
-            Launch-critical regimes need a source, threshold and evidence review before they appear in premium packs or client-ready advisory outputs. This panel turns the review queue into practical gating decisions.
+            Launch-critical regimes need a source, threshold and evidence review before they appear in premium packs or client-ready advisory outputs. This panel turns the review queue into practical review decisions.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Badge className="border-red-200 bg-red-50 text-red-700">{blocked} premium blocked</Badge>
+          <Badge className="border-red-200 bg-red-50 text-red-700">{clientReuseBlocked} need source/threshold review</Badge>
           <Badge className="border-amber-200 bg-amber-50 text-amber-800">{reviewBeforeClientUse} review first</Badge>
           <Badge className="border-teal/20 bg-teal/10 text-teal">{orientationReady} orientation-ready</Badge>
         </div>
       </div>
 
       <div className="mt-4 grid gap-3 md:grid-cols-3">
-        <Metric icon={LockKeyhole} label="Premium-use blockers" value={String(blocked)} />
+        <Metric icon={LockKeyhole} label="Client reuse blockers" value={String(clientReuseBlocked)} />
         <Metric icon={AlertTriangle} label="Client-use review" value={String(reviewBeforeClientUse)} />
         <Metric icon={ShieldCheck} label="Mapped records" value={`${rows.filter((row) => row.regulation).length}/${rows.length}`} />
       </div>

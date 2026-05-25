@@ -14,12 +14,12 @@ export function MarketBriefingCTA({ compact = false, jurisdictionName }: { compa
     <section className="rounded-2xl border bg-white p-5 shadow-sm">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-teal">Market packs and advisory briefings</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-teal">Advisory-supported scans and briefings</p>
           <h2 className={compact ? "mt-1 text-lg font-semibold text-ink" : "mt-1 text-2xl font-bold tracking-tight text-ink"}>
-            Turn Atlas intelligence into a client-ready briefing
+            Request a source-linked market scan
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            Static MVP CTA only: request a market scan, portfolio regulation screen, sector pack or regulatory readiness review. No payments, accounts or gated database are implemented.
+            Share the jurisdiction, sector, company type or portfolio question you want reviewed. Etica can return a manually prepared exposure scan, market briefing or readiness note based on the current Atlas and primary-source review needs.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -34,7 +34,7 @@ export function MarketBriefingCTA({ compact = false, jurisdictionName }: { compa
             href={`mailto:${DATASET_META.contactEmail}?subject=${subject}&body=${body}`}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800"
           >
-            Request briefing
+            Request advisory scan
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
@@ -48,7 +48,7 @@ export function MarketBriefingCTA({ compact = false, jurisdictionName }: { compa
         </div>
       ) : null}
       <p className="mt-4 text-xs leading-5 text-slate-500">
-        Future premium features are documented in the <Link href="/premium-roadmap" className="font-semibold text-teal underline">premium roadmap</Link>; compare commercial options on <Link href="/plans" className="font-semibold text-teal underline">Plans</Link> or preview <Link href="/alerts" className="font-semibold text-teal underline">Alerts</Link>. This MVP remains free, static and legally cautious.
+        The public Atlas remains free to browse. Advisory scans are manual, source-linked planning outputs and are not legal opinions, official source verification or definitive applicability determinations. Premium alert and pack concepts remain secondary previews in <Link href="/plans" className="font-semibold text-teal underline">Plans</Link>.
       </p>
     </section>
   );

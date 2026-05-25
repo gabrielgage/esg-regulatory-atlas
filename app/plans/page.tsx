@@ -43,7 +43,7 @@ export default function PlansPage() {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 <LockKeyhole className="h-3.5 w-3.5 text-teal" />
-                Static commercial validation
+                Manual request path
               </div>
               <h1 className="mt-4 text-3xl font-bold tracking-tight text-ink">Commercial signal without product complexity</h1>
               <p className="mt-3 text-sm leading-6 text-slate-600">

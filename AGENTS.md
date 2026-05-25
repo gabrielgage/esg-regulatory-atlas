@@ -114,8 +114,9 @@ Current AI review-pack convention:
 
 Current navigation convention:
 
-- Keep the header focused on the main discovery path: Map, Markets, Sectors, Regulations, Assessment and Plans.
-- Put secondary or supporting surfaces such as Timeline, Briefing, Data Quality, Alerts, Advisory and Launch in the More menu unless a future user test shows they need primary placement.
+- Keep the header focused on the main discovery path: Start, Assessment, Markets, Regulations and Advisory.
+- Put secondary or supporting surfaces such as Sectors, Timeline, Briefing, Value chain, Thresholds, Methodology, Data Quality, Glossary, Changelog, Plans, Alerts and Premium Roadmap in the grouped More menu unless a future user test shows they need primary placement.
+- Keep Launch resources internal/noindex and out of public navigation.
 - When adding a new route, decide whether it belongs in primary navigation, More, a route-specific CTA or documentation. Do not add every new route as a visible top-level header item.
 
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.

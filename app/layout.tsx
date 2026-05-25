@@ -9,13 +9,13 @@ export const metadata: Metadata = {
     default: "Etica ESG · Regulatory Atlas",
     template: "%s | Etica ESG"
   },
-  description: "Etica ESG · Independent ESG regulatory radar across 15 jurisdictions, 80+ regulations, with source citations and a published review cadence.",
+  description: "Etica ESG · Source-linked ESG regulatory orientation across tracked markets, sectors, value chains and reporting years.",
   icons: {
     icon: "/favicon.svg"
   },
   openGraph: {
     title: "Etica ESG · Regulatory Atlas",
-    description: "Independent ESG regulatory radar across 15 jurisdictions, 80+ source-linked records and edition-tracked review notes.",
+    description: "Source-linked ESG regulatory orientation across tracked markets, sectors, value chains and reporting years.",
     images: ["/og-image.svg"],
     siteName: DATASET_META.publisher,
     type: "website"
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Etica ESG · Regulatory Atlas",
-    description: "Independent ESG regulatory radar across 15 jurisdictions and 80+ source-linked records.",
+    description: "Source-linked ESG regulatory orientation across tracked markets, sectors, value chains and reporting years.",
     images: ["/og-image.svg"]
   }
 };

@@ -10,7 +10,7 @@ import { DATASET_META } from "@/data/_meta";
 import { launchAssets } from "@/data/launchAssets";
 
 export const metadata = {
-  title: "Launch resources | Etica ESG",
+  title: "Internal launch workspace | Etica ESG",
   robots: {
     index: false,
     follow: false
@@ -23,9 +23,9 @@ export default function LaunchPage() {
       <Header />
       <div className="mx-auto max-w-7xl space-y-5 px-4 py-5 md:px-6">
         <PageIntro
-          eyebrow="Launch resources"
-          title="Copyable launch assets for commercial validation"
-          body="Use these static assets to test demand for the free Atlas, premium alerts, market packs and advisory exposure scans before adding paid infrastructure or production automation."
+          eyebrow="Internal resources"
+          title="Internal launch workspace"
+          body="Use these static assets to prepare outreach for the free Atlas, premium alert previews, market packs and advisory exposure scans without exposing launch operations in the public product journey."
           meta="Manual outreach only. No checkout, accounts, automated emails, scraping, cron jobs, database or paid APIs are implemented."
         />
         <DisclaimerBanner />
@@ -35,9 +35,9 @@ export default function LaunchPage() {
             <div>
               <div className="flex items-center gap-2 text-sm font-semibold text-teal">
                 <Megaphone className="h-4 w-4" />
-                Launch operator workspace
+                Internal launch workspace
               </div>
-              <h1 className="mt-3 text-3xl font-bold tracking-tight text-ink">Validate demand without pretending the full SaaS exists</h1>
+              <h1 className="mt-3 text-3xl font-bold tracking-tight text-ink">Prepare launch copy without adding product infrastructure</h1>
               <p className="mt-3 text-sm leading-6 text-slate-600">
                 The launch page turns the static offer data into reusable outreach material. Each asset preserves caveats so copied text does not imply legal advice, complete coverage, production monitoring or a live paid product.
               </p>

@@ -161,9 +161,9 @@ Every regulatory insight should lead users toward source review. Primary sources
 
 The product can classify, summarize, organize, and prioritize. It must not imply a final legal opinion, assurance conclusion, tax conclusion, or investment recommendation.
 
-### Keep The Map Central
+### Keep The Map Important, But Sequence It
 
-The map is the main workspace. Heavy tools such as assessment, timeline, data methodology, commercial validation, launch assets and client briefing should support the map from separate routes rather than crowd the homepage.
+The map remains the main exploration workspace, but first-time users should see a simple start path before expert map controls. Heavy tools such as assessment results, timeline, data methodology, commercial previews, launch assets and client briefing should support the map from separate routes rather than crowd the homepage.
 
 ### Design For Consultant Workflows
 

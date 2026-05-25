@@ -57,7 +57,7 @@ export function MarqueeReviewQueue({
               <div className="flex flex-wrap gap-2">
                 <Badge className={statusClass(item.status)}>{marqueeReviewStatusLabel[item.status]}</Badge>
                 {item.launchBlocker ? <Badge className="border-red-200 bg-red-50 text-red-700">Launch blocker</Badge> : null}
-                {premiumUseBlocked(item) ? <Badge className="border-amber-200 bg-amber-50 text-amber-800">Premium use blocked</Badge> : null}
+                {premiumUseBlocked(item) ? <Badge className="border-amber-200 bg-amber-50 text-amber-800">Review needed before client reuse</Badge> : null}
               </div>
             </div>
             <p className="mt-3 text-sm leading-6 text-slate-600">{item.whyItMatters}</p>

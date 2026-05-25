@@ -710,3 +710,20 @@ Launch Tasks:
 QA finding:
 
 - Language support is useful for navigation and product guidance, but it must not imply official legal translation or source interpretation. Keep record-level legal content source-linked and caveated.
+
+## 2026-05-25 Codex Update - Value-Chain Lane Simplification
+
+Launch Command Center note:
+
+> Phase 1AT continues the simplification pass inside `/value-chain`. The page now starts with six practical business-exposure lanes, each with a start question, evidence prompts, first actions, suggested owners and filtered handoffs into source-linked records.
+
+Launch Tasks:
+
+- LAUNCH-137 - Define six value-chain exposure lanes for supplier, trade/import, product/claim, portfolio/finance, operations/governance and customer-pressure workflows
+- LAUNCH-138 - Replace raw value-chain tag cards with lane-specific evidence, action and owner prompts
+- LAUNCH-139 - Add copyable value-chain lane summaries with legal caveats
+- LAUNCH-140 - Update release context, roadmap and QA notes for value-chain lane governance
+
+QA finding:
+
+- Value-chain pages should start from a business exposure question, not a raw taxonomy tag. Keep lane outputs as evidence-planning orientation and do not present them as complete value-chain legal coverage, source verification or entity-specific applicability determinations.

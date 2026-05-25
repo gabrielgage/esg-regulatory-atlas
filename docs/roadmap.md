@@ -25,7 +25,7 @@ Current capability areas:
 - Market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review drivers
 - Market obligation footprints on jurisdiction profiles for business-impact categories, owner functions, evidence starters and first actions
 - `/sectors` searchable sector finder and `/sectors/[slug]` sector profile pages
-- `/value-chain` business-exposure workspace for supplier, importer/exporter, product, portfolio, financed-emissions and own-operations triage
+- `/value-chain` six-lane business-exposure workspace for supplier, trade/import, product/claim, portfolio/finance, operations/governance and customer-pressure triage
 - Jurisdiction profiles
 - Filterable regulation table
 - Search-first Regulations workspace with primary filters above the result table and role lenses, compare, label help, share and export controls below it
@@ -254,6 +254,14 @@ Current capability areas:
 - Strengthened CSRD/CSDDD threshold caveats so CSDDD due-diligence scope signals are not treated as general CSRD corporate-reporting thresholds.
 - Added smoke coverage for Start Here, hidden Launch nav and premium gates.
 - Kept the changes static, source-linked and legally cautious.
+
+## Recently Delivered Phase 1AT Items
+
+- Updated dataset metadata and recent changelog to `0.5.64 - May 2026`.
+- Reworked `/value-chain` into six primary business-exposure lanes instead of raw tag-level cards.
+- Added lane start questions, evidence prompts, first actions, suggested owner functions and copyable lane summaries.
+- Reduced repeated chip text and preserved source-review, confidence and legal caveats.
+- Kept the surface as source-linked seed intelligence for evidence planning, not legal advice, complete value-chain coverage or entity-specific applicability.
 
 ## Recently Delivered Phase 1Y Items
 

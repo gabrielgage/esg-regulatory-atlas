@@ -43,6 +43,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals
 - market obligation footprints on jurisdiction profiles for business-impact categories, likely owner functions, evidence starters and first actions
 - searchable sector finder at `/sectors`, plus sector profiles at `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
+- six-lane value-chain workspace for supplier, trade/import, product/claim, portfolio, operations and customer-pressure triage
 - regulation database and regulation detail pages
 - search-first Regulations workspace with secondary role-lens, comparison, label-help and export tools
 - threshold matrix for high-value scope signals, facts to confirm and source-review status
@@ -86,7 +87,7 @@ The MVP does not include authentication, Supabase, external databases, Stripe, c
 - Compare: `/compare`, `/compare?jurisdictions=EUU,GBR`, `/compare?ids=csrd,issb-s1-s2`
 - Markets: `/markets`, `/jurisdiction/[code]`
 - Sectors: `/sectors`, `/sectors/[slug]`
-- Value-chain exposure: `/value-chain`
+- Value-chain exposure: `/value-chain` with six business-exposure lanes and copyable evidence-planning summaries
 - Jurisdiction brief: `/jurisdiction/[code]/brief`
 - Plans: `/plans`
 - Alerts preview: `/alerts`

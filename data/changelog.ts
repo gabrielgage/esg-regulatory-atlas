@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.64 - May 2026",
+    date: "2026-05-25",
+    label: "Value-chain lane simplification",
+    summary:
+      "Reworked the value-chain workspace into six business-exposure lanes so users can start from supplier, trade, product, portfolio, operations or customer-pressure questions before opening source-linked records.",
+    added: [
+      "Six value-chain lane definitions with practical start questions",
+      "Lane-specific evidence prompts, first actions and suggested owners",
+      "Copyable lane summaries with legal caveats",
+      "Calmer lane cards with fewer repeated chips and clearer source-review cues"
+    ],
+    updated: [
+      "Value-chain page information architecture",
+      "Value-chain aggregation helper",
+      "Release context documentation",
+      "Simplification roadmap status"
+    ],
+    records: ["Value chain", "Supplier due diligence", "Trade and imports", "Products and claims", "Portfolio exposure"],
+    caveat:
+      "Value-chain lanes remain seed intelligence for orientation and evidence planning. They do not provide complete legal coverage, official source verification or entity-specific applicability determinations."
+  },
+  {
     edition: "0.5.63 - May 2026",
     date: "2026-05-25",
     label: "Interface language clarity",

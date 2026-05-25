@@ -693,3 +693,20 @@ Launch Tasks:
 QA finding:
 
 - Sector pages should help business users choose a sector context and know what to inspect first. Counts must remain framed as current seed coverage, not complete sector legal inventory, source verification or applicability determination.
+
+## 2026-05-25 Codex Update - Interface Language Clarity
+
+Launch Command Center note:
+
+> Phase 1AS clarifies the language selector. The control now identifies itself as interface language and carries a localized caveat that translated chrome is not official legal translation of regulatory records.
+
+Launch Tasks:
+
+- LAUNCH-133 - Rename language selector to interface language
+- LAUNCH-134 - Add localized language-toggle caveat for legal translation boundary
+- LAUNCH-135 - Improve dark-mode styling for language control
+- LAUNCH-136 - Update release context and simplification roadmap
+
+QA finding:
+
+- Language support is useful for navigation and product guidance, but it must not imply official legal translation or source interpretation. Keep record-level legal content source-linked and caveated.

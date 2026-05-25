@@ -1137,3 +1137,38 @@ When a UI intentionally repeats group-level helper text across multiple cards, a
 - `tests/glossary-help.spec.ts`
 - `tests/smoke.spec.ts`
 - `docs/issue-resolution-log.md`
+
+## 2026-05-25 - Language Toggle Could Be Misread As Official Translation
+
+Status: resolved in the interface-language-clarity branch.
+
+### Symptom
+
+The header language control used a compact globe and language abbreviation. Although the homepage had a caveat, the control itself did not clearly state that it changes interface guidance rather than official legal translation.
+
+### Root Cause
+
+The multilingual chrome was added for usability, then the UI was simplified. The compact header control kept the experience tidy but weakened the legal boundary between interface language and regulatory source language.
+
+### Resolution
+
+- Changed the accessible label to "Interface language" and added localized equivalents.
+- Added a localized tooltip caveat that regulatory records are not official legal translations.
+- Improved dark-mode styles on the language control.
+
+### Prevention Rule
+
+Language controls must describe interface language, not legal translation. Do not imply official translations of regulatory records, source materials or legal interpretation unless a qualified translation and source-review workflow exists.
+
+### Files Changed
+
+- `components/LanguageToggle.tsx`
+- `lib/i18n.ts`
+- `data/_meta.ts`
+- `data/changelog.ts`
+- `README.md`
+- `docs/current-release.md`
+- `docs/simplification-roadmap.md`
+- `docs/notion-update-plan.md`
+- `docs/qa-findings/pr-79-interface-language-clarity.md`
+- `docs/issue-resolution-log.md`

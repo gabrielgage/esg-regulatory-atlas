@@ -1,73 +1,14 @@
-import Link from "next/link";
-import { ArrowUpRight, BriefcaseBusiness, FileText, Layers3, ScanSearch } from "lucide-react";
-import { DATASET_META } from "@/data/_meta";
+import { AdvisoryScanCTA } from "./AdvisoryScanCTA";
 
 export function MarketBriefingCTA({ compact = false, jurisdictionName }: { compact?: boolean; jurisdictionName?: string }) {
-  const subject = encodeURIComponent(
-    jurisdictionName ? `Etica ESG market briefing request - ${jurisdictionName}` : "Etica ESG market briefing request"
-  );
-  const body = encodeURIComponent(
-    "Hi Gabriel,\n\nI would like to discuss an ESG Regulatory Atlas market briefing, portfolio scan, sector pack or readiness review.\n\nContext:\n- Jurisdiction(s):\n- Sector / company type:\n- Main regulatory question:\n"
-  );
-
   return (
-    <section className="rounded-2xl border bg-white p-5 shadow-sm">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-teal">Advisory-supported scans and briefings</p>
-          <h2 className={compact ? "mt-1 text-lg font-semibold text-ink" : "mt-1 text-2xl font-bold tracking-tight text-ink"}>
-            Request a source-linked market scan
-          </h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            Share the jurisdiction, sector, company type or portfolio question you want reviewed. Etica can return a manually prepared exposure scan, market briefing or readiness note based on the current Atlas and primary-source review needs.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Link
-            href="/advisory"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
-          >
-            Advisory options
-            <ArrowUpRight className="h-4 w-4" />
-          </Link>
-          <a
-            href={`mailto:${DATASET_META.contactEmail}?subject=${subject}&body=${body}`}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-ink px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800"
-          >
-            Request advisory scan
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </div>
-      </div>
-      {!compact ? (
-        <div className="mt-5 grid gap-3 md:grid-cols-4">
-          <CtaCard icon={FileText} title="Market scan" body="Jurisdiction-specific obligations, milestones and source quality." />
-          <CtaCard icon={ScanSearch} title="Portfolio scan" body="Indicative exposure across portfolio companies or assets." />
-          <CtaCard icon={Layers3} title="Sector pack" body="Financial services, private equity, real assets, manufacturing or supply chain." />
-          <CtaCard icon={BriefcaseBusiness} title="Readiness review" body="Actions, evidence, owners and advisory workstreams." />
-        </div>
-      ) : null}
-      <p className="mt-4 text-xs leading-5 text-slate-500">
-        The public Atlas remains free to browse. Advisory scans are manual, source-linked planning outputs and are not legal opinions, official source verification or definitive applicability determinations. Premium alert and pack concepts remain secondary previews in <Link href="/plans" className="font-semibold text-teal underline">Plans</Link>.
-      </p>
-    </section>
-  );
-}
-
-function CtaCard({
-  icon: Icon,
-  title,
-  body
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  body: string;
-}) {
-  return (
-    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-      <Icon className="h-5 w-5 text-teal" />
-      <h3 className="mt-3 text-sm font-semibold text-ink">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-slate-600">{body}</p>
-    </div>
+    <AdvisoryScanCTA
+      compact={compact}
+      eyebrow="Advisory-supported scans and briefings"
+      title="Request a source-linked market scan"
+      body="Share the jurisdiction, sector, company type or portfolio question you want reviewed. Etica can return a manually prepared exposure scan, market briefing or readiness note based on the current Atlas and primary-source review needs."
+      subject={jurisdictionName ? `Etica ESG market briefing request - ${jurisdictionName}` : "Etica ESG market briefing request"}
+      emailBody="Hi Gabriel,\n\nI would like to discuss an ESG Regulatory Atlas market briefing, portfolio scan, sector pack or readiness review.\n\nContext:\n- Jurisdiction(s):\n- Sector / company type:\n- Main regulatory question:\n"
+    />
   );
 }

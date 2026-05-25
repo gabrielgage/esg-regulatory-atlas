@@ -999,3 +999,45 @@ Keep `/regulations` oriented around search, primary filters and database results
 - `docs/product-improvement-backlog.md`
 - `docs/qa-findings/pr-76-regulations-search-first-layout.md`
 - `docs/issue-resolution-log.md`
+
+## 2026-05-25 - Advisory Scan CTAs Were Implemented As Multiple One-Off Blocks
+
+Status: resolved in the reusable-advisory-scan-CTA branch.
+
+### Symptom
+
+Assessment, market, regulation detail and drawer surfaces all pointed users toward advisory support, but the request blocks were implemented through separate CTA variants. The product risk was copy drift: different pages could imply different deliverables, caveats or request behavior.
+
+### Root Cause
+
+Commercial validation and advisory routes were added iteratively. The app already had a generic commercial CTA and a market briefing CTA, but there was no dedicated shared component for the near-term advisory scan motion.
+
+### Resolution
+
+- Added `components/AdvisoryScanCTA.tsx` with shared title/body defaults, mailto helper, deliverable framing and legal caveat.
+- Converted `components/MarketBriefingCTA.tsx` into a wrapper around the shared advisory CTA.
+- Updated assessment, regulation detail page and regulation drawer advisory CTAs to use the shared component.
+- Kept all request paths mailto-only with no accounts, payments, database, automated email or legal-advice functionality.
+
+### Prevention Rule
+
+Use `AdvisoryScanCTA` for manual exposure-scan, market-briefing, assessment-review and regulation-review CTAs. Do not create one-off advisory mailto blocks unless the route genuinely needs a different commercial motion. Advisory CTAs must stay source-linked, manual and legally cautious.
+
+### Files Changed
+
+- `components/AdvisoryScanCTA.tsx`
+- `components/MarketBriefingCTA.tsx`
+- `components/ApplicabilityWizard.tsx`
+- `app/regulations/[slug]/page.tsx`
+- `components/RegulationDetail.tsx`
+- `data/_meta.ts`
+- `data/changelog.ts`
+- `README.md`
+- `docs/current-release.md`
+- `docs/simplification-roadmap.md`
+- `docs/product-improvement-backlog.md`
+- `docs/roadmap.md`
+- `docs/product-brief.md`
+- `docs/development-workflow.md`
+- `docs/notion-update-plan.md`
+- `docs/qa-findings/pr-77-reusable-advisory-scan-cta.md`

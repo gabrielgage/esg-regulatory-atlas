@@ -11,6 +11,29 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.61 - May 2026",
+    date: "2026-05-25",
+    label: "Reusable advisory scan CTA",
+    summary:
+      "Standardized the manual advisory-scan path across market, assessment and regulation-detail surfaces so users see one consistent source-linked next step instead of scattered CTA variants.",
+    added: [
+      "Reusable AdvisoryScanCTA component",
+      "Shared mailto helper for advisory scan requests",
+      "Consistent advisory-scan caveat and deliverable framing",
+      "Stable wrapper for existing market briefing CTAs"
+    ],
+    updated: [
+      "Assessment advisory CTA",
+      "Regulation detail page advisory CTA",
+      "Regulation drawer advisory CTA",
+      "Market briefing CTA implementation",
+      "Release context documentation"
+    ],
+    records: ["Advisory scans", "Assessment", "Regulation details", "Markets"],
+    caveat:
+      "Advisory scan CTAs remain manual mailto request paths. They do not add accounts, payment, automated delivery, source verification, legal advice or definitive applicability determinations."
+  },
+  {
     edition: "0.5.60 - May 2026",
     date: "2026-05-25",
     label: "Regulations search-first layout",

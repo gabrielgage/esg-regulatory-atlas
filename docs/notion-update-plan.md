@@ -659,3 +659,20 @@ Launch Tasks:
 QA finding:
 
 - The Regulations database should help users narrow records before showing optional tools. Role lenses, compare, glossary help and exports are valuable but should not compete with search, primary filters or the result table on first load.
+
+## 2026-05-25 Codex Update - Reusable Advisory Scan CTA
+
+Launch Command Center note:
+
+> Phase 1AQ standardizes the manual advisory-scan path. Market, assessment and regulation-detail surfaces now use a shared advisory CTA pattern with consistent mailto behavior, deliverable framing and legal caveats.
+
+Launch Tasks:
+
+- LAUNCH-125 - Add shared advisory scan CTA component
+- LAUNCH-126 - Convert market briefing CTA into a wrapper around the shared advisory CTA
+- LAUNCH-127 - Replace assessment and regulation-detail advisory CTAs with the shared component
+- LAUNCH-128 - Update release context, handoff and QA notes for advisory CTA governance
+
+QA finding:
+
+- Advisory CTAs are the near-term commercial path and should feel consistent. They must remain manual, source-linked and legally caveated; do not create one-off advisory request blocks that drift into legal advice, automated delivery or paid-infrastructure promises.

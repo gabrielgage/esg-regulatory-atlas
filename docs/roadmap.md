@@ -60,6 +60,7 @@ Current capability areas:
 - `/plans` commercial architecture page for Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
 - `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
+- Shared advisory-scan CTA for market, assessment and regulation-detail surfaces, preserving mailto-only manual request paths
 - `/launch` internal launch-resource workspace with copyable LinkedIn, email, direct-outreach, advisory and premium-preview assets
 - Grouped primary and secondary navigation so Start, Assessment, Markets, Regulations and Advisory stay prominent while planning, trust and commercial-preview routes remain one click away; `/launch` is kept as a noindex operator route, not public navigation
 - Homepage Start Here panel for assessment, market/regulation exploration and advisory scan entry paths
@@ -89,6 +90,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AQ Items
+
+- Updated dataset metadata and changelog to `0.5.61 - May 2026`.
+- Added `components/AdvisoryScanCTA.tsx` as the shared manual advisory-scan CTA.
+- Converted `components/MarketBriefingCTA.tsx` into a stable wrapper around the shared advisory-scan component.
+- Updated the assessment advisory-scan CTA, regulation detail page CTA and regulation drawer CTA to use the shared component.
+- Standardized advisory caveats and deliverable framing across those surfaces.
+- Preserved mailto-only request paths with no accounts, payments, databases, automated email or legal-advice functionality.
 
 ## Recently Delivered Phase 1AP Items
 

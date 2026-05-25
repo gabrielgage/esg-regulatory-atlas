@@ -676,3 +676,20 @@ Launch Tasks:
 QA finding:
 
 - Advisory CTAs are the near-term commercial path and should feel consistent. They must remain manual, source-linked and legally caveated; do not create one-off advisory request blocks that drift into legal advice, automated delivery or paid-infrastructure promises.
+
+## 2026-05-25 Codex Update - Sector Finder Simplification
+
+Launch Command Center note:
+
+> Phase 1AR continues the simplification pass inside `/sectors`. The page now starts with a searchable sector finder, sector-family filters and practical review-first records instead of aggregate metrics and dense chip-heavy cards.
+
+Launch Tasks:
+
+- LAUNCH-129 - Add sector group taxonomy for business-context browsing
+- LAUNCH-130 - Add searchable sector finder with group filters and empty state
+- LAUNCH-131 - Replace sector aggregate metrics with practical triggers, source counts and review-first record cues
+- LAUNCH-132 - Update release context, roadmap and QA notes for sector simplification
+
+QA finding:
+
+- Sector pages should help business users choose a sector context and know what to inspect first. Counts must remain framed as current seed coverage, not complete sector legal inventory, source verification or applicability determination.

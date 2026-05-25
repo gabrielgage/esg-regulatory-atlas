@@ -8,11 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.61 - May 2026`.
+The current public release context is `0.5.62 - May 2026`.
 
 Latest release-context update:
 
-- standardizes the manual advisory-scan CTA across market, assessment and regulation-detail surfaces
+- reworks `/sectors` into a searchable sector finder with business-context groups, practical triggers and review-first records
+- preserves the reusable advisory-scan CTA from `0.5.61`
 - keeps advisory scan requests as mailto-only, source-linked planning paths with legal caveats
 - preserves the search-first Regulations workspace from `0.5.60`
 - preserves the decision-first assessment overview from `0.5.59`
@@ -40,7 +41,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - market profiles at `/markets` and `/jurisdiction/[code]` with tracked-coverage and detail-level glossary handoffs
 - market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals
 - market obligation footprints on jurisdiction profiles for business-impact categories, likely owner functions, evidence starters and first actions
-- sector profiles at `/sectors` and `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
+- searchable sector finder at `/sectors`, plus sector profiles at `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
 - regulation database and regulation detail pages
 - search-first Regulations workspace with secondary role-lens, comparison, label-help and export tools
 - threshold matrix for high-value scope signals, facts to confirm and source-review status

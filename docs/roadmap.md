@@ -24,7 +24,7 @@ Current capability areas:
 - `/markets` market profile index and `/jurisdiction/[code]` market profile pages
 - Market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review drivers
 - Market obligation footprints on jurisdiction profiles for business-impact categories, owner functions, evidence starters and first actions
-- `/sectors` sector starting point index and `/sectors/[slug]` sector profile pages
+- `/sectors` searchable sector finder and `/sectors/[slug]` sector profile pages
 - `/value-chain` business-exposure workspace for supplier, importer/exporter, product, portfolio, financed-emissions and own-operations triage
 - Jurisdiction profiles
 - Filterable regulation table
@@ -90,6 +90,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AR Items
+
+- Updated dataset metadata and changelog to `0.5.62 - May 2026`.
+- Added `lib/sectorGroups.ts` for business-context sector families.
+- Added `components/SectorDirectory.tsx` as a searchable sector finder with group filters and empty state.
+- Reworked `/sectors` to lead with search, sector-family filters, practical trigger summaries and review-first records.
+- Reduced aggregate metric noise and dense chip walls on the sectors index while preserving sector detail pages, source cues, assessment handoff and advisory path.
+- Kept sector coverage caveated as current seed intelligence, not complete sector legal inventory or applicability determination.
 
 ## Recently Delivered Phase 1AQ Items
 

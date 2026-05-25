@@ -132,6 +132,13 @@ Current regulations convention:
 - Do not add dense role presets, commercial CTAs, governance panels or export utilities above the primary filters.
 - Keep regulation detail navigation, source-quality indicators, export caveats and legal-safety wording intact when changing the database layout.
 
+Current sectors convention:
+
+- Keep `/sectors` as a searchable sector finder, not an aggregate dashboard.
+- Use `lib/sectorGroups.ts` for business-context grouping and `components/SectorDirectory.tsx` for the index UI.
+- Sector cards should emphasize trigger summaries, review-first records, source cues and assessment handoff before dense topic/market chips.
+- Sector counts must stay caveated as current seed coverage, not complete sector legal inventory, official source verification or applicability determination.
+
 Current advisory CTA convention:
 
 - Use `components/AdvisoryScanCTA.tsx` for manual exposure-scan, market-briefing, assessment-review and regulation-review CTAs.

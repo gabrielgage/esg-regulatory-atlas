@@ -43,6 +43,7 @@ Remaining high-priority simplification items:
 - Make `/regulations` more search-first with advanced filters and compare controls secondary.
   Status: advanced in `0.5.60 - May 2026` with search and primary filters before results, while role lenses, compare, label help, share and export controls sit below the table as secondary tools.
 - Simplify sectors, value-chain, plans and briefing pages so each begins with one clear user decision.
+  Status: `/sectors` advanced in `0.5.62 - May 2026` with a searchable sector finder, business-context groups, practical trigger summaries and review-first record cues.
 - Build a reusable advisory scan CTA block and shared disclaimer layers.
   Status: advisory scan CTA advanced in `0.5.61 - May 2026` with a shared manual mailto component across market, assessment and regulation-detail surfaces. Shared disclaimer layers remain a separate follow-up.
 

@@ -57,7 +57,7 @@ Current capability areas:
 - APAC/ISSB coverage expansion including Hong Kong, South Korea, Taiwan, New Zealand, Malaysia, Indonesia, Thailand and Philippines
 - Voluntary framework coverage for CDP, SBTi, PCAF, PRI, ICMA, GRESB, IFC/Equator/World Bank safeguards and ISO environmental/GHG standards
 - Static market briefing CTA and premium roadmap page without payments, authentication or gated data
-- `/plans` commercial architecture page for Free Atlas, Premium Intelligence previews, Advisory Atlas and Enterprise/API Future
+- `/plans` current-path page for Free Atlas and Advisory Atlas, with Premium Intelligence previews and Enterprise/API Future kept secondary
 - `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
 - Shared advisory-scan CTA for market, assessment and regulation-detail surfaces, preserving mailto-only manual request paths
@@ -254,6 +254,14 @@ Current capability areas:
 - Strengthened CSRD/CSDDD threshold caveats so CSDDD due-diligence scope signals are not treated as general CSRD corporate-reporting thresholds.
 - Added smoke coverage for Start Here, hidden Launch nav and premium gates.
 - Kept the changes static, source-linked and legally cautious.
+
+## Recently Delivered Phase 1AU Items
+
+- Updated dataset metadata and recent changelog to `0.5.65 - May 2026`.
+- Reworked `/plans` so the primary live choices are Free Atlas and Advisory Atlas.
+- Moved Premium Intelligence and Enterprise/API Future into secondary validation cards.
+- Collapsed the full comparison table by default and removed the visible manual-validation grid from the first-load page.
+- Preserved manual request guidance and static-MVP guardrails: no checkout, billing, accounts, gated content, automated alerts or database.
 
 ## Recently Delivered Phase 1AT Items
 

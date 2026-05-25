@@ -66,7 +66,8 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - source quality, data quality, confidence, caveat and review-risk indicators
 - quality-signal explainers for source links, review prompts, record counts and confidence labels
 - Marquee 10 source-review packet for premium-use blockers, priority sources, threshold facts and owner actions
-- commercial preview pages for plans, alerts, advisory, internal launch assets and premium roadmap
+- simplified plans page for Free Atlas, advisory scan and secondary premium/enterprise validation paths
+- commercial preview pages for alerts, advisory, internal launch assets and premium roadmap
 - manual request guidance on commercial and advisory routes with mailto-only conversion paths
 - reusable advisory-scan CTA used by market, assessment and regulation-detail surfaces
 - GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist with Node 24 action-runtime readiness
@@ -89,7 +90,7 @@ The MVP does not include authentication, Supabase, external databases, Stripe, c
 - Sectors: `/sectors`, `/sectors/[slug]`
 - Value-chain exposure: `/value-chain` with six business-exposure lanes and copyable evidence-planning summaries
 - Jurisdiction brief: `/jurisdiction/[code]/brief`
-- Plans: `/plans`
+- Plans: `/plans` with Free Atlas and advisory scan as the primary live paths
 - Alerts preview: `/alerts`
 - Advisory: `/advisory`
 - Launch assets: `/launch` (internal operator route, noindex, not linked from public navigation)

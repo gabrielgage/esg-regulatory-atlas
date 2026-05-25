@@ -609,3 +609,21 @@ Launch Tasks:
 QA finding:
 
 - Jurisdiction pages should help users understand both why a market matters and what kinds of work may be required. Obligation footprints must stay framed as seed-data planning orientation and should not imply legal applicability, entity-specific duties or complete jurisdiction coverage.
+
+## 2026-05-25 Codex Update - Public Journey Simplification
+
+Launch Command Center note:
+
+> Phase 1AN applies the urgent simplification brief. The public journey now starts with a smaller primary nav, clearer homepage actions and a stronger advisory-scan path, while deeper planning, trust and commercial-preview routes move into a grouped More menu. `/launch` remains an internal noindex workspace.
+
+Launch Tasks:
+
+- LAUNCH-114 - Simplify primary navigation to Start, Assessment, Markets, Regulations, Advisory and More
+- LAUNCH-115 - Reframe homepage hero and Start panel around assessment, market/regulation exploration and advisory scans
+- LAUNCH-116 - Remove public MVP/operator wording from core CTAs and keep launch resources internal/noindex
+- LAUNCH-117 - Create simplification roadmap with urgent, next-seven-day and 30-day follow-ups
+- LAUNCH-118 - Add smoke coverage for simplified nav, launch noindex and printable brief edition consistency
+
+QA finding:
+
+- The Atlas should not expose every governance, commercial preview and launch-operator surface as a first-level destination. First-time users need one of three clear paths: run an indicative assessment, inspect a market/regulation or request an advisory-supported scan. Deeper expert surfaces should remain available but secondary.

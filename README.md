@@ -8,15 +8,15 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.57 - May 2026`.
+The current public release context is `0.5.58 - May 2026`.
 
 Latest release-context update:
 
-- adds a market obligation footprint to `/jurisdiction/[code]`
-- shows which reporting, assurance, governance, due-diligence, finance, taxonomy, transition-plan, data and product obligation categories are represented in a selected market
-- adds likely owner functions, evidence starters, first actions and priority record links for each obligation category
-- adds obligation-footprint context to copied market profile Markdown
-- preserves the market trigger review, assessment trigger review, implementation roadmaps, Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
+- simplifies the public navigation to Start, Assessment, Markets, Regulations, Advisory and a grouped More menu
+- reframes the homepage around the three most useful first actions: run an assessment, browse markets and search regulations
+- adds an advisory-scan path to the Start panel while keeping premium and launch-operator surfaces secondary
+- replaces public MVP/operator wording in the market briefing CTA with customer-facing, source-linked advisory-scan language
+- keeps `/launch` noindex and internal-facing, while preserving the market obligation footprint, trigger review, assessment readiness plan and source-review handoffs from prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -60,7 +60,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - source quality, data quality, confidence, caveat and review-risk indicators
 - quality-signal explainers for source links, review prompts, record counts and confidence labels
 - Marquee 10 source-review packet for premium-use blockers, priority sources, threshold facts and owner actions
-- commercial validation pages for plans, alerts, advisory, launch assets and premium roadmap
+- commercial preview pages for plans, alerts, advisory, internal launch assets and premium roadmap
 - manual request guidance on commercial and advisory routes with mailto-only conversion paths
 - GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist with Node 24 action-runtime readiness
 
@@ -85,7 +85,7 @@ The MVP does not include authentication, Supabase, external databases, Stripe, c
 - Plans: `/plans`
 - Alerts preview: `/alerts`
 - Advisory: `/advisory`
-- Launch assets: `/launch` (operator route, noindex, not linked from public navigation)
+- Launch assets: `/launch` (internal operator route, noindex, not linked from public navigation)
 - Premium roadmap: `/premium-roadmap`
 - Methodology: `/methodology`
 - Changelog: `/changelog`

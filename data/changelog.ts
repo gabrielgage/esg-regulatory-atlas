@@ -11,6 +11,30 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.58 - May 2026",
+    date: "2026-05-25",
+    label: "Public journey simplification",
+    summary:
+      "Applied the urgent simplification brief by reducing primary navigation, making the homepage a clearer three-path start screen, demoting internal launch assets, and replacing MVP/operator wording with customer-facing advisory-scan language.",
+    added: [
+      "Grouped More menu for planning, trust/methodology and commercial preview routes",
+      "Homepage hero actions for assessment, market browsing and regulation search",
+      "Three-path start panel anchored on assessment, market exploration and advisory scans",
+      "Smoke coverage for simplified navigation, internal launch noindex and printable brief edition consistency",
+      "Simplification roadmap for urgent, next-seven-day and 30-day follow-up work"
+    ],
+    updated: [
+      "Header navigation",
+      "Homepage hero and start panel",
+      "Market briefing CTA copy",
+      "Internal launch workspace copy",
+      "Release context documentation"
+    ],
+    records: ["Navigation", "Homepage", "Advisory scans", "Launch workspace", "Printable briefs"],
+    caveat:
+      "This is a product-journey and trust simplification pass. It does not add legal advice, complete coverage, authentication, payments, external databases, automation, scraping or paid APIs."
+  },
+  {
     edition: "0.5.57 - May 2026",
     date: "2026-05-25",
     label: "Market obligation footprint",

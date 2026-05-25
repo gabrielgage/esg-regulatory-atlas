@@ -11,18 +11,23 @@ test("map workspace loads with core product controls", async ({ page }) => {
   await expect(page.getByTestId("priority-record-card").first()).toContainText(/First reporting/i);
 
   const navigation = page.locator("header").getByRole("navigation");
+  await expect(navigation.getByRole("link", { name: /^Start$/i })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: /^Assessment$/i })).toBeVisible();
   await expect(navigation.getByRole("link", { name: /Markets/i })).toBeVisible();
-  await expect(navigation.getByRole("link", { name: /Sectors/i })).toBeVisible();
   await expect(navigation.getByRole("link", { name: /Regulations/i })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: /^Advisory$/i })).toBeVisible();
   await navigation.getByText("More", { exact: true }).click();
+  await expect(navigation.getByText(/Planning views/i)).toBeVisible();
+  await expect(navigation.getByRole("link", { name: /Sectors/i })).toBeVisible();
   await expect(navigation.getByRole("link", { name: /Data Quality/i })).toBeVisible();
   await expect(navigation.getByRole("link", { name: /^Alerts$/i })).toBeVisible();
-  await expect(navigation.getByRole("link", { name: /^Advisory$/i })).toBeVisible();
   await expect(navigation.getByRole("link", { name: /^Launch$/i })).toHaveCount(0);
   await expect(page.getByTestId("start-here-panel")).toContainText(/Choose the fastest path/i);
   await expect(page.getByRole("link", { name: /Run an exposure assessment/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Explore a jurisdiction/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Search regulations/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Request an advisory scan/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /^Search regulations/i })).toBeVisible();
+  await expect(page.locator("body")).not.toContainText(/Static MVP CTA only/i);
 });
 
 test("country outline map renders and supports jurisdiction selection on tablet", async ({ page }) => {
@@ -169,11 +174,12 @@ test("persona presets apply shareable regulation filters", async ({ page }) => {
 test("launch asset copy blocks render", async ({ page }) => {
   await page.goto("/launch");
 
-  await expect(page.getByRole("heading", { name: /Copyable launch assets/i })).toBeVisible();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/i);
+  await expect(page.getByRole("heading", { name: /Internal launch workspace/i })).toBeVisible();
   await expect(page.getByText(/LinkedIn launch post: free Atlas/i)).toBeVisible();
   await expect(page.getByRole("button", { name: /Copy asset/i }).first()).toBeVisible();
   await expect(page.getByRole("link", { name: /Draft email/i }).first()).toBeVisible();
-  await expect(page.getByText(/commercial validation/i).first()).toBeVisible();
+  await expect(page.getByText(/Manual outreach only/i).first()).toBeVisible();
 });
 
 test("premium pack previews expose source-review gates", async ({ page }) => {
@@ -225,6 +231,8 @@ test("jurisdiction briefs include market quick-start evidence framing", async ({
   await page.goto("/jurisdiction/euu/brief");
 
   await expect(page.getByRole("heading", { name: /European Union regulatory brief/i })).toBeVisible();
+  await expect(page.locator("body")).toContainText(/0\.5\.58 - May 2026/i);
+  await expect(page.locator("body")).not.toContainText(/0\.5\.41 - May 2026/i);
   await expect(page.getByText(/Planning question:/i)).toBeVisible();
   await expect(page.getByRole("heading", { name: /Evidence starter pack/i })).toBeVisible();
   await expect(page.getByRole("heading", { name: /Likely owner functions/i })).toBeVisible();
@@ -272,8 +280,8 @@ test("data quality source-governance queue renders", async ({ page }) => {
   await expect(page.getByTestId("marquee-source-review-packet")).toContainText(/Marquee 10 source-review packet/i);
   await expect(page.getByTestId("marquee-source-review-packet")).toContainText(/Source to verify/i);
   await expect(page.getByTestId("marquee-source-review-packet")).toContainText(/Threshold fact/i);
-  await expect(page.getByText(/Premium evidence gates/i)).toBeVisible();
-  await expect(page.getByText(/Premium-use blockers/i)).toBeVisible();
+  await expect(page.getByText(/Client reuse review gates/i)).toBeVisible();
+  await expect(page.getByText(/Client reuse blockers/i)).toBeVisible();
   await expect(page.getByText(/Review workflow export/i)).toBeVisible();
   await expect(page.getByRole("button", { name: /Copy priority review packet/i })).toBeVisible();
   await expect(page.getByRole("button", { name: /Export review CSV/i })).toBeVisible();

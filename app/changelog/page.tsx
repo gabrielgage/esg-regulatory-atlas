@@ -15,7 +15,7 @@ export const metadata = {
   title: "Changelog | Etica ESG"
 };
 
-const changelogEntries = [...RECENT_CHANGELOG, ...CHANGELOG];
+const changelogEntries = [...CHANGELOG, ...RECENT_CHANGELOG];
 
 export default function ChangelogPage() {
   return (

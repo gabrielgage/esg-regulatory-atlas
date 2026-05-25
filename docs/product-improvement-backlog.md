@@ -23,6 +23,26 @@ The deep research assessment adds a commercialization overlay to the backlog:
 
 The MVP already has the right core shape: a map-centered workspace, source-linked regulation records, jurisdiction panels, assessment, timeline, briefing, data-quality surfaces, exports, comparison, language toggle and launch checks. The next improvement step is not adding more visual sections to the homepage. The highest-value work is making the existing surfaces more decision-oriented, more accessible, more source-governed and more useful for specific personas such as CSOs, legal teams, procurement leads, finance controllers and ESG advisors.
 
+## 2026-05-25 Simplification Brief Intake
+
+The May 25 simplification review concluded that the Atlas is useful but overexposed: the public journey was showing product capability, methodology, governance dashboards, commercial previews and launch operations at the same level. The immediate sprint priority is simplification rather than more feature expansion.
+
+Urgent items now advanced in `0.5.58 - May 2026`:
+
+- Primary navigation reduced to Start, Assessment, Markets, Regulations, Advisory and grouped More.
+- Homepage hero now points to assessment, market browsing and regulation search instead of changelog/plans.
+- Start panel now centers the core jobs: run an indicative assessment, explore markets/regulations and request an advisory scan.
+- Market briefing CTA no longer uses public “Static MVP CTA only” wording.
+- `/launch` remains noindex and is framed as an internal launch workspace.
+- `docs/simplification-roadmap.md` now separates urgent May 25 work from next-seven-day and 30-day follow-ups.
+
+Remaining high-priority simplification items:
+
+- Redesign assessment result hierarchy around top records, facts to confirm and next 30-day actions.
+- Make `/regulations` more search-first with advanced filters and compare controls secondary.
+- Simplify sectors, value-chain, plans and briefing pages so each begins with one clear user decision.
+- Build a reusable advisory scan CTA block and shared disclaimer layers.
+
 ## 2026-05-20 Expert Review Intake
 
 The May 20 expert review prioritized trust-risk fixes before broader feature expansion. Items now advanced in `0.5.44 - May 2026`, `0.5.45 - May 2026`, `0.5.46 - May 2026`, `0.5.47 - May 2026`, `0.5.48 - May 2026`, `0.5.49 - May 2026`, `0.5.50 - May 2026`, `0.5.51 - May 2026`, `0.5.52 - May 2026`, `0.5.53 - May 2026` and `0.5.54 - May 2026`:
@@ -203,9 +223,9 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Improve mobile/tablet map behavior with a tighter map height, easier selected-jurisdiction drawer, larger tap targets and simplified legend behavior.
 
 45. **Navigation and homepage calm-down**
-    Status: materially delivered in `0.5.21 - May 2026`.
+    Status: materially delivered in `0.5.21 - May 2026` and superseded by the `0.5.58 - May 2026` simplification pass.
     Revenue relevance: Trust, conversion clarity and demo usability.
-    The primary navigation now keeps core workspaces visible and groups secondary governance, launch and commercial routes into a More menu. The homepage hero now uses one compact workspace snapshot instead of three competing metric cards, while the daily launch pulse gives Changelog and Data Quality a focused release-context surface. Continue this direction by avoiding new homepage panels unless they directly help users select a jurisdiction, filter records or inspect the selected market.
+    The primary navigation now keeps Start, Assessment, Markets, Regulations and Advisory visible, with planning, trust and commercial-preview routes grouped under More. `/launch` remains internal/noindex. The homepage hero now points to assessment, market browsing and regulation search, while the Start panel adds an advisory-scan path. Continue this direction by avoiding new homepage panels unless they directly help users choose a next step.
 
 46. **External AI review pack**
     Status: materially delivered in `0.5.41 - May 2026`.

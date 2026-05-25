@@ -105,7 +105,7 @@ export const decisionReadinessClass: Record<DecisionReadinessLevel, string> = {
 const levelLabel: Record<DecisionReadinessLevel, string> = {
   "orientation-ready": "Orientation-ready seed",
   "review-before-client-use": "Review before client use",
-  "premium-blocked": "Premium use blocked"
+  "premium-blocked": "Source and threshold review needed"
 };
 
 function levelFor(regulation: Regulation, premiumBlocked: boolean, missingCount: number): DecisionReadinessLevel {

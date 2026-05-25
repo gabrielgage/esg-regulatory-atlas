@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, ClipboardList, Database, HelpCircle, MapPinned, Search } from "lucide-react";
+import { ArrowRight, ClipboardList, Database, HelpCircle, MapPinned } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Filters } from "@/components/Filters";
 import { WorldChoropleth as WorldMap } from "@/components/WorldChoropleth";
@@ -38,8 +38,8 @@ export default function Home() {
 
   const filtered = useMemo(() => filterRegulations(regulations, filters), [filters]);
   const activeViewLabel = activeView === "overview" ? t("views.overview") : quickViews.find((view) => view.id === activeView)?.label || t("views.custom");
-  const sourceCount = filtered.reduce((count, regulation) => count + regulation.sourceUrls.length, 0);
-  const highImpact = filtered.filter((regulation) => regulation.highImpact).length;
+  const trackedJurisdictions = jurisdictions.filter((jurisdiction) => jurisdiction.type !== "international").length;
+  const sourceLinkedRecords = regulations.filter((regulation) => regulation.sourceUrls.length > 0).length;
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -87,16 +87,19 @@ export default function Home() {
                 {t("home.heroBody")}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <Link href="/changelog" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">
-                  {t("home.viewChangelog")} <ArrowRight className="h-4 w-4" />
+                <Link href="/assessment" className="inline-flex items-center gap-2 rounded-xl bg-navy px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
+                  {t("home.startAssessment")} <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link href="/plans" className="inline-flex items-center gap-2 rounded-xl bg-navy px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800">
-                  {h("compareOptions")} <ArrowRight className="h-4 w-4" />
+                <Link href="/markets" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">
+                  {h("browseMarkets")} <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="/regulations" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">
+                  {h("searchRegulations")} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
               <p className="mt-3 max-w-2xl text-xs leading-5 text-slate-500">{t("home.languageCaveat")}</p>
             </div>
-            <WorkspaceSnapshot records={filtered.length} highImpact={highImpact} sources={sourceCount} />
+            <WorkspaceSnapshot records={regulations.length} jurisdictions={trackedJurisdictions} sourceLinked={sourceLinkedRecords} />
           </div>
         </section>
 
@@ -163,11 +166,11 @@ function StartHerePanel() {
       action: t("home.startHereMarketsAction")
     },
     {
-      href: "/regulations",
-      icon: Search,
-      title: t("home.startHereRegulationsTitle"),
-      body: t("home.startHereRegulationsBody"),
-      action: t("home.startHereRegulationsAction")
+      href: "/advisory",
+      icon: HelpCircle,
+      title: t("home.startHereAdvisoryTitle"),
+      body: t("home.startHereAdvisoryBody"),
+      action: t("home.startHereAdvisoryAction")
     }
   ];
 
@@ -325,12 +328,12 @@ function PriorityRecordCard({ regulation, onSelect }: { regulation: Regulation; 
   );
 }
 
-function WorkspaceSnapshot({ records, highImpact, sources }: { records: number; highImpact: number; sources: number }) {
+function WorkspaceSnapshot({ records, jurisdictions, sourceLinked }: { records: number; jurisdictions: number; sourceLinked: number }) {
   const { t } = useLanguage();
   const metrics = [
-    { label: t("home.currentView"), value: records },
-    { label: t("home.highImpact"), value: highImpact },
-    { label: t("home.sources"), value: sources }
+    { label: t("home.trackedRecords"), value: records },
+    { label: t("home.trackedJurisdictions"), value: jurisdictions },
+    { label: t("home.sourceLinkedRecords"), value: sourceLinked }
   ];
 
   return (
@@ -339,7 +342,7 @@ function WorkspaceSnapshot({ records, highImpact, sources }: { records: number; 
         <span className="rounded-lg bg-white p-2 text-teal shadow-sm dark:bg-slate-800">
           <Database className="h-4 w-4" />
         </span>
-        {t("home.currentView")}
+        {t("home.trustSnapshot")}
       </div>
       <dl className="mt-4 grid grid-cols-3 gap-2">
         {metrics.map((metric) => (

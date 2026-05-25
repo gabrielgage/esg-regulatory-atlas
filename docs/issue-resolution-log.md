@@ -874,3 +874,44 @@ When asserting text that may also exist in hidden select options, scope browser 
 - `app/page.tsx`
 - `tests/smoke.spec.ts`
 - `docs/issue-resolution-log.md`
+
+## 2026-05-25 - Public Journey Exposed Too Many First-Level Choices
+
+Status: resolved in the public-journey simplification branch.
+
+### Symptom
+
+The May 25 simplification review found that the public site felt busy even though the underlying regulatory intelligence was useful. The header and homepage exposed too many destinations, including planning workspaces, governance pages, commercial previews and launch resources, before helping a first-time user choose a simple path.
+
+### Root Cause
+
+The launch train added valuable routes faster than the information architecture was consolidated. The primary header and homepage began mirroring the internal product structure rather than the three main user jobs: assess what may matter, inspect a market/regulation, or request advisory support.
+
+### Resolution
+
+- Reduced primary navigation to Start, Assessment, Markets, Regulations, Advisory and grouped More.
+- Moved planning, trust/methodology and commercial-preview routes into grouped secondary navigation.
+- Reframed the homepage hero around assessment, market browsing and regulation search.
+- Added an advisory-scan path to the Start panel.
+- Replaced public "Static MVP CTA only" language with source-linked advisory-scan copy.
+- Kept `/launch` noindex and relabelled it as an internal launch workspace.
+- Restored current-edition changelog entries above older recent-review-pack entries.
+- Added smoke coverage for hidden Launch nav, launch noindex metadata and current printable brief edition.
+- Ignored local Playwright `test-results` artifacts so browser QA output does not appear as commit-ready product changes.
+
+### Prevention Rule
+
+Do not add new routes directly to primary navigation without classifying the route first. Core discovery gets primary placement; planning, trust and commercial-preview pages belong in More; internal/operator surfaces should remain noindex and absent from public navigation. Homepage changes should keep one clear user decision before expert filters, governance panels or commercial previews.
+
+### Files Changed
+
+- `components/Header.tsx`
+- `app/page.tsx`
+- `components/MarketBriefingCTA.tsx`
+- `app/launch/page.tsx`
+- `app/changelog/page.tsx`
+- `.gitignore`
+- `tests/smoke.spec.ts`
+- `docs/simplification-roadmap.md`
+- `docs/qa-findings/pr-74-public-journey-simplification.md`
+- `docs/issue-resolution-log.md`

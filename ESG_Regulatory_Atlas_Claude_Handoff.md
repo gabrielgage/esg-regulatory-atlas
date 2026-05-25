@@ -2,7 +2,19 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1AQ reusable-advisory-scan-CTA pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass, Phase 1AK CI Node 24 readiness pass, Phase 1AL GitHub Actions Node 24 action-upgrade pass, Phase 1AM market-obligation-footprint pass, Phase 1AN public-journey-simplification pass, Phase 1AO assessment-shortlist-overview pass and Phase 1AP regulations-search-first-layout pass. The goal remains deployability and legal caution, with added emphasis on reducing public cognitive load before adding more features.
+The app is now in a static Phase 1AR sector-finder simplification pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass, Phase 1AK CI Node 24 readiness pass, Phase 1AL GitHub Actions Node 24 action-upgrade pass, Phase 1AM market-obligation-footprint pass, Phase 1AN public-journey-simplification pass, Phase 1AO assessment-shortlist-overview pass, Phase 1AP regulations-search-first-layout pass and Phase 1AQ reusable-advisory-scan-CTA pass. The goal remains deployability and legal caution, with added emphasis on reducing public cognitive load before adding more features.
+
+## Phase 1AR Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.62 - May 2026`.
+- Added `lib/sectorGroups.ts` to group sectors into capital markets, industrial/infrastructure, consumer/supply-chain and public/digital contexts.
+- Added `components/SectorDirectory.tsx`, a searchable sector finder with group filters, empty state, review-first records and calmer source/review cues.
+- Reworked `/sectors` so the page leads with search and business-context triggers instead of aggregate metrics and dense chip cards.
+- Preserved the assessment handoff, sector detail pages, advisory CTA and legal caveats.
+
+## Phase 1AR Product Rationale
+
+The simplification roadmap identified sector pages as the next overloaded route after Assessment, Regulations and advisory CTAs. Phase 1AR makes `/sectors` more useful for first-time business users by asking them to start with a sector family or search term, then showing review-first records and practical triggers. The page remains seed regulatory intelligence and does not imply complete sector inventories, official source verification or applicability determinations.
 
 ## Phase 1AQ Changes Delivered
 
@@ -699,6 +711,13 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1AR validation: `npm run lint` passed locally.
+- Phase 1AR validation: `npm run check:data` passed locally.
+- Phase 1AR validation: `npm run build` passed locally with the webpack build path and generated 389 static pages.
+- Phase 1AR validation: `git diff --check` passed.
+- Phase 1AR local browser smoke attempt: `npm run test:e2e` could not launch Chromium because the local Playwright headless shell executable is missing from `/Users/gabrielgage/Library/Caches/ms-playwright`. This is documented in `docs/issue-resolution-log.md`; CI should provide the authoritative browser-smoke signal.
+- Phase 1AR CI follow-up: first PR #78 browser smoke run found two stale sector assertions after the redesign. The fix updated the glossary-help copy assertion and scoped repeated "supplier due diligence" trigger text with `.first()`.
+- Phase 1AR out-of-scope scan found only guardrail/documentation/caveat mentions of Stripe, Supabase, Mapbox, checkout, webhooks, scraping, cron and related future infrastructure; no implementation code or dependencies were added.
 - Phase 1AQ validation: `npm run lint` passed locally.
 - Phase 1AQ validation: `npm run check:data` passed locally.
 - Phase 1AQ validation: `npm run build` passed locally with the webpack build path.

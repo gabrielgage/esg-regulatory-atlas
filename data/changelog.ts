@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.62 - May 2026",
+    date: "2026-05-25",
+    label: "Sector finder simplification",
+    summary:
+      "Reworked the sector starting point page into a searchable sector finder with business-context groups, practical triggers, review-first records and calmer cards.",
+    added: [
+      "Reusable SectorDirectory component",
+      "Sector group taxonomy for capital markets, industrial/infrastructure, consumer/supply-chain and public/digital contexts",
+      "Searchable sector finder with group filters and empty state",
+      "Business trigger summaries and review-first record prompts"
+    ],
+    updated: [
+      "Sectors page information architecture",
+      "Sector page caveat and assessment handoff",
+      "Release context documentation",
+      "Simplification roadmap status"
+    ],
+    records: ["Sectors", "Sector finder", "Assessment handoff", "Source review cues"],
+    caveat:
+      "Sector finder counts remain current seed coverage only. They do not represent complete sector legal inventories, official source verification or entity-specific applicability determinations."
+  },
+  {
     edition: "0.5.61 - May 2026",
     date: "2026-05-25",
     label: "Reusable advisory scan CTA",

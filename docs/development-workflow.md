@@ -200,3 +200,4 @@ Known lesson from PR #11:
 - Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.
 - The project intentionally avoids Stripe, Supabase, authentication, paid APIs, scraping, cron jobs, email alerts and production AI summaries.
 - Local dev servers may be blocked in some Codex sandboxes by port-binding restrictions; do not treat that as an app failure if production build passes.
+- If every local Playwright browser smoke test fails before navigation with `browserType.launch: Executable doesn't exist`, the local browser binary is missing. Do not rewrite product code for that symptom; rely on CI or install Playwright browsers explicitly before debugging selectors.

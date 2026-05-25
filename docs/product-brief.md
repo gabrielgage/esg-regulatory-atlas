@@ -117,7 +117,7 @@ The MVP includes:
 - Manual conversion tracking model for CTA and mailto-subject validation without analytics infrastructure
 - `/launch` operator workspace with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets, marked noindex and not linked from public navigation
 - `/markets` workspace for browsing jurisdiction market profiles by region, captured source links and review prompts
-- `/sectors` workspace and `/sectors/[slug]` pages for business-context regulatory triage by sector, market signal, evidence need and advisory workstream
+- `/sectors` searchable sector finder and `/sectors/[slug]` pages for business-context regulatory triage by sector, market signal, evidence need and advisory workstream
 - `/value-chain` workspace for supplier, importer/exporter, product, claims, portfolio, financed-emissions, own-operations and board-governance exposure triage
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
 - Marquee 10 operational source-review packet for launch-critical premium and advisory reuse checks

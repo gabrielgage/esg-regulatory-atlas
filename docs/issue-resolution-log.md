@@ -1041,3 +1041,99 @@ Use `AdvisoryScanCTA` for manual exposure-scan, market-briefing, assessment-revi
 - `docs/development-workflow.md`
 - `docs/notion-update-plan.md`
 - `docs/qa-findings/pr-77-reusable-advisory-scan-cta.md`
+
+## 2026-05-25 - Sector Index Was Too Metric-Heavy For First-Time Triage
+
+Status: resolved in the sector-finder-simplification branch.
+
+### Symptom
+
+The `/sectors` index had enough useful content, but it led with aggregate metrics and repeated chip-heavy cards. Users needed to scan many cards before deciding whether they were looking for finance, industrial, consumer/supply-chain or public/digital regulatory exposure.
+
+### Root Cause
+
+The sector surface was built as a catalogue of all tagged sectors. As the seed dataset and sector profiles expanded, the index inherited more counts, topics and market chips without a stronger first decision path.
+
+### Resolution
+
+- Added `lib/sectorGroups.ts` to group sectors into business-context families.
+- Added `components/SectorDirectory.tsx` with search, group filters, empty state, review-first records and source/review cues.
+- Reworked `/sectors` so users start from a sector family or search query instead of aggregate dashboard metrics.
+- Kept the assessment handoff for entity-specific triage.
+- Preserved legal caveats that sector counts are seed coverage, not complete sector legal inventory or applicability determinations.
+
+### Prevention Rule
+
+Keep `/sectors` oriented around choosing a business context first. Avoid reintroducing large aggregate metric strips or dense chip-heavy sector cards above search unless user testing proves those metrics help the first decision. Treat sector counts as review prompts, not coverage-completeness claims.
+
+### Files Changed
+
+- `app/sectors/page.tsx`
+- `components/SectorDirectory.tsx`
+- `lib/sectorGroups.ts`
+- `data/_meta.ts`
+- `data/changelog.ts`
+- `README.md`
+- `docs/current-release.md`
+- `docs/simplification-roadmap.md`
+- `docs/product-improvement-backlog.md`
+- `docs/roadmap.md`
+- `docs/product-brief.md`
+- `docs/notion-update-plan.md`
+- `docs/qa-findings/pr-78-sector-finder-simplification.md`
+
+## 2026-05-25 - Local Browser Smoke Could Not Start Because Playwright Chromium Was Missing
+
+Status: documented for the sector-finder-simplification branch; CI remains authoritative.
+
+### Symptom
+
+`npm run test:e2e` started the Playwright run but every browser-backed test failed before page navigation. The common error was that the Chromium headless shell executable did not exist in the local Playwright cache.
+
+### Root Cause
+
+The local Codex desktop environment has the Playwright test package available, but the matching browser binary has not been installed in `/Users/gabrielgage/Library/Caches/ms-playwright`. This is an environment dependency gap, not a route-specific product failure.
+
+### Resolution
+
+- Confirmed `npm run lint`, `npm run check:data` and `npm run build` pass locally.
+- Preserved the new sector smoke assertions so GitHub Actions can run them in CI where browser installation is handled by the workflow.
+- Documented the limitation so future agents do not misdiagnose zero-millisecond browser failures as product regressions.
+
+### Prevention Rule
+
+When every Playwright browser test fails before navigation with `browserType.launch: Executable doesn't exist`, treat it as a local browser-install issue. Do not rewrite product code or smoke selectors until CI logs or a locally installed browser shows a real page assertion failure.
+
+### Files Changed
+
+- `docs/issue-resolution-log.md`
+
+## 2026-05-25 - Sector Finder CI Smoke Had Two Stale Selectors
+
+Status: resolved in the sector-finder-simplification branch follow-up commit.
+
+### Symptom
+
+PR #78 CI passed typecheck/build and Lighthouse, but the browser smoke job failed two assertions:
+
+- The glossary-help test still expected the old `/sectors` caveat copy.
+- The sector smoke test queried repeated "supplier due diligence" trigger text with a strict locator, which matched multiple cards after filtering to the consumer/supply-chain group.
+
+### Root Cause
+
+The sector page copy changed intentionally, but one supporting glossary smoke assertion was not updated. The new sector finder repeats group-level trigger language across each card in a group, so a broad text locator became ambiguous in Playwright strict mode.
+
+### Resolution
+
+- Updated the glossary-help smoke assertion to match the new sector caveat copy.
+- Scoped the repeated trigger assertion with `.first()` because the repeated text is expected after group filtering.
+
+### Prevention Rule
+
+When a UI intentionally repeats group-level helper text across multiple cards, avoid strict broad text locators unless the test scopes to a specific card, section or first expected match. When changing caveat copy, update the matching glossary/help smoke assertion in the same commit.
+
+### Files Changed
+
+- `tests/glossary-help.spec.ts`
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`

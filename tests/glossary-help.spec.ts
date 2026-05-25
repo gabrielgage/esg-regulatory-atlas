@@ -61,7 +61,7 @@ test("sectors page links sector coverage to glossary", async ({ page }) => {
   await page.goto("/sectors");
 
   await expect(page.getByRole("heading", { name: /Interpret sector coverage carefully/i })).toBeVisible();
-  await expect(page.getByText(/Sector counts and source-review prompts show current tagged seed records/i)).toBeVisible();
+  await expect(page.getByText(/Sector pages blend direct sector matches with broad all-sector rules/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
 });
 

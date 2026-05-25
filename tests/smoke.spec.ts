@@ -233,6 +233,13 @@ test("sector starting point pages render business-context triage", async ({ page
   await page.goto("/sectors");
 
   await expect(page.getByRole("heading", { name: /Sector starting points/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Start with a business context/i })).toBeVisible();
+  await expect(page.getByPlaceholder(/Search sector, market, topic or regulation/i)).toBeVisible();
+  await expect(page.getByRole("button", { name: /Capital markets/i })).toBeVisible();
+  await page.getByRole("button", { name: /Consumer and supply chain/i }).click();
+  await expect(page.getByText(/supplier due diligence/i).first()).toBeVisible();
+  await page.getByRole("button", { name: /All sector groups/i }).click();
+  await page.getByPlaceholder(/Search sector, market, topic or regulation/i).fill("financial");
   await expect(page.getByRole("link", { name: /Financial services/i }).first()).toBeVisible();
 
   await page.goto("/sectors/financial-services");

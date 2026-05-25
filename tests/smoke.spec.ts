@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { DATASET_META } from "@/data/_meta";
 
 test("map workspace loads with core product controls", async ({ page }) => {
   await page.goto("/");
@@ -236,7 +237,7 @@ test("jurisdiction briefs include market quick-start evidence framing", async ({
   await page.goto("/jurisdiction/euu/brief");
 
   await expect(page.getByRole("heading", { name: /European Union regulatory brief/i })).toBeVisible();
-  await expect(page.locator("body")).toContainText(/0\.5\.58 - May 2026/i);
+  await expect(page.locator("body")).toContainText(DATASET_META.edition);
   await expect(page.locator("body")).not.toContainText(/0\.5\.41 - May 2026/i);
   await expect(page.getByText(/Planning question:/i)).toBeVisible();
   await expect(page.getByRole("heading", { name: /Evidence starter pack/i })).toBeVisible();

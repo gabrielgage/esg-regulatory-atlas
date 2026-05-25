@@ -18,10 +18,13 @@ Assessment improvements were layered over time. Each layer added useful context,
 - Added facts-to-confirm and first-30-day action prompts.
 - Added an advisory-scan CTA in the result hierarchy.
 - Added smoke coverage for the new overview.
+- Updated printable-brief smoke coverage to read `DATASET_META.edition` rather than hardcoding the current release string.
 
 ## Prevention Rule
 
 Assessment surfaces should stay decision-first. New evidence, trigger or governance content should sit below the shortlist overview unless it directly changes the user's top-record decision or next action.
+
+Edition-sensitive smoke coverage should use central release metadata so release bumps do not create stale test failures.
 
 ## Legal And Product Guardrail
 

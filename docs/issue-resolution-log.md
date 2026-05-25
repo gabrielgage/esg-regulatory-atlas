@@ -939,10 +939,13 @@ Assessment capabilities were added iteratively as separate planning aids. The pa
 - Added facts-to-confirm and first-30-day action panels.
 - Added a direct advisory-scan CTA inside the assessment output.
 - Added smoke coverage for the new overview.
+- Replaced a stale hardcoded printable-brief edition assertion with the shared `DATASET_META.edition` value after CI caught `0.5.58` lingering in smoke coverage.
 
 ### Prevention Rule
 
 Assessment changes should keep the sequence decision-first: summary, top records, missing facts, first actions, then detailed trigger logic. Do not add more trigger cards or chip walls above the shortlist overview unless they directly help the user choose a next action.
+
+Edition-sensitive smoke tests should import central release metadata instead of hardcoding the current edition. Hardcoded historical strings are acceptable only for explicit negative regression checks.
 
 ### Files Changed
 

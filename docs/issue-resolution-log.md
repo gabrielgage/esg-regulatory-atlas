@@ -959,3 +959,41 @@ Edition-sensitive smoke tests should import central release metadata instead of 
 - `docs/product-improvement-backlog.md`
 - `docs/qa-findings/pr-75-assessment-shortlist-overview.md`
 - `docs/issue-resolution-log.md`
+
+## 2026-05-25 - Regulations Database Exposed Secondary Tools Before Search Flow
+
+Status: resolved in the regulations-search-first-layout branch.
+
+### Symptom
+
+The Regulations page had strong capabilities, including role lenses, compare, glossary help, sharing and export controls, but the first screen felt like a tool shelf instead of a database workflow. Users could encounter persona presets and support utilities before the page made search and primary filters feel like the main action.
+
+### Root Cause
+
+Regulations capabilities were added incrementally as useful adjacent modules. Over time, optional tools gained the same visual priority as the core job: search the database, filter by a few primary dimensions and inspect matching records.
+
+### Resolution
+
+- Added a search-first workspace at the top of `/regulations`.
+- Put search, jurisdiction, topic, sector, company type and reporting year before results.
+- Moved role lenses, compare, label help, share and export controls below the result table.
+- Added embedded role-lens support so persona presets can render inside a secondary tools panel without nested card chrome.
+- Updated smoke coverage to assert the new hierarchy and expand role lenses before persona-preset checks.
+
+### Prevention Rule
+
+Keep `/regulations` oriented around search, primary filters and database results. Optional tools should support the result set after the table unless user testing shows they are critical before search. When moving controls behind collapsed sections, update smoke tests to expand those controls before asserting their internal behavior.
+
+### Files Changed
+
+- `app/regulations/page.tsx`
+- `components/PersonaPresets.tsx`
+- `tests/smoke.spec.ts`
+- `data/_meta.ts`
+- `data/changelog.ts`
+- `README.md`
+- `docs/current-release.md`
+- `docs/simplification-roadmap.md`
+- `docs/product-improvement-backlog.md`
+- `docs/qa-findings/pr-76-regulations-search-first-layout.md`
+- `docs/issue-resolution-log.md`

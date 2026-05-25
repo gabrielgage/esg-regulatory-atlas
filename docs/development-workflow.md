@@ -195,6 +195,7 @@ Known lesson from PR #11:
 - Coverage-depth changes should update `data/coverageTargets.ts`, keep direct-record target checks passing and mark new market records as seed intelligence unless a production source review has verified them.
 - Sector-starting-point changes should use `lib/sectorProfile.ts` and existing regulation sector tags instead of hardcoding regulatory content in route components. Preserve the caveat that sector pages are current tracked coverage, not complete sector legal inventories.
 - Persona preset changes should update `data/personaPresets.ts`, preserve `?persona=` URL behavior on `/regulations`, and clear the active role lens when a user manually changes filters.
+- Regulations page changes should keep search and primary filters above the result table. Role lenses, compare, glossary help, share and export controls should remain secondary unless a future user test justifies moving them back above results.
 - Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.
 - The project intentionally avoids Stripe, Supabase, authentication, paid APIs, scraping, cron jobs, email alerts and production AI summaries.
 - Local dev servers may be blocked in some Codex sandboxes by port-binding restrictions; do not treat that as an app failure if production build passes.

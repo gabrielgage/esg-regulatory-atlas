@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1AO assessment-shortlist-overview pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass, Phase 1AK CI Node 24 readiness pass, Phase 1AL GitHub Actions Node 24 action-upgrade pass, Phase 1AM market-obligation-footprint pass and Phase 1AN public-journey-simplification pass. The goal remains deployability and legal caution, with added emphasis on reducing public cognitive load before adding more features.
+The app is now in a static Phase 1AP regulations-search-first-layout pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass, Phase 1AK CI Node 24 readiness pass, Phase 1AL GitHub Actions Node 24 action-upgrade pass, Phase 1AM market-obligation-footprint pass, Phase 1AN public-journey-simplification pass and Phase 1AO assessment-shortlist-overview pass. The goal remains deployability and legal caution, with added emphasis on reducing public cognitive load before adding more features.
+
+## Phase 1AP Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.60 - May 2026`.
+- Reworked `/regulations` into a search-first database workspace.
+- Put search, jurisdiction, topic, sector, company type and reporting year above the result table.
+- Moved role lenses, compare, label help, share and export controls below the result table.
+- Added embedded persona preset support so role lenses can live inside a secondary tools panel without duplicate card chrome.
+- Updated smoke coverage for the search-first hierarchy and collapsed role-lens behavior.
+
+## Phase 1AP Product Rationale
+
+Phase 1AO made assessment outputs decision-first. Phase 1AP applies the same simplification principle to the Regulations database: users should search and narrow the table before choosing optional role lenses, comparison, glossary help or export utilities. This keeps the database calmer while preserving all source-quality, export, detail-view and legal-caution behavior.
 
 ## Phase 1AO Changes Delivered
 
@@ -674,6 +687,12 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1AP validation: `npm run lint` passed locally.
+- Phase 1AP validation: `npm run check:data` passed locally.
+- Phase 1AP validation: `npm run build` passed locally with the webpack build path.
+- Phase 1AP validation: `git diff --check` passed.
+- Phase 1AP targeted smoke attempt: local Playwright browser smoke could not start the app server because the Codex desktop sandbox blocked `listen 0.0.0.0:3000` with `EPERM`. This matches the known local port-binding limitation; CI/Vercel should provide the authoritative browser-smoke signal.
+- Phase 1AP out-of-scope scan found only existing guardrail/documentation/test mentions of Stripe, Supabase, Mapbox, checkout, webhooks, scraping, cron and related future infrastructure; no implementation code or dependencies were added.
 - Phase 1T validation: `node node_modules/typescript/bin/tsc --noEmit` passed locally.
 - Phase 1T validation: `git diff --check` passed.
 - Phase 1T validation: `next build --webpack` was blocked in the Codex desktop sandbox by the known macOS SWC native binary code-signature issue before app compilation. GitHub Actions or Vercel should provide the authoritative build signal.

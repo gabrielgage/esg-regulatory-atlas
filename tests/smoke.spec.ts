@@ -135,10 +135,18 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
   await page.goto("/regulations");
 
   await expect(page.getByRole("heading", { name: /Search the ESG regulatory database/i })).toBeVisible();
+  await expect(page.getByTestId("regulations-search-workspace")).toContainText(/Search-first database/i);
+  await expect(page.getByTestId("regulations-search-workspace")).toContainText(/Start with search and primary filters/i);
+  await expect(page.getByPlaceholder(/Search title/i)).toBeVisible();
+  await expect(page.getByLabel("Jurisdiction")).toBeVisible();
+  await expect(page.getByLabel("Topic")).toBeVisible();
+  await expect(page.getByLabel("Sector")).toBeVisible();
+  await expect(page.getByLabel("Company type")).toBeVisible();
+  await expect(page.getByLabel("Reporting year")).toBeVisible();
+  await expect(page.getByTestId("regulations-secondary-tools")).toContainText(/Role lenses/i);
   await expect(page.getByRole("heading", { name: /How to read database labels/i })).toBeVisible();
   await expect(page.getByText(/Use the glossary before treating a filtered result as compliance scope/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
-  await expect(page.getByText(/Persona starting points/i)).toBeVisible();
   await expect(page.getByRole("table")).toBeVisible();
   await page.getByRole("link", { name: /Open CSRD/i }).click();
   await expect(page).toHaveURL(/\/regulations\/csrd$/);
@@ -165,6 +173,7 @@ test("threshold matrix exposes high-value scope signals with caveats", async ({ 
 
 test("persona presets apply shareable regulation filters", async ({ page }) => {
   await page.goto("/regulations");
+  await page.getByText("Role lenses", { exact: true }).click();
   const businessFunctionFilter = page.locator("label").filter({ hasText: /^Business function/ }).locator("select");
 
   await page.getByRole("button", { name: /Apply Finance or ESG controller persona preset/i }).click();

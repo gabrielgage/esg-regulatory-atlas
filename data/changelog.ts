@@ -11,6 +11,29 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.60 - May 2026",
+    date: "2026-05-25",
+    label: "Regulations search-first layout",
+    summary:
+      "Advanced the simplification roadmap by making the Regulations workspace lead with search, primary filters and current result context before optional role lenses, comparison, exports and label help.",
+    added: [
+      "Search-first Regulations workspace panel",
+      "Primary filter framing for search, jurisdiction, topic, sector, company type and reporting year",
+      "Secondary tools area for role lenses and record comparison",
+      "Share/export and label-help surfaces moved below the results",
+      "Smoke coverage for the search-first Regulations hierarchy"
+    ],
+    updated: [
+      "Regulations page information architecture",
+      "Persona preset embedding for secondary tool panels",
+      "Regulations smoke coverage",
+      "Release context documentation"
+    ],
+    records: ["Regulations", "Search", "Filters", "Role lenses", "Comparison"],
+    caveat:
+      "This is a user-experience simplification pass. It does not change regulatory records, legal analysis, applicability logic, source verification or coverage completeness."
+  },
+  {
     edition: "0.5.59 - May 2026",
     date: "2026-05-25",
     label: "Assessment shortlist overview",

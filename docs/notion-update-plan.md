@@ -643,3 +643,19 @@ Launch Tasks:
 QA finding:
 
 - Assessment pages should answer "what should I review first?" before asking users to parse detailed trigger logic. Keep rankings indicative and caveated; do not convert shortlist position into legal applicability or confirmed compliance scope.
+
+## 2026-05-25 Codex Update - Regulations Search-First Layout
+
+Launch Command Center note:
+
+> Phase 1AP continues the simplification pass inside `/regulations`. The page now starts with search and six primary filters, then shows results, with role lenses, comparison, label help, sharing and exports treated as supporting tools below the table.
+
+Launch Tasks:
+
+- LAUNCH-122 - Rework Regulations into a search-first workspace
+- LAUNCH-123 - Move role lenses, compare, label help, share and exports below database results
+- LAUNCH-124 - Add smoke coverage for the Regulations search-first hierarchy and collapsed role lenses
+
+QA finding:
+
+- The Regulations database should help users narrow records before showing optional tools. Role lenses, compare, glossary help and exports are valuable but should not compete with search, primary filters or the result table on first load.

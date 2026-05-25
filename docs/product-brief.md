@@ -69,7 +69,7 @@ The MVP includes:
 - Jurisdiction profiles
 - Jurisdiction profile trigger reviews that show market drivers across corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals
 - Jurisdiction profile obligation footprints that translate tracked seed records into business-impact categories, likely owner functions, evidence starters and first actions
-- Searchable and filterable regulations
+- Search-first Regulations workspace with search, jurisdiction, topic, sector, company type and reporting year before secondary tools
 - Record type, legal force and client relevance filters and badges
 - Condensed parent-record model with child items, aliases and milestones
 - Regulation detail pages or drawers
@@ -78,7 +78,7 @@ The MVP includes:
 - Assessment results with visible trigger reasons, review priority, evidence to prepare, functions involved, source-to-verify guidance, missing facts, suggested owners and next 30-day actions
 - Assessment readiness plan cards for threshold facts to check, first 30-day actions and likely owner functions
 - Persona doorway presets for CSO, SME supplier lead, in-house legal and external advisor users
-- Persona starting points in the Regulations workspace for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and advisor workflows
+- Persona starting points in the Regulations workspace for CSO, legal/compliance, finance/controller, procurement/supplier, private equity and advisor workflows, kept secondary to search and result review
 - Timeline and methodology surfaces
 - Quarter-level milestone timeline with default near-term planning horizon for consultation, effective, reporting, due-date and source-review planning
 - Data Quality surface for captured source links and source-review prompt governance
@@ -214,7 +214,7 @@ The MVP is successful when:
 ## Current Product Surfaces
 
 - Map workspace: `/`
-- Regulation database: `/regulations`
+- Regulation database: `/regulations` with search-first primary filters and secondary role-lens, compare, label-help, share and export tools
 - Persona role lenses: `/regulations?persona=finance-controller`
 - Regulation detail: `/regulations/[slug]`
 - Edition snapshot: `/edition/0.5/regulations/[slug]`

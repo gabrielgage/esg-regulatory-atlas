@@ -979,10 +979,11 @@ Regulations capabilities were added incrementally as useful adjacent modules. Ov
 - Moved role lenses, compare, label help, share and export controls below the result table.
 - Added embedded role-lens support so persona presets can render inside a secondary tools panel without nested card chrome.
 - Updated smoke coverage to assert the new hierarchy and expand role lenses before persona-preset checks.
+- Fixed the first PR #76 browser-smoke failure by scoping primary-filter assertions to `regulations-search-workspace` and using exact labels so `Jurisdiction` does not also match `Jurisdiction type`.
 
 ### Prevention Rule
 
-Keep `/regulations` oriented around search, primary filters and database results. Optional tools should support the result set after the table unless user testing shows they are critical before search. When moving controls behind collapsed sections, update smoke tests to expand those controls before asserting their internal behavior.
+Keep `/regulations` oriented around search, primary filters and database results. Optional tools should support the result set after the table unless user testing shows they are critical before search. When moving controls behind collapsed sections, update smoke tests to expand those controls before asserting their internal behavior. When checking similarly named form controls, scope assertions to a stable container and use exact label matching.
 
 ### Files Changed
 

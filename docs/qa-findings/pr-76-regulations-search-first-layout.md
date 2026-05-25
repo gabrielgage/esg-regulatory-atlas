@@ -18,6 +18,7 @@ For ESG, legal and advisory users, the first action on a regulation database sho
 - Moved label help, share and export controls below the result table.
 - Added embedded role-lens rendering so secondary panels stay visually calm.
 - Updated smoke coverage to verify the hierarchy and role-lens expansion behavior.
+- After CI caught a strict Playwright label collision between `Jurisdiction` and `Jurisdiction type`, scoped smoke assertions to the search workspace and exact primary filter labels.
 
 ## Prevention
 

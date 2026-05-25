@@ -134,15 +134,16 @@ test("timeline filters expose active context and reset cleanly", async ({ page }
 test("regulations workspace supports detail navigation", async ({ page }) => {
   await page.goto("/regulations");
 
+  const searchWorkspace = page.getByTestId("regulations-search-workspace");
   await expect(page.getByRole("heading", { name: /Search the ESG regulatory database/i })).toBeVisible();
-  await expect(page.getByTestId("regulations-search-workspace")).toContainText(/Search-first database/i);
-  await expect(page.getByTestId("regulations-search-workspace")).toContainText(/Start with search and primary filters/i);
-  await expect(page.getByPlaceholder(/Search title/i)).toBeVisible();
-  await expect(page.getByLabel("Jurisdiction")).toBeVisible();
-  await expect(page.getByLabel("Topic")).toBeVisible();
-  await expect(page.getByLabel("Sector")).toBeVisible();
-  await expect(page.getByLabel("Company type")).toBeVisible();
-  await expect(page.getByLabel("Reporting year")).toBeVisible();
+  await expect(searchWorkspace).toContainText(/Search-first database/i);
+  await expect(searchWorkspace).toContainText(/Start with search and primary filters/i);
+  await expect(searchWorkspace.getByPlaceholder(/Search title/i)).toBeVisible();
+  await expect(searchWorkspace.getByLabel("Jurisdiction", { exact: true })).toBeVisible();
+  await expect(searchWorkspace.getByLabel("Topic", { exact: true })).toBeVisible();
+  await expect(searchWorkspace.getByLabel("Sector", { exact: true })).toBeVisible();
+  await expect(searchWorkspace.getByLabel("Company type", { exact: true })).toBeVisible();
+  await expect(searchWorkspace.getByLabel("Reporting year", { exact: true })).toBeVisible();
   await expect(page.getByTestId("regulations-secondary-tools")).toContainText(/Role lenses/i);
   await expect(page.getByRole("heading", { name: /How to read database labels/i })).toBeVisible();
   await expect(page.getByText(/Use the glossary before treating a filtered result as compliance scope/i)).toBeVisible();

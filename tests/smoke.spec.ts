@@ -339,3 +339,16 @@ test("key launch routes render", async ({ page }) => {
     await expect(page.locator("body")).toContainText(/Etica ESG|Regulatory Atlas|Brief|Timeline|Assessment|Data Quality|Value-chain exposure/i);
   }
 });
+
+test("value-chain workspace starts with practical exposure lanes", async ({ page }) => {
+  await page.goto("/value-chain");
+
+  await expect(page.getByRole("heading", { name: /Start from business exposure/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Pick the lane that matches/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Supplier due diligence/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Trade and imports/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Products, claims and circularity/i })).toBeVisible();
+  await expect(page.getByText(/Evidence to prepare/i).first()).toBeVisible();
+  await expect(page.getByText(/Suggested owners/i).first()).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy lane/i }).first()).toBeVisible();
+});

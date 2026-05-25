@@ -43,7 +43,7 @@ Remaining high-priority simplification items:
 - Make `/regulations` more search-first with advanced filters and compare controls secondary.
   Status: advanced in `0.5.60 - May 2026` with search and primary filters before results, while role lenses, compare, label help, share and export controls sit below the table as secondary tools.
 - Simplify sectors, value-chain, plans and briefing pages so each begins with one clear user decision.
-  Status: `/sectors` advanced in `0.5.62 - May 2026` with a searchable sector finder, business-context groups, practical trigger summaries and review-first record cues.
+  Status: `/sectors` advanced in `0.5.62 - May 2026` with a searchable sector finder; `/value-chain` advanced in `0.5.64 - May 2026` with six business-exposure lanes, lane-specific evidence prompts, first actions and suggested owners.
 - Build a reusable advisory scan CTA block and shared disclaimer layers.
   Status: advisory scan CTA advanced in `0.5.61 - May 2026` with a shared manual mailto component across market, assessment and regulation-detail surfaces. Shared disclaimer layers remain a separate follow-up.
 
@@ -209,8 +209,8 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add a portfolio-focused assessment flow that classifies regulations by fund manager obligations, portfolio company obligations, financed emissions and investor-requested data.
 
 20. **Supplier and exporter view**
-    Status: materially delivered in `0.5.43 - May 2026`.
-    Add a value-chain flow for suppliers/exporters exposed to EU, UK, US, deforestation, forced labour, CBAM, batteries, product and green claims rules. The first version now lives at `/value-chain` and includes supplier, trade/import, product, claims, portfolio, financed-emissions, own-operations and governance exposure lanes with copyable briefs and filtered regulation handoffs.
+    Status: materially delivered in `0.5.43 - May 2026` and simplified in `0.5.64 - May 2026`.
+    Add a value-chain flow for suppliers/exporters exposed to EU, UK, US, deforestation, forced labour, CBAM, batteries, product and green claims rules. The current `/value-chain` version groups source-linked records into six business lanes: supplier due diligence, trade/imports, products/claims, portfolio/finance, own operations/governance and customer pressure.
 
 21. **Implementation effort scoring**
     Status: partially delivered before `0.5.4`; master metadata now adds record type, legal force and relevance categories for future scoring improvements.

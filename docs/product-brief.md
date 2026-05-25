@@ -118,7 +118,7 @@ The MVP includes:
 - `/launch` operator workspace with copyable LinkedIn, email, direct outreach, advisory scan and premium-preview assets, marked noindex and not linked from public navigation
 - `/markets` workspace for browsing jurisdiction market profiles by region, captured source links and review prompts
 - `/sectors` searchable sector finder and `/sectors/[slug]` pages for business-context regulatory triage by sector, market signal, evidence need and advisory workstream
-- `/value-chain` workspace for supplier, importer/exporter, product, claims, portfolio, financed-emissions, own-operations and board-governance exposure triage
+- `/value-chain` six-lane workspace for supplier due diligence, trade/imports, product/claims, portfolio/finance, own operations/governance and customer-pressure triage
 - Marquee launch review queue for high-value regimes used in premium packs and advisory examples
 - Marquee 10 operational source-review packet for launch-critical premium and advisory reuse checks
 - Premium pack source-review gates that disclose illustrative-only and review-before-use records before commercial reuse
@@ -199,7 +199,7 @@ The MVP is successful when:
 - Country outlines, untracked countries and ocean background are visible enough for users to recognize the map as a true world map, not abstract shapes.
 - Users can zoom, reset and drag the map viewport without adding a paid map dependency.
 - Users can select a jurisdiction and understand key regulatory drivers.
-- Users can start from value-chain exposure and identify priority records, evidence needs and filtered regulation handoffs.
+- Users can start from one of six value-chain exposure lanes and identify priority records, evidence needs, first actions, suggested owners and filtered regulation handoffs.
 - Reviewers can export source, threshold and evidence review rows without treating them as legal verification.
 - Users can filter regulations without breaking the interface.
 - Regulation records expose sources, caveats, confidence, and data quality.
@@ -229,7 +229,7 @@ The MVP is successful when:
 - Jurisdiction brief: `/jurisdiction/[code]/brief`
 - Jurisdiction market profile: `/jurisdiction/[code]`
 - Sector starting points: `/sectors`, `/sectors/[slug]`
-- Value-chain exposure: `/value-chain`
+- Value-chain exposure lanes: `/value-chain`
 - Plans: `/plans`
 - Alerts preview: `/alerts`
 - Advisory: `/advisory`

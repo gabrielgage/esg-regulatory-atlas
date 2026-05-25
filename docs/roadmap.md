@@ -28,6 +28,7 @@ Current capability areas:
 - `/value-chain` business-exposure workspace for supplier, importer/exporter, product, portfolio, financed-emissions and own-operations triage
 - Jurisdiction profiles
 - Filterable regulation table
+- Search-first Regulations workspace with primary filters above the result table and role lenses, compare, label help, share and export controls below it
 - Regulation detail view
 - Assessment wizard
 - Timeline view
@@ -88,6 +89,16 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AP Items
+
+- Updated dataset metadata and changelog to `0.5.60 - May 2026`.
+- Reworked `/regulations` into a search-first database workspace.
+- Put search, jurisdiction, topic, sector, company type and reporting year before the result table.
+- Moved role lenses, compare, glossary help, share and export controls below the result table.
+- Added embedded role-lens support so persona presets can sit inside a secondary tools panel without duplicate card chrome.
+- Updated smoke coverage for the new search-first hierarchy and collapsed role-lens behavior.
+- Kept all filtering, regulation detail navigation, source-quality indicators, exports and legal caveats intact.
 
 ## Recently Delivered Phase 1AO Items
 

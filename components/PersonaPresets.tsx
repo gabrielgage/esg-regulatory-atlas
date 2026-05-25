@@ -10,24 +10,26 @@ export function PersonaPresets({
   activeId,
   onApply,
   onClear,
-  disabled = false
+  disabled = false,
+  embedded = false
 }: {
   activeId: string;
   onApply: (preset: PersonaPreset) => void;
   onClear: () => void;
   disabled?: boolean;
+  embedded?: boolean;
 }) {
   const active = personaPresets.find((preset) => preset.id === activeId);
 
   return (
-    <section className="rounded-2xl border bg-white p-3 shadow-sm">
+    <section className={cn(embedded ? "" : "rounded-2xl border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900")}>
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <div className="flex items-center gap-2 text-sm font-semibold text-ink">
             <BriefcaseBusiness className="h-4 w-4 text-teal" />
             Persona starting points
           </div>
-          <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500">
+          <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-500 dark:text-slate-300">
             Apply a cautious role-based filter. Presets support orientation only and do not determine applicability.
           </p>
         </div>
@@ -36,7 +38,7 @@ export function PersonaPresets({
             type="button"
             onClick={onClear}
             disabled={disabled}
-            className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             Clear role lens
           </button>
@@ -92,7 +94,7 @@ function PersonaButton({
       onClick={onApply}
       className={cn(
         "rounded-xl border p-3 text-left transition hover:border-teal/40 hover:bg-teal/5 disabled:cursor-not-allowed disabled:opacity-50",
-        active ? "border-teal bg-teal/10" : "border-slate-200 bg-white"
+        active ? "border-teal bg-teal/10" : "border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"
       )}
     >
       <div className="flex h-full flex-col justify-between gap-3">
@@ -101,8 +103,8 @@ function PersonaButton({
             <Icon className="h-4 w-4 text-teal" />
             <span className="text-sm font-semibold leading-5 text-ink">{preset.label}</span>
           </div>
-          <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-400">{preset.role}</p>
-          <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">{preset.description}</p>
+          <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">{preset.role}</p>
+          <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500 dark:text-slate-300">{preset.description}</p>
         </div>
         <FilterSignal filters={preset.filters} />
       </div>
@@ -116,7 +118,7 @@ function PromptList({ title, values }: { title: string; values: string[] }) {
       <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-400">{title}</h3>
       <ul className="mt-2 space-y-2">
         {values.map((value) => (
-          <li key={value} className="text-sm leading-6 text-slate-700">
+          <li key={value} className="text-sm leading-6 text-slate-700 dark:text-slate-300">
             {value}
           </li>
         ))}
@@ -129,7 +131,7 @@ function FilterSignal({ filters }: { filters: Partial<FilterState> }) {
   const [key, value] = Object.entries(filters).find(([, item]) => Boolean(item)) || [];
   if (!key || !value) return null;
   return (
-    <Badge className="border-slate-200 bg-slate-50 text-slate-600">
+    <Badge className="border-slate-200 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
       {String(value)}
     </Badge>
   );

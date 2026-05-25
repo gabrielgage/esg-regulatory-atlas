@@ -125,6 +125,13 @@ Current assessment convention:
 - Detailed trigger cards, readiness plans and dense result cards should support the overview rather than replace it.
 - Do not turn assessment ranking into legal applicability, confirmed thresholds, client-ready compliance scope or definitive deadline language.
 
+Current regulations convention:
+
+- Keep `/regulations` search-first: the first workspace should expose search, jurisdiction, topic, sector, company type and reporting year before secondary tools.
+- Put role lenses, compare, glossary help, share and export controls below the result table unless user testing shows a stronger need above results.
+- Do not add dense role presets, commercial CTAs, governance panels or export utilities above the primary filters.
+- Keep regulation detail navigation, source-quality indicators, export caveats and legal-safety wording intact when changing the database layout.
+
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
 ## Issue Resolution Rule

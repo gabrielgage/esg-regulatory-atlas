@@ -8,15 +8,15 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.59 - May 2026`.
+The current public release context is `0.5.60 - May 2026`.
 
 Latest release-context update:
 
-- adds a decision-first shortlist overview to `/assessment` before the detailed trigger logic
-- shows top records, relevance-mix counts, facts to confirm and first 30-day actions in the assessment hierarchy
-- adds an advisory-scan path directly inside the assessment output
+- makes `/regulations` search-first, with search and primary filters above secondary tools
+- keeps role lenses, comparison, label help, share and export controls available below the result table
+- preserves the decision-first assessment overview from `0.5.59`
 - preserves the simplified public navigation from `0.5.58`: Start, Assessment, Markets, Regulations, Advisory and grouped More
-- keeps `/launch` noindex and internal-facing, while preserving the market obligation footprint, trigger review, assessment readiness plan and source-review handoffs from prior releases
+- keeps `/launch` noindex and internal-facing, while preserving market obligation footprints, trigger reviews, assessment readiness and source-review handoffs from prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
 The full public update log is available at `/changelog`. Release governance notes are in `docs/current-release.md` and `docs/qa-findings/pr-43-release-context-sync.md`.
@@ -41,6 +41,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - market obligation footprints on jurisdiction profiles for business-impact categories, likely owner functions, evidence starters and first actions
 - sector profiles at `/sectors` and `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
 - regulation database and regulation detail pages
+- search-first Regulations workspace with secondary role-lens, comparison, label-help and export tools
 - threshold matrix for high-value scope signals, facts to confirm and source-review status
 - public glossary and contextual label-help surfaces
 - daily launch pulse for latest release context and next product-review focus

@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("map workspace loads with core product controls", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.getByRole("heading", { name: /Etica ESG/i }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Find the ESG regulations that may matter/i })).toBeVisible();
   await expect(page.getByTestId("regulatory-map")).toBeVisible();
   await expect(page.getByLabel(/Language/i)).toBeVisible();
   await expect(page.getByPlaceholder(/Search title/i)).toBeVisible();

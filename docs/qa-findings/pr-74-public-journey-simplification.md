@@ -20,6 +20,7 @@ Feature delivery outpaced information architecture consolidation. Each new capab
 - Kept `/launch` noindex and labelled it as an internal launch workspace.
 - Restored newest release ordering on the public changelog so the current edition appears before older review-pack entries.
 - Added smoke coverage for hidden Launch navigation, noindex metadata and current printable brief edition.
+- Corrected stale smoke-test expectations after CI caught references to the old Compare-options CTA and header wordmark-as-heading pattern.
 
 ## Prevention Rule
 
@@ -32,6 +33,8 @@ Future routes should be classified before appearing in navigation:
 - Internal/noindex: launch resources and operator workspaces
 
 Do not add every new route to the primary header. The homepage should keep one clear user decision before showing expert filters, governance dashboards or launch assets.
+
+When navigation or homepage CTAs change, update both core smoke coverage and language-toggle smoke coverage in the same pass. Header brand text is product chrome, not a page heading; tests should anchor on the route H1 or stable test markers.
 
 ## Legal And Product Guardrail
 

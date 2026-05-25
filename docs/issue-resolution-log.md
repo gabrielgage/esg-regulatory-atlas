@@ -898,10 +898,13 @@ The launch train added valuable routes faster than the information architecture 
 - Restored current-edition changelog entries above older recent-review-pack entries.
 - Added smoke coverage for hidden Launch nav, launch noindex metadata and current printable brief edition.
 - Ignored local Playwright `test-results` artifacts so browser QA output does not appear as commit-ready product changes.
+- Updated stale browser smoke assertions that still expected the old Compare-options CTA and header wordmark heading after the public journey was simplified.
 
 ### Prevention Rule
 
 Do not add new routes directly to primary navigation without classifying the route first. Core discovery gets primary placement; planning, trust and commercial-preview pages belong in More; internal/operator surfaces should remain noindex and absent from public navigation. Homepage changes should keep one clear user decision before expert filters, governance panels or commercial previews.
+
+When changing public navigation or homepage CTAs, update both direct smoke tests and language-toggle smoke tests in the same pass. Header brand text is product chrome, not a page heading; tests should anchor on the route's actual H1 or stable `data-testid` markers.
 
 ### Files Changed
 

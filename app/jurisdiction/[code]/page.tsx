@@ -9,6 +9,7 @@ import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { Header } from "@/components/Header";
 import { MarketBriefingCTA } from "@/components/MarketBriefingCTA";
+import { MarketObligationMatrix } from "@/components/MarketObligationMatrix";
 import { MarketQuickStartPanel } from "@/components/MarketQuickStartPanel";
 import { MarketTriggerPanel } from "@/components/MarketTriggerPanel";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
@@ -100,6 +101,7 @@ export default async function JurisdictionMarketPage({ params }: { params: Promi
         </section>
 
         <MarketTriggerPanel jurisdiction={jurisdiction} records={profile.scoped} />
+        <MarketObligationMatrix jurisdiction={jurisdiction} records={profile.scoped} />
 
         <section className="grid gap-5 lg:grid-cols-[1.2fr_.8fr]">
           <section className="rounded-2xl border bg-white p-6 shadow-sm">

@@ -68,6 +68,7 @@ The MVP includes:
 - Interactive map using local Natural Earth Admin 0 assets, visible country outlines, untracked-country styling, pan/zoom/reset controls and a geometry fallback
 - Jurisdiction profiles
 - Jurisdiction profile trigger reviews that show market drivers across corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals
+- Jurisdiction profile obligation footprints that translate tracked seed records into business-impact categories, likely owner functions, evidence starters and first actions
 - Searchable and filterable regulations
 - Record type, legal force and client relevance filters and badges
 - Condensed parent-record model with child items, aliases and milestones

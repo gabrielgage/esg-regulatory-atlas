@@ -593,3 +593,19 @@ Launch Tasks:
 QA finding:
 
 - Runtime opt-ins can prove compatibility without removing the underlying target-version warning. If GitHub says an action still targets a deprecated runtime, check the official action metadata and upgrade the action version when a stable Node 24-compatible release exists.
+
+## 2026-05-25 Codex Update - Market Obligation Footprint
+
+Launch Command Center note:
+
+> Phase 1AM adds market obligation footprints to jurisdiction profile pages. The new panel translates a selected market's tracked seed records into obligation categories, likely owner functions, evidence starters and first actions so users can understand what kinds of work may need planning before opening individual regulation records.
+
+Launch Tasks:
+
+- LAUNCH-111 - Add reusable market obligation profile helper
+- LAUNCH-112 - Add market obligation footprint to jurisdiction profile pages
+- LAUNCH-113 - Add obligation-footprint context to copied market profile Markdown and smoke coverage
+
+QA finding:
+
+- Jurisdiction pages should help users understand both why a market matters and what kinds of work may be required. Obligation footprints must stay framed as seed-data planning orientation and should not imply legal applicability, entity-specific duties or complete jurisdiction coverage.

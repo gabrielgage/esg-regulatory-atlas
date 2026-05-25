@@ -198,6 +198,9 @@ test("market profile pages render jurisdiction decision context", async ({ page 
   await expect(page.getByTestId("market-trigger-panel")).toContainText(/Market trigger review/i);
   await expect(page.getByTestId("market-trigger-panel")).toContainText(/Corporate reporting and disclosure/i);
   await expect(page.getByTestId("market-trigger-panel")).toContainText(/Source and threshold review/i);
+  await expect(page.getByTestId("market-obligation-matrix")).toContainText(/Market obligation footprint/i);
+  await expect(page.getByTestId("market-obligation-matrix")).toContainText(/Reporting obligation/i);
+  await expect(page.getByTestId("market-obligation-matrix")).toContainText(/Likely owners/i);
   await expect(page.getByText(/Evidence starter pack/i)).toBeVisible();
   await expect(page.getByText(/Priority records/i).first()).toBeVisible();
   await expect(page.getByText(/Source confidence/i)).toBeVisible();

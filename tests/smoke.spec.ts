@@ -139,11 +139,11 @@ test("regulations workspace supports detail navigation", async ({ page }) => {
   await expect(searchWorkspace).toContainText(/Search-first database/i);
   await expect(searchWorkspace).toContainText(/Start with search and primary filters/i);
   await expect(searchWorkspace.getByPlaceholder(/Search title/i)).toBeVisible();
-  await expect(searchWorkspace.getByLabel("Jurisdiction", { exact: true })).toBeVisible();
-  await expect(searchWorkspace.getByLabel("Topic", { exact: true })).toBeVisible();
-  await expect(searchWorkspace.getByLabel("Sector", { exact: true })).toBeVisible();
-  await expect(searchWorkspace.getByLabel("Company type", { exact: true })).toBeVisible();
-  await expect(searchWorkspace.getByLabel("Reporting year", { exact: true })).toBeVisible();
+  await expect(searchWorkspace.getByTestId("filter-jurisdiction")).toBeVisible();
+  await expect(searchWorkspace.getByTestId("filter-topic")).toBeVisible();
+  await expect(searchWorkspace.getByTestId("filter-sector")).toBeVisible();
+  await expect(searchWorkspace.getByTestId("filter-company-type")).toBeVisible();
+  await expect(searchWorkspace.getByTestId("filter-reporting-year")).toBeVisible();
   await expect(page.getByTestId("regulations-secondary-tools")).toContainText(/Role lenses/i);
   await expect(page.getByRole("heading", { name: /How to read database labels/i })).toBeVisible();
   await expect(page.getByText(/Use the glossary before treating a filtered result as compliance scope/i)).toBeVisible();

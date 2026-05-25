@@ -53,15 +53,17 @@ export function Filters({ filters, regulations, onChange, onReset, embedded = fa
         </label>
         <Select
           label={t("filters.jurisdiction")}
+          testId="filter-jurisdiction"
           value={filters.jurisdiction}
           onChange={(value) => update("jurisdiction", value)}
           options={jurisdictions.filter((jurisdiction) => jurisdiction.type !== "international").map((jurisdiction) => ({ value: jurisdiction.id, label: jurisdiction.name }))}
         />
-        <Select label={t("filters.topic")} value={filters.topic} onChange={(value) => update("topic", value)} options={topics} />
-        <Select label={t("filters.sector")} value={filters.sector} onChange={(value) => update("sector", value)} options={sectors} />
-        <Select label={t("filters.companyType")} value={filters.companyType} onChange={(value) => update("companyType", value)} options={companyTypes} />
+        <Select label={t("filters.topic")} testId="filter-topic" value={filters.topic} onChange={(value) => update("topic", value)} options={topics} />
+        <Select label={t("filters.sector")} testId="filter-sector" value={filters.sector} onChange={(value) => update("sector", value)} options={sectors} />
+        <Select label={t("filters.companyType")} testId="filter-company-type" value={filters.companyType} onChange={(value) => update("companyType", value)} options={companyTypes} />
         <Select
           label={t("filters.reportingYear")}
+          testId="filter-reporting-year"
           value={filters.reportingYear}
           onChange={(value) => update("reportingYear", value)}
           options={years.map(String)}
@@ -169,11 +171,13 @@ function AdvancedGroup({ title, children, defaultOpen = false }: { title: string
 
 function Select({
   label,
+  testId,
   value,
   onChange,
   options
 }: {
   label: string;
+  testId?: string;
   value: string;
   onChange: (value: string) => void;
   options: Array<string | { value: string; label: string }>;
@@ -184,6 +188,7 @@ function Select({
     <label>
       <span className="sr-only">{label}</span>
       <select
+        data-testid={testId}
         className="h-11 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none focus:border-teal"
         value={value}
         onChange={(event) => onChange(event.target.value)}

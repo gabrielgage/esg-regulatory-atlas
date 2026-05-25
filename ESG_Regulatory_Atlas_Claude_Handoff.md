@@ -2,7 +2,19 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1AP regulations-search-first-layout pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass, Phase 1AK CI Node 24 readiness pass, Phase 1AL GitHub Actions Node 24 action-upgrade pass, Phase 1AM market-obligation-footprint pass, Phase 1AN public-journey-simplification pass and Phase 1AO assessment-shortlist-overview pass. The goal remains deployability and legal caution, with added emphasis on reducing public cognitive load before adding more features.
+The app is now in a static Phase 1AQ reusable-advisory-scan-CTA pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass, Phase 1AK CI Node 24 readiness pass, Phase 1AL GitHub Actions Node 24 action-upgrade pass, Phase 1AM market-obligation-footprint pass, Phase 1AN public-journey-simplification pass, Phase 1AO assessment-shortlist-overview pass and Phase 1AP regulations-search-first-layout pass. The goal remains deployability and legal caution, with added emphasis on reducing public cognitive load before adding more features.
+
+## Phase 1AQ Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.61 - May 2026`.
+- Added `components/AdvisoryScanCTA.tsx` as a shared manual advisory-scan component.
+- Converted `components/MarketBriefingCTA.tsx` into a stable wrapper around the shared CTA.
+- Updated assessment, regulation detail page and regulation drawer advisory CTAs to use the shared component.
+- Standardized advisory-scan caveats, deliverable framing and mailto behavior.
+
+## Phase 1AQ Product Rationale
+
+Phase 1AP made the database calmer. Phase 1AQ makes the manual commercial path calmer: advisory scan CTAs should feel like one consistent Etica ESG request path, not one-off button copy scattered across routes. The component preserves the MVP guardrails by keeping requests mailto-only and caveated as source-linked planning outputs, not legal advice, official source verification or automated delivery.
 
 ## Phase 1AP Changes Delivered
 
@@ -687,6 +699,11 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1AQ validation: `npm run lint` passed locally.
+- Phase 1AQ validation: `npm run check:data` passed locally.
+- Phase 1AQ validation: `npm run build` passed locally with the webpack build path.
+- Phase 1AQ validation: `git diff --check` passed.
+- Phase 1AQ browser smoke will run in CI/Vercel; no local Playwright smoke was run for this focused CTA/documentation pass.
 - Phase 1AP validation: `npm run lint` passed locally.
 - Phase 1AP validation: `npm run check:data` passed locally.
 - Phase 1AP validation: `npm run build` passed locally with the webpack build path.

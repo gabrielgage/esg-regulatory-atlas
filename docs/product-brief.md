@@ -104,6 +104,7 @@ The MVP includes:
 - Readiness-priority planning score
 - Expanded EU financial-services, APAC/ISSB, South Africa and voluntary framework coverage
 - Static market briefing CTA and premium roadmap page for future market packs, sector packs and portfolio scans without gating or payments
+- Shared advisory-scan CTA across market, assessment and regulation-detail surfaces
 - `/plans` commercial architecture page
 - `/alerts` static premium digest and watchlist preview
 - `/advisory` manual service page for exposure scans, watchlists, portfolio/supplier maps and briefing packs
@@ -217,6 +218,7 @@ The MVP is successful when:
 - Regulation database: `/regulations` with search-first primary filters and secondary role-lens, compare, label-help, share and export tools
 - Persona role lenses: `/regulations?persona=finance-controller`
 - Regulation detail: `/regulations/[slug]`
+- Advisory service path: `/advisory`
 - Edition snapshot: `/edition/0.5/regulations/[slug]`
 - Assessment wizard: `/assessment`
 - Timeline: `/timeline`

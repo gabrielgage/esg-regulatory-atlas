@@ -8,12 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.60 - May 2026`.
+The current public release context is `0.5.61 - May 2026`.
 
 Latest release-context update:
 
-- makes `/regulations` search-first, with search and primary filters above secondary tools
-- keeps role lenses, comparison, label help, share and export controls available below the result table
+- standardizes the manual advisory-scan CTA across market, assessment and regulation-detail surfaces
+- keeps advisory scan requests as mailto-only, source-linked planning paths with legal caveats
+- preserves the search-first Regulations workspace from `0.5.60`
 - preserves the decision-first assessment overview from `0.5.59`
 - preserves the simplified public navigation from `0.5.58`: Start, Assessment, Markets, Regulations, Advisory and grouped More
 - keeps `/launch` noindex and internal-facing, while preserving market obligation footprints, trigger reviews, assessment readiness and source-review handoffs from prior releases
@@ -64,6 +65,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - Marquee 10 source-review packet for premium-use blockers, priority sources, threshold facts and owner actions
 - commercial preview pages for plans, alerts, advisory, internal launch assets and premium roadmap
 - manual request guidance on commercial and advisory routes with mailto-only conversion paths
+- reusable advisory-scan CTA used by market, assessment and regulation-detail surfaces
 - GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist with Node 24 action-runtime readiness
 
 The MVP does not include authentication, Supabase, external databases, Stripe, checkout, billing, paid APIs, Mapbox, scraping, cron jobs, production email alerts, AI legal summaries, client workspaces or required environment variables.

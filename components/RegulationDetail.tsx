@@ -1,13 +1,12 @@
 import { X } from "lucide-react";
 import { Regulation } from "@/types/regulation";
+import { AdvisoryScanCTA } from "./AdvisoryScanCTA";
 import { Badge } from "./Badge";
-import { CommercialCTA } from "./CommercialCTA";
 import { DecisionReadinessChecklist } from "./DecisionReadinessChecklist";
 import { ImplementationRoadmap } from "./ImplementationRoadmap";
 import { RecordMetaBadges } from "./RecordMetaBadges";
 import { SourceEvidencePanel } from "./SourceEvidencePanel";
 import { StatusBadge } from "./StatusBadge";
-import { DATASET_META } from "@/data/_meta";
 import { readinessBand, readinessClass, readinessReasons, readinessScore } from "@/lib/scoring";
 import { formatDate } from "@/lib/utils";
 import { profileFor } from "@/lib/applicability";
@@ -177,17 +176,17 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
         <Card title="Advisory opportunities">
           <BadgeList values={regulation.advisoryOpportunities} tone="violet" />
         </Card>
-        <CommercialCTA
+        <AdvisoryScanCTA
           compact
           eyebrow="Advisory next step"
           title="Request context-specific review"
           body="Use this record as the starting point for a cautious exposure scan, market briefing or source review."
-          href={`mailto:${DATASET_META.contactEmail}?subject=${encodeURIComponent(`Etica ESG advisory review - ${regulation.shortName}`)}&body=${encodeURIComponent(
-            `Hi Gabriel,\n\nI would like an advisory review of ${regulation.shortName}.\n\nContext:\n`
-          )}`}
+          subject={`Etica ESG advisory review - ${regulation.shortName}`}
+          emailBody={`Hi Gabriel,\n\nI would like an advisory review of ${regulation.shortName}.\n\nContext:\n`}
           label="Request review"
           secondaryHref="/advisory"
           secondaryLabel="Advisory options"
+          showDeliverables={false}
         />
         {regulation.penalties ? <Card title="Penalties and enforcement">{regulation.penalties}</Card> : null}
         <Card title="Typical client questions">

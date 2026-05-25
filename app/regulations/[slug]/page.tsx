@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/Header";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { Badge } from "@/components/Badge";
-import { CommercialCTA } from "@/components/CommercialCTA";
+import { AdvisoryScanCTA } from "@/components/AdvisoryScanCTA";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -12,7 +12,6 @@ import { CitationWidget } from "@/components/CitationWidget";
 import { DecisionReadinessChecklist } from "@/components/DecisionReadinessChecklist";
 import { ImplementationRoadmap } from "@/components/ImplementationRoadmap";
 import { SourceEvidencePanel } from "@/components/SourceEvidencePanel";
-import { DATASET_META } from "@/data/_meta";
 import { regulations } from "@/data/seed";
 import { thresholdMatrixRows } from "@/data/thresholdMatrix";
 import { profileFor } from "@/lib/applicability";
@@ -215,17 +214,17 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           </Section>
         ) : null}
 
-        <CommercialCTA
+        <AdvisoryScanCTA
           compact
           eyebrow="Advisory next step"
           title="Need this translated into an exposure scan?"
           body="Request a cautious source-linked review of this regime in context of a jurisdiction, sector, company type, supplier base or portfolio."
-          href={`mailto:${DATASET_META.contactEmail}?subject=${encodeURIComponent(`Etica ESG advisory review - ${regulation.shortName}`)}&body=${encodeURIComponent(
-            `Hi Gabriel,\n\nI would like an advisory review of ${regulation.shortName} in context.\n\nJurisdiction/company profile:\n`
-          )}`}
+          subject={`Etica ESG advisory review - ${regulation.shortName}`}
+          emailBody={`Hi Gabriel,\n\nI would like an advisory review of ${regulation.shortName} in context.\n\nJurisdiction/company profile:\n`}
           label="Request review"
           secondaryHref="/advisory"
           secondaryLabel="Advisory options"
+          showDeliverables={false}
         />
 
         <Section title="Caveats">

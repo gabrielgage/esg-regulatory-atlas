@@ -132,6 +132,13 @@ Current regulations convention:
 - Do not add dense role presets, commercial CTAs, governance panels or export utilities above the primary filters.
 - Keep regulation detail navigation, source-quality indicators, export caveats and legal-safety wording intact when changing the database layout.
 
+Current advisory CTA convention:
+
+- Use `components/AdvisoryScanCTA.tsx` for manual exposure-scan, market-briefing, assessment-review and regulation-review CTAs.
+- Keep `components/MarketBriefingCTA.tsx` as a wrapper for market, sector, value-chain, briefing and jurisdiction pages that need market-scan wording.
+- Do not create new one-off mailto CTAs for advisory scans unless the route genuinely needs a separate commercial motion.
+- Advisory CTAs must remain mailto-only and caveated as source-linked planning outputs, not legal opinions, official source verification, automated delivery or applicability determinations.
+
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
 ## Issue Resolution Rule

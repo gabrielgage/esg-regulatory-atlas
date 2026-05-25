@@ -8,13 +8,14 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.56 - May 2026`.
+The current public release context is `0.5.57 - May 2026`.
 
 Latest release-context update:
 
-- upgrades GitHub Actions checkout/setup-node actions to Node 24-compatible major versions
-- keeps the application build/runtime target on Node 22 while ensuring the workflow actions no longer target deprecated Node 20
-- documents the CI warning, root cause and prevention rule in the issue-resolution log
+- adds a market obligation footprint to `/jurisdiction/[code]`
+- shows which reporting, assurance, governance, due-diligence, finance, taxonomy, transition-plan, data and product obligation categories are represented in a selected market
+- adds likely owner functions, evidence starters, first actions and priority record links for each obligation category
+- adds obligation-footprint context to copied market profile Markdown
 - preserves the market trigger review, assessment trigger review, implementation roadmaps, Marquee 10 source-review packet, assessment readiness plan and threshold matrix handoffs from prior releases
 - keeps `docs/current-release.md` current so future Codex and Claude sessions can quickly understand the latest launch-train state
 
@@ -37,6 +38,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - interactive map with visible country outlines, explicit untracked-country key, stronger map contrast, pan/zoom/reset controls and geometry fallback
 - market profiles at `/markets` and `/jurisdiction/[code]` with tracked-coverage and detail-level glossary handoffs
 - market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals
+- market obligation footprints on jurisdiction profiles for business-impact categories, likely owner functions, evidence starters and first actions
 - sector profiles at `/sectors` and `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
 - regulation database and regulation detail pages
 - threshold matrix for high-value scope signals, facts to confirm and source-review status

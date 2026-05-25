@@ -11,6 +11,29 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.57 - May 2026",
+    date: "2026-05-25",
+    label: "Market obligation footprint",
+    summary:
+      "Added a market obligation footprint to jurisdiction profiles so users can see which reporting, assurance, governance, due-diligence, finance, taxonomy, transition-plan, data and product obligations are represented in the tracked seed records.",
+    added: [
+      "Market obligation footprint on jurisdiction profile pages",
+      "Reusable market obligation helper for business-impact categories",
+      "Owner-function, evidence-starter and first-action prompts for market obligation categories",
+      "Obligation-footprint context in copied market profile Markdown",
+      "Smoke coverage for the market obligation footprint"
+    ],
+    updated: [
+      "Jurisdiction market profiles",
+      "Copied market profile output",
+      "Market profile smoke coverage",
+      "Release context documentation"
+    ],
+    records: ["Markets", "Jurisdiction profiles", "Business impacts", "Obligation footprint"],
+    caveat:
+      "The market obligation footprint is derived from seed records for planning orientation. It does not determine legal applicability, entity-specific duties, enforcement exposure or complete jurisdiction coverage."
+  },
+  {
     edition: "0.5.56 - May 2026",
     date: "2026-05-22",
     label: "GitHub Actions Node 24 action upgrade",

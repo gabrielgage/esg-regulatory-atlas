@@ -43,6 +43,7 @@ The May 20 expert review prioritized trust-risk fixes before broader feature exp
 - Regulation detail pages now include a 30/60/90-day implementation roadmap with owner, evidence, source-review and briefing prompts.
 - `/assessment` now includes a profile trigger review explaining which jurisdiction, company, sector, value-chain, financial and source/threshold signals drive the shortlist.
 - `/jurisdiction/[code]` now includes market trigger reviews explaining which corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals drive a selected market profile.
+- `/jurisdiction/[code]` now includes market obligation footprints explaining which business-impact categories are represented by the tracked seed records, with owner functions, evidence starters and first actions.
 
 Remaining high-priority expert-review items:
 
@@ -82,6 +83,10 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
 6B. **Market trigger explanations**
     Status: materially delivered in `0.5.54 - May 2026`.
     Explain which market-level signals drive a jurisdiction profile, including corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review categories, plus first actions and facts to verify before advisory or premium reuse.
+
+6C. **Market obligation footprint**
+    Status: materially delivered in `0.5.57 - May 2026`.
+    Translate market seed records into obligation categories such as reporting, assurance, governance, due diligence, supply chain, financial disclosure, taxonomy, transition planning, data collection and product compliance, with likely owner functions and evidence starters.
 
 7. **Sector-specific starting points**
    Status: materially delivered in `0.5.14 - May 2026` through `/sectors`, `/sectors/[slug]` and `lib/sectorProfile.ts`.
@@ -128,8 +133,8 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add a separate maturity classification, such as voluntary framework, consultation, adopted not yet in force, partially in force, in force, delayed or under review.
 
 17. **Jurisdiction market pages**
-    Status: materially delivered in `0.5.13 - May 2026` through `/markets` and `/jurisdiction/[code]`, expanded in `0.5.54 - May 2026` with market trigger reviews; richer formal reviewer assignment remains open.
-    Build richer `/jurisdiction/[code]` pages with local regulatory drivers, source confidence, first reporting years, priority sectors, watch items and trigger-level facts to confirm.
+    Status: materially delivered in `0.5.13 - May 2026` through `/markets` and `/jurisdiction/[code]`, expanded in `0.5.54 - May 2026` with market trigger reviews and in `0.5.57 - May 2026` with obligation footprints; richer formal reviewer assignment remains open.
+    Build richer `/jurisdiction/[code]` pages with local regulatory drivers, source confidence, first reporting years, priority sectors, watch items, trigger-level facts to confirm and obligation-level owner/evidence prompts.
 
 37. **Commercial offer architecture**
     Status: partially delivered in `0.5.6 - May 2026`.

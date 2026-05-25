@@ -627,3 +627,19 @@ Launch Tasks:
 QA finding:
 
 - The Atlas should not expose every governance, commercial preview and launch-operator surface as a first-level destination. First-time users need one of three clear paths: run an indicative assessment, inspect a market/regulation or request an advisory-supported scan. Deeper expert surfaces should remain available but secondary.
+
+## 2026-05-25 Codex Update - Assessment Shortlist Overview
+
+Launch Command Center note:
+
+> Phase 1AO continues the simplification pass inside `/assessment`. The page now puts a shortlist overview ahead of detailed trigger logic, with top records, cautious relevance-mix counts, facts to confirm, first 30-day actions and an advisory-scan CTA.
+
+Launch Tasks:
+
+- LAUNCH-119 - Add decision-first assessment shortlist overview
+- LAUNCH-120 - Surface top records, relevance mix, facts to confirm and first actions before detailed trigger logic
+- LAUNCH-121 - Add assessment overview smoke coverage and update release context
+
+QA finding:
+
+- Assessment pages should answer "what should I review first?" before asking users to parse detailed trigger logic. Keep rankings indicative and caveated; do not convert shortlist position into legal applicability or confirmed compliance scope.

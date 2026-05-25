@@ -2,11 +2,20 @@
 
 ## Current Edition
 
-`0.5.58 - May 2026`
+`0.5.59 - May 2026`
 
 ## What Changed In The Latest Release Context Sync
 
-The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, the AI review pack added for external product, ESG and legal-safety critique, the external review intake workflow added to Data Quality, the value-chain exposure workspace added for business-exposure triage, the expert-review launch-readiness fixes for threshold wording, premium gates, public navigation and homepage orientation, the scenario-led briefing workspace that prevents raw default briefing output, the near-term timeline planning view, automated regulatory data guardrail checks, trust-signal/request-path clarity for user-facing commercial and governance surfaces, the threshold matrix for high-value scope signals, the assessment readiness plan, the Marquee 10 source-review packet, the regulation implementation roadmap, the assessment trigger review, the market trigger review on jurisdiction profiles, the CI Node 24 readiness pass for GitHub Actions, the follow-up upgrade to Node 24-compatible GitHub action versions, the market obligation footprint for jurisdiction profiles, and the public journey simplification pass from the 2026-05-25 expert brief.
+The latest release context captures the glossary and label-interpretation rollout from PRs #39 through #42, the release-context sync in PR #43, the assessment label guardrail in PR #44, the timeline date-label guardrail in PR #45, the briefing output guardrail in PR #46, the comparison output guardrail in PR #47, the market/sector coverage guardrail in PR #48, the profile-detail guardrail in PR #49, the copied-output caveat hardening in PR #50, the export caveat metadata hardening in PR #51, the source memo/citation caveat hardening in PR #52, the copyable decision-readiness checklist hardening in PR #53, the map contrast/untracked coverage key in PR #54, the map coverage key localization in PR #55, the daily launch pulse added afterward, the AI review pack added for external product, ESG and legal-safety critique, the external review intake workflow added to Data Quality, the value-chain exposure workspace added for business-exposure triage, the expert-review launch-readiness fixes for threshold wording, premium gates, public navigation and homepage orientation, the scenario-led briefing workspace that prevents raw default briefing output, the near-term timeline planning view, automated regulatory data guardrail checks, trust-signal/request-path clarity for user-facing commercial and governance surfaces, the threshold matrix for high-value scope signals, the assessment readiness plan, the Marquee 10 source-review packet, the regulation implementation roadmap, the assessment trigger review, the market trigger review on jurisdiction profiles, the CI Node 24 readiness pass for GitHub Actions, the follow-up upgrade to Node 24-compatible GitHub action versions, the market obligation footprint for jurisdiction profiles, the public journey simplification pass from the 2026-05-25 expert brief, and the assessment shortlist overview that moves top records and next actions above detailed trigger logic.
+
+### 0.5.59 - Assessment Shortlist Overview
+
+- Added a decision-first overview to `/assessment` before detailed trigger logic.
+- Shows top records to review first, relevance-mix counts, facts to confirm and first 30-day actions.
+- Adds an advisory scan CTA inside the assessment hierarchy so users can move from orientation to manual review.
+- Keeps the existing profile summary, trigger review, readiness plan, form controls and detailed shortlist.
+- Added smoke coverage so the overview remains visible.
+- Kept all wording indicative and caveated.
 
 ### 0.5.58 - Public Journey Simplification
 

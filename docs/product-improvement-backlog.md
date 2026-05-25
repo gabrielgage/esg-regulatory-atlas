@@ -39,6 +39,7 @@ Urgent items now advanced in `0.5.58 - May 2026`:
 Remaining high-priority simplification items:
 
 - Redesign assessment result hierarchy around top records, facts to confirm and next 30-day actions.
+  Status: advanced in `0.5.59 - May 2026` with an assessment shortlist overview before detailed trigger logic.
 - Make `/regulations` more search-first with advanced filters and compare controls secondary.
 - Simplify sectors, value-chain, plans and briefing pages so each begins with one clear user decision.
 - Build a reusable advisory scan CTA block and shared disclaimer layers.

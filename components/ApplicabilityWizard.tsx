@@ -229,6 +229,8 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
         </div>
       </div>
 
+      <ShortlistOverview results={results} readinessPlan={readinessPlan} missingFactsPreview={missingFactsPreview} onSelect={onSelect} />
+
       <div data-testid="assessment-trigger-review" className="mb-4 rounded-xl border border-slate-200 bg-white p-4">
         <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
           <div>
@@ -425,6 +427,115 @@ export function ApplicabilityWizard({ regulations, onSelect }: { regulations: Re
           secondaryHref="/advisory"
           secondaryLabel="Advisory options"
         />
+      </div>
+    </section>
+  );
+}
+
+function ShortlistOverview({
+  results,
+  readinessPlan,
+  missingFactsPreview,
+  onSelect
+}: {
+  results: ReturnType<typeof evaluateApplicability>;
+  readinessPlan: ReturnType<typeof buildReadinessPlan>;
+  missingFactsPreview: string[];
+  onSelect: (regulation: Regulation) => void;
+}) {
+  const categoryOrder = [
+    "Potentially directly relevant",
+    "Potentially indirectly relevant",
+    "Relevant through investors or customers",
+    "Monitor only"
+  ];
+  const topResults = results.slice(0, 3);
+  const firstActions = readinessPlan.nextActions.length
+    ? readinessPlan.nextActions
+    : ["Assign an accountable owner, verify primary sources and confirm thresholds before relying on the shortlist."];
+  const facts = missingFactsPreview.length ? missingFactsPreview : ["Entity-specific thresholds, scope, market nexus and local implementation status."];
+  const mailHref = `mailto:${DATASET_META.contactEmail}?subject=${encodeURIComponent("Etica ESG assessment review request")}&body=${encodeURIComponent(
+    "Hi Gabriel,\n\nI would like to turn my indicative assessment shortlist into an advisory-supported exposure scan.\n\nContext:\n"
+  )}`;
+
+  return (
+    <section data-testid="assessment-shortlist-overview" className="mb-4 rounded-2xl border border-teal/20 bg-teal/5 p-4 shadow-sm">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-teal">Shortlist overview</p>
+          <h3 className="mt-1 text-xl font-bold tracking-tight text-ink">Start with the most decision-ready signals</h3>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+            This summary puts the highest-ranked records, relevance mix, facts to confirm and first actions before the detailed trigger logic. It is still an indicative planning view, not an applicability determination.
+          </p>
+        </div>
+        <a href={mailHref} className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-ink px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800">
+          Request advisory scan <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </div>
+
+      <div className="mt-4 grid gap-3 xl:grid-cols-[1.1fr_0.9fr]">
+        <div className="rounded-xl border border-white/80 bg-white p-4">
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <h4 className="text-sm font-semibold text-ink">Top records to review first</h4>
+            <span className="text-xs text-slate-500">{results.length} total results</span>
+          </div>
+          <div className="grid gap-2 md:grid-cols-3">
+            {topResults.length ? (
+              topResults.map((result) => (
+                <button
+                  key={result.regulation.id}
+                  type="button"
+                  onClick={() => onSelect(result.regulation)}
+                  className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-left transition hover:border-teal/40 hover:bg-white"
+                >
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-semibold text-ink">{result.regulation.shortName}</span>
+                    <Badge className={reviewPriorityClass(result.reviewPriority)}>{result.reviewPriority}</Badge>
+                  </div>
+                  <Badge className={`${categoryClass(result.category)} mt-2`}>{result.category}</Badge>
+                  <p className="mt-2 text-xs leading-5 text-slate-600">{result.reasons[0]}</p>
+                  <p className="mt-2 text-xs font-semibold text-teal">Open detail</p>
+                </button>
+              ))
+            ) : (
+              <div className="rounded-xl border border-dashed border-slate-300 bg-white p-4 text-sm leading-6 text-slate-500 md:col-span-3">
+                No records are currently shortlisted. Add operating markets, sectors or exposure signals to generate orientation results.
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="grid gap-3">
+          <div className="rounded-xl border border-white/80 bg-white p-4">
+            <h4 className="text-sm font-semibold text-ink">Relevance mix</h4>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2">
+              {categoryOrder.map((category) => (
+                <div key={category} className="rounded-lg border border-slate-200 bg-slate-50 p-3">
+                  <div className="text-lg font-bold text-ink">{results.filter((result) => result.category === category).length}</div>
+                  <div className="text-xs leading-5 text-slate-500">{category}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-1">
+            <div className="rounded-xl border border-white/80 bg-white p-4">
+              <h4 className="text-sm font-semibold text-ink">Facts to confirm</h4>
+              <ul className="mt-2 space-y-1 text-xs leading-5 text-slate-600">
+                {facts.slice(0, 3).map((fact) => (
+                  <li key={fact}>- {fact}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-xl border border-white/80 bg-white p-4">
+              <h4 className="text-sm font-semibold text-ink">First 30-day actions</h4>
+              <ul className="mt-2 space-y-1 text-xs leading-5 text-slate-600">
+                {firstActions.slice(0, 3).map((action) => (
+                  <li key={action}>- {action}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

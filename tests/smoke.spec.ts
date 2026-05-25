@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { DATASET_META } from "@/data/_meta";
 
 test("map workspace loads with core product controls", async ({ page }) => {
   await page.goto("/");
@@ -82,6 +83,11 @@ test("assessment results include decision readiness prompts", async ({ page }) =
 
   await expect(page.getByTestId("assessment-profile-summary")).toContainText(/European Union headquarters/i);
   await expect(page.getByTestId("assessment-profile-summary")).toContainText(/Facts to confirm next/i);
+  await expect(page.getByTestId("assessment-shortlist-overview")).toContainText(/Shortlist overview/i);
+  await expect(page.getByTestId("assessment-shortlist-overview")).toContainText(/Top records to review first/i);
+  await expect(page.getByTestId("assessment-shortlist-overview")).toContainText(/Facts to confirm/i);
+  await expect(page.getByTestId("assessment-shortlist-overview")).toContainText(/First 30-day actions/i);
+  await expect(page.getByTestId("assessment-shortlist-overview").getByRole("link", { name: /Request advisory scan/i })).toBeVisible();
   await expect(page.getByTestId("assessment-trigger-review")).toContainText(/Profile trigger review/i);
   await expect(page.getByTestId("assessment-trigger-review")).toContainText(/Jurisdiction and market nexus/i);
   await expect(page.getByTestId("assessment-trigger-review")).toContainText(/Company profile and size/i);
@@ -231,7 +237,7 @@ test("jurisdiction briefs include market quick-start evidence framing", async ({
   await page.goto("/jurisdiction/euu/brief");
 
   await expect(page.getByRole("heading", { name: /European Union regulatory brief/i })).toBeVisible();
-  await expect(page.locator("body")).toContainText(/0\.5\.58 - May 2026/i);
+  await expect(page.locator("body")).toContainText(DATASET_META.edition);
   await expect(page.locator("body")).not.toContainText(/0\.5\.41 - May 2026/i);
   await expect(page.getByText(/Planning question:/i)).toBeVisible();
   await expect(page.getByRole("heading", { name: /Evidence starter pack/i })).toBeVisible();

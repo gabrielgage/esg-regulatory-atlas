@@ -11,6 +11,29 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.59 - May 2026",
+    date: "2026-05-25",
+    label: "Assessment shortlist overview",
+    summary:
+      "Advanced the simplification roadmap by adding a decision-first shortlist overview to the assessment workspace before the detailed trigger logic.",
+    added: [
+      "Assessment shortlist overview with top records to review first",
+      "Relevance-mix counts across cautious applicability categories",
+      "Facts-to-confirm and first-30-day action panels above detailed trigger review",
+      "Advisory scan CTA directly inside the assessment result hierarchy",
+      "Smoke coverage for the new assessment overview"
+    ],
+    updated: [
+      "Assessment workspace hierarchy",
+      "Assessment smoke coverage",
+      "Release context documentation",
+      "Simplification roadmap status"
+    ],
+    records: ["Assessment", "Applicability orientation", "Advisory scans", "Shortlist overview"],
+    caveat:
+      "The assessment overview is an indicative planning aid. It does not determine legal applicability, complete coverage, entity-specific duties or compliance deadlines."
+  },
+  {
     edition: "0.5.58 - May 2026",
     date: "2026-05-25",
     label: "Public journey simplification",

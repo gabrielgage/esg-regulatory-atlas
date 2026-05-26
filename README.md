@@ -8,10 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.63 - May 2026`.
+The current public release context is `0.5.66 - May 2026`.
 
 Latest release-context update:
 
+- adds shared legal notices for recurring banner, footer, copy-output and manual-request caveats
+- preserves the simplified plans page from `0.5.65`
+- preserves the value-chain lane simplification from `0.5.64`
 - clarifies that the language selector changes interface guidance, not official legal translations
 - preserves the sector finder simplification from `0.5.62`
 - preserves the reusable advisory-scan CTA from `0.5.61`
@@ -70,6 +73,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - commercial preview pages for alerts, advisory, internal launch assets and premium roadmap
 - manual request guidance on commercial and advisory routes with mailto-only conversion paths
 - reusable advisory-scan CTA used by market, assessment and regulation-detail surfaces
+- shared legal-notice component and canonical notice text for recurring caveats
 - GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist with Node 24 action-runtime readiness
 
 The MVP does not include authentication, Supabase, external databases, Stripe, checkout, billing, paid APIs, Mapbox, scraping, cron jobs, production email alerts, AI legal summaries, client workspaces or required environment variables.
@@ -144,6 +148,7 @@ Core static data lives in `data/`:
 - `coverageTargets.ts`, `contentReview.ts`
 - `glossary.ts`, `glossaryGuides.ts`
 - `commercialOffers.ts`, `alertDigests.ts`, `premiumPacks.ts`, `launchAssets.ts`, `conversionTracking.ts`
+- `legalNotices.ts`
 - `dailyUpdates.ts`
 - `personaPresets.ts`
 

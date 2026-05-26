@@ -197,6 +197,7 @@ Known lesson from PR #11:
 - Persona preset changes should update `data/personaPresets.ts`, preserve `?persona=` URL behavior on `/regulations`, and clear the active role lens when a user manually changes filters.
 - Regulations page changes should keep search and primary filters above the result table. Role lenses, compare, glossary help, share and export controls should remain secondary unless a future user test justifies moving them back above results.
 - Advisory scan CTA changes should use `components/AdvisoryScanCTA.tsx` or a thin wrapper around it so manual request copy, mailto behavior and legal caveats stay consistent.
+- Recurring legal caveats should use `data/legalNotices.ts` and `components/LegalNotice.tsx` so new routes do not drift away from the shared no-legal-advice, source-validation and no-live-infrastructure wording.
 - Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.
 - The project intentionally avoids Stripe, Supabase, authentication, paid APIs, scraping, cron jobs, email alerts and production AI summaries.
 - Local dev servers may be blocked in some Codex sandboxes by port-binding restrictions; do not treat that as an app failure if production build passes.

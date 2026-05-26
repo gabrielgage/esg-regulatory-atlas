@@ -37,7 +37,7 @@ Status: implemented in `0.5.58 - May 2026`.
 | P1 | Advisory scan module | Home, markets, regulation detail, assessment | Advanced in `0.5.61`: one reusable advisory CTA now explains what to send, what Etica returns and the legal caveat across market, assessment and regulation-detail surfaces. |
 | P1 | Sector page simplification | `/sectors` | Advanced in `0.5.62`: replaced aggregate metrics and dense cards with a searchable sector finder, business-context groups, practical trigger summaries and review-first record cues. |
 | P1 | Value-chain lane cleanup | `/value-chain` | Advanced in `0.5.64`: page now uses six primary business-exposure lanes with lane-specific start questions, evidence prompts, first actions and suggested owners. |
-| P1 | Briefing scenario flow | `/briefing` | Scenario cards appear before outputs; no large default briefing is shown before a scenario is selected. |
+| P1 | Briefing scenario flow | `/briefing` | Advanced in `0.5.45`: scenario cards appear before outputs; no large default briefing is shown before a scenario is selected. |
 | P1 | Plans simplification | `/plans` | Advanced in `0.5.65`: Free Atlas and Advisory Atlas are the primary live paths; premium previews and future enterprise are secondary validation cards, and the comparison table is collapsed by default. |
 | P1 | Language toggle label | Header | Advanced in `0.5.63`: language selector now uses interface-language labelling and a localized caveat so users do not mistake translated chrome for official legal translation. |
 
@@ -45,7 +45,7 @@ Status: implemented in `0.5.58 - May 2026`.
 
 | Priority | Item | Why It Is Deferred |
 |---|---|---|
-| P2 | Shared disclaimer component family | Useful legal-design improvement, but broader replacement needs careful pass across copy/export/detail surfaces. |
+| P2 | Shared disclaimer component family | Advanced in `0.5.66`: `LEGAL_NOTICES` and `LegalNotice` now support recurring banner, footer, copy-output and manual-request caveats. |
 | P2 | Route metadata classification | Helps sitemap/noindex/navigation governance, but should follow the first simplification pass. |
 | P2 | Static advisory sample outputs | Strong commercial proof, but should not crowd the core homepage before the journey is calmer. |
 | P2 | Print CSS improvements across briefs | Valuable for sharing, but current urgent trust issue was edition consistency. |
@@ -75,3 +75,4 @@ If a user-facing concept appears to require infrastructure, keep it as a static/
 - Advisory scan should be the dominant manual commercial next step until demand is validated, and shared advisory CTAs should use `AdvisoryScanCTA` unless a route needs a genuinely different commercial motion.
 - `/value-chain` should stay lane-first: use supplier, trade/import, product/claims, portfolio/finance, operations/governance and customer-pressure lanes before exposing raw tag-level detail.
 - `/plans` should stay current-path first: Free Atlas and advisory scan are visible primary choices; premium, enterprise and validation mechanics should remain secondary until infrastructure is explicitly approved.
+- Recurring disclaimer and caveat blocks should use `data/legalNotices.ts` and `components/LegalNotice.tsx` unless a route needs genuinely specific wording.

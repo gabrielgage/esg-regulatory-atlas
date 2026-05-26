@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { premiumPacks } from "../data/premiumPacks";
+import { LEGAL_NOTICES } from "../data/legalNotices";
 import { regulations } from "../data/seed";
 import { thresholdMatrixRows } from "../data/thresholdMatrix";
 import { premiumUseGateFor } from "../lib/premiumUseGates";
@@ -59,6 +60,15 @@ test("seed copy avoids definitive applicability and completeness claims", () => 
 
   const hits = bannedDefinitivePhrases.filter((phrase) => searchableCopy.includes(phrase));
   expect(hits).toEqual([]);
+});
+
+test("shared legal notices preserve core caveats for reused surfaces", () => {
+  expect(LEGAL_NOTICES.fullDisclaimer.toLowerCase()).toContain("not legal, tax, investment or assurance advice");
+  expect(LEGAL_NOTICES.fullDisclaimer.toLowerCase()).toContain("qualified counsel or regulatory advisors");
+  expect(LEGAL_NOTICES.shortDisclaimer.toLowerCase()).toContain("entity-specific facts");
+  expect(LEGAL_NOTICES.copyOutput.toLowerCase()).toContain("validate primary sources");
+  expect(LEGAL_NOTICES.manualRequest.toLowerCase()).toContain("do not create a paid account");
+  expect(LEGAL_NOTICES.commercialPreview.toLowerCase()).toContain("static validation surfaces");
 });
 
 test("threshold matrix rows map to sourced regulation records and preserve caveats", () => {

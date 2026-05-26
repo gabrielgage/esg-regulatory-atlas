@@ -16,6 +16,21 @@ Use the fuller disclaimer in footer, methodology, and detail surfaces:
 
 > Etica ESG · Regulatory Atlas provides structured ESG and sustainability regulatory intelligence for orientation and planning purposes only. It is not legal, tax, investment or assurance advice. Applicability depends on entity-specific facts, jurisdictional implementation, sector rules, thresholds, and legal interpretation. Users should validate requirements with qualified counsel or regulatory advisors before relying on the information for compliance decisions.
 
+## Implementation Convention
+
+As of `0.5.66 - May 2026`, recurring caveat text should start from `data/legalNotices.ts`, and recurring visual disclaimer blocks should use `components/LegalNotice.tsx`.
+
+Use the shared source for:
+
+- persistent short disclaimers
+- footer or full-route legal notices
+- copied-output notes
+- manual request caveats
+- commercial-preview caveats
+- generic seed-record caveats
+
+Route-specific caveats, localized disclaimer strings and regulation-specific caveats can remain local when the wording truly needs to vary. New one-off caveat text should be avoided unless the product surface has a distinct legal or source-governance risk that the shared notices do not cover.
+
 ## Approved Language
 
 Use language that reflects uncertainty and context:

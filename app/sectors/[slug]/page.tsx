@@ -83,6 +83,7 @@ export default async function SectorProfilePage({ params }: { params: Promise<{ 
         <GlossaryHelpCard
           title="Interpret sector profile details carefully"
           body="This profile combines direct sector matches, broad all-sector records, timing signals, source-confidence cues and advisory prompts. Treat them as sector-triage aids before confirming thresholds, entity facts and primary sources."
+          termIds={["seed-intelligence", "value-chain", "scope-emissions"]}
           compact
         />
 

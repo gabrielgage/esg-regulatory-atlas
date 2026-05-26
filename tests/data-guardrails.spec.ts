@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { advisorySampleOutputs } from "../data/advisorySampleOutputs";
 import { DATASET_META } from "../data/_meta";
+import { glossaryTerms } from "../data/glossary";
 import { premiumPacks } from "../data/premiumPacks";
 import { LEGAL_NOTICES } from "../data/legalNotices";
 import { primaryNavItems, routeByHref, routeRegistry, secondaryNavGroups } from "../data/routeRegistry";
@@ -157,6 +158,36 @@ test("print header uses live dataset metadata instead of stale hardcoded edition
   expect(globalsCss).toContain("attr(data-print-subtitle)");
   expect(globalsCss).not.toContain("Edition 0.5 - May 2026");
   expect(DATASET_META.edition).toMatch(/^0\.5\.\d+ - May 2026$/);
+});
+
+test("contextual glossary term links reference known glossary anchors", () => {
+  const knownTermIds = new Set(glossaryTerms.map((term) => term.id));
+  expect(knownTermIds.size).toBe(glossaryTerms.length);
+
+  const filesWithGlossaryCards = [
+    "app/assessment/page.tsx",
+    "app/briefing/page.tsx",
+    "app/compare/page.tsx",
+    "app/data-quality/page.tsx",
+    "app/jurisdiction/[code]/page.tsx",
+    "app/markets/page.tsx",
+    "app/regulations/page.tsx",
+    "app/regulations/[slug]/page.tsx",
+    "app/sectors/page.tsx",
+    "app/sectors/[slug]/page.tsx",
+    "app/timeline/page.tsx",
+    "app/value-chain/page.tsx"
+  ];
+
+  const referencedIds = filesWithGlossaryCards.flatMap((file) => {
+    const source = readFileSync(file, "utf8");
+    return Array.from(source.matchAll(/termIds=\{\[([^\]]+)\]\}/g)).flatMap((match) =>
+      Array.from(match[1].matchAll(/"([^"]+)"/g)).map((idMatch) => idMatch[1])
+    );
+  });
+
+  expect(referencedIds.length).toBeGreaterThan(10);
+  expect(referencedIds.filter((id) => !knownTermIds.has(id))).toEqual([]);
 });
 
 test("threshold matrix rows map to sourced regulation records and preserve caveats", () => {

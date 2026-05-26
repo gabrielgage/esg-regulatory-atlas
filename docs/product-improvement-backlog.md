@@ -50,6 +50,8 @@ Remaining high-priority simplification items:
   Status: advanced in `0.5.67 - May 2026` with `data/routeRegistry.ts`, header navigation sourced from the registry and guardrail tests for internal/noindex and template routes.
 - Add static advisory sample outputs that show what Etica can manually return without adding product infrastructure or crowding the homepage.
   Status: advanced in `0.5.68 - May 2026` with a copyable supplier/exporter exposure scan on `/advisory`, including priority records, facts to confirm, evidence package, first 30-day actions and source-review caveats.
+- Add direct glossary term links so label-heavy pages can send users to exact plain-language terms rather than only the glossary index.
+  Status: advanced in `0.5.70 - May 2026` with stable glossary anchors and contextual term chips inside shared glossary help cards across assessment, regulation, timeline, market, sector, jurisdiction and value-chain surfaces.
 
 ## 2026-05-20 Expert Review Intake
 
@@ -226,6 +228,7 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
 
 23. **Glossary and regulatory taxonomy page**
     Create a user-facing glossary for terms such as double materiality, value chain, assurance, transition plan, taxonomy alignment, due diligence and financed emissions.
+    Status: materially delivered in `0.5.27 - May 2026` and strengthened in `0.5.70 - May 2026` with direct contextual term links and guardrails for valid glossary anchors.
 
 24. **Responsive map refinement**
     Improve mobile/tablet map behavior with a tighter map height, easier selected-jurisdiction drawer, larger tap targets and simplified legend behavior.

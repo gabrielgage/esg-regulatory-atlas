@@ -38,6 +38,7 @@ export default function MarketsPage() {
         <GlossaryHelpCard
           title="Interpret market coverage carefully"
           body="Market counts, confidence badges and review prompts describe current tracked seed coverage, not a complete jurisdiction inventory. Use them to prioritize source review before advising on market exposure or compliance scope."
+          termIds={["seed-intelligence", "legal-force", "value-chain"]}
           compact
         />
         <QualitySignalExplainer compact />

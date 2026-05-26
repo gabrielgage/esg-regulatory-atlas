@@ -812,3 +812,20 @@ Launch Tasks:
 QA finding:
 
 - Printable and copied outputs are client-facing trust artifacts. Keep print headers tied to `DATASET_META`, hide UI-only controls in print, and log stale metadata findings in `docs/issue-resolution-log.md` instead of treating them as cosmetic issues.
+
+## 2026-05-26 Codex Update - Contextual Glossary Term Links
+
+Launch Command Center note:
+
+> Phase 1AZ improves label comprehension without adding a new heavy workspace. Contextual glossary help cards now expose route-specific key terms that jump directly to stable glossary anchors, so assessment, regulation, timeline, market, sector, jurisdiction and value-chain users can interpret labels before turning Atlas output into planning.
+
+Launch Tasks:
+
+- LAUNCH-161 - Add direct term links to the shared glossary help card
+- LAUNCH-162 - Add stable anchors to individual glossary term cards
+- LAUNCH-163 - Wire contextual term IDs into label-heavy public planning surfaces
+- LAUNCH-164 - Add guardrail and smoke coverage for contextual glossary anchors
+
+QA finding:
+
+- Glossary support should reduce cognitive load without creating one-off label systems. Use `GlossaryHelpCard.termIds` with IDs from `data/glossary.ts`, and keep glossary definitions framed as plain-language orientation only.

@@ -87,6 +87,7 @@ export default function BriefingPage() {
         <GlossaryHelpCard
           title="Interpret briefing outputs carefully"
           body="Briefing tabs and copied summaries combine seed records, status labels, evidence prompts and advisory signals. Treat them as planning aids to review with sources and qualified advisors, not client-ready legal conclusions."
+          termIds={["seed-intelligence", "assurance", "value-chain"]}
           compact
         />
         <BriefingScenarioSelector

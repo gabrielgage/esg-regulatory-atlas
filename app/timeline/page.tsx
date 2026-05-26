@@ -69,6 +69,7 @@ export default function TimelinePage() {
         <GlossaryHelpCard
           title="Interpret timeline dates carefully"
           body="Timeline labels such as effective date, first reporting year, first report due date and Atlas review date are planning signals. Confirm date-sensitive obligations against primary sources and entity-specific facts before relying on them."
+          termIds={["reporting-year", "transition-plan", "assurance"]}
           compact
         />
         <section className="rounded-2xl border bg-white p-4 shadow-sm">

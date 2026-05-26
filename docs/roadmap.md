@@ -36,6 +36,7 @@ Current capability areas:
 - Consulting-oriented advisory opportunities
 - Business impact and obligation tags
 - Public changelog
+- Public glossary with contextual term links from label-heavy planning surfaces
 - Daily launch pulse for latest release context, validation expectations and next product-review focus
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs
@@ -94,6 +95,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AZ Items
+
+- Updated dataset metadata and changelog to `0.5.70 - May 2026`.
+- Added direct key-term links inside `GlossaryHelpCard`.
+- Added stable term anchors on `/glossary`.
+- Wired assessment, regulations, data quality, timeline, briefing, comparison, market, sector, jurisdiction and value-chain help cards to context-specific glossary terms.
+- Added data guardrails so contextual glossary term IDs must reference known glossary terms.
+- Added smoke coverage for direct glossary term links.
 
 ## Recently Delivered Phase 1AY Items
 

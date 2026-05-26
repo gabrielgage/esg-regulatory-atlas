@@ -11,6 +11,27 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.70 - May 2026",
+    date: "2026-05-26",
+    label: "Contextual glossary term links",
+    summary:
+      "Added direct glossary term links inside label-help cards so users can jump from assessment, timeline, market, sector, regulation and value-chain surfaces to the exact orientation terms they need.",
+    added: [
+      "Key-term links inside the reusable glossary help card",
+      "Stable glossary anchors for individual term cards",
+      "Data guardrail coverage for contextual glossary term IDs",
+      "Smoke coverage for direct glossary term links"
+    ],
+    updated: [
+      "Assessment, Regulations, Data Quality, Timeline, Briefing, Compare, Markets, Sectors, Jurisdiction and Value-chain glossary help",
+      "Release context documentation",
+      "Simplification roadmap status"
+    ],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "eudr", "sfdr"],
+    caveat:
+      "Glossary links are plain-language orientation aids. They are not official legal definitions, translations, source verification or applicability determinations."
+  },
+  {
     edition: "0.5.69 - May 2026",
     date: "2026-05-26",
     label: "Print output polish",

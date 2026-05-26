@@ -74,7 +74,7 @@ export default function GlossaryPage() {
               </div>
               <div className="grid gap-3 lg:grid-cols-2">
                 {terms.map((term) => (
-                  <article key={term.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/40">
+                  <article key={term.id} id={term.id} className="scroll-mt-28 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950/40">
                     <div className="flex items-start justify-between gap-3">
                       <h3 className="text-base font-semibold text-ink">{term.term}</h3>
                       <span className="rounded-full bg-white px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:bg-slate-800 dark:text-slate-300">

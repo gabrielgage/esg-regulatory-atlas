@@ -53,6 +53,7 @@ export default function DataQualityPage() {
         <GlossaryHelpCard
           title="Need help interpreting status and source labels?"
           body="The glossary explains status, legal-force, confidence and data-quality labels such as in force, first reporting, needs review, date uncertain and source missing."
+          termIds={["seed-intelligence", "legal-force", "reporting-year"]}
         />
         <QualitySignalExplainer />
         <section className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-6 text-amber-950 shadow-sm">

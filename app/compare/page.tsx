@@ -69,6 +69,7 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
         <GlossaryHelpCard
           title="Interpret comparison outputs carefully"
           body="Comparison tables show tracked differences in seed records, not legal equivalence or complete market coverage. Use status, date, confidence and source labels as prompts to review primary sources before making scope decisions."
+          termIds={["legal-force", "reporting-year", "seed-intelligence"]}
           compact
         />
 
@@ -221,6 +222,7 @@ function RegulationCompare({ records, requestedIds }: { records: Regulation[]; r
         <GlossaryHelpCard
           title="Interpret comparison outputs carefully"
           body="Comparison tables show tracked differences in seed records, not legal equivalence or complete market coverage. Use status, date, confidence and source labels as prompts to review primary sources before making scope decisions."
+          termIds={["legal-force", "reporting-year", "seed-intelligence"]}
           compact
         />
 

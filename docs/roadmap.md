@@ -61,6 +61,7 @@ Current capability areas:
 - `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
 - Shared advisory-scan CTA for market, assessment and regulation-detail surfaces, preserving mailto-only manual request paths
+- Shared legal-notice source and component for recurring banner, footer, copy-output, manual-request and commercial-preview caveats
 - `/launch` internal launch-resource workspace with copyable LinkedIn, email, direct-outreach, advisory and premium-preview assets
 - Grouped primary and secondary navigation so Start, Assessment, Markets, Regulations and Advisory stay prominent while planning, trust and commercial-preview routes remain one click away; `/launch` is kept as a noindex operator route, not public navigation
 - Homepage Start Here panel for assessment, market/regulation exploration and advisory scan entry paths
@@ -90,6 +91,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AV Items
+
+- Updated dataset metadata and changelog to `0.5.66 - May 2026`.
+- Added `data/legalNotices.ts` as the shared source for recurring legal and source-review caveats.
+- Added `components/LegalNotice.tsx` for consistent light/dark legal-notice presentation.
+- Updated the top disclaimer banner, footer disclaimer, copied-output note and manual request panel to reuse the shared notice system.
+- Added guardrail coverage for the canonical no-legal-advice, source-validation and no-live-infrastructure wording.
+- Kept route-specific localized disclaimers and record-specific caveats available where the wording genuinely needs to vary.
 
 ## Recently Delivered Phase 1AR Items
 

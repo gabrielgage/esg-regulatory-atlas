@@ -45,7 +45,7 @@ Remaining high-priority simplification items:
 - Simplify sectors, value-chain, plans and briefing pages so each begins with one clear user decision.
   Status: `/sectors` advanced in `0.5.62 - May 2026` with a searchable sector finder; `/value-chain` advanced in `0.5.64 - May 2026` with six business-exposure lanes, lane-specific evidence prompts, first actions and suggested owners.
 - Build a reusable advisory scan CTA block and shared disclaimer layers.
-  Status: advisory scan CTA advanced in `0.5.61 - May 2026` with a shared manual mailto component across market, assessment and regulation-detail surfaces. Shared disclaimer layers remain a separate follow-up.
+  Status: advisory scan CTA advanced in `0.5.61 - May 2026` with a shared manual mailto component across market, assessment and regulation-detail surfaces. Shared disclaimer layers advanced in `0.5.66 - May 2026` with `LEGAL_NOTICES` and `LegalNotice` for recurring banner, footer, copied-output and manual-request caveats.
 
 ## 2026-05-20 Expert Review Intake
 

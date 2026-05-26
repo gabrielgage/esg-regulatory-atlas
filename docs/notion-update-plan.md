@@ -744,3 +744,20 @@ Launch Tasks:
 QA finding:
 
 - Commercial pages should not make static validation mechanics feel equal to live user choices. Keep `/plans` current-path first and preserve no-checkout, no-billing, no-account and no-automated-alert caveats.
+
+## 2026-05-25 Codex Update - Shared Legal Notice Components
+
+Launch Command Center note:
+
+> Phase 1AV centralizes recurring legal and source-review caveats. The top disclaimer, footer disclaimer, copy-output note and manual request panel now reuse a shared legal-notice source and visual component so future product surfaces do not drift into inconsistent caveat wording.
+
+Launch Tasks:
+
+- LAUNCH-145 - Add shared legal-notice data source for recurring caveats
+- LAUNCH-146 - Add reusable legal-notice component with light and dark mode styling
+- LAUNCH-147 - Wire banner, footer, copy-output and manual-request caveats through shared notices
+- LAUNCH-148 - Add guardrail coverage and update legal-safeguard context
+
+QA finding:
+
+- Recurring caveats should come from one shared source whenever possible. New routes may still need route-specific caveats, but they should not dilute the core boundaries: no legal advice, no definitive applicability, validate sources, no live accounts/payments/automated alerts unless explicitly implemented.

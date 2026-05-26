@@ -146,6 +146,13 @@ Current advisory CTA convention:
 - Do not create new one-off mailto CTAs for advisory scans unless the route genuinely needs a separate commercial motion.
 - Advisory CTAs must remain mailto-only and caveated as source-linked planning outputs, not legal opinions, official source verification, automated delivery or applicability determinations.
 
+Current legal-notice convention:
+
+- Use `data/legalNotices.ts` for recurring caveat text such as copied-output notes, manual-request caveats, commercial-preview caveats and seed-record caveats.
+- Use `components/LegalNotice.tsx` for recurring visual legal notices so light and dark mode styling stays consistent.
+- Keep localized disclaimer keys in `lib/i18n.ts` when route chrome needs interface-language support, but align English wording with `docs/legal-safeguards.md`.
+- Do not add new one-off legal caveat text unless the route has a genuinely distinct source-governance or legal-risk issue.
+
 Do not update docs mechanically for trivial typo fixes. Do update them when a future agent would otherwise need to rediscover context.
 
 ## Issue Resolution Rule

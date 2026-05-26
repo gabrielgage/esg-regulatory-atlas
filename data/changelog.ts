@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.66 - May 2026",
+    date: "2026-05-25",
+    label: "Shared legal notice components",
+    summary:
+      "Centralized recurring legal, copy-output and manual-request caveats so new product surfaces can reuse one consistent notice system instead of adding one-off disclaimer text.",
+    added: [
+      "Shared LEGAL_NOTICES source for recurring caveat text",
+      "Reusable LegalNotice component with light and dark mode styling",
+      "Guardrail test for canonical legal-notice wording"
+    ],
+    updated: [
+      "Top disclaimer banner",
+      "Footer disclaimer",
+      "Copy-output note",
+      "Manual request panel",
+      "Release context documentation"
+    ],
+    records: ["Legal notices", "Copy outputs", "Manual requests", "Footer disclaimer"],
+    caveat:
+      "Shared notice text improves consistency but does not replace record-specific legal review, source verification or entity-specific applicability assessment."
+  },
+  {
     edition: "0.5.65 - May 2026",
     date: "2026-05-25",
     label: "Plans page simplification",

@@ -795,3 +795,20 @@ Launch Tasks:
 QA finding:
 
 - Advisory proof points should be concrete but not infrastructure-heavy. Keep sample outputs static, copyable and caveated; do not imply legal advice, source verification, automated delivery, subscriptions or definitive applicability.
+
+## 2026-05-26 Codex Update - Print Output Polish
+
+Launch Command Center note:
+
+> Phase 1AY improves printed and shared output reliability. The global print header now uses live dataset metadata from the root layout, so jurisdiction briefs and premium pack previews do not drift into stale edition labels when release metadata changes.
+
+Launch Tasks:
+
+- LAUNCH-157 - Replace hardcoded global print edition with live dataset metadata
+- LAUNCH-158 - Add print styling for A4 margins, cleaner cards, page-break helpers and external source URLs
+- LAUNCH-159 - Add guardrail coverage for stale print-edition strings
+- LAUNCH-160 - Document the stale-print-edition bug and prevention rule
+
+QA finding:
+
+- Printable and copied outputs are client-facing trust artifacts. Keep print headers tied to `DATASET_META`, hide UI-only controls in print, and log stale metadata findings in `docs/issue-resolution-log.md` instead of treating them as cosmetic issues.

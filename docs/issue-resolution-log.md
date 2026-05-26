@@ -17,6 +17,34 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-26 - Print Header Used A Stale Hardcoded Edition
+
+Status: resolved in PR #85.
+
+### Symptom
+
+The global print stylesheet still rendered `Etica ESG · Regulatory Atlas · Edition 0.5 - May 2026` in printed output even though the live dataset metadata had advanced to later `0.5.x` editions.
+
+### Root Cause
+
+`app/globals.css` hardcoded the print header text inside `body::before`. CSS could not know when `DATASET_META.edition` changed, so printed jurisdiction briefs and premium pack previews could drift away from the current release metadata.
+
+### Resolution
+
+Moved print header values into root layout attributes sourced from `DATASET_META`: `data-print-title` and `data-print-subtitle`. The print stylesheet now reads those attributes with `attr(...)`, and a data guardrail checks that stale hardcoded print editions do not return.
+
+### Prevention Rule
+
+Printed and copied outputs are trust surfaces. Keep edition and dataset-review metadata tied to `DATASET_META`; never hardcode release labels in CSS or static copy that can outlive the next edition bump.
+
+### Files Changed
+
+- `app/layout.tsx`
+- `app/globals.css`
+- `tests/data-guardrails.spec.ts`
+- `docs/development-workflow.md`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-26 - Local Browser Smoke Server Bound To Blocked Host
 
 Status: resolved in PR #84.

@@ -121,6 +121,8 @@ Examples:
 - New automation or review workflow: update `README.md`, `.github/pull_request_template.md` where relevant, and this file.
 - Bug, failed deployment or failed check: update `docs/issue-resolution-log.md`, then update adjacent docs if the learning affects future workflow.
 
+For print-output changes, keep the global print header dynamic. `app/layout.tsx` sets `data-print-title` and `data-print-subtitle` from `DATASET_META`, and `app/globals.css` reads those attributes in `@media print`. Do not reintroduce hardcoded edition strings into CSS.
+
 ## Commercial Surface Checklist
 
 When changing `/plans`, `/alerts`, `/advisory`, `/premium-roadmap`, `/premium-packs/[id]`, `/launch`, commercial CTAs or launch assets, confirm:

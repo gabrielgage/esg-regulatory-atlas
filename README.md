@@ -8,10 +8,11 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.68 - May 2026`.
+The current public release context is `0.5.69 - May 2026`.
 
 Latest release-context update:
 
+- makes printed briefs and pack previews inherit live dataset edition metadata instead of a hardcoded print header
 - adds a copyable advisory sample exposure scan on `/advisory`
 - adds route metadata classification so public, internal, contextual and dynamic routes have one governed source
 - adds shared legal notices for recurring banner, footer, copy-output and manual-request caveats
@@ -62,6 +63,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - scenario-led briefing workspace with copied-output glossary handoff
 - methodology, data-quality and comparison surfaces with side-by-side glossary handoff
 - printable/copyable jurisdiction briefs and copied profile summaries with source-review caveats
+- global print styling with dynamic edition metadata, A4 margins and cleaner printed cards for briefs and premium pack previews
 - CSV/JSON regulation exports with edition metadata, caveat fields and source-review notes
 - source review memo, citation and decision-readiness copy blocks with edition metadata and legal-caution caveats
 - regulation-level 30/60/90-day implementation roadmaps with copyable caveated output

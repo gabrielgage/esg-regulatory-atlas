@@ -195,7 +195,7 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Maintain a high-value content-review queue for Marquee 10 and Marquee 25 regimes with launch-blocker flags, review questions, owner placeholders, source/threshold next actions, premium-use blockers and visible source/status/threshold review needs.
 
 44. **Copyable premium pack briefs**
-    Status: partially delivered in `0.5.8 - May 2026`.
+    Status: partially delivered in `0.5.8 - May 2026` and strengthened in `0.5.69 - May 2026` with dynamic print metadata and cleaner global print styling.
     Revenue relevance: Market packs and advisory.
     Make each premium pack sample page copyable and printable so it can be used in advisory conversations and direct outreach without adding PDF generation or document automation.
 

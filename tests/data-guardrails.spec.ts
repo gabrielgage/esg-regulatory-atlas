@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
+import { readFileSync } from "node:fs";
 import { advisorySampleOutputs } from "../data/advisorySampleOutputs";
+import { DATASET_META } from "../data/_meta";
 import { premiumPacks } from "../data/premiumPacks";
 import { LEGAL_NOTICES } from "../data/legalNotices";
 import { primaryNavItems, routeByHref, routeRegistry, secondaryNavGroups } from "../data/routeRegistry";
@@ -143,6 +145,18 @@ test("advisory sample outputs stay caveated and decision-oriented", () => {
   });
 
   expect(failures.map((sample) => sample.id)).toEqual([]);
+});
+
+test("print header uses live dataset metadata instead of stale hardcoded edition", () => {
+  const globalsCss = readFileSync("app/globals.css", "utf8");
+  const layout = readFileSync("app/layout.tsx", "utf8");
+
+  expect(layout).toContain("data-print-title");
+  expect(layout).toContain("DATASET_META.edition");
+  expect(globalsCss).toContain("attr(data-print-title)");
+  expect(globalsCss).toContain("attr(data-print-subtitle)");
+  expect(globalsCss).not.toContain("Edition 0.5 - May 2026");
+  expect(DATASET_META.edition).toMatch(/^0\.5\.\d+ - May 2026$/);
 });
 
 test("threshold matrix rows map to sourced regulation records and preserve caveats", () => {

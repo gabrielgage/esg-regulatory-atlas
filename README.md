@@ -8,10 +8,11 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.66 - May 2026`.
+The current public release context is `0.5.67 - May 2026`.
 
 Latest release-context update:
 
+- adds route metadata classification so public, internal, contextual and dynamic routes have one governed source
 - adds shared legal notices for recurring banner, footer, copy-output and manual-request caveats
 - preserves the simplified plans page from `0.5.65`
 - preserves the value-chain lane simplification from `0.5.64`
@@ -74,6 +75,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - manual request guidance on commercial and advisory routes with mailto-only conversion paths
 - reusable advisory-scan CTA used by market, assessment and regulation-detail surfaces
 - shared legal-notice component and canonical notice text for recurring caveats
+- shared route registry for public navigation, More menu grouping, internal routes and dynamic templates
 - GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist with Node 24 action-runtime readiness
 
 The MVP does not include authentication, Supabase, external databases, Stripe, checkout, billing, paid APIs, Mapbox, scraping, cron jobs, production email alerts, AI legal summaries, client workspaces or required environment variables.
@@ -149,6 +151,7 @@ Core static data lives in `data/`:
 - `glossary.ts`, `glossaryGuides.ts`
 - `commercialOffers.ts`, `alertDigests.ts`, `premiumPacks.ts`, `launchAssets.ts`, `conversionTracking.ts`
 - `legalNotices.ts`
+- `routeRegistry.ts`
 - `dailyUpdates.ts`
 - `personaPresets.ts`
 

@@ -198,6 +198,7 @@ Known lesson from PR #11:
 - Regulations page changes should keep search and primary filters above the result table. Role lenses, compare, glossary help, share and export controls should remain secondary unless a future user test justifies moving them back above results.
 - Advisory scan CTA changes should use `components/AdvisoryScanCTA.tsx` or a thin wrapper around it so manual request copy, mailto behavior and legal caveats stay consistent.
 - Recurring legal caveats should use `data/legalNotices.ts` and `components/LegalNotice.tsx` so new routes do not drift away from the shared no-legal-advice, source-validation and no-live-infrastructure wording.
+- Route and navigation changes should update `data/routeRegistry.ts` first. Keep public discovery routes, contextual detail routes, internal/noindex routes and dynamic templates explicitly classified.
 - Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.
 - The project intentionally avoids Stripe, Supabase, authentication, paid APIs, scraping, cron jobs, email alerts and production AI summaries.
 - Local dev servers may be blocked in some Codex sandboxes by port-binding restrictions; do not treat that as an app failure if production build passes.

@@ -114,6 +114,8 @@ Current AI review-pack convention:
 
 Current navigation convention:
 
+- `data/routeRegistry.ts` is the source of truth for route placement, visibility, robots and navigation grouping.
+- Add every new static public route, internal route, contextual route or dynamic route template to the registry before linking it from the app.
 - Keep the header focused on the main discovery path: Start, Assessment, Markets, Regulations and Advisory.
 - Put secondary or supporting surfaces such as Sectors, Timeline, Briefing, Value chain, Thresholds, Methodology, Data Quality, Glossary, Changelog, Plans, Alerts and Premium Roadmap in the grouped More menu unless a future user test shows they need primary placement.
 - Keep Launch resources internal/noindex and out of public navigation.

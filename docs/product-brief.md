@@ -131,6 +131,7 @@ The MVP includes:
 - External review intake panel on Data Quality for routing findings into issue logs, coverage review, product backlog or future capability planning
 - Reusable commercial CTA surfaces
 - Shared legal-notice source and component for recurring caveats
+- Shared route registry for navigation placement, public/internal visibility and dynamic route templates
 - Source quality indicators
 - Advisory opportunity and business impact views
 - Visible legal and data-quality disclaimers

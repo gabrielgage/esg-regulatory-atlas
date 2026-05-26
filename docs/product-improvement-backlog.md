@@ -46,6 +46,8 @@ Remaining high-priority simplification items:
   Status: `/sectors` advanced in `0.5.62 - May 2026` with a searchable sector finder; `/value-chain` advanced in `0.5.64 - May 2026` with six business-exposure lanes, lane-specific evidence prompts, first actions and suggested owners.
 - Build a reusable advisory scan CTA block and shared disclaimer layers.
   Status: advisory scan CTA advanced in `0.5.61 - May 2026` with a shared manual mailto component across market, assessment and regulation-detail surfaces. Shared disclaimer layers advanced in `0.5.66 - May 2026` with `LEGAL_NOTICES` and `LegalNotice` for recurring banner, footer, copied-output and manual-request caveats.
+- Add route metadata classification so public navigation, internal workspaces, contextual detail pages and dynamic templates remain governed as the product grows.
+  Status: advanced in `0.5.67 - May 2026` with `data/routeRegistry.ts`, header navigation sourced from the registry and guardrail tests for internal/noindex and template routes.
 
 ## 2026-05-20 Expert Review Intake
 

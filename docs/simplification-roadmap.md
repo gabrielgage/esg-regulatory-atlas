@@ -46,7 +46,7 @@ Status: implemented in `0.5.58 - May 2026`.
 | Priority | Item | Why It Is Deferred |
 |---|---|---|
 | P2 | Shared disclaimer component family | Advanced in `0.5.66`: `LEGAL_NOTICES` and `LegalNotice` now support recurring banner, footer, copy-output and manual-request caveats. |
-| P2 | Route metadata classification | Helps sitemap/noindex/navigation governance, but should follow the first simplification pass. |
+| P2 | Route metadata classification | Advanced in `0.5.67`: `data/routeRegistry.ts` now classifies public, internal, contextual and dynamic routes and feeds the header navigation. |
 | P2 | Static advisory sample outputs | Strong commercial proof, but should not crowd the core homepage before the journey is calmer. |
 | P2 | Print CSS improvements across briefs | Valuable for sharing, but current urgent trust issue was edition consistency. |
 | P2 | Glossary term linking | Good comprehension feature, lower priority than reducing initial cognitive load. |
@@ -76,3 +76,4 @@ If a user-facing concept appears to require infrastructure, keep it as a static/
 - `/value-chain` should stay lane-first: use supplier, trade/import, product/claims, portfolio/finance, operations/governance and customer-pressure lanes before exposing raw tag-level detail.
 - `/plans` should stay current-path first: Free Atlas and advisory scan are visible primary choices; premium, enterprise and validation mechanics should remain secondary until infrastructure is explicitly approved.
 - Recurring disclaimer and caveat blocks should use `data/legalNotices.ts` and `components/LegalNotice.tsx` unless a route needs genuinely specific wording.
+- New routes should be added to `data/routeRegistry.ts` with placement, visibility, robots and user-decision metadata before they are linked from navigation.

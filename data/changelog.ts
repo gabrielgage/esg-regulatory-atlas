@@ -11,6 +11,27 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.67 - May 2026",
+    date: "2026-05-26",
+    label: "Route metadata classification",
+    summary:
+      "Centralized route, navigation and visibility metadata so the public header stays focused while internal, contextual and dynamic surfaces remain intentionally classified.",
+    added: [
+      "Route registry with placement, visibility, robots, group and user-decision metadata",
+      "Header navigation sourced from the route registry",
+      "Data guardrails for public navigation, internal routes and static route coverage"
+    ],
+    updated: [
+      "Header route governance",
+      "Navigation metadata",
+      "Release context documentation",
+      "Simplification roadmap status"
+    ],
+    records: ["Navigation", "Route registry", "Public routes", "Internal launch workspace"],
+    caveat:
+      "Route classification is product and navigation governance. It does not change regulatory content, source verification, legal analysis or the static MVP infrastructure boundaries."
+  },
+  {
     edition: "0.5.66 - May 2026",
     date: "2026-05-25",
     label: "Shared legal notice components",

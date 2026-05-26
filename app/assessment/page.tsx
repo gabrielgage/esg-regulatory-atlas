@@ -28,6 +28,7 @@ export default function AssessmentPage() {
         <GlossaryHelpCard
           title="Interpret assessment categories carefully"
           body="Assessment categories, confidence labels and data-quality signals are triage prompts. Use the glossary before treating a shortlist as compliance scope or client-ready advice."
+          termIds={["seed-intelligence", "legal-force", "value-chain"]}
           compact
         />
         <ApplicabilityWizard regulations={regulations} onSelect={setSelectedRegulation} />

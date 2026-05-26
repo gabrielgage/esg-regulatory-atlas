@@ -90,6 +90,7 @@ export default async function JurisdictionMarketPage({ params }: { params: Promi
         <GlossaryHelpCard
           title="Interpret market profile details carefully"
           body="This profile combines direct and inherited seed records, priority sorting, readiness scores and source-confidence signals. Treat them as market-triage prompts, not complete local legal coverage or entity-specific applicability."
+          termIds={["seed-intelligence", "legal-force", "reporting-year"]}
           compact
         />
 

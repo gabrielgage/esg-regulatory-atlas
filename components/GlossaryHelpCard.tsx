@@ -1,18 +1,25 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
+import { glossaryTerms } from "@/data/glossary";
 import { cn } from "@/lib/utils";
 
 export function GlossaryHelpCard({
   title = "How to read these labels",
   body = "Use the glossary guide to interpret status, legal-force, confidence and source-quality labels before turning Atlas output into compliance planning.",
+  termIds = ["legal-force", "seed-intelligence", "reporting-year"],
   compact = false,
   className
 }: {
   title?: string;
   body?: string;
+  termIds?: string[];
   compact?: boolean;
   className?: string;
 }) {
+  const linkedTerms = termIds
+    .map((id) => glossaryTerms.find((term) => term.id === id))
+    .filter((term): term is (typeof glossaryTerms)[number] => Boolean(term));
+
   return (
     <aside
       className={cn(
@@ -38,6 +45,20 @@ export function GlossaryHelpCard({
           Open glossary <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
         </Link>
       </div>
+      {linkedTerms.length ? (
+        <div className="mt-4 flex flex-wrap gap-2" data-testid="glossary-term-links">
+          <span className="self-center text-xs font-semibold uppercase tracking-wide text-slate-400">Key terms</span>
+          {linkedTerms.map((term) => (
+            <Link
+              key={term.id}
+              href={`/glossary#${term.id}`}
+              className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 hover:border-teal/40 hover:text-teal dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-teal/40 dark:hover:text-teal-200"
+            >
+              {term.term}
+            </Link>
+          ))}
+        </div>
+      ) : null}
       <p className="mt-3 text-xs leading-5 text-slate-500 dark:text-slate-400">
         Glossary content is plain-language orientation only. It is not an official legal definition, translation or applicability determination.
       </p>

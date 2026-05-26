@@ -35,6 +35,7 @@ export default function ValueChainPage() {
         <GlossaryHelpCard
           title="Interpret value-chain exposure carefully"
           body="Value-chain cards show current Atlas tags and source-linked seed records. They are a triage aid for evidence planning, not a determination that a rule applies to a specific company, supplier, fund or product."
+          termIds={["value-chain", "due-diligence", "financed-emissions"]}
           compact
         />
 

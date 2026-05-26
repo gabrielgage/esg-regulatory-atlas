@@ -74,6 +74,7 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           compact
           title="Interpret this record before using it"
           body="Status, legal-force, readiness and data-quality labels are planning signals. The glossary explains how to read them before using this record in an assessment, market brief or advisory conversation."
+          termIds={["legal-force", "reporting-year", "seed-intelligence"]}
         />
 
         <Section title="Why it matters">

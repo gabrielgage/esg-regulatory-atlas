@@ -6,6 +6,8 @@ test("data quality page links status and source labels to glossary", async ({ pa
   await expect(page.getByRole("heading", { name: /Need help interpreting status and source labels/i })).toBeVisible();
   await expect(page.getByText(/in force, first reporting, needs review, date uncertain and source missing/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Open glossary/i })).toHaveAttribute("href", "/glossary");
+  await expect(page.getByTestId("glossary-term-links").first().getByRole("link", { name: /Seed intelligence/i })).toHaveAttribute("href", "/glossary#seed-intelligence");
+  await expect(page.getByTestId("glossary-term-links").first().getByRole("link", { name: /Legal force/i })).toHaveAttribute("href", "/glossary#legal-force");
 });
 
 test("regulation detail page links record labels to glossary", async ({ page }) => {

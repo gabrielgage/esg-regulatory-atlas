@@ -121,6 +121,13 @@ Current navigation convention:
 - Keep Launch resources internal/noindex and out of public navigation.
 - When adding a new route, decide whether it belongs in primary navigation, More, a route-specific CTA or documentation. Do not add every new route as a visible top-level header item.
 
+Current glossary-help convention:
+
+- Use `components/GlossaryHelpCard.tsx` for contextual label help.
+- Pass `termIds` from the route when a page needs specific terms, and only use IDs that exist in `data/glossary.ts`.
+- Add stable anchors to glossary terms through the shared glossary data model rather than hardcoding one-off glossary chips in page components.
+- Treat glossary links as plain-language orientation aids. They are not official legal definitions, official translations, source verification or applicability determinations.
+
 Current assessment convention:
 
 - Keep `/assessment` decision-first: profile summary, shortlist overview, top records, facts to confirm, first 30-day actions and advisory scan CTA should appear before detailed trigger logic.

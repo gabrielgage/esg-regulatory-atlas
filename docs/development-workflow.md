@@ -204,6 +204,7 @@ Known lesson from PR #11:
 - Advisory sample-output changes should use `data/advisorySampleOutputs.ts` and keep copied sample text caveated as static orientation, not legal advice, source verification or automated delivery.
 - Recurring legal caveats should use `data/legalNotices.ts` and `components/LegalNotice.tsx` so new routes do not drift away from the shared no-legal-advice, source-validation and no-live-infrastructure wording.
 - Route and navigation changes should update `data/routeRegistry.ts` first. Keep public discovery routes, contextual detail routes, internal/noindex routes and dynamic templates explicitly classified.
+- Contextual glossary help should use `components/GlossaryHelpCard.tsx` with `termIds` that exist in `data/glossary.ts`. Do not create one-off glossary link chips in route files unless the shared component cannot support the use case.
 - Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.
 - The project intentionally avoids Stripe, Supabase, authentication, paid APIs, scraping, cron jobs, email alerts and production AI summaries.
 - Local dev servers may be blocked in some Codex sandboxes by port-binding restrictions; do not treat that as an app failure if production build passes.

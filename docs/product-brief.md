@@ -86,6 +86,7 @@ The MVP includes:
 - Data-quality review queue with visible scoring reasons for research prioritization
 - Marquee 10 source-review packet showing premium-use blockers, priority sources, threshold facts and owner actions
 - Threshold matrix for high-value scope signals, facts to confirm, timing signals, source links and review-before-use caveats
+- Public glossary with contextual term links inside label-help cards so users can jump from planning surfaces to exact plain-language definitions
 - Market coverage-depth dashboard showing target direct-record depth, current count, gaps and source-review prompts by jurisdiction
 - Coverage-confidence dashboard separating record volume from priority-source backing, review prompts, stale dates and date-sensitive records
 - Public changelog

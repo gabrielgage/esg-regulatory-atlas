@@ -8,11 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.69 - May 2026`.
+The current public release context is `0.5.70 - May 2026`.
 
 Latest release-context update:
 
 - makes printed briefs and pack previews inherit live dataset edition metadata instead of a hardcoded print header
+- adds direct glossary term links inside contextual label-help cards so users can jump to the exact definitions they need
 - adds a copyable advisory sample exposure scan on `/advisory`
 - adds route metadata classification so public, internal, contextual and dynamic routes have one governed source
 - adds shared legal notices for recurring banner, footer, copy-output and manual-request caveats
@@ -53,7 +54,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - regulation database and regulation detail pages
 - search-first Regulations workspace with secondary role-lens, comparison, label-help and export tools
 - threshold matrix for high-value scope signals, facts to confirm and source-review status
-- public glossary and contextual label-help surfaces
+- public glossary and contextual label-help surfaces with direct term links
 - daily launch pulse for latest release context and next product-review focus
 - assessment wizard with cautious indicative categories and glossary handoff
 - assessment shortlist overview with top records, relevance mix, facts to confirm and first 30-day actions

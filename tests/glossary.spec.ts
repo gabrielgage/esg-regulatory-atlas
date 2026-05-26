@@ -12,6 +12,7 @@ test("glossary route renders orientation terms and navigation", async ({ page })
   await expect(page.getByRole("heading", { name: /^Primary source$/i })).toBeVisible();
   await expect(page.getByText(/Do not describe proposed or consultation-stage items as binding obligations/i)).toBeVisible();
   await expect(page.getByRole("heading", { name: /Double materiality/i })).toBeVisible();
+  await expect(page.locator("#double-materiality")).toBeVisible();
   await expect(page.locator("h2", { hasText: "Value chain" })).toBeVisible();
   await expect(page.getByRole("link", { name: /CSRD record/i })).toBeVisible();
 

@@ -131,6 +131,7 @@ export default function RegulationsPage() {
             compact
             title="How to read database labels"
             body="The table uses status, readiness, confidence, legal-force and data-quality labels as triage signals. Use the glossary before treating a filtered result as compliance scope."
+            termIds={["legal-force", "reporting-year", "seed-intelligence"]}
           />
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-ink">

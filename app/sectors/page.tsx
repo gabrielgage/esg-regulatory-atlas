@@ -56,6 +56,7 @@ export default function SectorsPage() {
         <GlossaryHelpCard
           title="Interpret sector coverage carefully"
           body="Sector pages blend direct sector matches with broad all-sector rules. Treat them as first-pass triage before confirming thresholds, entity facts and primary sources."
+          termIds={["seed-intelligence", "value-chain", "scope-emissions"]}
           compact
         />
 

@@ -149,6 +149,12 @@ Current advisory CTA convention:
 - Advisory CTAs must remain mailto-only and caveated as source-linked planning outputs, not legal opinions, official source verification, automated delivery or applicability determinations.
 - Advisory sample outputs should use `data/advisorySampleOutputs.ts` and `components/AdvisorySampleOutput.tsx` so examples stay structured, copyable and caveated. Keep these samples on advisory, premium or route-specific pages rather than adding more homepage panels.
 
+Current print-output convention:
+
+- Global print headers must use `DATASET_META` through the root layout `data-print-title` and `data-print-subtitle` attributes. Do not hardcode edition strings in CSS.
+- Hide UI-only controls from print with `print:hidden` or `data-print-hidden="true"`.
+- Treat stale print metadata as a trust bug because briefs and pack previews are client-facing artifacts.
+
 Current legal-notice convention:
 
 - Use `data/legalNotices.ts` for recurring caveat text such as copied-output notes, manual-request caveats, commercial-preview caveats and seed-record caveats.

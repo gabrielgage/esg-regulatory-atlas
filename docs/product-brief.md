@@ -92,6 +92,7 @@ The MVP includes:
 - Daily launch pulse on Changelog and Data Quality for latest shipping context, validation expectations and next product-review focus
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs
+- Dynamic print metadata and cleaner print styling so briefs and pack previews inherit current edition information
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - Scenario-led briefing workspace with EU reporting, PE portfolio, supplier/exporter, financial-services and board/risk committee planning paths
 - Briefing sector heatmap

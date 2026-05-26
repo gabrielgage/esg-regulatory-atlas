@@ -29,6 +29,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const printTitle = `Etica ESG · Regulatory Atlas · ${DATASET_META.edition}`;
+  const printSubtitle = `Seed regulatory intelligence · Dataset last reviewed ${DATASET_META.lastReviewed}`;
   const themeScript = `
     (function () {
       try {
@@ -42,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body data-print-title={printTitle} data-print-subtitle={printSubtitle}>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <a className="skip-link" href="#main-content">
           Skip to main content

@@ -48,7 +48,7 @@ Status: implemented in `0.5.58 - May 2026`.
 | P2 | Shared disclaimer component family | Advanced in `0.5.66`: `LEGAL_NOTICES` and `LegalNotice` now support recurring banner, footer, copy-output and manual-request caveats. |
 | P2 | Route metadata classification | Advanced in `0.5.67`: `data/routeRegistry.ts` now classifies public, internal, contextual and dynamic routes and feeds the header navigation. |
 | P2 | Static advisory sample outputs | Advanced in `0.5.68`: `/advisory` now includes a copyable sample supplier/exporter exposure scan with caveats, source-review notes and first actions. |
-| P2 | Print CSS improvements across briefs | Valuable for sharing, but current urgent trust issue was edition consistency. |
+| P2 | Print CSS improvements across briefs | Advanced in `0.5.69`: global print output now uses live dataset metadata, A4 margins, cleaner card printing and a guardrail against stale hardcoded edition strings. |
 | P2 | Glossary term linking | Good comprehension feature, lower priority than reducing initial cognitive load. |
 | P2 | High-impact source review sprint | Requires official/regulator source research and should be handled as a content-governance sprint. |
 

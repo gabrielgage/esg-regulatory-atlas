@@ -39,6 +39,7 @@ Current capability areas:
 - Daily launch pulse for latest release context, validation expectations and next product-review focus
 - Jurisdiction and regulation comparison
 - Printable and copyable jurisdiction briefs
+- Dynamic print metadata and print-polished brief/pack output
 - Citation copy blocks and edition snapshot routes
 - Persona doorway presets in the assessment wizard
 - Persona starting points in the Regulations workspace with shareable role-lens URLs
@@ -93,6 +94,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AY Items
+
+- Updated dataset metadata and changelog to `0.5.69 - May 2026`.
+- Replaced the hardcoded print header with root layout metadata sourced from `DATASET_META`.
+- Added A4 print margins, cleaner printed card styling, external source URL expansion and page-break helper classes.
+- Updated the reusable print button to stay hidden in print output and expose an explicit accessible label.
+- Added data guardrails so stale hardcoded print editions cannot silently return.
+- Documented the stale-print-edition root cause and prevention rule in the issue log.
 
 ## Recently Delivered Phase 1AX Items
 

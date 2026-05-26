@@ -228,12 +228,21 @@ select:focus-visible {
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
   header,
   nav,
-  .print-hidden {
+  button,
+  .print-hidden,
+  .print\:hidden,
+  [data-print-hidden="true"] {
     display: none !important;
   }
 
+  html,
   body {
     background: #ffffff !important;
     color: #0f172a !important;
@@ -241,24 +250,62 @@ select:focus-visible {
   }
 
   body::before {
-    content: "Etica ESG · Regulatory Atlas · Edition 0.5 - May 2026";
+    content: attr(data-print-title) "\A" attr(data-print-subtitle);
     display: block;
     margin: 0 0 1rem;
     border-bottom: 1px solid #cbd5e1;
     padding-bottom: 0.5rem;
     font-weight: 700;
+    line-height: 1.45;
+    white-space: pre-line;
+  }
+
+  main {
+    padding: 0 !important;
   }
 
   section,
   article,
   aside {
     break-inside: avoid;
+    border-color: #cbd5e1 !important;
     box-shadow: none !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  li,
+  span,
+  div {
+    color: #0f172a !important;
+  }
+
+  .rounded-xl,
+  .rounded-2xl,
+  .rounded-3xl {
+    border-radius: 8px !important;
   }
 
   a {
     color: #0f766e !important;
     text-decoration: underline;
+  }
+
+  main a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    color: #475569;
+    font-size: 9pt;
+    overflow-wrap: anywhere;
+  }
+
+  .print-break-before {
+    break-before: page;
+  }
+
+  .print-avoid-break {
+    break-inside: avoid;
   }
 
   * {

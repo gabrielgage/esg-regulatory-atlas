@@ -11,6 +11,27 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.69 - May 2026",
+    date: "2026-05-26",
+    label: "Print output polish",
+    summary:
+      "Improved printed and shared output reliability by making the global print header inherit live dataset metadata instead of a hardcoded edition string.",
+    added: [
+      "Dynamic print header sourced from dataset metadata",
+      "A4 print margin and page-break helper styles",
+      "Guardrail coverage to prevent stale hardcoded print editions"
+    ],
+    updated: [
+      "Global print stylesheet",
+      "Root layout print metadata",
+      "Print button accessibility and print hiding",
+      "Issue-resolution workflow notes"
+    ],
+    records: ["Printable briefs", "Premium pack previews", "Client-ready output", "Release metadata"],
+    caveat:
+      "Print output remains static seed regulatory intelligence for orientation and planning. It is not legal advice, official source verification or a definitive compliance document."
+  },
+  {
     edition: "0.5.68 - May 2026",
     date: "2026-05-26",
     label: "Advisory sample output",

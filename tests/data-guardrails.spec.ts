@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { premiumPacks } from "../data/premiumPacks";
 import { LEGAL_NOTICES } from "../data/legalNotices";
+import { primaryNavItems, routeByHref, routeRegistry, secondaryNavGroups } from "../data/routeRegistry";
 import { regulations } from "../data/seed";
 import { thresholdMatrixRows } from "../data/thresholdMatrix";
 import { premiumUseGateFor } from "../lib/premiumUseGates";
@@ -69,6 +70,63 @@ test("shared legal notices preserve core caveats for reused surfaces", () => {
   expect(LEGAL_NOTICES.copyOutput.toLowerCase()).toContain("validate primary sources");
   expect(LEGAL_NOTICES.manualRequest.toLowerCase()).toContain("do not create a paid account");
   expect(LEGAL_NOTICES.commercialPreview.toLowerCase()).toContain("static validation surfaces");
+});
+
+test("route registry classifies public navigation and internal surfaces", () => {
+  const duplicateRoutes = routeRegistry
+    .map((route) => route.href)
+    .filter((href, index, all) => all.indexOf(href) !== index);
+  expect(duplicateRoutes).toEqual([]);
+
+  expect(primaryNavItems.map((route) => route.href)).toEqual(["/", "/assessment", "/markets", "/regulations", "/advisory"]);
+
+  const visibleNavigationRoutes = [
+    ...primaryNavItems.map((route) => route.href),
+    ...secondaryNavGroups.flatMap((group) => group.items.map((route) => route.href))
+  ];
+  expect(visibleNavigationRoutes).not.toContain("/launch");
+  expect(visibleNavigationRoutes).toContain("/plans");
+  expect(visibleNavigationRoutes).toContain("/data-quality");
+
+  expect(routeByHref("/launch")).toMatchObject({
+    placement: "internal",
+    visibility: "internal",
+    robots: "noindex"
+  });
+
+  expect(routeByHref("/regulations/[slug]")).toMatchObject({
+    placement: "contextual",
+    visibility: "template",
+    template: true
+  });
+});
+
+test("static app routes have route registry entries", () => {
+  const staticRoutes = [
+    "/",
+    "/about",
+    "/advisory",
+    "/alerts",
+    "/assessment",
+    "/briefing",
+    "/changelog",
+    "/compare",
+    "/data-quality",
+    "/glossary",
+    "/launch",
+    "/markets",
+    "/methodology",
+    "/plans",
+    "/premium-roadmap",
+    "/regulations",
+    "/sectors",
+    "/thresholds",
+    "/timeline",
+    "/value-chain"
+  ];
+
+  const missing = staticRoutes.filter((href) => !routeByHref(href));
+  expect(missing).toEqual([]);
 });
 
 test("threshold matrix rows map to sourced regulation records and preserve caveats", () => {

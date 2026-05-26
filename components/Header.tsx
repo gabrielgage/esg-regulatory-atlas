@@ -3,64 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ShieldCheck } from "lucide-react";
+import { primaryNavItems, routeLabel, secondaryNavGroups } from "@/data/routeRegistry";
 import { cn } from "@/lib/utils";
-import type { LanguageCode, TranslationKey } from "@/lib/i18n";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "./LanguageProvider";
 import { ThemeToggle } from "./ThemeToggle";
 
-const primaryNavItems = [
-  { href: "/", labelKey: "nav.map" },
-  { href: "/assessment", labelKey: "nav.assessment" },
-  { href: "/markets", labelKey: "nav.markets" },
-  { href: "/regulations", labelKey: "nav.regulations" },
-  { href: "/advisory", labelKey: "nav.advisory" }
-] satisfies Array<{ href: string; labelKey: TranslationKey }>;
-
-const secondaryNavGroups = [
-  {
-    labels: { en: "Planning views", es: "Vistas de planificación", nl: "Planningsweergaven", fr: "Vues de planification", de: "Planungsansichten", pt: "Visões de planejamento" },
-    items: [
-      { href: "/sectors", labelKey: "nav.sectors" },
-      { href: "/timeline", labelKey: "nav.timeline" },
-      { href: "/briefing", labelKey: "nav.briefing" },
-      { href: "/value-chain", labels: { en: "Value chain", es: "Cadena de valor", nl: "Waardeketen", fr: "Chaîne de valeur", de: "Wertschöpfung", pt: "Cadeia de valor" } },
-      { href: "/thresholds", labels: { en: "Thresholds", es: "Umbrales", nl: "Drempels", fr: "Seuils", de: "Schwellen", pt: "Limiares" } }
-    ]
-  },
-  {
-    labels: { en: "Trust and methodology", es: "Confianza y metodología", nl: "Vertrouwen en methodologie", fr: "Confiance et méthodologie", de: "Vertrauen und Methodik", pt: "Confiança e metodologia" },
-    items: [
-      { href: "/methodology", labels: { en: "Methodology", es: "Metodología", nl: "Methodologie", fr: "Méthodologie", de: "Methodik", pt: "Metodologia" } },
-      { href: "/data-quality", labelKey: "nav.dataQuality" },
-      { href: "/glossary", labels: { en: "Glossary", es: "Glosario", nl: "Woordenlijst", fr: "Glossaire", de: "Glossar", pt: "Glossário" } },
-      { href: "/changelog", labels: { en: "Changelog", es: "Cambios", nl: "Wijzigingslog", fr: "Journal des changements", de: "Änderungsprotokoll", pt: "Registro de alterações" } }
-    ]
-  },
-  {
-    labels: { en: "Commercial previews", es: "Vistas comerciales", nl: "Commerciële previews", fr: "Aperçus commerciaux", de: "Kommerzielle Vorschauen", pt: "Prévias comerciais" },
-    items: [
-      { href: "/plans", labelKey: "nav.plans" },
-      { href: "/alerts", labelKey: "nav.alerts" },
-      { href: "/premium-roadmap", labels: { en: "Premium roadmap", es: "Hoja de ruta premium", nl: "Premium roadmap", fr: "Feuille de route premium", de: "Premium-Roadmap", pt: "Roadmap premium" } },
-      { href: "/about", labels: { en: "About Etica ESG", es: "Acerca de Etica ESG", nl: "Over Etica ESG", fr: "À propos d'Etica ESG", de: "Über Etica ESG", pt: "Sobre a Etica ESG" } }
-    ]
-  }
-] satisfies Array<{
-  labels: Record<LanguageCode, string>;
-  items: Array<{ href: string; labelKey?: TranslationKey; labels?: Record<LanguageCode, string> }>;
-}>;
-
 function isActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
-}
-
-function localizedLabel(labels: Record<LanguageCode, string>, language: LanguageCode) {
-  return labels[language] || labels.en;
-}
-
-function secondaryLabel(item: (typeof secondaryNavGroups)[number]["items"][number], language: LanguageCode, t: (key: TranslationKey) => string) {
-  return item.labelKey ? t(item.labelKey) : item.labels?.[language] || item.labels?.en || "Glossary";
 }
 
 export function Header() {
@@ -92,7 +42,7 @@ export function Header() {
                   active && "bg-white text-ink shadow-sm dark:bg-slate-800 dark:text-white"
                 )}
               >
-                {t(item.labelKey)}
+                {routeLabel(item, language, t)}
               </Link>
             );
           })}
@@ -109,7 +59,7 @@ export function Header() {
               {secondaryNavGroups.map((group) => (
                 <div key={group.labels.en} className="border-b border-slate-100 py-2 last:border-b-0 dark:border-slate-800">
                   <div className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                    {localizedLabel(group.labels, language)}
+                    {group.labels[language] || group.labels.en}
                   </div>
                   {group.items.map((item) => {
                     const active = isActive(pathname, item.href);
@@ -122,7 +72,7 @@ export function Header() {
                           active && "bg-slate-100 text-ink dark:bg-slate-800 dark:text-white"
                         )}
                       >
-                        {secondaryLabel(item, language, t)}
+                        {routeLabel(item, language, t)}
                       </Link>
                     );
                   })}

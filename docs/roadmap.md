@@ -64,6 +64,7 @@ Current capability areas:
 - Shared legal-notice source and component for recurring banner, footer, copy-output, manual-request and commercial-preview caveats
 - `/launch` internal launch-resource workspace with copyable LinkedIn, email, direct-outreach, advisory and premium-preview assets
 - Grouped primary and secondary navigation so Start, Assessment, Markets, Regulations and Advisory stay prominent while planning, trust and commercial-preview routes remain one click away; `/launch` is kept as a noindex operator route, not public navigation
+- Route metadata registry for public, internal, contextual and dynamic route governance
 - Homepage Start Here panel for assessment, market/regulation exploration and advisory scan entry paths
 - Concrete premium market-pack previews in `/premium-roadmap`
 - Premium pack preview source-review gates for illustrative-only, review-before-use and orientation-ready records
@@ -91,6 +92,14 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AW Items
+
+- Updated dataset metadata and changelog to `0.5.67 - May 2026`.
+- Added `data/routeRegistry.ts` to classify routes by placement, visibility, robots, group and user decision.
+- Updated `components/Header.tsx` so primary and More navigation are generated from the registry.
+- Added data guardrails so static routes have registry entries, `/launch` remains internal/noindex and dynamic templates remain contextual.
+- Kept the route change as navigation governance only; no regulatory content, infrastructure, payments, auth, database or monitoring behavior changed.
 
 ## Recently Delivered Phase 1AV Items
 

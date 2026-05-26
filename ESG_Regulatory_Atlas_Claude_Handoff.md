@@ -2,7 +2,19 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1AV shared legal-notice pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass, Phase 1AK CI Node 24 readiness pass, Phase 1AL GitHub Actions Node 24 action-upgrade pass, Phase 1AM market-obligation-footprint pass, Phase 1AN public-journey-simplification pass, Phase 1AO assessment-shortlist-overview pass, Phase 1AP regulations-search-first-layout pass, Phase 1AQ reusable-advisory-scan-CTA pass, Phase 1AR sector-finder simplification pass, Phase 1AS interface-language clarity pass, Phase 1AT value-chain lane simplification pass and Phase 1AU plans-page simplification pass. The goal remains deployability and legal caution, with added emphasis on reducing public cognitive load before adding more features.
+The app is now in a static Phase 1AW route-metadata classification pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass, Phase 1AK CI Node 24 readiness pass, Phase 1AL GitHub Actions Node 24 action-upgrade pass, Phase 1AM market-obligation-footprint pass, Phase 1AN public-journey-simplification pass, Phase 1AO assessment-shortlist-overview pass, Phase 1AP regulations-search-first-layout pass, Phase 1AQ reusable-advisory-scan-CTA pass, Phase 1AR sector-finder simplification pass, Phase 1AS interface-language clarity pass, Phase 1AT value-chain lane simplification pass, Phase 1AU plans-page simplification pass and Phase 1AV shared legal-notice pass. The goal remains deployability and legal caution, with added emphasis on reducing public cognitive load before adding more features.
+
+## Phase 1AW Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.67 - May 2026`.
+- Added `data/routeRegistry.ts` to classify each route by placement, visibility, robots, navigation group, template status and user decision.
+- Updated `components/Header.tsx` so primary navigation and the More menu are generated from the route registry.
+- Added data guardrail tests for static route coverage, internal/noindex launch routing and contextual dynamic templates.
+- Updated agent, roadmap, release and Notion context so future routes are classified before being linked.
+
+## Phase 1AW Product Rationale
+
+The simplification roadmap called out route metadata classification because the Atlas had accumulated many useful surfaces, and manual header edits made it too easy for future pages to crowd the public journey. Phase 1AW gives the product a simple route-governance layer: Start, Assessment, Markets, Regulations and Advisory remain primary; planning, trust and commercial previews remain grouped; dynamic details stay contextual; `/launch` stays internal/noindex.
 
 ## Phase 1AV Changes Delivered
 
@@ -759,6 +771,11 @@ The deep review identified three credibility risks: the map claimed country fill
 
 ## Validation
 
+- Phase 1AW validation: `npm run lint` passed locally.
+- Phase 1AW validation: `npm run check:data` passed locally.
+- Phase 1AW validation: `npm run build` passed locally with the webpack build path and generated 389 static pages.
+- Phase 1AW validation: `git diff --check` passed.
+- Phase 1AW out-of-scope scan found only guardrail/documentation/caveat mentions of Stripe, Supabase, Mapbox, checkout, billing, webhooks, scraping, cron and related future infrastructure; no implementation code or dependencies were added.
 - Phase 1AV validation: `npm run lint` passed locally.
 - Phase 1AV validation: `npm run check:data` passed locally.
 - Phase 1AV validation: `npm run build` passed locally with the webpack build path and generated 389 static pages.

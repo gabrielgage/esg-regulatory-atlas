@@ -761,3 +761,20 @@ Launch Tasks:
 QA finding:
 
 - Recurring caveats should come from one shared source whenever possible. New routes may still need route-specific caveats, but they should not dilute the core boundaries: no legal advice, no definitive applicability, validate sources, no live accounts/payments/automated alerts unless explicitly implemented.
+
+## 2026-05-26 Codex Update - Route Metadata Classification
+
+Launch Command Center note:
+
+> Phase 1AW adds route metadata classification. Public navigation, More menu grouping, internal/noindex surfaces, contextual pages and dynamic templates now have one route registry so the Atlas can keep simplifying without losing governance over what appears in the header.
+
+Launch Tasks:
+
+- LAUNCH-149 - Add route registry with placement, visibility, robots and user-decision metadata
+- LAUNCH-150 - Source Header primary navigation and More menu from the route registry
+- LAUNCH-151 - Add guardrails for static route coverage, internal launch route and dynamic templates
+- LAUNCH-152 - Update release context, roadmap and agent workflow notes for route governance
+
+QA finding:
+
+- New pages should not be added directly to the header or linked ad hoc. Add routes to `data/routeRegistry.ts`, classify whether they are primary, More, contextual or internal, and keep `/launch` noindex and out of public navigation.

@@ -778,3 +778,20 @@ Launch Tasks:
 QA finding:
 
 - New pages should not be added directly to the header or linked ad hoc. Add routes to `data/routeRegistry.ts`, classify whether they are primary, More, contextual or internal, and keep `/launch` noindex and out of public navigation.
+
+## 2026-05-26 Codex Update - Advisory Sample Output
+
+Launch Command Center note:
+
+> Phase 1AX makes the Advisory Atlas offer more concrete. `/advisory` now includes a copyable supplier/exporter exposure scan sample that shows priority records, facts to confirm, evidence package, first 30-day actions, source-review notes and caveats without adding accounts, payments, automation or legal-advice functionality.
+
+Launch Tasks:
+
+- LAUNCH-153 - Add structured advisory sample-output data
+- LAUNCH-154 - Add copyable advisory sample scan component
+- LAUNCH-155 - Add supplier/exporter sample exposure scan to `/advisory`
+- LAUNCH-156 - Add smoke coverage and update release context for advisory sample-output governance
+
+QA finding:
+
+- Advisory proof points should be concrete but not infrastructure-heavy. Keep sample outputs static, copyable and caveated; do not imply legal advice, source verification, automated delivery, subscriptions or definitive applicability.

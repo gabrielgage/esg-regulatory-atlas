@@ -8,10 +8,11 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.67 - May 2026`.
+The current public release context is `0.5.68 - May 2026`.
 
 Latest release-context update:
 
+- adds a copyable advisory sample exposure scan on `/advisory`
 - adds route metadata classification so public, internal, contextual and dynamic routes have one governed source
 - adds shared legal notices for recurring banner, footer, copy-output and manual-request caveats
 - preserves the simplified plans page from `0.5.65`
@@ -72,6 +73,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - Marquee 10 source-review packet for premium-use blockers, priority sources, threshold facts and owner actions
 - simplified plans page for Free Atlas, advisory scan and secondary premium/enterprise validation paths
 - commercial preview pages for alerts, advisory, internal launch assets and premium roadmap
+- advisory page sample output showing priority records, facts to confirm, evidence package and first actions
 - manual request guidance on commercial and advisory routes with mailto-only conversion paths
 - reusable advisory-scan CTA used by market, assessment and regulation-detail surfaces
 - shared legal-notice component and canonical notice text for recurring caveats
@@ -150,6 +152,7 @@ Core static data lives in `data/`:
 - `coverageTargets.ts`, `contentReview.ts`
 - `glossary.ts`, `glossaryGuides.ts`
 - `commercialOffers.ts`, `alertDigests.ts`, `premiumPacks.ts`, `launchAssets.ts`, `conversionTracking.ts`
+- `advisorySampleOutputs.ts`
 - `legalNotices.ts`
 - `routeRegistry.ts`
 - `dailyUpdates.ts`

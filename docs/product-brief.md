@@ -108,6 +108,7 @@ The MVP includes:
 - `/plans` current-path page that makes Free Atlas and Advisory Atlas primary while keeping Premium Intelligence and Enterprise/API Future secondary
 - `/alerts` static premium digest and watchlist preview
 - `/advisory` manual service page for exposure scans, watchlists, portfolio/supplier maps and briefing packs
+- Copyable advisory sample exposure scan showing priority records, facts to confirm, evidence package and first actions
 - Grouped navigation that keeps core discovery routes prominent while placing timeline, briefing, data-quality, alert and advisory routes in a More menu; launch-support assets remain an operator route rather than public navigation
 - Homepage Start Here panel that routes new users to assessment, markets or regulation search before advanced controls
 - Scenario selector on `/briefing` that keeps priority records, evidence prompts and copied summaries tied to a selected planning question
@@ -132,6 +133,7 @@ The MVP includes:
 - Reusable commercial CTA surfaces
 - Shared legal-notice source and component for recurring caveats
 - Shared route registry for navigation placement, public/internal visibility and dynamic route templates
+- Structured advisory sample-output data and component
 - Source quality indicators
 - Advisory opportunity and business impact views
 - Visible legal and data-quality disclaimers

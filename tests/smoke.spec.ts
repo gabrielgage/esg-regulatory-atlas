@@ -324,6 +324,17 @@ test("commercial routes explain manual request paths", async ({ page }) => {
   }
 });
 
+test("advisory page exposes a copyable sample scan", async ({ page }) => {
+  await page.goto("/advisory");
+
+  await expect(page.getByTestId("advisory-sample-output")).toContainText(/Sample regulatory exposure scan/i);
+  await expect(page.getByTestId("advisory-sample-output")).toContainText(/EU-facing supplier and exporter planning scan/i);
+  await expect(page.getByTestId("advisory-sample-output")).toContainText(/Facts to confirm/i);
+  await expect(page.getByTestId("advisory-sample-output")).toContainText(/Evidence package/i);
+  await expect(page.getByTestId("advisory-sample-output")).toContainText(/Source to verify/i);
+  await expect(page.getByRole("button", { name: /Copy sample scan/i })).toBeVisible();
+});
+
 test("plans page prioritizes current live paths", async ({ page }) => {
   await page.goto("/plans");
 

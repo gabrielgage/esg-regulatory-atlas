@@ -48,6 +48,8 @@ Remaining high-priority simplification items:
   Status: advisory scan CTA advanced in `0.5.61 - May 2026` with a shared manual mailto component across market, assessment and regulation-detail surfaces. Shared disclaimer layers advanced in `0.5.66 - May 2026` with `LEGAL_NOTICES` and `LegalNotice` for recurring banner, footer, copied-output and manual-request caveats.
 - Add route metadata classification so public navigation, internal workspaces, contextual detail pages and dynamic templates remain governed as the product grows.
   Status: advanced in `0.5.67 - May 2026` with `data/routeRegistry.ts`, header navigation sourced from the registry and guardrail tests for internal/noindex and template routes.
+- Add static advisory sample outputs that show what Etica can manually return without adding product infrastructure or crowding the homepage.
+  Status: advanced in `0.5.68 - May 2026` with a copyable supplier/exporter exposure scan on `/advisory`, including priority records, facts to confirm, evidence package, first 30-day actions and source-review caveats.
 
 ## 2026-05-20 Expert Review Intake
 
@@ -173,9 +175,9 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add static weekly/monthly digest samples, watchlist options, source-quality legend and request-access CTA without email backend.
 
 39. **Advisory service surface**
-    Status: partially delivered in `0.5.6 - May 2026`.
+    Status: partially delivered in `0.5.6 - May 2026` and strengthened in `0.5.68 - May 2026`.
     Revenue relevance: Advisory.
-    Add `/advisory` with exposure scans, custom watchlists, portfolio/supplier maps, board/client briefings and market-pack support.
+    Add `/advisory` with exposure scans, custom watchlists, portfolio/supplier maps, board/client briefings and market-pack support. The page now includes a concrete copyable sample scan; future work can add additional persona-specific samples if demand validates them.
 
 40. **Premium market-pack previews**
     Status: partially delivered in `0.5.6 - May 2026` and expanded with individual sample pages in `0.5.7 - May 2026`.

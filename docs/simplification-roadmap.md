@@ -47,7 +47,7 @@ Status: implemented in `0.5.58 - May 2026`.
 |---|---|---|
 | P2 | Shared disclaimer component family | Advanced in `0.5.66`: `LEGAL_NOTICES` and `LegalNotice` now support recurring banner, footer, copy-output and manual-request caveats. |
 | P2 | Route metadata classification | Advanced in `0.5.67`: `data/routeRegistry.ts` now classifies public, internal, contextual and dynamic routes and feeds the header navigation. |
-| P2 | Static advisory sample outputs | Strong commercial proof, but should not crowd the core homepage before the journey is calmer. |
+| P2 | Static advisory sample outputs | Advanced in `0.5.68`: `/advisory` now includes a copyable sample supplier/exporter exposure scan with caveats, source-review notes and first actions. |
 | P2 | Print CSS improvements across briefs | Valuable for sharing, but current urgent trust issue was edition consistency. |
 | P2 | Glossary term linking | Good comprehension feature, lower priority than reducing initial cognitive load. |
 | P2 | High-impact source review sprint | Requires official/regulator source research and should be handled as a content-governance sprint. |
@@ -77,3 +77,4 @@ If a user-facing concept appears to require infrastructure, keep it as a static/
 - `/plans` should stay current-path first: Free Atlas and advisory scan are visible primary choices; premium, enterprise and validation mechanics should remain secondary until infrastructure is explicitly approved.
 - Recurring disclaimer and caveat blocks should use `data/legalNotices.ts` and `components/LegalNotice.tsx` unless a route needs genuinely specific wording.
 - New routes should be added to `data/routeRegistry.ts` with placement, visibility, robots and user-decision metadata before they are linked from navigation.
+- Advisory sample outputs belong on `/advisory`, premium pack pages or route-specific CTAs, not the homepage, unless they directly help the user choose a next step.

@@ -102,6 +102,8 @@ For regulatory data changes, run `npm run check:data` before build. It checks mi
 
 The local Codex sandbox may not have `npm` or Playwright browser binaries available. In that case, run TypeScript and production build with the bundled Node runtime, then rely on GitHub Actions/Vercel for browser and Lighthouse validation after pushing.
 
+Playwright starts the production server on `127.0.0.1` explicitly. Keep that localhost binding unless a checked CI failure proves it needs to change; some Codex sandboxes reject wildcard `0.0.0.0` binding with `listen EPERM` before tests can navigate.
+
 Run `next build` and standalone `tsc --noEmit` sequentially, not in parallel. Next.js regenerates `.next/types` during production builds; a simultaneous TypeScript process can briefly see missing generated route files and report false `TS6053` errors.
 
 ## Documentation Update Rule
@@ -197,6 +199,7 @@ Known lesson from PR #11:
 - Persona preset changes should update `data/personaPresets.ts`, preserve `?persona=` URL behavior on `/regulations`, and clear the active role lens when a user manually changes filters.
 - Regulations page changes should keep search and primary filters above the result table. Role lenses, compare, glossary help, share and export controls should remain secondary unless a future user test justifies moving them back above results.
 - Advisory scan CTA changes should use `components/AdvisoryScanCTA.tsx` or a thin wrapper around it so manual request copy, mailto behavior and legal caveats stay consistent.
+- Advisory sample-output changes should use `data/advisorySampleOutputs.ts` and keep copied sample text caveated as static orientation, not legal advice, source verification or automated delivery.
 - Recurring legal caveats should use `data/legalNotices.ts` and `components/LegalNotice.tsx` so new routes do not drift away from the shared no-legal-advice, source-validation and no-live-infrastructure wording.
 - Route and navigation changes should update `data/routeRegistry.ts` first. Keep public discovery routes, contextual detail routes, internal/noindex routes and dynamic templates explicitly classified.
 - Pull requests should include a Vercel preview link and note whether the Map, Regulations, language toggle and detail route were checked.

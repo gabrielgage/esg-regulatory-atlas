@@ -17,6 +17,34 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-05-26 - Local Browser Smoke Server Bound To Blocked Host
+
+Status: resolved in PR #84.
+
+### Symptom
+
+`npm run test:e2e` failed before any browser navigation during the advisory sample-output validation pass. The Playwright web server tried to start the production Next.js server, but Next attempted to listen on `0.0.0.0:3000` and the local Codex sandbox returned `listen EPERM`.
+
+### Root Cause
+
+The smoke-test configuration used `npm run start` without an explicit host. That is acceptable in GitHub Actions and Vercel-style environments, but this local sandbox can block wildcard host binding even when `127.0.0.1:3000` is allowed.
+
+### Resolution
+
+Changed the Playwright web server command to start Next.js on `127.0.0.1` explicitly with `npm run start -- -H 127.0.0.1`. This preserves the same built-app browser smoke coverage while making local validation match the configured Playwright base URL.
+
+After the host fix, the local run progressed to browser launch and then stopped on the already-documented missing local Chromium binary. That is a separate local environment limitation; GitHub Actions remains the authoritative browser-smoke signal when the local Playwright cache is unavailable.
+
+### Prevention Rule
+
+When local Playwright fails before navigation with `listen EPERM 0.0.0.0:3000`, fix the smoke-test server host binding rather than weakening product assertions or skipping the browser suite.
+
+### Files Changed
+
+- `playwright.config.ts`
+- `docs/development-workflow.md`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-22 - GitHub Actions Warned About Node 20 Action Runtime Deprecation
 
 Status: resolved in PR #72 after the first compatibility opt-in landed in PR #71.

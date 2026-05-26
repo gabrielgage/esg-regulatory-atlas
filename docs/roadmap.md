@@ -60,6 +60,7 @@ Current capability areas:
 - `/plans` current-path page for Free Atlas and Advisory Atlas, with Premium Intelligence previews and Enterprise/API Future kept secondary
 - `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
+- Copyable advisory sample output for a supplier/exporter exposure scan
 - Shared advisory-scan CTA for market, assessment and regulation-detail surfaces, preserving mailto-only manual request paths
 - Shared legal-notice source and component for recurring banner, footer, copy-output, manual-request and commercial-preview caveats
 - `/launch` internal launch-resource workspace with copyable LinkedIn, email, direct-outreach, advisory and premium-preview assets
@@ -92,6 +93,15 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered Phase 1AX Items
+
+- Updated dataset metadata and changelog to `0.5.68 - May 2026`.
+- Added `data/advisorySampleOutputs.ts` with a structured sample exposure scan.
+- Added `components/AdvisorySampleOutput.tsx` and placed a copyable sample scan on `/advisory`.
+- The sample shows priority records, facts to confirm, evidence package, first 30-day actions, source-review notes and caveats.
+- Improved dark-mode styling across the advisory proof point and service cards.
+- Kept advisory samples static and manual. No accounts, payments, automated delivery, source verification or legal-advice functionality was added.
 
 ## Recently Delivered Phase 1AW Items
 

@@ -11,6 +11,28 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.68 - May 2026",
+    date: "2026-05-26",
+    label: "Advisory sample output",
+    summary:
+      "Added a concrete sample advisory exposure scan to the advisory page so users can see the type of source-linked, caveated output Etica can prepare without adding product infrastructure.",
+    added: [
+      "Structured advisory sample output data",
+      "Copyable sample scan component",
+      "Supplier/exporter exposure scan example with priority records, facts to confirm, evidence package and first actions",
+      "Smoke coverage for the advisory sample output"
+    ],
+    updated: [
+      "Advisory page proof point",
+      "Advisory page dark-mode styling",
+      "Release context documentation",
+      "Simplification roadmap status"
+    ],
+    records: ["Advisory Atlas", "Exposure scan", "Supplier/exporter sample", "Manual request path"],
+    caveat:
+      "The sample advisory output is static orientation material. It does not add accounts, payments, automated delivery, legal advice, source verification or definitive applicability determinations."
+  },
+  {
     edition: "0.5.67 - May 2026",
     date: "2026-05-26",
     label: "Route metadata classification",

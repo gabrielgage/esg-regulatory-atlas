@@ -147,6 +147,7 @@ Current advisory CTA convention:
 - Keep `components/MarketBriefingCTA.tsx` as a wrapper for market, sector, value-chain, briefing and jurisdiction pages that need market-scan wording.
 - Do not create new one-off mailto CTAs for advisory scans unless the route genuinely needs a separate commercial motion.
 - Advisory CTAs must remain mailto-only and caveated as source-linked planning outputs, not legal opinions, official source verification, automated delivery or applicability determinations.
+- Advisory sample outputs should use `data/advisorySampleOutputs.ts` and `components/AdvisorySampleOutput.tsx` so examples stay structured, copyable and caveated. Keep these samples on advisory, premium or route-specific pages rather than adding more homepage panels.
 
 Current legal-notice convention:
 

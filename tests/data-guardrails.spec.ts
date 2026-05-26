@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { advisorySampleOutputs } from "../data/advisorySampleOutputs";
 import { premiumPacks } from "../data/premiumPacks";
 import { LEGAL_NOTICES } from "../data/legalNotices";
 import { primaryNavItems, routeByHref, routeRegistry, secondaryNavGroups } from "../data/routeRegistry";
@@ -127,6 +128,21 @@ test("static app routes have route registry entries", () => {
 
   const missing = staticRoutes.filter((href) => !routeByHref(href));
   expect(missing).toEqual([]);
+});
+
+test("advisory sample outputs stay caveated and decision-oriented", () => {
+  const failures = advisorySampleOutputs.filter((sample) => {
+    const hasDecisionShape =
+      sample.priorityRecords.length >= 3 &&
+      sample.factsToConfirm.length >= 3 &&
+      sample.evidencePackage.length >= 3 &&
+      sample.firstActions.length >= 3 &&
+      sample.sourceReviewNotes.length >= 2;
+    const hasCaveat = /not a legal opinion|not legal advice|definitive applicability/i.test(sample.caveat);
+    return !hasDecisionShape || !hasCaveat;
+  });
+
+  expect(failures.map((sample) => sample.id)).toEqual([]);
 });
 
 test("threshold matrix rows map to sourced regulation records and preserve caveats", () => {

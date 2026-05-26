@@ -727,3 +727,20 @@ Launch Tasks:
 QA finding:
 
 - Value-chain pages should start from a business exposure question, not a raw taxonomy tag. Keep lane outputs as evidence-planning orientation and do not present them as complete value-chain legal coverage, source verification or entity-specific applicability determinations.
+
+## 2026-05-25 Codex Update - Plans Page Simplification
+
+Launch Command Center note:
+
+> Phase 1AU simplifies `/plans` so users see two current paths first: use the free Atlas or request a manual advisory-supported scan. Premium Intelligence and Enterprise/API Future remain visible as validation paths, not live SaaS promises.
+
+Launch Tasks:
+
+- LAUNCH-141 - Rework Plans page around Free Atlas and Advisory Atlas as the primary current paths
+- LAUNCH-142 - Move Premium Intelligence and Enterprise/API Future into secondary validation cards
+- LAUNCH-143 - Collapse full path comparison by default and remove first-load manual-validation card grid
+- LAUNCH-144 - Update release context, roadmap and QA notes for commercial path hierarchy
+
+QA finding:
+
+- Commercial pages should not make static validation mechanics feel equal to live user choices. Keep `/plans` current-path first and preserve no-checkout, no-billing, no-account and no-automated-alert caveats.

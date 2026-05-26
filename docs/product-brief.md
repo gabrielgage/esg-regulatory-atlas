@@ -14,9 +14,9 @@ The MVP is designed to help teams move from regulatory fragmentation to an initi
 
 The May 2026 commercial frame is:
 
-- Free Atlas: public trust surface and acquisition layer.
-- Premium Intelligence: static previews for alerts, watchlists and market packs before billing or accounts.
+- Free Atlas: public trust surface and the first recommended path for orientation.
 - Advisory Atlas: near-term manual monetization path through exposure scans, custom watchlists, portfolio/supplier maps and briefings.
+- Premium Intelligence: static previews for alerts, watchlists and market packs before billing or accounts.
 - Enterprise/API Future: later design-partner concept only.
 
 ## Primary Users
@@ -105,7 +105,7 @@ The MVP includes:
 - Expanded EU financial-services, APAC/ISSB, South Africa and voluntary framework coverage
 - Static market briefing CTA and premium roadmap page for future market packs, sector packs and portfolio scans without gating or payments
 - Shared advisory-scan CTA across market, assessment and regulation-detail surfaces
-- `/plans` commercial architecture page
+- `/plans` current-path page that makes Free Atlas and Advisory Atlas primary while keeping Premium Intelligence and Enterprise/API Future secondary
 - `/alerts` static premium digest and watchlist preview
 - `/advisory` manual service page for exposure scans, watchlists, portfolio/supplier maps and briefing packs
 - Grouped navigation that keeps core discovery routes prominent while placing timeline, briefing, data-quality, alert and advisory routes in a More menu; launch-support assets remain an operator route rather than public navigation

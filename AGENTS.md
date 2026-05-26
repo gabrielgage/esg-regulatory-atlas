@@ -203,7 +203,7 @@ Current important routes:
 - `/about`: product, author and trend context
 - `/premium-roadmap`: static future commercial roadmap with no gating, Stripe, auth or database
 - `/premium-packs/[id]`: static premium pack sample scopes with no gating, billing or account system
-- `/plans`: static Free Atlas / Premium Intelligence / Advisory Atlas / Enterprise Future comparison
+- `/plans`: static current-path page that prioritizes Free Atlas and Advisory Atlas, with Premium Intelligence and Enterprise/API Future secondary
 - `/alerts`: static premium alert and watchlist preview with no email backend
 - `/advisory`: static advisory service surface for manual scans and briefings
 - `/launch`: static launch-resource workspace for caveated outreach copy

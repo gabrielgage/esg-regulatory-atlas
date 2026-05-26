@@ -14,9 +14,9 @@ Non-negotiable boundaries still apply: no Stripe, Supabase, authentication, paid
 
 The deep research assessment adds a commercialization overlay to the backlog:
 
-- Free Atlas remains the public trust surface.
-- Premium Intelligence is validated through static alerts, watchlists and market-pack previews.
+- Free Atlas remains the public trust surface and the first path for orientation.
 - Advisory Atlas is the near-term revenue path through exposure scans, custom watchlists, portfolio/supplier maps and client-ready briefings.
+- Premium Intelligence is validated through static alerts, watchlists and market-pack previews.
 - Enterprise/API remains future-state until source governance, demand and infrastructure needs are validated.
 
 ## Review Summary
@@ -161,9 +161,9 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Build richer `/jurisdiction/[code]` pages with local regulatory drivers, source confidence, first reporting years, priority sectors, watch items, trigger-level facts to confirm and obligation-level owner/evidence prompts.
 
 37. **Commercial offer architecture**
-    Status: partially delivered in `0.5.6 - May 2026`.
+    Status: partially delivered in `0.5.6 - May 2026` and simplified in `0.5.65 - May 2026`.
     Revenue relevance: Lead-gen, premium alerts, market packs and advisory.
-    Add `/plans`, commercial comparison, reusable CTAs and static commercial data so visitors understand Free Atlas, Premium Intelligence, Advisory Atlas and Enterprise/API Future.
+    Add `/plans`, commercial comparison, reusable CTAs and static commercial data so visitors understand Free Atlas, Premium Intelligence, Advisory Atlas and Enterprise/API Future. Current page hierarchy should keep Free Atlas and Advisory Atlas primary while premium and enterprise remain secondary validation paths.
 
 38. **Premium alerts preview**
     Status: partially delivered in `0.5.6 - May 2026`.

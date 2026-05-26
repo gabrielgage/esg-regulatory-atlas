@@ -11,6 +11,29 @@ export type ChangelogEntry = {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.65 - May 2026",
+    date: "2026-05-25",
+    label: "Plans page simplification",
+    summary:
+      "Reworked the plans page so the current live choice is obvious: use the free Atlas for orientation or request a manual advisory-supported scan for source-linked planning help.",
+    added: [
+      "Two primary current-path cards for Free Atlas and Advisory Atlas",
+      "Secondary premium and enterprise validation cards",
+      "Collapsed comparison table to reduce first-load visual density",
+      "Clearer no-live-SaaS caveats for premium and enterprise paths"
+    ],
+    updated: [
+      "Plans page hierarchy",
+      "Commercial-path copy",
+      "Dark-mode card styling",
+      "Release context documentation",
+      "Simplification roadmap status"
+    ],
+    records: ["Plans", "Free Atlas", "Advisory Atlas", "Premium previews", "Enterprise future"],
+    caveat:
+      "The plans page remains a static commercial validation surface. It does not add checkout, billing, accounts, gated content, automated alerts, legal advice or definitive applicability determinations."
+  },
+  {
     edition: "0.5.64 - May 2026",
     date: "2026-05-25",
     label: "Value-chain lane simplification",

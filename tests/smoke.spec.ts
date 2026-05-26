@@ -324,6 +324,17 @@ test("commercial routes explain manual request paths", async ({ page }) => {
   }
 });
 
+test("plans page prioritizes current live paths", async ({ page }) => {
+  await page.goto("/plans");
+
+  await expect(page.getByRole("heading", { name: /Choose the current path/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Start free, request help/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Free Atlas" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Advisory Atlas" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Premium and enterprise paths are validation surfaces/i })).toBeVisible();
+  await expect(page.getByText(/Compare all paths/i)).toBeVisible();
+});
+
 test("changelog exposes the daily launch pulse", async ({ page }) => {
   await page.goto("/changelog");
 

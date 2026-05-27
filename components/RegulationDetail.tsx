@@ -5,6 +5,7 @@ import { Badge } from "./Badge";
 import { DecisionReadinessChecklist } from "./DecisionReadinessChecklist";
 import { ImplementationRoadmap } from "./ImplementationRoadmap";
 import { RecordMetaBadges } from "./RecordMetaBadges";
+import { RegulatoryMaturityPanel } from "./RegulatoryMaturityPanel";
 import { SourceEvidencePanel } from "./SourceEvidencePanel";
 import { StatusBadge } from "./StatusBadge";
 import { readinessBand, readinessClass, readinessReasons, readinessScore } from "@/lib/scoring";
@@ -65,6 +66,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
             </p>
           </Card>
         ) : null}
+        <RegulatoryMaturityPanel regulation={regulation} compact />
         <DecisionReadinessChecklist regulation={regulation} compact />
         <ImplementationRoadmap regulation={regulation} compact />
         <SourceEvidencePanel regulation={regulation} compact />

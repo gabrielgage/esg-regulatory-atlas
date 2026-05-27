@@ -7,6 +7,7 @@ import { Badge } from "@/components/Badge";
 import { AdvisoryScanCTA } from "@/components/AdvisoryScanCTA";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
+import { RegulatoryMaturityPanel } from "@/components/RegulatoryMaturityPanel";
 import { StatusBadge } from "@/components/StatusBadge";
 import { CitationWidget } from "@/components/CitationWidget";
 import { DecisionReadinessChecklist } from "@/components/DecisionReadinessChecklist";
@@ -88,6 +89,8 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           <DecisionCard title="Evidence likely needed" body={profile.evidenceRequired.slice(0, 3).join(", ") || "Applicability assessment and source review log."} />
           <DecisionCard title="Suggested internal owners" body={regulation.affectedFunctions.slice(0, 4).join(", ") || "Assign accountable owner before reliance."} />
         </section>
+
+        <RegulatoryMaturityPanel regulation={regulation} />
 
         <DecisionReadinessChecklist regulation={regulation} allRegulations={regulations} />
         <ImplementationRoadmap regulation={regulation} allRegulations={regulations} />

@@ -2,13 +2,20 @@
 
 ## Current Edition
 
-`0.5.73 - May 2026`
+`0.5.74 - May 2026`
 
 Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Latest Release Context
 
-The latest release context captures the launch-train simplification work through the internal owner workbench. The public app metadata now reports `0.5.73 - May 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+The latest release context captures the launch-train simplification work through regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.74 - May 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+
+### 0.5.74 - Regulation Owner Handoff
+
+- Added `components/OwnerHandoffPanel.tsx` for regulation-level owner planning.
+- Added the owner handoff panel to regulation detail pages so a selected record points to likely owner lanes, evidence focus, first actions and source-review prompts.
+- Linked detail pages to `/functions` and to filtered regulation database views by business function.
+- Kept the panel framed as indicative seed intelligence, not formal legal accountability, source verification or an applicability determination.
 
 ### 0.5.73 - Internal Owner Workbench
 
@@ -41,7 +48,7 @@ The Atlas is a static, source-linked, legally cautious MVP. It includes:
 - map-centered market discovery with local Natural Earth geometry, visible country outlines, pan/zoom/reset controls and untracked-country context;
 - searchable regulation records, market profiles, sector profiles, value-chain lanes, business-function owner lanes, timeline, assessment, briefing and Data Quality surfaces;
 - source quality, data quality, confidence, caveat, review-risk and maturity indicators;
-- decision-support surfaces for threshold facts, assessment triggers, market triggers, market obligation footprints, owner-function evidence planning and regulation implementation roadmaps;
+- decision-support surfaces for threshold facts, assessment triggers, market triggers, market obligation footprints, owner-function evidence planning, regulation owner handoffs and regulation implementation roadmaps;
 - copyable and printable outputs that preserve edition metadata and legal-caution caveats;
 - public commercial validation surfaces for plans, alerts, advisory, premium roadmap and manual advisory scan requests;
 - multilingual interface chrome for English, Spanish, Dutch, French, German and Portuguese, with regulatory records still treated as source-linked seed intelligence rather than official legal translations.

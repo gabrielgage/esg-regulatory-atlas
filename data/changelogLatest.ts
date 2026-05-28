@@ -2,6 +2,27 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.75 - May 2026",
+    date: "2026-05-28",
+    label: "Regulation action memo",
+    summary:
+      "Added a copyable regulation action memo that turns a selected seed record into facts to confirm, first 30-day actions, likely evidence, owner lanes and source-to-verify prompts.",
+    added: [
+      "Reusable `RegulationActionMemo` component for decision-ready record summaries",
+      "Copyable action memo output with legal-caution caveat preserved",
+      "Facts-to-confirm and source-to-verify prompts on regulation detail pages",
+      "Smoke coverage for the action memo on CSRD"
+    ],
+    updated: [
+      "Regulation detail owner handoff flow",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "eu-taxonomy"],
+    caveat:
+      "Action memos are indicative planning aids. They do not determine legal applicability, source completeness, formal accountability, deadlines or compliance obligations for any entity."
+  },
+  {
     edition: "0.5.74 - May 2026",
     date: "2026-05-28",
     label: "Regulation owner handoff",

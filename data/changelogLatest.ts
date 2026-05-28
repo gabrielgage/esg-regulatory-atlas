@@ -18,7 +18,7 @@ export const LATEST_CHANGELOG: ChangelogEntry[] = [
       "Release metadata",
       "Current release context documentation"
     ],
-    records: ["Sustainability", "Finance", "Legal", "Procurement", "Internal audit"],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "eu-taxonomy"],
     caveat:
       "Owner workbench cards are seed-data planning aids. They do not assign formal legal accountability, determine entity-specific applicability or replace source review by legal and regulatory advisors."
   },

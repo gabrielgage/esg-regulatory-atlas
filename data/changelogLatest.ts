@@ -2,6 +2,27 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.74 - May 2026",
+    date: "2026-05-28",
+    label: "Regulation owner handoff",
+    summary:
+      "Added a regulation-detail owner handoff panel that translates a selected record into likely internal owner lanes, first actions, evidence focus and source-review prompts linked to the owner workbench.",
+    added: [
+      "Reusable `OwnerHandoffPanel` component for regulation-level owner planning",
+      "Owner workbench links from regulation detail pages",
+      "Function-filter handoff from a regulation to the searchable database",
+      "Smoke coverage for owner handoff visibility and workbench links on CSRD"
+    ],
+    updated: [
+      "Regulation detail decision context",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "eu-taxonomy"],
+    caveat:
+      "Owner handoff panels are indicative seed-data planning aids. They do not assign formal legal accountability, determine entity-specific applicability or replace source review by legal and regulatory advisors."
+  },
+  {
     edition: "0.5.73 - May 2026",
     date: "2026-05-28",
     label: "Internal owner workbench",

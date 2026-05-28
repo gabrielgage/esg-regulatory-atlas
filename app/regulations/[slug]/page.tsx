@@ -13,6 +13,7 @@ import { CitationWidget } from "@/components/CitationWidget";
 import { DecisionReadinessChecklist } from "@/components/DecisionReadinessChecklist";
 import { ImplementationRoadmap } from "@/components/ImplementationRoadmap";
 import { SourceEvidencePanel } from "@/components/SourceEvidencePanel";
+import { OwnerHandoffPanel } from "@/components/OwnerHandoffPanel";
 import { regulations } from "@/data/seed";
 import { thresholdMatrixRows } from "@/data/thresholdMatrix";
 import { profileFor } from "@/lib/applicability";
@@ -89,6 +90,8 @@ export default async function RegulationPage({ params }: { params: Promise<{ slu
           <DecisionCard title="Evidence likely needed" body={profile.evidenceRequired.slice(0, 3).join(", ") || "Applicability assessment and source review log."} />
           <DecisionCard title="Suggested internal owners" body={regulation.affectedFunctions.slice(0, 4).join(", ") || "Assign accountable owner before reliance."} />
         </section>
+
+        <OwnerHandoffPanel regulation={regulation} />
 
         <RegulatoryMaturityPanel regulation={regulation} />
 

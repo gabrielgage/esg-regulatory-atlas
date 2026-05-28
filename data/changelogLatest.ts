@@ -18,7 +18,7 @@ export const LATEST_CHANGELOG: ChangelogEntry[] = [
       "Current release metadata",
       "README and current release documentation"
     ],
-    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "csddd"],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "eu-taxonomy"],
     caveat:
       "Owner handoff panels are indicative seed-data planning aids. They do not assign formal legal accountability, determine entity-specific applicability or replace source review by legal and regulatory advisors."
   },

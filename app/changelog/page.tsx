@@ -8,6 +8,7 @@ import { Badge } from "@/components/Badge";
 import { DailyUpdatePulse } from "@/components/DailyUpdatePulse";
 import { DATASET_META } from "@/data/_meta";
 import { CHANGELOG } from "@/data/changelog";
+import { LATEST_CHANGELOG } from "@/data/changelogLatest";
 import { RECENT_CHANGELOG } from "@/data/changelogRecent";
 import { regulations } from "@/data/seed";
 
@@ -15,7 +16,7 @@ export const metadata = {
   title: "Changelog | Etica ESG"
 };
 
-const changelogEntries = [...CHANGELOG, ...RECENT_CHANGELOG];
+const changelogEntries = [...LATEST_CHANGELOG, ...CHANGELOG, ...RECENT_CHANGELOG];
 
 export default function ChangelogPage() {
   return (

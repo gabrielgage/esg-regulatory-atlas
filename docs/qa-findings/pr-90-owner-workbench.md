@@ -14,6 +14,12 @@ Users need to understand not only which ESG regulations may be relevant, but whi
 - Added owner cards with priority records, source-backed counts, review prompts, first actions, evidence focus and database handoff links.
 - Added advisory scan CTA for source-linked owner matrix requests.
 
+## QA Correction
+
+While adding the new changelog entry, the latest changelog chip data was reviewed. The `0.5.72` latest-entry chips used non-record planning labels, which would render as links to non-existent regulation detail routes. This PR changes latest changelog chip values back to real regulation IDs so the public changelog record chips remain navigable.
+
+Prevention rule: latest changelog `records` should contain regulation IDs only. Use labels in `added`, `updated`, `summary` or `caveat` fields rather than in the record-chip array.
+
 ## Legal-Safety Notes
 
 - Function cards are labelled as planning aids.

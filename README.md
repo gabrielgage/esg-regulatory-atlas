@@ -8,11 +8,13 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.70 - May 2026`.
+The current public release context is `0.5.72 - May 2026`.
 
 Latest release-context update:
 
-- makes printed briefs and pack previews inherit live dataset edition metadata instead of a hardcoded print header
+- adds a maturity distribution panel to Data Quality so reviewers can see operative, transitional, proposed, voluntary and monitor seed records
+- preserves the derived regulatory maturity panel on regulation detail pages and drawers
+- preserves printed briefs and pack previews inheriting live dataset edition metadata instead of a hardcoded print header
 - adds direct glossary term links inside contextual label-help cards so users can jump to the exact definitions they need
 - adds a copyable advisory sample exposure scan on `/advisory`
 - adds route metadata classification so public, internal, contextual and dynamic routes have one governed source
@@ -68,6 +70,8 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - CSV/JSON regulation exports with edition metadata, caveat fields and source-review notes
 - source review memo, citation and decision-readiness copy blocks with edition metadata and legal-caution caveats
 - regulation-level 30/60/90-day implementation roadmaps with copyable caveated output
+- regulation maturity planning labels derived from status, legal force and display tier
+- data-quality maturity distribution across in-force, first-reporting, transitional, adopted, consultation, paused, voluntary and monitor records
 - light/dark mode toggle and first-visit light mode default
 - English, Spanish, Dutch, French, German and Portuguese interface chrome, including map coverage guidance
 - shareable filtered URLs and CSV/JSON exports

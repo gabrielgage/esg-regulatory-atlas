@@ -77,6 +77,17 @@ export const routeRegistry = [
     { en: "Value chain", es: "Cadena de valor", nl: "Waardeketen", fr: "Chaîne de valeur", de: "Wertschöpfung", pt: "Cadeia de valor" }
   ),
   route(
+    "/functions",
+    undefined,
+    "more",
+    "public",
+    "index",
+    "Internal owner workbench for likely business functions.",
+    "Start from sustainability, finance, legal, procurement, risk or board ownership needs.",
+    "planning",
+    { en: "Functions", es: "Funciones", nl: "Functies", fr: "Fonctions", de: "Funktionen", pt: "Funções" }
+  ),
+  route(
     "/thresholds",
     undefined,
     "more",

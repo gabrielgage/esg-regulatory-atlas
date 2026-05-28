@@ -39,7 +39,7 @@ export const LATEST_CHANGELOG: ChangelogEntry[] = [
       "Quality signal interpretation",
       "Release context documentation"
     ],
-    records: ["Data Quality", "Maturity labels", "Source governance", "Seed record review"],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "tnfd", "us-sec-climate-watch"],
     caveat:
       "Maturity distribution is derived from seed metadata. It is a planning and source-governance signal, not a legal conclusion about applicability, enforceability or complete market coverage."
   },

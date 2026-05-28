@@ -2,13 +2,21 @@
 
 ## Current Edition
 
-`0.5.72 - May 2026`
+`0.5.73 - May 2026`
 
 Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Latest Release Context
 
-The latest release context captures the launch-train simplification work through the regulatory maturity and Data Quality maturity distribution updates. The public app metadata now reports `0.5.72 - May 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+The latest release context captures the launch-train simplification work through the internal owner workbench. The public app metadata now reports `0.5.73 - May 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+
+### 0.5.73 - Internal Owner Workbench
+
+- Added `/functions` as a planning workspace for likely internal owner functions.
+- Added static business-function playbooks for Sustainability, Finance, Legal, Compliance, Procurement, Risk, Internal audit and Board users.
+- Added `lib/businessFunctionProfile.ts` to aggregate affected-function metadata into owner profiles, priority records, evidence focus, first actions and source-review prompts.
+- Added the route to the More menu under Planning views.
+- Kept the workbench framed as a seed-data planning aid, not an assignment of formal legal accountability or an applicability determination.
 
 ### 0.5.72 - Data Quality Maturity Distribution
 
@@ -31,9 +39,9 @@ The latest release context captures the launch-train simplification work through
 The Atlas is a static, source-linked, legally cautious MVP. It includes:
 
 - map-centered market discovery with local Natural Earth geometry, visible country outlines, pan/zoom/reset controls and untracked-country context;
-- searchable regulation records, market profiles, sector profiles, value-chain lanes, timeline, assessment, briefing and Data Quality surfaces;
+- searchable regulation records, market profiles, sector profiles, value-chain lanes, business-function owner lanes, timeline, assessment, briefing and Data Quality surfaces;
 - source quality, data quality, confidence, caveat, review-risk and maturity indicators;
-- decision-support surfaces for threshold facts, assessment triggers, market triggers, market obligation footprints and regulation implementation roadmaps;
+- decision-support surfaces for threshold facts, assessment triggers, market triggers, market obligation footprints, owner-function evidence planning and regulation implementation roadmaps;
 - copyable and printable outputs that preserve edition metadata and legal-caution caveats;
 - public commercial validation surfaces for plans, alerts, advisory, premium roadmap and manual advisory scan requests;
 - multilingual interface chrome for English, Spanish, Dutch, French, German and Portuguese, with regulatory records still treated as source-linked seed intelligence rather than official legal translations.

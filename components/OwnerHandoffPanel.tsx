@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ComponentType } from "react";
 import { ArrowUpRight, ClipboardCheck, FileSearch2, UsersRound } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import { businessFunctionProfileFor } from "@/lib/businessFunctionProfile";
@@ -85,7 +86,7 @@ export function OwnerHandoffPanel({ regulation, compact = false }: { regulation:
   );
 }
 
-function MiniMetric({ icon: Icon, label, value }: { icon: typeof UsersRound; label: string; value: string }) {
+function MiniMetric({ icon: Icon, label, value }: { icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>; label: string; value: string }) {
   return (
     <div className="rounded-xl bg-white p-4 dark:bg-slate-900">
       <Icon className="h-4 w-4 text-teal" aria-hidden="true" />

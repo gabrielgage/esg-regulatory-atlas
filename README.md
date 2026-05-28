@@ -8,11 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.72 - May 2026`.
+The current public release context is `0.5.73 - May 2026`.
 
 Latest release-context update:
 
-- adds a maturity distribution panel to Data Quality so reviewers can see operative, transitional, proposed, voluntary and monitor seed records
+- adds an internal owner workbench at `/functions` for business-function triage, evidence focus and first actions
+- preserves the maturity distribution panel in Data Quality so reviewers can see operative, transitional, proposed, voluntary and monitor seed records
 - preserves the derived regulatory maturity panel on regulation detail pages and drawers
 - preserves printed briefs and pack previews inheriting live dataset edition metadata instead of a hardcoded print header
 - adds direct glossary term links inside contextual label-help cards so users can jump to the exact definitions they need
@@ -53,6 +54,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - market obligation footprints on jurisdiction profiles for business-impact categories, likely owner functions, evidence starters and first actions
 - searchable sector finder at `/sectors`, plus sector profiles at `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
 - six-lane value-chain workspace for supplier, trade/import, product/claim, portfolio, operations and customer-pressure triage
+- internal owner workbench at `/functions` for likely owner functions, evidence focus, first actions and source-review prompts
 - regulation database and regulation detail pages
 - search-first Regulations workspace with secondary role-lens, comparison, label-help and export tools
 - threshold matrix for high-value scope signals, facts to confirm and source-review status
@@ -100,6 +102,7 @@ The MVP does not include authentication, Supabase, external databases, Stripe, c
 - Briefing: `/briefing`
 - Data Quality: `/data-quality`
 - Threshold matrix: `/thresholds`
+- Business functions: `/functions`
 - Compare: `/compare`, `/compare?jurisdictions=EUU,GBR`, `/compare?ids=csrd,issb-s1-s2`
 - Markets: `/markets`, `/jurisdiction/[code]`
 - Sectors: `/sectors`, `/sectors/[slug]`
@@ -153,19 +156,20 @@ The original deployment failure was caused by an inconsistent Tailwind/PostCSS s
 Core static data lives in `data/`:
 
 - `_meta.ts`
-- `changelog.ts` and `changelogRecent.ts`
+- `changelog.ts`, `changelogLatest.ts` and `changelogRecent.ts`
 - `regulations.ts`, `coverageAdditions.ts`, `marketCoverage.ts`, `marketDepthAdditions.ts`, `phase1cCoverage.ts`, `masterUpdateAdditions.ts`
 - `jurisdictions.ts`, `sectors.ts`, `taxonomy.ts`
 - `coverageTargets.ts`, `contentReview.ts`
 - `glossary.ts`, `glossaryGuides.ts`
 - `commercialOffers.ts`, `alertDigests.ts`, `premiumPacks.ts`, `launchAssets.ts`, `conversionTracking.ts`
 - `advisorySampleOutputs.ts`
+- `businessFunctionPlaybooks.ts`
 - `legalNotices.ts`
 - `routeRegistry.ts`
 - `dailyUpdates.ts`
 - `personaPresets.ts`
 
-Shared regulation types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market, sector and value-chain aggregation live in `lib/marketProfile.ts`, `lib/sectorProfile.ts` and `lib/valueChainProfile.ts`. Readiness, source governance, review workflow, URL filters and translations live under `lib/`.
+Shared regulation types live in `types/regulation.ts`. Filtering and applicability logic live in `lib/filters.ts` and `lib/applicability.ts`. Market, sector, value-chain and owner-function aggregation live in `lib/marketProfile.ts`, `lib/sectorProfile.ts`, `lib/valueChainProfile.ts` and `lib/businessFunctionProfile.ts`. Readiness, source governance, review workflow, URL filters and translations live under `lib/`.
 
 ## Project Guidance
 

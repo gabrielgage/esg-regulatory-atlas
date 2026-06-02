@@ -5,7 +5,7 @@ test("map workspace drawer exposes compact action memo", async ({ page }) => {
 
   await page.getByTestId("priority-record-card").first().click();
 
-  const drawer = page.locator("aside");
+  const drawer = page.locator("aside").filter({ has: page.getByRole("button", { name: /Close regulation detail/i }) });
   await expect(drawer.getByRole("button", { name: /Close regulation detail/i })).toBeVisible();
 
   const memo = drawer.getByTestId("regulation-action-memo");

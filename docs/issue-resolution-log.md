@@ -17,6 +17,32 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-06-02 - PR #94 Browser Smoke Checks Used Stale Release Month And Broad Data Quality Text
+
+Status: resolved in PR #94 follow-up commit.
+
+### Symptom
+
+PR #94 passed Vercel, Lighthouse and the typecheck/build job, but `CI / Browser smoke tests` failed two assertions. The print-header guardrail expected the live edition to end in `May 2026`, while `DATASET_META.edition` had advanced to `0.5.76 - June 2026`. The Data Quality smoke test also queried `Stale source` globally, which matched the source-freshness heading and multiple review-score badges.
+
+### Root Cause
+
+Both failures were quality-check issues rather than app rendering failures. The print metadata guardrail correctly verified that the print header uses `DATASET_META`, but the test over-pinned the release month. The Data Quality smoke test used a broad text locator for a governance label that can appear as both a heading and repeated badge content.
+
+### Resolution
+
+Allowed the edition guardrail to accept the active `0.5.x` May or June 2026 launch-train labels while still rejecting the stale hardcoded print string. Scoped the Data Quality smoke assertions to exact visible label matches and the first intended occurrence.
+
+### Prevention Rule
+
+Edition metadata tests should verify the release-pattern contract without pinning a single month unless the month itself is the behavior under test. Browser smoke tests for repeated governance labels should use exact text, `.first()`, section scope or stable test IDs instead of page-wide regex locators.
+
+### Files Changed
+
+- `tests/data-guardrails.spec.ts`
+- `tests/smoke.spec.ts`
+- `docs/issue-resolution-log.md`
+
 ## 2026-05-26 - Print Header Used A Stale Hardcoded Edition
 
 Status: resolved in PR #85.

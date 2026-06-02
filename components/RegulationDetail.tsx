@@ -5,6 +5,7 @@ import { Badge } from "./Badge";
 import { DecisionReadinessChecklist } from "./DecisionReadinessChecklist";
 import { ImplementationRoadmap } from "./ImplementationRoadmap";
 import { RecordMetaBadges } from "./RecordMetaBadges";
+import { RegulationActionMemo } from "./RegulationActionMemo";
 import { RegulatoryMaturityPanel } from "./RegulatoryMaturityPanel";
 import { SourceEvidencePanel } from "./SourceEvidencePanel";
 import { StatusBadge } from "./StatusBadge";
@@ -58,6 +59,7 @@ export function RegulationDetail({ regulation, onClose }: { regulation: Regulati
           <DecisionCard title="Enforcement or penalty cue" body={enforcementSummary} />
           <DecisionCard title="Missing decision data" body={missingData.join("; ")} />
         </div>
+        <RegulationActionMemo regulation={regulation} compact />
         {relatedRegimes.length ? (
           <Card title="Related regimes and dependencies">
             <BadgeList values={relatedRegimes} tone="slate" />

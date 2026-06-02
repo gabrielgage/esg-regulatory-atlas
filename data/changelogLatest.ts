@@ -2,6 +2,27 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.76 - June 2026",
+    date: "2026-06-02",
+    label: "Drawer action memo",
+    summary:
+      "Added a compact action memo inside the map-workspace regulation drawer so users can copy facts to confirm, first actions and source-to-verify prompts without leaving the map flow.",
+    added: [
+      "Compact mode for `RegulationActionMemo`",
+      "Drawer-level action memo in `RegulationDetail`",
+      "Smoke coverage for opening a priority record and seeing the drawer action memo",
+      "June release metadata update"
+    ],
+    updated: [
+      "Map workspace regulation drawer",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "eu-taxonomy"],
+    caveat:
+      "Drawer action memos are indicative planning aids. They do not determine legal applicability, source completeness, formal accountability, deadlines or compliance obligations for any entity."
+  },
+  {
     edition: "0.5.75 - May 2026",
     date: "2026-05-28",
     label: "Regulation action memo",

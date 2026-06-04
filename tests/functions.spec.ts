@@ -7,6 +7,7 @@ test("business function workbench renders owner-oriented planning", async ({ pag
   await expect(page.getByTestId("business-function-metrics")).toContainText(/Owner functions/i);
   await expect(page.getByTestId("owner-priority-lanes")).toContainText(/Priority owner lanes/i);
   await expect(page.getByTestId("owner-priority-lanes")).toContainText(/Sustainability/i);
+  await expect(page.getByRole("button", { name: /Copy owner matrix/i })).toBeVisible();
   await expect(page.getByTestId("business-function-workbench")).toContainText(/Evidence focus/i);
   await expect(page.getByTestId("business-function-workbench")).toContainText(/Priority records/i);
   await expect(page.getByRole("button", { name: /Copy owner brief/i }).first()).toBeVisible();

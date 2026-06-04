@@ -2,6 +2,26 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.78 - June 2026",
+    date: "2026-06-04",
+    label: "Copyable owner matrix",
+    summary:
+      "Added a copyable full owner matrix to the internal owner workbench so users can lift all function lanes into one caveated planning memo.",
+    added: [
+      "Copy owner matrix action on `/functions`",
+      "Owner-matrix Markdown output with edition metadata and caveat",
+      "Smoke coverage for the owner-matrix copy control"
+    ],
+    updated: [
+      "Internal owner workbench",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "eu-taxonomy"],
+    caveat:
+      "The owner matrix is indicative seed-data planning intelligence. It does not assign formal legal accountability, determine entity-specific applicability or replace source review by legal and regulatory advisors."
+  },
+  {
     edition: "0.5.77 - June 2026",
     date: "2026-06-04",
     label: "Copyable owner briefs",

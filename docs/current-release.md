@@ -2,13 +2,21 @@
 
 ## Current Edition
 
-`0.5.77 - June 2026`
+`0.5.78 - June 2026`
 
 Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Latest Release Context
 
-The latest release context captures the launch-train simplification work through copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.77 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+The latest release context captures the launch-train simplification work through the copyable owner matrix, copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.78 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+
+### 0.5.78 - Copyable Owner Matrix
+
+- Added a copyable full owner matrix to `/functions`.
+- The copied matrix includes edition metadata, priority owner lanes, first actions, evidence focus, priority records, source-review prompt counts and a legal-caution caveat.
+- Kept the UI compact by placing the matrix copy action in the Priority owner lanes header.
+- Added smoke coverage for the copy owner matrix control.
+- Kept the matrix framed as indicative seed-data planning intelligence, not formal legal accountability or entity-specific applicability determination.
 
 ### 0.5.77 - Copyable Owner Briefs
 

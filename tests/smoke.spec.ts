@@ -213,6 +213,7 @@ test("market profile pages render jurisdiction decision context", async ({ page 
 
   await expect(page.getByRole("heading", { name: /Jurisdiction market profiles/i })).toBeVisible();
   await expect(page.getByRole("heading", { name: /Market quick starts/i })).toBeVisible();
+  await expect(page.getByTestId("market-quick-start-grid").getByRole("button", { name: /Copy quick-start index/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /European Union/i }).first()).toBeVisible();
 
   await page.goto("/jurisdiction/euu");
@@ -224,6 +225,7 @@ test("market profile pages render jurisdiction decision context", async ({ page 
   await expect(page.getByTestId("market-obligation-matrix")).toContainText(/Reporting obligation/i);
   await expect(page.getByTestId("market-obligation-matrix")).toContainText(/Likely owners/i);
   await expect(page.getByText(/Evidence starter pack/i)).toBeVisible();
+  await expect(page.getByTestId("market-quick-start-panel").getByRole("button", { name: /Copy quick start/i })).toBeVisible();
   await expect(page.getByText(/Priority records/i).first()).toBeVisible();
   await expect(page.getByText(/Source confidence/i)).toBeVisible();
   await expect(page.getByRole("link", { name: /Printable brief/i })).toBeVisible();

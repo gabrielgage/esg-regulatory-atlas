@@ -8,10 +8,11 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.78 - June 2026`.
+The current public release context is `0.5.79 - June 2026`.
 
 Latest release-context update:
 
+- adds copyable market quick starts on `/markets` and jurisdiction profiles for caveated first-action, evidence and owner prompts
 - adds a copyable full owner matrix on `/functions` for a caveated function-by-function planning memo
 - preserves copyable Markdown owner briefs on `/functions` so function lanes can be reused in advisory planning with caveats preserved
 - preserves compact drawer action memos in the map workspace so users can copy facts to confirm, first actions and source-to-verify prompts without leaving the main flow
@@ -54,7 +55,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - static TypeScript seed data only
 - local Natural Earth country geometry, no paid map API and no Mapbox token
 - interactive map with visible country outlines, explicit untracked-country key, stronger map contrast, pan/zoom/reset controls and geometry fallback
-- market profiles at `/markets` and `/jurisdiction/[code]` with tracked-coverage and detail-level glossary handoffs
+- market profiles at `/markets` and `/jurisdiction/[code]` with tracked-coverage, copyable quick starts and detail-level glossary handoffs
 - market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals
 - market obligation footprints on jurisdiction profiles for business-impact categories, likely owner functions, evidence starters and first actions
 - searchable sector finder at `/sectors`, plus sector profiles at `/sectors/[slug]` with tagged-record and detail-level glossary handoffs

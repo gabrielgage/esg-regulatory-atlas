@@ -96,7 +96,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
    Add a map/table mode that distinguishes "record volume" from "source confidence" and "needs review" so users can see where the Atlas is strong versus provisional.
 
 4. **Jurisdiction quick-start cards**
-   Add compact starter cards for EU, UK, US, California, Singapore, Australia, Japan, India, China, Brazil, Canada, Mexico and Netherlands with first action prompts.
+   Status: materially delivered through `0.5.57 - May 2026` and strengthened in `0.5.79 - June 2026`.
+   Compact starter cards now exist for core markets and include first action prompts, evidence starter packs, likely owner functions, watch items and advisory prompts. June follow-up added copyable quick-start outputs on `/markets` and jurisdiction profiles so the starter cards can move into client notes or internal triage while preserving legal-caution caveats.
 
 5. **Persona-specific table presets**
    Status: materially delivered in `0.5.15 - May 2026` through `/regulations` persona starting points and shareable `?persona=` filters.

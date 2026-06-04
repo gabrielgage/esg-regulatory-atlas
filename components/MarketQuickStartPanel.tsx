@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { AlertTriangle, ArrowUpRight, CheckCircle2, ClipboardList, FileSearch2, Users } from "lucide-react";
 import { Badge } from "@/components/Badge";
-import { fallbackMarketQuickStart, marketQuickStartFor, marketQuickStarts } from "@/data/marketQuickStarts";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import {
+  fallbackMarketQuickStart,
+  marketQuickStartFor,
+  marketQuickStartIndexMarkdown,
+  marketQuickStartMarkdown,
+  marketQuickStarts
+} from "@/data/marketQuickStarts";
 import type { Jurisdiction } from "@/types/regulation";
 
 export function MarketQuickStartPanel({
@@ -12,15 +19,19 @@ export function MarketQuickStartPanel({
   profileActions?: string[];
 }) {
   const quickStart = marketQuickStartFor(jurisdiction.id) || fallbackMarketQuickStart(jurisdiction, profileActions);
+  const markdown = marketQuickStartMarkdown(quickStart, jurisdiction.name, jurisdiction.code);
 
   return (
-    <section className="rounded-2xl border bg-white p-6 shadow-sm">
+    <section className="rounded-2xl border bg-white p-6 shadow-sm" data-testid="market-quick-start-panel">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-teal">Market quick start</p>
           <h2 className="mt-2 text-lg font-semibold text-ink">{quickStart.headline}</h2>
         </div>
-        <Badge className="border-teal/20 bg-teal/10 text-teal">Seed playbook</Badge>
+        <div className="flex shrink-0 flex-col items-end gap-2">
+          <Badge className="border-teal/20 bg-teal/10 text-teal">Seed playbook</Badge>
+          <CopyMarkdownButton text={markdown} label="Copy quick start" />
+        </div>
       </div>
 
       <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
@@ -47,9 +58,10 @@ export function MarketQuickStartGrid({ jurisdictions, limit = 6 }: { jurisdictio
     })
     .filter(Boolean)
     .slice(0, limit) as { quickStart: (typeof marketQuickStarts)[number]; jurisdiction: Jurisdiction }[];
+  const indexMarkdown = marketQuickStartIndexMarkdown(cards);
 
   return (
-    <section className="rounded-2xl border bg-white p-5 shadow-sm">
+    <section className="rounded-2xl border bg-white p-5 shadow-sm" data-testid="market-quick-start-grid">
       <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-teal">Decision support</p>
@@ -58,10 +70,13 @@ export function MarketQuickStartGrid({ jurisdictions, limit = 6 }: { jurisdictio
             Core market playbooks translate tracked seed records into first actions, evidence starters and owner functions. They are orientation aids, not legal applicability conclusions.
           </p>
         </div>
-        <Link href="/assessment" className="inline-flex items-center gap-2 text-sm font-semibold text-teal underline">
-          Run assessment
-          <ArrowUpRight className="h-4 w-4" />
-        </Link>
+        <div className="flex flex-wrap items-center gap-2">
+          <CopyMarkdownButton text={indexMarkdown} label="Copy quick-start index" />
+          <Link href="/assessment" className="inline-flex items-center gap-2 text-sm font-semibold text-teal underline">
+            Run assessment
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
 
       <div className="mt-5 grid gap-4 lg:grid-cols-3">

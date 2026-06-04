@@ -2,7 +2,20 @@
 
 ## Current Phase
 
-The app is now in a static Phase 1AZ contextual glossary-linking pass on top of the Phase 1A Etica credibility update, Phase 1B market coverage pass, Phase 1C workflow/translation/coverage-control pass, Phase 1D master content expansion, Phase 1E decision-support polish, Phase 1F commercial-validation surfaces, Phase 1G premium-pack/manual-conversion follow-up, Phase 1H premium-output/content-governance pass, Phase 1I visible-map/coverage-depth pass, Phase 1J decision-readiness pass, Phase 1K launch-assets pass, Phase 1L source-governance pass, Phase 1M market-profile navigation pass, Phase 1N sector-starting-point pass, Phase 1O persona-preset pass, Phase 1P coverage-confidence pass, Phase 1Q decision-readiness evidence-gate pass, Phase 1R source-evidence review-packet pass, Phase 1S review-workflow export pass, Phase 1T map-workspace refresh pass, Phase 1U navigation/homepage calm-down pass, Phase 1V daily launch-pulse pass, Phase 1W AI review-pack pass, Phase 1X external review-intake pass, Phase 1Y value-chain exposure pass, Phase 1Z expert-review launch-readiness pass, Phase 1AA scenario-led briefing pass, Phase 1AB timeline planning pass, Phase 1AC data-guardrail pass, Phase 1AD trust-signal clarity/manual request-path pass, Phase 1AE threshold-matrix pass, Phase 1AF assessment-readiness pass, Phase 1AG Marquee 10 source-review packet pass, Phase 1AH implementation-roadmap pass, Phase 1AI assessment-trigger-review pass, Phase 1AJ market-trigger-review pass, Phase 1AK CI Node 24 readiness pass, Phase 1AL GitHub Actions Node 24 action-upgrade pass, Phase 1AM market-obligation-footprint pass, Phase 1AN public-journey-simplification pass, Phase 1AO assessment-shortlist-overview pass, Phase 1AP regulations-search-first-layout pass, Phase 1AQ reusable-advisory-scan-CTA pass, Phase 1AR sector-finder simplification pass, Phase 1AS interface-language clarity pass, Phase 1AT value-chain lane simplification pass, Phase 1AU plans-page simplification pass, Phase 1AV shared legal-notice pass, Phase 1AW route-metadata classification pass, Phase 1AX advisory sample-output pass and Phase 1AY print-output polish pass. The goal remains deployability and legal caution, with added emphasis on reducing public cognitive load before adding more features.
+The app is in a static June 2026 launch-train pass. The current release is `0.5.79 - June 2026`, which adds copyable market quick starts on top of the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews, market obligation footprints and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
+
+## June 2026 Latest Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.79 - June 2026`.
+- Added copyable market quick starts on jurisdiction market profiles.
+- Added a copyable quick-start index on `/markets`.
+- Copied quick-start outputs include edition metadata, planning questions, first 30-day actions, evidence starter packs, likely owner functions, watch items, advisory prompts and caveats.
+- Added smoke coverage for the quick-start copy controls.
+- Kept quick starts framed as indicative seed regulatory intelligence, not legal applicability, complete market coverage, source verification or formal compliance responsibility.
+
+## June 2026 Product Rationale
+
+Market profiles are one of the strongest MVP entry points because users often ask a jurisdiction-first question before they know which rule or legal instrument matters. The copyable quick-start layer turns that market view into a reusable planning artifact without adding accounts, document generation, paid infrastructure or legal overclaiming.
 
 ## Phase 1AZ Changes Delivered
 

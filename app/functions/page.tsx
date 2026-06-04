@@ -59,10 +59,13 @@ export default function FunctionsPage() {
                 These four functions usually shape the first ESG regulatory triage conversation: scope, evidence, source review and implementation ownership.
               </p>
             </div>
-            <Link href="/assessment" className="inline-flex items-center gap-2 text-sm font-semibold text-teal underline">
-              Run assessment
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            <div className="flex flex-wrap items-center gap-2">
+              <CopyMarkdownButton text={ownerMatrixMarkdown(profiles)} label="Copy owner matrix" />
+              <Link href="/assessment" className="inline-flex h-10 items-center gap-2 rounded-xl border border-teal/30 px-4 text-sm font-semibold text-teal hover:bg-teal/10 dark:border-teal/40">
+                Run assessment
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
           <div className="mt-5 grid gap-4 lg:grid-cols-4">
             {priorityProfiles.map((profile) => (
@@ -189,4 +192,37 @@ function List({ title, values }: { title: string; values: string[] }) {
       </ul>
     </div>
   );
+}
+
+function ownerMatrixMarkdown(profiles: ReturnType<typeof businessFunctionProfiles>) {
+  return [
+    "# Etica ESG owner matrix",
+    "",
+    `Edition: ${DATASET_META.edition}`,
+    "Publisher: Etica ESG",
+    "",
+    "This owner matrix is indicative seed regulatory intelligence for orientation and planning. It is not legal, tax, investment or assurance advice, and it does not assign formal legal accountability.",
+    "",
+    "## Priority owner lanes",
+    ...profiles.slice(0, 8).map((profile) =>
+      [
+        `### ${profile.functionName}`,
+        `Planning question: ${profile.playbook.startQuestion}`,
+        `Tracked records: ${profile.records.length}`,
+        `High-impact records: ${profile.highImpact.length}`,
+        `Records needing source/confidence review: ${profile.reviewFlags}`,
+        "First actions:",
+        ...profile.playbook.firstActions.slice(0, 3).map((action) => `- ${action}`),
+        "Evidence focus:",
+        ...profile.playbook.evidenceFocus.slice(0, 5).map((item) => `- ${item}`),
+        "Priority records:",
+        ...(profile.priorityRecords.length
+          ? profile.priorityRecords.slice(0, 4).map((regulation) => `- ${regulation.shortName}: ${regulation.summary}`)
+          : ["- No priority records in the current seed dataset."])
+      ].join("\n")
+    ),
+    "",
+    "## Caveat",
+    "Confirm entity-specific scope, legal interpretation, governance responsibility and source quality before using this matrix in compliance planning, board materials or client advice."
+  ].join("\n\n");
 }

@@ -289,8 +289,8 @@ test("data quality source-governance queue renders", async ({ page }) => {
   await expect(page.getByTestId("daily-launch-pulse")).toContainText(/Daily launch pulse/i);
   await expect(page.getByTestId("daily-launch-pulse")).toContainText(/next product-review focus/i);
   await expect(page.getByText(/Source freshness signals/i)).toBeVisible();
-  await expect(page.getByText(/Stale source/i)).toBeVisible();
-  await expect(page.getByText(/Missing primary source/i)).toBeVisible();
+  await expect(page.getByText("Stale source", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("Missing primary source", { exact: true }).first()).toBeVisible();
 
   await page.getByRole("tab", { name: /Sources/i }).click();
   await expect(page.getByText(/Source posture samples/i)).toBeVisible();

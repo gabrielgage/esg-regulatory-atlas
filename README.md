@@ -8,11 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.75 - May 2026`.
+The current public release context is `0.5.76 - June 2026`.
 
 Latest release-context update:
 
-- adds copyable regulation action memos for facts to confirm, first 30-day actions, evidence, owner lanes and source-to-verify prompts
+- adds compact drawer action memos in the map workspace so users can copy facts to confirm, first actions and source-to-verify prompts without leaving the main flow
+- preserves copyable regulation action memos for facts to confirm, first 30-day actions, evidence, owner lanes and source-to-verify prompts
 - preserves regulation-detail owner handoff panels that translate selected records into likely owner lanes, evidence focus, first actions and source-review prompts
 - preserves the internal owner workbench at `/functions` for business-function triage, evidence focus and first actions
 - preserves the maturity distribution panel in Data Quality so reviewers can see operative, transitional, proposed, voluntary and monitor seed records
@@ -59,6 +60,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - internal owner workbench at `/functions` for likely owner functions, evidence focus, first actions and source-review prompts
 - regulation-detail owner handoffs that link selected records to likely owner lanes, evidence focus, first actions and the owner workbench
 - regulation-detail action memos with copyable facts-to-confirm, first-action, evidence, owner-lane and source-to-verify summaries
+- compact drawer action memos for the map workspace regulation drawer
 - regulation database and regulation detail pages
 - search-first Regulations workspace with secondary role-lens, comparison, label-help and export tools
 - threshold matrix for high-value scope signals, facts to confirm and source-review status

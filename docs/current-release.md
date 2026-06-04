@@ -2,13 +2,21 @@
 
 ## Current Edition
 
-`0.5.75 - May 2026`
+`0.5.76 - June 2026`
 
 Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Latest Release Context
 
-The latest release context captures the launch-train simplification work through regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.75 - May 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+The latest release context captures the launch-train simplification work through drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.76 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+
+### 0.5.76 - Drawer Action Memo
+
+- Added compact mode to `components/RegulationActionMemo.tsx` for smaller drawer use.
+- Added a compact action memo to `components/RegulationDetail.tsx`, the map/table regulation drawer.
+- Lets users copy facts to confirm, first 30-day actions and source-to-verify prompts without leaving the main map workspace.
+- Added smoke coverage for opening a priority record card and verifying the drawer action memo.
+- Kept the memo framed as an indicative planning aid, not legal applicability, source completeness, formal accountability, deadlines or compliance obligations.
 
 ### 0.5.75 - Regulation Action Memo
 
@@ -56,7 +64,7 @@ The Atlas is a static, source-linked, legally cautious MVP. It includes:
 - map-centered market discovery with local Natural Earth geometry, visible country outlines, pan/zoom/reset controls and untracked-country context;
 - searchable regulation records, market profiles, sector profiles, value-chain lanes, business-function owner lanes, timeline, assessment, briefing and Data Quality surfaces;
 - source quality, data quality, confidence, caveat, review-risk and maturity indicators;
-- decision-support surfaces for threshold facts, assessment triggers, market triggers, market obligation footprints, owner-function evidence planning, regulation owner handoffs, regulation action memos and regulation implementation roadmaps;
+- decision-support surfaces for threshold facts, assessment triggers, market triggers, market obligation footprints, owner-function evidence planning, regulation owner handoffs, regulation action memos, drawer action memos and regulation implementation roadmaps;
 - copyable and printable outputs that preserve edition metadata and legal-caution caveats;
 - public commercial validation surfaces for plans, alerts, advisory, premium roadmap and manual advisory scan requests;
 - multilingual interface chrome for English, Spanish, Dutch, French, German and Portuguese, with regulatory records still treated as source-linked seed intelligence rather than official legal translations.

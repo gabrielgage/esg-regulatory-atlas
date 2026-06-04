@@ -8,10 +8,12 @@ import type { Regulation } from "@/types/regulation";
 
 export function RegulationActionMemo({
   regulation,
-  related = []
+  related = [],
+  compact = false
 }: {
   regulation: Regulation;
   related?: Regulation[];
+  compact?: boolean;
 }) {
   const factsToConfirm = buildFactsToConfirm(regulation);
   const firstActions = uniq([
@@ -25,11 +27,11 @@ export function RegulationActionMemo({
   const relatedRecords = related.slice(0, 4);
 
   return (
-    <section className="rounded-2xl border border-navy/10 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900" data-testid="regulation-action-memo">
+    <section className="rounded-2xl border border-navy/10 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 md:p-6" data-testid="regulation-action-memo">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-teal">Action memo</p>
-          <h2 className="mt-2 text-xl font-semibold text-ink">Decision-ready next step summary</h2>
+          <h2 className={compact ? "mt-2 text-lg font-semibold text-ink" : "mt-2 text-xl font-semibold text-ink"}>Decision-ready next step summary</h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
             A copyable planning memo for turning this seed record into a source-review, owner handoff or advisory exposure scan. It is intentionally cautious and should be validated before client or compliance reliance.
           </p>
@@ -40,22 +42,24 @@ export function RegulationActionMemo({
         </div>
       </div>
 
-      <div className="mt-5 grid gap-3 md:grid-cols-4">
-        <MiniCard icon={<ShieldAlert className="h-4 w-4 text-amber-600" />} title="Facts to confirm" value={factsToConfirm.length} />
-        <MiniCard icon={<ClipboardList className="h-4 w-4 text-teal" />} title="First actions" value={firstActions.length} />
-        <MiniCard icon={<UsersRound className="h-4 w-4 text-violet" />} title="Owner lanes" value={owners.length} />
-        <MiniCard icon={<FileSearch2 className="h-4 w-4 text-slate-500" />} title="Sources" value={regulation.sourceUrls.length} />
+      {!compact ? (
+        <div className="mt-5 grid gap-3 md:grid-cols-4">
+          <MiniCard icon={<ShieldAlert className="h-4 w-4 text-amber-600" />} title="Facts to confirm" value={factsToConfirm.length} />
+          <MiniCard icon={<ClipboardList className="h-4 w-4 text-teal" />} title="First actions" value={firstActions.length} />
+          <MiniCard icon={<UsersRound className="h-4 w-4 text-violet" />} title="Owner lanes" value={owners.length} />
+          <MiniCard icon={<FileSearch2 className="h-4 w-4 text-slate-500" />} title="Sources" value={regulation.sourceUrls.length} />
+        </div>
+      ) : null}
+
+      <div className={compact ? "mt-4 grid gap-3" : "mt-5 grid gap-4 lg:grid-cols-2"}>
+        <ActionList title="Facts to confirm before reliance" values={compact ? factsToConfirm.slice(0, 3) : factsToConfirm} tone="amber" />
+        <ActionList title="First 30-day actions" values={compact ? firstActions.slice(0, 4) : firstActions} />
+        {!compact ? <ActionList title="Evidence likely needed" values={evidence.length ? evidence : ["Create a source-review note and applicability fact log before client reliance."]} /> : null}
+        {!compact ? <ActionList title="Suggested internal owner lanes" values={owners} /> : null}
       </div>
 
-      <div className="mt-5 grid gap-4 lg:grid-cols-2">
-        <ActionList title="Facts to confirm before reliance" values={factsToConfirm} tone="amber" />
-        <ActionList title="First 30-day actions" values={firstActions} />
-        <ActionList title="Evidence likely needed" values={evidence.length ? evidence : ["Create a source-review note and applicability fact log before client reliance."]} />
-        <ActionList title="Suggested internal owner lanes" values={owners} />
-      </div>
-
-      <div className="mt-5 grid gap-4 lg:grid-cols-[1fr_1fr]">
-        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
+      {compact ? (
+        <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
           <h3 className="text-sm font-semibold text-ink">Source to verify first</h3>
           {source ? (
             <a href={source.url} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-2 text-sm font-semibold leading-6 text-teal hover:text-ink">
@@ -65,27 +69,41 @@ export function RegulationActionMemo({
           ) : (
             <p className="mt-2 text-sm leading-6 text-red-700 dark:text-red-300">No source URL captured yet. Treat this as source-review blocked.</p>
           )}
-          <p className="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">
-            Last reviewed {formatDate(regulation.lastReviewed)}. Next review {formatDate(regulation.nextReviewDate)}.
-          </p>
         </div>
-
-        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
-          <h3 className="text-sm font-semibold text-ink">Related regimes to include in scoping</h3>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {relatedRecords.length ? (
-              relatedRecords.map((item) => (
-                <Link key={item.id} href={`/regulations/${item.id}`} className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:border-teal/30 hover:text-teal dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
-                  {item.shortName}
-                  <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
-                </Link>
-              ))
+      ) : (
+        <div className="mt-5 grid gap-4 lg:grid-cols-[1fr_1fr]">
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="text-sm font-semibold text-ink">Source to verify first</h3>
+            {source ? (
+              <a href={source.url} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-2 text-sm font-semibold leading-6 text-teal hover:text-ink">
+                {source.label}
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
             ) : (
-              <span className="text-sm text-slate-600 dark:text-slate-300">No related records were matched by current topic tags.</span>
+              <p className="mt-2 text-sm leading-6 text-red-700 dark:text-red-300">No source URL captured yet. Treat this as source-review blocked.</p>
             )}
+            <p className="mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">
+              Last reviewed {formatDate(regulation.lastReviewed)}. Next review {formatDate(regulation.nextReviewDate)}.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-800">
+            <h3 className="text-sm font-semibold text-ink">Related regimes to include in scoping</h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {relatedRecords.length ? (
+                relatedRecords.map((item) => (
+                  <Link key={item.id} href={`/regulations/${item.id}`} className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:border-teal/30 hover:text-teal dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+                    {item.shortName}
+                    <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+                  </Link>
+                ))
+              ) : (
+                <span className="text-sm text-slate-600 dark:text-slate-300">No related records were matched by current topic tags.</span>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <p className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-900 dark:border-amber-400/30 dark:bg-amber-400/10 dark:text-amber-100">
         This memo is an indicative planning aid. It does not determine legal applicability, source completeness, formal accountability, deadlines or compliance obligations for any entity.

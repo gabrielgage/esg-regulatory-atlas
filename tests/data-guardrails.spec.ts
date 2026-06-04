@@ -157,7 +157,7 @@ test("print header uses live dataset metadata instead of stale hardcoded edition
   expect(globalsCss).toContain("attr(data-print-title)");
   expect(globalsCss).toContain("attr(data-print-subtitle)");
   expect(globalsCss).not.toContain("Edition 0.5 - May 2026");
-  expect(DATASET_META.edition).toMatch(/^0\.5\.\d+ - May 2026$/);
+  expect(DATASET_META.edition).toMatch(/^0\.5\.\d+ - (May|June) 2026$/);
 });
 
 test("contextual glossary term links reference known glossary anchors", () => {

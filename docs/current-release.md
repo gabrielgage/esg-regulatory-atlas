@@ -2,13 +2,21 @@
 
 ## Current Edition
 
-`0.5.76 - June 2026`
+`0.5.77 - June 2026`
 
 Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Latest Release Context
 
-The latest release context captures the launch-train simplification work through drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.76 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+The latest release context captures the launch-train simplification work through copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.77 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+
+### 0.5.77 - Copyable Owner Briefs
+
+- Added copyable Markdown owner briefs to `/functions`.
+- Reused the existing `businessFunctionMarkdown` generator so copied owner briefs include priority records, first actions, evidence focus, review prompts, source/caveat context and legal-caution language.
+- Added owner-brief copy controls to each function lane alongside the filtered database handoff.
+- Added smoke coverage for the copy owner brief controls.
+- Kept owner briefs framed as indicative seed-data planning aids, not formal legal accountability assignments or entity-specific applicability determinations.
 
 ### 0.5.76 - Drawer Action Memo
 

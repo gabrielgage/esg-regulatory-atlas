@@ -8,11 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.76 - June 2026`.
+The current public release context is `0.5.77 - June 2026`.
 
 Latest release-context update:
 
-- adds compact drawer action memos in the map workspace so users can copy facts to confirm, first actions and source-to-verify prompts without leaving the main flow
+- adds copyable Markdown owner briefs on `/functions` so function lanes can be reused in advisory planning with caveats preserved
+- preserves compact drawer action memos in the map workspace so users can copy facts to confirm, first actions and source-to-verify prompts without leaving the main flow
 - preserves copyable regulation action memos for facts to confirm, first 30-day actions, evidence, owner lanes and source-to-verify prompts
 - preserves regulation-detail owner handoff panels that translate selected records into likely owner lanes, evidence focus, first actions and source-review prompts
 - preserves the internal owner workbench at `/functions` for business-function triage, evidence focus and first actions
@@ -57,7 +58,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - market obligation footprints on jurisdiction profiles for business-impact categories, likely owner functions, evidence starters and first actions
 - searchable sector finder at `/sectors`, plus sector profiles at `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
 - six-lane value-chain workspace for supplier, trade/import, product/claim, portfolio, operations and customer-pressure triage
-- internal owner workbench at `/functions` for likely owner functions, evidence focus, first actions and source-review prompts
+- internal owner workbench at `/functions` for likely owner functions, evidence focus, first actions, source-review prompts and copyable owner briefs
 - regulation-detail owner handoffs that link selected records to likely owner lanes, evidence focus, first actions and the owner workbench
 - regulation-detail action memos with copyable facts-to-confirm, first-action, evidence, owner-lane and source-to-verify summaries
 - compact drawer action memos for the map workspace regulation drawer

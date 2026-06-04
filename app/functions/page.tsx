@@ -3,13 +3,14 @@ import type { ComponentType } from "react";
 import { ArrowUpRight, ClipboardList, FileSearch2, ShieldCheck, Users } from "lucide-react";
 import { AdvisoryScanCTA } from "@/components/AdvisoryScanCTA";
 import { Badge } from "@/components/Badge";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
 import { Header } from "@/components/Header";
 import { PageIntro } from "@/components/PageIntro";
 import { DATASET_META } from "@/data/_meta";
-import { businessFunctionProfiles } from "@/lib/businessFunctionProfile";
+import { businessFunctionMarkdown, businessFunctionProfiles } from "@/lib/businessFunctionProfile";
 import { cn } from "@/lib/utils";
 
 export const metadata = {
@@ -110,10 +111,13 @@ function FunctionCard({ profile }: { profile: ReturnType<typeof businessFunction
           <h2 className="mt-4 text-xl font-bold tracking-tight text-ink">{profile.playbook.headline}</h2>
           <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{profile.playbook.startQuestion}</p>
         </div>
-        <Link href={filterHref} className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-teal underline">
-          Filter database
-          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
+        <div className="flex shrink-0 flex-wrap items-center gap-2">
+          <CopyMarkdownButton text={businessFunctionMarkdown(profile)} label="Copy owner brief" />
+          <Link href={filterHref} className="inline-flex h-10 items-center gap-2 rounded-xl border border-teal/30 px-4 text-sm font-semibold text-teal hover:bg-teal/10 dark:border-teal/40">
+            Filter database
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
       </div>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-3">

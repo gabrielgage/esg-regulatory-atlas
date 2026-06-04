@@ -224,6 +224,7 @@ test("market profile pages render jurisdiction decision context", async ({ page 
   await expect(page.getByTestId("market-obligation-matrix")).toContainText(/Market obligation footprint/i);
   await expect(page.getByTestId("market-obligation-matrix")).toContainText(/Reporting obligation/i);
   await expect(page.getByTestId("market-obligation-matrix")).toContainText(/Likely owners/i);
+  await expect(page.getByTestId("market-obligation-matrix").getByRole("button", { name: /Copy footprint/i })).toBeVisible();
   await expect(page.getByText(/Evidence starter pack/i)).toBeVisible();
   await expect(page.getByTestId("market-quick-start-panel").getByRole("button", { name: /Copy quick start/i })).toBeVisible();
   await expect(page.getByText(/Priority records/i).first()).toBeVisible();

@@ -116,8 +116,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
     Explain which market-level signals drive a jurisdiction profile, including corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review categories, plus first actions and facts to verify before advisory or premium reuse.
 
 6C. **Market obligation footprint**
-    Status: materially delivered in `0.5.57 - May 2026`.
-    Translate market seed records into obligation categories such as reporting, assurance, governance, due diligence, supply chain, financial disclosure, taxonomy, transition planning, data collection and product compliance, with likely owner functions and evidence starters.
+    Status: materially delivered in `0.5.57 - May 2026` and strengthened in `0.5.80 - June 2026`.
+    Market seed records are translated into obligation categories such as reporting, assurance, governance, due diligence, supply chain, financial disclosure, taxonomy, transition planning, data collection and product compliance, with likely owner functions and evidence starters. June follow-up added a copyable obligation-footprint output for jurisdiction profiles so users can reuse the market-level owner/evidence view while preserving caveats.
 
 7. **Sector-specific starting points**
    Status: materially delivered in `0.5.14 - May 2026` through `/sectors`, `/sectors/[slug]` and `lib/sectorProfile.ts`.

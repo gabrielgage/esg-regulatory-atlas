@@ -2,9 +2,17 @@
 
 ## Current Phase
 
-The app is in a static June 2026 launch-train pass. The current release is `0.5.79 - June 2026`, which adds copyable market quick starts on top of the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews, market obligation footprints and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
+The app is in a static June 2026 launch-train pass. The current release is `0.5.80 - June 2026`, which adds copyable market obligation footprints on top of copyable market quick starts, the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
 
 ## June 2026 Latest Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.80 - June 2026`.
+- Added a direct copy action for market obligation footprints on jurisdiction profiles.
+- Reused `marketObligationMarkdown` so copied outputs include obligation categories, matched records, likely owner functions, evidence starters, first actions and caveats.
+- Added smoke coverage for the market obligation footprint copy control.
+- Kept obligation footprints framed as derived seed-record planning intelligence, not legal applicability, entity-specific duties, enforcement exposure or complete jurisdiction coverage.
+
+## June 2026 Prior Changes Delivered
 
 - Updated dataset metadata and changelog to `0.5.79 - June 2026`.
 - Added copyable market quick starts on jurisdiction market profiles.

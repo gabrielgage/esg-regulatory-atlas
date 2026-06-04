@@ -2,6 +2,27 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.79 - June 2026",
+    date: "2026-06-04",
+    label: "Copyable market quick starts",
+    summary:
+      "Added copyable market quick-start playbooks so jurisdiction planning prompts can be reused in client notes, internal triage and advisory scoping.",
+    added: [
+      "Copy quick start action on jurisdiction market profiles",
+      "Copy quick-start index action on `/markets`",
+      "Markdown outputs with edition metadata, first actions, evidence starter packs, owner functions, watch items and caveats",
+      "Smoke coverage for market quick-start copy controls"
+    ],
+    updated: [
+      "Market quick-start component",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "uk-sdr"],
+    caveat:
+      "Market quick starts are indicative seed-data planning aids. They do not determine legal applicability, complete market coverage, source verification or formal compliance responsibilities."
+  },
+  {
     edition: "0.5.78 - June 2026",
     date: "2026-06-04",
     label: "Copyable owner matrix",

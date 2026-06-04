@@ -22,6 +22,7 @@ Current capability areas:
 - Simplified public navigation with Start, Assessment, Markets, Regulations, Advisory and grouped secondary routes
 - Homepage three-path start experience for assessment, market/regulation exploration and advisory scans
 - `/markets` market profile index and `/jurisdiction/[code]` market profile pages
+- Copyable market quick-start playbooks with planning questions, first 30-day actions, evidence starter packs, owner functions, watch items, advisory prompts and caveats
 - Market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review drivers
 - Market obligation footprints on jurisdiction profiles for business-impact categories, owner functions, evidence starters and first actions
 - `/sectors` searchable sector finder and `/sectors/[slug]` sector profile pages
@@ -95,6 +96,18 @@ Current capability areas:
 - Jurisdiction briefs with readiness starters, watch items, evidence packages and source-backed priority-record counts
 - PM/ESG specialist improvement backlog across three waves in `docs/product-improvement-backlog.md`
 - Static seed data
+
+## Recently Delivered June 2026 Items
+
+- `0.5.79`: Added copyable market quick starts on `/markets` and jurisdiction profiles.
+- `0.5.78`: Added a copyable full owner matrix on `/functions`.
+- `0.5.77`: Added copyable owner briefs on `/functions`.
+- `0.5.76`: Added compact drawer action memos inside the map-workspace regulation drawer.
+- `0.5.75`: Added copyable regulation action memos on regulation detail pages.
+- `0.5.74`: Added regulation-detail owner handoff panels.
+- `0.5.73`: Added the internal owner workbench.
+- `0.5.72`: Added the Data Quality maturity distribution.
+- `0.5.71`: Added regulation maturity planning labels.
 
 ## Recently Delivered Phase 1AZ Items
 

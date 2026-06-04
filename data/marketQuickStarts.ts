@@ -1,3 +1,4 @@
+import { DATASET_META } from "@/data/_meta";
 import type { Jurisdiction } from "@/types/regulation";
 
 export type MarketQuickStart = {
@@ -281,6 +282,76 @@ export const marketQuickStarts: MarketQuickStart[] = [
 
 export function marketQuickStartFor(jurisdictionId: string) {
   return marketQuickStarts.find((quickStart) => quickStart.jurisdictionId === jurisdictionId);
+}
+
+export function marketQuickStartMarkdown(quickStart: MarketQuickStart, jurisdictionName: string, jurisdictionCode?: string) {
+  return [
+    `# ${jurisdictionName} market quick start`,
+    "",
+    `Edition: ${DATASET_META.edition}`,
+    `Publisher: ${DATASET_META.publisher}`,
+    jurisdictionCode ? `Jurisdiction code: ${jurisdictionCode}` : "",
+    "",
+    "This quick start is indicative seed regulatory intelligence for orientation and planning. It is not legal, tax, investment or assurance advice and does not determine entity-specific applicability.",
+    "",
+    "## Planning question",
+    quickStart.userQuestion,
+    "",
+    "## Starting point",
+    quickStart.headline,
+    "",
+    "## First 30-day actions",
+    ...quickStart.firstActions.map((action) => `- ${action}`),
+    "",
+    "## Evidence starter pack",
+    ...quickStart.evidenceStarterPack.map((item) => `- ${item}`),
+    "",
+    "## Likely owner functions",
+    ...quickStart.ownerFunctions.map((owner) => `- ${owner}`),
+    "",
+    "## Watch items",
+    ...quickStart.watchItems.map((item) => `- ${item}`),
+    "",
+    "## Advisory prompts",
+    ...quickStart.advisoryPrompts.map((prompt) => `- ${prompt}`),
+    "",
+    "## Caveat",
+    `${quickStart.caveat} Review primary sources, confirm thresholds and validate market-specific facts with qualified counsel or regulatory advisors before reliance.`
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+export function marketQuickStartIndexMarkdown(items: { quickStart: MarketQuickStart; jurisdiction: Pick<Jurisdiction, "name" | "code"> }[]) {
+  return [
+    "# Etica ESG market quick-start index",
+    "",
+    `Edition: ${DATASET_META.edition}`,
+    `Publisher: ${DATASET_META.publisher}`,
+    "",
+    "This index is indicative seed regulatory intelligence for orientation and planning. It is not legal, tax, investment or assurance advice and does not determine entity-specific applicability.",
+    "",
+    ...items.flatMap(({ quickStart, jurisdiction }) => [
+      `## ${jurisdiction.name} (${jurisdiction.code})`,
+      "",
+      `Planning question: ${quickStart.userQuestion}`,
+      "",
+      `Starting point: ${quickStart.headline}`,
+      "",
+      "First 30-day actions:",
+      ...quickStart.firstActions.slice(0, 3).map((action) => `- ${action}`),
+      "",
+      "Evidence starter pack:",
+      ...quickStart.evidenceStarterPack.slice(0, 3).map((item) => `- ${item}`),
+      "",
+      `Likely owners: ${quickStart.ownerFunctions.join(", ")}`,
+      "",
+      `Caveat: ${quickStart.caveat}`,
+      ""
+    ]),
+    "## Shared caveat",
+    "Market quick starts summarize current seed intelligence and first planning prompts. They do not replace source review, entity-specific applicability analysis or qualified legal/regulatory advice."
+  ].join("\n");
 }
 
 export function fallbackMarketQuickStart(jurisdiction: Jurisdiction, profileActions: string[] = []): MarketQuickStart {

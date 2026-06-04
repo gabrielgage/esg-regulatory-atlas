@@ -23,6 +23,7 @@ Current capability areas:
 - Homepage three-path start experience for assessment, market/regulation exploration and advisory scans
 - `/markets` market profile index and `/jurisdiction/[code]` market profile pages
 - Copyable market quick-start playbooks with planning questions, first 30-day actions, evidence starter packs, owner functions, watch items, advisory prompts and caveats
+- Copyable market obligation footprints with obligation categories, matched records, likely owners, evidence starters, first actions and caveats
 - Market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review drivers
 - Market obligation footprints on jurisdiction profiles for business-impact categories, owner functions, evidence starters and first actions
 - `/sectors` searchable sector finder and `/sectors/[slug]` sector profile pages
@@ -99,6 +100,7 @@ Current capability areas:
 
 ## Recently Delivered June 2026 Items
 
+- `0.5.80`: Added copyable market obligation footprints on jurisdiction profiles.
 - `0.5.79`: Added copyable market quick starts on `/markets` and jurisdiction profiles.
 - `0.5.78`: Added a copyable full owner matrix on `/functions`.
 - `0.5.77`: Added copyable owner briefs on `/functions`.

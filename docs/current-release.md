@@ -2,13 +2,20 @@
 
 ## Current Edition
 
-`0.5.79 - June 2026`
+`0.5.80 - June 2026`
 
 Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Latest Release Context
 
-The latest release context captures the launch-train simplification work through copyable market quick starts, the copyable owner matrix, copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.79 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+The latest release context captures the launch-train simplification work through copyable market obligation footprints, copyable market quick starts, the copyable owner matrix, copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.80 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+
+### 0.5.80 - Copyable Market Obligation Footprint
+
+- Added a copyable obligation-footprint output to jurisdiction market profiles.
+- Reused the existing `marketObligationMarkdown` generator so copied outputs include obligation categories, matched records, likely owners, evidence starters, first actions and caveats.
+- Added smoke coverage for the market obligation footprint copy control on `/jurisdiction/euu`.
+- Kept footprints framed as derived seed-record planning intelligence, not legal applicability, entity-specific duties, enforcement exposure or complete jurisdiction coverage.
 
 ### 0.5.79 - Copyable Market Quick Starts
 

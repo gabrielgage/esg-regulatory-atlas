@@ -2,6 +2,26 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.80 - June 2026",
+    date: "2026-06-04",
+    label: "Copyable market obligation footprint",
+    summary:
+      "Added a direct copy action for market obligation footprints so users can reuse jurisdiction-level obligation, owner and evidence summaries in planning notes.",
+    added: [
+      "Copy footprint action on jurisdiction market profiles",
+      "Reuse of the existing `marketObligationMarkdown` generator",
+      "Smoke coverage for the obligation-footprint copy control"
+    ],
+    updated: [
+      "Market obligation matrix",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "eu-taxonomy"],
+    caveat:
+      "Market obligation footprints are derived from tracked seed records. They do not determine legal applicability, entity-specific duties, enforcement exposure or complete jurisdiction coverage."
+  },
+  {
     edition: "0.5.79 - June 2026",
     date: "2026-06-04",
     label: "Copyable market quick starts",

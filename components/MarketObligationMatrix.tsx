@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { ArrowUpRight, ClipboardCheck, FileSearch2, Users } from "lucide-react";
 import { Badge } from "@/components/Badge";
-import { marketObligationProfiles } from "@/lib/marketObligationProfile";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { marketObligationMarkdown, marketObligationProfiles } from "@/lib/marketObligationProfile";
 import type { Jurisdiction, Regulation } from "@/types/regulation";
 
 export function MarketObligationMatrix({ jurisdiction, records }: { jurisdiction: Jurisdiction; records: Regulation[] }) {
   const profiles = marketObligationProfiles(records);
   const populated = profiles.filter((profile) => profile.matchedRecords.length > 0);
   const visibleProfiles = populated.slice(0, 6);
+  const markdown = marketObligationMarkdown(jurisdiction, records);
 
   return (
     <section data-testid="market-obligation-matrix" className="rounded-2xl border bg-white p-6 shadow-sm">
@@ -20,7 +22,10 @@ export function MarketObligationMatrix({ jurisdiction, records }: { jurisdiction
             lens, not a legal applicability finding.
           </p>
         </div>
-        <Badge className="border-amber-200 bg-amber-50 text-amber-800">Derived from tracked seed records</Badge>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge className="border-amber-200 bg-amber-50 text-amber-800">Derived from tracked seed records</Badge>
+          <CopyMarkdownButton text={markdown} label="Copy footprint" />
+        </div>
       </div>
 
       <div className="mt-5 grid gap-4 lg:grid-cols-2">

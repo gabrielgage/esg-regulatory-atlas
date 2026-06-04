@@ -2,6 +2,27 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.77 - June 2026",
+    date: "2026-06-04",
+    label: "Copyable owner briefs",
+    summary:
+      "Added copyable Markdown owner briefs to the internal owner workbench so sustainability, finance, legal, procurement and other function lanes can be reused in advisory planning without leaving the page.",
+    added: [
+      "Copy owner brief actions on `/functions`",
+      "Reuse of the existing `businessFunctionMarkdown` generator",
+      "Smoke coverage for owner-brief copy controls",
+      "June release metadata update"
+    ],
+    updated: [
+      "Internal owner workbench",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "eu-taxonomy"],
+    caveat:
+      "Owner briefs are indicative seed-data planning aids. They do not assign formal legal accountability, determine entity-specific applicability or replace source review by legal and regulatory advisors."
+  },
+  {
     edition: "0.5.76 - June 2026",
     date: "2026-06-02",
     label: "Drawer action memo",

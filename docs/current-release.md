@@ -2,13 +2,20 @@
 
 ## Current Edition
 
-`0.5.84 - June 2026`
+`0.5.85 - June 2026`
 
 Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Latest Release Context
 
-The latest release context captures the launch-train simplification work through copyable comparison planning briefs, copyable threshold screening briefs, copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the copyable owner matrix, copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.84 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+The latest release context captures the launch-train simplification work through copyable briefing scenario memos, copyable comparison planning briefs, copyable threshold screening briefs, copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the copyable owner matrix, copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.85 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+
+### 0.5.85 - Copyable Briefing Scenario Memo
+
+- Added a copyable scenario memo to `/briefing` after a user selects a briefing scenario.
+- The copied memo includes edition metadata, scenario audience, leadership question, first operating move, evidence package, advisory motion, priority records, source-review watch prompts, likely owner functions, evidence starters, first actions and caveats.
+- Added smoke coverage for the briefing scenario memo copy control.
+- Kept scenario memos framed as seed-data planning aids, not legal advice, board advice, source verification, complete regulatory inventory or entity-specific applicability advice.
 
 ### 0.5.84 - Copyable Comparison Planning Brief
 
@@ -123,7 +130,7 @@ The latest release context captures the launch-train simplification work through
 The Atlas is a static, source-linked, legally cautious MVP. It includes:
 
 - map-centered market discovery with local Natural Earth geometry, visible country outlines, pan/zoom/reset controls and untracked-country context;
-- searchable regulation records, comparison planning briefs, market profiles, sector profiles with copyable exposure briefs, value-chain lanes, business-function owner lanes, timeline with copyable planning briefs, assessment, briefing and Data Quality surfaces;
+- searchable regulation records, comparison planning briefs, market profiles, sector profiles with copyable exposure briefs, value-chain lanes, business-function owner lanes, timeline with copyable planning briefs, assessment, briefing scenario memos and Data Quality surfaces;
 - source quality, data quality, confidence, caveat, review-risk and maturity indicators;
 - decision-support surfaces for threshold facts and copyable threshold screening briefs, assessment triggers, market triggers, market obligation footprints, owner-function evidence planning, regulation owner handoffs, regulation action memos, drawer action memos and regulation implementation roadmaps;
 - copyable and printable outputs that preserve edition metadata and legal-caution caveats;

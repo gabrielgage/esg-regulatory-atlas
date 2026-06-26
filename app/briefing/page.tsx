@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ClipboardCheck, FileText, Gauge, Map, ShieldCheck, Sparkles } from "lucide-react";
 import { Header } from "@/components/Header";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
@@ -19,6 +21,7 @@ import { Badge } from "@/components/Badge";
 import { briefingScenarios, getBriefingScenarioById, getScenarioRegulations, type BriefingScenario } from "@/data/briefingScenarios";
 import { regulations } from "@/data/seed";
 import { Regulation } from "@/types/regulation";
+import { buildBriefingScenarioMarkdown } from "@/lib/briefingBrief";
 import { cn } from "@/lib/utils";
 
 const tabs = [
@@ -72,6 +75,7 @@ export default function BriefingPage() {
   const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
   const activeScenario = getBriefingScenarioById(activeScenarioId);
   const scenarioRegulations = activeScenario ? getScenarioRegulations(regulations, activeScenario) : [];
+  const scenarioMarkdown = activeScenario ? buildBriefingScenarioMarkdown(activeScenario, scenarioRegulations) : "";
   const activeStep = tabs.find((tab) => tab.id === activeTab) || tabs[0];
 
   return (
@@ -118,6 +122,16 @@ export default function BriefingPage() {
                     <li key={step}>- {step}</li>
                   ))}
                 </ul>
+              </div>
+              <div className="mt-4 rounded-xl border border-teal/15 bg-white p-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Scenario memo</p>
+                <p className="mt-2 text-xs leading-5 text-slate-600">
+                  Copy a source-aware scenario memo with priority records, evidence starters, owner functions, first actions and caveats.
+                </p>
+                <div className="mt-3 space-y-2">
+                  <CopyMarkdownButton text={scenarioMarkdown} label="Copy scenario memo" />
+                  <CopyOutputNote />
+                </div>
               </div>
             </div>
 

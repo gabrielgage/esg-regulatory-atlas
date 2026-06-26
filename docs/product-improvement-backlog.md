@@ -173,9 +173,9 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Add `/plans`, commercial comparison, reusable CTAs and static commercial data so visitors understand Free Atlas, Premium Intelligence, Advisory Atlas and Enterprise/API Future. Current page hierarchy should keep Free Atlas and Advisory Atlas primary while premium and enterprise remain secondary validation paths.
 
 38. **Premium alerts preview**
-    Status: partially delivered in `0.5.6 - May 2026`.
+    Status: partially delivered in `0.5.6 - May 2026` and strengthened in `0.5.86 - June 2026`.
     Revenue relevance: Premium alerts.
-    Add static weekly/monthly digest samples, watchlist options, source-quality legend and request-access CTA without email backend.
+    Add static weekly/monthly digest samples, watchlist options, source-quality legend and request-access CTA without email backend. June follow-up added copyable digest previews with audience, jurisdiction/topic scope, sample items, source-quality labels, recommended actions, manual validation questions and caveats so alert concepts can be reused in design-partner conversations without implying live monitoring.
 
 39. **Advisory service surface**
     Status: partially delivered in `0.5.6 - May 2026` and strengthened in `0.5.68 - May 2026`.

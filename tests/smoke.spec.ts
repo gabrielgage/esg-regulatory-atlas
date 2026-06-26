@@ -167,6 +167,7 @@ test("threshold matrix exposes high-value scope signals with caveats", async ({ 
 
   await expect(page.getByRole("heading", { name: /High-value scope signals/i })).toBeVisible();
   await expect(page.getByText(/Threshold rows are seed planning signals/i)).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy threshold brief/i })).toBeVisible();
   await expect(page.getByRole("heading", { name: /Threshold review matrix/i })).toBeVisible();
   await expect(page.getByText(/CSRD/i).first()).toBeVisible();
   await expect(page.getByText(/CSDDD threshold signals are regime-specific/i)).toBeVisible();

@@ -5,12 +5,15 @@ import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { Badge } from "@/components/Badge";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
 import { StatusBadge } from "@/components/StatusBadge";
 import { RecordMetaBadges } from "@/components/RecordMetaBadges";
 import { DATASET_META } from "@/data/_meta";
 import { thresholdMatrixRows, type ThresholdMatrixReviewStatus, type ThresholdMatrixType } from "@/data/thresholdMatrix";
 import { marqueeReviewItems } from "@/data/contentReview";
 import { regulations } from "@/data/seed";
+import { buildThresholdBriefMarkdown } from "@/lib/thresholdBrief";
 import type { Regulation } from "@/types/regulation";
 
 export const metadata = {
@@ -54,6 +57,7 @@ export default function ThresholdsPage() {
   const reviewBeforeUse = rows.filter((item) => item.row.reviewStatus === "review-before-client-use" || item.reviewItem?.premiumUseBlockedUntilReviewed).length;
   const sourceReviewed = rows.filter((item) => item.row.reviewStatus === "source-reviewed-seed").length;
   const dateSensitive = rows.filter((item) => item.row.reviewStatus === "date-sensitive").length;
+  const thresholdMarkdown = buildThresholdBriefMarkdown(rows);
 
   return (
     <main id="main-content" className="min-h-screen pb-12">
@@ -92,9 +96,15 @@ export default function ThresholdsPage() {
           </article>
 
           <article className="rounded-2xl border bg-white p-5 text-sm leading-6 text-slate-700 shadow-sm">
-            <div className="flex items-center gap-2 text-teal">
-              <Filter className="h-5 w-5" aria-hidden="true" />
-              <h2 className="font-semibold text-ink">Current review emphasis</h2>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div className="flex items-center gap-2 text-teal">
+                <Filter className="h-5 w-5" aria-hidden="true" />
+                <h2 className="font-semibold text-ink">Current review emphasis</h2>
+              </div>
+              <div className="flex flex-col gap-2 sm:items-end">
+                <CopyMarkdownButton text={thresholdMarkdown} label="Copy threshold brief" />
+                <CopyOutputNote className="max-w-sm sm:text-right" />
+              </div>
             </div>
             <p className="mt-3">
               The matrix prioritizes high-value records from the Marquee review queue: EU reporting and due diligence, sustainable finance, ISSB adoption,

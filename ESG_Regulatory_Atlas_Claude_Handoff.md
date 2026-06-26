@@ -2,17 +2,23 @@
 
 ## Current Phase
 
-The app is in a static June 2026 launch-train pass. The current release is `0.5.82 - June 2026`, which adds copyable timeline planning briefs on top of copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
+The app is in a static June 2026 launch-train pass. The current release is `0.5.83 - June 2026`, which adds copyable threshold screening briefs on top of copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
 
 ## June 2026 Latest Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.83 - June 2026`.
+- Added copyable threshold screening briefs on `/thresholds`.
+- The copied threshold brief includes edition metadata, tracked threshold counts, priority scope signals, facts to confirm, timing signals, source-to-verify prompts, source-review next actions, review queue flags, likely owner functions and legal-caution caveats.
+- Added smoke coverage for the threshold brief copy control.
+- Kept threshold briefs framed as screening prompts only, not legal scope determinations, source verification or entity-specific applicability advice.
+
+## June 2026 Prior Changes Delivered
 
 - Updated dataset metadata and changelog to `0.5.82 - June 2026`.
 - Added copyable timeline planning briefs on `/timeline`.
 - The copied timeline brief includes edition metadata, active horizon and filters, filtered record counts, dated priority records, source-to-verify prompts, source-review watch items, likely owner functions, evidence starters and first actions.
 - Added smoke coverage for the timeline brief copy control.
 - Kept timeline briefs framed as current tracked seed milestone signals, not complete legal calendars, official filing deadline determinations, source verification or entity-specific applicability advice.
-
-## June 2026 Prior Changes Delivered
 
 - Updated dataset metadata and changelog to `0.5.81 - June 2026`.
 - Upgraded sector detail exports into copyable sector exposure briefs.

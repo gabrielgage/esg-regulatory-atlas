@@ -2,6 +2,28 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.84 - June 2026",
+    date: "2026-06-26",
+    label: "Copyable comparison planning brief",
+    summary:
+      "Added copyable comparison planning briefs so jurisdiction and regulation comparisons can be reused in cautious client notes, internal triage and advisory scoping.",
+    added: [
+      "Copy comparison brief action on `/compare?jurisdictions=EUU,GBR`",
+      "Copy comparison brief action on `/compare?ids=csrd,issb-s1-s2`",
+      "Comparison Markdown output with selected records, difference prompts, source-to-verify notes, owner functions, evidence starters, first actions and caveats",
+      "Smoke coverage for the comparison brief copy controls"
+    ],
+    updated: [
+      "Jurisdiction comparison workspace",
+      "Regulation comparison workspace",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eu-taxonomy", "uk-sdr", "california-sb253-sb261"],
+    caveat:
+      "Comparison briefs are derived from tracked seed records. They are planning aids only and do not provide legal equivalence analysis, complete market coverage, official translation, source verification or entity-specific applicability determinations."
+  },
+  {
     edition: "0.5.83 - June 2026",
     date: "2026-06-26",
     label: "Copyable threshold screening brief",

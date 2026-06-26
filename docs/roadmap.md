@@ -40,7 +40,7 @@ Current capability areas:
 - Public changelog
 - Public glossary with contextual term links from label-heavy planning surfaces
 - Daily launch pulse for latest release context, validation expectations and next product-review focus
-- Jurisdiction and regulation comparison
+- Jurisdiction and regulation comparison with copyable planning briefs
 - Printable and copyable jurisdiction briefs
 - Dynamic print metadata and print-polished brief/pack output
 - Citation copy blocks and edition snapshot routes
@@ -100,6 +100,7 @@ Current capability areas:
 
 ## Recently Delivered June 2026 Items
 
+- `0.5.84`: Added copyable comparison planning briefs on `/compare`.
 - `0.5.83`: Added copyable threshold screening briefs on `/thresholds`.
 - `0.5.82`: Added copyable timeline planning briefs on `/timeline`.
 - `0.5.81`: Added copyable sector exposure briefs on sector detail pages.

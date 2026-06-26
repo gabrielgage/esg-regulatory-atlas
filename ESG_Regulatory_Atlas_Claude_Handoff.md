@@ -2,9 +2,17 @@
 
 ## Current Phase
 
-The app is in a static June 2026 launch-train pass. The current release is `0.5.84 - June 2026`, which adds copyable comparison planning briefs on top of copyable threshold screening briefs, copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
+The app is in a static June 2026 launch-train pass. The current release is `0.5.85 - June 2026`, which adds copyable briefing scenario memos on top of copyable comparison planning briefs, copyable threshold screening briefs, copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
 
 ## June 2026 Latest Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.85 - June 2026`.
+- Added copyable briefing scenario memos on `/briefing`.
+- The copied scenario memo includes edition metadata, audience, leadership question, first operating move, evidence package, advisory motion, priority records, source-review watch prompts, likely owner functions, evidence starters, first actions and caveats.
+- Added smoke coverage for the briefing scenario memo copy control.
+- Kept scenario memos framed as seed-data planning aids, not legal advice, board advice, source verification, complete regulatory inventory or entity-specific applicability advice.
+
+## June 2026 Prior Changes Delivered
 
 - Updated dataset metadata and changelog to `0.5.84 - June 2026`.
 - Added copyable comparison planning briefs on `/compare`.
@@ -12,8 +20,6 @@ The app is in a static June 2026 launch-train pass. The current release is `0.5.
 - Regulation comparison copies include requested IDs, matched records, scope/date/status signals, evidence prompts, source-review prompts and legal-caution caveats.
 - Added smoke coverage for copyable comparison briefs in jurisdiction and regulation comparison modes.
 - Kept comparison briefs framed as seed-data planning aids, not legal equivalence analysis, complete market coverage, official translation, source verification or entity-specific applicability advice.
-
-## June 2026 Prior Changes Delivered
 
 - Updated dataset metadata and changelog to `0.5.83 - June 2026`.
 - Added copyable threshold screening briefs on `/thresholds`.

@@ -141,8 +141,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
     `/data-quality` now exports reviewer-ready CSV/JSON rows with source posture, decision gate, priority source, owner, facts to confirm, evidence needed and first actions. A true workbook sync file and reviewer ownership workflow remain open.
 
 12. **Client briefing copy polish**
-    Status: partially delivered in `0.5.5 - May 2026` and strengthened across June copy-output releases through `0.5.84 - June 2026`.
-    Make copied summaries more useful for client conversations by including persona, selected sector, jurisdiction, caveat, priority regulations, evidence needs and first 30-day actions. June follow-ups added copyable owner, market, sector, timeline, threshold and comparison planning briefs so users can reuse the strongest static surfaces in client notes while preserving source-review and legal-caution caveats.
+    Status: partially delivered in `0.5.5 - May 2026` and strengthened across June copy-output releases through `0.5.85 - June 2026`.
+    Make copied summaries more useful for client conversations by including persona, selected sector, jurisdiction, caveat, priority regulations, evidence needs and first 30-day actions. June follow-ups added copyable owner, market, sector, timeline, threshold, comparison and briefing scenario memos so users can reuse the strongest static surfaces in client notes while preserving source-review and legal-caution caveats.
 
 ## Wave 2: Regulatory Depth And Advisory Workflow
 

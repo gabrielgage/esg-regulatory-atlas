@@ -2,6 +2,26 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.85 - June 2026",
+    date: "2026-06-26",
+    label: "Copyable briefing scenario memo",
+    summary:
+      "Added copyable briefing scenario memos so executive and advisory scenarios can be reused as caveated planning notes before moving into tabs or client-summary outputs.",
+    added: [
+      "Copy scenario memo action on `/briefing` after selecting a scenario",
+      "Briefing Markdown output with leadership question, first operating move, evidence package, priority records, source-review watch prompts, likely owner functions, first actions and caveats",
+      "Smoke coverage for the briefing scenario memo copy control"
+    ],
+    updated: [
+      "Briefing scenario workspace",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "esrs", "eu-taxonomy", "sfdr", "issb-s1-s2"],
+    caveat:
+      "Briefing scenario memos are derived from tracked seed records and scenario prompts. They are planning aids only and do not provide legal advice, board advice, source verification, complete regulatory inventory or entity-specific applicability determinations."
+  },
+  {
     edition: "0.5.84 - June 2026",
     date: "2026-06-26",
     label: "Copyable comparison planning brief",

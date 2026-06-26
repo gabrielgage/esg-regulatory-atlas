@@ -274,6 +274,7 @@ test("briefing client summary exposes handoff links", async ({ page }) => {
   await expect(page.getByTestId("briefing-scenario-empty")).toContainText(/Choose a briefing scenario/i);
   await page.getByRole("button", { name: /EU corporate reporting briefing/i }).click();
   await expect(page.getByTestId("active-briefing-scenario")).toContainText(/EU corporate reporting briefing/i);
+  await expect(page.getByRole("button", { name: /Copy scenario memo/i })).toBeVisible();
   await expect(page.getByRole("heading", { name: /Briefing builder/i })).toBeVisible();
   await expect(page.getByText(/Recommended path/i)).toBeVisible();
   await page.getByRole("button", { name: /Client summary/i }).click();

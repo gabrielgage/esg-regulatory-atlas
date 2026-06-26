@@ -54,7 +54,7 @@ Current capability areas:
 - GitHub Actions CI, Playwright smoke tests, Lighthouse CI and PR preview checklist with Node 24 action-runtime readiness
 - Workbook-backed regulation tracker for coverage and review planning
 - Sector heatmap in the briefing workspace
-- Copyable assessment shortlist
+- Copyable assessment shortlist and briefing scenario memos
 - First-visit light mode default with a saved explicit dark-mode preference
 - Condensed parent-record model with record type, legal force, client relevance, aliases and child items
 - EU financial-services regulatory lens covering banking, insurance, MiFID/IDD, AIFMD/UCITS, benchmarks, EuGBS, ESG ratings and ESAP
@@ -100,6 +100,7 @@ Current capability areas:
 
 ## Recently Delivered June 2026 Items
 
+- `0.5.85`: Added copyable briefing scenario memos on `/briefing`.
 - `0.5.84`: Added copyable comparison planning briefs on `/compare`.
 - `0.5.83`: Added copyable threshold screening briefs on `/thresholds`.
 - `0.5.82`: Added copyable timeline planning briefs on `/timeline`.

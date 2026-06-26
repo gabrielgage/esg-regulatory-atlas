@@ -2,17 +2,23 @@
 
 ## Current Phase
 
-The app is in a static June 2026 launch-train pass. The current release is `0.5.81 - June 2026`, which adds copyable sector exposure briefs on top of copyable market obligation footprints, copyable market quick starts, the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
+The app is in a static June 2026 launch-train pass. The current release is `0.5.82 - June 2026`, which adds copyable timeline planning briefs on top of copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
 
 ## June 2026 Latest Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.82 - June 2026`.
+- Added copyable timeline planning briefs on `/timeline`.
+- The copied timeline brief includes edition metadata, active horizon and filters, filtered record counts, dated priority records, source-to-verify prompts, source-review watch items, likely owner functions, evidence starters and first actions.
+- Added smoke coverage for the timeline brief copy control.
+- Kept timeline briefs framed as current tracked seed milestone signals, not complete legal calendars, official filing deadline determinations, source verification or entity-specific applicability advice.
+
+## June 2026 Prior Changes Delivered
 
 - Updated dataset metadata and changelog to `0.5.81 - June 2026`.
 - Upgraded sector detail exports into copyable sector exposure briefs.
 - The copied sector brief includes edition metadata, direct versus broad record counts, market signals, priority records, source-to-verify prompts, source-review watch items, exposure themes, likely owner functions, evidence starters and first actions.
 - Added smoke coverage for the sector brief copy control.
 - Kept sector briefs framed as current tracked seed intelligence, not complete sector legal inventories, source verification or entity-specific applicability determinations.
-
-## June 2026 Prior Changes Delivered
 
 - Updated dataset metadata and changelog to `0.5.80 - June 2026`.
 - Added a direct copy action for market obligation footprints on jurisdiction profiles.

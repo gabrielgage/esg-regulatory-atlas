@@ -149,8 +149,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
 Target: next 1 to 3 months. Still avoid production databases unless the owner changes scope.
 
 13. **Quarter-level regulatory timeline**
-    Status: partially delivered in `0.5.5 - May 2026`.
-    Convert the timeline into a quarter-based swimlane for effective dates, reporting years, consultation deadlines, first reports and phase-in notes.
+    Status: partially delivered in `0.5.5 - May 2026` and strengthened in `0.5.82 - June 2026`.
+    Convert the timeline into a quarter-based swimlane for effective dates, reporting years, consultation deadlines, first reports and phase-in notes. June follow-up added a copyable timeline planning brief with active filters, dated priority records, source-to-verify prompts, review watch items, owner functions, evidence starters and caveats. Future work should improve visual quarter swimlanes and add richer date confidence/review-state grouping.
 
 14. **Threshold matrix**
     Status: materially delivered in `0.5.49 - May 2026`.

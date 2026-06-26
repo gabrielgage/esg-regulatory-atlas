@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { CalendarClock, RotateCcw, SlidersHorizontal } from "lucide-react";
 import { Badge } from "@/components/Badge";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
 import { Header } from "@/components/Header";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
@@ -11,6 +13,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { RegulatoryTimeline, type TimelineScope } from "@/components/RegulatoryTimeline";
 import { RegulationDetail } from "@/components/RegulationDetail";
 import { jurisdictions, regulations, topics } from "@/data/seed";
+import { buildTimelineBriefMarkdown } from "@/lib/timelineBrief";
 import { Regulation } from "@/types/regulation";
 
 const timelineScopes: { id: TimelineScope; label: string; description: string }[] = [
@@ -47,6 +50,12 @@ export default function TimelinePage() {
     topic && { label: "Topic", value: topic },
     year && { label: "Reporting year", value: year }
   ].filter((item): item is { label: string; value: string } => Boolean(item));
+  const timelineMarkdown = buildTimelineBriefMarkdown({
+    records: filtered,
+    scopeLabel: activeScope.label,
+    activeFilters,
+    dateBearingRecords
+  });
 
   function resetTimelineFilters() {
     setJurisdiction("");
@@ -136,7 +145,13 @@ export default function TimelinePage() {
                 Showing {filtered.length} of {regulations.length} tracked seed records in the {activeScope.label.toLowerCase()} horizon, including {dateBearingRecords} records with dated milestone signals.
               </p>
             </div>
-            <Badge className="border-amber-200 bg-amber-50 text-amber-800">Date-sensitive planning</Badge>
+            <div className="flex flex-col gap-2 sm:items-end">
+              <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+                <CopyMarkdownButton text={timelineMarkdown} label="Copy timeline brief" />
+                <Badge className="border-amber-200 bg-amber-50 text-amber-800">Date-sensitive planning</Badge>
+              </div>
+              <CopyOutputNote className="max-w-sm sm:text-right" />
+            </div>
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {activeFilters.length ? (

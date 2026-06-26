@@ -2,13 +2,20 @@
 
 ## Current Edition
 
-`0.5.81 - June 2026`
+`0.5.82 - June 2026`
 
 Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Latest Release Context
 
-The latest release context captures the launch-train simplification work through copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the copyable owner matrix, copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.81 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+The latest release context captures the launch-train simplification work through copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the copyable owner matrix, copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.82 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+
+### 0.5.82 - Copyable Timeline Planning Brief
+
+- Added a copyable timeline planning brief to `/timeline`.
+- The copied brief includes edition metadata, active horizon and filters, filtered record counts, dated priority records, source-to-verify prompts, source-review watch items, likely owner functions, evidence starters and first 30-day actions.
+- Added smoke coverage for the timeline brief copy control.
+- Kept the brief framed as a current seed-data planning aid, not a complete legal calendar, official deadline determination, source verification or entity-specific applicability advice.
 
 ### 0.5.81 - Copyable Sector Exposure Brief
 
@@ -101,7 +108,7 @@ The latest release context captures the launch-train simplification work through
 The Atlas is a static, source-linked, legally cautious MVP. It includes:
 
 - map-centered market discovery with local Natural Earth geometry, visible country outlines, pan/zoom/reset controls and untracked-country context;
-- searchable regulation records, market profiles, sector profiles with copyable exposure briefs, value-chain lanes, business-function owner lanes, timeline, assessment, briefing and Data Quality surfaces;
+- searchable regulation records, market profiles, sector profiles with copyable exposure briefs, value-chain lanes, business-function owner lanes, timeline with copyable planning briefs, assessment, briefing and Data Quality surfaces;
 - source quality, data quality, confidence, caveat, review-risk and maturity indicators;
 - decision-support surfaces for threshold facts, assessment triggers, market triggers, market obligation footprints, owner-function evidence planning, regulation owner handoffs, regulation action memos, drawer action memos and regulation implementation roadmaps;
 - copyable and printable outputs that preserve edition metadata and legal-caution caveats;

@@ -100,6 +100,7 @@ Current capability areas:
 
 ## Recently Delivered June 2026 Items
 
+- `0.5.82`: Added copyable timeline planning briefs on `/timeline`.
 - `0.5.81`: Added copyable sector exposure briefs on sector detail pages.
 - `0.5.80`: Added copyable market obligation footprints on jurisdiction profiles.
 - `0.5.79`: Added copyable market quick starts on `/markets` and jurisdiction profiles.

@@ -368,6 +368,17 @@ test("key launch routes render", async ({ page }) => {
   }
 });
 
+test("comparison workspace exposes copyable planning brief", async ({ page }) => {
+  await page.goto("/compare?jurisdictions=EUU,GBR");
+
+  await expect(page.getByRole("heading", { name: /Jurisdiction comparison/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy comparison brief/i })).toBeVisible();
+
+  await page.goto("/compare?ids=csrd,issb-s1-s2");
+  await expect(page.getByRole("heading", { name: /Regulation comparison/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy comparison brief/i })).toBeVisible();
+});
+
 test("value-chain workspace starts with practical exposure lanes", async ({ page }) => {
   await page.goto("/value-chain");
 

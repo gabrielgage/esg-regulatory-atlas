@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight, GitCompare } from "lucide-react";
 import { Header } from "@/components/Header";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { GlossaryHelpCard } from "@/components/GlossaryHelpCard";
@@ -9,6 +11,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { Badge } from "@/components/Badge";
 import { StatusBadge } from "@/components/StatusBadge";
 import { jurisdictions, regulations } from "@/data/seed";
+import { buildJurisdictionComparisonBriefMarkdown, buildRegulationComparisonBriefMarkdown } from "@/lib/comparisonBrief";
 import { recordsForJurisdiction } from "@/lib/layers";
 import { readinessBand, readinessScore } from "@/lib/scoring";
 import { uniq } from "@/lib/utils";
@@ -55,6 +58,12 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
   const inBoth = leftRecords.filter((regulation) => rightIds.has(regulation.id));
   const onlyLeft = leftRecords.filter((regulation) => !rightIds.has(regulation.id));
   const onlyRight = rightRecords.filter((regulation) => !leftIds.has(regulation.id));
+  const markdown = buildJurisdictionComparisonBriefMarkdown({
+    left: resolvedLeft,
+    right: resolvedRight,
+    leftRecords,
+    rightRecords
+  });
 
   return (
     <main id="main-content" className="min-h-screen pb-12">
@@ -98,6 +107,19 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
             <Metric label="In both" value={String(inBoth.length)} />
             <Metric label={`Only ${resolvedLeft.code}`} value={String(onlyLeft.length)} />
             <Metric label={`Only ${resolvedRight.code}`} value={String(onlyRight.length)} />
+          </div>
+
+          <div className="mt-5 flex flex-col gap-3 border-t border-slate-100 pt-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="text-sm font-semibold text-ink">Copy comparison planning brief</h3>
+              <p className="mt-1 text-sm leading-6 text-slate-500">
+                Export a cautious market comparison with priority records, difference prompts, source-review reminders and first actions.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2 sm:items-end">
+              <CopyMarkdownButton text={markdown} label="Copy comparison brief" />
+              <CopyOutputNote className="max-w-sm sm:text-right" />
+            </div>
           </div>
         </section>
 
@@ -208,6 +230,8 @@ function Metric({ label, value }: { label: string; value: string }) {
 }
 
 function RegulationCompare({ records, requestedIds }: { records: Regulation[]; requestedIds: string[] }) {
+  const markdown = buildRegulationComparisonBriefMarkdown({ records, requestedIds });
+
   return (
     <main id="main-content" className="min-h-screen pb-12">
       <Header />
@@ -232,10 +256,14 @@ function RegulationCompare({ records, requestedIds }: { records: Regulation[]; r
               <h2 className="font-semibold text-ink">Selected records</h2>
               <p className="mt-1 text-sm leading-6 text-slate-500">Use the Regulations page compare picker to adjust this set.</p>
             </div>
-            <Link href="/regulations" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">
-              Open picker <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="flex flex-wrap items-center gap-2">
+              <CopyMarkdownButton text={markdown} label="Copy comparison brief" />
+              <Link href="/regulations" className="inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 px-3 text-sm font-semibold text-slate-600 hover:bg-slate-50">
+                Open picker <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
+          <CopyOutputNote className="mt-3 max-w-2xl" />
           {!records.length && (
             <p className="mt-4 rounded-xl border border-dashed border-slate-200 p-5 text-sm text-slate-500">
               No matching regulation IDs were found. Try `/compare?ids=csrd,issb-s1-s2`.

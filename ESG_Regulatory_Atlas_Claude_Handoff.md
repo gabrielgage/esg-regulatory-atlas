@@ -2,17 +2,24 @@
 
 ## Current Phase
 
-The app is in a static June 2026 launch-train pass. The current release is `0.5.83 - June 2026`, which adds copyable threshold screening briefs on top of copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
+The app is in a static June 2026 launch-train pass. The current release is `0.5.84 - June 2026`, which adds copyable comparison planning briefs on top of copyable threshold screening briefs, copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the existing owner workbench, owner matrix, owner briefs, regulation owner handoffs, regulation action memos, drawer action memos, maturity planning layer, Data Quality governance surfaces, source evidence trails, market trigger reviews and simplified public navigation. The goal remains deployability, legal caution and lower cognitive load while making each surface more useful for client-ready planning outputs.
 
 ## June 2026 Latest Changes Delivered
+
+- Updated dataset metadata and changelog to `0.5.84 - June 2026`.
+- Added copyable comparison planning briefs on `/compare`.
+- Jurisdiction comparison copies include edition metadata, tracked record counts, shared/unique record prompts, priority records, source-to-verify notes, likely owner functions, evidence starters and first 30-day actions.
+- Regulation comparison copies include requested IDs, matched records, scope/date/status signals, evidence prompts, source-review prompts and legal-caution caveats.
+- Added smoke coverage for copyable comparison briefs in jurisdiction and regulation comparison modes.
+- Kept comparison briefs framed as seed-data planning aids, not legal equivalence analysis, complete market coverage, official translation, source verification or entity-specific applicability advice.
+
+## June 2026 Prior Changes Delivered
 
 - Updated dataset metadata and changelog to `0.5.83 - June 2026`.
 - Added copyable threshold screening briefs on `/thresholds`.
 - The copied threshold brief includes edition metadata, tracked threshold counts, priority scope signals, facts to confirm, timing signals, source-to-verify prompts, source-review next actions, review queue flags, likely owner functions and legal-caution caveats.
 - Added smoke coverage for the threshold brief copy control.
 - Kept threshold briefs framed as screening prompts only, not legal scope determinations, source verification or entity-specific applicability advice.
-
-## June 2026 Prior Changes Delivered
 
 - Updated dataset metadata and changelog to `0.5.82 - June 2026`.
 - Added copyable timeline planning briefs on `/timeline`.

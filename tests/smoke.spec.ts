@@ -123,6 +123,7 @@ test("timeline filters expose active context and reset cleanly", async ({ page }
   await expect(page.getByTestId("timeline-filter-summary")).toContainText(/No timeline filters are active/i);
   await page.getByRole("button", { name: /Full history/i }).click();
   await expect(page.getByTestId("timeline-filter-summary")).toContainText(/Planning horizon: Full history/i);
+  await expect(page.getByTestId("timeline-filter-summary").getByRole("button", { name: /Copy timeline brief/i })).toBeVisible();
   await page.getByLabel("Jurisdiction").selectOption("eu");
   await expect(page.getByTestId("timeline-filter-summary")).toContainText(/Jurisdiction: European Union/i);
   await page.getByRole("button", { name: /^Clear$/i }).click();

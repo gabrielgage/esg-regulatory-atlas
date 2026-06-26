@@ -2,6 +2,26 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.82 - June 2026",
+    date: "2026-06-26",
+    label: "Copyable timeline planning brief",
+    summary:
+      "Added a copyable timeline planning brief so active timeline horizons and filters can be reused in date-sensitive planning notes.",
+    added: [
+      "Copy timeline brief action on `/timeline`",
+      "Timeline Markdown output with active filters, dated priority records, source-to-verify prompts, review watch items, owner functions, evidence starters and caveats",
+      "Smoke coverage for the timeline brief copy control"
+    ],
+    updated: [
+      "Timeline workspace",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "eu-taxonomy"],
+    caveat:
+      "Timeline planning briefs are derived from tracked seed milestone signals. They are not complete legal calendars, official deadline determinations, source verification or entity-specific applicability advice."
+  },
+  {
     edition: "0.5.81 - June 2026",
     date: "2026-06-25",
     label: "Copyable sector exposure brief",

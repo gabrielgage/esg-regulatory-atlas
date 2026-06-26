@@ -153,8 +153,8 @@ Target: next 1 to 3 months. Still avoid production databases unless the owner ch
     Convert the timeline into a quarter-based swimlane for effective dates, reporting years, consultation deadlines, first reports and phase-in notes. June follow-up added a copyable timeline planning brief with active filters, dated priority records, source-to-verify prompts, review watch items, owner functions, evidence starters and caveats. Future work should improve visual quarter swimlanes and add richer date confidence/review-state grouping.
 
 14. **Threshold matrix**
-    Status: materially delivered in `0.5.49 - May 2026`.
-    `/thresholds` now gives high-value records structured threshold type, screening signal, facts to confirm, timing signal, source to verify, confidence, review status and caveat. Next content task: source-review and refine numeric threshold details for Marquee 10 and selected Marquee 25 records before premium or advisory reuse.
+    Status: materially delivered in `0.5.49 - May 2026` and strengthened in `0.5.83 - June 2026`.
+    `/thresholds` now gives high-value records structured threshold type, screening signal, facts to confirm, timing signal, source to verify, confidence, review status, caveat and a copyable threshold screening brief. Next content task: source-review and refine numeric threshold details for Marquee 10 and selected Marquee 25 records before premium or advisory reuse.
 
 15. **Penalty and enforcement layer**
     Status: partially delivered in `0.5.10 - May 2026` through enforcement/penalty cue cards; record-level population remains open.

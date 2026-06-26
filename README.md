@@ -8,11 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.82 - June 2026`.
+The current public release context is `0.5.83 - June 2026`.
 
 Latest release-context update:
 
-- adds copyable timeline planning briefs on `/timeline` for caveated date-sensitive milestone, source-review, evidence and owner summaries
+- adds copyable threshold screening briefs on `/thresholds` for caveated scope-signal, fact-to-confirm, source-review and owner summaries
+- preserves copyable timeline planning briefs on `/timeline` for caveated date-sensitive milestone, source-review, evidence and owner summaries
 - preserves copyable sector exposure briefs on `/sectors/[slug]` for caveated priority-record, market-signal, source-review, evidence and first-action summaries
 - preserves copyable market obligation footprints on jurisdiction profiles for caveated obligation, owner, evidence and first-action summaries
 - adds copyable market quick starts on `/markets` and jurisdiction profiles for caveated first-action, evidence and owner prompts
@@ -69,7 +70,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - compact drawer action memos for the map workspace regulation drawer
 - regulation database and regulation detail pages
 - search-first Regulations workspace with secondary role-lens, comparison, label-help and export tools
-- threshold matrix for high-value scope signals, facts to confirm and source-review status
+- threshold matrix for high-value scope signals, facts to confirm, source-review status and copyable screening briefs
 - public glossary and contextual label-help surfaces with direct term links
 - daily launch pulse for latest release context and next product-review focus
 - assessment wizard with cautious indicative categories and glossary handoff

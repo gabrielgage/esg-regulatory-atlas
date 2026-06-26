@@ -2,6 +2,26 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.83 - June 2026",
+    date: "2026-06-26",
+    label: "Copyable threshold screening brief",
+    summary:
+      "Added a copyable threshold screening brief so high-value scope signals, facts to confirm and source-review blockers can be reused in cautious planning notes.",
+    added: [
+      "Copy threshold brief action on `/thresholds`",
+      "Threshold Markdown output with priority scope signals, facts to confirm, source-to-verify prompts, review queue, owner functions and caveats",
+      "Smoke coverage for the threshold brief copy control"
+    ],
+    updated: [
+      "Threshold matrix workspace",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "csddd", "sfdr", "eu-taxonomy", "california-sb253-sb261"],
+    caveat:
+      "Threshold screening briefs are derived from seed threshold rows. They are screening prompts only and do not decide whether an entity, fund, product, supplier or portfolio company is legally in scope."
+  },
+  {
     edition: "0.5.82 - June 2026",
     date: "2026-06-26",
     label: "Copyable timeline planning brief",

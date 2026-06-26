@@ -1,5 +1,7 @@
 import { Bell, CalendarClock, Eye, ShieldCheck } from "lucide-react";
 import { Header } from "@/components/Header";
+import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
+import { CopyOutputNote } from "@/components/CopyOutputNote";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { FooterDisclaimer } from "@/components/FooterDisclaimer";
 import { PageIntro } from "@/components/PageIntro";
@@ -7,6 +9,7 @@ import { Badge } from "@/components/Badge";
 import { CommercialCTA } from "@/components/CommercialCTA";
 import { ManualRequestPanel } from "@/components/ManualRequestPanel";
 import { alertDigestPreviews, alertRequestHref, alertWatchlistOptions, sourceQualityLegend } from "@/data/alertDigests";
+import { buildAlertDigestMarkdown } from "@/lib/alertDigestBrief";
 
 const frequencyLabel = {
   weekly: "Weekly",
@@ -58,14 +61,18 @@ export default function AlertsPage() {
         <section className="grid gap-4 lg:grid-cols-2">
           {alertDigestPreviews.map((digest) => (
             <article key={digest.id} className="rounded-2xl border bg-white p-5 shadow-sm">
-              <div className="flex flex-wrap gap-2">
-                <Badge className="border-teal/20 bg-teal/10 text-teal">{frequencyLabel[digest.frequency]}</Badge>
-                <Badge className="border-slate-200 bg-slate-50 text-slate-600">{digest.audience.slice(0, 2).join(" / ")}</Badge>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex flex-wrap gap-2">
+                  <Badge className="border-teal/20 bg-teal/10 text-teal">{frequencyLabel[digest.frequency]}</Badge>
+                  <Badge className="border-slate-200 bg-slate-50 text-slate-600">{digest.audience.slice(0, 2).join(" / ")}</Badge>
+                </div>
+                <CopyMarkdownButton text={buildAlertDigestMarkdown(digest)} label="Copy digest preview" />
               </div>
               <h2 className="mt-4 text-xl font-bold tracking-tight text-ink">{digest.title}</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 Jurisdictions: {digest.jurisdictions.join(", ")}. Topics: {digest.topics.join(", ")}.
               </p>
+              <CopyOutputNote className="mt-2" />
               <div className="mt-4 space-y-3">
                 {digest.sampleItems.map((item) => (
                   <div key={item.title} className="rounded-xl border border-slate-200 bg-slate-50 p-4">

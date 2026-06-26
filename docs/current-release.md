@@ -2,13 +2,20 @@
 
 ## Current Edition
 
-`0.5.85 - June 2026`
+`0.5.86 - June 2026`
 
 Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Latest Release Context
 
-The latest release context captures the launch-train simplification work through copyable briefing scenario memos, copyable comparison planning briefs, copyable threshold screening briefs, copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the copyable owner matrix, copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.85 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+The latest release context captures the launch-train simplification work through copyable alert digest previews, copyable briefing scenario memos, copyable comparison planning briefs, copyable threshold screening briefs, copyable timeline planning briefs, copyable sector exposure briefs, copyable market obligation footprints, copyable market quick starts, the copyable owner matrix, copyable owner briefs, drawer-level action memos, regulation action memos, regulation-detail owner handoffs and the internal owner workbench. The public app metadata now reports `0.5.86 - June 2026`; this file should remain aligned with `DATASET_META.edition`, the README and the public changelog.
+
+### 0.5.86 - Copyable Alert Digest Previews
+
+- Added copyable digest previews to `/alerts`.
+- The copied alert preview includes edition metadata, audience, jurisdictions, topics, sample items, source-quality labels, recommended actions, manual validation questions and caveats.
+- Added smoke coverage for the alert digest copy control.
+- Kept alert previews framed as static commercial-validation samples, not paid alerts, automated monitoring, email delivery, source verification, legal advice or entity-specific applicability advice.
 
 ### 0.5.85 - Copyable Briefing Scenario Memo
 
@@ -134,7 +141,7 @@ The Atlas is a static, source-linked, legally cautious MVP. It includes:
 - source quality, data quality, confidence, caveat, review-risk and maturity indicators;
 - decision-support surfaces for threshold facts and copyable threshold screening briefs, assessment triggers, market triggers, market obligation footprints, owner-function evidence planning, regulation owner handoffs, regulation action memos, drawer action memos and regulation implementation roadmaps;
 - copyable and printable outputs that preserve edition metadata and legal-caution caveats;
-- public commercial validation surfaces for plans, alerts, advisory, premium roadmap and manual advisory scan requests;
+- public commercial validation surfaces for plans, copyable alert previews, advisory, premium roadmap and manual advisory scan requests;
 - multilingual interface chrome for English, Spanish, Dutch, French, German and Portuguese, with regulatory records still treated as source-linked seed intelligence rather than official legal translations.
 
 ## Current Technical State

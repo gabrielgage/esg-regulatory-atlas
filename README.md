@@ -8,11 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.85 - June 2026`.
+The current public release context is `0.5.86 - June 2026`.
 
 Latest release-context update:
 
-- adds copyable briefing scenario memos on `/briefing` for caveated executive/advisory scenario outputs
+- adds copyable alert digest previews on `/alerts` for manual commercial-validation and design-partner conversations
+- preserves copyable briefing scenario memos on `/briefing` for caveated executive/advisory scenario outputs
 - preserves copyable comparison planning briefs on `/compare` for caveated jurisdiction and regulation comparison outputs
 - preserves copyable threshold screening briefs on `/thresholds` for caveated scope-signal, fact-to-confirm, source-review and owner summaries
 - preserves copyable timeline planning briefs on `/timeline` for caveated date-sensitive milestone, source-review, evidence and owner summaries
@@ -96,7 +97,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - quality-signal explainers for source links, review prompts, record counts and confidence labels
 - Marquee 10 source-review packet for premium-use blockers, priority sources, threshold facts and owner actions
 - simplified plans page for Free Atlas, advisory scan and secondary premium/enterprise validation paths
-- commercial preview pages for alerts, advisory, internal launch assets and premium roadmap
+- commercial preview pages for alerts, advisory, internal launch assets and premium roadmap, including copyable alert digest previews
 - advisory page sample output showing priority records, facts to confirm, evidence package and first actions
 - manual request guidance on commercial and advisory routes with mailto-only conversion paths
 - reusable advisory-scan CTA used by market, assessment and regulation-detail surfaces

@@ -62,7 +62,7 @@ Current capability areas:
 - Voluntary framework coverage for CDP, SBTi, PCAF, PRI, ICMA, GRESB, IFC/Equator/World Bank safeguards and ISO environmental/GHG standards
 - Static market briefing CTA and premium roadmap page without payments, authentication or gated data
 - `/plans` current-path page for Free Atlas and Advisory Atlas, with Premium Intelligence previews and Enterprise/API Future kept secondary
-- `/alerts` static alert preview page with weekly/monthly sample digests and watchlist concepts
+- `/alerts` static alert preview page with weekly/monthly sample digests, copyable digest previews and watchlist concepts
 - `/advisory` service page for manual exposure scans, custom watchlists, portfolio/supplier maps and briefing packs
 - Copyable advisory sample output for a supplier/exporter exposure scan
 - Shared advisory-scan CTA for market, assessment and regulation-detail surfaces, preserving mailto-only manual request paths
@@ -100,6 +100,7 @@ Current capability areas:
 
 ## Recently Delivered June 2026 Items
 
+- `0.5.86`: Added copyable alert digest previews on `/alerts`.
 - `0.5.85`: Added copyable briefing scenario memos on `/briefing`.
 - `0.5.84`: Added copyable comparison planning briefs on `/compare`.
 - `0.5.83`: Added copyable threshold screening briefs on `/thresholds`.

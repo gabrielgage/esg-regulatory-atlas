@@ -331,6 +331,14 @@ test("commercial routes explain manual request paths", async ({ page }) => {
   }
 });
 
+test("alerts page exposes copyable digest previews", async ({ page }) => {
+  await page.goto("/alerts");
+
+  await expect(page.getByRole("heading", { name: /Premium ESG regulatory alert previews/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy digest preview/i }).first()).toBeVisible();
+  await expect(page.getByText(/production monitoring service/i).first()).toBeVisible();
+});
+
 test("advisory page exposes a copyable sample scan", async ({ page }) => {
   await page.goto("/advisory");
 

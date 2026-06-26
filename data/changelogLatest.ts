@@ -2,6 +2,26 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.86 - June 2026",
+    date: "2026-06-26",
+    label: "Copyable alert digest previews",
+    summary:
+      "Added copyable alert digest previews so static weekly and monthly premium-intelligence examples can be reused in manual design-partner conversations without adding production alert infrastructure.",
+    added: [
+      "Copy digest preview action on `/alerts`",
+      "Alert preview Markdown output with audience, jurisdictions, topics, sample items, source quality, recommended actions, manual validation questions and caveats",
+      "Smoke coverage for the alert digest copy control"
+    ],
+    updated: [
+      "Alerts preview workspace",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "cbam", "california-sb253-sb261"],
+    caveat:
+      "Alert digest previews are static commercial-validation samples. They do not activate paid alerts, automated monitoring, email delivery, source verification, legal advice or entity-specific applicability determinations."
+  },
+  {
     edition: "0.5.85 - June 2026",
     date: "2026-06-26",
     label: "Copyable briefing scenario memo",

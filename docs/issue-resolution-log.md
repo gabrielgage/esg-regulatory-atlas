@@ -1279,3 +1279,31 @@ Language controls must describe interface language, not legal translation. Do no
 - `docs/notion-update-plan.md`
 - `docs/qa-findings/pr-79-interface-language-clarity.md`
 - `docs/issue-resolution-log.md`
+
+## 2026-06-26 - Local Next Build Blocked By Stale `.next` Duplicate Chunk Directory
+
+Status: resolved in the copyable-alert-digest branch.
+
+### Symptom
+
+The first `npm run build` attempt hung without normal progress output, then failed after interruption with:
+
+`ENOTEMPTY: directory not empty, rmdir '.next/static/chunks 2/app/_global-error'`
+
+### Root Cause
+
+The local generated `.next` build cache contained a duplicate `chunks 2` directory. This was a stale local artifact, not an application code, TypeScript, Tailwind, Vercel or dependency issue.
+
+### Resolution
+
+- Confirmed `node node_modules/typescript/bin/tsc --noEmit --pretty false`, `npm run lint`, `npm audit --omit=dev --cache /private/tmp/esg-atlas-npm-cache` and `git diff --check` passed.
+- Removed only the generated `.next` build cache using a Node filesystem cleanup because the direct shell removal command was blocked by the managed sandbox.
+- Reran `npm run build`; the production build passed and generated all static routes successfully.
+
+### Prevention Rule
+
+If a local Next.js build fails while cleaning `.next` with an `ENOTEMPTY` path containing a duplicated directory name such as `chunks 2`, treat it as a stale generated cache issue. Clear `.next`, rerun the build, and do not rewrite product code unless the clean build exposes a real app error.
+
+### Files Changed
+
+- `docs/issue-resolution-log.md`

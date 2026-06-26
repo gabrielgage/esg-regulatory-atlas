@@ -48,7 +48,7 @@ export default async function SectorProfilePage({ params }: { params: Promise<{ 
             Back to sectors
           </Link>
           <div className="flex flex-wrap gap-2">
-            <CopyMarkdownButton text={markdown} />
+            <CopyMarkdownButton text={markdown} label="Copy sector brief" />
             <Link href={filteredHref} className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
               <FileText className="h-4 w-4" />
               Filter database

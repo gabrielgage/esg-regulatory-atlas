@@ -2,6 +2,27 @@ import type { ChangelogEntry } from "./changelog";
 
 export const LATEST_CHANGELOG: ChangelogEntry[] = [
   {
+    edition: "0.5.81 - June 2026",
+    date: "2026-06-25",
+    label: "Copyable sector exposure brief",
+    summary:
+      "Upgraded sector starting point exports into copyable sector exposure briefs with edition metadata, priority records, market signals, source-review prompts, evidence needs and cautious first actions.",
+    added: [
+      "Copy sector brief action on sector detail pages",
+      "Sector exposure Markdown with source-to-verify prompts and review watchlist",
+      "Smoke coverage for the sector brief copy control"
+    ],
+    updated: [
+      "Sector starting point pages",
+      "Sector profile Markdown generator",
+      "Current release metadata",
+      "README and current release documentation"
+    ],
+    records: ["csrd", "issb-s1-s2", "eudr", "california-sb253-sb261", "uk-sdr"],
+    caveat:
+      "Sector exposure briefs are derived from tracked seed records and broad all-sector context. They are not complete sector legal inventories, source verification or entity-specific applicability determinations."
+  },
+  {
     edition: "0.5.80 - June 2026",
     date: "2026-06-04",
     label: "Copyable market obligation footprint",

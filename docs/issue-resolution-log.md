@@ -17,6 +17,31 @@ Whenever a bug, failed deployment, failing check or visible product issue appear
 
 Do not hide a real product issue by weakening a check. If a check is itself brittle or misconfigured, fix the check and document why.
 
+## 2026-06-25 - Local Validation Hit Incomplete Generated Dependency Files And Alias Fragility
+
+Status: resolved in PR #99.
+
+### Symptom
+
+During the copyable sector exposure brief validation pass, local `npm run lint` failed because the installed TypeScript package was missing generated files such as `lib/_tsc.js`. A subsequent local build also failed to resolve `@/components/...` imports even though those files existed and recent GitHub CI runs were green.
+
+### Root Cause
+
+The local `node_modules` tree was incomplete after prior generated dependency churn, so TypeScript and Tailwind package metadata pointed to files that were not present locally. Separately, `tsconfig.json` used the `@/*` path alias without an explicit `baseUrl`, which made alias resolution more fragile in local Next 16 validation.
+
+### Resolution
+
+Restored missing generated dependency files locally from clean package tarballs for validation only. Added `baseUrl: "."` to `tsconfig.json` so the existing `@/*` path alias has an explicit resolution base.
+
+### Prevention Rule
+
+If local validation reports missing files inside `node_modules`, confirm package-folder integrity before changing app code. Keep alias configuration explicit in `tsconfig.json` so local, CI and Vercel builds resolve workspace imports consistently.
+
+### Files Changed
+
+- `tsconfig.json`
+- `docs/issue-resolution-log.md`
+
 ## 2026-06-02 - PR #94 Browser Smoke Checks Used Stale Release Month And Broad Data Quality Text
 
 Status: resolved in PR #94 follow-up commit.

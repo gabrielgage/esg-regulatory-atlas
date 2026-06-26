@@ -250,6 +250,7 @@ test("sector starting point pages render business-context triage", async ({ page
   await expect(page.getByText(/Priority records/i).first()).toBeVisible();
   await expect(page.getByText(/Market signals/i)).toBeVisible();
   await expect(page.getByText(/Source confidence/i)).toBeVisible();
+  await expect(page.getByRole("button", { name: /Copy sector brief/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Filter database/i })).toBeVisible();
 });
 

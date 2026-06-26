@@ -120,8 +120,8 @@ Target: next 1 to 4 weeks. Keep the app static and Vercel-simple.
     Market seed records are translated into obligation categories such as reporting, assurance, governance, due diligence, supply chain, financial disclosure, taxonomy, transition planning, data collection and product compliance, with likely owner functions and evidence starters. June follow-up added a copyable obligation-footprint output for jurisdiction profiles so users can reuse the market-level owner/evidence view while preserving caveats.
 
 7. **Sector-specific starting points**
-   Status: materially delivered in `0.5.14 - May 2026` through `/sectors`, `/sectors/[slug]` and `lib/sectorProfile.ts`.
-   Add sector entry filters for financial services, manufacturing, agriculture, energy, real estate, retail, technology and transport.
+   Status: materially delivered in `0.5.14 - May 2026` through `/sectors`, `/sectors/[slug]` and `lib/sectorProfile.ts`, then strengthened in `0.5.81 - June 2026`.
+   Add sector entry filters for financial services, manufacturing, agriculture, energy, real estate, retail, technology and transport. June follow-up upgraded sector detail exports into copyable exposure briefs with edition metadata, priority records, market signals, source-review watch items, evidence starters, likely owner functions and first 30-day actions. Future work should move from generic sector triage into source-reviewed premium sector packs for priority buyer segments.
 
 8. **Translation coverage audit**
    Status: advanced in `0.5.21 - May 2026` with translated navigation labels for Plans, Alerts, Advisory, Launch and More across all supported interface languages.

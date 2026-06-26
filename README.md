@@ -8,11 +8,12 @@ Publisher: Etica ESG. Editor: Gabriel Gage. Contact: `gabriel@eticaesg.com`.
 
 ## Current Edition
 
-The current public release context is `0.5.80 - June 2026`.
+The current public release context is `0.5.81 - June 2026`.
 
 Latest release-context update:
 
-- adds copyable market obligation footprints on jurisdiction profiles for caveated obligation, owner, evidence and first-action summaries
+- adds copyable sector exposure briefs on `/sectors/[slug]` for caveated priority-record, market-signal, source-review, evidence and first-action summaries
+- preserves copyable market obligation footprints on jurisdiction profiles for caveated obligation, owner, evidence and first-action summaries
 - adds copyable market quick starts on `/markets` and jurisdiction profiles for caveated first-action, evidence and owner prompts
 - adds a copyable full owner matrix on `/functions` for a caveated function-by-function planning memo
 - preserves copyable Markdown owner briefs on `/functions` so function lanes can be reused in advisory planning with caveats preserved
@@ -59,7 +60,7 @@ The MVP is intentionally static, transparent and Vercel-simple:
 - market profiles at `/markets` and `/jurisdiction/[code]` with tracked-coverage, copyable quick starts, copyable obligation footprints and detail-level glossary handoffs
 - market trigger reviews on jurisdiction profiles for corporate reporting, climate, sustainable finance, supply-chain, product/trade and source-review signals
 - market obligation footprints on jurisdiction profiles for business-impact categories, likely owner functions, evidence starters and first actions
-- searchable sector finder at `/sectors`, plus sector profiles at `/sectors/[slug]` with tagged-record and detail-level glossary handoffs
+- searchable sector finder at `/sectors`, plus sector profiles at `/sectors/[slug]` with tagged-record, copyable sector exposure brief and detail-level glossary handoffs
 - six-lane value-chain workspace for supplier, trade/import, product/claim, portfolio, operations and customer-pressure triage
 - internal owner workbench at `/functions` for likely owner functions, evidence focus, first actions, source-review prompts, copyable owner briefs and a copyable owner matrix
 - regulation-detail owner handoffs that link selected records to likely owner lanes, evidence focus, first actions and the owner workbench

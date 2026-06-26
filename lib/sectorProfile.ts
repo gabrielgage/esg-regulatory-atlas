@@ -1,6 +1,7 @@
 import { regulations } from "@/data/seed";
 import { jurisdictions } from "@/data/jurisdictions";
 import { sectors as sectorTaxonomy } from "@/data/sectors";
+import { DATASET_META } from "@/data/_meta";
 import { readinessScore } from "@/lib/scoring";
 import { uniq } from "@/lib/utils";
 import type { Regulation } from "@/types/regulation";
@@ -84,28 +85,75 @@ export function sectorProfiles() {
 
 export function buildSectorMarkdown(sector: string, records: Regulation[]) {
   const relevant = [...records].sort((a, b) => prioritySort(a, b, sector)).slice(0, 8);
+  const directRecords = records.filter((regulation) => regulation.sectors.includes(sector));
+  const broadRecords = records.filter((regulation) => regulation.sectors.includes("All sectors") && !regulation.sectors.includes(sector));
   const markets = marketCounts(relevant);
+  const topics = uniq(relevant.flatMap((regulation) => regulation.topics)).slice(0, 8);
+  const valueChain = uniq(relevant.flatMap((regulation) => regulation.valueChain)).slice(0, 8);
   const impacts = uniq(relevant.flatMap((regulation) => regulation.businessImpacts)).slice(0, 8);
+  const owners = uniq(relevant.flatMap((regulation) => regulation.affectedFunctions)).slice(0, 8);
   const evidence = uniq(relevant.flatMap((regulation) => regulation.evidenceRequired || [])).slice(0, 8);
   const actions = uniq(relevant.flatMap((regulation) => regulation.requiredActions || [])).slice(0, 8);
   const sourceBacked = relevant.filter((regulation) => regulation.sourceUrls.length > 0).length;
   const reviewFlags = relevant.filter((regulation) => regulation.dataQualityStatus !== "verified_seed" || regulation.confidenceLevel !== "high").length;
+  const watchItems = relevant
+    .filter(
+      (regulation) =>
+        regulation.status === "consultation" ||
+        regulation.status === "transition" ||
+        regulation.confidenceLevel !== "high" ||
+        regulation.dataQualityStatus !== "verified_seed"
+    )
+    .slice(0, 5);
 
   return [
-    `# ${sector} sector starting point`,
+    `# ${sector} sector exposure brief`,
+    "",
+    `Edition: ${DATASET_META.edition}`,
+    `Publisher: ${DATASET_META.publisher}`,
+    `Editor: ${DATASET_META.editor}`,
+    `Contact: ${DATASET_META.contactEmail}`,
     "",
     "This is indicative seed regulatory intelligence for orientation and planning. It is not legal, tax, investment or assurance advice.",
     "",
-    "## Priority records",
-    ...(relevant.length ? relevant.map((regulation) => `- ${regulation.shortName}: ${regulation.summary}`) : ["- No tracked records in the current seed dataset."]),
+    "## At a glance",
+    `- Direct sector records: ${directRecords.length}`,
+    `- Broad all-sector context records: ${broadRecords.length}`,
+    `- Priority records in this brief: ${relevant.length}`,
+    `- Source-backed priority records: ${sourceBacked}/${relevant.length || 0}`,
+    `- Priority records needing confidence/source review: ${reviewFlags}`,
+    `- Tracked market signals: ${markets.map((market) => `${market.name} (${market.count})`).join(", ") || "n/a"}`,
     "",
-    `Tracked markets: ${markets.map((market) => `${market.name} (${market.count})`).join(", ") || "n/a"}`,
-    `Main business impacts: ${impacts.join(", ") || "n/a"}`,
-    `Source-backed priority records: ${sourceBacked}/${relevant.length || 0}`,
-    `Priority records needing confidence/source review: ${reviewFlags}`,
+    "## Priority records",
+    ...(relevant.length
+      ? relevant.map((regulation) => {
+          const source = regulation.sourceUrls[0];
+          return [
+            `- ${regulation.shortName} (${regulation.jurisdiction})`,
+            `  - Status: ${formatLabel(regulation.status)}; legal force: ${formatLabel(regulation.legalForce || regulation.adoptionLevel)}`,
+            `  - First reporting year: ${regulation.firstReportingYear || "not captured / source review needed"}`,
+            `  - Why it appears: ${regulation.summary}`,
+            `  - Source to verify first: ${source ? `${source.label} (${source.url})` : "source missing / needs review"}`
+          ].join("\n");
+        })
+      : ["- No tracked records in the current seed dataset."]),
+    "",
+    "## Exposure themes",
+    `- Topics: ${topics.join(", ") || "n/a"}`,
+    `- Value-chain exposure: ${valueChain.join(", ") || "n/a"}`,
+    `- Main business impacts: ${impacts.join(", ") || "n/a"}`,
+    `- Likely owner functions: ${owners.join(", ") || "n/a"}`,
     "",
     "## Source review note",
     "Source-backed means the record has at least one captured source link in the seed dataset. It does not mean the source has been independently reviewed for this copied output. Treat this sector summary as a planning aid and confirm primary sources before sharing or relying on it.",
+    "",
+    "## Timing and review watchlist",
+    ...(watchItems.length
+      ? watchItems.map(
+          (regulation) =>
+            `- ${regulation.shortName}: ${formatLabel(regulation.status)}; ${formatLabel(regulation.dataQualityStatus)}; last reviewed ${regulation.lastReviewed || "not captured"}; next review ${regulation.nextReviewDate || "not captured"}`
+        )
+      : ["- No priority watch items were identified from the current sector view. Continue checking high-impact records and date-sensitive regimes."]),
     "",
     "## Evidence to prepare",
     ...(evidence.length ? evidence.map((item) => `- ${item}`) : ["- Entity applicability facts", "- Source review log", "- Threshold evidence"]),
@@ -154,4 +202,8 @@ function prioritySort(a: Regulation, b: Regulation, sector: string) {
   if (directDelta) return directDelta;
   if (Boolean(b.highImpact) !== Boolean(a.highImpact)) return Number(Boolean(b.highImpact)) - Number(Boolean(a.highImpact));
   return readinessScore(b) - readinessScore(a);
+}
+
+function formatLabel(value: string) {
+  return value.replaceAll("_", " ").replaceAll("-", " ");
 }

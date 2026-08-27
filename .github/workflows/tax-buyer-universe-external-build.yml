@@ -1,0 +1,59 @@
+name: Tax Buyer Universe External Build
+
+on:
+  push:
+    branches:
+      - tax-buyer-universe-build-20260827
+    paths:
+      - tools/tax_buyer_universe_external.py
+      - .github/workflows/tax-buyer-universe-external-build.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SEC_USER_AGENT: "ACT Tax Buyer Universe Research (contact: ggage@actgroup.com)"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout temporary build branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pandas requests duckdb pyarrow
+
+      - name: Build public, private and partner universes
+        run: |
+          set -euo pipefail
+          python tools/tax_buyer_universe_external.py \
+            --output-dir outputs/tax_buyer_universe_external \
+            --cache-dir .cache/tax_buyer_universe_external \
+            2>&1 | tee tax_buyer_universe_external_build.log
+
+      - name: Package outputs
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p artifact
+          cp -R outputs/tax_buyer_universe_external artifact/ || true
+          cp tax_buyer_universe_external_build.log artifact/ || true
+          find artifact -maxdepth 3 -type f -printf '%p %s bytes\n' | sort
+
+      - name: Upload public-data build artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-buyer-universe-external-${{ github.run_id }}
+          path: artifact/
+          retention-days: 7

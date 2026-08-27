@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from tools import tax_buyer_universe_external as build
+import tax_buyer_universe_external as build
 
 
 def _unique_columns(columns):

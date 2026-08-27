@@ -6,6 +6,7 @@ on:
       - tax-buyer-universe-build-20260827
     paths:
       - tools/tax_buyer_universe_external.py
+      - tools/tax_buyer_universe_external_runner.py
       - .github/workflows/tax-buyer-universe-external-build.yml
   workflow_dispatch:
 
@@ -37,7 +38,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p .cache/tax_buyer_universe_external/sec_reference
-          python tools/tax_buyer_universe_external.py \
+          python tools/tax_buyer_universe_external_runner.py \
             --output-dir outputs/tax_buyer_universe_external \
             --cache-dir .cache/tax_buyer_universe_external \
             2>&1 | tee tax_buyer_universe_external_build.log

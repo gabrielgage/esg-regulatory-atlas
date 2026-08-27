@@ -37,7 +37,19 @@ def fixed_fill_controlled_codes(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+_original_get_json = build.get_json
+
+
+def fixed_get_json(url, headers, attempts=6, timeout=90):
+    # The Inc endpoint may return repeated partial pages or anti-bot responses.
+    # Force the builder onto the complete public 5,000-row 2024 snapshot instead.
+    if "api.inc.com/rest/i5list/" in url:
+        raise RuntimeError("Use complete public Inc. 5000 snapshot fallback")
+    return _original_get_json(url, headers, attempts=attempts, timeout=timeout)
+
+
 build.fill_controlled_codes = fixed_fill_controlled_codes
+build.get_json = fixed_get_json
 
 if __name__ == "__main__":
     raise SystemExit(build.main())

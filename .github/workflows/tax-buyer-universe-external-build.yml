@@ -36,6 +36,7 @@ jobs:
       - name: Build public, private and partner universes
         run: |
           set -euo pipefail
+          mkdir -p .cache/tax_buyer_universe_external/sec_reference
           python tools/tax_buyer_universe_external.py \
             --output-dir outputs/tax_buyer_universe_external \
             --cache-dir .cache/tax_buyer_universe_external \
